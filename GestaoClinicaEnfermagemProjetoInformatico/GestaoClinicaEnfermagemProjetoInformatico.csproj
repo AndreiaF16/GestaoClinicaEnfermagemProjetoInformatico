@@ -54,6 +54,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -75,6 +79,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\42592211_261855271335712_7696443792269770752_o.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\91029693_887056538410859_7048263335300562944_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\90878704_913662852414066_1997078630643007488_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\90948238_2611584329165542_5438730959669166080_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\61612874_1529740527163389_3031694174454808576_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\91029693_887056538410859_7048263335300562944_n %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\91029693_887056538410859_7048263335300562944_n1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
