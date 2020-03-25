@@ -83,6 +83,46 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _90174228_203432224262112_273993770746249216_n {
+            get {
+                object obj = ResourceManager.GetObject("90174228_203432224262112_273993770746249216_n", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _90442019_519687358942142_2240774400708182016_n {
+            get {
+                object obj = ResourceManager.GetObject("90442019_519687358942142_2240774400708182016_n", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _90874965_219047785852202_1781970356173537280_n {
+            get {
+                object obj = ResourceManager.GetObject("90874965_219047785852202_1781970356173537280_n", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _90876545_253870845754605_8447427972255711232_n {
+            get {
+                object obj = ResourceManager.GetObject("90876545_253870845754605_8447427972255711232_n", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _90878704_913662852414066_1997078630643007488_n {
             get {
                 object obj = ResourceManager.GetObject("90878704_913662852414066_1997078630643007488_n", resourceCulture);
@@ -96,6 +136,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         internal static System.Drawing.Bitmap _90948238_2611584329165542_5438730959669166080_n {
             get {
                 object obj = ResourceManager.GetObject("90948238_2611584329165542_5438730959669166080_n", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _91025699_237925080669313_1596905141716385792_n {
+            get {
+                object obj = ResourceManager.GetObject("91025699_237925080669313_1596905141716385792_n", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

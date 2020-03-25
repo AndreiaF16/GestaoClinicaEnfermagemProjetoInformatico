@@ -10,9 +10,11 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class Form1 : Form
+    public partial class FormInicial : Form
     {
-        public Form1()
+        
+
+        public FormInicial()
         {
             InitializeComponent();
 
@@ -56,6 +58,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnRegistarUtilizador_Click(object sender, EventArgs e)
         {
+            FormRegistarEnfermeiro formRegistarUtilizador = new FormRegistarEnfermeiro();
+            formRegistarUtilizador.Show();
 
         }
 
@@ -66,7 +70,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

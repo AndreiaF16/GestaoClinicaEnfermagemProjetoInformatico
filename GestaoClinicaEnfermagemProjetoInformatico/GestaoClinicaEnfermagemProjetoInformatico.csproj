@@ -46,16 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormRegistarEnfermeiro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormRegistarEnfermeiro.Designer.cs">
+      <DependentUpon>FormRegistarEnfermeiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInicial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInicial.Designer.cs">
+      <DependentUpon>FormInicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormRegistarEnfermeiro.resx">
+      <DependentUpon>FormRegistarEnfermeiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInicial.resx">
+      <DependentUpon>FormInicial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -100,6 +109,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\91029693_887056538410859_7048263335300562944_n1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\90876545_253870845754605_8447427972255711232_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\91025699_237925080669313_1596905141716385792_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\90174228_203432224262112_273993770746249216_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\90442019_519687358942142_2240774400708182016_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\90874965_219047785852202_1781970356173537280_n.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
