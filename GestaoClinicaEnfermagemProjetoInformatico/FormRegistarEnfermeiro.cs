@@ -8,7 +8,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Sql;
+using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Globalization;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
@@ -20,11 +22,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
         }
+        public string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
             FormInicial form = new FormInicial();
-            form.Show();       }
+            form.Show();       
+        }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
@@ -81,9 +85,52 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
+        public static string HashValue(string value)
+        {
+            UnicodeEncoding unicodeEncoding = new UnicodeEncoding();
+            byte[] bytes;
+            using (HashAlgorithm hash = SHA1.Create())
+                bytes = hash.ComputeHash(unicodeEncoding.GetBytes(value));
+            StringBuilder hashValue = new StringBuilder(bytes.Length * 2);
+            foreach (byte b in bytes)
+            {
+                hashValue.AppendFormat(CultureInfo.InvariantCulture, "{0:X2}");
+            }
+            return hashValue.ToString();
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            string nome = txtNome.Text;
+            string funcao = txtFuncao.Text;
+            string telemovel = txtContacto.Text;
+            string dtNascimento = dataNascimento.Value.Date.ToString();
+            string email = txtEmail.Text;
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+            string confirmaPassword = txtConfirmaPassword.Text;
+           // HashValue(password.Trim());
+
+            if (nome == string.Empty ||funcao == string.Empty || telemovel == string.Empty || email == string.Empty || username == string.Empty || password==string.Empty || confirmaPassword == string.Empty)
+            {
+                MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if(txtPassword.Text != txtConfirmaPassword.Text)
+            {
+                MessageBox.Show("As passwors não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection.State == System.Data.ConnectionState.Open)
+            {
+                string queryInsertData = "INSERT INTO Enfermeiro(nome,função,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dataNascimento.Value + "','"+ username.ToString() + "','" +password.ToString()+ "','" + email.ToString() + password.ToString()+"')";
+                SqlCommand sqlCommand = new SqlCommand(queryInsertData,connection);
+                sqlCommand.ExecuteNonQuery();
+                MessageBox.Show("Enfermeiro registado com Sucesso!");
+            }
+
+            connection.Close();
         }
+        
     }
 }
