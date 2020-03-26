@@ -53,7 +53,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
+            FormLogin formLogin= new FormLogin();
+            formLogin.Show();
         }
 
         private void btnRegistarUtilizador_Click(object sender, EventArgs e)
