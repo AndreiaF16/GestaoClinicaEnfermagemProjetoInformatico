@@ -123,7 +123,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             connection.Open();
             if (connection.State == System.Data.ConnectionState.Open)
             {
-                string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dataNascimento.Value + "','"+ username.ToString() + "','" +password.ToString()+ "','" + email.ToString() + password.ToString()+"')";
+                string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dataNascimento.Value + "','"+ username.ToString() + "','" +password.ToString()+ "','" + email.ToString()+"')";
                 SqlCommand sqlCommand = new SqlCommand(queryInsertData,connection);
                 sqlCommand.ExecuteNonQuery();
                 MessageBox.Show("Enfermeiro registado com Sucesso!");

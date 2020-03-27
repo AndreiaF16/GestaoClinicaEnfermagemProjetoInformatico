@@ -51,21 +51,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             conn.Open();
             com.Connection = conn;
-            com.CommandText = "select username, password from Enfermeiro";
-            SqlDataReader dataReader = com.ExecuteReader();
-            if (dataReader.Read()) {
-                if (txtUsername.Text.Equals(dataReader["username"].ToString()) && txtPassword.Text.Equals(dataReader["password"].ToString()))
-                {
-                    MessageBox.Show("Login Efetuado com Sucesso", "Parabéns", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    FormMenu formMenu = new FormMenu();
-                    formMenu.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Nome de utilizador ou palavra passe errados. Volte a tentar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            SqlCommand cmd = new SqlCommand("select username, password from Enfermeiro where username = @username  AND password = @password", conn);
+            cmd.Parameters.AddWithValue("@username", txtUsername.Text);
+            cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+              
+                MessageBox.Show("Login Efetuado com Sucesso", "Parabéns", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                FormMenu formMenu = new FormMenu();
+                formMenu.Show();
+          
             }
+            else
+            {
+                MessageBox.Show("Nome de utilizador ou palavra passe errados. Volte a tentar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
             conn.Close();
         }
 
@@ -92,6 +98,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             FormInicial form = new FormInicial();
             form.Show();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

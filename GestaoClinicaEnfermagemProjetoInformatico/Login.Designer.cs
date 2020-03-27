@@ -49,6 +49,7 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelTitulo.SuspendLayout();
@@ -182,6 +183,7 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.label4);
             this.panelFormulario.Controls.Add(this.label3);
             this.panelFormulario.Controls.Add(this.panel1);
             this.panelFormulario.Controls.Add(this.btnCancelar);
@@ -201,10 +203,11 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(73, 532);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(869, 24);
+            this.label3.Size = new System.Drawing.Size(1296, 24);
             this.label3.TabIndex = 16;
             this.label3.Text = "NOTA: não esquecer: falta fazer o recuperar palavra passe, e para isso tem de se " +
-    "usar um email real....";
+    "usar um email real.... e falta o form de esquecer passe e escrevevr nova";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // panel1
             // 
@@ -322,6 +325,15 @@
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Login Enfermeiro";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(73, 569);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(432, 24);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "e falta o form de esquecer passe e escrevevr nova";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,5 +387,6 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
