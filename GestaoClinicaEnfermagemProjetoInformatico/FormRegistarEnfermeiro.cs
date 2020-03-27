@@ -60,10 +60,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void txtNome_Validating(object sender, CancelEventArgs e)
         {
-            if(!Regex.IsMatch(txtNome.Text, @"^[a-zA-Z]+$"))
-            {
-                MessageBox.Show("Apenas são permitidas letras neste campo!");
-            }
+            
         }
 
         private void FormRegistarEnfermeiro_Load(object sender, EventArgs e)
@@ -120,7 +117,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if(txtPassword.Text != txtConfirmaPassword.Text)
+            if (!Regex.IsMatch(txtNome.Text, @"^[a-zA-Z]+$"))
+            {
+                MessageBox.Show("Apenas são permitidas letras neste campo!");
+            }
+            if (txtPassword.Text != txtConfirmaPassword.Text)
             {
                 MessageBox.Show("As passwors não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -133,10 +134,31 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 SqlCommand sqlCommand = new SqlCommand(queryInsertData,connection);
                 sqlCommand.ExecuteNonQuery();
                 MessageBox.Show("Enfermeiro registado com Sucesso!");
+                this.Close();
             }
 
             connection.Close();
         }
-        
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        public void LimpaCampos(Control.ControlCollection textBoxs)
+        {
+            foreach (Control txt in textBoxs)
+            {
+                if(txt.GetType() == typeof(TextBox))
+                {
+                    txt.Text = string.Empty;
+                    this.Close();
+                }
+            }
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.LimpaCampos(this.panelFormulario.Controls);
+
+        }
     }
 }
