@@ -84,20 +84,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 MessageBox.Show("Por favor, introduza um email válido!","Atenção",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
-
-        public static string HashValue(string value)
+        public static string CalculaHash(string pass)
         {
-            UnicodeEncoding unicodeEncoding = new UnicodeEncoding();
-            byte[] bytes;
-            using (HashAlgorithm hash = SHA1.Create())
-                bytes = hash.ComputeHash(unicodeEncoding.GetBytes(value));
-            StringBuilder hashValue = new StringBuilder(bytes.Length * 2);
-            foreach (byte b in bytes)
+            try
             {
-                hashValue.AppendFormat(CultureInfo.InvariantCulture, "{0:X2}");
+                System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(pass);
+                byte[] hash = md5.ComputeHash(inputBytes);
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                for (int i = 0; i < hash.Length; i++)
+                {
+                    sb.Append(hash[i].ToString("X2"));
+                }
+                return sb.ToString(); // Retorna senha criptografada 
             }
-            return hashValue.ToString();
+            catch (Exception)
+            {
+                return null; // Caso encontre erro retorna nulo
+            }
         }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             string nome = txtNome.Text;
@@ -108,7 +114,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             string confirmaPassword = txtConfirmaPassword.Text;
-           // HashValue(password.Trim());
+            string passCript = CalculaHash(password);
 
             if (nome == string.Empty ||funcao == string.Empty || telemovel == string.Empty || email == string.Empty || username == string.Empty || password==string.Empty || confirmaPassword == string.Empty)
             {
@@ -123,7 +129,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             connection.Open();
             if (connection.State == System.Data.ConnectionState.Open)
             {
-                string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dataNascimento.Value + "','"+ username.ToString() + "','" +password.ToString()+ "','" + email.ToString()+"')";
+                string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dataNascimento.Value.ToString() + "','"+ username.ToString() + "','" +passCript.ToString()+ "','" + email.ToString()+"')";
                 SqlCommand sqlCommand = new SqlCommand(queryInsertData,connection);
                 sqlCommand.ExecuteNonQuery();
                 MessageBox.Show("Enfermeiro registado com Sucesso!");
