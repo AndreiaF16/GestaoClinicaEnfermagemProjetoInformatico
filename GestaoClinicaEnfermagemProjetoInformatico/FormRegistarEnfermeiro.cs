@@ -126,6 +126,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dataNascimento.Value + "','"+ username.ToString() + "','" +password.ToString()+ "','" + email.ToString()+"')";
                 SqlCommand sqlCommand = new SqlCommand(queryInsertData,connection);
                 sqlCommand.ExecuteNonQuery();
+                string queryInsertData2 = "UPDATE INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dataNascimento.Value + "','" + username.ToString() + "','" + password.ToString() + "','" + email.ToString() + "')";
+
                 MessageBox.Show("Enfermeiro registado com Sucesso!");
             }
 
