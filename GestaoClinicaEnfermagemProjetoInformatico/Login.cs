@@ -40,18 +40,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
-            if (txtUsername.Text.Equals(@"Username"))
-            {
-                txtUsername.Text = "";
-            }
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            if (txtPassword.Text.Equals(@"Password"))
-            {
-                txtPassword.Text = "";
-            }
+          
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -64,6 +57,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 if (txtUsername.Text.Equals(dataReader["username"].ToString()) && txtPassword.Text.Equals(dataReader["password"].ToString()))
                 {
                     MessageBox.Show("Login Efetuado com Sucesso", "Parabéns", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    FormMenu formMenu = new FormMenu();
+                    formMenu.Show();
                 }
                 else
                 {
@@ -71,6 +67,31 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
             }
             conn.Close();
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            FormInicial form = new FormInicial();
+            form.Show();
+
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            FormInicial form = new FormInicial();
+            form.Show();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            FormInicial form = new FormInicial();
+            form.Show();
         }
     }
 }
