@@ -83,7 +83,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            FormInicial form = new FormInicial();
+           FormInicial form = new FormInicial();
             form.Show();
 
         }

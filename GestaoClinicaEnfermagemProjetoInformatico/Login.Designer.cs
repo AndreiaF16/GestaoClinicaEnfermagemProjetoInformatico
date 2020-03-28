@@ -39,6 +39,7 @@
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblUsername = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelTitulo.SuspendLayout();
@@ -125,7 +125,7 @@
             this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitulo.Location = new System.Drawing.Point(0, 0);
             this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new System.Drawing.Size(1478, 40);
+            this.panelTitulo.Size = new System.Drawing.Size(1386, 40);
             this.panelTitulo.TabIndex = 2;
             // 
             // label2
@@ -143,7 +143,7 @@
             // 
             this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
-            this.btnFechar.Location = new System.Drawing.Point(1253, 11);
+            this.btnFechar.Location = new System.Drawing.Point(1363, 11);
             this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(16, 16);
@@ -157,7 +157,7 @@
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(1233, 11);
+            this.btnMaximizar.Location = new System.Drawing.Point(1347, 11);
             this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
@@ -171,7 +171,7 @@
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(1213, 11);
+            this.btnMinimizar.Location = new System.Drawing.Point(1331, 11);
             this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
@@ -194,9 +194,18 @@
             this.panelFormulario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelFormulario.Location = new System.Drawing.Point(232, 40);
             this.panelFormulario.Name = "panelFormulario";
-            this.panelFormulario.Size = new System.Drawing.Size(1246, 671);
+            this.panelFormulario.Size = new System.Drawing.Size(1154, 671);
             this.panelFormulario.TabIndex = 4;
             this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(73, 569);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(432, 24);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "e falta o form de esquecer passe e escrevevr nova";
             // 
             // label3
             // 
@@ -325,20 +334,11 @@
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Login Enfermeiro";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(73, 569);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(432, 24);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "e falta o form de esquecer passe e escrevevr nova";
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1478, 711);
+            this.ClientSize = new System.Drawing.Size(1386, 711);
             this.Controls.Add(this.panelFormulario);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelTitulo);
