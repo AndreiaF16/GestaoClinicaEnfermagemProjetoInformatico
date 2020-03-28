@@ -131,7 +131,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (!Regex.IsMatch(txtNome.Text, @"^[a-zA-Z]+$"))
             {
-                MessageBox.Show("Apenas são permitidas letras neste campo!");
+                MessageBox.Show("Apenas são permitidas letras no campo Nome!");
                 return false;
             }
 
