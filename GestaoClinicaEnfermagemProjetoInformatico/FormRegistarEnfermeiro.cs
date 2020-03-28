@@ -22,7 +22,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
         }
-        public string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
@@ -112,7 +112,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             return true;
         }
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private Boolean VerificarDadosInseridos()
         {
             string nome = txtNome.Text;
             string funcao = txtFuncao.Text;
@@ -124,39 +124,68 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string confirmaPassword = txtConfirmaPassword.Text;
             string passCript = CalculaHash(password);
 
-            if (nome == string.Empty ||funcao == string.Empty || telemovel == string.Empty || email == string.Empty || username == string.Empty || password==string.Empty || confirmaPassword == string.Empty)
+            if (nome == string.Empty || funcao == string.Empty || telemovel == string.Empty || email == string.Empty || username == string.Empty || password == string.Empty || confirmaPassword == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
             if (!Regex.IsMatch(txtNome.Text, @"^[a-zA-Z]+$"))
             {
                 MessageBox.Show("Apenas são permitidas letras neste campo!");
+                return false;
             }
-            
+
             if (!ValidarForcaSenha())
             {
                 MessageBox.Show("A password tem que conter no minimo 6 caracteres, dos quais devem ser numeros, letras maiusculas e minusculas", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
             if (txtPassword.Text != txtConfirmaPassword.Text)
             {
                 MessageBox.Show("As passwors não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            string nome = txtNome.Text;
+            string funcao = txtFuncao.Text;
+            string telemovel = txtContacto.Text;
+            var dtNascimento= dataNascimento.Value;
+            string email = txtEmail.Text;
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+            string confirmaPassword = txtConfirmaPassword.Text;
+            string passCript = CalculaHash(password);
+
+            if (!VerificarDadosInseridos())
+            {
+                MessageBox.Show("Dados incorretos!");
             }
             else
             {
-                SqlConnection connection = new SqlConnection(connectionString);
-                connection.Open();
-                if (connection.State == System.Data.ConnectionState.Open)
+                try
                 {
-                    string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dataNascimento.Value.Date.ToString() + "','" + username.ToString() + "','" + passCript.ToString() + "','" + email.ToString() + "')";
-                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Enfermeiro registado com Sucesso!");
-                    this.Visible = false;
+                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    connection.Open();
+                    
+                        string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dtNascimento + "','" + username.ToString() + "','" + passCript.ToString() + "','" + email.ToString() + "');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Enfermeiro registado com Sucesso!");
+                        this.Close();
+                    connection.Close();
                 }
-                connection.Close();
+                catch (SqlException excep)
+                {
+
+                    MessageBox.Show(excep.Message);
+                }
+               
+                }
             }
-            
-        }
+        
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
