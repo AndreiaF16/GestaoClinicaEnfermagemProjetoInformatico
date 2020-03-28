@@ -100,7 +100,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return null; // Caso encontre erro retorna nulo
             }
         }
-
+        public Boolean ValidarForcaSenha ()
+        {
+            if(string.IsNullOrEmpty(txtPassword.Text) || txtPassword.Text.Length < 6)
+            {
+                return false;
+            }
+            if(!Regex.IsMatch(txtPassword.Text, @"\d") || !Regex.IsMatch(txtPassword.Text, "[a-zA-Z]"))
+            {
+                return false;
+            }
+            return true;
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             string nome = txtNome.Text;
@@ -121,23 +132,30 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 MessageBox.Show("Apenas são permitidas letras neste campo!");
             }
+            
+            if (!ValidarForcaSenha())
+            {
+                MessageBox.Show("A password tem que conter no minimo 6 caracteres, dos quais devem ser numeros, letras maiusculas e minusculas", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             if (txtPassword.Text != txtConfirmaPassword.Text)
             {
                 MessageBox.Show("As passwors não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-            if (connection.State == System.Data.ConnectionState.Open)
+            else
             {
-                string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dataNascimento.Value.ToString() + "','"+ username.ToString() + "','" +passCript.ToString()+ "','" + email.ToString()+"')";
-                SqlCommand sqlCommand = new SqlCommand(queryInsertData,connection);
-                sqlCommand.ExecuteNonQuery();
-                MessageBox.Show("Enfermeiro registado com Sucesso!");
-                this.Close();
+                SqlConnection connection = new SqlConnection(connectionString);
+                connection.Open();
+                if (connection.State == System.Data.ConnectionState.Open)
+                {
+                    string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dataNascimento.Value.Date.ToString() + "','" + username.ToString() + "','" + passCript.ToString() + "','" + email.ToString() + "')";
+                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Enfermeiro registado com Sucesso!");
+                    this.Visible = false;
+                }
+                connection.Close();
             }
-
-            connection.Close();
+            
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
