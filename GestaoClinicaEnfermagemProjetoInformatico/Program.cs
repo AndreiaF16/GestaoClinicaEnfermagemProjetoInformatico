@@ -16,7 +16,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormInicial());
+            Application.Run(new FormInicial1());
         }
     }
 }

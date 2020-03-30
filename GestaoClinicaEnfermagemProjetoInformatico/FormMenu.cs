@@ -28,5 +28,32 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.WindowState = FormWindowState.Minimized;
 
         }
+
+        private void btnRegistarUtente_Click(object sender, EventArgs e)
+        {
+            FormRegistarUtente formRegistarUtente = new FormRegistarUtente();
+            formRegistarUtente.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonTerminarSessao_Click(object sender, EventArgs e)
+        {
+           
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair do programa?", "Terminar Sessão!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

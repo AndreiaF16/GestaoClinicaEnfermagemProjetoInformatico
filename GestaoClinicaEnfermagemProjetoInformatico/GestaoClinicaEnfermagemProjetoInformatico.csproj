@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormInicial1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInicial1.Designer.cs">
+      <DependentUpon>FormInicial1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRegistarUtente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRegistarUtente.Designer.cs">
+      <DependentUpon>FormRegistarUtente.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +88,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormInicial1.resx">
+      <DependentUpon>FormInicial1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +101,9 @@
     <EmbeddedResource Include="FormInicial.resx">
       <DependentUpon>FormInicial.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRegistarUtente.resx">
+      <DependentUpon>FormRegistarUtente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

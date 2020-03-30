@@ -25,7 +25,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            this.txtUsername.Focus();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -54,8 +54,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             SqlCommand cmd = new SqlCommand("select username, password from Enfermeiro where username = @username  AND password = @password", conn);
             cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-            cmd.Parameters.AddWithValue("@password", txtPassword.Text);
 
+            cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+            
             SqlDataReader reader = cmd.ExecuteReader();
 
             if (reader.Read())
@@ -65,6 +66,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 FormMenu formMenu = new FormMenu();
                 formMenu.Show();
+                this.Close();
           
             }
             else
@@ -92,13 +94,25 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             FormInicial form = new FormInicial();
             form.Show();
+            this.Close();
         }
-
+        public void LimpaCampos(Control.ControlCollection textBoxs)
+        {
+            foreach (Control txt in textBoxs)
+            {
+                if (txt.GetType() == typeof(TextBox))
+                {
+                    txt.Text = string.Empty;
+                    this.Close();
+                }
+            }
+        }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            FormInicial form = new FormInicial();
-            form.Show();
+            this.LimpaCampos(this.panel1.Controls);
+           
         }
+       
 
         private void label3_Click(object sender, EventArgs e)
         {
