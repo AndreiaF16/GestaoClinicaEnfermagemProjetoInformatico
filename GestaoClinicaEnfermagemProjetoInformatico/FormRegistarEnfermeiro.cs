@@ -22,7 +22,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
         }
-        public string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
@@ -60,10 +60,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void txtNome_Validating(object sender, CancelEventArgs e)
         {
-            if(!Regex.IsMatch(txtNome.Text, @"^[a-zA-Z]+$"))
-            {
-                MessageBox.Show("Apenas são permitidas letras neste campo!");
-            }
+            
         }
 
         private void FormRegistarEnfermeiro_Load(object sender, EventArgs e)
@@ -84,21 +81,38 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 MessageBox.Show("Por favor, introduza um email válido!","Atenção",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
-
-        public static string HashValue(string value)
+        public static string CalculaHash(string pass)
         {
-            UnicodeEncoding unicodeEncoding = new UnicodeEncoding();
-            byte[] bytes;
-            using (HashAlgorithm hash = SHA1.Create())
-                bytes = hash.ComputeHash(unicodeEncoding.GetBytes(value));
-            StringBuilder hashValue = new StringBuilder(bytes.Length * 2);
-            foreach (byte b in bytes)
+            try
             {
-                hashValue.AppendFormat(CultureInfo.InvariantCulture, "{0:X2}");
+                System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(pass);
+                byte[] hash = md5.ComputeHash(inputBytes);
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                for (int i = 0; i < hash.Length; i++)
+                {
+                    sb.Append(hash[i].ToString("X2"));
+                }
+                return sb.ToString(); // Retorna senha criptografada 
             }
-            return hashValue.ToString();
+            catch (Exception)
+            {
+                return null; // Caso encontre erro retorna nulo
+            }
         }
-        private void btnGuardar_Click(object sender, EventArgs e)
+        public Boolean ValidarForcaSenha ()
+        {
+            if(string.IsNullOrEmpty(txtPassword.Text) || txtPassword.Text.Length < 6)
+            {
+                return false;
+            }
+            if(!Regex.IsMatch(txtPassword.Text, @"\d") || !Regex.IsMatch(txtPassword.Text, "[a-zA-Z]"))
+            {
+                return false;
+            }
+            return true;
+        }
+        private Boolean VerificarDadosInseridos()
         {
             string nome = txtNome.Text;
             string funcao = txtFuncao.Text;
@@ -108,31 +122,92 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             string confirmaPassword = txtConfirmaPassword.Text;
-           // HashValue(password.Trim());
+            string passCript = CalculaHash(password);
 
-            if (nome == string.Empty ||funcao == string.Empty || telemovel == string.Empty || email == string.Empty || username == string.Empty || password==string.Empty || confirmaPassword == string.Empty)
+            if (nome == string.Empty || funcao == string.Empty || telemovel == string.Empty || email == string.Empty || username == string.Empty || password == string.Empty || confirmaPassword == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
-            if(txtPassword.Text != txtConfirmaPassword.Text)
+            if (!Regex.IsMatch(txtNome.Text, @"^[a-zA-Z]+$"))
+            {
+                MessageBox.Show("Apenas são permitidas letras no campo Nome!");
+                return false;
+            }
+
+            if (!ValidarForcaSenha())
+            {
+                MessageBox.Show("A password tem que conter no minimo 6 caracteres, dos quais devem ser numeros, letras maiusculas e minusculas", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (txtPassword.Text != txtConfirmaPassword.Text)
             {
                 MessageBox.Show("As passwors não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
-            
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-            if (connection.State == System.Data.ConnectionState.Open)
-            {
-                string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dataNascimento.Value + "','"+ username.ToString() + "','" +password.ToString()+ "','" + email.ToString()+"')";
-                SqlCommand sqlCommand = new SqlCommand(queryInsertData,connection);
-                sqlCommand.ExecuteNonQuery();
-                string queryInsertData2 = "UPDATE INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dataNascimento.Value + "','" + username.ToString() + "','" + password.ToString() + "','" + email.ToString() + "')";
-
-                MessageBox.Show("Enfermeiro registado com Sucesso!");
-            }
-
-            connection.Close();
+            return true;
         }
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            string nome = txtNome.Text;
+            string funcao = txtFuncao.Text;
+            string telemovel = txtContacto.Text;
+            var dtNascimento= dataNascimento.Value;
+            string email = txtEmail.Text;
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+            string confirmaPassword = txtConfirmaPassword.Text;
+            //string passCript = CalculaHash(password);
+
+            if (!VerificarDadosInseridos())
+            {
+                MessageBox.Show("Dados incorretos!");
+            }
+            else
+            {
+                try
+                {
+                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    connection.Open();
+                    
+                        string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dtNascimento + "','" + username.ToString() + "','" + password.ToString() + "','" + email.ToString() + "');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Enfermeiro registado com Sucesso!");
+                        this.Close();
+                    connection.Close();
+                }
+                catch (SqlException excep)
+                {
+
+                    MessageBox.Show(excep.Message);
+                }
+               
+                }
+            }
         
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            FormInicial formInicial = new FormInicial();
+            formInicial.Show();
+            this.Close();
+        }
+        public void LimpaCampos(Control.ControlCollection textBoxs)
+        {
+            foreach (Control txt in textBoxs)
+            {
+                if(txt.GetType() == typeof(TextBox))
+                {
+                    txt.Text = string.Empty;
+                    this.Close();
+                }
+            }
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.LimpaCampos(this.panelFormulario.Controls);
+
+        }
     }
 }

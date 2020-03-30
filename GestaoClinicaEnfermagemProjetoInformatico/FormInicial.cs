@@ -17,7 +17,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public FormInicial()
         {
             InitializeComponent();
-
+           lblHora.Text= DateTime.Now.ToString("dd/MM/yyyy");
             this.WindowState = FormWindowState.Maximized;
         }
 

@@ -40,6 +40,7 @@
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.lblHora = new System.Windows.Forms.Label();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -109,7 +110,7 @@
             this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnLogin.Size = new System.Drawing.Size(188, 90);
+            this.btnLogin.Size = new System.Drawing.Size(228, 90);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "        Login";
             this.btnLogin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -128,7 +129,7 @@
             this.btnRegistarUtilizador.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistarUtilizador.Name = "btnRegistarUtilizador";
             this.btnRegistarUtilizador.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnRegistarUtilizador.Size = new System.Drawing.Size(188, 90);
+            this.btnRegistarUtilizador.Size = new System.Drawing.Size(228, 90);
             this.btnRegistarUtilizador.TabIndex = 1;
             this.btnRegistarUtilizador.Text = "Registar Utilizador";
             this.btnRegistarUtilizador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -139,6 +140,7 @@
             // panelTitulo
             // 
             this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
+            this.panelTitulo.Controls.Add(this.lblHora);
             this.panelTitulo.Controls.Add(this.lblTitulo);
             this.panelTitulo.Controls.Add(this.btnFechar);
             this.panelTitulo.Controls.Add(this.btnMaximizar);
@@ -204,6 +206,16 @@
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
+            // lblHora
+            // 
+            this.lblHora.AutoSize = true;
+            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHora.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblHora.Location = new System.Drawing.Point(376, 11);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(0, 20);
+            this.lblHora.TabIndex = 1;
+            // 
             // FormInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,6 +252,7 @@
         private System.Windows.Forms.Button btnRegistarUtilizador;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label lblHora;
     }
 }
 
