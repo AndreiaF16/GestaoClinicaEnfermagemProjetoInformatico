@@ -14,6 +14,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class RedefinirPassword : Form
     {
         string username = SendCode.to;
+
         public RedefinirPassword()
         {
             InitializeComponent();

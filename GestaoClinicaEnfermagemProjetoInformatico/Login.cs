@@ -131,5 +131,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.Hide();
             sendCode.Show();
         }
+
+        private void label4_Click_1(object sender, EventArgs e)
+        {
+            SendCode sendCode = new SendCode();
+            this.Hide();
+            sendCode.Show();
+        }
     }
 }

@@ -16,12 +16,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         string randomCode;
         public static string to;
+
         public SendCode()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEnviarEmail_Click(object sender, EventArgs e)
         {
             string from, pass, messageBody;
             Random random = new Random();
@@ -50,14 +51,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void buttonbtnVerificarCode_Click(object sender, EventArgs e)
         {
             if (randomCode == (txtCode.Text).ToString())
             {
-                to=txtEmail.Text;
+                to = txtEmail.Text;
                 RedefinirPassword redefinir = new RedefinirPassword();
                 this.Hide();
                 redefinir.Show();
