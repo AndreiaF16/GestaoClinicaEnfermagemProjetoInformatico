@@ -17,6 +17,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
+
         public Login()
         {
             InitializeComponent();
@@ -103,6 +104,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            SendCode sendCode = new SendCode();
+            this.Hide();
+            sendCode.Show();
         }
     }
 }

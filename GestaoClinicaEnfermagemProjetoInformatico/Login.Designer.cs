@@ -39,9 +39,10 @@
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.panelFormulario = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -183,7 +184,7 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
-            this.panelFormulario.Controls.Add(this.label4);
+            this.panelFormulario.Controls.Add(this.label5);
             this.panelFormulario.Controls.Add(this.label3);
             this.panelFormulario.Controls.Add(this.panel1);
             this.panelFormulario.Controls.Add(this.btnCancelar);
@@ -198,29 +199,30 @@
             this.panelFormulario.TabIndex = 4;
             this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
             // 
-            // label4
+            // label5
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(73, 569);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(432, 24);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "e falta o form de esquecer passe e escrevevr nova";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(251, 569);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(443, 24);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "e falta o form de esquecer passe e definir uma nova";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(73, 532);
+            this.label3.Location = new System.Drawing.Point(57, 532);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1296, 24);
+            this.label3.Size = new System.Drawing.Size(869, 24);
             this.label3.TabIndex = 16;
             this.label3.Text = "NOTA: não esquecer: falta fazer o recuperar palavra passe, e para isso tem de se " +
-    "usar um email real.... e falta o form de esquecer passe e escrevevr nova";
+    "usar um email real....";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.txtUsername);
             this.panel1.Controls.Add(this.txtPassword);
@@ -229,6 +231,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(562, 242);
             this.panel1.TabIndex = 15;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(173, 202);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(184, 24);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Esqueceu Password";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // lblUsername
             // 
@@ -267,9 +281,9 @@
             this.lblPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.lblPassword.Location = new System.Drawing.Point(12, 114);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(82, 20);
+            this.lblPassword.Size = new System.Drawing.Size(113, 20);
             this.lblPassword.TabIndex = 12;
-            this.lblPassword.Text = "Password:";
+            this.lblPassword.Text = "Palavra Passe:";
             // 
             // btnCancelar
             // 
@@ -387,6 +401,7 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
     }
 }
