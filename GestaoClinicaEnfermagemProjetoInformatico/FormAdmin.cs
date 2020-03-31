@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class FormInicial : Form
+    public partial class FormAdmin : Form
     {
         
 
-        public FormInicial()
+        public FormAdmin()
         {
             InitializeComponent();
            lblHora.Text= DateTime.Now.ToString("dd/MM/yyyy");
@@ -59,7 +59,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnRegistarUtilizador_Click(object sender, EventArgs e)
         {
-            FormRegistarEnfermeiro formRegistarUtilizador = new FormRegistarEnfermeiro();
+            FormRegistarEnfermeiro formRegistarUtilizador = new FormRegistarEnfermeiro(null);
             formRegistarUtilizador.Show();
 
         }
@@ -72,6 +72,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+     
+            this.Close();
         }
     }
 }

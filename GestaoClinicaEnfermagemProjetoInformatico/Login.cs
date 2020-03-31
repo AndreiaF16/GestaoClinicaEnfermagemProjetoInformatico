@@ -65,19 +65,30 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 sb.Append(hash[i].ToString("X2"));
             }
 
-            SqlCommand cmd = new SqlCommand("select username, password from Enfermeiro where username = @username  AND password = @password", conn);
+            SqlCommand cmd = new SqlCommand("select * from Enfermeiro where username = @username  AND password = @password", conn);
             cmd.Parameters.AddWithValue("@username", txtUsername.Text);
 
             cmd.Parameters.AddWithValue("@password", sb.ToString());
             
             SqlDataReader reader = cmd.ExecuteReader();
 
+
             if (reader.Read())
             {
-              
+                Enfermeiro enfermeiro = new Enfermeiro
+                {
+                    IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                    nome = (string)reader["nome"],
+                    funcao = (string)reader["funcao"],
+                    username = (string)reader["username"],
+                    email = (string)reader["email"],
+                    permissao = (int)reader["permissao"]
+                };
+
+
                 MessageBox.Show("Login Efetuado com Sucesso", "Parabéns", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                FormMenu formMenu = new FormMenu();
+                FormMenu formMenu = new FormMenu(enfermeiro);
                 formMenu.Show();
                 this.Close();
           
@@ -98,14 +109,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-           FormInicial form = new FormInicial();
+           FormAdmin form = new FormAdmin();
             form.Show();
 
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            FormInicial form = new FormInicial();
+            FormAdmin form = new FormAdmin();
             form.Show();
             this.Close();
         }

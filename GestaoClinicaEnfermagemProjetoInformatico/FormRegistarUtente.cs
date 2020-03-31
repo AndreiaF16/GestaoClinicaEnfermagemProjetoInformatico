@@ -197,8 +197,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            FormMenu formMenu = new FormMenu();
-            formMenu.Show();
+            //FormMenu formMenu = new FormMenu(null);
+          //  formMenu.Show();
             this.Close();
         }
     }

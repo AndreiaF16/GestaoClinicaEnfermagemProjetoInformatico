@@ -16,17 +16,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class FormRegistarEnfermeiro : Form
     {
+        private Enfermeiro enfermeiro = new Enfermeiro();
 
-        public FormRegistarEnfermeiro()
+        public FormRegistarEnfermeiro(Enfermeiro login)
         {
             InitializeComponent();
+            enfermeiro = login;
             this.WindowState = FormWindowState.Maximized;
         }
         
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            FormInicial form = new FormInicial();
+            FormAdmin form = new FormAdmin();
             form.Show();       
         }
 
@@ -189,7 +191,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            FormInicial formInicial = new FormInicial();
+            FormAdmin formInicial = new FormAdmin();
             formInicial.Show();
             this.Close();
         }

@@ -26,8 +26,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             else
             {
                 timer1.Enabled = false;
-                FormInicial formInicial = new FormInicial();
-                formInicial.Show();
+                Login login = new Login();
+                login.Show();
                 this.Visible = false;
             }
         }

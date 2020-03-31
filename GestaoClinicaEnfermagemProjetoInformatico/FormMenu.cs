@@ -12,14 +12,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class FormMenu : Form
     {
-        public FormMenu()
+       private Enfermeiro enfermeiro = new Enfermeiro();
+        public FormMenu(Enfermeiro enf)
         {
+           
             InitializeComponent();
+            if (enf != null)
+            {
+                enfermeiro = enf;
+                label1.Text = "Username: " + enfermeiro.nome;
+                if(enfermeiro.permissao == 1)
+                {
+                    btnAdmin.Visible = false;
+                }
+            }
+
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            FormInicial form = new FormInicial();
+            FormAdmin form = new FormAdmin();
             form.Show();
         }
 
@@ -33,6 +45,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             FormRegistarUtente formRegistarUtente = new FormRegistarUtente();
             formRegistarUtente.Show();
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -53,7 +66,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair do programa?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            FormAdmin formAdmin = new FormAdmin();
+            formAdmin.Show();
         }
     }
 }
