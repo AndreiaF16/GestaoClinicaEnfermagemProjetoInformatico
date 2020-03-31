@@ -157,7 +157,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             string confirmaPassword = txtConfirmaPassword.Text;
-            //string passCript = CalculaHash(password);
+            string passCript = CalculaHash(password);
 
             if (!VerificarDadosInseridos())
             {
@@ -170,7 +170,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
                     
-                        string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dtNascimento + "','" + username.ToString() + "','" + password.ToString() + "','" + email.ToString() + "');";
+                        string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dtNascimento + "','" + username.ToString() + "','" + passCript.ToString() + "','" + email.ToString() + "');";
                         SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                         sqlCommand.ExecuteNonQuery();
                         MessageBox.Show("Enfermeiro registado com Sucesso!");

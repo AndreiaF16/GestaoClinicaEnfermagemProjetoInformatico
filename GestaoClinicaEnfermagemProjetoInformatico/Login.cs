@@ -18,6 +18,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
 
+
+
         public Login()
         {
             InitializeComponent();
@@ -53,10 +55,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
+            byte[] hash;
+
+            hash = new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.ASCII.GetBytes(txtPassword.Text));
+
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+
             SqlCommand cmd = new SqlCommand("select username, password from Enfermeiro where username = @username  AND password = @password", conn);
             cmd.Parameters.AddWithValue("@username", txtUsername.Text);
 
-            cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+            cmd.Parameters.AddWithValue("@password", sb.ToString());
             
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -137,6 +149,30 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             SendCode sendCode = new SendCode();
             this.Hide();
             sendCode.Show();
+        }
+
+        private bool compararHash(string tmpNewHash, string tmpHash) {
+            bool bEqual = false;
+            if (tmpNewHash.Length == tmpHash.Length)
+            {
+                int i = 0;
+                while ((i < tmpNewHash.Length) && (tmpNewHash[i] == tmpHash[i]))
+                {
+                    i += 1;
+                }
+                if (i == tmpNewHash.Length)
+                {
+                    bEqual = true;
+                }
+            }
+
+            if (bEqual)
+                return true;
+            //   Console.WriteLine("The two hash values are the same");
+            else
+                return false;
+                //Console.WriteLine("The two hash values are not the same");
+            //Console.ReadLine();
         }
     }
 }
