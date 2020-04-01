@@ -51,10 +51,12 @@
             this.progressBarInicial.Name = "progressBarInicial";
             this.progressBarInicial.Size = new System.Drawing.Size(663, 23);
             this.progressBarInicial.TabIndex = 1;
+            this.progressBarInicial.Click += new System.EventHandler(this.progressBarInicial_Click);
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
+            this.timer1.Interval = 20;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FormInicial1

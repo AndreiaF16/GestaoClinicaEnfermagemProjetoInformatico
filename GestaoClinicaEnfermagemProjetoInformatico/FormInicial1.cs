@@ -31,5 +31,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 this.Visible = false;
             }
         }
+
+        private void progressBarInicial_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

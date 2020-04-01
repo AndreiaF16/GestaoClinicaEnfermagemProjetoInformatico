@@ -197,5 +197,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 //Console.WriteLine("The two hash values are not the same");
             //Console.ReadLine();
         }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else /*(this.WindowState == FormWindowState.Maximized)*/
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }

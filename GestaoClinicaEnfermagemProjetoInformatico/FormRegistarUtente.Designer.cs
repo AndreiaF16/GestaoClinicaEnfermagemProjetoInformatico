@@ -389,6 +389,7 @@
             this.panelFormulario.Name = "panelFormulario";
             this.panelFormulario.Size = new System.Drawing.Size(1153, 742);
             this.panelFormulario.TabIndex = 2;
+            this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
             // 
             // txtLocalidade
             // 
@@ -445,7 +446,8 @@
             "Advogado",
             "Bombeiro",
             "Professor",
-            "Estudante"});
+            "Estudante",
+            "Outra"});
             this.cbProfissoes.Location = new System.Drawing.Point(364, 629);
             this.cbProfissoes.Name = "cbProfissoes";
             this.cbProfissoes.Size = new System.Drawing.Size(199, 32);

@@ -99,8 +99,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,morada,email,contacto,nif,profissao,rua,numeroCasa,andar,codPostalPrefixo,codPostalSufixo,localidade)VALUES('" + nome.ToString() + "','" + dtNascimento + "','" + rua.ToString() + "','"
-                        + email.ToString() + "','" + telemovel.ToString() + "','" + nif.ToString() + "','" + profissao.ToString() + "','" + rua.ToString() + "','" + numeroCasa.ToString() + "','" + andarCasa.ToString() + "','" + codPostalPrefixo.ToString() + "','" + codPostalSufixo.ToString() + "','" + localidade.ToString() + "');";
+                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,contacto,nif,profissao,rua,numeroCasa,andar,codPostalPrefixo,codPostalSufixo,localidade)VALUES('" + nome.ToString() + "','" + dtNascimento + "','" + email.ToString() + "','"
+                        + telemovel.ToString() + "','" + nif.ToString() + "','" + profissao.ToString() + "','" + rua.ToString() + "','" + numeroCasa.ToString() + "','" + andarCasa.ToString() + "','" + codPostalPrefixo.ToString() + "','" + codPostalSufixo.ToString() + "','" + localidade.ToString() + "');";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Paciente registado com Sucesso!");
@@ -200,6 +200,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             //FormMenu formMenu = new FormMenu(null);
           //  formMenu.Show();
             this.Close();
+        }
+
+        private void panelFormulario_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
