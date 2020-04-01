@@ -1,6 +1,6 @@
 ﻿namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    partial class FormAdmin
+    partial class VerEnfermeirosRegistos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdmin));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerEnfermeirosRegistos));
+            this.button1 = new System.Windows.Forms.Button();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.dataGridViewEnfermeiros = new System.Windows.Forms.DataGridView();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.btnRegistarUtilizador = new System.Windows.Forms.Button();
             this.panelTitulo = new System.Windows.Forms.Panel();
@@ -41,8 +42,11 @@
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.painelPrincipal.SuspendLayout();
+            this.panelFormulario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEnfermeiros)).BeginInit();
             this.panelMenu.SuspendLayout();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
@@ -50,6 +54,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // button1
+            // 
+            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_ver_detalhes_100;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(-1, 275);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(228, 90);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Ver Enfermeiros Registados";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // painelPrincipal
             // 
@@ -60,19 +83,27 @@
             this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
             this.painelPrincipal.Name = "painelPrincipal";
-            this.painelPrincipal.Size = new System.Drawing.Size(1100, 600);
-            this.painelPrincipal.TabIndex = 0;
-            this.painelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.painelPrincipal.Size = new System.Drawing.Size(1124, 610);
+            this.painelPrincipal.TabIndex = 1;
             // 
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.label1);
+            this.panelFormulario.Controls.Add(this.dataGridViewEnfermeiros);
             this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFormulario.Location = new System.Drawing.Point(232, 40);
             this.panelFormulario.Name = "panelFormulario";
-            this.panelFormulario.Size = new System.Drawing.Size(868, 560);
+            this.panelFormulario.Size = new System.Drawing.Size(892, 570);
             this.panelFormulario.TabIndex = 2;
-            this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
+            // 
+            // dataGridViewEnfermeiros
+            // 
+            this.dataGridViewEnfermeiros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEnfermeiros.Location = new System.Drawing.Point(26, 100);
+            this.dataGridViewEnfermeiros.Name = "dataGridViewEnfermeiros";
+            this.dataGridViewEnfermeiros.Size = new System.Drawing.Size(821, 322);
+            this.dataGridViewEnfermeiros.TabIndex = 0;
             // 
             // panelMenu
             // 
@@ -84,29 +115,8 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 40);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(232, 560);
+            this.panelMenu.Size = new System.Drawing.Size(232, 570);
             this.panelMenu.TabIndex = 1;
-            this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
-            // 
-            // button1
-            // 
-            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_ver_detalhes_100;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(2, 257);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(228, 90);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Ver Enfermeiros Registados";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnVoltar
             // 
@@ -126,7 +136,6 @@
             this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnVoltar.UseVisualStyleBackColor = false;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // btnRegistarUtilizador
             // 
@@ -135,7 +144,7 @@
             this.btnRegistarUtilizador.ForeColor = System.Drawing.Color.Black;
             this.btnRegistarUtilizador.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._91029693_887056538410859_7048263335300562944_n1;
             this.btnRegistarUtilizador.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnRegistarUtilizador.Location = new System.Drawing.Point(2, 151);
+            this.btnRegistarUtilizador.Location = new System.Drawing.Point(-1, 169);
             this.btnRegistarUtilizador.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistarUtilizador.Name = "btnRegistarUtilizador";
             this.btnRegistarUtilizador.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -145,7 +154,6 @@
             this.btnRegistarUtilizador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRegistarUtilizador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistarUtilizador.UseVisualStyleBackColor = false;
-            this.btnRegistarUtilizador.Click += new System.EventHandler(this.btnRegistarUtilizador_Click);
             // 
             // panelTitulo
             // 
@@ -158,9 +166,8 @@
             this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitulo.Location = new System.Drawing.Point(0, 0);
             this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new System.Drawing.Size(1100, 40);
+            this.panelTitulo.Size = new System.Drawing.Size(1124, 40);
             this.panelTitulo.TabIndex = 0;
-            this.panelTitulo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTitulo_Paint);
             // 
             // lblHora
             // 
@@ -188,7 +195,7 @@
             this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
-            this.btnFechar.Location = new System.Drawing.Point(1077, 11);
+            this.btnFechar.Location = new System.Drawing.Point(1101, 11);
             this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(16, 16);
@@ -202,7 +209,7 @@
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(1061, 11);
+            this.btnMaximizar.Location = new System.Drawing.Point(1085, 11);
             this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
@@ -210,21 +217,30 @@
             this.btnMaximizar.TabIndex = 4;
             this.btnMaximizar.TabStop = false;
             this.btnMaximizar.Visible = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
             // 
             // btnMinimizar
             // 
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(1045, 11);
+            this.btnMinimizar.Location = new System.Drawing.Point(1069, 11);
             this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
             this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMinimizar.TabIndex = 3;
             this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(573, 39);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Visualizar Dados dos Enfermeiros";
             // 
             // pictureBox2
             // 
@@ -236,17 +252,21 @@
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
-            // FormAdmin
+            // VerEnfermeirosRegistos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 600);
+            this.ClientSize = new System.Drawing.Size(1124, 610);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(680, 500);
-            this.Name = "FormAdmin";
-            this.Text = "Form1";
+            this.Name = "VerEnfermeirosRegistos";
+            this.Text = "VerEnfermeirosRegistos";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.VerEnfermeirosRegistos_Load);
             this.painelPrincipal.ResumeLayout(false);
+            this.panelFormulario.ResumeLayout(false);
+            this.panelFormulario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEnfermeiros)).EndInit();
             this.panelMenu.ResumeLayout(false);
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
@@ -260,19 +280,20 @@
 
         #endregion
 
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel painelPrincipal;
         private System.Windows.Forms.Panel panelFormulario;
         private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.Button btnVoltar;
+        private System.Windows.Forms.Button btnRegistarUtilizador;
         private System.Windows.Forms.Panel panelTitulo;
+        private System.Windows.Forms.Label lblHora;
+        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.PictureBox btnFechar;
         private System.Windows.Forms.PictureBox btnMaximizar;
         private System.Windows.Forms.PictureBox btnMinimizar;
-        private System.Windows.Forms.Button btnRegistarUtilizador;
-        private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Label lblHora;
-        private System.Windows.Forms.Button btnVoltar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridViewEnfermeiros;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
-

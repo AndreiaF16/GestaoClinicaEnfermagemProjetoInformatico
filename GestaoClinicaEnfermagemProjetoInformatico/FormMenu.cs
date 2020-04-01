@@ -72,7 +72,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            var resposta = MessageBox.Show("Tem a certeza que deseja sair do programa?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resposta == DialogResult.Yes)
             {
                 Application.Exit();

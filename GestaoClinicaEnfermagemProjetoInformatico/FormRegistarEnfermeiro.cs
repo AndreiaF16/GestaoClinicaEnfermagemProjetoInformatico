@@ -28,8 +28,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            FormAdmin form = new FormAdmin();
-            form.Show();       
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair do programa?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
@@ -211,6 +214,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             this.LimpaCampos(this.panelFormulario.Controls);
 
+        }
+
+        private void btnFechar_Click_1(object sender, EventArgs e)
+        {
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

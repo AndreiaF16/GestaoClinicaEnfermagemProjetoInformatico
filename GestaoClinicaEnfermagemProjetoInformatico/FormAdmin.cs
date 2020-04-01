@@ -33,7 +33,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void panelTitulo_Paint(object sender, PaintEventArgs e)
@@ -78,6 +82,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
      
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerEnfermeirosRegistos verEnfermeirosRegistos = new VerEnfermeirosRegistos();
+            verEnfermeirosRegistos.Show();
         }
     }
 }

@@ -119,6 +119,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
+            
+            
+            
+            
             var resposta = MessageBox.Show("Tem a certeza que deseja sair do programa?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resposta == DialogResult.Yes)
             {
