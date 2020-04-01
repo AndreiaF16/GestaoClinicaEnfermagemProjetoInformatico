@@ -13,6 +13,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class FormMenu : Form
     {
        private Enfermeiro enfermeiro = new Enfermeiro();
+        UtenteGridView utente = new UtenteGridView();
+
         public FormMenu(Enfermeiro enf)
         {
            
@@ -100,6 +102,33 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 this.WindowState = FormWindowState.Normal;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormVerUtentesRegistados formVerUtentesRegistados = new FormVerUtentesRegistados();
+            formVerUtentesRegistados.Show();
+        }
+
+        private void panelFormulario_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void hora_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
+            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+        }
+
+        private void lblDia_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblHora_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

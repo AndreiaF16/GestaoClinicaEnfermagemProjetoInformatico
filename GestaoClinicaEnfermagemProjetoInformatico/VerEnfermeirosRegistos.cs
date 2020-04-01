@@ -92,5 +92,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.Close();
 
         }
+
+        private void hora_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = "Hora: " + DateTime.Now.ToLongTimeString();
+            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+        }
+
+        private void btnRegistarUtilizador_Click(object sender, EventArgs e)
+        {
+            FormRegistarEnfermeiro formRegistarUtilizador = new FormRegistarEnfermeiro(null);
+            formRegistarUtilizador.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerEnfermeirosRegistos verEnfermeirosRegistos = new VerEnfermeirosRegistos();
+            verEnfermeirosRegistos.Show();
+        }
     }
 }

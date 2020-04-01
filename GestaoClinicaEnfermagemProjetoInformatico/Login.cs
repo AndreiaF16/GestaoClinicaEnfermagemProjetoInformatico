@@ -18,6 +18,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
 
+        private Enfermeiro enfermeiro = new Enfermeiro();
 
 
         public Login()
@@ -173,9 +174,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void label4_Click_1(object sender, EventArgs e)
         {
-            SendCode sendCode = new SendCode();
-            this.Hide();
-            sendCode.Show();
+            // SendCode sendCode = new SendCode();
+            //  this.Hide();
+            //sendCode.Show();
+            FormAlterarPalavraPasse formAlterarPalavraPasse = new FormAlterarPalavraPasse(enfermeiro);
+            formAlterarPalavraPasse.Show();
         }
 
         private bool compararHash(string tmpNewHash, string tmpHash) {
@@ -212,6 +215,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 this.WindowState = FormWindowState.Normal;
             }
+        }
+
+        private void hora_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = "Hora: " + DateTime.Now.ToLongTimeString();
+            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM"+ "' de '" + "yyyy");
+
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerEnfermeirosRegistos));
             this.button1 = new System.Windows.Forms.Button();
             this.painelPrincipal = new System.Windows.Forms.Panel();
@@ -39,11 +40,14 @@
             this.btnVoltar = new System.Windows.Forms.Button();
             this.btnRegistarUtilizador = new System.Windows.Forms.Button();
             this.panelTitulo = new System.Windows.Forms.Panel();
+            this.lblDia = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.hora = new System.Windows.Forms.Timer(this.components);
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEnfermeiros)).BeginInit();
@@ -73,6 +77,7 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // painelPrincipal
             // 
@@ -166,7 +171,7 @@
             this.btnRegistarUtilizador.ForeColor = System.Drawing.Color.Black;
             this.btnRegistarUtilizador.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._91029693_887056538410859_7048263335300562944_n1;
             this.btnRegistarUtilizador.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnRegistarUtilizador.Location = new System.Drawing.Point(-1, 169);
+            this.btnRegistarUtilizador.Location = new System.Drawing.Point(2, 169);
             this.btnRegistarUtilizador.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistarUtilizador.Name = "btnRegistarUtilizador";
             this.btnRegistarUtilizador.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -176,10 +181,13 @@
             this.btnRegistarUtilizador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRegistarUtilizador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistarUtilizador.UseVisualStyleBackColor = false;
+            this.btnRegistarUtilizador.Click += new System.EventHandler(this.btnRegistarUtilizador_Click);
             // 
             // panelTitulo
             // 
             this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
+            this.panelTitulo.Controls.Add(this.lblDia);
+            this.panelTitulo.Controls.Add(this.label2);
             this.panelTitulo.Controls.Add(this.lblHora);
             this.panelTitulo.Controls.Add(this.lblTitulo);
             this.panelTitulo.Controls.Add(this.btnFechar);
@@ -190,6 +198,28 @@
             this.panelTitulo.Name = "panelTitulo";
             this.panelTitulo.Size = new System.Drawing.Size(1124, 40);
             this.panelTitulo.TabIndex = 0;
+            // 
+            // lblDia
+            // 
+            this.lblDia.AutoSize = true;
+            this.lblDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblDia.Location = new System.Drawing.Point(514, 9);
+            this.lblDia.Name = "lblDia";
+            this.lblDia.Size = new System.Drawing.Size(57, 20);
+            this.lblDia.TabIndex = 12;
+            this.lblDia.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Location = new System.Drawing.Point(786, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 20);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "label1";
             // 
             // lblHora
             // 
@@ -255,6 +285,11 @@
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
+            // hora
+            // 
+            this.hora.Enabled = true;
+            this.hora.Tick += new System.EventHandler(this.hora_Tick);
+            // 
             // VerEnfermeirosRegistos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,5 +333,8 @@
         private System.Windows.Forms.DataGridView dataGridViewEnfermeiros;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label lblDia;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer hora;
     }
 }

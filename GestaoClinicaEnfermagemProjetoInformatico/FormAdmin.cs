@@ -96,5 +96,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             VerEnfermeirosRegistos verEnfermeirosRegistos = new VerEnfermeirosRegistos();
             verEnfermeirosRegistos.Show();
         }
+
+        private void hora_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
+            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+        }
     }
 }
