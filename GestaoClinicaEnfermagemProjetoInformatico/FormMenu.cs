@@ -55,11 +55,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void buttonTerminarSessao_Click(object sender, EventArgs e)
         {
-           
-            var resposta = MessageBox.Show("Tem a certeza que deseja sair do programa?", "Terminar Sessão!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+          /*  Login login = new Login();
+            login.Show();
+            this.Close();*/
+
+            var resposta = MessageBox.Show("Tem a certeza que deseja terminar sessão?", "Terminar Sessão!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resposta == DialogResult.Yes)
             {
-                Application.Exit();
+                Login login = new Login();
+                login.Show();
+                this.Close();
             }
             
         }

@@ -55,17 +55,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void buttonbtnVerificarCode_Click(object sender, EventArgs e)
         {
-            if (randomCode == (txtCode.Text).ToString())
+           /* if (randomCode == (txtCode.Text).ToString())
             {
                 to = txtEmail.Text;
-                RedefinirPassword redefinir = new RedefinirPassword();
+                PrimeiroAcesso redefinir = new PrimeiroAcesso();
                 this.Hide();
                 redefinir.Show();
             }
             else
             {
                 MessageBox.Show("Código errado");
-            }
+            }*/
         }
     }
 }

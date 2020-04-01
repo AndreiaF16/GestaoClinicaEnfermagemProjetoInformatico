@@ -35,11 +35,7 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.txtConfirmaPassword = new System.Windows.Forms.TextBox();
-            this.lblConfirmaPassword = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.lblPassword = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.dataNascimento = new System.Windows.Forms.DateTimePicker();
@@ -98,11 +94,7 @@
             this.panelFormulario.Controls.Add(this.txtEmail);
             this.panelFormulario.Controls.Add(this.label2);
             this.panelFormulario.Controls.Add(this.btnCancelar);
-            this.panelFormulario.Controls.Add(this.txtConfirmaPassword);
-            this.panelFormulario.Controls.Add(this.lblConfirmaPassword);
-            this.panelFormulario.Controls.Add(this.txtPassword);
             this.panelFormulario.Controls.Add(this.btnGuardar);
-            this.panelFormulario.Controls.Add(this.lblPassword);
             this.panelFormulario.Controls.Add(this.txtUsername);
             this.panelFormulario.Controls.Add(this.lblUsername);
             this.panelFormulario.Controls.Add(this.dataNascimento);
@@ -164,35 +156,6 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // txtConfirmaPassword
-            // 
-            this.txtConfirmaPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConfirmaPassword.Location = new System.Drawing.Point(361, 678);
-            this.txtConfirmaPassword.Name = "txtConfirmaPassword";
-            this.txtConfirmaPassword.PasswordChar = '*';
-            this.txtConfirmaPassword.Size = new System.Drawing.Size(491, 29);
-            this.txtConfirmaPassword.TabIndex = 15;
-            // 
-            // lblConfirmaPassword
-            // 
-            this.lblConfirmaPassword.AutoSize = true;
-            this.lblConfirmaPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConfirmaPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblConfirmaPassword.Location = new System.Drawing.Point(358, 638);
-            this.lblConfirmaPassword.Name = "lblConfirmaPassword";
-            this.lblConfirmaPassword.Size = new System.Drawing.Size(176, 20);
-            this.lblConfirmaPassword.TabIndex = 14;
-            this.lblConfirmaPassword.Text = "Confirmação Password:";
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(361, 592);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(492, 29);
-            this.txtPassword.TabIndex = 13;
-            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -213,17 +176,6 @@
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // lblPassword
-            // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblPassword.Location = new System.Drawing.Point(360, 555);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(82, 20);
-            this.lblPassword.TabIndex = 12;
-            this.lblPassword.Text = "Password:";
             // 
             // txtUsername
             // 
@@ -489,10 +441,6 @@
         private System.Windows.Forms.DateTimePicker dataNascimento;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.TextBox txtConfirmaPassword;
-        private System.Windows.Forms.Label lblConfirmaPassword;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.Label label1;

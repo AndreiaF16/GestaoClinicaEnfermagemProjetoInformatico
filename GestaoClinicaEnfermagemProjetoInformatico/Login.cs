@@ -85,13 +85,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     permissao = (int)reader["permissao"]
                 };
 
+                if ((bool)reader["passwordDefault"] == true)
+                {
 
-                MessageBox.Show("Login Efetuado com Sucesso", "Parabéns", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    PrimeiroAcesso redefenirPrimeiroAcesso = new PrimeiroAcesso(enfermeiro);
+                    redefenirPrimeiroAcesso.Show();
+                    txtUsername.Text = "";
+                    txtPassword.Text = "";
 
-                FormMenu formMenu = new FormMenu(enfermeiro);
-                formMenu.Show();
-                this.Close();
-          
+                }
+                else
+                {
+                    MessageBox.Show("Login Efetuado com Sucesso", "Parabéns", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    FormMenu formMenu = new FormMenu(enfermeiro);
+                    formMenu.Show();
+                    this.Close();
+                }
             }
             else
             {
@@ -109,9 +119,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-           FormAdmin form = new FormAdmin();
-            form.Show();
-
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair do programa?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)

@@ -102,6 +102,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return null; // Caso encontre erro retorna nulo
             }
         }
+        /*
         public Boolean ValidarForcaSenha ()
         {
             if(string.IsNullOrEmpty(txtPassword.Text) || txtPassword.Text.Length < 6)
@@ -113,7 +114,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
             return true;
-        }
+        }*/
         private Boolean VerificarDadosInseridos()
         {
             string nome = txtNome.Text;
@@ -122,11 +123,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string dtNascimento = dataNascimento.Value.Date.ToString();
             string email = txtEmail.Text;
             string username = txtUsername.Text;
-            string password = txtPassword.Text;
-            string confirmaPassword = txtConfirmaPassword.Text;
-            string passCript = CalculaHash(password);
+           // string password = txtPassword.Text;
+          //  string confirmaPassword = txtConfirmaPassword.Text;
+          //  string passCript = CalculaHash(password);
 
-            if (nome == string.Empty || funcao == string.Empty || telemovel == string.Empty || email == string.Empty || username == string.Empty || password == string.Empty || confirmaPassword == string.Empty)
+            if (nome == string.Empty || funcao == string.Empty || telemovel == string.Empty || email == string.Empty || username == string.Empty )
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -137,16 +138,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
-            if (!ValidarForcaSenha())
+          /*  if (!ValidarForcaSenha())
             {
                 MessageBox.Show("A password tem que conter no minimo 6 caracteres, dos quais devem ser numeros, letras maiusculas e minusculas", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
-            }
-            if (txtPassword.Text != txtConfirmaPassword.Text)
+            }*/
+           /* if (txtPassword.Text != txtConfirmaPassword.Text)
             {
                 MessageBox.Show("As passwors não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
-            }
+            }*/
             return true;
         }
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -157,9 +158,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             var dtNascimento= dataNascimento.Value;
             string email = txtEmail.Text;
             string username = txtUsername.Text;
-            string password = txtPassword.Text;
-            string confirmaPassword = txtConfirmaPassword.Text;
-            string passCript = CalculaHash(password);
+           // string password = txtPassword.Text;
+           // string confirmaPassword = txtConfirmaPassword.Text;
+            string passCript = CalculaHash("User1234*");
 
             if (!VerificarDadosInseridos())
             {
