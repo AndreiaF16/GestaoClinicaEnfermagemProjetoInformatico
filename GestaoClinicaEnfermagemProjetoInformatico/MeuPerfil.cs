@@ -10,33 +10,28 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class EnfermeiroPerfil : Form
+    public partial class MeuPerfil : Form
     {
         private Enfermeiro enfermeiro = new Enfermeiro();
-        public EnfermeiroPerfil()
+
+        public MeuPerfil()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FormAlterarPalavraPasse formAlterarPalavraPasse = new FormAlterarPalavraPasse(enfermeiro);
-            formAlterarPalavraPasse.Show();
-        }
-
-        private void btnFechar_Click(object sender, EventArgs e)
-        {
-            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resposta == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
         }
 
         private void hora_Tick(object sender, EventArgs e)
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnMaximizar_Click(object sender, EventArgs e)
@@ -57,19 +52,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         }
 
-        private void btnVoltar_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-        }
-
-        private void btnVoltar_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
+            EnfermeiroPerfil enfermeiroPerfil = new EnfermeiroPerfil();
+            enfermeiroPerfil.Show();
         }
 
         private void btnAlteraPassword_Click(object sender, EventArgs e)
         {
             FormAlterarPalavraPasse formAlterarPalavraPasse = new FormAlterarPalavraPasse(enfermeiro);
             formAlterarPalavraPasse.Show();
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MeuPerfil_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

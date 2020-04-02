@@ -134,8 +134,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnDefinicoes_Click(object sender, EventArgs e)
         {
-            EnfermeiroPerfil enfermeiroPerfil = new EnfermeiroPerfil();
-            enfermeiroPerfil.Show();
+            MeuPerfil meuPerfil = new MeuPerfil();
+            meuPerfil.Show();
         }
     }
 }

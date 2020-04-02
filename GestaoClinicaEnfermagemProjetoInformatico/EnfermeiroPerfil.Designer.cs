@@ -57,22 +57,23 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnAlteraPassword = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnAlteraPassword = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelTitulo.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             this.painelPrincipal.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -144,6 +145,7 @@
             // hora
             // 
             this.hora.Enabled = true;
+            this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
             // txtEmail
             // 
@@ -314,6 +316,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.btnAlteraPassword);
             this.panelMenu.Controls.Add(this.btnVoltar);
             this.panelMenu.Controls.Add(this.pictureBox2);
@@ -383,53 +386,6 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // btnAlteraPassword
-            // 
-            this.btnAlteraPassword.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnAlteraPassword.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_re_digite_o_código_pin_64;
-            this.btnAlteraPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAlteraPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlteraPassword.ForeColor = System.Drawing.Color.Black;
-            this.btnAlteraPassword.Location = new System.Drawing.Point(2, 290);
-            this.btnAlteraPassword.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAlteraPassword.Name = "btnAlteraPassword";
-            this.btnAlteraPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnAlteraPassword.Size = new System.Drawing.Size(232, 65);
-            this.btnAlteraPassword.TabIndex = 3;
-            this.btnAlteraPassword.Text = "Alterar Password";
-            this.btnAlteraPassword.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnAlteraPassword.UseVisualStyleBackColor = false;
-            this.btnAlteraPassword.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
-            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVoltar.Location = new System.Drawing.Point(2, 683);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
-            this.btnVoltar.TabIndex = 2;
-            this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnVoltar.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
             // btnFechar
             // 
             this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -457,6 +413,7 @@
             this.btnMaximizar.TabIndex = 9;
             this.btnMaximizar.TabStop = false;
             this.btnMaximizar.Visible = false;
+            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
             // 
             // btnMinimizar
             // 
@@ -470,6 +427,72 @@
             this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMinimizar.TabIndex = 8;
             this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_editar_conta_50;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(0, 423);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(232, 65);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Meu Perfil";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // btnAlteraPassword
+            // 
+            this.btnAlteraPassword.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAlteraPassword.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_re_digite_o_código_pin_64;
+            this.btnAlteraPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAlteraPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlteraPassword.ForeColor = System.Drawing.Color.Black;
+            this.btnAlteraPassword.Location = new System.Drawing.Point(0, 495);
+            this.btnAlteraPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAlteraPassword.Name = "btnAlteraPassword";
+            this.btnAlteraPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnAlteraPassword.Size = new System.Drawing.Size(232, 65);
+            this.btnAlteraPassword.TabIndex = 11;
+            this.btnAlteraPassword.Text = "Alterar Password";
+            this.btnAlteraPassword.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnAlteraPassword.UseVisualStyleBackColor = false;
+            this.btnAlteraPassword.Click += new System.EventHandler(this.btnAlteraPassword_Click);
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
+            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnVoltar.Location = new System.Drawing.Point(0, 678);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
+            this.btnVoltar.TabIndex = 10;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnVoltar.UseVisualStyleBackColor = false;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click_1);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
             // 
             // EnfermeiroPerfil
             // 
@@ -491,10 +514,10 @@
             this.panelMenu.ResumeLayout(false);
             this.panelPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -519,8 +542,6 @@
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.DateTimePicker dataNascimento;
-        private System.Windows.Forms.Button btnVoltar;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lblDataNascimento;
         private System.Windows.Forms.TextBox txtContacto;
         private System.Windows.Forms.Label lblTitulo;
@@ -534,6 +555,9 @@
         private System.Windows.Forms.Panel painelPrincipal;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelPrincipal;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnAlteraPassword;
+        private System.Windows.Forms.Button btnVoltar;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
