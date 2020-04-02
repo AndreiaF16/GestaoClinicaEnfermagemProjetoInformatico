@@ -251,6 +251,7 @@
             this.txtFuncao.Name = "txtFuncao";
             this.txtFuncao.Size = new System.Drawing.Size(494, 29);
             this.txtFuncao.TabIndex = 5;
+            this.txtFuncao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFuncao_KeyPress);
             // 
             // lblFuncao
             // 
@@ -272,6 +273,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(494, 29);
             this.txtNome.TabIndex = 3;
+            this.txtNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNome_KeyPress);
             // 
             // lblNome
             // 
@@ -324,7 +326,7 @@
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.ForeColor = System.Drawing.Color.Black;
             this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVoltar.Location = new System.Drawing.Point(0, 663);
+            this.btnVoltar.Location = new System.Drawing.Point(2, 683);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -382,6 +384,7 @@
             this.lblHora.Size = new System.Drawing.Size(57, 20);
             this.lblHora.TabIndex = 11;
             this.lblHora.Text = "label1";
+            this.lblHora.Click += new System.EventHandler(this.lblHora_Click);
             // 
             // btnFechar
             // 

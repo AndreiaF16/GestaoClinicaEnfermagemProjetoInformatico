@@ -71,14 +71,16 @@
             // 
             this.txtConfirmarNovaPassword.Location = new System.Drawing.Point(326, 154);
             this.txtConfirmarNovaPassword.Name = "txtConfirmarNovaPassword";
+            this.txtConfirmarNovaPassword.PasswordChar = '*';
             this.txtConfirmarNovaPassword.Size = new System.Drawing.Size(258, 20);
             this.txtConfirmarNovaPassword.TabIndex = 6;
             // 
             // txtNovaPassoword
             // 
-            this.txtNovaPassoword.Location = new System.Drawing.Point(324, 93);
+            this.txtNovaPassoword.Location = new System.Drawing.Point(326, 93);
             this.txtNovaPassoword.Name = "txtNovaPassoword";
-            this.txtNovaPassoword.Size = new System.Drawing.Size(258, 20);
+            this.txtNovaPassoword.PasswordChar = '*';
+            this.txtNovaPassoword.Size = new System.Drawing.Size(256, 20);
             this.txtNovaPassoword.TabIndex = 5;
             // 
             // label3

@@ -237,5 +237,14 @@
   <ItemGroup>
     <None Include="Resources\icons8-ver-detalhes-100.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\91625609_216761836241923_1524911641475416064_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-editar-conta-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-re-digite-o-código-pin-64.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

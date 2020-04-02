@@ -16,7 +16,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public string Profissao { get; set; }
         public string Rua { get; set; }
         public int NumeroCasa { get; set; }
-        public int Andar { get; set; }
+        public string Andar { get; set; }
         public double codPostalPrefixo { get; set; }
         public double codPostalSufixo { get; set; }
         public string localidade { get; set; }

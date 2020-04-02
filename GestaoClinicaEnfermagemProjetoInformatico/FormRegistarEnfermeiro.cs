@@ -135,22 +135,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (!Regex.IsMatch(txtNome.Text, @"^[a-zA-Z]+$"))
-            {
-                MessageBox.Show("Apenas são permitidas letras no campo Nome!");
-                return false;
-            }
-
-          /*  if (!ValidarForcaSenha())
-            {
-                MessageBox.Show("A password tem que conter no minimo 6 caracteres, dos quais devem ser numeros, letras maiusculas e minusculas", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }*/
-           /* if (txtPassword.Text != txtConfirmaPassword.Text)
-            {
-                MessageBox.Show("As passwors não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }*/
+            
             return true;
         }
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -158,7 +143,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string nome = txtNome.Text;
             string funcao = txtFuncao.Text;
             string telemovel = txtContacto.Text;
-            var dtNascimento= dataNascimento.Value;
+            var dtNascimento = dataNascimento.Value;
             string email = txtEmail.Text;
             string username = txtUsername.Text;
            // string password = txtPassword.Text;
@@ -176,7 +161,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
                     
-                        string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dtNascimento + "','" + username.ToString() + "','" + passCript.ToString() + "','" + email.ToString() + "');";
+                        string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dtNascimento.Date + "','" + username.ToString() + "','" + passCript.ToString() + "','" + email.ToString() + "');";
                         SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                         sqlCommand.ExecuteNonQuery();
                         MessageBox.Show("Enfermeiro registado com Sucesso!");
@@ -247,6 +232,29 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+        }
+
+        private void txtNome_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void txtFuncao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void lblHora_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,6 +28,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        
         private Boolean VerificarDadosInseridos()
         {
             string nome = txtNome.Text;
@@ -41,7 +43,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string email = txtEmail.Text;
             string telemovel = txtContacto.Text;
             string nif = txtNif.Text;
-            string profissao =(String) cbProfissoes.SelectedItem;
+            string profissao =  (String)cbProfissoes.SelectedItem; ;
 
             if (nome == string.Empty || rua == string.Empty || numeroCasa == string.Empty || andarCasa == string.Empty || codPostalPrefixo == string.Empty || codPostalSufixo == string.Empty
                 || localidade == string.Empty || email == string.Empty || telemovel == string.Empty || nif == string.Empty || profissao == string.Empty)
@@ -49,26 +51,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            /*if (!Regex.IsMatch(txtNome.Text, @"^[A - Za - záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ] +$") )
-            {
-                MessageBox.Show("Apenas são permitidas letras no campo Nome!");
-                return false;
-            }
-            if (!Regex.IsMatch(txtMorada.Text, @"^[A - Za - záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ] +$") )
-            {
-                MessageBox.Show("Apenas são permitidas letras no campo Morada!");
-                return false;
-            }
-            if (!Regex.IsMatch(txtLocalidade.Text, @"^[A - Za - záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ] +$") )
-            {
-                MessageBox.Show("Apenas são permitidas letras no campo Localidade!");
-                return false;
-            }*/
+            
             Regex regexEmail = new Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
             if (!regexEmail.IsMatch(txtEmail.Text))
             {
                 MessageBox.Show("Por favor, introduza um email válido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
            
             return true;
         }
@@ -99,7 +88,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,contacto,nif,profissao,rua,numeroCasa,andar,codPostalPrefixo,codPostalSufixo,localidade)VALUES('" + nome.ToString() + "','" + dtNascimento + "','" + email.ToString() + "','"
+                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,contacto,nif,profissao,rua,numeroCasa,andar,codPostalPrefixo,codPostalSufixo,localidade)VALUES('" + nome.ToString() + "','" + dtNascimento.Date + "','" + email.ToString() + "','"
                         + telemovel.ToString() + "','" + nif.ToString() + "','" + profissao.ToString() + "','" + rua.ToString() + "','" + numeroCasa.ToString() + "','" + andarCasa.ToString() + "','" + codPostalPrefixo.ToString() + "','" + codPostalSufixo.ToString() + "','" + localidade.ToString() + "');";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.ExecuteNonQuery();
@@ -238,6 +227,33 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+        }
+
+        private void txtNome_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void txtMorada_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void txtLocalidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }

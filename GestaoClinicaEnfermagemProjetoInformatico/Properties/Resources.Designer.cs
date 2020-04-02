@@ -183,6 +183,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _91625609_216761836241923_1524911641475416064_n {
+            get {
+                object obj = ResourceManager.GetObject("91625609_216761836241923_1524911641475416064_n", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_administrador_masculino_80 {
             get {
                 object obj = ResourceManager.GetObject("icons8-administrador-masculino-80", resourceCulture);
@@ -193,9 +203,29 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_editar_conta_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-editar-conta-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_entrar_100 {
             get {
                 object obj = ResourceManager.GetObject("icons8-entrar-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_re_digite_o_código_pin_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-re-digite-o-código-pin-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

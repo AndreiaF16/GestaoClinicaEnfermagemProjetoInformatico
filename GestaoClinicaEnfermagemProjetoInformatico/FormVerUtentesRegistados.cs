@@ -94,7 +94,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     Profissao = (string)reader["Profissao"],
                     Rua = (string)reader["Rua"],
                     NumeroCasa = (int)reader["NumeroCasa"],
-                    Andar = (int)reader["Andar"],
+                    Andar = (string)reader["Andar"],
                     codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
                     codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
                     localidade = (string)reader["localidade"],

@@ -71,7 +71,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(228, 90);
+            this.button1.Size = new System.Drawing.Size(231, 90);
             this.button1.TabIndex = 4;
             this.button1.Text = "Ver Enfermeiros Registados";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

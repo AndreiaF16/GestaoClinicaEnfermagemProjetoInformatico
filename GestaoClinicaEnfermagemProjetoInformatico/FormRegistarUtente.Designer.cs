@@ -57,6 +57,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.lblOutraProfissao = new System.Windows.Forms.Label();
+            this.txtOutraProfissao = new System.Windows.Forms.TextBox();
             this.txtLocalidade = new System.Windows.Forms.TextBox();
             this.lblLocalidade = new System.Windows.Forms.Label();
             this.txtCodPostalSuf = new System.Windows.Forms.TextBox();
@@ -102,7 +104,7 @@
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.ForeColor = System.Drawing.Color.Black;
             this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVoltar.Location = new System.Drawing.Point(0, 663);
+            this.btnVoltar.Location = new System.Drawing.Point(2, 675);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -344,6 +346,7 @@
             this.txtMorada.Name = "txtMorada";
             this.txtMorada.Size = new System.Drawing.Size(494, 29);
             this.txtMorada.TabIndex = 5;
+            this.txtMorada.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMorada_KeyPress);
             // 
             // lblFuncao
             // 
@@ -365,6 +368,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(494, 29);
             this.txtNome.TabIndex = 3;
+            this.txtNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNome_KeyPress);
             // 
             // lblNome
             // 
@@ -401,6 +405,8 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.lblOutraProfissao);
+            this.panelFormulario.Controls.Add(this.txtOutraProfissao);
             this.panelFormulario.Controls.Add(this.txtLocalidade);
             this.panelFormulario.Controls.Add(this.lblLocalidade);
             this.panelFormulario.Controls.Add(this.txtCodPostalSuf);
@@ -436,12 +442,33 @@
             this.panelFormulario.TabIndex = 2;
             this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
             // 
+            // lblOutraProfissao
+            // 
+            this.lblOutraProfissao.AutoSize = true;
+            this.lblOutraProfissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOutraProfissao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblOutraProfissao.Location = new System.Drawing.Point(632, 583);
+            this.lblOutraProfissao.Name = "lblOutraProfissao";
+            this.lblOutraProfissao.Size = new System.Drawing.Size(53, 20);
+            this.lblOutraProfissao.TabIndex = 29;
+            this.lblOutraProfissao.Text = "Outra:";
+            this.lblOutraProfissao.Visible = false;
+            // 
+            // txtOutraProfissao
+            // 
+            this.txtOutraProfissao.Location = new System.Drawing.Point(636, 629);
+            this.txtOutraProfissao.Name = "txtOutraProfissao";
+            this.txtOutraProfissao.Size = new System.Drawing.Size(221, 29);
+            this.txtOutraProfissao.TabIndex = 28;
+            this.txtOutraProfissao.Visible = false;
+            // 
             // txtLocalidade
             // 
             this.txtLocalidade.Location = new System.Drawing.Point(636, 369);
             this.txtLocalidade.Name = "txtLocalidade";
             this.txtLocalidade.Size = new System.Drawing.Size(222, 29);
             this.txtLocalidade.TabIndex = 27;
+            this.txtLocalidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLocalidade_KeyPress);
             // 
             // lblLocalidade
             // 
@@ -490,12 +517,13 @@
             this.cbProfissoes.Items.AddRange(new object[] {
             "Advogado",
             "Bombeiro",
-            "Professor",
             "Estudante",
-            "Outra"});
+            "Outra",
+            "Professor"});
             this.cbProfissoes.Location = new System.Drawing.Point(364, 629);
             this.cbProfissoes.Name = "cbProfissoes";
             this.cbProfissoes.Size = new System.Drawing.Size(199, 32);
+            this.cbProfissoes.Sorted = true;
             this.cbProfissoes.TabIndex = 22;
             // 
             // label4
@@ -642,5 +670,7 @@
         private System.Windows.Forms.Label lblDia;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer hora;
+        private System.Windows.Forms.Label lblOutraProfissao;
+        private System.Windows.Forms.TextBox txtOutraProfissao;
     }
 }

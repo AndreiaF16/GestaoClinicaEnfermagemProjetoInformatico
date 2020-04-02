@@ -26,6 +26,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 if(enfermeiro.permissao == 1)
                 {
                     btnAdmin.Visible = false;
+                    btnDefinicoes.Visible = true;
                 }
             }
 
@@ -129,6 +130,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void lblHora_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDefinicoes_Click(object sender, EventArgs e)
+        {
+            EnfermeiroPerfil enfermeiroPerfil = new EnfermeiroPerfil();
+            enfermeiroPerfil.Show();
         }
     }
 }

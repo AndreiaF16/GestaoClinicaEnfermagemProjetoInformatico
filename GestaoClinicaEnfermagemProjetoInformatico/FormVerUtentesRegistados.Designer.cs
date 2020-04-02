@@ -121,7 +121,7 @@
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.ForeColor = System.Drawing.Color.Black;
             this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVoltar.Location = new System.Drawing.Point(0, 633);
+            this.btnVoltar.Location = new System.Drawing.Point(2, 647);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
