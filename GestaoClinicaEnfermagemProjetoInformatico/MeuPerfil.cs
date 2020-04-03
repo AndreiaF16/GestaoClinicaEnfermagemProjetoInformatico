@@ -14,9 +14,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         private Enfermeiro enfermeiro = new Enfermeiro();
 
-        public MeuPerfil()
+        public MeuPerfil(Enfermeiro enf)
         {
             InitializeComponent();
+            enfermeiro = enf;
+
         }
 
         private void hora_Tick(object sender, EventArgs e)
