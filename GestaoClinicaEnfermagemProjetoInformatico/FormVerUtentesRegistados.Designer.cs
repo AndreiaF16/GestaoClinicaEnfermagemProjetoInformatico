@@ -84,6 +84,7 @@
             // 
             // dataGridViewUtentes
             // 
+            this.dataGridViewUtentes.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewUtentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUtentes.Location = new System.Drawing.Point(41, 79);
             this.dataGridViewUtentes.Name = "dataGridViewUtentes";

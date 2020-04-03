@@ -12,7 +12,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class FormMenu : Form
     {
-       private Enfermeiro enfermeiro = new Enfermeiro();
+        private Enfermeiro enfermeiro = new Enfermeiro();
         UtenteGridView utente = new UtenteGridView();
 
         public FormMenu(Enfermeiro enf)
@@ -23,6 +23,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 enfermeiro = enf;
                 label1.Text = "Username: " + enfermeiro.nome;
+                txtNome.Text = enfermeiro.nome;
                 if(enfermeiro.permissao == 1)
                 {
                     btnAdmin.Visible = false;
@@ -134,7 +135,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnDefinicoes_Click(object sender, EventArgs e)
         {
-            MeuPerfil meuPerfil = new MeuPerfil();
+            MeuPerfil meuPerfil = new MeuPerfil(enfermeiro);
             meuPerfil.Show();
         }
     }

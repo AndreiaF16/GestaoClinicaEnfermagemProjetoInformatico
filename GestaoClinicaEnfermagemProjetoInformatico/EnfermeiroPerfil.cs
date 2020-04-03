@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,25 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
+
     public partial class EnfermeiroPerfil : Form
     {
         private Enfermeiro enfermeiro = new Enfermeiro();
-        public EnfermeiroPerfil()
+        
+        public EnfermeiroPerfil(Enfermeiro enf)
         {
             InitializeComponent();
+            if (enf != null)
+            {
+                enfermeiro = enf;
+                
+                txtNome.Text = enfermeiro.nome;
+                txtFuncao.Text = enfermeiro.funcao;
+                txtEmail.Text = enfermeiro.email;
+                //txtContacto.Text = enfermeiro.contacto;
+                txtUsername.Text = enfermeiro.username;
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -70,6 +84,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             FormAlterarPalavraPasse formAlterarPalavraPasse = new FormAlterarPalavraPasse(enfermeiro);
             formAlterarPalavraPasse.Show();
+        }
+
+        private void panelFormulario_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        
+
+        private void EnfermeiroPerfil_Load(object sender, EventArgs e)
+        {
+
+
+           
+
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

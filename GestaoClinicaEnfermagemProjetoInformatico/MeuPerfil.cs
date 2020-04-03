@@ -14,9 +14,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         private Enfermeiro enfermeiro = new Enfermeiro();
 
-        public MeuPerfil()
+        public MeuPerfil(Enfermeiro enf)
         {
             InitializeComponent();
+            if (enf != null)
+            {
+                enfermeiro = enf;
+            }
         }
 
         private void hora_Tick(object sender, EventArgs e)
@@ -54,7 +58,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            EnfermeiroPerfil enfermeiroPerfil = new EnfermeiroPerfil();
+            EnfermeiroPerfil enfermeiroPerfil = new EnfermeiroPerfil(enfermeiro);
             enfermeiroPerfil.Show();
         }
 
@@ -70,6 +74,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void MeuPerfil_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelFormulario_Paint(object sender, PaintEventArgs e)
         {
 
         }
