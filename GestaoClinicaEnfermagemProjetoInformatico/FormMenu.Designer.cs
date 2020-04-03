@@ -49,9 +49,7 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.hora = new System.Windows.Forms.Timer(this.components);
-            this.txtNome = new System.Windows.Forms.TextBox();
             this.painelPrincipal.SuspendLayout();
-            this.panelFormulario.SuspendLayout();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelTitulo.SuspendLayout();
@@ -76,7 +74,6 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
-            this.panelFormulario.Controls.Add(this.txtNome);
             this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFormulario.Location = new System.Drawing.Point(232, 40);
             this.panelFormulario.Name = "panelFormulario";
@@ -126,7 +123,7 @@
             this.btnDefinicoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDefinicoes.ForeColor = System.Drawing.Color.Black;
             this.btnDefinicoes.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnDefinicoes.Location = new System.Drawing.Point(2, 576);
+            this.btnDefinicoes.Location = new System.Drawing.Point(2, 551);
             this.btnDefinicoes.Margin = new System.Windows.Forms.Padding(2);
             this.btnDefinicoes.Name = "btnDefinicoes";
             this.btnDefinicoes.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -185,7 +182,7 @@
             this.buttonTerminarSessao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTerminarSessao.ForeColor = System.Drawing.Color.Black;
             this.buttonTerminarSessao.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.buttonTerminarSessao.Location = new System.Drawing.Point(2, 664);
+            this.buttonTerminarSessao.Location = new System.Drawing.Point(2, 647);
             this.buttonTerminarSessao.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTerminarSessao.Name = "buttonTerminarSessao";
             this.buttonTerminarSessao.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -332,13 +329,6 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
-            // txtNome
-            // 
-            this.txtNome.Location = new System.Drawing.Point(213, 149);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(373, 20);
-            this.txtNome.TabIndex = 0;
-            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -351,8 +341,6 @@
             this.Text = "FormMenu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.painelPrincipal.ResumeLayout(false);
-            this.panelFormulario.ResumeLayout(false);
-            this.panelFormulario.PerformLayout();
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelTitulo.ResumeLayout(false);
@@ -386,6 +374,5 @@
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer hora;
         private System.Windows.Forms.Button btnDefinicoes;
-        private System.Windows.Forms.TextBox txtNome;
     }
 }

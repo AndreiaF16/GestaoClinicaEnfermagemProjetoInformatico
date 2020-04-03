@@ -23,7 +23,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 enfermeiro = enf;
                 label1.Text = "Username: " + enfermeiro.nome;
-                txtNome.Text = enfermeiro.nome;
+                
                 if(enfermeiro.permissao == 1)
                 {
                     btnAdmin.Visible = false;

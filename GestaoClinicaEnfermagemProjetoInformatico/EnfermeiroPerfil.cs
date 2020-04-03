@@ -77,7 +77,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnVoltar_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            FormMenu formMenu = new FormMenu(enfermeiro);
+            formMenu.Show();
         }
 
         private void btnAlteraPassword_Click(object sender, EventArgs e)
@@ -96,12 +97,50 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
 
 
-           
 
+            txtNome.Focus();
 
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            
+           /* if (enf != null)
+            {
+                enfermeiro = enf;
+            }*/
+            string nome = txtNome.Text;
+            string funcao = txtFuncao.Text;
+            string email = txtEmail.Text;
+            //double contacto = (String) txtContacto.Text;
+            string username = txtUsername.Text;
+
+            if(nome.Equals(enfermeiro.nome) && funcao.Equals(enfermeiro.funcao) && email.Equals(enfermeiro.email) && username.Equals(enfermeiro.username)){
+                MessageBox.Show("Dados não alterados!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                try
+                {
+                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    connection.Open();
+
+                    string queryUpdateData = "UPDATE Enfermeiro SET Nome = '"+ txtNome.Text + "',Funcao ='" + txtFuncao.Text + "',Contacto ='" + txtContacto.Text+ "',Email ='" + txtEmail.Text + "',Username ='" + txtUsername.Text + "'WHERE [IdEnfermeiro] = '" + enfermeiro.IdEnfermeiro + "' ;";
+                    SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Dados atualizados com Sucesso!");
+                    this.Close();
+                    connection.Close();
+                }
+                catch (SqlException excep)
+                {
+
+                    MessageBox.Show(excep.Message);
+                }
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
 
         }
