@@ -25,8 +25,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 
                 txtNome.Text = enfermeiro.nome;
                 txtFuncao.Text = enfermeiro.funcao;
-                txtEmail.Text = enfermeiro.email;
-                //txtContacto.Text = enfermeiro.contacto;
+                txtEmail.Text = enfermeiro.email;          
+                txtContacto.Text = enfermeiro.contacto.ToString();
                 txtUsername.Text = enfermeiro.username;
             }
 

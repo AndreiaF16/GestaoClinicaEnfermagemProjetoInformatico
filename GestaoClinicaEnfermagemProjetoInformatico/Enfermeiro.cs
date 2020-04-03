@@ -13,7 +13,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public string funcao { get; set; }
         public string username { get; set; }
         public string email { get; set; }
-       
+        public double contacto { get; set; }
         public int permissao { get; set; }
     }
 }
