@@ -107,6 +107,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 
 
             }
+            string nome = txtNome.Text;
             dataGridViewUtentes.DataSource = utentes;
             dataGridViewUtentes.Columns[0].HeaderText = "Nome";
             dataGridViewUtentes.Columns[1].HeaderText = "Data de Nascimento";
@@ -120,6 +121,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[9].HeaderText = "Código Postal";
             dataGridViewUtentes.Columns[10].HeaderText = "Código Postal";
             dataGridViewUtentes.Columns[11].HeaderText = "Localidade";
+            
             conn.Close();
         }
 
@@ -127,6 +129,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+
+
+            BindingSource bs = new BindingSource();
+            bs.DataSource = dataGridViewUtentes.DataSource;
+            bs.Filter = "Nome like '%" + txtNome.Text + "%'";
+            dataGridViewUtentes.DataSource = bs;
 
         }
     }

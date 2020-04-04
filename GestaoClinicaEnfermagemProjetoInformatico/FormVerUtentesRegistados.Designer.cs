@@ -35,6 +35,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVerUtentesRegistados));
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.dataGridViewUtentes = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
@@ -49,6 +50,7 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.hora = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUtentes)).BeginInit();
@@ -76,6 +78,8 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.label1);
+            this.panelFormulario.Controls.Add(this.txtNome);
             this.panelFormulario.Controls.Add(this.dataGridViewUtentes);
             this.panelFormulario.Controls.Add(this.label2);
             this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -84,6 +88,14 @@
             this.panelFormulario.Size = new System.Drawing.Size(934, 714);
             this.panelFormulario.TabIndex = 2;
             this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
+            // 
+            // txtNome
+            // 
+            this.txtNome.Location = new System.Drawing.Point(185, 46);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(228, 20);
+            this.txtNome.TabIndex = 4;
+            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // dataGridViewUtentes
             // 
@@ -290,6 +302,15 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(38, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Nome do Utente:";
+            // 
             // FormVerUtentesRegistados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,5 +355,7 @@
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer hora;
         private System.Windows.Forms.Label lblDia;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.Label label1;
     }
 }
