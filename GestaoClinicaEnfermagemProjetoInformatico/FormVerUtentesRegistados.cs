@@ -21,7 +21,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             InitializeComponent();
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-           
+            
+
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -64,7 +66,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
         private void panelTitulo_Paint(object sender, PaintEventArgs e)
@@ -74,6 +76,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void FormVerUtentesRegistados_Load_1(object sender, EventArgs e)
         {
+            
             conn.Open();
             com.Connection = conn;
 
@@ -101,9 +104,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 };
                 utentes.Add(utente);
+                
 
             }
             dataGridViewUtentes.DataSource = utentes;
+            dataGridViewUtentes.Columns[0].HeaderText = "Nome";
+            dataGridViewUtentes.Columns[1].HeaderText = "Data de Nascimento";
+            dataGridViewUtentes.Columns[2].HeaderText = "Email";
+            dataGridViewUtentes.Columns[3].HeaderText = "Contacto";
+            dataGridViewUtentes.Columns[4].HeaderText = "NIF";
+            dataGridViewUtentes.Columns[5].HeaderText = "Profissão";
+            dataGridViewUtentes.Columns[6].HeaderText = "Morada";
+            dataGridViewUtentes.Columns[7].HeaderText = "Número";
+            dataGridViewUtentes.Columns[8].HeaderText = "Andar";
+            dataGridViewUtentes.Columns[9].HeaderText = "Código Postal";
+            dataGridViewUtentes.Columns[10].HeaderText = "Código Postal";
+            dataGridViewUtentes.Columns[11].HeaderText = "Localidade";
             conn.Close();
         }
 
