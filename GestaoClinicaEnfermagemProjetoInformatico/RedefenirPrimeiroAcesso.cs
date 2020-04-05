@@ -29,12 +29,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 try
                 {
                     SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                    SqlCommand cmd = new SqlCommand("UPDATE [dbo].[Enfermeiro] SET [password] = '" + CalculaHash(txtConfirmarNovaPassword.Text) + "', [username] = '" + txtUsername.Text + "', [passwordDefault] = 0 WHERE [IdEnfermeiro] = '" + enfermeiro.IdEnfermeiro + "' ", conn);
+                    SqlCommand cmd = new SqlCommand("UPDATE [dbo].[Enfermeiro] SET [password] = '" + Validacoes.CalculaHash(txtConfirmarNovaPassword.Text) + "', [username] = '" + txtUsername.Text + "', [passwordDefault] = 0 WHERE [IdEnfermeiro] = '" + enfermeiro.IdEnfermeiro + "' ", conn);
 
                     conn.Open();
 
                     cmd.ExecuteNonQuery();
-                  //  cmd1.ExecuteNonQuery();
                     conn.Close();
 
                     MessageBox.Show("Passe mudada com sucesso!");
@@ -54,33 +53,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        public static string CalculaHash(string pass)
-        {
-            try
-            {
-                System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(pass);
-                byte[] hash = md5.ComputeHash(inputBytes);
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                for (int i = 0; i < hash.Length; i++)
-                {
-                    sb.Append(hash[i].ToString("X2"));
-                }
-                return sb.ToString(); // Retorna senha criptografada 
-            }
-            catch (Exception)
-            {
-                return null; // Caso encontre erro retorna nulo
-            }
-        }
-
-
+        
         public Boolean VerificarDadosInseridos()
         {
             string username = txtUsername.Text;
             string password = txtNovaPassoword.Text;
             string confirmaPassword = txtConfirmarNovaPassword.Text;
-            if (!ValidarForcaSenha())
+            if (!ValidarForcaSenha() && (password == confirmaPassword))
             {
                 MessageBox.Show("A password tem que conter no minimo 6 caracteres, dos quais devem ser numeros, letras maiusculas e minusculas", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;

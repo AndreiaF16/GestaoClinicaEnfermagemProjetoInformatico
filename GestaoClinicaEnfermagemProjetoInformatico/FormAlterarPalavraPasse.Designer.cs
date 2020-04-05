@@ -57,6 +57,7 @@
             this.txtConfirmarNovaPassword.Name = "txtConfirmarNovaPassword";
             this.txtConfirmarNovaPassword.Size = new System.Drawing.Size(258, 20);
             this.txtConfirmarNovaPassword.TabIndex = 13;
+            this.txtConfirmarNovaPassword.UseSystemPasswordChar = true;
             // 
             // txtNovaPassword
             // 
@@ -64,6 +65,7 @@
             this.txtNovaPassword.Name = "txtNovaPassword";
             this.txtNovaPassword.Size = new System.Drawing.Size(258, 20);
             this.txtNovaPassword.TabIndex = 12;
+            this.txtNovaPassword.UseSystemPasswordChar = true;
             // 
             // panelTitulo
             // 
