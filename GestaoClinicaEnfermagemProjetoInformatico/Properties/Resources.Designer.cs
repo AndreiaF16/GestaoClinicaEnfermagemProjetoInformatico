@@ -223,6 +223,36 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_enviar_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-enviar-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_enviar_641 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-enviar-641", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_enviar_642 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-enviar-642", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_re_digite_o_código_pin_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8-re-digite-o-código-pin-64", resourceCulture);
@@ -236,6 +266,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         internal static System.Drawing.Bitmap icons8_ver_detalhes_100 {
             get {
                 object obj = ResourceManager.GetObject("icons8-ver-detalhes-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_verificar_arquivo_26 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-verificar-arquivo-26", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -53,17 +53,19 @@
             // 
             // txtConfirmarNovaPassword
             // 
+            this.txtConfirmarNovaPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfirmarNovaPassword.Location = new System.Drawing.Point(167, 166);
             this.txtConfirmarNovaPassword.Name = "txtConfirmarNovaPassword";
-            this.txtConfirmarNovaPassword.Size = new System.Drawing.Size(258, 20);
+            this.txtConfirmarNovaPassword.Size = new System.Drawing.Size(258, 22);
             this.txtConfirmarNovaPassword.TabIndex = 13;
             this.txtConfirmarNovaPassword.UseSystemPasswordChar = true;
             // 
             // txtNovaPassword
             // 
+            this.txtNovaPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNovaPassword.Location = new System.Drawing.Point(167, 82);
             this.txtNovaPassword.Name = "txtNovaPassword";
-            this.txtNovaPassword.Size = new System.Drawing.Size(258, 20);
+            this.txtNovaPassword.Size = new System.Drawing.Size(258, 22);
             this.txtNovaPassword.TabIndex = 12;
             this.txtNovaPassword.UseSystemPasswordChar = true;
             // 
@@ -161,7 +163,7 @@
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.lblPassword);
             this.panel1.Controls.Add(this.txtNovaPassword);

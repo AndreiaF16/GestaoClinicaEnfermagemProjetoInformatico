@@ -347,5 +347,17 @@
   <ItemGroup>
     <None Include="Resources\icons8-re-digite-o-código-pin-64.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-enviar-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-enviar-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-verificar-arquivo-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-enviar-642.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -46,7 +46,7 @@
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.lblNovoUsername);
             this.panel1.Controls.Add(this.txtUsername);
@@ -62,11 +62,11 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblUsername.Location = new System.Drawing.Point(223, 36);
+            this.lblUsername.Location = new System.Drawing.Point(9, 80);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(123, 20);
+            this.lblUsername.Size = new System.Drawing.Size(127, 20);
             this.lblUsername.TabIndex = 10;
-            this.lblUsername.Text = "Novo Username";
+            this.lblUsername.Text = "Novo Username:";
             // 
             // lblNovoUsername
             // 
@@ -74,7 +74,7 @@
             this.lblNovoUsername.AutoSize = true;
             this.lblNovoUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNovoUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblNovoUsername.Location = new System.Drawing.Point(193, 122);
+            this.lblNovoUsername.Location = new System.Drawing.Point(9, 164);
             this.lblNovoUsername.Name = "lblNovoUsername";
             this.lblNovoUsername.Size = new System.Drawing.Size(200, 20);
             this.lblNovoUsername.TabIndex = 12;
@@ -82,14 +82,14 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(167, 82);
+            this.txtUsername.Location = new System.Drawing.Point(230, 82);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(258, 20);
             this.txtUsername.TabIndex = 12;
             // 
             // txtConfirmarNovoUsername
             // 
-            this.txtConfirmarNovoUsername.Location = new System.Drawing.Point(167, 166);
+            this.txtConfirmarNovoUsername.Location = new System.Drawing.Point(230, 166);
             this.txtConfirmarNovoUsername.Name = "txtConfirmarNovoUsername";
             this.txtConfirmarNovoUsername.Size = new System.Drawing.Size(258, 20);
             this.txtConfirmarNovoUsername.TabIndex = 13;
@@ -144,11 +144,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(940, 427);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAlterarPassword);
             this.Controls.Add(this.panelTitulo);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ForgotUsername";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ForgotUsername";

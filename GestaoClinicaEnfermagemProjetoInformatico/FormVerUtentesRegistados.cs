@@ -84,7 +84,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Paciente where IdEnfermeiro = " + enfermeiro.IdEnfermeiro, conn);
+            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE IdEnfermeiro =  " +enfermeiro.IdEnfermeiro , conn);
 
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -427,6 +427,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             RegistarConsulta registarConsulta = new RegistarConsulta(enfermeiro, utente);
             registarConsulta.Show();
+        }
+
+        private void dataGridViewUtentes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
