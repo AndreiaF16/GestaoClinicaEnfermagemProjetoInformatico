@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    class UtenteGridView
+   public class UtenteGridView
     {
         public string Nome { get; set; }
         public DateTime DataNascimento { get; set; }

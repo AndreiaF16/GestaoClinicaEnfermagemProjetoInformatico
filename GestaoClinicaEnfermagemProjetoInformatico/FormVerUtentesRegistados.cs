@@ -16,7 +16,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
-        List<UtenteGridView> utentes = new List<UtenteGridView>();
+        private List<UtenteGridView> utentes = new List<UtenteGridView>();
+        private List<UtenteGridView> auxiliar = new List<UtenteGridView>();
+
         private Enfermeiro enfermeiro = null;
         public FormVerUtentesRegistados(Enfermeiro enf)
         {
@@ -110,20 +112,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             }
             string nome = txtNome.Text;
-            dataGridViewUtentes.DataSource = utentes;
-            dataGridViewUtentes.Columns[0].HeaderText = "Nome";
-            dataGridViewUtentes.Columns[1].HeaderText = "Data de Nascimento";
-            dataGridViewUtentes.Columns[2].HeaderText = "Email";
-            dataGridViewUtentes.Columns[3].HeaderText = "Contacto";
-            dataGridViewUtentes.Columns[4].HeaderText = "NIF";
-            dataGridViewUtentes.Columns[5].HeaderText = "Profissão";
-            dataGridViewUtentes.Columns[6].HeaderText = "Morada";
-            dataGridViewUtentes.Columns[7].HeaderText = "Número";
-            dataGridViewUtentes.Columns[8].HeaderText = "Andar";
-            dataGridViewUtentes.Columns[9].HeaderText = "Código Postal";
-            dataGridViewUtentes.Columns[10].HeaderText = "Código Postal";
-            dataGridViewUtentes.Columns[11].HeaderText = "Localidade";
-            
+            UpdateDataGridView();
+            auxiliar = utentes;
+
             conn.Close();
         }
 
@@ -153,7 +144,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         
         private List<UtenteGridView> filtrosDePesquisa()
         {
-            List<UtenteGridView> auxiliar = new List<UtenteGridView>();
+            auxiliar = new List<UtenteGridView>();
             if (txtNIF.Text != "" && txtNome.Text == "")
             {
                 foreach (UtenteGridView utente in utentes)
@@ -187,12 +178,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                return auxiliar;
             }
-
+            auxiliar = utentes;
             return utentes;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            UtenteGridView utente = null;
             string nome = textBox1.Text;
             var dtNascimento = dataNascimento.Value;
             string rua = txtMorada.Text;
@@ -221,8 +213,29 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         + telemovel.ToString() + "','" + nif.ToString() + "','" + profissao.ToString() + "','" + rua.ToString() + "','" + numeroCasa.ToString() + "','" + andarCasa.ToString() + "','" + codPostalPrefixo.ToString() + "','" + codPostalSufixo.ToString() + "','" + localidade.ToString() + "' , " + enfermeiro.IdEnfermeiro + ");";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.ExecuteNonQuery();
+                 
+                    utente = new UtenteGridView 
+                    {
+                        Nome = textBox1.Text,
+                        DataNascimento = dataNascimento.Value,
+                        Rua = txtMorada.Text,
+                        NumeroCasa = Convert.ToInt32(txtNumeroCasa.Text),
+                        Andar = txtAndar.Text,
+                        codPostalPrefixo = Convert.ToDouble(txtCodPostalPre.Text),
+                        codPostalSufixo = Convert.ToDouble(txtCodPostalSuf.Text),
+                        localidade = txtLocalidade.Text,
+                        Email = txtEmail.Text,
+                        Contacto = Convert.ToDouble(txtContacto.Text),
+                        Nif = Convert.ToDouble(textBox2.Text),
+                        Profissao = (String)cbProfissoes.SelectedItem
+                };
+                    utentes.Add(utente);
+
+                    UpdateDataGridView();
+                   
                     MessageBox.Show("Paciente registado com Sucesso!");
-                   // this.Close();
+                    this.LimpaCampos(this.panelFormulario.Controls);
+
                     connection.Close();
                 }
                 catch (SqlException excep)
@@ -230,8 +243,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     MessageBox.Show(excep.Message);
 
-                }
-
+                }                
             }
         }
 
@@ -343,6 +355,60 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 e.Handled = true;
             }
+        }
+
+        private void UpdateDataGridView()
+        {
+            dataGridViewUtentes.DataSource = new List<UtenteGridView>();
+            dataGridViewUtentes.DataSource = utentes;
+            dataGridViewUtentes.Columns[0].HeaderText = "Nome";
+            dataGridViewUtentes.Columns[1].HeaderText = "Data de Nascimento";
+            dataGridViewUtentes.Columns[2].HeaderText = "Email";
+            dataGridViewUtentes.Columns[3].HeaderText = "Contacto";
+            dataGridViewUtentes.Columns[4].HeaderText = "NIF";
+            dataGridViewUtentes.Columns[5].HeaderText = "Profissão";
+            dataGridViewUtentes.Columns[6].HeaderText = "Morada";
+            dataGridViewUtentes.Columns[7].HeaderText = "Número";
+            dataGridViewUtentes.Columns[8].HeaderText = "Andar";
+            dataGridViewUtentes.Columns[9].HeaderText = "Código Postal";
+            dataGridViewUtentes.Columns[10].HeaderText = "Código Postal";
+            dataGridViewUtentes.Columns[11].HeaderText = "Localidade";
+            auxiliar = utentes;
+            dataGridViewUtentes.Update();
+            dataGridViewUtentes.Refresh();
+        }
+
+        public void LimpaCampos(Control.ControlCollection textBoxs)
+        {
+            foreach (Control txt in textBoxs)
+            {
+                if (txt.GetType() == typeof(TextBox))
+                {
+                    txt.Text = string.Empty;
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            int i = dataGridViewUtentes.CurrentCell.RowIndex;
+            UtenteGridView utente = null; ;
+
+
+            //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
+            foreach (var ut in auxiliar)
+            {
+                if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                {
+                    utente = ut;
+                }
+            }
+
+            IniciarConsulta iniciarConsulta = new IniciarConsulta(enfermeiro, utente);
+            iniciarConsulta.Show();
+
+
         }
     }
 }

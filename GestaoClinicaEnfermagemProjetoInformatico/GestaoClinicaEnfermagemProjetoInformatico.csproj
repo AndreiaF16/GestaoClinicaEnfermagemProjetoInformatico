@@ -116,6 +116,12 @@
       <DependentUpon>FormVerUtentesRegistados.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="IniciarConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IniciarConsulta.Designer.cs">
+      <DependentUpon>IniciarConsulta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -197,6 +203,9 @@
     <EmbeddedResource Include="FormVerUtentesRegistados.resx">
       <DependentUpon>FormVerUtentesRegistados.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IniciarConsulta.resx">
+      <DependentUpon>IniciarConsulta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
