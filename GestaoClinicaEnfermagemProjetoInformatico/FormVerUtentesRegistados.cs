@@ -410,5 +410,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int i = dataGridViewUtentes.CurrentCell.RowIndex;
+            UtenteGridView utente = null; ;
+
+
+            //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
+            foreach (var ut in auxiliar)
+            {
+                if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                {
+                    utente = ut;
+                }
+            }
+            RegistarConsulta registarConsulta = new RegistarConsulta(enfermeiro, utente);
+            registarConsulta.Show();
+        }
     }
 }

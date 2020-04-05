@@ -162,6 +162,12 @@
       <DependentUpon>RedefenirPrimeiroAcesso.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="RegistarConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistarConsulta.Designer.cs">
+      <DependentUpon>RegistarConsulta.cs</DependentUpon>
+    </Compile>
     <Compile Include="SendCodePassword.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -252,6 +258,9 @@
     <EmbeddedResource Include="RedefenirPrimeiroAcesso.resx">
       <DependentUpon>RedefenirPrimeiroAcesso.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistarConsulta.resx">
+      <DependentUpon>RegistarConsulta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SendCodePassword.resx">
       <DependentUpon>SendCodePassword.cs</DependentUpon>
