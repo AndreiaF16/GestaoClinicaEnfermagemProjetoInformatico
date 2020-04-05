@@ -14,9 +14,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class FormRegistarUtente : Form
     {
-        public FormRegistarUtente()
+        private Enfermeiro enfermeiro = null;
+        public FormRegistarUtente(Enfermeiro enf)
         {
             InitializeComponent();
+            enfermeiro = enf;       
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -88,8 +90,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,contacto,nif,profissao,rua,numeroCasa,andar,codPostalPrefixo,codPostalSufixo,localidade)VALUES('" + nome.ToString() + "','" + dtNascimento.Date + "','" + email.ToString() + "','"
-                        + telemovel.ToString() + "','" + nif.ToString() + "','" + profissao.ToString() + "','" + rua.ToString() + "','" + numeroCasa.ToString() + "','" + andarCasa.ToString() + "','" + codPostalPrefixo.ToString() + "','" + codPostalSufixo.ToString() + "','" + localidade.ToString() + "');";
+                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,contacto,nif,profissao,rua,numeroCasa,andar,codPostalPrefixo,codPostalSufixo,localidade, IdEnfermeiro) VALUES('" + nome.ToString() + "','" + dtNascimento.Date + "','" + email.ToString() + "','"
+                        + telemovel.ToString() + "','" + nif.ToString() + "','" + profissao.ToString() + "','" + rua.ToString() + "','" + numeroCasa.ToString() + "','" + andarCasa.ToString() + "','" + codPostalPrefixo.ToString() + "','" + codPostalSufixo.ToString() + "','" + localidade.ToString() + "' , " + enfermeiro.IdEnfermeiro + ");";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Paciente registado com Sucesso!");

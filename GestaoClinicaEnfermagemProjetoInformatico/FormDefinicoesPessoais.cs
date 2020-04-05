@@ -10,14 +10,15 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class MeuPerfil : Form
+    public partial class FormDefinicoesPessoais : Form
     {
         private Enfermeiro enfermeiro = new Enfermeiro();
-
-        public MeuPerfil(Enfermeiro enf)
+        private FormMenu parent = null;
+        public FormDefinicoesPessoais(Enfermeiro enf, FormMenu form)
         {
             InitializeComponent();
             enfermeiro = enf;
+            parent = form;
 
         }
 
@@ -56,7 +57,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            EnfermeiroPerfil enfermeiroPerfil = new EnfermeiroPerfil(enfermeiro);
+            EnfermeiroPerfil enfermeiroPerfil = new EnfermeiroPerfil(enfermeiro, this);
             enfermeiroPerfil.Show();
         }
 
@@ -74,6 +75,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void MeuPerfil_Load(object sender, EventArgs e)
         {
 
+        }
+
+
+        public void updateLogedIn(Enfermeiro enf)
+        {
+            //prevensão se houver algum problema
+            if (enf != null)
+            {
+                enfermeiro = enf;
+                parent.updateLogedIn(enf); 
+            }
         }
     }
 }

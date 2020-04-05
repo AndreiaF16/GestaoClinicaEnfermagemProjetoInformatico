@@ -1,6 +1,6 @@
 ﻿namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    partial class MeuPerfil
+    partial class FormDefinicoesPessoais
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MeuPerfil));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDefinicoesPessoais));
             this.hora = new System.Windows.Forms.Timer(this.components);
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -152,7 +152,7 @@
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.ForeColor = System.Drawing.Color.Black;
             this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVoltar.Location = new System.Drawing.Point(0, 679);
+            this.btnVoltar.Location = new System.Drawing.Point(0, 652);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -280,14 +280,14 @@
             this.painelPrincipal.Size = new System.Drawing.Size(1232, 788);
             this.painelPrincipal.TabIndex = 2;
             // 
-            // MeuPerfil
+            // FormDefinicoesPessoais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1232, 788);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "MeuPerfil";
+            this.Name = "FormDefinicoesPessoais";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MeuPerfil";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

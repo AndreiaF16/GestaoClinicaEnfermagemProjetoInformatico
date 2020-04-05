@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlterarPalavraPasse));
             this.txtConfirmarNovaPassword = new System.Windows.Forms.TextBox();
             this.txtNovaPassword = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panelTitulo = new System.Windows.Forms.Panel();
             this.lblDia = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
@@ -54,26 +53,17 @@
             // 
             // txtConfirmarNovaPassword
             // 
-            this.txtConfirmarNovaPassword.Location = new System.Drawing.Point(16, 156);
+            this.txtConfirmarNovaPassword.Location = new System.Drawing.Point(167, 166);
             this.txtConfirmarNovaPassword.Name = "txtConfirmarNovaPassword";
             this.txtConfirmarNovaPassword.Size = new System.Drawing.Size(258, 20);
             this.txtConfirmarNovaPassword.TabIndex = 13;
             // 
             // txtNovaPassword
             // 
-            this.txtNovaPassword.Location = new System.Drawing.Point(16, 72);
+            this.txtNovaPassword.Location = new System.Drawing.Point(167, 82);
             this.txtNovaPassword.Name = "txtNovaPassword";
             this.txtNovaPassword.Size = new System.Drawing.Size(258, 20);
             this.txtNovaPassword.TabIndex = 12;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 420);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(158, 13);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "falta associar o User a este form";
             // 
             // panelTitulo
             // 
@@ -185,7 +175,7 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblUsername.Location = new System.Drawing.Point(12, 24);
+            this.lblUsername.Location = new System.Drawing.Point(223, 36);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(122, 20);
             this.lblUsername.TabIndex = 10;
@@ -198,7 +188,7 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblPassword.Location = new System.Drawing.Point(12, 114);
+            this.lblPassword.Location = new System.Drawing.Point(193, 122);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(195, 20);
             this.lblPassword.TabIndex = 12;
@@ -229,7 +219,6 @@
             this.ClientSize = new System.Drawing.Size(806, 469);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelTitulo);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAlterarPassword);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormAlterarPalavraPasse";
@@ -244,7 +233,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -252,7 +240,6 @@
         private System.Windows.Forms.Button btnAlterarPassword;
         private System.Windows.Forms.TextBox txtConfirmarNovaPassword;
         private System.Windows.Forms.TextBox txtNovaPassword;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panelTitulo;
         private System.Windows.Forms.Label lblDia;
         private System.Windows.Forms.Label lblHora;

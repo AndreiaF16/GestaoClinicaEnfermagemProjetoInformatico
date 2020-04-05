@@ -82,6 +82,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     nome = (string)reader["nome"],
                     funcao = (string)reader["funcao"],
                     username = (string)reader["username"],
+                    contacto = Convert.ToDouble(reader["contacto"]),
                     email = (string)reader["email"],
                     permissao = (int)reader["permissao"]
                 };

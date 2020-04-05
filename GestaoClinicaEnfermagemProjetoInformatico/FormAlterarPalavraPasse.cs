@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,17 +25,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnAlterarPassword_Click(object sender, EventArgs e)
         {
-            if (txtNovaPassword.Text == txtConfirmarNovaPassword.Text)
+            if (VerificarDadosInseridos())
             {
                 try
                 {
                     SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                    SqlCommand cmd = new SqlCommand("UPDATE [dbo].[Enfermeiro] SET [password] = '" + CalculaHash(txtConfirmarNovaPassword.Text) + "', [passwordDefault] = 0 WHERE [IdEnfermeiro] = '" + enfermeiro.IdEnfermeiro + "' ", conn);
+                    SqlCommand cmd = new SqlCommand("UPDATE [dbo].[Enfermeiro] SET [password] = '" + Validacoes.CalculaHash(txtConfirmarNovaPassword.Text) + "', [passwordDefault] = 0 WHERE [IdEnfermeiro] = '" + enfermeiro.IdEnfermeiro + "' ", conn);
 
                     conn.Open();
 
                     cmd.ExecuteNonQuery();
-                    //  cmd1.ExecuteNonQuery();
                     conn.Close();
 
                     MessageBox.Show("Passe mudada com sucesso!");
@@ -54,24 +54,36 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        public static string CalculaHash(string pass)
+
+        public Boolean VerificarDadosInseridos()
         {
-            try
+
+            string password = txtNovaPassword.Text;
+            string confirmaPassword = txtConfirmarNovaPassword.Text;
+            if (!ValidarForcaSenha() && (password == confirmaPassword))
             {
-                System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(pass);
-                byte[] hash = md5.ComputeHash(inputBytes);
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                for (int i = 0; i < hash.Length; i++)
-                {
-                    sb.Append(hash[i].ToString("X2"));
-                }
-                return sb.ToString(); // Retorna senha criptografada 
+                MessageBox.Show("A password tem que conter no minimo 6 caracteres, dos quais devem ser numeros, letras maiusculas e minusculas", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
-            catch (Exception)
+            if (txtNovaPassword.Text != txtConfirmarNovaPassword.Text)
             {
-                return null; // Caso encontre erro retorna nulo
+                MessageBox.Show("As passwors não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
+            return true;
+        }
+
+        public Boolean ValidarForcaSenha()
+        {
+            if (string.IsNullOrEmpty(txtNovaPassword.Text) || txtNovaPassword.Text.Length < 6)
+            {
+                return false;
+            }
+            if (!Regex.IsMatch(txtNovaPassword.Text, @"\d") || !Regex.IsMatch(txtNovaPassword.Text, "[a-zA-Z]"))
+            {
+                return false;
+            }
+            return true;
         }
 
         private void FormAlterarPalavraPasse_Load(object sender, EventArgs e)

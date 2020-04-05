@@ -22,12 +22,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (enf != null)
             {
                 enfermeiro = enf;
-                label1.Text = "Username: " + enfermeiro.nome;
+                label1.Text = "Utilizador: " + enfermeiro.nome;
                 
                 if(enfermeiro.permissao == 1)
                 {
                     btnAdmin.Visible = false;
-                    btnDefinicoes.Visible = true;
+                 // btnDefinicoes.Visible = true;
                 }
             }
 
@@ -47,7 +47,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnRegistarUtente_Click(object sender, EventArgs e)
         {
-            FormRegistarUtente formRegistarUtente = new FormRegistarUtente();
+            FormRegistarUtente formRegistarUtente = new FormRegistarUtente(enfermeiro);
             formRegistarUtente.Show();
             
         }
@@ -108,7 +108,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormVerUtentesRegistados formVerUtentesRegistados = new FormVerUtentesRegistados();
+            FormVerUtentesRegistados formVerUtentesRegistados = new FormVerUtentesRegistados(enfermeiro);
             formVerUtentesRegistados.Show();
         }
 
@@ -135,8 +135,33 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnDefinicoes_Click(object sender, EventArgs e)
         {
-            MeuPerfil meuPerfil = new MeuPerfil(enfermeiro);
+            FormDefinicoesPessoais meuPerfil = new FormDefinicoesPessoais(enfermeiro, this);
             meuPerfil.Show();
+        }
+
+        public void updateLogedIn(Enfermeiro enf)
+        {
+            //prevensão se houver algum problema
+            if (enf != null)
+            {
+                enfermeiro = enf;
+                label1.Text = "Utilizador: " + enfermeiro.nome;
+
+                if (enfermeiro.permissao == 1)
+                {
+                    btnAdmin.Visible = false;
+                 //  btnDefinicoes.Visible = true;
+                }
+            }
+            else 
+            {
+                MessageBox.Show("Houve um problema interno! \n Por favor volte a fazer login!");
+                Login login = new Login();
+                login.Show();
+                this.Close();
+            }
+           
+                
         }
     }
 }

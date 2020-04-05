@@ -133,7 +133,6 @@
             this.btnDefinicoes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDefinicoes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDefinicoes.UseVisualStyleBackColor = false;
-            this.btnDefinicoes.Visible = false;
             this.btnDefinicoes.Click += new System.EventHandler(this.btnDefinicoes_Click);
             // 
             // btnRegistarUtente

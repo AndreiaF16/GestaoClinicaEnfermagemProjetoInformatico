@@ -16,12 +16,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         List<UtenteGridView> utentes = new List<UtenteGridView>();
-
-        public FormVerUtentesRegistados()
+        private Enfermeiro enfermeiro = null;
+        public FormVerUtentesRegistados(Enfermeiro enf)
         {
             InitializeComponent();
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            
+            enfermeiro = enf;
 
 
         }
@@ -41,7 +41,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 this.WindowState = FormWindowState.Maximized;
             }
-            else /*(this.WindowState == FormWindowState.Maximized)*/
+            else 
             {
                 this.WindowState = FormWindowState.Normal;
             }
@@ -74,13 +74,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         }
 
+        DataTable dataTable = new DataTable("Paciente");
         private void FormVerUtentesRegistados_Load_1(object sender, EventArgs e)
         {
             
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Paciente", conn);
+            SqlCommand cmd = new SqlCommand("select * from Paciente where IdEnfermeiro = " + enfermeiro.IdEnfermeiro, conn);
 
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -132,15 +133,61 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         }
 
-        private void txtNome_TextChanged(object sender, EventArgs e)
+        private void txtNome_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dataGridViewUtentes.DataSource = filtrosDePesquisa();
+            }
+        }
 
+        private void txtNIF_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dataGridViewUtentes.DataSource = filtrosDePesquisa();
+            }
+        }
 
-            BindingSource bs = new BindingSource();
-            bs.DataSource = dataGridViewUtentes.DataSource;
-            bs.Filter = "Nome like '%" + txtNome.Text + "%'";
-            dataGridViewUtentes.DataSource = bs;
+        
+        private List<UtenteGridView> filtrosDePesquisa()
+        {
+            List<UtenteGridView> auxiliar = new List<UtenteGridView>();
+            if (txtNIF.Text != "" && txtNome.Text == "")
+            {
+                foreach (UtenteGridView utente in utentes)
+                {
+                    if (utente.Nif == Convert.ToDouble(txtNIF.Text))
+                    {
+                        auxiliar.Add(utente);
+                    }
+                }
+                return auxiliar;
+            }
+           if (txtNIF.Text == "" && txtNome.Text != "")
+            {
+                foreach (UtenteGridView utente in utentes)
+                {
+                    if (utente.Nome.ToLower().Contains(txtNome.Text.ToLower()))
+                    {
+                        auxiliar.Add(utente);
+                    }
+                }
+                return auxiliar;
+            }
+           if (txtNIF.Text != "" && txtNome.Text != "")
+            {
+                foreach (UtenteGridView utente in utentes)
+                {
+                    if (utente.Nome.ToLower().Contains(txtNome.Text.ToLower()) && utente.Nif == Convert.ToDouble(txtNIF.Text))
+                    {
+                        auxiliar.Add(utente);
+                    }
+                }
+               return auxiliar;
+            }
 
+            return utentes;
         }
     }
 }

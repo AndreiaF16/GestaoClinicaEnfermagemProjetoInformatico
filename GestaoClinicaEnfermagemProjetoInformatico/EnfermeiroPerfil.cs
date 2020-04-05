@@ -15,14 +15,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class EnfermeiroPerfil : Form
     {
         private Enfermeiro enfermeiro = new Enfermeiro();
-        
-        public EnfermeiroPerfil(Enfermeiro enf)
+        private FormDefinicoesPessoais parent = null;
+        public EnfermeiroPerfil(Enfermeiro enf, FormDefinicoesPessoais formDefinicoesPessoais)
         {
             InitializeComponent();
             if (enf != null)
             {
                 enfermeiro = enf;
-                
+                parent = formDefinicoesPessoais;
                 txtNome.Text = enfermeiro.nome;
                 txtFuncao.Text = enfermeiro.funcao;
                 txtEmail.Text = enfermeiro.email;          
@@ -59,7 +59,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 this.WindowState = FormWindowState.Maximized;
             }
-            else /*(this.WindowState == FormWindowState.Maximized)*/
+            else
             {
                 this.WindowState = FormWindowState.Normal;
             }
@@ -95,11 +95,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void EnfermeiroPerfil_Load(object sender, EventArgs e)
         {
-
-
-
             txtNome.Focus();
-
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -112,10 +108,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string nome = txtNome.Text;
             string funcao = txtFuncao.Text;
             string email = txtEmail.Text;
-            //double contacto = (String) txtContacto.Text;
+            string contacto = txtContacto.Text;
             string username = txtUsername.Text;
 
-            if(nome.Equals(enfermeiro.nome) && funcao.Equals(enfermeiro.funcao) && email.Equals(enfermeiro.email) && username.Equals(enfermeiro.username)){
+            if(nome.Equals(enfermeiro.nome) && funcao.Equals(enfermeiro.funcao) && email.Equals(enfermeiro.email) && username.Equals(enfermeiro.username) && contacto.Equals(enfermeiro.contacto)){
                 MessageBox.Show("Dados não alterados!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -129,8 +125,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Dados atualizados com Sucesso!");
-                    this.Close();
+                   
                     connection.Close();
+
+                    enfermeiro.nome = txtNome.Text;
+                    enfermeiro.funcao = txtFuncao.Text;
+                    enfermeiro.contacto = Convert.ToDouble(txtContacto.Text);
+                    enfermeiro.email = txtEmail.Text;
+                    enfermeiro.username = txtUsername.Text;
+                    parent.updateLogedIn(enfermeiro);
+
+                    this.Close();
                 }
                 catch (SqlException excep)
                 {
@@ -138,6 +143,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show(excep.Message);
                 }
             }
+
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
