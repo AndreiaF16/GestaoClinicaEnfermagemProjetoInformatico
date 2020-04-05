@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -188,6 +189,160 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
             return utentes;
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            string nome = textBox1.Text;
+            var dtNascimento = dataNascimento.Value;
+            string rua = txtMorada.Text;
+            string numeroCasa = txtNumeroCasa.Text;
+            string andarCasa = txtAndar.Text;
+            string codPostalPrefixo = txtCodPostalPre.Text;
+            string codPostalSufixo = txtCodPostalSuf.Text;
+            string localidade = txtLocalidade.Text;
+            string email = txtEmail.Text;
+            string telemovel = txtContacto.Text;
+            string nif = textBox2.Text;
+            string profissao = (String)cbProfissoes.SelectedItem;
+
+            if (!VerificarDadosInseridos())
+            {
+                MessageBox.Show("Dados incorretos!");
+            }
+            else
+            {
+                try
+                {
+                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    connection.Open();
+
+                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,contacto,nif,profissao,rua,numeroCasa,andar,codPostalPrefixo,codPostalSufixo,localidade, IdEnfermeiro) VALUES('" + nome.ToString() + "','" + dtNascimento.Date + "','" + email.ToString() + "','"
+                        + telemovel.ToString() + "','" + nif.ToString() + "','" + profissao.ToString() + "','" + rua.ToString() + "','" + numeroCasa.ToString() + "','" + andarCasa.ToString() + "','" + codPostalPrefixo.ToString() + "','" + codPostalSufixo.ToString() + "','" + localidade.ToString() + "' , " + enfermeiro.IdEnfermeiro + ");";
+                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Paciente registado com Sucesso!");
+                   // this.Close();
+                    connection.Close();
+                }
+                catch (SqlException excep)
+                {
+
+                    MessageBox.Show(excep.Message);
+
+                }
+
+            }
+        }
+
+        private Boolean VerificarDadosInseridos()
+        {
+            string nome = textBox1.Text;
+            var dtNascimento = dataNascimento.Value;
+            string rua = txtMorada.Text;
+            string numeroCasa = txtNumeroCasa.Text;
+            string andarCasa = txtAndar.Text;
+            string codPostalPrefixo = txtCodPostalPre.Text;
+            string codPostalSufixo = txtCodPostalSuf.Text;
+            string localidade = txtLocalidade.Text;
+            string email = txtEmail.Text;
+            string telemovel = txtContacto.Text;
+            string nif = textBox2.Text;
+            string profissao = (String)cbProfissoes.SelectedItem; ;
+
+            if (nome == string.Empty || rua == string.Empty || codPostalPrefixo == string.Empty || codPostalSufixo == string.Empty
+                || localidade == string.Empty || email == string.Empty || telemovel == string.Empty || nif == string.Empty || profissao == string.Empty)
+            {
+                MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            Regex regexEmail = new Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
+            if (!regexEmail.IsMatch(txtEmail.Text))
+            {
+                MessageBox.Show("Por favor, introduza um email válido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+            return true;
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void txtMorada_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void txtNumeroCasa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtAndar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtCodPostalPre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCodPostalSuf_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtLocalidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void txtContacto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
