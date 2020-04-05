@@ -60,6 +60,18 @@
       <DependentUpon>EnfermeiroPerfil.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="ForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForgotPassword.Designer.cs">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotUsername.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForgotUsername.Designer.cs">
+      <DependentUpon>ForgotUsername.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAlterarPalavraPasse.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -150,13 +162,19 @@
       <DependentUpon>RedefenirPrimeiroAcesso.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="SendCode.cs">
+    <Compile Include="SendCodePassword.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="SendCode.Designer.cs">
-      <DependentUpon>SendCode.cs</DependentUpon>
+    <Compile Include="SendCodePassword.Designer.cs">
+      <DependentUpon>SendCodePassword.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="SendCodeUsername.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SendCodeUsername.Designer.cs">
+      <DependentUpon>SendCodeUsername.cs</DependentUpon>
     </Compile>
     <Compile Include="UtenteGridView.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -175,6 +193,12 @@
     <EmbeddedResource Include="EnfermeiroPerfil.resx">
       <DependentUpon>EnfermeiroPerfil.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForgotPassword.resx">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForgotUsername.resx">
+      <DependentUpon>ForgotUsername.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAlterarPalavraPasse.resx">
       <DependentUpon>FormAlterarPalavraPasse.cs</DependentUpon>
@@ -229,9 +253,12 @@
       <DependentUpon>RedefenirPrimeiroAcesso.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="SendCode.resx">
-      <DependentUpon>SendCode.cs</DependentUpon>
+    <EmbeddedResource Include="SendCodePassword.resx">
+      <DependentUpon>SendCodePassword.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SendCodeUsername.resx">
+      <DependentUpon>SendCodeUsername.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerEnfermeirosRegistos.resx">
       <DependentUpon>VerEnfermeirosRegistos.cs</DependentUpon>

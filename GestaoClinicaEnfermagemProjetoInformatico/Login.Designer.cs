@@ -42,6 +42,7 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -209,6 +210,7 @@
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.txtUsername);
@@ -219,17 +221,30 @@
             this.panel1.Size = new System.Drawing.Size(562, 242);
             this.panel1.TabIndex = 15;
             // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(42, 201);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(184, 24);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Esquecer Username";
+            this.label3.Click += new System.EventHandler(this.label3_Click_1);
+            // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(197, 199);
+            this.label4.Location = new System.Drawing.Point(326, 201);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(184, 24);
+            this.label4.Size = new System.Drawing.Size(179, 24);
             this.label4.TabIndex = 16;
-            this.label4.Text = "Esqueceu Password";
+            this.label4.Text = "Esquecer Password";
             this.label4.Click += new System.EventHandler(this.label4_Click_1);
             // 
             // lblUsername
@@ -405,5 +420,6 @@
         private System.Windows.Forms.Label lblDia;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer hora;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -2,34 +2,35 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Text.RegularExpressions;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class PrimeiroAcesso : Form
+    public partial class ForgotPassword : Form
     {
-        string username = SendCodePassword.to;
-        private Enfermeiro enfermeiro = new Enfermeiro();
-        public PrimeiroAcesso(Enfermeiro enf)
+       private Enfermeiro enfermeiro = null;
+
+        public ForgotPassword(Enfermeiro enf)
         {
             InitializeComponent();
             enfermeiro = enf;
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAlterarPassword_Click(object sender, EventArgs e)
         {
-            if (txtNovaPassoword.Text == txtConfirmarNovaPassword.Text)
+            if (VerificarDadosInseridos())
             {
                 try
                 {
                     SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                    SqlCommand cmd = new SqlCommand("UPDATE [dbo].[Enfermeiro] SET [password] = '" + Validacoes.CalculaHash(txtConfirmarNovaPassword.Text) + "', [username] = '" + txtUsername.Text + "', [passwordDefault] = 0 WHERE [IdEnfermeiro] = '" + enfermeiro.IdEnfermeiro + "' ", conn);
+                    SqlCommand cmd = new SqlCommand("UPDATE [dbo].[Enfermeiro] SET [password] = '" + Validacoes.CalculaHash(txtConfirmarNovaPassword.Text) + "', [passwordDefault] = 0 WHERE [IdEnfermeiro] = '" + enfermeiro.IdEnfermeiro + "' ", conn);
 
                     conn.Open();
 
@@ -49,22 +50,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             else
             {
-                MessageBox.Show("As palavras passes não correspodem, volte a intesir");
+                MessageBox.Show("As palavras passes não correspodem, volte a insesir");
             }
         }
 
-        
         public Boolean VerificarDadosInseridos()
         {
-            string username = txtUsername.Text;
-            string password = txtNovaPassoword.Text;
+
+            string password = txtNovaPassword.Text;
             string confirmaPassword = txtConfirmarNovaPassword.Text;
             if (!ValidarForcaSenha() && (password == confirmaPassword))
             {
                 MessageBox.Show("A password tem que conter no minimo 6 caracteres, dos quais devem ser numeros, letras maiusculas e minusculas", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (txtNovaPassoword.Text != txtConfirmarNovaPassword.Text)
+            if (txtNovaPassword.Text != txtConfirmarNovaPassword.Text)
             {
                 MessageBox.Show("As passwors não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -74,15 +74,30 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public Boolean ValidarForcaSenha()
         {
-            if (string.IsNullOrEmpty(txtNovaPassoword.Text) || txtNovaPassoword.Text.Length < 6)
+            if (string.IsNullOrEmpty(txtNovaPassword.Text) || txtNovaPassword.Text.Length < 6)
             {
                 return false;
             }
-            if (!Regex.IsMatch(txtNovaPassoword.Text, @"\d") || !Regex.IsMatch(txtNovaPassoword.Text, "[a-zA-Z]"))
+            if (!Regex.IsMatch(txtNovaPassword.Text, @"\d") || !Regex.IsMatch(txtNovaPassword.Text, "[a-zA-Z]"))
             {
                 return false;
             }
             return true;
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

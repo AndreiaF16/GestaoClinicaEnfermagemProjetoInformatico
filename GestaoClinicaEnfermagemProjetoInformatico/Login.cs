@@ -166,20 +166,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-            SendCode sendCode = new SendCode();
-            this.Hide();
-            sendCode.Show();
-        }
-
         private void label4_Click_1(object sender, EventArgs e)
         {
             // SendCode sendCode = new SendCode();
             //  this.Hide();
             //sendCode.Show();
-            FormAlterarPalavraPasse formAlterarPalavraPasse = new FormAlterarPalavraPasse(enfermeiro);
-            formAlterarPalavraPasse.Show();
+            SendCodePassword forgotPassword = new SendCodePassword();
+            forgotPassword.Show();
         }
 
         private bool compararHash(string tmpNewHash, string tmpHash) {
@@ -223,6 +216,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             lblHora.Text = "Hora: " + DateTime.Now.ToLongTimeString();
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM"+ "' de '" + "yyyy");
 
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+            SendCodeUsername forgotUsername = new SendCodeUsername();
+            forgotUsername.Show();
         }
     }
 }
