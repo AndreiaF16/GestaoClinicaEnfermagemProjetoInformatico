@@ -517,9 +517,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.label2.Location = new System.Drawing.Point(3, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(500, 39);
+            this.label2.Size = new System.Drawing.Size(328, 39);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Visualizar Dados dos Utentes";
+            this.label2.Text = "Dados dos Utentes";
             // 
             // panelMenu
             // 

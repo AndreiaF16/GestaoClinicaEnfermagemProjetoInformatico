@@ -56,7 +56,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 enfermeiros.Add(enfermeiro);
          
             }
+
+
+
+
+
+
             dataGridViewEnfermeiros.DataSource = enfermeiros;
+            dataGridViewEnfermeiros.Columns[0].HeaderText = "Nome";
+            dataGridViewEnfermeiros.Columns[1].HeaderText = "Nome Utilizador";
+            dataGridViewEnfermeiros.Columns[2].HeaderText = "Função Desempenhada";
+            dataGridViewEnfermeiros.Columns[3].HeaderText = "Email";
+            dataGridViewEnfermeiros.Columns[4].HeaderText = "Telemóvel";
+            dataGridViewEnfermeiros.Columns[5].HeaderText = "Data Nascimento";
+            dataGridViewEnfermeiros.Columns[6].HeaderText = "Permissões de Utilização";
+
             conn.Close();
         }
 
