@@ -15,8 +15,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         UtenteGridView utente = null;
         private Enfermeiro enfermeiro = null;
-        private Paciente paciente = null;
-        private Lucro lucro = null;
+        private Paciente paciente = new Paciente();
+        private Lucro lucro = new Lucro();
 
         public IniciarConsulta(Enfermeiro enf, UtenteGridView ut/*, Paciente pac, Lucro lucro1*/)
         {
