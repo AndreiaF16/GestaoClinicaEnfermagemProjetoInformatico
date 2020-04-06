@@ -20,6 +20,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<UtenteGridView> auxiliar = new List<UtenteGridView>();
 
         private Enfermeiro enfermeiro = null;
+        //private Paciente paciente = null;
+        //private Lucro lucro = null;
         public FormVerUtentesRegistados(Enfermeiro enf)
         {
             InitializeComponent();
@@ -405,7 +407,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
             }
 
-            IniciarConsulta iniciarConsulta = new IniciarConsulta(enfermeiro, utente);
+            IniciarConsulta iniciarConsulta = new IniciarConsulta(enfermeiro, utente/*,paciente,lucro*/);
             iniciarConsulta.Show();
 
 
