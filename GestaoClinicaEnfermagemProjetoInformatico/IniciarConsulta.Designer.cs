@@ -32,6 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IniciarConsulta));
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.lblEscala = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.txtValorConsulta = new System.Windows.Forms.TextBox();
+            this.lblCustoConsulta = new System.Windows.Forms.Label();
+            this.txtTensaoArterial = new System.Windows.Forms.TextBox();
+            this.lblTensaoArterial = new System.Windows.Forms.Label();
             this.btnLocalizacaoDor = new System.Windows.Forms.Button();
             this.btnDorMaxima = new System.Windows.Forms.Button();
             this.lblDorMaxima = new System.Windows.Forms.Label();
@@ -65,13 +72,6 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.hora = new System.Windows.Forms.Timer(this.components);
-            this.lblTensaoArterial = new System.Windows.Forms.Label();
-            this.txtTensaoArterial = new System.Windows.Forms.TextBox();
-            this.lblCustoConsulta = new System.Windows.Forms.Label();
-            this.txtValorConsulta = new System.Windows.Forms.TextBox();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.lblEscala = new System.Windows.Forms.Label();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -133,6 +133,93 @@
             this.panelFormulario.Size = new System.Drawing.Size(882, 748);
             this.panelFormulario.TabIndex = 2;
             this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
+            // 
+            // lblEscala
+            // 
+            this.lblEscala.AutoSize = true;
+            this.lblEscala.Location = new System.Drawing.Point(707, 398);
+            this.lblEscala.Name = "lblEscala";
+            this.lblEscala.Size = new System.Drawing.Size(35, 13);
+            this.lblEscala.TabIndex = 27;
+            this.lblEscala.Text = "label2";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnCancelar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._91025699_237925080669313_1596905141716385792_n;
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnCancelar.Location = new System.Drawing.Point(710, 652);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnCancelar.Size = new System.Drawing.Size(170, 78);
+            this.btnCancelar.TabIndex = 26;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90876545_253870845754605_8447427972255711232_n;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(710, 547);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGuardar.Size = new System.Drawing.Size(170, 78);
+            this.btnGuardar.TabIndex = 25;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // txtValorConsulta
+            // 
+            this.txtValorConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorConsulta.Location = new System.Drawing.Point(152, 672);
+            this.txtValorConsulta.Name = "txtValorConsulta";
+            this.txtValorConsulta.Size = new System.Drawing.Size(114, 21);
+            this.txtValorConsulta.TabIndex = 24;
+            // 
+            // lblCustoConsulta
+            // 
+            this.lblCustoConsulta.AutoSize = true;
+            this.lblCustoConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustoConsulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblCustoConsulta.Location = new System.Drawing.Point(21, 676);
+            this.lblCustoConsulta.Name = "lblCustoConsulta";
+            this.lblCustoConsulta.Size = new System.Drawing.Size(113, 16);
+            this.lblCustoConsulta.TabIndex = 23;
+            this.lblCustoConsulta.Text = "Valor Consulta:";
+            // 
+            // txtTensaoArterial
+            // 
+            this.txtTensaoArterial.Location = new System.Drawing.Point(166, 315);
+            this.txtTensaoArterial.Name = "txtTensaoArterial";
+            this.txtTensaoArterial.Size = new System.Drawing.Size(170, 20);
+            this.txtTensaoArterial.TabIndex = 22;
+            // 
+            // lblTensaoArterial
+            // 
+            this.lblTensaoArterial.AutoSize = true;
+            this.lblTensaoArterial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTensaoArterial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblTensaoArterial.Location = new System.Drawing.Point(17, 315);
+            this.lblTensaoArterial.Name = "lblTensaoArterial";
+            this.lblTensaoArterial.Size = new System.Drawing.Size(136, 20);
+            this.lblTensaoArterial.TabIndex = 21;
+            this.lblTensaoArterial.Text = "Tensão Arterial:";
             // 
             // btnLocalizacaoDor
             // 
@@ -319,18 +406,16 @@
             // txtSinais
             // 
             this.txtSinais.Location = new System.Drawing.Point(166, 229);
-            this.txtSinais.Multiline = true;
             this.txtSinais.Name = "txtSinais";
-            this.txtSinais.Size = new System.Drawing.Size(447, 47);
+            this.txtSinais.Size = new System.Drawing.Size(447, 20);
             this.txtSinais.TabIndex = 5;
             this.txtSinais.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // txtSintomatologia
             // 
             this.txtSintomatologia.Location = new System.Drawing.Point(166, 160);
-            this.txtSintomatologia.Multiline = true;
             this.txtSintomatologia.Name = "txtSintomatologia";
-            this.txtSintomatologia.Size = new System.Drawing.Size(447, 47);
+            this.txtSintomatologia.Size = new System.Drawing.Size(447, 20);
             this.txtSintomatologia.TabIndex = 4;
             this.txtSintomatologia.TextChanged += new System.EventHandler(this.txtSintomatologia_TextChanged);
             // 
@@ -362,9 +447,8 @@
             // 
             this.txtHistoriaAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHistoriaAtual.Location = new System.Drawing.Point(166, 96);
-            this.txtHistoriaAtual.Multiline = true;
             this.txtHistoriaAtual.Name = "txtHistoriaAtual";
-            this.txtHistoriaAtual.Size = new System.Drawing.Size(447, 47);
+            this.txtHistoriaAtual.Size = new System.Drawing.Size(447, 29);
             this.txtHistoriaAtual.TabIndex = 1;
             this.txtHistoriaAtual.TextChanged += new System.EventHandler(this.txtHistoriaAtual_TextChanged);
             // 
@@ -537,93 +621,6 @@
             // 
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
-            // 
-            // lblTensaoArterial
-            // 
-            this.lblTensaoArterial.AutoSize = true;
-            this.lblTensaoArterial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTensaoArterial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblTensaoArterial.Location = new System.Drawing.Point(17, 315);
-            this.lblTensaoArterial.Name = "lblTensaoArterial";
-            this.lblTensaoArterial.Size = new System.Drawing.Size(136, 20);
-            this.lblTensaoArterial.TabIndex = 21;
-            this.lblTensaoArterial.Text = "Tensão Arterial:";
-            // 
-            // txtTensaoArterial
-            // 
-            this.txtTensaoArterial.Location = new System.Drawing.Point(166, 315);
-            this.txtTensaoArterial.Name = "txtTensaoArterial";
-            this.txtTensaoArterial.Size = new System.Drawing.Size(170, 20);
-            this.txtTensaoArterial.TabIndex = 22;
-            // 
-            // lblCustoConsulta
-            // 
-            this.lblCustoConsulta.AutoSize = true;
-            this.lblCustoConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustoConsulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblCustoConsulta.Location = new System.Drawing.Point(21, 676);
-            this.lblCustoConsulta.Name = "lblCustoConsulta";
-            this.lblCustoConsulta.Size = new System.Drawing.Size(113, 16);
-            this.lblCustoConsulta.TabIndex = 23;
-            this.lblCustoConsulta.Text = "Valor Consulta:";
-            // 
-            // txtValorConsulta
-            // 
-            this.txtValorConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorConsulta.Location = new System.Drawing.Point(152, 672);
-            this.txtValorConsulta.Name = "txtValorConsulta";
-            this.txtValorConsulta.Size = new System.Drawing.Size(114, 21);
-            this.txtValorConsulta.TabIndex = 24;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90876545_253870845754605_8447427972255711232_n;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(710, 547);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGuardar.Size = new System.Drawing.Size(170, 78);
-            this.btnGuardar.TabIndex = 25;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnCancelar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._91025699_237925080669313_1596905141716385792_n;
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(710, 652);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnCancelar.Size = new System.Drawing.Size(170, 78);
-            this.btnCancelar.TabIndex = 26;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            // 
-            // lblEscala
-            // 
-            this.lblEscala.AutoSize = true;
-            this.lblEscala.Location = new System.Drawing.Point(707, 398);
-            this.lblEscala.Name = "lblEscala";
-            this.lblEscala.Size = new System.Drawing.Size(35, 13);
-            this.lblEscala.TabIndex = 27;
-            this.lblEscala.Text = "label2";
             // 
             // IniciarConsulta
             // 

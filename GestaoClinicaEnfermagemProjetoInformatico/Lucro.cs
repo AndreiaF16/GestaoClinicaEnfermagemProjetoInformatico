@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    class Lucro
+    public class Lucro
     {
         public int IdLucro { get; set; }
         public int valor { get; set; }

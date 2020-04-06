@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    class Paciente
+   public class Paciente
     {
         public int IdPaciente { get; set; }
         public string Nome { get; set; }

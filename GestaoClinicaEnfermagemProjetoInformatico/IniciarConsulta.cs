@@ -15,15 +15,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         UtenteGridView utente = null;
         private Enfermeiro enfermeiro = null;
-        private Paciente paciente = new Paciente();
+        private Paciente paciente = null;
         private Lucro lucro = new Lucro();
 
-        public IniciarConsulta(Enfermeiro enf, UtenteGridView ut/*, Paciente pac, Lucro lucro1*/)
+
+        public IniciarConsulta(Enfermeiro enf, UtenteGridView ut, Paciente pac)
         {
             InitializeComponent();
             enfermeiro = enf;
             utente = ut;
-
+            paciente = pac;
             
             label1.Text = "Nome do Paciente: " + utente.Nome;
             /*paciente = pac;
@@ -287,6 +288,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             return true;
         }
+        
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             string historiaAtual = txtHistoriaAtual.Text;
@@ -294,11 +296,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string sinais = txtSinais.Text;
             string tensaoArterial = txtTensaoArterial.Text;
             string escalaDor = lblEscala.Text;
-            string valorConsulta = txtValorConsulta.Text;
-            var dataConsulta = lblDia.Text;
-            var horaConsulta = lblHora.Text;
-            
-
+            //MessageBox.Show(lblEscala.Text);
+            string valor = txtValorConsulta.Text;
+            /*string data = lblDia.Text;
+            string hora = lblHora.Text;*/
             if (!VerificarDadosInseridos())
             {
                 MessageBox.Show("Dados incorretos!");
@@ -310,14 +311,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Consulta(dataConsulta,horaConsulta,tensaoArterial,historiaAtual,sintomatologia,sinais,escalaDor, IdPaciente, IdEnfermeiro, IdLucro) VALUES('" + dataConsulta + "','" + horaConsulta + "','" + tensaoArterial + "','"
-                        + historiaAtual.ToString() + "','" + sintomatologia.ToString() + "','" + sinais.ToString() + "','" + escalaDor.ToString() + "','" + paciente.IdPaciente  + "','" + enfermeiro.IdEnfermeiro + "','" + lucro.IdLucro + ");";
+                    string queryInsertData = "INSERT INTO Consulta(tensaoArterial,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro,idLucro) VALUES(' " + tensaoArterial.ToString() + " ',' " + historiaAtual.ToString() + " ',' " + sintomatologia.ToString() + " ',' " + sinais.ToString() + " ',' " + escalaDor.ToString() + " ',' " + paciente.IdPaciente + " ',' " + enfermeiro.IdEnfermeiro + " ',' " + lucro.IdLucro + "');";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.ExecuteNonQuery();
-                    string queryInsertDataLucro = "INSERT INTO Lucro(valor) VALUES('" + valorConsulta + ");";
-                    SqlCommand sqlCommand2 = new SqlCommand(queryInsertDataLucro, connection);
-                    sqlCommand2.ExecuteNonQuery();
-                    MessageBox.Show("Paciente registado com Sucesso!");
+                    string queryInsertDataLucro = "INSERT INTO Lucro(valor) VALUES(' " + valor.ToString() + "');";
+                    SqlCommand sqlCommand1 = new SqlCommand(queryInsertDataLucro, connection);
+                    sqlCommand1.ExecuteNonQuery();
+                    MessageBox.Show("Enfermeiro registado com Sucesso!");
                     this.Close();
                     connection.Close();
                 }
@@ -325,13 +325,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
 
                     MessageBox.Show(excep.Message);
-
                 }
-
+                
             }
+            
+        }
 
-        
 
-    }
-    }
+
+        }
+    
 }
