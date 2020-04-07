@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditUtente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditUtente.Designer.cs">
+      <DependentUpon>EditUtente.cs</DependentUpon>
+    </Compile>
     <Compile Include="EnfermeiroGridView.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
@@ -210,6 +216,9 @@
       <DependentUpon>VerEnfermeirosRegistos.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <EmbeddedResource Include="EditUtente.resx">
+      <DependentUpon>EditUtente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EnfermeiroPerfil.resx">
       <DependentUpon>EnfermeiroPerfil.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

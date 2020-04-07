@@ -12,9 +12,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class FormLocalizacaoDorCorpo : Form
     {
-        UtenteGridView utente = null;
+        Paciente utente = null;
         private Enfermeiro enfermeiro = null;
-        public FormLocalizacaoDorCorpo(Enfermeiro enf, UtenteGridView ut)
+        public FormLocalizacaoDorCorpo(Enfermeiro enf, Paciente ut)
         {
             InitializeComponent();
             enfermeiro = enf;

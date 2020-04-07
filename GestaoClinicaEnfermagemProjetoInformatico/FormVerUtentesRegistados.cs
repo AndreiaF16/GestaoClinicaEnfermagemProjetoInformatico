@@ -405,9 +405,41 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     utente = ut;
                 }
+
+            }
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  " + utente.Nif, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            Paciente paciente = null;
+
+            if (reader.Read())
+            {
+                paciente = new Paciente
+                {
+                    IdPaciente = (int)reader["IdPaciente"],
+                    Nome = (string)reader["nome"],
+                    DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                    Email = (string)reader["email"],
+                    Contacto = Convert.ToDouble(reader["contacto"]),
+                    Nif = Convert.ToDouble(reader["nif"]),
+                    Profissao = (string)reader["Profissao"],
+                    Rua = (string)reader["Rua"],
+                    NumeroCasa = (int)reader["NumeroCasa"],
+                    Andar = (string)reader["Andar"],
+                    codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
+                    codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                    localidade = (string)reader["localidade"],
+                    IdEnfermeiro = (int)reader["IdEnfermeiro"],
+
+
+                };
             }
 
-            IniciarConsulta iniciarConsulta = new IniciarConsulta(enfermeiro, utente,paciente/*,lucro*/);
+            conn.Close();
+            IniciarConsulta iniciarConsulta = new IniciarConsulta(enfermeiro, paciente/*,lucro*/);
             iniciarConsulta.Show();
 
 
@@ -435,5 +467,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            EditUtente editar = new EditUtente(enfermeiro, this);
+            editar.Show();
+        }
+
+        public void UpdateUtentes(List<UtenteGridView> ut) 
+        {
+            utentes = ut;
+            UpdateDataGridView();
+
+
+        }
+
     }
 }

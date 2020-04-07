@@ -142,6 +142,7 @@
             this.lblEscala.Size = new System.Drawing.Size(35, 13);
             this.lblEscala.TabIndex = 27;
             this.lblEscala.Text = "label2";
+            this.lblEscala.Visible = false;
             // 
             // btnCancelar
             // 

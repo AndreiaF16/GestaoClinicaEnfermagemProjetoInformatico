@@ -21,5 +21,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public double codPostalPrefixo { get; set; }
         public double codPostalSufixo { get; set; }
         public string localidade { get; set; }
+
+        public int IdEnfermeiro { get; set; }
     }
 }

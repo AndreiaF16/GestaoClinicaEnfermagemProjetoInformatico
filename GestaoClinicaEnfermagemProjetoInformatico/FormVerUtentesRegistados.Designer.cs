@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVerUtentesRegistados));
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.dataGridViewUtentes = new System.Windows.Forms.DataGridView();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.lblOutraProfissao = new System.Windows.Forms.Label();
             this.txtOutraProfissao = new System.Windows.Forms.TextBox();
             this.cbProfissoes = new System.Windows.Forms.ComboBox();
@@ -67,28 +69,27 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelTitulo = new System.Windows.Forms.Panel();
             this.lblDia = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.dataGridViewUtentes = new System.Windows.Forms.DataGridView();
-            this.hora = new System.Windows.Forms.Timer(this.components);
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.PictureBox();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.hora = new System.Windows.Forms.Timer(this.components);
             this.enfermeiroBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
-            this.panelMenu.SuspendLayout();
-            this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUtentes)).BeginInit();
+            this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
@@ -111,6 +112,7 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.dataGridViewUtentes);
             this.panelFormulario.Controls.Add(this.textBox2);
             this.panelFormulario.Controls.Add(this.btnGuardar);
             this.panelFormulario.Controls.Add(this.lblOutraProfissao);
@@ -149,6 +151,51 @@
             this.panelFormulario.TabIndex = 2;
             this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
             // 
+            // dataGridViewUtentes
+            // 
+            this.dataGridViewUtentes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.dataGridViewUtentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewUtentes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridViewUtentes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewUtentes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewUtentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewUtentes.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewUtentes.EnableHeadersVisualStyles = false;
+            this.dataGridViewUtentes.GridColor = System.Drawing.Color.SteelBlue;
+            this.dataGridViewUtentes.Location = new System.Drawing.Point(10, 101);
+            this.dataGridViewUtentes.Name = "dataGridViewUtentes";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewUtentes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewUtentes.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewUtentes.Size = new System.Drawing.Size(1093, 254);
+            this.dataGridViewUtentes.TabIndex = 50;
+            this.dataGridViewUtentes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUtentes_CellContentClick);
+            // 
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -157,7 +204,30 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(222, 26);
             this.textBox2.TabIndex = 49;
+            this.textBox2.Visible = false;
             this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90876545_253870845754605_8447427972255711232_n;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(467, 615);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGuardar.Size = new System.Drawing.Size(170, 76);
+            this.btnGuardar.TabIndex = 48;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Visible = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // lblOutraProfissao
             // 
@@ -195,6 +265,7 @@
             this.cbProfissoes.Size = new System.Drawing.Size(199, 28);
             this.cbProfissoes.Sorted = true;
             this.cbProfissoes.TabIndex = 45;
+            this.cbProfissoes.Visible = false;
             // 
             // lblProfissao
             // 
@@ -206,6 +277,7 @@
             this.lblProfissao.Size = new System.Drawing.Size(79, 20);
             this.lblProfissao.TabIndex = 44;
             this.lblProfissao.Text = "Profissão:";
+            this.lblProfissao.Visible = false;
             // 
             // lblNif
             // 
@@ -217,6 +289,7 @@
             this.lblNif.Size = new System.Drawing.Size(39, 20);
             this.lblNif.TabIndex = 42;
             this.lblNif.Text = "NIF:";
+            this.lblNif.Visible = false;
             // 
             // txtContacto
             // 
@@ -226,6 +299,7 @@
             this.txtContacto.Name = "txtContacto";
             this.txtContacto.Size = new System.Drawing.Size(199, 26);
             this.txtContacto.TabIndex = 41;
+            this.txtContacto.Visible = false;
             this.txtContacto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContacto_KeyPress);
             // 
             // lblTelemovel
@@ -238,6 +312,7 @@
             this.lblTelemovel.Size = new System.Drawing.Size(84, 20);
             this.lblTelemovel.TabIndex = 40;
             this.lblTelemovel.Text = "Telemóvel:";
+            this.lblTelemovel.Visible = false;
             // 
             // txtLocalidade
             // 
@@ -246,6 +321,7 @@
             this.txtLocalidade.Name = "txtLocalidade";
             this.txtLocalidade.Size = new System.Drawing.Size(222, 26);
             this.txtLocalidade.TabIndex = 39;
+            this.txtLocalidade.Visible = false;
             this.txtLocalidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLocalidade_KeyPress);
             // 
             // lblLocalidade
@@ -258,6 +334,7 @@
             this.lblLocalidade.Size = new System.Drawing.Size(90, 20);
             this.lblLocalidade.TabIndex = 38;
             this.lblLocalidade.Text = "Localidade:";
+            this.lblLocalidade.Visible = false;
             // 
             // txtCodPostalSuf
             // 
@@ -267,6 +344,7 @@
             this.txtCodPostalSuf.Name = "txtCodPostalSuf";
             this.txtCodPostalSuf.Size = new System.Drawing.Size(99, 26);
             this.txtCodPostalSuf.TabIndex = 37;
+            this.txtCodPostalSuf.Visible = false;
             this.txtCodPostalSuf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodPostalSuf_KeyPress);
             // 
             // txtCodPostalPre
@@ -277,6 +355,7 @@
             this.txtCodPostalPre.Name = "txtCodPostalPre";
             this.txtCodPostalPre.Size = new System.Drawing.Size(94, 26);
             this.txtCodPostalPre.TabIndex = 36;
+            this.txtCodPostalPre.Visible = false;
             this.txtCodPostalPre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodPostalPre_KeyPress);
             // 
             // lbCodPostalP
@@ -289,6 +368,7 @@
             this.lbCodPostalP.Size = new System.Drawing.Size(111, 20);
             this.lbCodPostalP.TabIndex = 35;
             this.lbCodPostalP.Text = "Codigo Postal:";
+            this.lbCodPostalP.Visible = false;
             // 
             // label4
             // 
@@ -300,6 +380,7 @@
             this.label4.Size = new System.Drawing.Size(56, 20);
             this.label4.TabIndex = 34;
             this.label4.Text = "Andar:";
+            this.label4.Visible = false;
             // 
             // txtAndar
             // 
@@ -308,6 +389,7 @@
             this.txtAndar.Name = "txtAndar";
             this.txtAndar.Size = new System.Drawing.Size(222, 26);
             this.txtAndar.TabIndex = 33;
+            this.txtAndar.Visible = false;
             this.txtAndar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAndar_KeyPress);
             // 
             // txtNumeroCasa
@@ -317,6 +399,7 @@
             this.txtNumeroCasa.Name = "txtNumeroCasa";
             this.txtNumeroCasa.Size = new System.Drawing.Size(127, 26);
             this.txtNumeroCasa.TabIndex = 32;
+            this.txtNumeroCasa.Visible = false;
             this.txtNumeroCasa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroCasa_KeyPress);
             // 
             // label5
@@ -329,6 +412,7 @@
             this.label5.Size = new System.Drawing.Size(34, 20);
             this.label5.TabIndex = 31;
             this.label5.Text = "Nº :";
+            this.label5.Visible = false;
             // 
             // txtEmail
             // 
@@ -337,6 +421,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(257, 26);
             this.txtEmail.TabIndex = 30;
+            this.txtEmail.Visible = false;
             // 
             // label6
             // 
@@ -348,6 +433,7 @@
             this.label6.Size = new System.Drawing.Size(57, 20);
             this.label6.TabIndex = 29;
             this.label6.Text = "E-mail:";
+            this.label6.Visible = false;
             // 
             // dataNascimento
             // 
@@ -357,6 +443,7 @@
             this.dataNascimento.Size = new System.Drawing.Size(493, 26);
             this.dataNascimento.TabIndex = 15;
             this.dataNascimento.Value = new System.DateTime(2020, 3, 29, 0, 0, 0, 0);
+            this.dataNascimento.Visible = false;
             // 
             // lblDataNascimento
             // 
@@ -368,6 +455,7 @@
             this.lblDataNascimento.Size = new System.Drawing.Size(136, 20);
             this.lblDataNascimento.TabIndex = 14;
             this.lblDataNascimento.Text = "Data Nascimento:";
+            this.lblDataNascimento.Visible = false;
             // 
             // txtMorada
             // 
@@ -376,6 +464,7 @@
             this.txtMorada.Name = "txtMorada";
             this.txtMorada.Size = new System.Drawing.Size(494, 26);
             this.txtMorada.TabIndex = 13;
+            this.txtMorada.Visible = false;
             this.txtMorada.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMorada_KeyPress);
             // 
             // lblFuncao
@@ -388,6 +477,7 @@
             this.lblFuncao.Size = new System.Drawing.Size(67, 20);
             this.lblFuncao.TabIndex = 12;
             this.lblFuncao.Text = "Morada:";
+            this.lblFuncao.Visible = false;
             // 
             // textBox1
             // 
@@ -398,6 +488,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(494, 26);
             this.textBox1.TabIndex = 11;
+            this.textBox1.Visible = false;
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // lblNome
@@ -410,6 +501,7 @@
             this.lblNome.Size = new System.Drawing.Size(55, 20);
             this.lblNome.TabIndex = 10;
             this.lblNome.Text = "Nome:";
+            this.lblNome.Visible = false;
             // 
             // label3
             // 
@@ -465,6 +557,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.panelMenu.Controls.Add(this.button3);
             this.panelMenu.Controls.Add(this.button2);
             this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.btnVoltar);
@@ -474,6 +567,26 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(232, 709);
             this.panelMenu.TabIndex = 1;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button3.Location = new System.Drawing.Point(20, 324);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button3.Size = new System.Drawing.Size(192, 60);
+            this.button3.TabIndex = 53;
+            this.button3.Text = "Editar Paciente";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -515,6 +628,36 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnVoltar
+            // 
+            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
+            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnVoltar.Location = new System.Drawing.Point(2, 624);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
+            this.btnVoltar.TabIndex = 5;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnVoltar.UseVisualStyleBackColor = false;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            // 
             // panelTitulo
             // 
             this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
@@ -553,118 +696,6 @@
             this.lblHora.Size = new System.Drawing.Size(57, 20);
             this.lblHora.TabIndex = 9;
             this.lblHora.Text = "label1";
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTitulo.Location = new System.Drawing.Point(3, 14);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(312, 20);
-            this.lblTitulo.TabIndex = 6;
-            this.lblTitulo.Text = "Siltes Saúde - Clinica de Enfermagem";
-            // 
-            // dataGridViewUtentes
-            // 
-            this.dataGridViewUtentes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.dataGridViewUtentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewUtentes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dataGridViewUtentes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewUtentes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewUtentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewUtentes.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewUtentes.EnableHeadersVisualStyles = false;
-            this.dataGridViewUtentes.GridColor = System.Drawing.Color.SteelBlue;
-            this.dataGridViewUtentes.Location = new System.Drawing.Point(242, 163);
-            this.dataGridViewUtentes.Name = "dataGridViewUtentes";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewUtentes.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewUtentes.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewUtentes.Size = new System.Drawing.Size(1093, 254);
-            this.dataGridViewUtentes.TabIndex = 50;
-            this.dataGridViewUtentes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUtentes_CellContentClick);
-            // 
-            // hora
-            // 
-            this.hora.Enabled = true;
-            this.hora.Tick += new System.EventHandler(this.hora_Tick);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90876545_253870845754605_8447427972255711232_n;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(467, 615);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGuardar.Size = new System.Drawing.Size(170, 76);
-            this.btnGuardar.TabIndex = 48;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
-            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVoltar.Location = new System.Drawing.Point(2, 624);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
-            this.btnVoltar.TabIndex = 5;
-            this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnVoltar.UseVisualStyleBackColor = false;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
             // 
             // btnMaximizar
             // 
@@ -708,6 +739,17 @@
             this.btnFechar.TabIndex = 7;
             this.btnFechar.TabStop = false;
             // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblTitulo.Location = new System.Drawing.Point(3, 14);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(312, 20);
+            this.lblTitulo.TabIndex = 6;
+            this.lblTitulo.Text = "Siltes Saúde - Clinica de Enfermagem";
+            // 
             // btnMinimizar
             // 
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -722,6 +764,11 @@
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
+            // hora
+            // 
+            this.hora.Enabled = true;
+            this.hora.Tick += new System.EventHandler(this.hora_Tick);
+            // 
             // enfermeiroBindingSource
             // 
             this.enfermeiroBindingSource.DataSource = typeof(GestaoClinicaEnfermagemProjetoInformatico.Enfermeiro);
@@ -731,7 +778,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1386, 749);
-            this.Controls.Add(this.dataGridViewUtentes);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormVerUtentesRegistados";
@@ -741,11 +787,11 @@
             this.painelPrincipal.ResumeLayout(false);
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUtentes)).EndInit();
             this.panelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUtentes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
@@ -805,5 +851,6 @@
         private System.Windows.Forms.DataGridView dataGridViewUtentes;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
