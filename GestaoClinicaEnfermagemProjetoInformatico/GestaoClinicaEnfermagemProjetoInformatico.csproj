@@ -140,11 +140,11 @@
       <DependentUpon>FormVerUtentesRegistados.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="IniciarConsulta.cs">
+    <Compile Include="IniciarConsultaSemMarcacao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IniciarConsulta.Designer.cs">
-      <DependentUpon>IniciarConsulta.cs</DependentUpon>
+    <Compile Include="IniciarConsultaSemMarcacao.Designer.cs">
+      <DependentUpon>IniciarConsultaSemMarcacao.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -260,8 +260,8 @@
       <DependentUpon>FormVerUtentesRegistados.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="IniciarConsulta.resx">
-      <DependentUpon>IniciarConsulta.cs</DependentUpon>
+    <EmbeddedResource Include="IniciarConsultaSemMarcacao.resx">
+      <DependentUpon>IniciarConsultaSemMarcacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -414,6 +414,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\identificacaoAnatomica1.jpg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ConsultaRegistar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-marcador-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-file-arrow-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-file-arrow-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-crie-um-novo-50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

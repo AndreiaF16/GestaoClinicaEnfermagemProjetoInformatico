@@ -193,6 +193,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ConsultaRegistar {
+            get {
+                object obj = ResourceManager.GetObject("ConsultaRegistar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap corpo {
             get {
                 object obj = ResourceManager.GetObject("corpo", resourceCulture);
@@ -216,6 +226,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         internal static System.Drawing.Bitmap icons8_chorando_26 {
             get {
                 object obj = ResourceManager.GetObject("icons8-chorando-26", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_crie_um_novo_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-crie-um-novo-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,9 +313,39 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_file_arrow_256 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-file-arrow-256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_file_arrow_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-file-arrow-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_homem_de_pé_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-homem-de-pé-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_marcador_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-marcador-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

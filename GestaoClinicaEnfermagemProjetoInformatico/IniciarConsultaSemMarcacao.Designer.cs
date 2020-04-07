@@ -1,6 +1,6 @@
 ﻿namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    partial class IniciarConsulta
+    partial class IniciarConsultaSemMarcacao
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IniciarConsulta));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IniciarConsultaSemMarcacao));
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.lblEscala = new System.Windows.Forms.Label();

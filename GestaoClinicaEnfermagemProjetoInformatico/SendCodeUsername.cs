@@ -31,9 +31,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-          /*  SqlCommand cmd = new SqlCommand("select * from Enfermeiro where email = @email", conn);
-            cmd.Parameters.AddWithValue("@email", txtEmail.Text);*/
-
+    
             SqlCommand cmd = new SqlCommand("select * from Enfermeiro where email = @email", conn);
             cmd.Parameters.AddWithValue("@email", txtEmail.Text);
 
@@ -41,7 +39,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             Random random = new Random();
             randomCode = (random.Next(999999)).ToString();
 
-            MessageBox.Show(reader.HasRows.ToString());
+           // MessageBox.Show(reader.HasRows.ToString());
             if (reader.Read())
             {
                 enfermeiro = new Enfermeiro
@@ -55,7 +53,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     permissao = (int)reader["permissao"]
                 };
 
-                MessageBox.Show(enfermeiro.email);
+               // MessageBox.Show(enfermeiro.email);
                 try
                 {
                     MailMessage mail = new MailMessage();

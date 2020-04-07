@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class IniciarConsulta : Form
+    public partial class IniciarConsultaSemMarcacao : Form
     {
       //  UtenteGridView utente = null;
         private Enfermeiro enfermeiro = null;
@@ -19,7 +19,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Lucro lucro = new Lucro();
 
 
-        public IniciarConsulta(Enfermeiro enf, Paciente pac)
+        public IniciarConsultaSemMarcacao(Enfermeiro enf, Paciente pac)
         {
             InitializeComponent();
             enfermeiro = enf;

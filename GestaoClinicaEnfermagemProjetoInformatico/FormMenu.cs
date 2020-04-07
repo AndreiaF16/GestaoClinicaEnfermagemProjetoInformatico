@@ -22,7 +22,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (enf != null)
             {
                 enfermeiro = enf;
-                label1.Text = "Utilizador: " + enfermeiro.nome;
+                label1.Text = "Enfermeiro: " + enfermeiro.nome;
                 
                 if(enfermeiro.permissao == 1)
                 {
@@ -162,6 +162,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
            
                 
+        }
+
+        private void btnRegistarConsulta_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

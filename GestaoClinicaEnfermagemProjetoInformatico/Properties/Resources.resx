@@ -127,6 +127,9 @@
   <data name="icons8-chorando-26" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-chorando-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="corpo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\corpo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-triste-26" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-triste-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -135,9 +138,6 @@
   </data>
   <data name="sair" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sair.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="91029693_887056538410859_7048263335300562944_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\91029693_887056538410859_7048263335300562944_n.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-enviar-641" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-enviar-641.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,11 +151,17 @@
   <data name="icons8-enviar-642" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-enviar-642.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-file-arrow-256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-file-arrow-256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-editar-conta-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-editar-conta-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="61612874_1529740527163389_3031694174454808576_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\61612874_1529740527163389_3031694174454808576_n.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-file-arrow-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-file-arrow-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="91029693_887056538410859_7048263335300562944_n (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\91029693_887056538410859_7048263335300562944_n (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,14 +181,23 @@
   <data name="icons8-feliz-261" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-feliz-261.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="identificacaoAnatomica1.jpg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\identificacaoAnatomica1.jpg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="90442019_519687358942142_2240774400708182016_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\90442019_519687358942142_2240774400708182016_n.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-marcador-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-marcador-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-enviar-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-enviar-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-neutro-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-neutro-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="91029693_887056538410859_7048263335300562944_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\91029693_887056538410859_7048263335300562944_n.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-feliz-26" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-feliz-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,8 +211,8 @@
   <data name="91029693_887056538410859_7048263335300562944_n1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\91029693_887056538410859_7048263335300562944_n1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="corpo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\corpo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ConsultaRegistar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ConsultaRegistar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="90878704_913662852414066_1997078630643007488_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\90878704_913662852414066_1997078630643007488_n.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -211,7 +226,7 @@
   <data name="icons8-ver-detalhes-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-ver-detalhes-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="identificacaoAnatomica1.jpg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\identificacaoAnatomica1.jpg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-crie-um-novo-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-crie-um-novo-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
