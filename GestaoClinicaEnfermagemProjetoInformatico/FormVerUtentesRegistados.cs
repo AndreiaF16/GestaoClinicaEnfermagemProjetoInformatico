@@ -19,16 +19,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<UtenteGridView> utentes = new List<UtenteGridView>();
         private List<UtenteGridView> auxiliar = new List<UtenteGridView>();
 
+        public FormMenu formMenu = null;
         private Enfermeiro enfermeiro = null;
         private Paciente paciente = new Paciente();
         //private Lucro lucro = null;
-        public FormVerUtentesRegistados(Enfermeiro enf)
+        public FormVerUtentesRegistados(Enfermeiro enf, FormMenu formM)
         {
             InitializeComponent();
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             enfermeiro = enf;
-
-
+            formMenu = formM;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -485,14 +485,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
                     localidade = (string)reader["localidade"],
                     IdEnfermeiro = (int)reader["IdEnfermeiro"],
-
-
                 };
             }
 
             conn.Close();
 
-            RegistarConsulta registarConsulta = new RegistarConsulta(enfermeiro, paciente);
+            RegistarConsulta registarConsulta = new RegistarConsulta(enfermeiro, paciente, this);
             registarConsulta.Show();
         }
 
@@ -507,10 +505,43 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             editar.Show();
         }
 
-        public void UpdateUtentes(List<UtenteGridView> ut) 
+        public void UpdateUtentes() 
         {
-            utentes = ut;
+            conn.Open();
+            com.Connection = conn;
+            utentes = new List<UtenteGridView>();
+            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE IdEnfermeiro =  " + enfermeiro.IdEnfermeiro, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                UtenteGridView utente = new UtenteGridView
+                {
+                    Nome = (string)reader["nome"],
+                    DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                    Email = (string)reader["email"],
+                    Contacto = Convert.ToDouble(reader["contacto"]),
+                    Nif = Convert.ToDouble(reader["nif"]),
+                    Profissao = (string)reader["Profissao"],
+                    Rua = (string)reader["Rua"],
+                    NumeroCasa = (int)reader["NumeroCasa"],
+                    Andar = (string)reader["Andar"],
+                    codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
+                    codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                    localidade = (string)reader["localidade"],
+
+                };
+                utentes.Add(utente);
+
+
+            }
+            string nome = txtNome.Text;
             UpdateDataGridView();
+            auxiliar = utentes;
+
+            conn.Close();
 
 
         }

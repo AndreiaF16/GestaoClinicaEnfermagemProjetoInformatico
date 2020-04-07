@@ -17,13 +17,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private Enfermeiro enfermeiro = null;
         private Paciente paciente = null;
-        public RegistarConsulta(Enfermeiro enf, Paciente pac)
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
+        private FormVerUtentesRegistados formVerUtentesRegistados = null;
+        public RegistarConsulta(Enfermeiro enf, Paciente pac, FormVerUtentesRegistados formVerUtentes)
         {
             InitializeComponent();
             enfermeiro = enf;
             paciente = pac;
-            
+            formVerUtentesRegistados = formVerUtentes;
+
+
             label1.Text = "Nome do Paciente: " + paciente.Nome;
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
 
         }
@@ -70,8 +76,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void RegistarConsulta_Load(object sender, EventArgs e)
         {
             dataConsulta.Format = DateTimePickerFormat.Short;
-            // horaConsulta.Format = DateTimePickerFormat.Time;
-
             horaConsulta.Format = DateTimePickerFormat.Custom;
             horaConsulta.CustomFormat = "HH:mm";
             horaConsulta.ShowUpDown = true;
@@ -102,13 +106,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-           
-            var dtaConsulta = dataConsulta.Value;
-            var hrConsulta = horaConsulta.Value;
-            //label5.Text = dataConsulta.ToString();
-            //var data = dataConsulta2.
-           // var horaConsulta = dataConsulta.Value;
+            // DateTime dtaConsulta = DateTime.ParseExact(dataConsulta.Text, "dd/MM/yyyy", null);
+            // DateTime hrConsulta = DateTime.ParseExact(horaConsulta.Text, "HH:mm", null);
 
+             DateTime dtaConsulta = dataConsulta.Value;
+             DateTime hrConsulta = horaConsulta.Value;
 
             if (!VerificarDadosInseridos())
             {
@@ -120,8 +122,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
-                   // MessageBox.Show(paciente.IdPaciente.ToString());
-                    string queryInsertData = "INSERT INTO AgendamentoConsulta(horaProximaConsulta,dataProximaConsulta,idPaciente,idEnfermeiro)VALUES('" + string.Format("{0:00}", hrConsulta.Hour) + ":" + string.Format("{0:00}", hrConsulta.Minute) + "','" + dtaConsulta.Date + "','" + paciente.IdPaciente + "','" + enfermeiro.IdEnfermeiro + "');";
+                    string queryInsertData = "INSERT INTO AgendamentoConsulta(horaProximaConsulta,dataProximaConsulta,idPaciente,idEnfermeiro)VALUES('" + string.Format("{0:00}", hrConsulta.Hour) + ":" + string.Format("{0:00}", hrConsulta.Minute) + "','" + dtaConsulta.ToString("MM/dd/yyyy") + "','" + paciente.IdPaciente + "','" + enfermeiro.IdEnfermeiro + "');";
 
 
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
@@ -129,6 +130,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Consulta registada com Sucesso!");
                     this.Close();
                     connection.Close();
+                    formVerUtentesRegistados.formMenu.UpdateGridViewConsultas();
                 }
                 catch (SqlException excep)
                 {
@@ -141,33 +143,53 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private Boolean VerificarDadosInseridos()
         {
-            //  DateTime data = dataConsulta.Value.Date;
-            //  string estaData = data.ToString();
-            // var datadaConsulta =dataConsulta.Value;
-            // string data = Convert.ToString(datadaConsulta);
-            // DateTime data = dataConsulta.Value;
-            // DateTime data = dataConsulta.Text;
-           // MessageBox.Show(dataConsulta2.Text);
 
-            //DateTime data = DateTime.ParseExact(dataConsulta.Text, "dd/MM/yyyy",null);
-            //DateTime thisDay = DateTime.Today;
+             DateTime data = dataConsulta.Value;
+             DateTime thisDay = DateTime.Now;
 
+            DateTime horaSup = horaConsulta.Value;
+           // DateTime thisDay = DateTime.Today;
 
-           /* System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-PT");
-            DateTime dt = DateTime.Parse(dataConsulta.Text);*/
-            /*if ((data - thisDay).TotalDays < 0)
+            if ((data - DateTime.Today).TotalDays < 0)
+             {
+                MessageBox.Show("A data de marcação da consulta não pode ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               return false;
+             }
+
+            else if (horaSup.Hour < thisDay.Hour)
             {
-                MessageBox.Show("A data de marcacao da consulta não pode ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                MessageBox.Show("A hora de marcação da consulta não pode ser inferior a hora atual!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            */
-            /*  if (Convert.ToString(dataConsulta.Value)== string.Empty)
-              {
-                  MessageBox.Show("Campos Obrigatórios, por favor preencha os campos obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                  return false;
-              }*/
+            else if (horaSup.Hour == thisDay.Hour && horaSup.Minute <= thisDay.Minute)
+                {
+                MessageBox.Show("A hora de marcação da consulta não pode ser inferior a hora atual!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
+            conn.Open();
+            com.Connection = conn;
 
+            SqlCommand cmd = new SqlCommand("select * from AgendamentoConsulta WHERE IdEnfermeiro =  " + enfermeiro.IdEnfermeiro, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string hora = (string)reader["horaProximaConsulta"];
+                DateTime dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+
+               // DateTime hrConsulta = DateTime.ParseExact(reader["horaProximaConsulta"].ToString(), "HH:mm", null);
+
+                if (data.ToShortDateString().Equals(dataConsulta.ToShortDateString()) && hora.Equals(string.Format("{0:00}", horaSup.Hour) + ":" + string.Format("{0:00}", horaSup.Minute)))
+                {
+                    MessageBox.Show("O horário que pretende marcar a consulta está indisponível, já existe consulta nesse momento. Tende outra data e/ou outra hora.");
+                    conn.Close();
+                    return false;
+                }
+               
+            }
+            conn.Close();
             return true;
         }
     }

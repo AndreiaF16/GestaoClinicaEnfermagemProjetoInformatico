@@ -32,10 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistarConsulta));
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.dataConsulta = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.horaConsulta = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,9 +51,7 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.hora = new System.Windows.Forms.Timer(this.components);
-            this.dataConsulta = new System.Windows.Forms.DateTimePicker();
-            this.dataConsulta2 = new System.Windows.Forms.MonthCalendar();
-            this.label5 = new System.Windows.Forms.Label();
+            this.horaConsulta = new System.Windows.Forms.DateTimePicker();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -80,13 +78,11 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
-            this.panelFormulario.Controls.Add(this.label5);
-            this.panelFormulario.Controls.Add(this.dataConsulta2);
+            this.panelFormulario.Controls.Add(this.horaConsulta);
             this.panelFormulario.Controls.Add(this.dataConsulta);
             this.panelFormulario.Controls.Add(this.label4);
             this.panelFormulario.Controls.Add(this.btnCancelar);
             this.panelFormulario.Controls.Add(this.btnGuardar);
-            this.panelFormulario.Controls.Add(this.horaConsulta);
             this.panelFormulario.Controls.Add(this.label3);
             this.panelFormulario.Controls.Add(this.label2);
             this.panelFormulario.Controls.Add(this.label1);
@@ -95,6 +91,14 @@
             this.panelFormulario.Name = "panelFormulario";
             this.panelFormulario.Size = new System.Drawing.Size(796, 722);
             this.panelFormulario.TabIndex = 2;
+            // 
+            // dataConsulta
+            // 
+            this.dataConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataConsulta.Location = new System.Drawing.Point(248, 161);
+            this.dataConsulta.Name = "dataConsulta";
+            this.dataConsulta.Size = new System.Drawing.Size(200, 26);
+            this.dataConsulta.TabIndex = 8;
             // 
             // label4
             // 
@@ -148,18 +152,6 @@
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // horaConsulta
-            // 
-            this.horaConsulta.AllowDrop = true;
-            this.horaConsulta.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.horaConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.horaConsulta.Location = new System.Drawing.Point(248, 227);
-            this.horaConsulta.MinDate = new System.DateTime(2020, 4, 7, 15, 3, 6, 0);
-            this.horaConsulta.Name = "horaConsulta";
-            this.horaConsulta.Size = new System.Drawing.Size(200, 26);
-            this.horaConsulta.TabIndex = 4;
-            this.horaConsulta.Value = new System.DateTime(2020, 4, 7, 15, 3, 6, 0);
             // 
             // label3
             // 
@@ -342,29 +334,14 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
-            // dataConsulta
+            // horaConsulta
             // 
-            this.dataConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataConsulta.Location = new System.Drawing.Point(248, 161);
-            this.dataConsulta.Name = "dataConsulta";
-            this.dataConsulta.Size = new System.Drawing.Size(200, 26);
-            this.dataConsulta.TabIndex = 8;
-            // 
-            // dataConsulta2
-            // 
-            this.dataConsulta2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataConsulta2.Location = new System.Drawing.Point(469, 12);
-            this.dataConsulta2.Name = "dataConsulta2";
-            this.dataConsulta2.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(503, 270);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "label5";
+            this.horaConsulta.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.horaConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.horaConsulta.Location = new System.Drawing.Point(248, 232);
+            this.horaConsulta.Name = "horaConsulta";
+            this.horaConsulta.Size = new System.Drawing.Size(200, 26);
+            this.horaConsulta.TabIndex = 9;
             // 
             // RegistarConsulta
             // 
@@ -411,12 +388,10 @@
         private System.Windows.Forms.Timer hora;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker horaConsulta;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dataConsulta;
-        private System.Windows.Forms.MonthCalendar dataConsulta2;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker horaConsulta;
     }
 }

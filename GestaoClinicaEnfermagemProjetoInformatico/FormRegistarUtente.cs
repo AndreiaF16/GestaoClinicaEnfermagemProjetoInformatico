@@ -47,7 +47,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string nif = txtNif.Text;
             string profissao =  (String)cbProfissoes.SelectedItem; ;
 
-            if (nome == string.Empty || rua == string.Empty || numeroCasa == string.Empty || andarCasa == string.Empty || codPostalPrefixo == string.Empty || codPostalSufixo == string.Empty
+            if (nome == string.Empty || rua == string.Empty || codPostalPrefixo == string.Empty || codPostalSufixo == string.Empty
                 || localidade == string.Empty || email == string.Empty || telemovel == string.Empty || nif == string.Empty || profissao == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -59,8 +59,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 MessageBox.Show("Por favor, introduza um email válido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
-           
+
+
+            DateTime data = dataNascimento.Value;
+
+            if ((data - DateTime.Today).TotalDays > 0)
+            {
+                MessageBox.Show("A data de nascimento tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             return true;
         }
 
@@ -90,7 +98,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,contacto,nif,profissao,rua,numeroCasa,andar,codPostalPrefixo,codPostalSufixo,localidade, IdEnfermeiro) VALUES('" + nome.ToString() + "','" + dtNascimento.Date + "','" + email.ToString() + "','"
+                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,contacto,nif,profissao,rua,numeroCasa,andar,codPostalPrefixo,codPostalSufixo,localidade, IdEnfermeiro) VALUES('" + nome.ToString() + "','" + dtNascimento.ToString("MM/dd/yyyy") + "','" + email.ToString() + "','"
                         + telemovel.ToString() + "','" + nif.ToString() + "','" + profissao.ToString() + "','" + rua.ToString() + "','" + numeroCasa.ToString() + "','" + andarCasa.ToString() + "','" + codPostalPrefixo.ToString() + "','" + codPostalSufixo.ToString() + "','" + localidade.ToString() + "' , " + enfermeiro.IdEnfermeiro + ");";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.ExecuteNonQuery();

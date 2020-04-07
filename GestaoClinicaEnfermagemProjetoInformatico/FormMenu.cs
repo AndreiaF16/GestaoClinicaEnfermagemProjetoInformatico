@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         private Enfermeiro enfermeiro = new Enfermeiro();
         UtenteGridView utente = new UtenteGridView();
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
+        private List<AgendamentoConsultaGridView> consultaAgendada = new List<AgendamentoConsultaGridView>();
 
         public FormMenu(Enfermeiro enf)
         {
@@ -30,6 +35,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                  // btnDefinicoes.Visible = true;
                 }
             }
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
 
         }
 
@@ -100,7 +107,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 this.WindowState = FormWindowState.Maximized;
             }
-            else /*(this.WindowState == FormWindowState.Maximized)*/
+            else 
             {
                 this.WindowState = FormWindowState.Normal;
             }
@@ -108,7 +115,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormVerUtentesRegistados formVerUtentesRegistados = new FormVerUtentesRegistados(enfermeiro);
+            FormVerUtentesRegistados formVerUtentesRegistados = new FormVerUtentesRegistados(enfermeiro, this);
             formVerUtentesRegistados.Show();
         }
 
@@ -167,6 +174,44 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnRegistarConsulta_Click(object sender, EventArgs e)
         {
            
+        }
+
+        private void FormMenu_Load(object sender, EventArgs e)
+        {
+            UpdateGridViewConsultas();
+        }
+
+        public void UpdateGridViewConsultas() 
+        {
+            dataGridViewConsultas.DataSource = new List<AgendamentoConsultaGridView>();
+            consultaAgendada.Clear();
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select agendamento.horaProximaConsulta, agendamento.dataProximaConsulta, p.Nome, p.Nif from AgendamentoConsulta agendamento INNER JOIN Paciente p ON agendamento.IdPaciente = p.IdPaciente WHERE agendamento.IdEnfermeiro =  " + enfermeiro.IdEnfermeiro + " AND agendamento.dataProximaConsulta = '" + DateTime.Now.ToString("MM/dd/yyyy") + "' ORDER BY agendamento.horaProximaConsulta", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+
+                AgendamentoConsultaGridView agendamento = new AgendamentoConsultaGridView
+                {
+                    horaProximaConsulta = (string)reader["horaProximaConsulta"],
+                    dataProximaConsulta = dataConsulta,
+                    NomePaciente = (string)reader["Nome"],
+                    NifPaciente = Convert.ToDouble(reader["Nif"]),
+                };
+
+                consultaAgendada.Add(agendamento);
+
+            }
+            dataGridViewConsultas.DataSource = consultaAgendada;
+            dataGridViewConsultas.Columns[0].HeaderText = "Hora Consulta";
+            dataGridViewConsultas.Columns[1].HeaderText = "Data Consulta";
+            dataGridViewConsultas.Columns[2].HeaderText = "Nome Utente";
+            dataGridViewConsultas.Columns[3].HeaderText = "Nif";
+            conn.Close();
         }
     }
 }

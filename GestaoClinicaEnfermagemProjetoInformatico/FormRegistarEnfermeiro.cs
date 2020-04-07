@@ -135,7 +135,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            
+
+
+            DateTime data = dataNascimento.Value;
+
+            if ((data - DateTime.Today).TotalDays > 0)
+            {
+                MessageBox.Show("A data de nascimento tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
             return true;
         }
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -161,7 +171,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
                     
-                        string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dtNascimento.Date + "','" + username.ToString() + "','" + passCript.ToString() + "','" + email.ToString() + "');";
+                        string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dtNascimento.ToString("MM/dd/yyyy") + "','" + username.ToString() + "','" + passCript.ToString() + "','" + email.ToString() + "');";
                         SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                         sqlCommand.ExecuteNonQuery();
                         MessageBox.Show("Enfermeiro registado com Sucesso!");

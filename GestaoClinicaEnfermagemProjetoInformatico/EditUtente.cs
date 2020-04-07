@@ -172,7 +172,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Paciente alterado com Sucesso!");
                     //this.Close();
                     UpdateDataGridView();
-                    formulario.UpdateUtentes(utentes);
+                    formulario.UpdateUtentes();
                     connection.Close();
                 }
                 catch (SqlException excep)
