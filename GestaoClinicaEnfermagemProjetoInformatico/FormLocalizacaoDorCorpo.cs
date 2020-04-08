@@ -42,5 +42,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
            
             string dor = textBox.Text;
         }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

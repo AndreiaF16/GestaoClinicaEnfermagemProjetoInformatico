@@ -30,6 +30,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             label1.Text = "Nome do Paciente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            dataConsulta.MinDate = DateTime.Today;
 
 
         }
@@ -79,6 +80,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             horaConsulta.Format = DateTimePickerFormat.Custom;
             horaConsulta.CustomFormat = "HH:mm";
             horaConsulta.ShowUpDown = true;
+
+            UpdateGridViewConsultas();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -106,9 +109,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            // DateTime dtaConsulta = DateTime.ParseExact(dataConsulta.Text, "dd/MM/yyyy", null);
-            // DateTime hrConsulta = DateTime.ParseExact(horaConsulta.Text, "HH:mm", null);
-
              DateTime dtaConsulta = dataConsulta.Value;
              DateTime hrConsulta = horaConsulta.Value;
 
@@ -128,8 +128,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Consulta registada com Sucesso!");
-                    this.Close();
+                    // this.Close();
                     connection.Close();
+                    UpdateGridViewConsultas();
+
                     formVerUtentesRegistados.formMenu.UpdateGridViewConsultas();
                 }
                 catch (SqlException excep)
@@ -148,21 +150,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
              DateTime thisDay = DateTime.Now;
 
             DateTime horaSup = horaConsulta.Value;
-           // DateTime thisDay = DateTime.Today;
-
-            if ((data - DateTime.Today).TotalDays < 0)
+            int var = (int)((data - DateTime.Today).TotalDays);
+           
+            if (var < 0)
              {
                 MessageBox.Show("A data de marcação da consulta não pode ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                return false;
              }
-
-            else if (horaSup.Hour < thisDay.Hour)
+            
+            else if ((var == 0) && horaSup.Hour < thisDay.Hour)
             {
 
                 MessageBox.Show("A hora de marcação da consulta não pode ser inferior a hora atual!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            else if (horaSup.Hour == thisDay.Hour && horaSup.Minute <= thisDay.Minute)
+            else if ((var == 0) && horaSup.Hour == thisDay.Hour && horaSup.Minute <= thisDay.Minute)
                 {
                 MessageBox.Show("A hora de marcação da consulta não pode ser inferior a hora atual!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -179,8 +181,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 string hora = (string)reader["horaProximaConsulta"];
                 DateTime dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
 
-               // DateTime hrConsulta = DateTime.ParseExact(reader["horaProximaConsulta"].ToString(), "HH:mm", null);
-
                 if (data.ToShortDateString().Equals(dataConsulta.ToShortDateString()) && hora.Equals(string.Format("{0:00}", horaSup.Hour) + ":" + string.Format("{0:00}", horaSup.Minute)))
                 {
                     MessageBox.Show("O horário que pretende marcar a consulta está indisponível, já existe consulta nesse momento. Tende outra data e/ou outra hora.");
@@ -191,6 +191,44 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             conn.Close();
             return true;
+        }
+
+        public void UpdateGridViewConsultas()
+        {
+            dataGridViewConsultas.DataSource = new List<AgendamentoConsultaGridView>();
+           List<AgendamentoConsultaGridView> consultasAgendadas = new List<AgendamentoConsultaGridView>();
+          //  consultaAgendada.Clear();
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select agendamento.dataProximaConsulta,  agendamento.horaProximaConsulta, p.Nome, p.Nif from AgendamentoConsulta agendamento INNER JOIN Paciente p ON agendamento.IdPaciente = p.IdPaciente WHERE agendamento.IdEnfermeiro =  " + enfermeiro.IdEnfermeiro + " AND agendamento.dataProximaConsulta = '" + dataConsulta.Value.ToString("MM/dd/yyyy") + "' AND ConsultaRealizada= 0 ORDER BY agendamento.horaProximaConsulta", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+
+                AgendamentoConsultaGridView agendamento = new AgendamentoConsultaGridView
+                {
+                    dataProximaConsulta = dataConsulta,
+                    horaProximaConsulta = (string)reader["horaProximaConsulta"],
+                    NomePaciente = (string)reader["Nome"],
+                    NifPaciente = Convert.ToDouble(reader["Nif"]),
+                };
+                consultasAgendadas.Add(agendamento); 
+            }
+            dataGridViewConsultas.DataSource = consultasAgendadas;
+            dataGridViewConsultas.Columns[0].HeaderText = "Hora Consulta";
+            dataGridViewConsultas.Columns[1].HeaderText = "Data Consulta";
+            dataGridViewConsultas.Columns[2].HeaderText = "Nome Utente";
+            dataGridViewConsultas.Columns[3].HeaderText = "Nif Paciente";
+
+            conn.Close();
+        }
+
+        private void dataConsulta_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateGridViewConsultas();
         }
     }
 }

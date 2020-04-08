@@ -19,7 +19,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private List<AgendamentoConsultaGridView> consultaAgendada = new List<AgendamentoConsultaGridView>();
-
+        private List<AgendamentoConsultaGridView> auxiliar = new List<AgendamentoConsultaGridView>();
+        private Paciente paciente = null;
         public FormMenu(Enfermeiro enf)
         {
            
@@ -32,7 +33,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 if(enfermeiro.permissao == 1)
                 {
                     btnAdmin.Visible = false;
-                 // btnDefinicoes.Visible = true;
                 }
             }
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
@@ -66,11 +66,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void buttonTerminarSessao_Click(object sender, EventArgs e)
         {
-
-          /*  Login login = new Login();
-            login.Show();
-            this.Close();*/
-
             var resposta = MessageBox.Show("Tem a certeza que deseja terminar sessão?", "Terminar Sessão!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resposta == DialogResult.Yes)
             {
@@ -157,7 +152,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 if (enfermeiro.permissao == 1)
                 {
                     btnAdmin.Visible = false;
-                 //  btnDefinicoes.Visible = true;
                 }
             }
             else 
@@ -188,7 +182,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select agendamento.horaProximaConsulta, agendamento.dataProximaConsulta, p.Nome, p.Nif from AgendamentoConsulta agendamento INNER JOIN Paciente p ON agendamento.IdPaciente = p.IdPaciente WHERE agendamento.IdEnfermeiro =  " + enfermeiro.IdEnfermeiro + " AND agendamento.dataProximaConsulta = '" + DateTime.Now.ToString("MM/dd/yyyy") + "' ORDER BY agendamento.horaProximaConsulta", conn);
+            SqlCommand cmd = new SqlCommand("select agendamento.horaProximaConsulta, agendamento.dataProximaConsulta, p.Nome, p.Nif from AgendamentoConsulta agendamento INNER JOIN Paciente p ON agendamento.IdPaciente = p.IdPaciente WHERE agendamento.IdEnfermeiro =  " + enfermeiro.IdEnfermeiro + " AND agendamento.dataProximaConsulta = '" + DateTime.Now.ToString("MM/dd/yyyy") + "' AND ConsultaRealizada= 0 ORDER BY agendamento.horaProximaConsulta", conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -206,12 +200,164 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 consultaAgendada.Add(agendamento);
 
             }
+            auxiliar = consultaAgendada;
             dataGridViewConsultas.DataSource = consultaAgendada;
             dataGridViewConsultas.Columns[0].HeaderText = "Hora Consulta";
             dataGridViewConsultas.Columns[1].HeaderText = "Data Consulta";
             dataGridViewConsultas.Columns[2].HeaderText = "Nome Utente";
             dataGridViewConsultas.Columns[3].HeaderText = "Nif";
             conn.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int i = dataGridViewConsultas.CurrentCell.RowIndex;
+            AgendamentoConsultaGridView consultaAgendada = null; ;
+
+            foreach (var ut in auxiliar)
+            {
+                if (ut.NifPaciente == Double.Parse(dataGridViewConsultas.Rows[i].Cells[3].Value.ToString()))
+                {
+                    consultaAgendada = ut;
+                }
+
+            }
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  " + consultaAgendada.NifPaciente, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            Paciente paciente = null;
+
+            if (reader.Read())
+            {
+                paciente = new Paciente
+                {
+                    IdPaciente = (int)reader["IdPaciente"],
+                    Nome = (string)reader["nome"],
+                    DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                    Email = (string)reader["email"],
+                    Contacto = Convert.ToDouble(reader["contacto"]),
+                    Nif = Convert.ToDouble(reader["nif"]),
+                    Profissao = (string)reader["Profissao"],
+                    Rua = (string)reader["Rua"],
+                    NumeroCasa = (int)reader["NumeroCasa"],
+                    Andar = (string)reader["Andar"],
+                    codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
+                    codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                    localidade = (string)reader["localidade"],
+                    IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                };
+            }
+
+            conn.Close();
+            IniciarConsultaMarcada iniciarConsultaMarcada = new IniciarConsultaMarcada(enfermeiro, paciente, this, consultaAgendada);
+            iniciarConsultaMarcada.Show();
+        }
+
+        private List<AgendamentoConsultaGridView> filtrosDePesquisa()
+        {
+            auxiliar = new List<AgendamentoConsultaGridView>();
+            if (txtNIF.Text != "" && txtNome.Text == "")
+            {
+                foreach (AgendamentoConsultaGridView consulta in consultaAgendada)
+                {
+                    if (consulta.NifPaciente == Convert.ToDouble(txtNIF.Text))
+                    {
+                        auxiliar.Add(consulta);
+                    }
+                }
+                return auxiliar;
+            }
+            if (txtNIF.Text == "" && txtNome.Text != "")
+            {
+                foreach (AgendamentoConsultaGridView consulta in consultaAgendada)
+                {
+                    if (consulta.NomePaciente.ToLower().Contains(txtNome.Text.ToLower()))
+                    {
+                        auxiliar.Add(consulta);
+                    }
+                }
+                return auxiliar;
+            }
+            if (txtNIF.Text != "" && txtNome.Text != "")
+            {
+                foreach (AgendamentoConsultaGridView consulta in consultaAgendada)
+                {
+                    if (consulta.NomePaciente.ToLower().Contains(txtNome.Text.ToLower()) && consulta.NifPaciente == Convert.ToDouble(txtNIF.Text))
+                    {
+                        auxiliar.Add(consulta);
+                    }
+                }
+                return auxiliar;
+            }
+            auxiliar = consultaAgendada;
+            return consultaAgendada;
+        }
+
+        private void txtNome_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dataGridViewConsultas.DataSource = filtrosDePesquisa();
+            }
+        }
+
+        private void txtNIF_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dataGridViewConsultas.DataSource = filtrosDePesquisa();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int i = dataGridViewConsultas.CurrentCell.RowIndex;
+            AgendamentoConsultaGridView consultaAgendada = null; ;
+
+            foreach (var ut in auxiliar)
+            {
+                if (ut.NifPaciente == Double.Parse(dataGridViewConsultas.Rows[i].Cells[3].Value.ToString()))
+                {
+                    consultaAgendada = ut;
+                }
+
+            }
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  " + consultaAgendada.NifPaciente, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            Paciente paciente = null;
+
+            if (reader.Read())
+            {
+                paciente = new Paciente
+                {
+                    IdPaciente = (int)reader["IdPaciente"],
+                    Nome = (string)reader["nome"],
+                    DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                    Email = (string)reader["email"],
+                    Contacto = Convert.ToDouble(reader["contacto"]),
+                    Nif = Convert.ToDouble(reader["nif"]),
+                    Profissao = (string)reader["Profissao"],
+                    Rua = (string)reader["Rua"],
+                    NumeroCasa = (int)reader["NumeroCasa"],
+                    Andar = (string)reader["Andar"],
+                    codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
+                    codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                    localidade = (string)reader["localidade"],
+                    IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                };
+            }
+
+            conn.Close();
+
+            MenuMarcacoes menu = new MenuMarcacoes(enfermeiro, paciente, this);
+            menu.Show();
         }
     }
 }

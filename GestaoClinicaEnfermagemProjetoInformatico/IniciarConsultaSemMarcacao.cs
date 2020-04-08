@@ -24,7 +24,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             InitializeComponent();
             enfermeiro = enf;
             paciente = pac;
-          //  paciente = pac;
             
             label1.Text = "Nome do Paciente: " + paciente.Nome;
             /*paciente = pac;
@@ -317,7 +316,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                   //  string queryInsertDataLucro = "INSERT INTO Lucro(valor) VALUES(' " + valor.ToString() + "');";
                  //   SqlCommand sqlCommand1 = new SqlCommand(queryInsertDataLucro, connection);
                   //  sqlCommand1.ExecuteNonQuery();
-                    MessageBox.Show("Consulta registado com Sucesso!");
+                    MessageBox.Show("Consulta efetuada com Sucesso!");
                     this.Close();
                     connection.Close();
                 }
@@ -331,8 +330,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             
         }
 
-
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
 
         }
+    }
     
 }

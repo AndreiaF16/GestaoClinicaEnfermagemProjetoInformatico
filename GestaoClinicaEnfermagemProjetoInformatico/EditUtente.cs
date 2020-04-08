@@ -210,7 +210,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private List<UtenteGridView> filtrosDePesquisa()
@@ -325,6 +329,84 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+
+           /* if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }*/
+        }
+
+        private void txtMorada_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void txtNumeroCasa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCodPostalPre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCodPostalSuf_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtLocalidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtContacto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

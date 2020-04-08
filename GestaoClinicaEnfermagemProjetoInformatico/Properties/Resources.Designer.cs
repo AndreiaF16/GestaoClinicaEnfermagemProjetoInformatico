@@ -243,6 +243,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_editar_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-editar-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_editar_conta_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-editar-conta-50", resourceCulture);
@@ -376,6 +386,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         internal static System.Drawing.Bitmap icons8_re_digite_o_código_pin_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8-re-digite-o-código-pin-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_remover_relógio_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-remover-relógio-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
