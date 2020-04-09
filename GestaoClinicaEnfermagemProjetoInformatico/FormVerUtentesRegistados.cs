@@ -194,14 +194,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[4].HeaderText = "NIF";
             dataGridViewUtentes.Columns[5].HeaderText = "Profissão";
             dataGridViewUtentes.Columns[6].HeaderText = "Morada";
-            dataGridViewUtentes.Columns[7].HeaderText = "Número";
+            dataGridViewUtentes.Columns[7].HeaderText = "Nr";
             dataGridViewUtentes.Columns[8].HeaderText = "Andar";
-            dataGridViewUtentes.Columns[9].HeaderText = "Código Postal";
-            dataGridViewUtentes.Columns[10].HeaderText = "Código Postal";
+            dataGridViewUtentes.Columns[9].HeaderText = "Código";
+            dataGridViewUtentes.Columns[10].HeaderText = "Postal";
             dataGridViewUtentes.Columns[11].HeaderText = "Localidade";
-            dataGridViewUtentes.Columns[0].Width = dataGridViewUtentes.Columns[0].Width + 50;
-            dataGridViewUtentes.Columns[2].Width = dataGridViewUtentes.Columns[2].Width + 50;
+              dataGridViewUtentes.Columns[0].Width = dataGridViewUtentes.Columns[0].Width + 200;
+            dataGridViewUtentes.Columns[2].Width = dataGridViewUtentes.Columns[2].Width + 80;
+            dataGridViewUtentes.Columns[6].Width = dataGridViewUtentes.Columns[6].Width + 150;
 
+            /* dataGridViewUtentes.Columns[2].Width = dataGridViewUtentes.Columns[2].Width + 60;
+            dataGridViewUtentes.Columns[7].Width = dataGridViewUtentes.Columns[7].Width - 20;
+            dataGridViewUtentes.Columns[8].Width = dataGridViewUtentes.Columns[8].Width - 20;
+             dataGridViewUtentes.Columns[9].Width = dataGridViewUtentes.Columns[9].Width - 25;
+             dataGridViewUtentes.Columns[10].Width = dataGridViewUtentes.Columns[10].Width - 25;
+             */
             auxiliar = utentes;
 
             dataGridViewUtentes.Update();

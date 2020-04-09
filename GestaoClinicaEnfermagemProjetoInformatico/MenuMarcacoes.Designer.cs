@@ -271,6 +271,7 @@
             this.dataGridViewConsultas.EnableHeadersVisualStyles = false;
             this.dataGridViewConsultas.GridColor = System.Drawing.Color.SteelBlue;
             this.dataGridViewConsultas.Location = new System.Drawing.Point(56, 19);
+            this.dataGridViewConsultas.MultiSelect = false;
             this.dataGridViewConsultas.Name = "dataGridViewConsultas";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));

@@ -198,12 +198,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[4].HeaderText = "NIF";
             dataGridViewUtentes.Columns[5].HeaderText = "Profissão";
             dataGridViewUtentes.Columns[6].HeaderText = "Morada";
-            dataGridViewUtentes.Columns[7].HeaderText = "Número";
+            dataGridViewUtentes.Columns[7].HeaderText = "Nr";
             dataGridViewUtentes.Columns[8].HeaderText = "Andar";
             dataGridViewUtentes.Columns[9].HeaderText = "Código Postal";
-            dataGridViewUtentes.Columns[10].HeaderText = "Código Postal";
+            dataGridViewUtentes.Columns[10].HeaderText = " ";
             dataGridViewUtentes.Columns[11].HeaderText = "Localidade";
             auxiliar = utentes;
+          /*  dataGridViewUtentes.Columns[0].Width = dataGridViewUtentes.Columns[0].Width + 60;
+            dataGridViewUtentes.Columns[2].Width = dataGridViewUtentes.Columns[2].Width + 50;
+            dataGridViewUtentes.Columns[7].Width = dataGridViewUtentes.Columns[2].Width - 20;
+            dataGridViewUtentes.Columns[8].Width = dataGridViewUtentes.Columns[2].Width - 20;
+            */
             dataGridViewUtentes.Update();
             dataGridViewUtentes.Refresh();
         }

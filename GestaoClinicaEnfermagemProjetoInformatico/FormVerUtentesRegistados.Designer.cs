@@ -101,7 +101,6 @@
             // 
             // dataGridViewUtentes
             // 
-            this.dataGridViewUtentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewUtentes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.dataGridViewUtentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewUtentes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -125,6 +124,7 @@
             this.dataGridViewUtentes.EnableHeadersVisualStyles = false;
             this.dataGridViewUtentes.GridColor = System.Drawing.Color.SteelBlue;
             this.dataGridViewUtentes.Location = new System.Drawing.Point(13, 131);
+            this.dataGridViewUtentes.MultiSelect = false;
             this.dataGridViewUtentes.Name = "dataGridViewUtentes";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));

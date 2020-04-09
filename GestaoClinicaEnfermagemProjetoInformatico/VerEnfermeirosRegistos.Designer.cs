@@ -132,7 +132,9 @@
             this.dataGridViewEnfermeiros.ColumnHeadersHeight = 30;
             this.dataGridViewEnfermeiros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewEnfermeiros.Location = new System.Drawing.Point(10, 117);
+            this.dataGridViewEnfermeiros.MultiSelect = false;
             this.dataGridViewEnfermeiros.Name = "dataGridViewEnfermeiros";
+            this.dataGridViewEnfermeiros.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
