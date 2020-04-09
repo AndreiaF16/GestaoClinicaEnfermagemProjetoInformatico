@@ -266,5 +266,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
 
         }
+
+        private void lblDia_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

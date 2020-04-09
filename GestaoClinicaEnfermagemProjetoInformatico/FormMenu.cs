@@ -365,5 +365,53 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
 
         }
+
+        private void btnVerConcultasPorClientes_Click(object sender, EventArgs e)
+        {
+            int i = dataGridViewConsultas.CurrentCell.RowIndex;
+            AgendamentoConsultaGridView consultaAgendada = null; ;
+
+            foreach (var ut in auxiliar)
+            {
+                if (ut.NifPaciente == Double.Parse(dataGridViewConsultas.Rows[i].Cells[3].Value.ToString()))
+                {
+                    consultaAgendada = ut;
+                }
+
+            }
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  " + consultaAgendada.NifPaciente, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            Paciente paciente = null;
+
+            if (reader.Read())
+            {
+                paciente = new Paciente
+                {
+                    IdPaciente = (int)reader["IdPaciente"],
+                    Nome = (string)reader["nome"],
+                    DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                    Email = (string)reader["email"],
+                    Contacto = Convert.ToDouble(reader["contacto"]),
+                    Nif = Convert.ToDouble(reader["nif"]),
+                    Profissao = (string)reader["Profissao"],
+                    Rua = (string)reader["Rua"],
+                    NumeroCasa = (int)reader["NumeroCasa"],
+                    Andar = (string)reader["Andar"],
+                    codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
+                    codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                    localidade = (string)reader["localidade"],
+                    IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                };
+            }
+
+            conn.Close();
+
+            VerConsultasPorCliente verConsultasPorClientes = new VerConsultasPorCliente(enfermeiro, paciente, this);
+            verConsultasPorClientes.Show();
+        }
     }
 }

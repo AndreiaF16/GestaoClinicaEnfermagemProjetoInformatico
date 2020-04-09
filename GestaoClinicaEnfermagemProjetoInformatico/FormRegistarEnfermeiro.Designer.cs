@@ -373,6 +373,7 @@
             this.lblDia.Size = new System.Drawing.Size(57, 20);
             this.lblDia.TabIndex = 12;
             this.lblDia.Text = "label1";
+            this.lblDia.Click += new System.EventHandler(this.lblDia_Click);
             // 
             // lblHora
             // 
