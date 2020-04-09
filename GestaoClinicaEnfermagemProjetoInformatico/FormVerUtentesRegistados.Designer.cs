@@ -101,10 +101,10 @@
             // 
             // dataGridViewUtentes
             // 
+            this.dataGridViewUtentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewUtentes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.dataGridViewUtentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewUtentes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dataGridViewUtentes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewUtentes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -124,7 +124,7 @@
             this.dataGridViewUtentes.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewUtentes.EnableHeadersVisualStyles = false;
             this.dataGridViewUtentes.GridColor = System.Drawing.Color.SteelBlue;
-            this.dataGridViewUtentes.Location = new System.Drawing.Point(6, 101);
+            this.dataGridViewUtentes.Location = new System.Drawing.Point(13, 131);
             this.dataGridViewUtentes.Name = "dataGridViewUtentes";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
@@ -149,7 +149,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label3.Location = new System.Drawing.Point(546, 58);
+            this.label3.Location = new System.Drawing.Point(544, 73);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(193, 20);
             this.label3.TabIndex = 7;
@@ -158,7 +158,7 @@
             // txtNIF
             // 
             this.txtNIF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNIF.Location = new System.Drawing.Point(783, 52);
+            this.txtNIF.Location = new System.Drawing.Point(779, 73);
             this.txtNIF.Name = "txtNIF";
             this.txtNIF.Size = new System.Drawing.Size(228, 26);
             this.txtNIF.TabIndex = 6;
@@ -169,7 +169,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label1.Location = new System.Drawing.Point(38, 58);
+            this.label1.Location = new System.Drawing.Point(36, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(209, 20);
             this.label1.TabIndex = 5;
@@ -178,7 +178,7 @@
             // txtNome
             // 
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(275, 52);
+            this.txtNome.Location = new System.Drawing.Point(273, 70);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(228, 26);
             this.txtNome.TabIndex = 4;

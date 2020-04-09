@@ -21,6 +21,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<AgendamentoConsultaGridView> consultaAgendada = new List<AgendamentoConsultaGridView>();
         private List<AgendamentoConsultaGridView> auxiliar = new List<AgendamentoConsultaGridView>();
         private Paciente paciente = null;
+        public override bool AutoSize { get; set; }
+
         public FormMenu(Enfermeiro enf)
         {
            
@@ -36,7 +38,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
             }
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
 
         }
 
@@ -358,6 +359,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             MenuMarcacoes menu = new MenuMarcacoes(enfermeiro, paciente, this);
             menu.Show();
+        }
+
+        private void dataGridViewConsultas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

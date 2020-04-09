@@ -105,7 +105,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label3.Location = new System.Drawing.Point(514, 113);
+            this.label3.Location = new System.Drawing.Point(534, 165);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(193, 20);
             this.label3.TabIndex = 56;
@@ -114,7 +114,7 @@
             // txtNIF
             // 
             this.txtNIF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNIF.Location = new System.Drawing.Point(751, 107);
+            this.txtNIF.Location = new System.Drawing.Point(749, 159);
             this.txtNIF.Name = "txtNIF";
             this.txtNIF.Size = new System.Drawing.Size(228, 26);
             this.txtNIF.TabIndex = 55;
@@ -125,7 +125,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label4.Location = new System.Drawing.Point(6, 113);
+            this.label4.Location = new System.Drawing.Point(26, 165);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(209, 20);
             this.label4.TabIndex = 54;
@@ -134,7 +134,7 @@
             // txtNome
             // 
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(243, 107);
+            this.txtNome.Location = new System.Drawing.Point(263, 159);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(228, 26);
             this.txtNome.TabIndex = 53;
@@ -142,10 +142,12 @@
             // 
             // dataGridViewConsultas
             // 
+            this.dataGridViewConsultas.AllowUserToAddRows = false;
+            this.dataGridViewConsultas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewConsultas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewConsultas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.dataGridViewConsultas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewConsultas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dataGridViewConsultas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewConsultas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -165,8 +167,9 @@
             this.dataGridViewConsultas.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewConsultas.EnableHeadersVisualStyles = false;
             this.dataGridViewConsultas.GridColor = System.Drawing.Color.SteelBlue;
-            this.dataGridViewConsultas.Location = new System.Drawing.Point(3, 162);
+            this.dataGridViewConsultas.Location = new System.Drawing.Point(144, 214);
             this.dataGridViewConsultas.Name = "dataGridViewConsultas";
+            this.dataGridViewConsultas.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -181,8 +184,9 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridViewConsultas.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewConsultas.Size = new System.Drawing.Size(1093, 254);
+            this.dataGridViewConsultas.Size = new System.Drawing.Size(855, 254);
             this.dataGridViewConsultas.TabIndex = 51;
+            this.dataGridViewConsultas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConsultas_CellContentClick);
             // 
             // button2
             // 
@@ -191,7 +195,7 @@
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.ConsultaRegistar;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(5, 5);
+            this.button2.Location = new System.Drawing.Point(447, 29);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;

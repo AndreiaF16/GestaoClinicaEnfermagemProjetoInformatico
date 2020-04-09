@@ -199,9 +199,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[9].HeaderText = "Código Postal";
             dataGridViewUtentes.Columns[10].HeaderText = "Código Postal";
             dataGridViewUtentes.Columns[11].HeaderText = "Localidade";
+            dataGridViewUtentes.Columns[0].Width = dataGridViewUtentes.Columns[0].Width + 50;
+            dataGridViewUtentes.Columns[2].Width = dataGridViewUtentes.Columns[2].Width + 50;
+
             auxiliar = utentes;
+
             dataGridViewUtentes.Update();
             dataGridViewUtentes.Refresh();
+
         }
 
         public void LimpaCampos(Control.ControlCollection textBoxs)
