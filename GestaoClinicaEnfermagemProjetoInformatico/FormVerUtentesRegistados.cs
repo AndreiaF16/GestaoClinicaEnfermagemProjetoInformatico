@@ -226,7 +226,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dataGridViewUtentes.SelectedRows.Count > 0 && dataGridViewUtentes.Rows[dataGridViewUtentes.CurrentCell.RowIndex].Cells[0].Value.ToString() == "")
+            if (dataGridViewUtentes.Rows.Count > 1)
             {
                 int i = dataGridViewUtentes.CurrentCell.RowIndex;
                 UtenteGridView utente = null; ;
@@ -285,7 +285,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             private void button2_Click(object sender, EventArgs e)
         {
-            if (dataGridViewUtentes.Rows.Count > 0 && dataGridViewUtentes.Rows[dataGridViewUtentes.CurrentCell.RowIndex].Cells[0].Value.ToString() == "")
+            if (dataGridViewUtentes.Rows.Count > 1 )
             {
                 int i = dataGridViewUtentes.CurrentCell.RowIndex;
                 UtenteGridView utente = null; ;
@@ -333,6 +333,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 RegistarConsulta registarConsulta = new RegistarConsulta(enfermeiro, paciente, this);
                 registarConsulta.Show();
             }
+            else
             {
                 MessageBox.Show("Não é possivel registar uma consulta porque não tem utentes associados!!!");
             }
@@ -392,7 +393,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (dataGridViewUtentes.SelectedRows.Count > 0 && dataGridViewUtentes.Rows[dataGridViewUtentes.CurrentCell.RowIndex].Cells[0].Value.ToString() == "")
+            if (dataGridViewUtentes.Rows.Count > 1)
             {
                // HistoricoPaciente historicoPaciente = new HistoricoPaciente();
 

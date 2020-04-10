@@ -93,7 +93,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            VerEnfermeirosRegistos verEnfermeirosRegistos = new VerEnfermeirosRegistos();
+            VerEnfermeirosRegistados verEnfermeirosRegistos = new VerEnfermeirosRegistados();
             verEnfermeirosRegistos.Show();
         }
 

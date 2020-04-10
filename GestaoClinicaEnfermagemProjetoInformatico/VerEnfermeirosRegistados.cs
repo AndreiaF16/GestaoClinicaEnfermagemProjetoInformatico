@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class VerEnfermeirosRegistos : Form
+    public partial class VerEnfermeirosRegistados : Form
     {
 
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         List<EnfermeiroGridView> enfermeiros = new List<EnfermeiroGridView>();
-        public VerEnfermeirosRegistos()
+        public VerEnfermeirosRegistados()
         {
             InitializeComponent();
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
@@ -122,7 +122,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            VerEnfermeirosRegistos verEnfermeirosRegistos = new VerEnfermeirosRegistos();
+            VerEnfermeirosRegistados verEnfermeirosRegistos = new VerEnfermeirosRegistados();
             verEnfermeirosRegistos.Show();
         }
     }

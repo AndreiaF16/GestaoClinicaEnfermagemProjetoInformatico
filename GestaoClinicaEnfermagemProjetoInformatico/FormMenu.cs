@@ -212,7 +212,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dataGridViewConsultasHoje.SelectedRows.Count > 0 && dataGridViewConsultasHoje.Rows[dataGridViewConsultasHoje.CurrentCell.RowIndex].Cells[0].Value.ToString() == "")
+            if (dataGridViewConsultasHoje.Rows.Count > 0 )
             {
                 int i = dataGridViewConsultasHoje.CurrentCell.RowIndex;
                 AgendamentoConsultaGridView consultaAgendada = null; ;

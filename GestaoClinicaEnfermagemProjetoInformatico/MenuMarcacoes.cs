@@ -32,7 +32,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnAlteraPassword_Click(object sender, EventArgs e)
         {
-            if (dataGridViewMarcacoes.SelectedRows.Count > 0 && dataGridViewMarcacoes.Rows[dataGridViewMarcacoes.CurrentCell.RowIndex].Cells[0].Value.ToString() =="" )
+            if (dataGridViewMarcacoes.Rows.Count > 1)
             {
 
                 int i = dataGridViewMarcacoes.CurrentCell.RowIndex;

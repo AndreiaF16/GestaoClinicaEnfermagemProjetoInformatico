@@ -241,12 +241,12 @@
     <Compile Include="Validacoes.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="VerEnfermeirosRegistos.cs">
+    <Compile Include="VerEnfermeirosRegistados.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="VerEnfermeirosRegistos.Designer.cs">
-      <DependentUpon>VerEnfermeirosRegistos.cs</DependentUpon>
+    <Compile Include="VerEnfermeirosRegistados.Designer.cs">
+      <DependentUpon>VerEnfermeirosRegistados.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="VisualizarHistoricoPaciente.cs">
@@ -352,8 +352,8 @@
     <EmbeddedResource Include="SendCodeUsername.resx">
       <DependentUpon>SendCodeUsername.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerEnfermeirosRegistos.resx">
-      <DependentUpon>VerEnfermeirosRegistos.cs</DependentUpon>
+    <EmbeddedResource Include="VerEnfermeirosRegistados.resx">
+      <DependentUpon>VerEnfermeirosRegistados.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="VisualizarHistoricoPaciente.resx">
