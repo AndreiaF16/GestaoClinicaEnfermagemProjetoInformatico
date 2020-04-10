@@ -38,16 +38,12 @@
             this.lblDia = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
             this.panelTitulo = new System.Windows.Forms.Panel();
-            this.btnMaximizar = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnFechar = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.lblDorMaxima = new System.Windows.Forms.Label();
             this.lblDorMuitoForte = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.labelData = new System.Windows.Forms.Label();
+            this.labelHora = new System.Windows.Forms.Label();
             this.lblDorForte = new System.Windows.Forms.Label();
             this.lblDorModerada = new System.Windows.Forms.Label();
             this.lblDorLigeira = new System.Windows.Forms.Label();
@@ -60,32 +56,38 @@
             this.lblHistoriaAtual = new System.Windows.Forms.Label();
             this.txtHistoriaAtual = new System.Windows.Forms.TextBox();
             this.panelFormulario = new System.Windows.Forms.Panel();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnLocalizacaoDor = new System.Windows.Forms.Button();
-            this.btnDorMaxima = new System.Windows.Forms.Button();
-            this.btnDorMuitoForte = new System.Windows.Forms.Button();
-            this.btnDorForte = new System.Windows.Forms.Button();
-            this.btnDorModerada = new System.Windows.Forms.Button();
-            this.btnDorLigeira = new System.Windows.Forms.Button();
-            this.btnSemDor = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.painelPrincipal = new System.Windows.Forms.Panel();
-            this.labelData = new System.Windows.Forms.Label();
-            this.labelHora = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnSemDor = new System.Windows.Forms.Button();
+            this.btnDorLigeira = new System.Windows.Forms.Button();
+            this.btnDorModerada = new System.Windows.Forms.Button();
+            this.btnDorMuitoForte = new System.Windows.Forms.Button();
+            this.btnDorForte = new System.Windows.Forms.Button();
+            this.btnLocalizacaoDor = new System.Windows.Forms.Button();
+            this.btnDorMaxima = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnMaximizar = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnFechar = new System.Windows.Forms.PictureBox();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.panelTitulo.SuspendLayout();
+            this.panelMenu.SuspendLayout();
+            this.panelFormulario.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.painelPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
-            this.panelMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panelFormulario.SuspendLayout();
-            this.painelPrincipal.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblEscala
@@ -103,7 +105,7 @@
             // txtValorConsulta
             // 
             this.txtValorConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorConsulta.Location = new System.Drawing.Point(850, 225);
+            this.txtValorConsulta.Location = new System.Drawing.Point(854, 447);
             this.txtValorConsulta.Name = "txtValorConsulta";
             this.txtValorConsulta.Size = new System.Drawing.Size(114, 26);
             this.txtValorConsulta.TabIndex = 24;
@@ -114,7 +116,7 @@
             this.lblCustoConsulta.AutoSize = true;
             this.lblCustoConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustoConsulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblCustoConsulta.Location = new System.Drawing.Point(846, 189);
+            this.lblCustoConsulta.Location = new System.Drawing.Point(850, 411);
             this.lblCustoConsulta.Name = "lblCustoConsulta";
             this.lblCustoConsulta.Size = new System.Drawing.Size(132, 20);
             this.lblCustoConsulta.TabIndex = 23;
@@ -178,48 +180,6 @@
             this.panelTitulo.Size = new System.Drawing.Size(1268, 40);
             this.panelTitulo.TabIndex = 0;
             // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(1213, 11);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMaximizar.TabIndex = 7;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Visible = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1232, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // btnFechar
-            // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
-            this.btnFechar.Location = new System.Drawing.Point(1509, 11);
-            this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(16, 16);
-            this.btnFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnFechar.TabIndex = 7;
-            this.btnFechar.TabStop = false;
-            // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
@@ -230,20 +190,6 @@
             this.lblTitulo.Size = new System.Drawing.Size(312, 20);
             this.lblTitulo.TabIndex = 6;
             this.lblTitulo.Text = "Siltes Saúde - Clinica de Enfermagem";
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(1197, 11);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimizar.TabIndex = 3;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
             // lblDorMaxima
             // 
@@ -278,38 +224,30 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 40);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(232, 833);
+            this.panelMenu.Size = new System.Drawing.Size(232, 748);
             this.panelMenu.TabIndex = 1;
             // 
-            // btnVoltar
+            // labelData
             // 
-            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
-            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVoltar.Location = new System.Drawing.Point(0, 652);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
-            this.btnVoltar.TabIndex = 6;
-            this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnVoltar.UseVisualStyleBackColor = false;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            this.labelData.AutoSize = true;
+            this.labelData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelData.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelData.Location = new System.Drawing.Point(7, 138);
+            this.labelData.Name = "labelData";
+            this.labelData.Size = new System.Drawing.Size(57, 20);
+            this.labelData.TabIndex = 14;
+            this.labelData.Text = "label1";
             // 
-            // pictureBox2
+            // labelHora
             // 
-            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
+            this.labelHora.AutoSize = true;
+            this.labelHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHora.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelHora.Location = new System.Drawing.Point(5, 202);
+            this.labelHora.Name = "labelHora";
+            this.labelHora.Size = new System.Drawing.Size(57, 20);
+            this.labelHora.TabIndex = 13;
+            this.labelHora.Text = "label1";
             // 
             // lblDorForte
             // 
@@ -423,6 +361,8 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.button2);
+            this.panelFormulario.Controls.Add(this.button1);
             this.panelFormulario.Controls.Add(this.groupBox2);
             this.panelFormulario.Controls.Add(this.groupBox1);
             this.panelFormulario.Controls.Add(this.label1);
@@ -433,50 +373,167 @@
             this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFormulario.Location = new System.Drawing.Point(232, 40);
             this.panelFormulario.Name = "panelFormulario";
-            this.panelFormulario.Size = new System.Drawing.Size(1036, 833);
+            this.panelFormulario.Size = new System.Drawing.Size(1036, 748);
             this.panelFormulario.TabIndex = 2;
             // 
-            // btnCancelar
+            // groupBox2
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnCancelar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._91025699_237925080669313_1596905141716385792_n;
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(823, 394);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnCancelar.Size = new System.Drawing.Size(170, 78);
-            this.btnCancelar.TabIndex = 26;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.groupBox2.Controls.Add(this.lblHistoriaAtual);
+            this.groupBox2.Controls.Add(this.txtHistoriaAtual);
+            this.groupBox2.Controls.Add(this.lblSintomatologia);
+            this.groupBox2.Controls.Add(this.txtSintomatologia);
+            this.groupBox2.Controls.Add(this.lblSinais);
+            this.groupBox2.Controls.Add(this.txtSinais);
+            this.groupBox2.Controls.Add(this.lblTensaoArterial);
+            this.groupBox2.Controls.Add(this.txtTensaoArterial);
+            this.groupBox2.Location = new System.Drawing.Point(49, 52);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(725, 441);
+            this.groupBox2.TabIndex = 28;
+            this.groupBox2.TabStop = false;
             // 
-            // btnGuardar
+            // groupBox1
             // 
-            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90876545_253870845754605_8447427972255711232_n;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(823, 312);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGuardar.Size = new System.Drawing.Size(170, 78);
-            this.btnGuardar.TabIndex = 25;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.groupBox1.Controls.Add(this.btnSemDor);
+            this.groupBox1.Controls.Add(this.lblSemDor);
+            this.groupBox1.Controls.Add(this.btnDorLigeira);
+            this.groupBox1.Controls.Add(this.lblDorLigeira);
+            this.groupBox1.Controls.Add(this.btnDorModerada);
+            this.groupBox1.Controls.Add(this.lblDorModerada);
+            this.groupBox1.Controls.Add(this.btnDorMuitoForte);
+            this.groupBox1.Controls.Add(this.btnDorForte);
+            this.groupBox1.Controls.Add(this.btnLocalizacaoDor);
+            this.groupBox1.Controls.Add(this.lblDorForte);
+            this.groupBox1.Controls.Add(this.btnDorMaxima);
+            this.groupBox1.Controls.Add(this.lblDorMuitoForte);
+            this.groupBox1.Controls.Add(this.lblDorMaxima);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(49, 509);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(725, 188);
+            this.groupBox1.TabIndex = 27;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Escala da Dor:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.label1.Location = new System.Drawing.Point(6, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Utente: ";
+            // 
+            // painelPrincipal
+            // 
+            this.painelPrincipal.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.painelPrincipal.Controls.Add(this.panelFormulario);
+            this.painelPrincipal.Controls.Add(this.panelMenu);
+            this.painelPrincipal.Controls.Add(this.panelTitulo);
+            this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.painelPrincipal.Name = "painelPrincipal";
+            this.painelPrincipal.Size = new System.Drawing.Size(1268, 788);
+            this.painelPrincipal.TabIndex = 4;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button2.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_visualizar_arquivo_50;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.Location = new System.Drawing.Point(823, 163);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button2.Size = new System.Drawing.Size(170, 78);
+            this.button2.TabIndex = 31;
+            this.button2.Text = "Ver Historico Paciente";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_adicionar_50;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.Location = new System.Drawing.Point(823, 52);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(170, 78);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "Adicionar Historico Paciente";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnSemDor
+            // 
+            this.btnSemDor.BackColor = System.Drawing.Color.Lime;
+            this.btnSemDor.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_feliz_26;
+            this.btnSemDor.Location = new System.Drawing.Point(15, 25);
+            this.btnSemDor.Name = "btnSemDor";
+            this.btnSemDor.Size = new System.Drawing.Size(83, 44);
+            this.btnSemDor.TabIndex = 8;
+            this.btnSemDor.UseVisualStyleBackColor = false;
+            this.btnSemDor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnSemDor_MouseClick);
+            // 
+            // btnDorLigeira
+            // 
+            this.btnDorLigeira.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnDorLigeira.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_feliz_261;
+            this.btnDorLigeira.Location = new System.Drawing.Point(134, 25);
+            this.btnDorLigeira.Name = "btnDorLigeira";
+            this.btnDorLigeira.Size = new System.Drawing.Size(83, 44);
+            this.btnDorLigeira.TabIndex = 10;
+            this.btnDorLigeira.UseVisualStyleBackColor = false;
+            this.btnDorLigeira.Click += new System.EventHandler(this.btnDorLigeira_Click);
+            // 
+            // btnDorModerada
+            // 
+            this.btnDorModerada.BackColor = System.Drawing.Color.Gold;
+            this.btnDorModerada.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_neutro_30;
+            this.btnDorModerada.Location = new System.Drawing.Point(255, 25);
+            this.btnDorModerada.Name = "btnDorModerada";
+            this.btnDorModerada.Size = new System.Drawing.Size(83, 44);
+            this.btnDorModerada.TabIndex = 12;
+            this.btnDorModerada.UseVisualStyleBackColor = false;
+            this.btnDorModerada.Click += new System.EventHandler(this.btnDorModerada_Click);
+            // 
+            // btnDorMuitoForte
+            // 
+            this.btnDorMuitoForte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnDorMuitoForte.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_triste_26;
+            this.btnDorMuitoForte.Location = new System.Drawing.Point(509, 25);
+            this.btnDorMuitoForte.Name = "btnDorMuitoForte";
+            this.btnDorMuitoForte.Size = new System.Drawing.Size(83, 44);
+            this.btnDorMuitoForte.TabIndex = 17;
+            this.btnDorMuitoForte.UseVisualStyleBackColor = false;
+            this.btnDorMuitoForte.Click += new System.EventHandler(this.btnDorMuitoForte_Click);
+            // 
+            // btnDorForte
+            // 
+            this.btnDorForte.BackColor = System.Drawing.Color.Orange;
+            this.btnDorForte.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_neutro_30;
+            this.btnDorForte.Location = new System.Drawing.Point(379, 25);
+            this.btnDorForte.Name = "btnDorForte";
+            this.btnDorForte.Size = new System.Drawing.Size(83, 44);
+            this.btnDorForte.TabIndex = 14;
+            this.btnDorForte.UseVisualStyleBackColor = false;
+            this.btnDorForte.Click += new System.EventHandler(this.btnDorForte_Click);
             // 
             // btnLocalizacaoDor
             // 
@@ -504,170 +561,159 @@
             this.btnDorMaxima.UseVisualStyleBackColor = false;
             this.btnDorMaxima.Click += new System.EventHandler(this.btnDorMaxima_Click);
             // 
-            // btnDorMuitoForte
+            // btnCancelar
             // 
-            this.btnDorMuitoForte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnDorMuitoForte.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_triste_26;
-            this.btnDorMuitoForte.Location = new System.Drawing.Point(509, 25);
-            this.btnDorMuitoForte.Name = "btnDorMuitoForte";
-            this.btnDorMuitoForte.Size = new System.Drawing.Size(83, 44);
-            this.btnDorMuitoForte.TabIndex = 17;
-            this.btnDorMuitoForte.UseVisualStyleBackColor = false;
-            this.btnDorMuitoForte.Click += new System.EventHandler(this.btnDorMuitoForte_Click);
+            this.btnCancelar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnCancelar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._91025699_237925080669313_1596905141716385792_n;
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnCancelar.Location = new System.Drawing.Point(827, 616);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnCancelar.Size = new System.Drawing.Size(170, 78);
+            this.btnCancelar.TabIndex = 26;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // btnDorForte
+            // btnGuardar
             // 
-            this.btnDorForte.BackColor = System.Drawing.Color.Orange;
-            this.btnDorForte.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_neutro_30;
-            this.btnDorForte.Location = new System.Drawing.Point(379, 25);
-            this.btnDorForte.Name = "btnDorForte";
-            this.btnDorForte.Size = new System.Drawing.Size(83, 44);
-            this.btnDorForte.TabIndex = 14;
-            this.btnDorForte.UseVisualStyleBackColor = false;
-            this.btnDorForte.Click += new System.EventHandler(this.btnDorForte_Click);
+            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90876545_253870845754605_8447427972255711232_n;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(827, 534);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGuardar.Size = new System.Drawing.Size(170, 78);
+            this.btnGuardar.TabIndex = 25;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // btnDorModerada
+            // btnVoltar
             // 
-            this.btnDorModerada.BackColor = System.Drawing.Color.Gold;
-            this.btnDorModerada.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_neutro_30;
-            this.btnDorModerada.Location = new System.Drawing.Point(255, 25);
-            this.btnDorModerada.Name = "btnDorModerada";
-            this.btnDorModerada.Size = new System.Drawing.Size(83, 44);
-            this.btnDorModerada.TabIndex = 12;
-            this.btnDorModerada.UseVisualStyleBackColor = false;
-            this.btnDorModerada.Click += new System.EventHandler(this.btnDorModerada_Click);
+            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
+            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnVoltar.Location = new System.Drawing.Point(0, 652);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
+            this.btnVoltar.TabIndex = 6;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnVoltar.UseVisualStyleBackColor = false;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
-            // btnDorLigeira
+            // pictureBox2
             // 
-            this.btnDorLigeira.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnDorLigeira.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_feliz_261;
-            this.btnDorLigeira.Location = new System.Drawing.Point(134, 25);
-            this.btnDorLigeira.Name = "btnDorLigeira";
-            this.btnDorLigeira.Size = new System.Drawing.Size(83, 44);
-            this.btnDorLigeira.TabIndex = 10;
-            this.btnDorLigeira.UseVisualStyleBackColor = false;
-            this.btnDorLigeira.Click += new System.EventHandler(this.btnDorLigeira_Click);
+            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
             // 
-            // btnSemDor
+            // btnMaximizar
             // 
-            this.btnSemDor.BackColor = System.Drawing.Color.Lime;
-            this.btnSemDor.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_feliz_26;
-            this.btnSemDor.Location = new System.Drawing.Point(15, 25);
-            this.btnSemDor.Name = "btnSemDor";
-            this.btnSemDor.Size = new System.Drawing.Size(83, 44);
-            this.btnSemDor.TabIndex = 8;
-            this.btnSemDor.UseVisualStyleBackColor = false;
-            this.btnSemDor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnSemDor_MouseClick);
+            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
+            this.btnMaximizar.Location = new System.Drawing.Point(1213, 11);
+            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
+            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMaximizar.TabIndex = 7;
+            this.btnMaximizar.TabStop = false;
+            this.btnMaximizar.Visible = false;
+            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
             // 
-            // label1
+            // pictureBox1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label1.Location = new System.Drawing.Point(6, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Utente: ";
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1232, 11);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // painelPrincipal
+            // btnFechar
             // 
-            this.painelPrincipal.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.painelPrincipal.Controls.Add(this.panelFormulario);
-            this.painelPrincipal.Controls.Add(this.panelMenu);
-            this.painelPrincipal.Controls.Add(this.panelTitulo);
-            this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.painelPrincipal.Name = "painelPrincipal";
-            this.painelPrincipal.Size = new System.Drawing.Size(1268, 873);
-            this.painelPrincipal.TabIndex = 4;
+            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
+            this.btnFechar.Location = new System.Drawing.Point(1509, 11);
+            this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(16, 16);
+            this.btnFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnFechar.TabIndex = 7;
+            this.btnFechar.TabStop = false;
             // 
-            // labelData
+            // btnMinimizar
             // 
-            this.labelData.AutoSize = true;
-            this.labelData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelData.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelData.Location = new System.Drawing.Point(7, 138);
-            this.labelData.Name = "labelData";
-            this.labelData.Size = new System.Drawing.Size(57, 20);
-            this.labelData.TabIndex = 14;
-            this.labelData.Text = "label1";
-            // 
-            // labelHora
-            // 
-            this.labelHora.AutoSize = true;
-            this.labelHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHora.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelHora.Location = new System.Drawing.Point(5, 202);
-            this.labelHora.Name = "labelHora";
-            this.labelHora.Size = new System.Drawing.Size(57, 20);
-            this.labelHora.TabIndex = 13;
-            this.labelHora.Text = "label1";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnSemDor);
-            this.groupBox1.Controls.Add(this.lblSemDor);
-            this.groupBox1.Controls.Add(this.btnDorLigeira);
-            this.groupBox1.Controls.Add(this.lblDorLigeira);
-            this.groupBox1.Controls.Add(this.btnDorModerada);
-            this.groupBox1.Controls.Add(this.lblDorModerada);
-            this.groupBox1.Controls.Add(this.btnDorMuitoForte);
-            this.groupBox1.Controls.Add(this.btnDorForte);
-            this.groupBox1.Controls.Add(this.btnLocalizacaoDor);
-            this.groupBox1.Controls.Add(this.lblDorForte);
-            this.groupBox1.Controls.Add(this.btnDorMaxima);
-            this.groupBox1.Controls.Add(this.lblDorMuitoForte);
-            this.groupBox1.Controls.Add(this.lblDorMaxima);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(49, 509);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(725, 188);
-            this.groupBox1.TabIndex = 27;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Escala da Dor:";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.lblHistoriaAtual);
-            this.groupBox2.Controls.Add(this.txtHistoriaAtual);
-            this.groupBox2.Controls.Add(this.lblSintomatologia);
-            this.groupBox2.Controls.Add(this.txtSintomatologia);
-            this.groupBox2.Controls.Add(this.lblSinais);
-            this.groupBox2.Controls.Add(this.txtSinais);
-            this.groupBox2.Controls.Add(this.lblTensaoArterial);
-            this.groupBox2.Controls.Add(this.txtTensaoArterial);
-            this.groupBox2.Location = new System.Drawing.Point(49, 52);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(725, 441);
-            this.groupBox2.TabIndex = 28;
-            this.groupBox2.TabStop = false;
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
+            this.btnMinimizar.Location = new System.Drawing.Point(1197, 11);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizar.TabIndex = 3;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
             // IniciarConsultaMarcada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1268, 873);
+            this.ClientSize = new System.Drawing.Size(1268, 788);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "IniciarConsultaMarcada";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
+            this.panelMenu.ResumeLayout(false);
+            this.panelMenu.PerformLayout();
+            this.panelFormulario.ResumeLayout(false);
+            this.panelFormulario.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.painelPrincipal.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
-            this.panelMenu.ResumeLayout(false);
-            this.panelMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panelFormulario.ResumeLayout(false);
-            this.panelFormulario.PerformLayout();
-            this.painelPrincipal.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -719,5 +765,7 @@
         private System.Windows.Forms.Label labelHora;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

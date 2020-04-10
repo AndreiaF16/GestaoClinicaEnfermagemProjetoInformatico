@@ -40,7 +40,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.horaConsulta = new System.Windows.Forms.DateTimePicker();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.dataConsulta = new System.Windows.Forms.DateTimePicker();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.dataGridViewConsultas = new System.Windows.Forms.DataGridView();
@@ -80,7 +79,7 @@
             this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
             this.painelPrincipal.Name = "painelPrincipal";
-            this.painelPrincipal.Size = new System.Drawing.Size(1076, 774);
+            this.painelPrincipal.Size = new System.Drawing.Size(1272, 774);
             this.painelPrincipal.TabIndex = 4;
             // 
             // panelFormulario
@@ -93,7 +92,7 @@
             this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFormulario.Location = new System.Drawing.Point(232, 40);
             this.panelFormulario.Name = "panelFormulario";
-            this.panelFormulario.Size = new System.Drawing.Size(844, 734);
+            this.panelFormulario.Size = new System.Drawing.Size(1040, 734);
             this.panelFormulario.TabIndex = 2;
             // 
             // groupBox1
@@ -101,12 +100,11 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.horaConsulta);
-            this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.dataConsulta);
             this.groupBox1.Controls.Add(this.btnGuardar);
-            this.groupBox1.Location = new System.Drawing.Point(24, 97);
+            this.groupBox1.Location = new System.Drawing.Point(194, 141);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(808, 146);
+            this.groupBox1.Size = new System.Drawing.Size(692, 146);
             this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
             this.groupBox1.UseCompatibleTextRendering = true;
@@ -140,27 +138,6 @@
             this.horaConsulta.Size = new System.Drawing.Size(200, 26);
             this.horaConsulta.TabIndex = 9;
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnCancelar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._91025699_237925080669313_1596905141716385792_n;
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(630, 27);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnCancelar.Size = new System.Drawing.Size(170, 78);
-            this.btnCancelar.TabIndex = 6;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
             // dataConsulta
             // 
             this.dataConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -174,7 +151,7 @@
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90876545_253870845754605_8447427972255711232_n;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
@@ -185,9 +162,9 @@
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnGuardar.Size = new System.Drawing.Size(170, 78);
             this.btnGuardar.TabIndex = 5;
-            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Text = "Registar Consulta";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
@@ -214,9 +191,10 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewConsultas.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewConsultas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewConsultas.EnableHeadersVisualStyles = false;
             this.dataGridViewConsultas.GridColor = System.Drawing.Color.SteelBlue;
-            this.dataGridViewConsultas.Location = new System.Drawing.Point(24, 354);
+            this.dataGridViewConsultas.Location = new System.Drawing.Point(172, 338);
             this.dataGridViewConsultas.Name = "dataGridViewConsultas";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
@@ -269,6 +247,7 @@
             // 
             // btnVoltar
             // 
+            this.btnVoltar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
             this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -310,7 +289,7 @@
             this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitulo.Location = new System.Drawing.Point(0, 0);
             this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new System.Drawing.Size(1076, 40);
+            this.panelTitulo.Size = new System.Drawing.Size(1272, 40);
             this.panelTitulo.TabIndex = 0;
             // 
             // lblDia
@@ -340,7 +319,7 @@
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(1021, 11);
+            this.btnMaximizar.Location = new System.Drawing.Point(1217, 11);
             this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
@@ -355,7 +334,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1040, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(1236, 11);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(16, 16);
@@ -369,7 +348,7 @@
             this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
-            this.btnFechar.Location = new System.Drawing.Point(1317, 11);
+            this.btnFechar.Location = new System.Drawing.Point(1513, 11);
             this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(16, 16);
@@ -393,7 +372,7 @@
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(1005, 11);
+            this.btnMinimizar.Location = new System.Drawing.Point(1201, 11);
             this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
@@ -411,7 +390,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1076, 774);
+            this.ClientSize = new System.Drawing.Size(1272, 774);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RegistarConsulta";
@@ -455,7 +434,6 @@
         private System.Windows.Forms.Timer hora;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dataConsulta;

@@ -36,6 +36,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVerUtentesRegistados));
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.dataGridViewUtentes = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNIF = new System.Windows.Forms.TextBox();
@@ -86,6 +87,7 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.button4);
             this.panelFormulario.Controls.Add(this.dataGridViewUtentes);
             this.panelFormulario.Controls.Add(this.label3);
             this.panelFormulario.Controls.Add(this.txtNIF);
@@ -98,6 +100,27 @@
             this.panelFormulario.Size = new System.Drawing.Size(1154, 709);
             this.panelFormulario.TabIndex = 2;
             this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button4.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_visualizar_arquivo_50;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.Black;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button4.Location = new System.Drawing.Point(524, 575);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Name = "button4";
+            this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button4.Size = new System.Drawing.Size(170, 78);
+            this.button4.TabIndex = 51;
+            this.button4.Text = "Ver Historico Paciente";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // dataGridViewUtentes
             // 
@@ -121,6 +144,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewUtentes.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewUtentes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewUtentes.EnableHeadersVisualStyles = false;
             this.dataGridViewUtentes.GridColor = System.Drawing.Color.SteelBlue;
             this.dataGridViewUtentes.Location = new System.Drawing.Point(13, 131);
@@ -469,5 +493,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }

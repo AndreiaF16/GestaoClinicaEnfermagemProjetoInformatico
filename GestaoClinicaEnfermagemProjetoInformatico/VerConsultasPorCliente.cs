@@ -18,14 +18,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Enfermeiro enfermeiro = null;
         private List<AgendamentoConsultaGridView> auxiliar = new List<AgendamentoConsultaGridView>();
         private List<AgendamentoConsultaGridView> agendamentos = new List<AgendamentoConsultaGridView>();
-        private Paciente paciente = null;
-        private FormMenu formMenu = null;
-        public VerConsultasPorCliente(Enfermeiro enf, Paciente pac, FormMenu formM)
+        public VerConsultasPorCliente(Enfermeiro enf)
         {
             InitializeComponent();
             enfermeiro = enf;
-            paciente = pac;
-            formMenu = formM;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             UpdateGridViewConsultas();
         }
@@ -103,8 +99,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 agendamentos.Add(agendamento);
             }
             auxiliar = agendamentos;
-
-            dataGridViewConsultas.DataSource = filtrosDePesquisa();
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
+            dataGridViewConsultas.DataSource = bindingSource1;
+           // dataGridViewConsultas.DataSource = filtrosDePesquisa();
             dataGridViewConsultas.Columns[0].HeaderText = "Hora Consulta";
             dataGridViewConsultas.Columns[1].HeaderText = "Data Consulta";
             dataGridViewConsultas.Columns[2].HeaderText = "Nome Utente";

@@ -131,6 +131,7 @@
             this.dataGridViewEnfermeiros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewEnfermeiros.ColumnHeadersHeight = 30;
             this.dataGridViewEnfermeiros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewEnfermeiros.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewEnfermeiros.Location = new System.Drawing.Point(10, 117);
             this.dataGridViewEnfermeiros.MultiSelect = false;
             this.dataGridViewEnfermeiros.Name = "dataGridViewEnfermeiros";

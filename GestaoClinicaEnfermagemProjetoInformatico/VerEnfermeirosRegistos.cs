@@ -60,9 +60,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
 
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = enfermeiros };
+            dataGridViewEnfermeiros.DataSource = bindingSource1;
 
-
-            dataGridViewEnfermeiros.DataSource = enfermeiros;
+           // dataGridViewEnfermeiros.DataSource = enfermeiros;
             dataGridViewEnfermeiros.Columns[0].HeaderText = "Nome";
             dataGridViewEnfermeiros.Columns[1].HeaderText = "Nome Utilizador";
             dataGridViewEnfermeiros.Columns[2].HeaderText = "Função Desempenhada";

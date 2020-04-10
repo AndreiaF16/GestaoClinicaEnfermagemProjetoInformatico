@@ -91,6 +91,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+
             this.LimpaCampos(this.panelFormulario.Controls);
 
         }
@@ -195,7 +196,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateGridViewConsultas()
         {
-            dataGridViewConsultas.DataSource = new List<AgendamentoConsultaGridView>();
+            //dataGridViewConsultas.DataSource = new List<AgendamentoConsultaGridView>();
            List<AgendamentoConsultaGridView> consultasAgendadas = new List<AgendamentoConsultaGridView>();
           //  consultaAgendada.Clear();
             conn.Open();
@@ -217,7 +218,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 };
                 consultasAgendadas.Add(agendamento); 
             }
-            dataGridViewConsultas.DataSource = consultasAgendadas;
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = consultasAgendadas };
+            dataGridViewConsultas.DataSource = bindingSource1;
+           // dataGridViewConsultas.DataSource = consultasAgendadas;
             dataGridViewConsultas.Columns[0].HeaderText = "Hora Consulta";
             dataGridViewConsultas.Columns[1].HeaderText = "Data Consulta";
             dataGridViewConsultas.Columns[2].HeaderText = "Nome Utente";

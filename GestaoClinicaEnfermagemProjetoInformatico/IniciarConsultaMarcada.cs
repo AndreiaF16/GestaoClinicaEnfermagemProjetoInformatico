@@ -13,11 +13,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class IniciarConsultaMarcada : Form
     {
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
         private Enfermeiro enfermeiro = null;
         private Paciente paciente = new Paciente();
         private FormMenu formMenu = null;
         private AgendamentoConsultaGridView agendamentoConsulta = null;
         private DateTime inicio;
+        private List<HistoricoPaciente> historicoPaciente = new List<HistoricoPaciente>();
+
         public IniciarConsultaMarcada(Enfermeiro enf, Paciente pac, FormMenu formM, AgendamentoConsultaGridView agendamento)
         {
             InitializeComponent();
@@ -31,7 +35,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             labelHora.Text = "Hora Inicio Consulta: " + inicio.ToString("HH:mm");
            
             labelData.ForeColor = Color.White;
-                
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -162,9 +168,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     string queryInsertData = "INSERT INTO Consulta(dataConsulta,horaInicioConsulta,tensaoArterial,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro,valorConsulta,horaFimConsulta) VALUES(' " + inicio.ToString("MM/dd/yyyy") + " ',' " + inicio.ToString("HH:mm") + " ',' " + tensaoArterial.ToString() + " ',' " + historiaAtual.ToString() + " ',' " + sintomatologia.ToString() + " ',' " + sinais.ToString() + " ',' " + escalaDor.ToString() + " ',' " + paciente.IdPaciente + " ',' " + enfermeiro.IdEnfermeiro + " ',' " + valor + " ',' " + horaFim.ToString("HH:mm") + "');";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.ExecuteNonQuery();
-                    //  string queryInsertDataLucro = "INSERT INTO Lucro(valor) VALUES(' " + valor.ToString() + "');";
-                    //   SqlCommand sqlCommand1 = new SqlCommand(queryInsertDataLucro, connection);
-                    //  sqlCommand1.ExecuteNonQuery();
+                
                     MessageBox.Show("Consulta efetuada com Sucesso!");
                     this.Close();
                     connection.Close();
@@ -208,6 +212,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {       
+            RegistarHistoricoDeDoenca adicionar = new RegistarHistoricoDeDoenca(paciente);
+            adicionar.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            HistoricoPaciente historicoPaciente = new HistoricoPaciente();
+
+
+            VisualizarHistoricoPaciente verHistoricoPaciente = new VisualizarHistoricoPaciente(paciente);
+            verHistoricoPaciente.Show();
         }
     }
 }

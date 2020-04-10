@@ -178,11 +178,17 @@
   <data name="91025699_237925080669313_1596905141716385792_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\91025699_237925080669313_1596905141716385792_n.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-editar-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-editar-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="90948238_2611584329165542_5438730959669166080_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\90948238_2611584329165542_5438730959669166080_n.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-feliz-261" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-feliz-261.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-adicionar-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-adicionar-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="identificacaoAnatomica1.jpg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\identificacaoAnatomica1.jpg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -232,7 +238,7 @@
   <data name="icons8-ver-detalhes-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-ver-detalhes-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-editar-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-editar-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-visualizar-arquivo-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-visualizar-arquivo-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

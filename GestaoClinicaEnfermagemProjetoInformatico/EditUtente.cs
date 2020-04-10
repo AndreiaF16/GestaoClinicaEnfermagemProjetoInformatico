@@ -190,7 +190,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void UpdateDataGridView()
         {
             dataGridViewUtentes.DataSource = new List<UtenteGridView>();
-            dataGridViewUtentes.DataSource = utentes;
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = utentes };
+            dataGridViewUtentes.DataSource = bindingSource1;
+         //   dataGridViewUtentes.DataSource = utentes;
             dataGridViewUtentes.Columns[0].HeaderText = "Nome";
             dataGridViewUtentes.Columns[1].HeaderText = "Data de Nascimento";
             dataGridViewUtentes.Columns[2].HeaderText = "Email";
@@ -204,11 +206,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[10].HeaderText = " ";
             dataGridViewUtentes.Columns[11].HeaderText = "Localidade";
             auxiliar = utentes;
-          /*  dataGridViewUtentes.Columns[0].Width = dataGridViewUtentes.Columns[0].Width + 60;
-            dataGridViewUtentes.Columns[2].Width = dataGridViewUtentes.Columns[2].Width + 50;
-            dataGridViewUtentes.Columns[7].Width = dataGridViewUtentes.Columns[2].Width - 20;
-            dataGridViewUtentes.Columns[8].Width = dataGridViewUtentes.Columns[2].Width - 20;
-            */
+        
             dataGridViewUtentes.Update();
             dataGridViewUtentes.Refresh();
         }

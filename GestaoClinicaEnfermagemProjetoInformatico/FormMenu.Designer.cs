@@ -29,18 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu));
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.btnVerConcultasPorClientes = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNIF = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
-            this.dataGridViewConsultas = new System.Windows.Forms.DataGridView();
+            this.dataGridViewConsultasHoje = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
@@ -60,10 +61,9 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.hora = new System.Windows.Forms.Timer(this.components);
-            this.btnVerConcultasPorClientes = new System.Windows.Forms.Button();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsultas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsultasHoje)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelTitulo.SuspendLayout();
@@ -93,7 +93,7 @@
             this.panelFormulario.Controls.Add(this.txtNIF);
             this.panelFormulario.Controls.Add(this.label4);
             this.panelFormulario.Controls.Add(this.txtNome);
-            this.panelFormulario.Controls.Add(this.dataGridViewConsultas);
+            this.panelFormulario.Controls.Add(this.dataGridViewConsultasHoje);
             this.panelFormulario.Controls.Add(this.button2);
             this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFormulario.Location = new System.Drawing.Point(232, 40);
@@ -101,6 +101,24 @@
             this.panelFormulario.Size = new System.Drawing.Size(1154, 748);
             this.panelFormulario.TabIndex = 2;
             this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
+            // 
+            // btnVerConcultasPorClientes
+            // 
+            this.btnVerConcultasPorClientes.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnVerConcultasPorClientes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnVerConcultasPorClientes.ForeColor = System.Drawing.Color.Black;
+            this.btnVerConcultasPorClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVerConcultasPorClientes.Location = new System.Drawing.Point(801, 29);
+            this.btnVerConcultasPorClientes.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVerConcultasPorClientes.Name = "btnVerConcultasPorClientes";
+            this.btnVerConcultasPorClientes.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnVerConcultasPorClientes.Size = new System.Drawing.Size(140, 87);
+            this.btnVerConcultasPorClientes.TabIndex = 57;
+            this.btnVerConcultasPorClientes.Text = "Ver Consultas Por Clientes";
+            this.btnVerConcultasPorClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVerConcultasPorClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnVerConcultasPorClientes.UseVisualStyleBackColor = false;
+            this.btnVerConcultasPorClientes.Click += new System.EventHandler(this.btnVerConcultasPorClientes_Click);
             // 
             // label3
             // 
@@ -142,54 +160,55 @@
             this.txtNome.TabIndex = 53;
             this.txtNome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown);
             // 
-            // dataGridViewConsultas
+            // dataGridViewConsultasHoje
             // 
-            this.dataGridViewConsultas.AllowUserToAddRows = false;
-            this.dataGridViewConsultas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewConsultas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridViewConsultas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.dataGridViewConsultas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewConsultas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewConsultas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewConsultas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewConsultas.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewConsultas.EnableHeadersVisualStyles = false;
-            this.dataGridViewConsultas.GridColor = System.Drawing.Color.SteelBlue;
-            this.dataGridViewConsultas.Location = new System.Drawing.Point(144, 214);
-            this.dataGridViewConsultas.MultiSelect = false;
-            this.dataGridViewConsultas.Name = "dataGridViewConsultas";
-            this.dataGridViewConsultas.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewConsultas.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewConsultas.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewConsultas.Size = new System.Drawing.Size(855, 254);
-            this.dataGridViewConsultas.TabIndex = 51;
-            this.dataGridViewConsultas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConsultas_CellContentClick);
+            this.dataGridViewConsultasHoje.AllowUserToAddRows = false;
+            this.dataGridViewConsultasHoje.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewConsultasHoje.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewConsultasHoje.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.dataGridViewConsultasHoje.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewConsultasHoje.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewConsultasHoje.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewConsultasHoje.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewConsultasHoje.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewConsultasHoje.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewConsultasHoje.EnableHeadersVisualStyles = false;
+            this.dataGridViewConsultasHoje.GridColor = System.Drawing.Color.SteelBlue;
+            this.dataGridViewConsultasHoje.Location = new System.Drawing.Point(144, 214);
+            this.dataGridViewConsultasHoje.MultiSelect = false;
+            this.dataGridViewConsultasHoje.Name = "dataGridViewConsultasHoje";
+            this.dataGridViewConsultasHoje.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewConsultasHoje.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewConsultasHoje.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewConsultasHoje.Size = new System.Drawing.Size(855, 254);
+            this.dataGridViewConsultasHoje.TabIndex = 51;
+            this.dataGridViewConsultasHoje.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConsultas_CellContentClick);
             // 
             // button2
             // 
@@ -254,7 +273,7 @@
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_ver_detalhes_100;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.Location = new System.Drawing.Point(6, 305);
+            this.button1.Location = new System.Drawing.Point(9, 305);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -481,24 +500,6 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
-            // btnVerConcultasPorClientes
-            // 
-            this.btnVerConcultasPorClientes.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnVerConcultasPorClientes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnVerConcultasPorClientes.ForeColor = System.Drawing.Color.Black;
-            this.btnVerConcultasPorClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerConcultasPorClientes.Location = new System.Drawing.Point(801, 29);
-            this.btnVerConcultasPorClientes.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVerConcultasPorClientes.Name = "btnVerConcultasPorClientes";
-            this.btnVerConcultasPorClientes.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnVerConcultasPorClientes.Size = new System.Drawing.Size(140, 87);
-            this.btnVerConcultasPorClientes.TabIndex = 57;
-            this.btnVerConcultasPorClientes.Text = "Ver Consultas Por Clientes";
-            this.btnVerConcultasPorClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVerConcultasPorClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnVerConcultasPorClientes.UseVisualStyleBackColor = false;
-            this.btnVerConcultasPorClientes.Click += new System.EventHandler(this.btnVerConcultasPorClientes_Click);
-            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,7 +515,7 @@
             this.painelPrincipal.ResumeLayout(false);
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsultas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsultasHoje)).EndInit();
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelTitulo.ResumeLayout(false);
@@ -549,7 +550,7 @@
         private System.Windows.Forms.Timer hora;
         private System.Windows.Forms.Button btnDefinicoes;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridViewConsultas;
+        private System.Windows.Forms.DataGridView dataGridViewConsultasHoje;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNIF;
         private System.Windows.Forms.Label label4;

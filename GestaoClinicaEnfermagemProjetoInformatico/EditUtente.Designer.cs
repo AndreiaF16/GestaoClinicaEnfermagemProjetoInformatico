@@ -268,6 +268,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewUtentes.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewUtentes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewUtentes.EnableHeadersVisualStyles = false;
             this.dataGridViewUtentes.GridColor = System.Drawing.Color.SteelBlue;
             this.dataGridViewUtentes.Location = new System.Drawing.Point(10, 101);

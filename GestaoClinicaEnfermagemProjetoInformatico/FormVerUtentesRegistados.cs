@@ -185,8 +185,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void UpdateDataGridView()
         {
-            dataGridViewUtentes.DataSource = new List<UtenteGridView>();
-            dataGridViewUtentes.DataSource = utentes;
+           // dataGridViewUtentes.DataSource = new List<UtenteGridView>();
+            // dataGridViewUtentes.DataSource = utentes;
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = utentes };
+            dataGridViewUtentes.DataSource = bindingSource1;
             dataGridViewUtentes.Columns[0].HeaderText = "Nome";
             dataGridViewUtentes.Columns[1].HeaderText = "Data de Nascimento";
             dataGridViewUtentes.Columns[2].HeaderText = "Email";
@@ -203,12 +205,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[2].Width = dataGridViewUtentes.Columns[2].Width + 80;
             dataGridViewUtentes.Columns[6].Width = dataGridViewUtentes.Columns[6].Width + 150;
 
-            /* dataGridViewUtentes.Columns[2].Width = dataGridViewUtentes.Columns[2].Width + 60;
-            dataGridViewUtentes.Columns[7].Width = dataGridViewUtentes.Columns[7].Width - 20;
-            dataGridViewUtentes.Columns[8].Width = dataGridViewUtentes.Columns[8].Width - 20;
-             dataGridViewUtentes.Columns[9].Width = dataGridViewUtentes.Columns[9].Width - 25;
-             dataGridViewUtentes.Columns[10].Width = dataGridViewUtentes.Columns[10].Width - 25;
-             */
+      
             auxiliar = utentes;
 
             dataGridViewUtentes.Update();
@@ -229,105 +226,116 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            int i = dataGridViewUtentes.CurrentCell.RowIndex;
-            UtenteGridView utente = null; ;
-
-
-            //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
-            foreach (var ut in auxiliar)
+            if (dataGridViewUtentes.SelectedRows.Count > 0 && dataGridViewUtentes.Rows[dataGridViewUtentes.CurrentCell.RowIndex].Cells[0].Value.ToString() == "")
             {
-                if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                int i = dataGridViewUtentes.CurrentCell.RowIndex;
+                UtenteGridView utente = null; ;
+
+
+                //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
+                foreach (var ut in auxiliar)
                 {
-                    utente = ut;
+                    if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                    {
+                        utente = ut;
+                    }
+
+                }
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  " + utente.Nif, conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                Paciente paciente = null;
+
+                if (reader.Read())
+                {
+                    paciente = new Paciente
+                    {
+                        IdPaciente = (int)reader["IdPaciente"],
+                        Nome = (string)reader["nome"],
+                        DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                        Email = (string)reader["email"],
+                        Contacto = Convert.ToDouble(reader["contacto"]),
+                        Nif = Convert.ToDouble(reader["nif"]),
+                        Profissao = (string)reader["Profissao"],
+                        Rua = (string)reader["Rua"],
+                        NumeroCasa = (int)reader["NumeroCasa"],
+                        Andar = (string)reader["Andar"],
+                        codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
+                        codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                        localidade = (string)reader["localidade"],
+                        IdEnfermeiro = (int)reader["IdEnfermeiro"],
+
+
+                    };
                 }
 
+                conn.Close();
+                IniciarConsultaSemMarcacao iniciarConsulta = new IniciarConsultaSemMarcacao(enfermeiro, paciente);
+                iniciarConsulta.Show();
+
             }
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  " + utente.Nif, conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            Paciente paciente = null;
-
-            if (reader.Read())
+            else
             {
-                paciente = new Paciente
-                {
-                    IdPaciente = (int)reader["IdPaciente"],
-                    Nome = (string)reader["nome"],
-                    DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                    Email = (string)reader["email"],
-                    Contacto = Convert.ToDouble(reader["contacto"]),
-                    Nif = Convert.ToDouble(reader["nif"]),
-                    Profissao = (string)reader["Profissao"],
-                    Rua = (string)reader["Rua"],
-                    NumeroCasa = (int)reader["NumeroCasa"],
-                    Andar = (string)reader["Andar"],
-                    codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
-                    codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
-                    localidade = (string)reader["localidade"],
-                    IdEnfermeiro = (int)reader["IdEnfermeiro"],
-
-
-                };
+                MessageBox.Show("Não é possivel iniciar uma consulta porque não tem utentes associados!!!");
             }
-
-            conn.Close();
-            IniciarConsultaSemMarcacao iniciarConsulta = new IniciarConsultaSemMarcacao(enfermeiro, paciente/*,lucro*/);
-            iniciarConsulta.Show();
-
-
         }
 
-        private void button2_Click(object sender, EventArgs e)
+            private void button2_Click(object sender, EventArgs e)
         {
-            int i = dataGridViewUtentes.CurrentCell.RowIndex;
-            UtenteGridView utente = null; ;
-
-
-            //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
-            foreach (var ut in auxiliar)
+            if (dataGridViewUtentes.Rows.Count > 0 && dataGridViewUtentes.Rows[dataGridViewUtentes.CurrentCell.RowIndex].Cells[0].Value.ToString() == "")
             {
-                if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                int i = dataGridViewUtentes.CurrentCell.RowIndex;
+                UtenteGridView utente = null; ;
+
+
+                //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
+                foreach (var ut in auxiliar)
                 {
-                    utente = ut;
+                    if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                    {
+                        utente = ut;
+                    }
                 }
-            }
-            conn.Open();
-            com.Connection = conn;
+                conn.Open();
+                com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  " + utente.Nif, conn);
+                SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  " + utente.Nif, conn);
 
-            SqlDataReader reader = cmd.ExecuteReader();
-            Paciente paciente = null;
+                SqlDataReader reader = cmd.ExecuteReader();
+                Paciente paciente = null;
 
-            if (reader.Read())
-            {
-                paciente = new Paciente
+                if (reader.Read())
                 {
-                    IdPaciente = (int)reader["IdPaciente"],
-                    Nome = (string)reader["nome"],
-                    DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                    Email = (string)reader["email"],
-                    Contacto = Convert.ToDouble(reader["contacto"]),
-                    Nif = Convert.ToDouble(reader["nif"]),
-                    Profissao = (string)reader["Profissao"],
-                    Rua = (string)reader["Rua"],
-                    NumeroCasa = (int)reader["NumeroCasa"],
-                    Andar = (string)reader["Andar"],
-                    codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
-                    codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
-                    localidade = (string)reader["localidade"],
-                    IdEnfermeiro = (int)reader["IdEnfermeiro"],
-                };
+                    paciente = new Paciente
+                    {
+                        IdPaciente = (int)reader["IdPaciente"],
+                        Nome = (string)reader["nome"],
+                        DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                        Email = (string)reader["email"],
+                        Contacto = Convert.ToDouble(reader["contacto"]),
+                        Nif = Convert.ToDouble(reader["nif"]),
+                        Profissao = (string)reader["Profissao"],
+                        Rua = (string)reader["Rua"],
+                        NumeroCasa = (int)reader["NumeroCasa"],
+                        Andar = (string)reader["Andar"],
+                        codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
+                        codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                        localidade = (string)reader["localidade"],
+                        IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                    };
+                }
+
+                conn.Close();
+
+                RegistarConsulta registarConsulta = new RegistarConsulta(enfermeiro, paciente, this);
+                registarConsulta.Show();
             }
-
-            conn.Close();
-
-            RegistarConsulta registarConsulta = new RegistarConsulta(enfermeiro, paciente, this);
-            registarConsulta.Show();
+            {
+                MessageBox.Show("Não é possivel registar uma consulta porque não tem utentes associados!!!");
+            }
         }
 
         private void dataGridViewUtentes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -382,5 +390,32 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewUtentes.SelectedRows.Count > 0 && dataGridViewUtentes.Rows[dataGridViewUtentes.CurrentCell.RowIndex].Cells[0].Value.ToString() == "")
+            {
+               // HistoricoPaciente historicoPaciente = new HistoricoPaciente();
+
+                int i = dataGridViewUtentes.CurrentCell.RowIndex;
+                UtenteGridView utente = null; ;
+
+                foreach (var ut in auxiliar)
+                {
+                    if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                    {
+                        utente = ut;
+                    }
+                }
+
+                paciente = ClasseAuxiliarBD.getPacienteByNif(utente.Nif);
+
+                VisualizarHistoricoPaciente verHistoricoPaciente = new VisualizarHistoricoPaciente(paciente);
+                verHistoricoPaciente.Show();
+            }
+            else
+            {
+                MessageBox.Show("Não tem utentes associados para poder selecionar o historico do mesmo");
+            }
+        }
     }
 }

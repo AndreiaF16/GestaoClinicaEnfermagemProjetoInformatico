@@ -126,6 +126,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewConsultas.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewConsultas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewConsultas.EnableHeadersVisualStyles = false;
             this.dataGridViewConsultas.GridColor = System.Drawing.Color.SteelBlue;
             this.dataGridViewConsultas.Location = new System.Drawing.Point(56, 19);

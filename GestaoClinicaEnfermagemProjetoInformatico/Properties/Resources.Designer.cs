@@ -213,6 +213,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_adicionar_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-adicionar-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_administrador_masculino_80 {
             get {
                 object obj = ResourceManager.GetObject("icons8-administrador-masculino-80", resourceCulture);
@@ -426,6 +436,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         internal static System.Drawing.Bitmap icons8_verificar_arquivo_26 {
             get {
                 object obj = ResourceManager.GetObject("icons8-verificar-arquivo-26", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_visualizar_arquivo_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-visualizar-arquivo-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

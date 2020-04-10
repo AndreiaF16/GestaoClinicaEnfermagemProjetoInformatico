@@ -18,13 +18,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Enfermeiro enfermeiro = null;
         private List<AgendamentoConsultaGridView> auxiliar = new List<AgendamentoConsultaGridView>();
         private List<AgendamentoConsultaGridView> agendamentos = new List<AgendamentoConsultaGridView>();
-        private Paciente paciente = null;
         private FormMenu formMenu = null;
-        public MenuMarcacoes(Enfermeiro enf, Paciente pac, FormMenu formM)
+        public MenuMarcacoes(Enfermeiro enf, FormMenu formM)
         {
             InitializeComponent();
             enfermeiro = enf;
-            paciente = pac;
             formMenu = formM;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             UpdateGridViewConsultas();
@@ -34,36 +32,42 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnAlteraPassword_Click(object sender, EventArgs e)
         {
-            int i = dataGridViewConsultas.CurrentCell.RowIndex;
-            AgendamentoConsultaGridView agendamento = null;
-
-            agendamento = new AgendamentoConsultaGridView
+            if (dataGridViewMarcacoes.SelectedRows.Count > 0 && dataGridViewMarcacoes.Rows[dataGridViewMarcacoes.CurrentCell.RowIndex].Cells[0].Value.ToString() =="" )
             {
-                horaProximaConsulta = dataGridViewConsultas.Rows[i].Cells[0].Value.ToString(),
-                dataProximaConsulta = dataGridViewConsultas.Rows[i].Cells[1].Value.ToString(),
-                NomePaciente = dataGridViewConsultas.Rows[i].Cells[2].Value.ToString(),
-                NifPaciente = Convert.ToDouble(dataGridViewConsultas.Rows[i].Cells[3].Value.ToString())
+
+                int i = dataGridViewMarcacoes.CurrentCell.RowIndex;
+                AgendamentoConsultaGridView agendamento = null;
+
+                agendamento = new AgendamentoConsultaGridView
+                {
+                    horaProximaConsulta = dataGridViewMarcacoes.Rows[i].Cells[0].Value.ToString(),
+                    dataProximaConsulta = dataGridViewMarcacoes.Rows[i].Cells[1].Value.ToString(),
+                    NomePaciente = dataGridViewMarcacoes.Rows[i].Cells[2].Value.ToString(),
+                    NifPaciente = Convert.ToDouble(dataGridViewMarcacoes.Rows[i].Cells[3].Value.ToString())
 
 
-            };
+                };
 
-            if (agendamento != null)
-            {
-                Paciente paciente1 = ClasseAuxiliarBD.getPacienteByNif(agendamento.NifPaciente);
+                if (agendamento != null)
+                {
+                    Paciente paciente1 = ClasseAuxiliarBD.getPacienteByNif(agendamento.NifPaciente);
 
-                var resposta = MessageBox.Show("Tem a certeza que deseja eliminar esta consulta?", "Eliminar Consulta!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (resposta == DialogResult.Yes)
-                {                   
-                    conn.Open();
-                    string queryInsertData = "DELETE from AgendamentoConsulta WHERE IdEnfermeiro = " + enfermeiro.IdEnfermeiro + " AND IdPaciente = " + paciente1.IdPaciente + " AND dataProximaConsulta = '" + DateTime.ParseExact(agendamento.dataProximaConsulta, "dd/MM/yyyy", null).ToString("MM/dd/yyyy") + "' AND horaProximaConsulta = '" + agendamento.horaProximaConsulta + "';";
-                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
-                    sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Agendamento de consulta eliminado com Sucesso!");
-                    conn.Close();
-                    UpdateGridViewConsultas();
+                    var resposta = MessageBox.Show("Tem a certeza que deseja eliminar esta consulta?", "Eliminar Consulta!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resposta == DialogResult.Yes)
+                    {
+                        conn.Open();
+                        string queryInsertData = "DELETE from AgendamentoConsulta WHERE IdEnfermeiro = " + enfermeiro.IdEnfermeiro + " AND IdPaciente = " + paciente1.IdPaciente + " AND dataProximaConsulta = '" + DateTime.ParseExact(agendamento.dataProximaConsulta, "dd/MM/yyyy", null).ToString("MM/dd/yyyy") + "' AND horaProximaConsulta = '" + agendamento.horaProximaConsulta + "';";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Consulta desmarcada com Sucesso!");
+                        conn.Close();
+                        UpdateGridViewConsultas();                    
+                        formMenu.UpdateGridViewConsultas();
+                    }
                 }
-                formMenu.UpdateGridViewConsultas();
             }
+           
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -117,8 +121,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public void UpdateGridViewConsultas()
         {
             agendamentos.Clear();
-            dataGridViewConsultas.DataSource = new List<AgendamentoConsultaGridView>();
-
+         
             conn.Open();
             com.Connection = conn;
 
@@ -139,15 +142,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 agendamentos.Add(agendamento);
             }
             auxiliar = agendamentos;
+            
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = auxiliar };
+            dataGridViewMarcacoes.DataSource = bindingSource1;
 
-            dataGridViewConsultas.DataSource = filtrosDePesquisa();
-            dataGridViewConsultas.Columns[0].HeaderText = "Hora Consulta";
-            dataGridViewConsultas.Columns[1].HeaderText = "Data Consulta";
-            dataGridViewConsultas.Columns[2].HeaderText = "Nome Utente";
-            dataGridViewConsultas.Columns[3].HeaderText = "Nif Paciente";
-          //  auxiliar = agendamentos;
+            dataGridViewMarcacoes.Columns[0].HeaderText = "Hora Consulta";
+            dataGridViewMarcacoes.Columns[1].HeaderText = "Data Consulta";
+            dataGridViewMarcacoes.Columns[2].HeaderText = "Nome Utente";
+            dataGridViewMarcacoes.Columns[3].HeaderText = "Nif Paciente";
+
+            
             conn.Close();
-            filtrosDePesquisa();
+           
         }
 
         private List<AgendamentoConsultaGridView> filtrosDePesquisa()
@@ -187,14 +193,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return auxiliar;
             }
             auxiliar = agendamentos;
-            return agendamentos;
+            return auxiliar;
         }
 
         private void txtNome_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                dataGridViewConsultas.DataSource = filtrosDePesquisa();
+                dataGridViewMarcacoes.DataSource = filtrosDePesquisa();
             }
         }
 
@@ -202,7 +208,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             if (e.KeyCode == Keys.Enter)
             {
-                dataGridViewConsultas.DataSource = filtrosDePesquisa();
+                dataGridViewMarcacoes.DataSource = filtrosDePesquisa();
             }
         }
 
@@ -212,10 +218,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
 
-        private void dataGridViewConsultas_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void dataGridViewMarcacoes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            
         }
     }
 }

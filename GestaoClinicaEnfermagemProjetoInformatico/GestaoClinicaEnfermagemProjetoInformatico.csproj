@@ -48,6 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HistoricoPaciente.cs" />
+    <Compile Include="RegistarHistoricoDeDoenca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistarHistoricoDeDoenca.Designer.cs">
+      <DependentUpon>RegistarHistoricoDeDoenca.cs</DependentUpon>
+    </Compile>
     <Compile Include="AgendamentoConsultaGridView.cs" />
     <Compile Include="ClasseAuxiliarBD.cs" />
     <Compile Include="PopupForm.cs">
@@ -242,6 +249,15 @@
       <DependentUpon>VerEnfermeirosRegistos.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="VisualizarHistoricoPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisualizarHistoricoPaciente.Designer.cs">
+      <DependentUpon>VisualizarHistoricoPaciente.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="RegistarHistoricoDeDoenca.resx">
+      <DependentUpon>RegistarHistoricoDeDoenca.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PopupForm.resx">
       <DependentUpon>PopupForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -339,6 +355,9 @@
     <EmbeddedResource Include="VerEnfermeirosRegistos.resx">
       <DependentUpon>VerEnfermeirosRegistos.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisualizarHistoricoPaciente.resx">
+      <DependentUpon>VisualizarHistoricoPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\DataSources\Enfermeiro.datasource" />
@@ -473,6 +492,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-editar-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-adicionar-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-visualizar-arquivo-50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
