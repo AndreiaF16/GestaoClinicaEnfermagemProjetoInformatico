@@ -45,6 +45,7 @@
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.hora = new System.Windows.Forms.Timer(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             this.painelPrincipal.SuspendLayout();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -80,6 +81,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.panelMenu.Controls.Add(this.button2);
             this.panelMenu.Controls.Add(this.pictureBox2);
             this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.btnVoltar);
@@ -109,7 +111,7 @@
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_ver_detalhes_100;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(2, 257);
+            this.button1.Location = new System.Drawing.Point(2, 245);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -256,6 +258,24 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_editar_64;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button2.Location = new System.Drawing.Point(1, 339);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button2.Size = new System.Drawing.Size(228, 90);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Alterar Pacientes de Enfermeiros";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,6 +315,7 @@
         private System.Windows.Forms.PictureBox btnFechar;
         private System.Windows.Forms.PictureBox btnMaximizar;
         private System.Windows.Forms.PictureBox btnMinimizar;
+        private System.Windows.Forms.Button button2;
     }
 }
 
