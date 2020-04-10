@@ -50,6 +50,12 @@
   <ItemGroup>
     <Compile Include="AgendamentoConsultaGridView.cs" />
     <Compile Include="ClasseAuxiliarBD.cs" />
+    <Compile Include="PopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm.Designer.cs">
+      <DependentUpon>PopupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerConsultasPorCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,12 +196,6 @@
       <DependentUpon>MenuMarcacoes.cs</DependentUpon>
     </Compile>
     <Compile Include="Paciente.cs" />
-    <Compile Include="PopupForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PopupForm.Designer.cs">
-      <DependentUpon>PopupForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
@@ -242,6 +242,9 @@
       <DependentUpon>VerEnfermeirosRegistos.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <EmbeddedResource Include="PopupForm.resx">
+      <DependentUpon>PopupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VerConsultasPorCliente.resx">
       <DependentUpon>VerConsultasPorCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -308,9 +311,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuMarcacoes.resx">
       <DependentUpon>MenuMarcacoes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PopupForm.resx">
-      <DependentUpon>PopupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

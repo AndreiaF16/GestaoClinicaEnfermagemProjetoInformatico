@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLocalizacaoDorCorpo));
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBoxCorpo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.painelPrincipal = new System.Windows.Forms.Panel();
@@ -61,25 +63,47 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.listBox1);
+            this.panelFormulario.Controls.Add(this.label2);
             this.panelFormulario.Controls.Add(this.pictureBoxCorpo);
             this.panelFormulario.Controls.Add(this.label1);
             this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFormulario.Location = new System.Drawing.Point(232, 40);
             this.panelFormulario.Name = "panelFormulario";
-            this.panelFormulario.Size = new System.Drawing.Size(914, 779);
+            this.panelFormulario.Size = new System.Drawing.Size(914, 748);
             this.panelFormulario.TabIndex = 2;
             this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
             this.panelFormulario.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelFormulario_MouseUp);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(774, 192);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 95);
+            this.listBox1.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(820, 110);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "label2";
             // 
             // pictureBoxCorpo
             // 
             this.pictureBoxCorpo.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg;
             this.pictureBoxCorpo.Location = new System.Drawing.Point(20, 40);
             this.pictureBoxCorpo.Name = "pictureBoxCorpo";
-            this.pictureBoxCorpo.Size = new System.Drawing.Size(826, 571);
+            this.pictureBoxCorpo.Size = new System.Drawing.Size(737, 696);
             this.pictureBoxCorpo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxCorpo.TabIndex = 1;
             this.pictureBoxCorpo.TabStop = false;
+            this.pictureBoxCorpo.Click += new System.EventHandler(this.pictureBoxCorpo_Click);
+            this.pictureBoxCorpo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBoxCorpo_MouseClick);
+            this.pictureBoxCorpo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxCorpo_MouseMove);
             this.pictureBoxCorpo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxCorpo_MouseUp);
             // 
             // label1
@@ -102,7 +126,7 @@
             this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
             this.painelPrincipal.Name = "painelPrincipal";
-            this.painelPrincipal.Size = new System.Drawing.Size(1146, 819);
+            this.painelPrincipal.Size = new System.Drawing.Size(1146, 788);
             this.painelPrincipal.TabIndex = 4;
             // 
             // panelMenu
@@ -113,7 +137,7 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 40);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(232, 779);
+            this.panelMenu.Size = new System.Drawing.Size(232, 748);
             this.panelMenu.TabIndex = 1;
             // 
             // btnVoltar
@@ -210,6 +234,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnFechar
             // 
@@ -251,12 +276,13 @@
             // hora
             // 
             this.hora.Enabled = true;
+            this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
             // FormLocalizacaoDorCorpo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1146, 819);
+            this.ClientSize = new System.Drawing.Size(1146, 788);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormLocalizacaoDorCorpo";
@@ -296,5 +322,7 @@
         private System.Windows.Forms.Timer hora;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBoxCorpo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
