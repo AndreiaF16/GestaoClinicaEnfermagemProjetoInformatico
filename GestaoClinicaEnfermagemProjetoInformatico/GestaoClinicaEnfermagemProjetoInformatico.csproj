@@ -48,11 +48,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdicionarVisualizarAlergiaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarVisualizarAlergiaPaciente.Designer.cs">
+      <DependentUpon>AdicionarVisualizarAlergiaPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarVisualizarCirurgiaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarVisualizarCirurgiaPaciente.Designer.cs">
+      <DependentUpon>AdicionarVisualizarCirurgiaPaciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdicionarVisualizarDoencaPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdicionarVisualizarDoencaPaciente.Designer.cs">
       <DependentUpon>AdicionarVisualizarDoencaPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Alergias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alergias.Designer.cs">
+      <DependentUpon>Alergias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cirurgia.cs" />
+    <Compile Include="CirurgiaPaciente.cs" />
+    <Compile Include="Cirurgias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cirurgias.Designer.cs">
+      <DependentUpon>Cirurgias.cs</DependentUpon>
     </Compile>
     <Compile Include="ComboBoxItem.cs" />
     <Compile Include="ConsultasPaciente.cs" />
@@ -72,6 +98,18 @@
     </Compile>
     <Compile Include="PopupForm.Designer.cs">
       <DependentUpon>PopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerAlergiasRegistadas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerAlergiasRegistadas.Designer.cs">
+      <DependentUpon>VerAlergiasRegistadas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerCirurgiasRegistadas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerCirurgiasRegistadas.Designer.cs">
+      <DependentUpon>VerCirurgiasRegistadas.cs</DependentUpon>
     </Compile>
     <Compile Include="VerConsultasPaciente.cs">
       <SubType>Form</SubType>
@@ -271,14 +309,32 @@
       <DependentUpon>VerEnfermeirosRegistados.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <EmbeddedResource Include="AdicionarVisualizarAlergiaPaciente.resx">
+      <DependentUpon>AdicionarVisualizarAlergiaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarVisualizarCirurgiaPaciente.resx">
+      <DependentUpon>AdicionarVisualizarCirurgiaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdicionarVisualizarDoencaPaciente.resx">
       <DependentUpon>AdicionarVisualizarDoencaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Alergias.resx">
+      <DependentUpon>Alergias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cirurgias.resx">
+      <DependentUpon>Cirurgias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Doencas.resx">
       <DependentUpon>Doencas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupForm.resx">
       <DependentUpon>PopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerAlergiasRegistadas.resx">
+      <DependentUpon>VerAlergiasRegistadas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerCirurgiasRegistadas.resx">
+      <DependentUpon>VerCirurgiasRegistadas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerConsultasPaciente.resx">
       <DependentUpon>VerConsultasPaciente.cs</DependentUpon>

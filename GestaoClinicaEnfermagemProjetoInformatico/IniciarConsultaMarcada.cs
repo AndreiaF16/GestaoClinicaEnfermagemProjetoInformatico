@@ -146,48 +146,55 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string historiaAtual = txtHistoriaAtual.Text;
-            string sintomatologia = txtSintomatologia.Text;
-            string sinais = txtSinais.Text;
-            string tensaoArterial = txtTensaoArterial.Text;
-            string escalaDor = lblEscala.Text;
-            double valor =Convert.ToDouble(txtValorConsulta.Text);
-            DateTime horaFim = DateTime.Now;
-
             if (!VerificarDadosInseridos())
             {
                 MessageBox.Show("Dados incorretos!");
             }
             else
             {
-                try
+                string historiaAtual = txtHistoriaAtual.Text;
+                string sintomatologia = txtSintomatologia.Text;
+                string sinais = txtSinais.Text;
+                string tensaoArterial = txtTensaoArterial.Text;
+                string escalaDor = lblEscala.Text;
+                double valor = Convert.ToDouble(txtValorConsulta.Text);
+                DateTime horaFim = DateTime.Now;
+
+                if (!VerificarDadosInseridos())
                 {
-                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                    connection.Open();
+                    MessageBox.Show("Dados incorretos!");
+                }
+                else
+                {
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
 
-                    string queryInsertData = "INSERT INTO Consulta(dataConsulta,horaInicioConsulta,tensaoArterial,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro,valorConsulta,horaFimConsulta) VALUES(' " + inicio.ToString("MM/dd/yyyy") + " ',' " + inicio.ToString("HH:mm") + " ',' " + tensaoArterial.ToString() + " ',' " + historiaAtual.ToString() + " ',' " + sintomatologia.ToString() + " ',' " + sinais.ToString() + " ',' " + escalaDor.ToString() + " ',' " + paciente.IdPaciente + " ',' " + enfermeiro.IdEnfermeiro + " ',' " + valor + " ',' " + horaFim.ToString("HH:mm") + "');";
-                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.ExecuteNonQuery();
-                
-                    MessageBox.Show("Consulta efetuada com Sucesso!");
-                    this.Close();
-                    connection.Close();
-                    connection.Open();
+                        string queryInsertData = "INSERT INTO Consulta(dataConsulta,horaInicioConsulta,tensaoArterial,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro,valorConsulta,horaFimConsulta) VALUES(' " + inicio.ToString("MM/dd/yyyy") + " ',' " + inicio.ToString("HH:mm") + " ',' " + tensaoArterial.ToString() + " ',' " + historiaAtual.ToString() + " ',' " + sintomatologia.ToString() + " ',' " + sinais.ToString() + " ',' " + escalaDor.ToString() + " ',' " + paciente.IdPaciente + " ',' " + enfermeiro.IdEnfermeiro + " ',' " + valor + " ',' " + horaFim.ToString("HH:mm") + "');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
 
-                    string queryUpdateData = "UPDATE AgendamentoConsulta SET ConsultaRealizada = 1 WHERE IdPaciente = '" + paciente.IdPaciente + "' AND dataProximaConsulta = '" + DateTime.ParseExact(agendamentoConsulta.dataProximaConsulta,"dd/MM/yyyy", null).ToString("MM/dd/yyyy")  + "' AND horaProximaConsulta = '" + agendamentoConsulta.horaProximaConsulta + "'; ";
-                    SqlCommand sqlCommand1 = new SqlCommand(queryUpdateData, connection);
-                    sqlCommand1.ExecuteNonQuery();
-                    connection.Close();
+                        MessageBox.Show("Consulta efetuada com Sucesso!");
+                        this.Close();
+                        connection.Close();
+                        connection.Open();
 
-                    formMenu.UpdateGridViewConsultas();
+                        string queryUpdateData = "UPDATE AgendamentoConsulta SET ConsultaRealizada = 1 WHERE IdPaciente = '" + paciente.IdPaciente + "' AND dataProximaConsulta = '" + DateTime.ParseExact(agendamentoConsulta.dataProximaConsulta, "dd/MM/yyyy", null).ToString("MM/dd/yyyy") + "' AND horaProximaConsulta = '" + agendamentoConsulta.horaProximaConsulta + "'; ";
+                        SqlCommand sqlCommand1 = new SqlCommand(queryUpdateData, connection);
+                        sqlCommand1.ExecuteNonQuery();
+                        connection.Close();
+
+                        formMenu.UpdateGridViewConsultas();
+
+                    }
+                    catch (SqlException excep)
+                    {
+
+                        MessageBox.Show(excep.Message);
+                    }
 
                 }
-                catch (SqlException excep)
-                {
-
-                    MessageBox.Show(excep.Message);
-                }
-
             }
         }
 
@@ -240,12 +247,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("Ainda não implementado, FAZER!!!");
+            AdicionarVisualizarAlergiaPaciente adicionar = new AdicionarVisualizarAlergiaPaciente(paciente);
+            adicionar.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Ainda não implementado, FAZER!!!");
+
+            AdicionarVisualizarCirurgiaPaciente adicionar = new AdicionarVisualizarCirurgiaPaciente(paciente);
+            adicionar.Show();
         }
     }
 }

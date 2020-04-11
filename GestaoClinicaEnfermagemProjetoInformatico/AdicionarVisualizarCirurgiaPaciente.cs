@@ -11,34 +11,32 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class AdicionarVisualizarDoencaPaciente : Form
+    public partial class AdicionarVisualizarCirurgiaPaciente : Form
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
-        private List<ComboBoxItem> doencas = new List<ComboBoxItem>();
+        private List<ComboBoxItem> cirurgias = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
-        private List<DoencaPaciente> doencaPacientes = new List<DoencaPaciente>();
-        public AdicionarVisualizarDoencaPaciente(Paciente pac)
+        private List<DoencaPaciente> cirurgiaPacientes = new List<DoencaPaciente>();
+
+        public AdicionarVisualizarCirurgiaPaciente(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
             label1.Text = "Nome do Paciente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            dataDiagnostico.MaxDate = DateTime.Now;
+        }
 
-
+        private void AdicionarVisualizarCirurgiaPaciente_Load(object sender, EventArgs e)
+        {
+            UpdateDataGridView();
+            reiniciar();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void AdicionarVisualizarDoencaPaciente_Load(object sender, EventArgs e)
-        {
-           UpdateDataGridView();
-            reiniciar();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -60,7 +58,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 this.WindowState = FormWindowState.Normal;
             }
-
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
@@ -73,6 +70,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -83,7 +81,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             else
             {
-                int doenca = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
+                int alergia = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
                 DateTime data = dataDiagnostico.Value;
                 string observacoes = txtObservacoes.Text;
 
@@ -91,28 +89,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Open();
 
-                    string queryInsertData = "INSERT INTO DoencaPaciente(IdDoenca,IdPaciente,data,observacoes) VALUES(" + doenca + " ,' " + paciente.IdPaciente + " ',' " + data.ToString("MM/dd/yyyy") + " ',' " + observacoes.ToString() + "');";
+                    string queryInsertData = "INSERT INTO CirurgiaPaciente(IdCirurgia,IdPaciente,data,observacoes) VALUES(" + alergia + " ,' " + paciente.IdPaciente + " ',' " + data.ToString("MM/dd/yyyy") + " ',' " + observacoes.ToString() + "');";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Doença registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cirurgia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
                     UpdateDataGridView();
 
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show("Impossível inserir doença", excep.Message);
-
+                    MessageBox.Show("Impossível inserir cirurgia", excep.Message);
                 }
             }
         }
 
-      private void UpdateDataGridView()
+        private void UpdateDataGridView()
         {
-            doencaPacientes.Clear();
+            cirurgiaPacientes.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select doenca.Nome, doencaP.data, doencaP.observacoes from DoencaPaciente doencaP JOIN Doenca doenca ON doencaP.IdDoenca = doenca.IdDoenca WHERE IdPaciente = " + paciente.IdPaciente, conn);
+            SqlCommand cmd = new SqlCommand("select cirurgia.Nome, cirurgiaP.data, cirurgiaP.observacoes from CirurgiaPaciente cirurgiaP JOIN Cirurgia cirurgia ON cirurgia.IdCirurgia = cirurgiaP.IdCirurgia WHERE IdPaciente = " + paciente.IdPaciente, conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -125,48 +122,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     data = data,
                     observacoes = (string)reader["observacoes"],
                 };
-                doencaPacientes.Add(doencaPaciente);
+                cirurgiaPacientes.Add(doencaPaciente);
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = doencaPacientes };         
-            dataGridViewDoencas.DataSource = bindingSource1;
-            dataGridViewDoencas.Columns[0].HeaderText = "Doença";
-            dataGridViewDoencas.Columns[1].HeaderText = "Data de Diagnóstico";
-            dataGridViewDoencas.Columns[2].HeaderText = "Observações";
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = cirurgiaPacientes };
+            dataGridViewCirurgias.DataSource = bindingSource1;
+            dataGridViewCirurgias.Columns[0].HeaderText = "Cirurgia";
+            dataGridViewCirurgias.Columns[1].HeaderText = "Data de Diagnóstico";
+            dataGridViewCirurgias.Columns[2].HeaderText = "Observações";
 
             conn.Close();
-            dataGridViewDoencas.Update();
-            dataGridViewDoencas.Refresh();
-        }
-
-        private void enfermeiroBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
+            dataGridViewCirurgias.Update();
+            dataGridViewCirurgias.Refresh();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Doencas doencas = new Doencas(this);
-            doencas.Show();
+            Cirurgias cirurgias = new Cirurgias(this);
+            cirurgias.Show();
         }
+
         public void reiniciar()
         {
-            doencas.Clear();
+            cirurgias.Clear();
             comboBoxDoenca.Items.Clear();
             auxiliar.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Doenca ", conn);
+            SqlCommand cmd = new SqlCommand("select * from Cirurgia", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Text = (string)reader["Nome"];
-                item.Value = (int)reader["IdDoenca"];
+                item.Value = (int)reader["IdCirurgia"];
                 comboBoxDoenca.Items.Add(item);
-                doencas.Add(item);
+                cirurgias.Add(item);
             }
 
             conn.Close();
+
         }
 
         private void txtProcurar_KeyDown(object sender, KeyEventArgs e)
@@ -182,16 +176,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     item.Value = pesquisa.Value;
                     comboBoxDoenca.Items.Add(item);
                 }
-            
+
             }
         }
 
         private List<ComboBoxItem> filtrosDePesquisa()
         {
             auxiliar = new List<ComboBoxItem>();
-            if (txtProcurar.Text != "" )
+            if (txtProcurar.Text != "")
             {
-                foreach (ComboBoxItem doenca in doencas)
+                foreach (ComboBoxItem doenca in cirurgias)
                 {
                     if (doenca.Text.ToLower().Contains(txtProcurar.Text.ToLower()))
                     {
@@ -200,10 +194,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 return auxiliar;
             }
-            auxiliar = doencas;
+            auxiliar = cirurgias;
             return auxiliar;
         }
-
 
         private Boolean VerificarDadosInseridos()
         {
@@ -220,4 +213,4 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             return true;
         }
     }
-}
+  }

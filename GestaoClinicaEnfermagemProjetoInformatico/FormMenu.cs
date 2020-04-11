@@ -395,12 +395,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button5_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Ainda não implementado, fazer!!!");
+
+            Alergias alergias = new Alergias(null);
+            alergias.Show();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Ainda não implementado, fazer!!!");
+            Cirurgias cirurgias = new Cirurgias(null);
+            cirurgias.Show();
         }
     }
 }

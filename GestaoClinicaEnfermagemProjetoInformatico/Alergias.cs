@@ -11,23 +11,51 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class Doencas : Form
+    public partial class Alergias : Form
     {
-        AdicionarVisualizarDoencaPaciente adicionar = null;
-        public Doencas(AdicionarVisualizarDoencaPaciente adicionarVisualizarDoencaPaciente)
+        AdicionarVisualizarAlergiaPaciente adicionar = null;
+        public Alergias(AdicionarVisualizarAlergiaPaciente adicionarVisualizarDoencaPaciente)
         {
             InitializeComponent();
             adicionar = adicionarVisualizarDoencaPaciente;
         }
 
-        private void Doencas_Load(object sender, EventArgs e)
+        private void Alergias_Load(object sender, EventArgs e)
         {
 
         }
 
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (!VerificarDadosInseridos())
+            {
+                MessageBox.Show("Dados incorretos!");
+            }
+            else
+            {
+                string nome = txtNome.Text;
+                string sintomas = txtSintomas.Text;
+                try
+                {
+                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    connection.Open();
+
+                    string queryInsertData = "INSERT INTO Alergia(Nome,Sintomas) VALUES(' " + nome.ToString() + " ',' " + sintomas.ToString() + "');";
+                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Alergia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    connection.Close();
+                }
+                catch (SqlException excep)
+                {
+                    MessageBox.Show(excep.Message);
+                }
+            }
+        }
+
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            if(adicionar != null)
+            if (adicionar != null)
             {
                 adicionar.reiniciar();
             }
@@ -67,45 +95,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
-            {
-                string nome = txtNome.Text;
-                string sintomas = txtSintomas.Text;
-                try
-                {
-                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                    connection.Open();
-
-                    string queryInsertData = "INSERT INTO Doenca(Nome,Sintomas) VALUES(' " + nome.ToString() + " ',' " + sintomas.ToString() + "');";
-                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Doença registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //    AdicionarVisualizarDoencaPaciente.reiniciar();
-                    connection.Close();
-                }
-                catch (SqlException excep)
-                {
-                    MessageBox.Show(excep.Message);
-                }
-            }
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            VerDoencasRegistadas verDoencasRegistadas = new VerDoencasRegistadas();
-            verDoencasRegistadas.Show();
+            VerAlergiasRegistadas verAlergiasRegistadas = new VerAlergiasRegistadas();
+            verAlergiasRegistadas.Show();
+
         }
+
+
 
         private Boolean VerificarDadosInseridos()
         {

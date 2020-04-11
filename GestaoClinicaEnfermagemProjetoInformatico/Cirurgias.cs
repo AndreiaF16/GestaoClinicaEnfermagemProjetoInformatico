@@ -11,27 +11,13 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class Doencas : Form
+    public partial class Cirurgias : Form
     {
-        AdicionarVisualizarDoencaPaciente adicionar = null;
-        public Doencas(AdicionarVisualizarDoencaPaciente adicionarVisualizarDoencaPaciente)
+        AdicionarVisualizarCirurgiaPaciente adicionar = null;
+        public Cirurgias(AdicionarVisualizarCirurgiaPaciente adicionarVisualizarCirurgiaPaciente)
         {
             InitializeComponent();
-            adicionar = adicionarVisualizarDoencaPaciente;
-        }
-
-        private void Doencas_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnVoltar_Click(object sender, EventArgs e)
-        {
-            if(adicionar != null)
-            {
-                adicionar.reiniciar();
-            }
-            this.Close();
+            adicionar = adicionarVisualizarCirurgiaPaciente;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -67,13 +53,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+
             if (!VerificarDadosInseridos())
             {
                 MessageBox.Show("Dados incorretos!");
@@ -81,16 +63,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             else
             {
                 string nome = txtNome.Text;
-                string sintomas = txtSintomas.Text;
+                string caracterizacao = txtSintomas.Text;
                 try
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Doenca(Nome,Sintomas) VALUES(' " + nome.ToString() + " ',' " + sintomas.ToString() + "');";
+                    string queryInsertData = "INSERT INTO Cirurgia(Nome,Caracterizacao) VALUES(' " + nome.ToString() + " ',' " + caracterizacao.ToString() + "');";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Doença registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cirurgia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //    AdicionarVisualizarDoencaPaciente.reiniciar();
                     connection.Close();
                 }
@@ -99,12 +81,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show(excep.Message);
                 }
             }
+    }
+
+        private void Cirurgias_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            if (adicionar != null)
+            {
+                adicionar.reiniciar();
+            }
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            VerDoencasRegistadas verDoencasRegistadas = new VerDoencasRegistadas();
-            verDoencasRegistadas.Show();
+            VerCirurgiasRegistadas verCirurgiasRegistadas = new VerCirurgiasRegistadas();
+            verCirurgiasRegistadas.Show();
         }
 
         private Boolean VerificarDadosInseridos()

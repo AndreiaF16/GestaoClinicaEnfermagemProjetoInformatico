@@ -11,23 +11,21 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class AdicionarVisualizarDoencaPaciente : Form
+    public partial class AdicionarVisualizarAlergiaPaciente : Form
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
-        private List<ComboBoxItem> doencas = new List<ComboBoxItem>();
+        private List<ComboBoxItem> alergias = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
-        private List<DoencaPaciente> doencaPacientes = new List<DoencaPaciente>();
-        public AdicionarVisualizarDoencaPaciente(Paciente pac)
+        private List<DoencaPaciente> alergiasPacientes = new List<DoencaPaciente>();
+        public AdicionarVisualizarAlergiaPaciente(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
             label1.Text = "Nome do Paciente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             dataDiagnostico.MaxDate = DateTime.Now;
-
-
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -35,9 +33,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.Close();
         }
 
-        private void AdicionarVisualizarDoencaPaciente_Load(object sender, EventArgs e)
+        private void AdicionarVisualizarAlergiaPaciente_Load(object sender, EventArgs e)
         {
-           UpdateDataGridView();
+            UpdateDataGridView();
             reiniciar();
         }
 
@@ -83,7 +81,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             else
             {
-                int doenca = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
+                int alergia = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
                 DateTime data = dataDiagnostico.Value;
                 string observacoes = txtObservacoes.Text;
 
@@ -91,28 +89,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Open();
 
-                    string queryInsertData = "INSERT INTO DoencaPaciente(IdDoenca,IdPaciente,data,observacoes) VALUES(" + doenca + " ,' " + paciente.IdPaciente + " ',' " + data.ToString("MM/dd/yyyy") + " ',' " + observacoes.ToString() + "');";
+                    string queryInsertData = "INSERT INTO AlergiaPaciente(IdAlergia,IdPaciente,data,observacoes) VALUES(" + alergia + " ,' " + paciente.IdPaciente + " ',' " + data.ToString("MM/dd/yyyy") + " ',' " + observacoes.ToString() + "');";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Doença registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Alergia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
                     UpdateDataGridView();
 
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show("Impossível inserir doença", excep.Message);
-
+                    MessageBox.Show("Impossível inserir alergia", excep.Message);
                 }
             }
         }
-
-      private void UpdateDataGridView()
+        private void UpdateDataGridView()
         {
-            doencaPacientes.Clear();
+            alergiasPacientes.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select doenca.Nome, doencaP.data, doencaP.observacoes from DoencaPaciente doencaP JOIN Doenca doenca ON doencaP.IdDoenca = doenca.IdDoenca WHERE IdPaciente = " + paciente.IdPaciente, conn);
+            SqlCommand cmd = new SqlCommand("select alergia.Nome, alergiaP.data, alergiaP.observacoes from AlergiaPaciente alergiaP JOIN Alergia alergia ON alergia.IdAlergia = AlergiaP.IdAlergia WHERE IdPaciente = " + paciente.IdPaciente, conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -125,45 +121,41 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     data = data,
                     observacoes = (string)reader["observacoes"],
                 };
-                doencaPacientes.Add(doencaPaciente);
+                alergiasPacientes.Add(doencaPaciente);
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = doencaPacientes };         
-            dataGridViewDoencas.DataSource = bindingSource1;
-            dataGridViewDoencas.Columns[0].HeaderText = "Doença";
-            dataGridViewDoencas.Columns[1].HeaderText = "Data de Diagnóstico";
-            dataGridViewDoencas.Columns[2].HeaderText = "Observações";
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = alergiasPacientes };
+            dataGridViewAlergias.DataSource = bindingSource1;
+            dataGridViewAlergias.Columns[0].HeaderText = "Alergia";
+            dataGridViewAlergias.Columns[1].HeaderText = "Data de Diagnóstico";
+            dataGridViewAlergias.Columns[2].HeaderText = "Observações";
 
             conn.Close();
-            dataGridViewDoencas.Update();
-            dataGridViewDoencas.Refresh();
-        }
-
-        private void enfermeiroBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
+            dataGridViewAlergias.Update();
+            dataGridViewAlergias.Refresh();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Doencas doencas = new Doencas(this);
-            doencas.Show();
+            Alergias alergias = new Alergias(this);
+            alergias.Show();
         }
+
         public void reiniciar()
         {
-            doencas.Clear();
+            alergias.Clear();
             comboBoxDoenca.Items.Clear();
             auxiliar.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Doenca ", conn);
+            SqlCommand cmd = new SqlCommand("select * from Alergia ", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Text = (string)reader["Nome"];
-                item.Value = (int)reader["IdDoenca"];
+                item.Value = (int)reader["IdAlergia"];
                 comboBoxDoenca.Items.Add(item);
-                doencas.Add(item);
+                alergias.Add(item);
             }
 
             conn.Close();
@@ -182,16 +174,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     item.Value = pesquisa.Value;
                     comboBoxDoenca.Items.Add(item);
                 }
-            
+
             }
         }
 
         private List<ComboBoxItem> filtrosDePesquisa()
         {
             auxiliar = new List<ComboBoxItem>();
-            if (txtProcurar.Text != "" )
+            if (txtProcurar.Text != "")
             {
-                foreach (ComboBoxItem doenca in doencas)
+                foreach (ComboBoxItem doenca in alergias)
                 {
                     if (doenca.Text.ToLower().Contains(txtProcurar.Text.ToLower()))
                     {
@@ -200,23 +192,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 return auxiliar;
             }
-            auxiliar = doencas;
+            auxiliar = alergias;
             return auxiliar;
         }
-
 
         private Boolean VerificarDadosInseridos()
         {
             string nome = comboBoxDoenca.Text;
             string observacoes = txtObservacoes.Text;
+           
 
-
-            if (nome == string.Empty || observacoes == string.Empty)
+            if (nome == string.Empty || observacoes == string.Empty )
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
+          
             return true;
         }
     }
