@@ -386,5 +386,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             VerConsultasPorCliente verConsultasPorClientes = new VerConsultasPorCliente(enfermeiro);
             verConsultasPorClientes.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Doencas doencas = new Doencas(null);
+            doencas.Show(); 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ainda não implementado, fazer!!!");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ainda não implementado, fazer!!!");
+        }
     }
 }

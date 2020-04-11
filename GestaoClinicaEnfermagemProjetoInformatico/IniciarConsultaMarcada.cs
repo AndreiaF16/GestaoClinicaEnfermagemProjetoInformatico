@@ -216,17 +216,36 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {       
-            RegistarHistoricoDeDoenca adicionar = new RegistarHistoricoDeDoenca(paciente);
-            adicionar.Show();
+            AdicionarVisualizarDoencaPaciente adicionarVisualizarDoencaPaciente = new AdicionarVisualizarDoencaPaciente(paciente);
+            adicionarVisualizarDoencaPaciente.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            HistoricoPaciente historicoPaciente = new HistoricoPaciente();
+           /* HistoricoPaciente historicoPaciente = new HistoricoPaciente();
 
 
             VisualizarHistoricoPaciente verHistoricoPaciente = new VisualizarHistoricoPaciente(paciente);
-            verHistoricoPaciente.Show();
+            verHistoricoPaciente.Show();*/
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ConsultasPaciente consultasPaciente = new ConsultasPaciente();
+
+
+            VerConsultasPaciente verConsultasPaciente = new VerConsultasPaciente(paciente);
+            verConsultasPaciente.Show();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ainda não implementado, FAZER!!!");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ainda não implementado, FAZER!!!");
         }
     }
 }

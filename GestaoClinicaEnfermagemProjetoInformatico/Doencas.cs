@@ -1,40 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class RegistarHistoricoDeDoenca : Form
+    public partial class Doencas : Form
     {
-        private Paciente paciente = new Paciente();
-
-        public RegistarHistoricoDeDoenca(Paciente pac)
+        AdicionarVisualizarDoencaPaciente adicionar = null;
+        public Doencas(AdicionarVisualizarDoencaPaciente adicionarVisualizarDoencaPaciente)
         {
             InitializeComponent();
-            paciente = pac;
-            label1.Text = "Nome do Paciente: " + paciente.Nome;
-
+            adicionar = adicionarVisualizarDoencaPaciente;
         }
 
-        private void AdicionarHistoricoDeDoenca_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void Doencas_Load(object sender, EventArgs e)
         {
 
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
+            if(adicionar != null)
+            {
+                adicionar.reiniciar();
+            }
             this.Close();
         }
 
@@ -58,9 +54,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 this.WindowState = FormWindowState.Normal;
             }
         }
+
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+
         }
 
         private void hora_Tick(object sender, EventArgs e)
@@ -76,25 +74,31 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string alergias = txtAlergias.Text;
-            string cirurgias = txtCirurgias.Text;
-         
-                try
-                {
-                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                    connection.Open();
 
-                    string queryInsertData = "INSERT INTO Historico(alergias,cirurgias,idPaciente) VALUES(' " + alergias.ToString() + " ',' " + cirurgias.ToString() + " ',' " + paciente.IdPaciente + "');";
-                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Historico do paciente registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                    connection.Close();             
-                }
-                catch (SqlException excep)
-                {
-                    MessageBox.Show(excep.Message);
-                }
+            string nome = txtNome.Text;
+            string sintomas = txtSintomas.Text;
+            try
+            {
+                SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                connection.Open();
+
+                string queryInsertData = "INSERT INTO Doenca(Nome,Sintomas) VALUES(' " + nome.ToString() + " ',' " + sintomas.ToString() + "');";
+                SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                sqlCommand.ExecuteNonQuery();
+                MessageBox.Show("Doença registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);           
+            //    AdicionarVisualizarDoencaPaciente.reiniciar();
+                connection.Close();
+            }
+            catch (SqlException excep)
+            {
+                MessageBox.Show(excep.Message);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            VerDoencasRegistadas verDoencasRegistadas = new VerDoencasRegistadas();
+            verDoencasRegistadas.Show();
         }
     }
 }

@@ -410,12 +410,41 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 paciente = ClasseAuxiliarBD.getPacienteByNif(utente.Nif);
 
-                VisualizarHistoricoPaciente verHistoricoPaciente = new VisualizarHistoricoPaciente(paciente);
-                verHistoricoPaciente.Show();
+                AdicionarVisualizarDoencaPaciente adicionarVisualizarDoencaPaciente = new AdicionarVisualizarDoencaPaciente(paciente);
+                adicionarVisualizarDoencaPaciente.Show();
             }
             else
             {
                 MessageBox.Show("Não tem utentes associados para poder selecionar o historico do mesmo");
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            if (dataGridViewUtentes.Rows.Count > 1)
+            {
+                // HistoricoPaciente historicoPaciente = new HistoricoPaciente();
+
+                int i = dataGridViewUtentes.CurrentCell.RowIndex;
+                UtenteGridView utente = null; ;
+
+                foreach (var ut in auxiliar)
+                {
+                    if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                    {
+                        utente = ut;
+                    }
+                }
+
+                paciente = ClasseAuxiliarBD.getPacienteByNif(utente.Nif);
+
+                VerConsultasPaciente verConsultasPaciente = new VerConsultasPaciente(paciente);
+                verConsultasPaciente.Show();
+            }
+            else
+            {
+                MessageBox.Show("Não tem utentes associados para poder ver as consultas  do mesmo");
             }
         }
     }

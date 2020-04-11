@@ -48,13 +48,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HistoricoPaciente.cs" />
-    <Compile Include="RegistarHistoricoDeDoenca.cs">
+    <Compile Include="AdicionarVisualizarDoencaPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistarHistoricoDeDoenca.Designer.cs">
-      <DependentUpon>RegistarHistoricoDeDoenca.cs</DependentUpon>
+    <Compile Include="AdicionarVisualizarDoencaPaciente.Designer.cs">
+      <DependentUpon>AdicionarVisualizarDoencaPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComboBoxItem.cs" />
+    <Compile Include="ConsultasPaciente.cs" />
+    <Compile Include="Doenca.cs" />
+    <Compile Include="DoencaPaciente.cs" />
+    <Compile Include="Doencas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doencas.Designer.cs">
+      <DependentUpon>Doencas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistoricoPaciente.cs" />
     <Compile Include="AgendamentoConsultaGridView.cs" />
     <Compile Include="ClasseAuxiliarBD.cs" />
     <Compile Include="PopupForm.cs">
@@ -62,6 +72,12 @@
     </Compile>
     <Compile Include="PopupForm.Designer.cs">
       <DependentUpon>PopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerConsultasPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerConsultasPaciente.Designer.cs">
+      <DependentUpon>VerConsultasPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="VerConsultasPorCliente.cs">
       <SubType>Form</SubType>
@@ -241,6 +257,12 @@
     <Compile Include="Validacoes.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="VerDoencasRegistadas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerDoencasRegistadas.Designer.cs">
+      <DependentUpon>VerDoencasRegistadas.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerEnfermeirosRegistados.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -249,17 +271,17 @@
       <DependentUpon>VerEnfermeirosRegistados.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="VisualizarHistoricoPaciente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VisualizarHistoricoPaciente.Designer.cs">
-      <DependentUpon>VisualizarHistoricoPaciente.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="RegistarHistoricoDeDoenca.resx">
-      <DependentUpon>RegistarHistoricoDeDoenca.cs</DependentUpon>
+    <EmbeddedResource Include="AdicionarVisualizarDoencaPaciente.resx">
+      <DependentUpon>AdicionarVisualizarDoencaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doencas.resx">
+      <DependentUpon>Doencas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupForm.resx">
       <DependentUpon>PopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerConsultasPaciente.resx">
+      <DependentUpon>VerConsultasPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerConsultasPorCliente.resx">
       <DependentUpon>VerConsultasPorCliente.cs</DependentUpon>
@@ -352,12 +374,12 @@
     <EmbeddedResource Include="SendCodeUsername.resx">
       <DependentUpon>SendCodeUsername.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VerDoencasRegistadas.resx">
+      <DependentUpon>VerDoencasRegistadas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VerEnfermeirosRegistados.resx">
       <DependentUpon>VerEnfermeirosRegistados.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VisualizarHistoricoPaciente.resx">
-      <DependentUpon>VisualizarHistoricoPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\DataSources\Enfermeiro.datasource" />
@@ -498,6 +520,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-visualizar-arquivo-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ver-detalhes-50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

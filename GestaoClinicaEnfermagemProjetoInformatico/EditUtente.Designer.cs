@@ -74,13 +74,13 @@
             this.lblFuncao = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtNIF = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.enfermeiroBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNIF = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -616,46 +616,6 @@
             this.lblNome.TabIndex = 10;
             this.lblNome.Text = "Nome:";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label3.Location = new System.Drawing.Point(546, 58);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(193, 20);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Pesquisar Utente por NIF:";
-            // 
-            // txtNIF
-            // 
-            this.txtNIF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNIF.Location = new System.Drawing.Point(783, 52);
-            this.txtNIF.Name = "txtNIF";
-            this.txtNIF.Size = new System.Drawing.Size(228, 26);
-            this.txtNIF.TabIndex = 6;
-            this.txtNIF.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNIF_KeyDown);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label1.Location = new System.Drawing.Point(38, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 20);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Pesquisar Utente por Nome:";
-            // 
-            // txtNome
-            // 
-            this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(275, 52);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(228, 26);
-            this.txtNome.TabIndex = 4;
-            this.txtNome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -682,6 +642,46 @@
             // enfermeiroBindingSource
             // 
             this.enfermeiroBindingSource.DataSource = typeof(GestaoClinicaEnfermagemProjetoInformatico.Enfermeiro);
+            // 
+            // txtNome
+            // 
+            this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNome.Location = new System.Drawing.Point(275, 52);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(228, 26);
+            this.txtNome.TabIndex = 4;
+            this.txtNome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.label1.Location = new System.Drawing.Point(38, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(209, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Pesquisar Utente por Nome:";
+            // 
+            // txtNIF
+            // 
+            this.txtNIF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNIF.Location = new System.Drawing.Point(783, 52);
+            this.txtNIF.Name = "txtNIF";
+            this.txtNIF.Size = new System.Drawing.Size(228, 26);
+            this.txtNIF.TabIndex = 6;
+            this.txtNIF.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNIF_KeyDown);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.label3.Location = new System.Drawing.Point(546, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(193, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Pesquisar Utente por NIF:";
             // 
             // EditUtente
             // 
@@ -754,12 +754,12 @@
         private System.Windows.Forms.Label lblFuncao;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblNome;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel painelPrincipal;
+        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNIF;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel painelPrincipal;
-        private System.Windows.Forms.TextBox textBox2;
     }
 }
