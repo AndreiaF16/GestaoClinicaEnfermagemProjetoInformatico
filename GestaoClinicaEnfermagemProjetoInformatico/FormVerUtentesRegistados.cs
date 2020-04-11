@@ -439,12 +439,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 paciente = ClasseAuxiliarBD.getPacienteByNif(utente.Nif);
 
-                VerConsultasPaciente verConsultasPaciente = new VerConsultasPaciente(paciente);
+                VerDetalhesPaciente verConsultasPaciente = new VerDetalhesPaciente(paciente);
                 verConsultasPaciente.Show();
             }
             else
             {
-                MessageBox.Show("Não tem utentes associados para poder ver as consultas  do mesmo");
+                MessageBox.Show("Não tem utentes associados para poder ver os detalhes do mesmo");
             }
         }
     }
