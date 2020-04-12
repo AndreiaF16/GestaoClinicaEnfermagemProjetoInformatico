@@ -54,10 +54,12 @@
             this.lblNome = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblOutraProfissao = new System.Windows.Forms.Label();
             this.txtOutraProfissao = new System.Windows.Forms.TextBox();
             this.txtLocalidade = new System.Windows.Forms.TextBox();
             this.lblLocalidade = new System.Windows.Forms.Label();
+            this.lblTelemovel = new System.Windows.Forms.Label();
             this.txtCodPostalSuf = new System.Windows.Forms.TextBox();
             this.txtCodPostalPre = new System.Windows.Forms.TextBox();
             this.lbCodPostalP = new System.Windows.Forms.Label();
@@ -68,12 +70,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.lblTelemovel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.hora = new System.Windows.Forms.Timer(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelTitulo.SuspendLayout();
@@ -81,10 +81,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             this.panelFormulario.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.painelPrincipal.SuspendLayout();
             this.panelPrincipal.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -368,6 +368,40 @@
             this.panelFormulario.TabIndex = 2;
             this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblNome);
+            this.groupBox1.Controls.Add(this.lblOutraProfissao);
+            this.groupBox1.Controls.Add(this.txtNome);
+            this.groupBox1.Controls.Add(this.txtOutraProfissao);
+            this.groupBox1.Controls.Add(this.lblFuncao);
+            this.groupBox1.Controls.Add(this.txtLocalidade);
+            this.groupBox1.Controls.Add(this.txtMorada);
+            this.groupBox1.Controls.Add(this.lblLocalidade);
+            this.groupBox1.Controls.Add(this.lblTelemovel);
+            this.groupBox1.Controls.Add(this.txtCodPostalSuf);
+            this.groupBox1.Controls.Add(this.txtContacto);
+            this.groupBox1.Controls.Add(this.txtCodPostalPre);
+            this.groupBox1.Controls.Add(this.lblDataNascimento);
+            this.groupBox1.Controls.Add(this.lbCodPostalP);
+            this.groupBox1.Controls.Add(this.dataNascimento);
+            this.groupBox1.Controls.Add(this.cbProfissoes);
+            this.groupBox1.Controls.Add(this.lblNif);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txtNif);
+            this.groupBox1.Controls.Add(this.txtAndar);
+            this.groupBox1.Controls.Add(this.lblProfissao);
+            this.groupBox1.Controls.Add(this.txtNumeroCasa);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtEmail);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(208, 42);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(642, 688);
+            this.groupBox1.TabIndex = 30;
+            this.groupBox1.TabStop = false;
+            // 
             // lblOutraProfissao
             // 
             this.lblOutraProfissao.AutoSize = true;
@@ -406,6 +440,17 @@
             this.lblLocalidade.Size = new System.Drawing.Size(90, 20);
             this.lblLocalidade.TabIndex = 26;
             this.lblLocalidade.Text = "Localidade:";
+            // 
+            // lblTelemovel
+            // 
+            this.lblTelemovel.AutoSize = true;
+            this.lblTelemovel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelemovel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblTelemovel.Location = new System.Drawing.Point(40, 522);
+            this.lblTelemovel.Name = "lblTelemovel";
+            this.lblTelemovel.Size = new System.Drawing.Size(84, 20);
+            this.lblTelemovel.TabIndex = 6;
+            this.lblTelemovel.Text = "Telemóvel:";
             // 
             // txtCodPostalSuf
             // 
@@ -531,17 +576,6 @@
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // lblTelemovel
-            // 
-            this.lblTelemovel.AutoSize = true;
-            this.lblTelemovel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelemovel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblTelemovel.Location = new System.Drawing.Point(40, 522);
-            this.lblTelemovel.Name = "lblTelemovel";
-            this.lblTelemovel.Size = new System.Drawing.Size(84, 20);
-            this.lblTelemovel.TabIndex = 6;
-            this.lblTelemovel.Text = "Telemóvel:";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._91029693_887056538410859_7048263335300562944_n;
@@ -579,40 +613,6 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.lblNome);
-            this.groupBox1.Controls.Add(this.lblOutraProfissao);
-            this.groupBox1.Controls.Add(this.txtNome);
-            this.groupBox1.Controls.Add(this.txtOutraProfissao);
-            this.groupBox1.Controls.Add(this.lblFuncao);
-            this.groupBox1.Controls.Add(this.txtLocalidade);
-            this.groupBox1.Controls.Add(this.txtMorada);
-            this.groupBox1.Controls.Add(this.lblLocalidade);
-            this.groupBox1.Controls.Add(this.lblTelemovel);
-            this.groupBox1.Controls.Add(this.txtCodPostalSuf);
-            this.groupBox1.Controls.Add(this.txtContacto);
-            this.groupBox1.Controls.Add(this.txtCodPostalPre);
-            this.groupBox1.Controls.Add(this.lblDataNascimento);
-            this.groupBox1.Controls.Add(this.lbCodPostalP);
-            this.groupBox1.Controls.Add(this.dataNascimento);
-            this.groupBox1.Controls.Add(this.cbProfissoes);
-            this.groupBox1.Controls.Add(this.lblNif);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtNif);
-            this.groupBox1.Controls.Add(this.txtAndar);
-            this.groupBox1.Controls.Add(this.lblProfissao);
-            this.groupBox1.Controls.Add(this.txtNumeroCasa);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtEmail);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(208, 42);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(642, 688);
-            this.groupBox1.TabIndex = 30;
-            this.groupBox1.TabStop = false;
-            // 
             // FormRegistarUtente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -620,6 +620,7 @@
             this.ClientSize = new System.Drawing.Size(1385, 782);
             this.Controls.Add(this.panelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRegistarUtente";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormRegistarUtente_Load);
@@ -632,11 +633,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.painelPrincipal.ResumeLayout(false);
             this.panelPrincipal.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }

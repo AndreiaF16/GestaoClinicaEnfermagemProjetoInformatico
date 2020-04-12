@@ -374,6 +374,7 @@
             this.ClientSize = new System.Drawing.Size(1259, 765);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Cirurgias";
             this.Text = "Cirurgias";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

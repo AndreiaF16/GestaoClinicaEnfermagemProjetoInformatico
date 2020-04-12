@@ -450,6 +450,7 @@
             this.ClientSize = new System.Drawing.Size(1426, 749);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarVisualizarDoencaPaciente";
             this.Text = "AdicionarVisualizarDoencaPaciente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

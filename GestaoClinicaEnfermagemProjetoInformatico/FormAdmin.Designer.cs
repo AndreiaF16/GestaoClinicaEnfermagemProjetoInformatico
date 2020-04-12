@@ -286,6 +286,7 @@
             this.ClientSize = new System.Drawing.Size(1100, 600);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(680, 500);
             this.Name = "FormAdmin";
             this.Text = "Form1";

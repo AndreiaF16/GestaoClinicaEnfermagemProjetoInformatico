@@ -15,8 +15,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
-      private  Alergia alergia = null;
-       private List<Alergia> listaAlergias = new List<Alergia>();
+        private Alergia alergia = null;
+        private List<Alergia> listaAlergias = new List<Alergia>();
         private List<Alergia> auxiliar = new List<Alergia>();
 
         public VerAlergiasRegistadas()
@@ -96,7 +96,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         alergia.nome = txtNome.Text;
                         alergia.sintomas = txtSintomas.Text;
                     }
-                    MessageBox.Show("Alergia alterada com Sucesso!");
+                    MessageBox.Show("Alergia alterada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                     UpdateDataGridView();
 
@@ -124,26 +124,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void UpdateDataGridView()
         {
-            listaAlergias.Clear();
-            /* conn.Open();
-             com.Connection = conn;
-
-             SqlCommand cmd = new SqlCommand("select * from Alergia order by nome", conn);
-
-             SqlDataReader reader = cmd.ExecuteReader();
-
-             while (reader.Read())
-             {
-                 alergia = new Alergia
-                 {
-                     nome = (string)reader["nome"],
-                     sintomas = (string)reader["sintomas"],
-                     IdAlergia = (int)reader["IdAlergia"],
-                 };
-                 listaAlergias.Add(alergia);
-             }
-             conn.Close();*/
-
+            listaAlergias.Clear();           
             listaAlergias = getAlergias();
             dataGridViewDoencas.DataSource = new List<Alergias>();
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaAlergias };
@@ -151,7 +132,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewDoencas.Columns[0].HeaderText = "Nome";
             dataGridViewDoencas.Columns[1].HeaderText = "Sintomas";
             dataGridViewDoencas.Columns[2].Visible = false;
-            //auxiliar = listaAlergias;
             foreach (var item in listaAlergias)
             {
                 auxiliar.Add(item);
@@ -190,17 +170,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
                 dataGridViewDoencas.DataSource = bindingSource1;
-            //    dataGridViewDoencas.DataSource = filtrosDePesquisa();
             }
         }
 
         private void dataGridViewDoencas_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
             int i = dataGridViewDoencas.CurrentCell.RowIndex;
 
-
-            //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
            foreach (var al in auxiliar)
             {
                 if (al.nome == dataGridViewDoencas.Rows[i].Cells[0].Value.ToString())
@@ -213,11 +189,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 txtNome.Text = alergia.nome;
                 txtSintomas.Text = alergia.sintomas;
-                txtId.Text = (alergia.IdAlergia).ToString();
-            
-
-            }
-       
+                txtId.Text = (alergia.IdAlergia).ToString();         
+            }      
         }
 
         private List<Alergia> getAlergias()
@@ -225,7 +198,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Alergia order by nome", conn);
+            SqlCommand cmd = new SqlCommand("select * from Alergia order by IdDoenca, nome", conn);
 
             SqlDataReader reader = cmd.ExecuteReader();
 

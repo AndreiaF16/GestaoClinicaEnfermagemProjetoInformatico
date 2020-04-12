@@ -428,6 +428,7 @@
             this.ClientSize = new System.Drawing.Size(1110, 788);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MenuMarcacoes";
             this.Text = "Marcacoes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

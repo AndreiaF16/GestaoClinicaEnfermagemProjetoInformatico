@@ -373,6 +373,7 @@
             this.ClientSize = new System.Drawing.Size(1154, 760);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerConsultasPorCliente";
             this.Text = "ConultasPorCliente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

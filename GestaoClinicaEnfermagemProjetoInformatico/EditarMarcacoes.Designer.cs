@@ -247,6 +247,7 @@
             this.ClientSize = new System.Drawing.Size(1290, 766);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditarMarcacoes";
             this.Text = "EditarMarcacoes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
