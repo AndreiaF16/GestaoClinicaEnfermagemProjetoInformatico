@@ -66,6 +66,12 @@
     <Compile Include="AdicionarVisualizarDoencaPaciente.Designer.cs">
       <DependentUpon>AdicionarVisualizarDoencaPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdicionarVisualizarExamePaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarVisualizarExamePaciente.Designer.cs">
+      <DependentUpon>AdicionarVisualizarExamePaciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Alergia.cs" />
     <Compile Include="Alergias.cs">
       <SubType>Form</SubType>
@@ -92,6 +98,7 @@
       <DependentUpon>Doencas.cs</DependentUpon>
     </Compile>
     <Compile Include="Exame.cs" />
+    <Compile Include="ExamePaciente.cs" />
     <Compile Include="HistoricoPaciente.cs" />
     <Compile Include="AgendamentoConsultaGridView.cs" />
     <Compile Include="ClasseAuxiliarBD.cs" />
@@ -329,6 +336,12 @@
     <Compile Include="VerExamesRegistados.Designer.cs">
       <DependentUpon>VerExamesRegistados.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerMaisDetalhesPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerMaisDetalhesPaciente.Designer.cs">
+      <DependentUpon>VerMaisDetalhesPaciente.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdicionarVisualizarAlergiaPaciente.resx">
       <DependentUpon>AdicionarVisualizarAlergiaPaciente.cs</DependentUpon>
     </EmbeddedResource>
@@ -337,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarVisualizarDoencaPaciente.resx">
       <DependentUpon>AdicionarVisualizarDoencaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarVisualizarExamePaciente.resx">
+      <DependentUpon>AdicionarVisualizarExamePaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Alergias.resx">
       <DependentUpon>Alergias.cs</DependentUpon>
@@ -465,6 +481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerExamesRegistados.resx">
       <DependentUpon>VerExamesRegistados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerMaisDetalhesPaciente.resx">
+      <DependentUpon>VerMaisDetalhesPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\DataSources\Enfermeiro.datasource" />

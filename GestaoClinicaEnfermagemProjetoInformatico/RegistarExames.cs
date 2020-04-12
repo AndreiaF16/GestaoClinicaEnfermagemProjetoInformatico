@@ -13,7 +13,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class RegistarExames : Form
     {
-        public RegistarExames()
+        public RegistarExames(AdicionarVisualizarExamePaciente adicionarVisualizarExamePaciente)
         {
             InitializeComponent();
         }

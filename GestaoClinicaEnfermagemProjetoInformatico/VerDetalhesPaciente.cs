@@ -17,10 +17,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private List<ConsultasPaciente> utentes = new List<ConsultasPaciente>();
-        List<ConsultasPaciente> listaConsultasPaciente = new List<ConsultasPaciente>();
-        List<DoencaPaciente> listaDoencaPacientes = new List<DoencaPaciente>();
-        List<CirurgiaPaciente> listaCirurgiaPacientes = new List<CirurgiaPaciente>();
-        List<DoencaPaciente> listaAlergiaPacientes = new List<DoencaPaciente>();
+        private List<ConsultasPaciente> listaConsultasPaciente = new List<ConsultasPaciente>();
+        private List<DoencaPaciente> listaDoencaPacientes = new List<DoencaPaciente>();
+        private List<CirurgiaPaciente> listaCirurgiaPacientes = new List<CirurgiaPaciente>();
+        private List<DoencaPaciente> listaAlergiaPacientes = new List<DoencaPaciente>();
 
         public VerDetalhesPaciente(Paciente pac)
         {
@@ -35,8 +35,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             consultasRealizadas();
             doencasPaciente();
             alergiasPaciente();
-            cirurgiasPaciente();
-
         }
 
         private void consultasRealizadas()
@@ -151,14 +149,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
 
-        private void UpdateDataGridViewCirurgias()
-        { 
-                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaCirurgiaPacientes };
-                dataGridViewCirurgias.DataSource = bindingSource1;
-                dataGridViewCirurgias.Columns[0].HeaderText = "Cirurgia";
-                dataGridViewCirurgias.Columns[1].HeaderText = "Data de Diagnóstico";
-                dataGridViewCirurgias.Columns[2].HeaderText = "Observações";
-         }
+       
         private void doencasPaciente()
         {
 
@@ -207,32 +198,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
       
 
-        private void cirurgiasPaciente()
-        {
-                conn.Open();
-                com.Connection = conn;
-                SqlCommand cmd = new SqlCommand("select cirurgia.Nome, cirurgiaP.data, cirurgiaP.observacoes from CirurgiaPaciente cirurgiaP JOIN Cirurgia cirurgia ON cirurgia.IdCirurgia = cirurgiaP.IdCirurgia WHERE IdPaciente = " + paciente.IdPaciente, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-
-                    CirurgiaPaciente cirurgiaPaciente = new CirurgiaPaciente
-                    {
-                        nome = (string)reader["Nome"],
-                        data = data,
-                        observacoes = (string)reader["observacoes"],
-                    };
-                listaCirurgiaPacientes.Add(cirurgiaPaciente);
-                }
-                  conn.Close();
-                  UpdateDataGridViewCirurgias();        
-        }
+        
 
         private void button5_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ATENÇÃO, FALTA IMPLEMENTAR!!!");
+            VerMaisDetalhesPaciente ver = new VerMaisDetalhesPaciente(paciente);
+            ver.Show();
         }
     }
 }

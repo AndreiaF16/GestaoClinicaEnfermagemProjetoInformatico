@@ -408,7 +408,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button7_Click(object sender, EventArgs e)
         {
-            RegistarExames registarExames = new RegistarExames();
+            RegistarExames registarExames = new RegistarExames(null);
             registarExames.Show();
         }
     }
