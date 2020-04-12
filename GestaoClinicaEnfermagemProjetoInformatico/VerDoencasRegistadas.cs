@@ -134,10 +134,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     string queryUpdateData = "UPDATE Doenca SET nome = '" + txtNome.Text + "' ,sintomas = '" + txtSintomas.Text + "' WHERE IdDoenca = '" + doenca.IdDoenca + "';";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
                     sqlCommand.ExecuteNonQuery();
-                    foreach (var alergia in listaDoencas)
+                    foreach (var doenca in listaDoencas)
                     {
-                        alergia.nome = txtNome.Text;
-                        alergia.sintomas = txtSintomas.Text;
+                        doenca.nome = txtNome.Text;
+                        doenca.sintomas = txtSintomas.Text;
                     }
                     MessageBox.Show("Doença alterada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
@@ -146,7 +146,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show("Erro interno, não foi possível alterar a alergia!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível alterar a doença!", excep.Message);
                 }
 
             }

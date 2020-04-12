@@ -11,5 +11,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public string nome { get; set; }
 
         public string caracterizacao { get; set; }
+
+        public int IdCirurgia { get; set; }
     }
 }
