@@ -405,5 +405,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             Cirurgias cirurgias = new Cirurgias(null);
             cirurgias.Show();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            RegistarExames registarExames = new RegistarExames();
+            registarExames.Show();
+        }
     }
 }

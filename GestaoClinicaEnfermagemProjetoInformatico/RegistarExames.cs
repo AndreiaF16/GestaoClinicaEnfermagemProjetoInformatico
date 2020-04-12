@@ -11,26 +11,20 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class Doencas : Form
+    public partial class RegistarExames : Form
     {
-        AdicionarVisualizarDoencaPaciente adicionar = null;
-        public Doencas(AdicionarVisualizarDoencaPaciente adicionarVisualizarDoencaPaciente)
+        public RegistarExames()
         {
             InitializeComponent();
-            adicionar = adicionarVisualizarDoencaPaciente;
         }
 
-        private void Doencas_Load(object sender, EventArgs e)
+        private void RegistarExames_Load(object sender, EventArgs e)
         {
 
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            if(adicionar != null)
-            {
-                adicionar.reiniciar();
-            }
             this.Close();
         }
 
@@ -58,7 +52,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-
         }
 
         private void hora_Tick(object sender, EventArgs e)
@@ -67,9 +60,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            VerExamesRegistados verExamesRegistados = new VerExamesRegistados();
+            verExamesRegistados.Show();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -81,39 +75,34 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             else
             {
                 string nome = txtNome.Text;
-                string sintomas = txtSintomas.Text;
+                string categoria = txtCategoria.Text;
+                string designacao = txtDesignacao.Text;
                 try
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Doenca(Nome,Sintomas) VALUES(' " + nome.ToString() + " ',' " + sintomas.ToString() + "');";
+                    string queryInsertData = "INSERT INTO tipoExame(nome,categoria,designacao) VALUES(' " + nome.ToString() + " ',' " + categoria.ToString() + " ',' " + designacao.ToString() + "');";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Doença registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //    AdicionarVisualizarDoencaPaciente.reiniciar();
+                    MessageBox.Show("Exame registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show("Erro interno, não foi possível registar a doença!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível registar o exame!", excep.Message);
                 }
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            VerDoencasRegistadas verDoencasRegistadas = new VerDoencasRegistadas();
-            verDoencasRegistadas.Show();
         }
 
         private Boolean VerificarDadosInseridos()
         {
             string nome = txtNome.Text;
-            string observacoes = txtSintomas.Text;
+            string categoria = txtCategoria.Text;
+            string designacao = txtDesignacao.Text;
 
 
-            if (nome == string.Empty || observacoes == string.Empty)
+            if (nome == string.Empty || categoria == string.Empty || designacao == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

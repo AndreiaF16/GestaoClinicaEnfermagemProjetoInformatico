@@ -102,5 +102,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("ATENÇÃO, FALTA IMPLEMENTAR!!!");
+        }
     }
 }

@@ -257,5 +257,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             AdicionarVisualizarCirurgiaPaciente adicionar = new AdicionarVisualizarCirurgiaPaciente(paciente);
             adicionar.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("ATENÇÃO, FALTA IMPLEMENTAR!!!");
+        }
     }
 }
