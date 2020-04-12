@@ -60,6 +60,7 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.hora = new System.Windows.Forms.Timer(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelPrincipal.SuspendLayout();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
@@ -70,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelPrincipal
@@ -97,20 +99,9 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
-            this.panelFormulario.Controls.Add(this.txtEmail);
-            this.panelFormulario.Controls.Add(this.label2);
+            this.panelFormulario.Controls.Add(this.groupBox1);
             this.panelFormulario.Controls.Add(this.btnCancelar);
             this.panelFormulario.Controls.Add(this.btnGuardar);
-            this.panelFormulario.Controls.Add(this.txtUsername);
-            this.panelFormulario.Controls.Add(this.lblUsername);
-            this.panelFormulario.Controls.Add(this.dataNascimento);
-            this.panelFormulario.Controls.Add(this.lblDataNascimento);
-            this.panelFormulario.Controls.Add(this.txtContacto);
-            this.panelFormulario.Controls.Add(this.lblTelemovel);
-            this.panelFormulario.Controls.Add(this.txtFuncao);
-            this.panelFormulario.Controls.Add(this.lblFuncao);
-            this.panelFormulario.Controls.Add(this.txtNome);
-            this.panelFormulario.Controls.Add(this.lblNome);
             this.panelFormulario.Controls.Add(this.pictureBox1);
             this.panelFormulario.Controls.Add(this.lblTitulo);
             this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -123,9 +114,9 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(364, 418);
+            this.txtEmail.Location = new System.Drawing.Point(22, 422);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(494, 29);
+            this.txtEmail.Size = new System.Drawing.Size(494, 26);
             this.txtEmail.TabIndex = 17;
             this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
@@ -135,7 +126,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label2.Location = new System.Drawing.Point(361, 384);
+            this.label2.Location = new System.Drawing.Point(19, 388);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 20);
             this.label2.TabIndex = 16;
@@ -145,12 +136,12 @@
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnCancelar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._91025699_237925080669313_1596905141716385792_n;
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(954, 555);
+            this.btnCancelar.Location = new System.Drawing.Point(898, 311);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -166,18 +157,18 @@
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90876545_253870845754605_8447427972255711232_n;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(954, 437);
+            this.btnGuardar.Location = new System.Drawing.Point(898, 184);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnGuardar.Size = new System.Drawing.Size(170, 78);
             this.btnGuardar.TabIndex = 1;
-            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Text = "Registar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -186,7 +177,7 @@
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(362, 502);
+            this.txtUsername.Location = new System.Drawing.Point(20, 506);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(492, 29);
             this.txtUsername.TabIndex = 11;
@@ -196,7 +187,7 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblUsername.Location = new System.Drawing.Point(360, 465);
+            this.lblUsername.Location = new System.Drawing.Point(18, 469);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(87, 20);
             this.lblUsername.TabIndex = 10;
@@ -205,7 +196,7 @@
             // dataNascimento
             // 
             this.dataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataNascimento.Location = new System.Drawing.Point(361, 335);
+            this.dataNascimento.Location = new System.Drawing.Point(19, 339);
             this.dataNascimento.Name = "dataNascimento";
             this.dataNascimento.Size = new System.Drawing.Size(493, 29);
             this.dataNascimento.TabIndex = 9;
@@ -216,7 +207,7 @@
             this.lblDataNascimento.AutoSize = true;
             this.lblDataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDataNascimento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblDataNascimento.Location = new System.Drawing.Point(360, 299);
+            this.lblDataNascimento.Location = new System.Drawing.Point(18, 303);
             this.lblDataNascimento.Name = "lblDataNascimento";
             this.lblDataNascimento.Size = new System.Drawing.Size(136, 20);
             this.lblDataNascimento.TabIndex = 8;
@@ -225,7 +216,7 @@
             // txtContacto
             // 
             this.txtContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContacto.Location = new System.Drawing.Point(361, 254);
+            this.txtContacto.Location = new System.Drawing.Point(19, 258);
             this.txtContacto.MaxLength = 9;
             this.txtContacto.Name = "txtContacto";
             this.txtContacto.Size = new System.Drawing.Size(493, 29);
@@ -238,7 +229,7 @@
             this.lblTelemovel.AutoSize = true;
             this.lblTelemovel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelemovel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblTelemovel.Location = new System.Drawing.Point(361, 219);
+            this.lblTelemovel.Location = new System.Drawing.Point(19, 223);
             this.lblTelemovel.Name = "lblTelemovel";
             this.lblTelemovel.Size = new System.Drawing.Size(84, 20);
             this.lblTelemovel.TabIndex = 6;
@@ -247,7 +238,7 @@
             // txtFuncao
             // 
             this.txtFuncao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFuncao.Location = new System.Drawing.Point(361, 174);
+            this.txtFuncao.Location = new System.Drawing.Point(19, 178);
             this.txtFuncao.Name = "txtFuncao";
             this.txtFuncao.Size = new System.Drawing.Size(494, 29);
             this.txtFuncao.TabIndex = 5;
@@ -258,7 +249,7 @@
             this.lblFuncao.AutoSize = true;
             this.lblFuncao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFuncao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblFuncao.Location = new System.Drawing.Point(359, 133);
+            this.lblFuncao.Location = new System.Drawing.Point(17, 137);
             this.lblFuncao.Name = "lblFuncao";
             this.lblFuncao.Size = new System.Drawing.Size(67, 20);
             this.lblFuncao.TabIndex = 4;
@@ -269,7 +260,7 @@
             this.txtNome.BackColor = System.Drawing.Color.White;
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNome.ForeColor = System.Drawing.Color.Black;
-            this.txtNome.Location = new System.Drawing.Point(361, 86);
+            this.txtNome.Location = new System.Drawing.Point(19, 90);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(494, 29);
             this.txtNome.TabIndex = 3;
@@ -280,7 +271,7 @@
             this.lblNome.AutoSize = true;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblNome.Location = new System.Drawing.Point(361, 39);
+            this.lblNome.Location = new System.Drawing.Point(19, 43);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(55, 20);
             this.lblNome.TabIndex = 2;
@@ -291,7 +282,7 @@
             this.pictureBox1.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90874965_219047785852202_1781970356173537280_n;
             this.pictureBox1.Location = new System.Drawing.Point(33, 75);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(193, 173);
+            this.pictureBox1.Size = new System.Drawing.Size(152, 128);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -446,6 +437,28 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtEmail);
+            this.groupBox1.Controls.Add(this.txtNome);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.lblNome);
+            this.groupBox1.Controls.Add(this.lblFuncao);
+            this.groupBox1.Controls.Add(this.txtFuncao);
+            this.groupBox1.Controls.Add(this.txtUsername);
+            this.groupBox1.Controls.Add(this.lblTelemovel);
+            this.groupBox1.Controls.Add(this.lblUsername);
+            this.groupBox1.Controls.Add(this.txtContacto);
+            this.groupBox1.Controls.Add(this.dataNascimento);
+            this.groupBox1.Controls.Add(this.lblDataNascimento);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(253, 75);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(629, 590);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Dados:";
+            // 
             // FormRegistarEnfermeiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -470,6 +483,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -506,5 +521,6 @@
         private System.Windows.Forms.Label lblDia;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer hora;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

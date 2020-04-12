@@ -56,11 +56,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnAlteraPassword = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelPrincipal = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
@@ -71,6 +71,7 @@
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelPrincipal.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -189,9 +190,9 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(361, 356);
+            this.txtEmail.Location = new System.Drawing.Point(40, 350);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(494, 29);
+            this.txtEmail.Size = new System.Drawing.Size(494, 26);
             this.txtEmail.TabIndex = 17;
             // 
             // label4
@@ -199,7 +200,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label4.Location = new System.Drawing.Point(361, 323);
+            this.label4.Location = new System.Drawing.Point(40, 317);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 20);
             this.label4.TabIndex = 16;
@@ -208,7 +209,7 @@
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(361, 459);
+            this.txtUsername.Location = new System.Drawing.Point(36, 428);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(492, 29);
             this.txtUsername.TabIndex = 11;
@@ -218,7 +219,7 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblUsername.Location = new System.Drawing.Point(361, 423);
+            this.lblUsername.Location = new System.Drawing.Point(36, 392);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(87, 20);
             this.lblUsername.TabIndex = 10;
@@ -227,7 +228,7 @@
             // txtContacto
             // 
             this.txtContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContacto.Location = new System.Drawing.Point(361, 254);
+            this.txtContacto.Location = new System.Drawing.Point(40, 248);
             this.txtContacto.MaxLength = 9;
             this.txtContacto.Name = "txtContacto";
             this.txtContacto.Size = new System.Drawing.Size(493, 29);
@@ -240,16 +241,16 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.lblTitulo.Location = new System.Drawing.Point(6, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(210, 39);
+            this.lblTitulo.Size = new System.Drawing.Size(290, 39);
             this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Editar Perfil";
+            this.lblTitulo.Text = "Editar Meu Perfil";
             // 
             // lblTelemovel
             // 
             this.lblTelemovel.AutoSize = true;
             this.lblTelemovel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelemovel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblTelemovel.Location = new System.Drawing.Point(361, 219);
+            this.lblTelemovel.Location = new System.Drawing.Point(40, 213);
             this.lblTelemovel.Name = "lblTelemovel";
             this.lblTelemovel.Size = new System.Drawing.Size(84, 20);
             this.lblTelemovel.TabIndex = 6;
@@ -258,7 +259,7 @@
             // txtFuncao
             // 
             this.txtFuncao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFuncao.Location = new System.Drawing.Point(361, 174);
+            this.txtFuncao.Location = new System.Drawing.Point(40, 168);
             this.txtFuncao.Name = "txtFuncao";
             this.txtFuncao.Size = new System.Drawing.Size(494, 29);
             this.txtFuncao.TabIndex = 5;
@@ -268,7 +269,7 @@
             this.lblFuncao.AutoSize = true;
             this.lblFuncao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFuncao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblFuncao.Location = new System.Drawing.Point(359, 133);
+            this.lblFuncao.Location = new System.Drawing.Point(38, 127);
             this.lblFuncao.Name = "lblFuncao";
             this.lblFuncao.Size = new System.Drawing.Size(67, 20);
             this.lblFuncao.TabIndex = 4;
@@ -279,7 +280,7 @@
             this.txtNome.BackColor = System.Drawing.Color.White;
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNome.ForeColor = System.Drawing.Color.Black;
-            this.txtNome.Location = new System.Drawing.Point(361, 86);
+            this.txtNome.Location = new System.Drawing.Point(40, 80);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(494, 29);
             this.txtNome.TabIndex = 3;
@@ -288,17 +289,7 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
-            this.panelFormulario.Controls.Add(this.txtEmail);
-            this.panelFormulario.Controls.Add(this.label4);
-            this.panelFormulario.Controls.Add(this.btnGuardar);
-            this.panelFormulario.Controls.Add(this.txtUsername);
-            this.panelFormulario.Controls.Add(this.lblUsername);
-            this.panelFormulario.Controls.Add(this.txtContacto);
-            this.panelFormulario.Controls.Add(this.lblTelemovel);
-            this.panelFormulario.Controls.Add(this.txtFuncao);
-            this.panelFormulario.Controls.Add(this.lblFuncao);
-            this.panelFormulario.Controls.Add(this.txtNome);
-            this.panelFormulario.Controls.Add(this.lblNome);
+            this.panelFormulario.Controls.Add(this.groupBox1);
             this.panelFormulario.Controls.Add(this.pictureBox1);
             this.panelFormulario.Controls.Add(this.lblTitulo);
             this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -313,16 +304,16 @@
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90876545_253870845754605_8447427972255711232_n;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(575, 572);
+            this.btnGuardar.Location = new System.Drawing.Point(608, 213);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGuardar.Size = new System.Drawing.Size(170, 78);
+            this.btnGuardar.Size = new System.Drawing.Size(140, 78);
             this.btnGuardar.TabIndex = 1;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -335,7 +326,7 @@
             this.lblNome.AutoSize = true;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblNome.Location = new System.Drawing.Point(361, 39);
+            this.lblNome.Location = new System.Drawing.Point(40, 33);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(55, 20);
             this.lblNome.TabIndex = 2;
@@ -346,7 +337,7 @@
             this.pictureBox1.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_editar_conta_50;
             this.pictureBox1.Location = new System.Drawing.Point(33, 75);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(193, 173);
+            this.pictureBox1.Size = new System.Drawing.Size(147, 133);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -366,7 +357,6 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.btnAlteraPassword);
             this.panelMenu.Controls.Add(this.btnVoltar);
             this.panelMenu.Controls.Add(this.pictureBox2);
@@ -376,37 +366,22 @@
             this.panelMenu.Size = new System.Drawing.Size(232, 742);
             this.panelMenu.TabIndex = 1;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_editar_conta_50;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(0, 423);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(232, 65);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Meu Perfil";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // btnAlteraPassword
             // 
             this.btnAlteraPassword.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnAlteraPassword.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_re_digite_o_código_pin_64;
             this.btnAlteraPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAlteraPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlteraPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlteraPassword.ForeColor = System.Drawing.Color.Black;
-            this.btnAlteraPassword.Location = new System.Drawing.Point(0, 495);
+            this.btnAlteraPassword.Location = new System.Drawing.Point(5, 504);
             this.btnAlteraPassword.Margin = new System.Windows.Forms.Padding(2);
             this.btnAlteraPassword.Name = "btnAlteraPassword";
             this.btnAlteraPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnAlteraPassword.Size = new System.Drawing.Size(232, 65);
+            this.btnAlteraPassword.Size = new System.Drawing.Size(222, 65);
             this.btnAlteraPassword.TabIndex = 11;
             this.btnAlteraPassword.Text = "Alterar Password";
+            this.btnAlteraPassword.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAlteraPassword.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnAlteraPassword.UseVisualStyleBackColor = false;
             this.btnAlteraPassword.Click += new System.EventHandler(this.btnAlteraPassword_Click);
@@ -451,6 +426,27 @@
             this.panelPrincipal.Size = new System.Drawing.Size(1385, 782);
             this.panelPrincipal.TabIndex = 2;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtEmail);
+            this.groupBox1.Controls.Add(this.btnGuardar);
+            this.groupBox1.Controls.Add(this.lblNome);
+            this.groupBox1.Controls.Add(this.txtUsername);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.lblUsername);
+            this.groupBox1.Controls.Add(this.txtNome);
+            this.groupBox1.Controls.Add(this.lblFuncao);
+            this.groupBox1.Controls.Add(this.txtFuncao);
+            this.groupBox1.Controls.Add(this.lblTelemovel);
+            this.groupBox1.Controls.Add(this.txtContacto);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(211, 76);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(802, 484);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Dados:";
+            // 
             // EnfermeiroPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -476,6 +472,8 @@
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelPrincipal.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -510,9 +508,9 @@
         private System.Windows.Forms.Panel painelPrincipal;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelPrincipal;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnAlteraPassword;
         private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

@@ -118,12 +118,13 @@
             this.btnEliminarMarcacao.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_remover_relógio_50;
             this.btnEliminarMarcacao.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnEliminarMarcacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarMarcacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarMarcacao.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminarMarcacao.Location = new System.Drawing.Point(306, 585);
+            this.btnEliminarMarcacao.Location = new System.Drawing.Point(300, 567);
             this.btnEliminarMarcacao.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarMarcacao.Name = "btnEliminarMarcacao";
             this.btnEliminarMarcacao.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnEliminarMarcacao.Size = new System.Drawing.Size(232, 65);
+            this.btnEliminarMarcacao.Size = new System.Drawing.Size(256, 65);
             this.btnEliminarMarcacao.TabIndex = 7;
             this.btnEliminarMarcacao.Text = "Desmarcar Consulta";
             this.btnEliminarMarcacao.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -156,7 +157,7 @@
             this.dataGridViewMarcacoes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewMarcacoes.EnableHeadersVisualStyles = false;
             this.dataGridViewMarcacoes.GridColor = System.Drawing.Color.SteelBlue;
-            this.dataGridViewMarcacoes.Location = new System.Drawing.Point(152, 254);
+            this.dataGridViewMarcacoes.Location = new System.Drawing.Point(168, 222);
             this.dataGridViewMarcacoes.MultiSelect = false;
             this.dataGridViewMarcacoes.Name = "dataGridViewMarcacoes";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -260,9 +261,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.label1.Location = new System.Drawing.Point(21, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 39);
+            this.label1.Size = new System.Drawing.Size(372, 39);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Marcações";
+            this.label1.Text = "Desmarcar Consultas";
             // 
             // panelMenu
             // 
@@ -282,6 +283,7 @@
             this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_editar_64;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Location = new System.Drawing.Point(0, 424);
             this.button1.Margin = new System.Windows.Forms.Padding(2);

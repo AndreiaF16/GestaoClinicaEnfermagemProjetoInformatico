@@ -63,10 +63,10 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(176, 26);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(231, 21);
+            this.txtEmail.Size = new System.Drawing.Size(231, 26);
             this.txtEmail.TabIndex = 18;
             // 
             // label2
@@ -84,6 +84,7 @@
             // btnVerificarCode
             // 
             this.btnVerificarCode.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnVerificarCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerificarCode.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_verificar_arquivo_26;
             this.btnVerificarCode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVerificarCode.Location = new System.Drawing.Point(176, 192);
@@ -97,10 +98,10 @@
             // 
             // txtCode
             // 
-            this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCode.Location = new System.Drawing.Point(176, 165);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(231, 21);
+            this.txtCode.Size = new System.Drawing.Size(231, 26);
             this.txtCode.TabIndex = 15;
             this.txtCode.Visible = false;
             // 
@@ -209,6 +210,7 @@
             // btnEnviarEmail
             // 
             this.btnEnviarEmail.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnEnviarEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnviarEmail.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_enviar_642;
             this.btnEnviarEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEnviarEmail.Location = new System.Drawing.Point(176, 68);

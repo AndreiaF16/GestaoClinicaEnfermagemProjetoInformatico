@@ -54,7 +54,7 @@
             // 
             this.txtNovaPassword.Location = new System.Drawing.Point(227, 50);
             this.txtNovaPassword.Name = "txtNovaPassword";
-            this.txtNovaPassword.Size = new System.Drawing.Size(258, 20);
+            this.txtNovaPassword.Size = new System.Drawing.Size(258, 26);
             this.txtNovaPassword.TabIndex = 12;
             this.txtNovaPassword.UseSystemPasswordChar = true;
             // 
@@ -62,7 +62,7 @@
             // 
             this.txtConfirmarNovaPassword.Location = new System.Drawing.Point(227, 127);
             this.txtConfirmarNovaPassword.Name = "txtConfirmarNovaPassword";
-            this.txtConfirmarNovaPassword.Size = new System.Drawing.Size(258, 20);
+            this.txtConfirmarNovaPassword.Size = new System.Drawing.Size(258, 26);
             this.txtConfirmarNovaPassword.TabIndex = 13;
             this.txtConfirmarNovaPassword.UseSystemPasswordChar = true;
             // 
@@ -153,6 +153,7 @@
             this.panel1.Controls.Add(this.lblPassword);
             this.panel1.Controls.Add(this.txtNovaPassword);
             this.panel1.Controls.Add(this.txtConfirmarNovaPassword);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(147, 102);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(562, 242);
@@ -187,6 +188,7 @@
             this.btnAlterarPassword.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnAlterarPassword.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90876545_253870845754605_8447427972255711232_n;
             this.btnAlterarPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAlterarPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterarPassword.Location = new System.Drawing.Point(293, 360);
             this.btnAlterarPassword.Name = "btnAlterarPassword";
             this.btnAlterarPassword.Size = new System.Drawing.Size(221, 78);

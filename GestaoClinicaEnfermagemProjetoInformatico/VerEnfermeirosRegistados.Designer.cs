@@ -67,6 +67,7 @@
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_ver_detalhes_100;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -200,6 +201,7 @@
             // 
             this.btnRegistarUtilizador.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnRegistarUtilizador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistarUtilizador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistarUtilizador.ForeColor = System.Drawing.Color.Black;
             this.btnRegistarUtilizador.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._91029693_887056538410859_7048263335300562944_n1;
             this.btnRegistarUtilizador.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -322,14 +324,14 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
-            // VerEnfermeirosRegistos
+            // VerEnfermeirosRegistados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1124, 610);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "VerEnfermeirosRegistos";
+            this.Name = "VerEnfermeirosRegistados";
             this.Text = "VerEnfermeirosRegistos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VerEnfermeirosRegistos_Load);

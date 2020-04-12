@@ -151,7 +151,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.LimpaCampos(this.panel1.Controls);
+            // this.LimpaCampos(this.panel1.Controls);
+            Application.Exit();
            
         }
        

@@ -66,6 +66,7 @@
     <Compile Include="AdicionarVisualizarDoencaPaciente.Designer.cs">
       <DependentUpon>AdicionarVisualizarDoencaPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Alergia.cs" />
     <Compile Include="Alergias.cs">
       <SubType>Form</SubType>
     </Compile>
