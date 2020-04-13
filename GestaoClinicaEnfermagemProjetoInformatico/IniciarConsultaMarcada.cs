@@ -263,5 +263,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             AdicionarVisualizarExamePaciente adicionar = new AdicionarVisualizarExamePaciente(paciente);
             adicionar.Show();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AdicionarVisualizarAvaliacaoObjetivoPaciente adicionarVisualizarAvaliacaoObjetivoPaciente = new AdicionarVisualizarAvaliacaoObjetivoPaciente(paciente);
+            adicionarVisualizarAvaliacaoObjetivoPaciente.Show();
+        }
     }
 }

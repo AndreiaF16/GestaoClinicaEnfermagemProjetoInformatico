@@ -63,7 +63,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-
         }
 
         private void hora_Tick(object sender, EventArgs e)
@@ -89,7 +88,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Open();
 
-                    string queryInsertData = "INSERT INTO CirurgiaPaciente(IdCirurgia,IdPaciente,data,observacoes) VALUES(" + alergia + " ,' " + paciente.IdPaciente + " ',' " + data.ToString("MM/dd/yyyy") + " ',' " + observacoes.ToString() + "');";
+                    string queryInsertData = "INSERT INTO CirurgiaPaciente(IdCirurgia,IdPaciente,data,observacoes) VALUES('" + alergia + "','" + paciente.IdPaciente + "','" + data.ToString("MM/dd/yyyy") + "','" + observacoes.ToString() + "');";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Cirurgia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);

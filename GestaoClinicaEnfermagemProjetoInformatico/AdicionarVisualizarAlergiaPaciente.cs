@@ -25,7 +25,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             paciente = pac;
             label1.Text = "Nome do Paciente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            dataDiagnostico.MaxDate = DateTime.Now;
+            dataDiagnostico.MinDate = DateTime.Now;
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -89,8 +89,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Open();
 
-                    string queryInsertData = "INSERT INTO AlergiaPaciente(IdAlergia,IdPaciente,data,observacoes) VALUES(" + alergia + " ,' " + paciente.IdPaciente + " ',' " + data.ToString("MM/dd/yyyy") + " ',' " + observacoes.ToString() + "');";
+                    string queryInsertData = "INSERT INTO AlergiaPaciente(IdAlergia,IdPaciente,data,observacoes) VALUES(@IdAlergia, @IdPaciente, @data, @observacoes);";    
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
+                    sqlCommand.Parameters.AddWithValue("@IdAlergia", alergia);
+                    sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                    sqlCommand.Parameters.AddWithValue("@data", dataDiagnostico.Value);
+                    sqlCommand.Parameters.AddWithValue("@observacoes", txtObservacoes.Text);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Alergia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
@@ -99,6 +103,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException excep)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Impossível inserir alergia", excep.Message);
                 }
             }

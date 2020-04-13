@@ -91,7 +91,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Open();
 
-                    string queryInsertData = "INSERT INTO DoencaPaciente(IdDoenca,IdPaciente,data,observacoes) VALUES(" + doenca + " ,' " + paciente.IdPaciente + " ',' " + data.ToString("MM/dd/yyyy") + " ',' " + observacoes.ToString() + "');";
+                    string queryInsertData = "INSERT INTO DoencaPaciente(IdDoenca,IdPaciente,data,observacoes) VALUES('" + doenca + "','" + paciente.IdPaciente + "','" + data.ToString("MM/dd/yyyy") + "','" + observacoes.ToString() + "');";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Doença registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -54,6 +54,12 @@
     <Compile Include="AdicionarVisualizarAlergiaPaciente.Designer.cs">
       <DependentUpon>AdicionarVisualizarAlergiaPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdicionarVisualizarAvaliacaoObjetivoPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarVisualizarAvaliacaoObjetivoPaciente.Designer.cs">
+      <DependentUpon>AdicionarVisualizarAvaliacaoObjetivoPaciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdicionarVisualizarCirurgiaPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,7 @@
     <Compile Include="Alergias.Designer.cs">
       <DependentUpon>Alergias.cs</DependentUpon>
     </Compile>
+    <Compile Include="AvaliacaoObjetivo.cs" />
     <Compile Include="Cirurgia.cs" />
     <Compile Include="CirurgiaPaciente.cs" />
     <Compile Include="Cirurgias.cs">
@@ -332,6 +339,9 @@
     </Compile>
     <EmbeddedResource Include="AdicionarVisualizarAlergiaPaciente.resx">
       <DependentUpon>AdicionarVisualizarAlergiaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarVisualizarAvaliacaoObjetivoPaciente.resx">
+      <DependentUpon>AdicionarVisualizarAvaliacaoObjetivoPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarVisualizarCirurgiaPaciente.resx">
       <DependentUpon>AdicionarVisualizarCirurgiaPaciente.cs</DependentUpon>

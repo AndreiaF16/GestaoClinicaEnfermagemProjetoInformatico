@@ -109,9 +109,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(33, 37);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 20);
+            this.label3.Size = new System.Drawing.Size(58, 20);
             this.label3.TabIndex = 52;
-            this.label3.Text = "Doença";
+            this.label3.Text = "Alergia";
             // 
             // label1
             // 
