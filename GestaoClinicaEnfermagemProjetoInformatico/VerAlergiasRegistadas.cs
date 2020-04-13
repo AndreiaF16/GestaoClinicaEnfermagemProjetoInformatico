@@ -198,7 +198,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Alergia order by IdDoenca, nome", conn);
+            SqlCommand cmd = new SqlCommand("select * from Alergia order by IdAlergia, Nome", conn);
 
             SqlDataReader reader = cmd.ExecuteReader();
 

@@ -132,18 +132,6 @@
     <Compile Include="VerConsultasPaciente.Designer.cs">
       <DependentUpon>VerConsultasPaciente.cs</DependentUpon>
     </Compile>
-    <Compile Include="VerConsultasPorCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VerConsultasPorCliente.Designer.cs">
-      <DependentUpon>VerConsultasPorCliente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditarMarcacoes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditarMarcacoes.Designer.cs">
-      <DependentUpon>EditarMarcacoes.cs</DependentUpon>
-    </Compile>
     <Compile Include="EditUtente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -377,12 +365,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerConsultasPaciente.resx">
       <DependentUpon>VerConsultasPaciente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VerConsultasPorCliente.resx">
-      <DependentUpon>VerConsultasPorCliente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditarMarcacoes.resx">
-      <DependentUpon>EditarMarcacoes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditUtente.resx">
       <DependentUpon>EditUtente.cs</DependentUpon>

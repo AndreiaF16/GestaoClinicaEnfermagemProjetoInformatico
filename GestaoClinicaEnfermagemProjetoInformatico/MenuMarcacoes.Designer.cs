@@ -29,18 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuMarcacoes));
             this.hora = new System.Windows.Forms.Timer(this.components);
             this.lblDia = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
             this.panelFormulario = new System.Windows.Forms.Panel();
-            this.btnEliminarMarcacao = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.horaConsultaAdiar = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dataConsultaAdiar = new System.Windows.Forms.DateTimePicker();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewMarcacoes = new System.Windows.Forms.DataGridView();
+            this.btnEliminarMarcacao = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.txtNIF = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,7 +57,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelTitulo = new System.Windows.Forms.Panel();
@@ -60,6 +67,8 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMarcacoes)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -102,15 +111,148 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
-            this.panelFormulario.Controls.Add(this.btnEliminarMarcacao);
-            this.panelFormulario.Controls.Add(this.dataGridViewMarcacoes);
+            this.panelFormulario.Controls.Add(this.groupBox3);
+            this.panelFormulario.Controls.Add(this.groupBox2);
             this.panelFormulario.Controls.Add(this.groupBox1);
             this.panelFormulario.Controls.Add(this.label1);
             this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFormulario.Location = new System.Drawing.Point(232, 40);
             this.panelFormulario.Name = "panelFormulario";
-            this.panelFormulario.Size = new System.Drawing.Size(878, 748);
+            this.panelFormulario.Size = new System.Drawing.Size(1162, 748);
             this.panelFormulario.TabIndex = 2;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.horaConsultaAdiar);
+            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.dataConsultaAdiar);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(607, 313);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(500, 229);
+            this.groupBox3.TabIndex = 71;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Adiar Consulta";
+            this.groupBox3.UseCompatibleTextRendering = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(22, 72);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(137, 20);
+            this.label5.TabIndex = 71;
+            this.label5.Text = "Hora da Consulta:";
+            // 
+            // horaConsultaAdiar
+            // 
+            this.horaConsultaAdiar.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.horaConsultaAdiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.horaConsultaAdiar.Location = new System.Drawing.Point(248, 67);
+            this.horaConsultaAdiar.Name = "horaConsultaAdiar";
+            this.horaConsultaAdiar.Size = new System.Drawing.Size(230, 26);
+            this.horaConsultaAdiar.TabIndex = 72;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_editar_64;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(141, 148);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(256, 65);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Alterar Consulta";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(22, 32);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(137, 20);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Data da Consulta:";
+            // 
+            // dataConsultaAdiar
+            // 
+            this.dataConsultaAdiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataConsultaAdiar.Location = new System.Drawing.Point(248, 26);
+            this.dataConsultaAdiar.Name = "dataConsultaAdiar";
+            this.dataConsultaAdiar.Size = new System.Drawing.Size(230, 26);
+            this.dataConsultaAdiar.TabIndex = 8;
+            this.dataConsultaAdiar.ValueChanged += new System.EventHandler(this.dataConsultaAdiar_ValueChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataGridViewMarcacoes);
+            this.groupBox2.Controls.Add(this.btnEliminarMarcacao);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(6, 238);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(583, 464);
+            this.groupBox2.TabIndex = 55;
+            this.groupBox2.TabStop = false;
+            // 
+            // dataGridViewMarcacoes
+            // 
+            this.dataGridViewMarcacoes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewMarcacoes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.dataGridViewMarcacoes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewMarcacoes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMarcacoes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewMarcacoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewMarcacoes.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewMarcacoes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewMarcacoes.EnableHeadersVisualStyles = false;
+            this.dataGridViewMarcacoes.GridColor = System.Drawing.Color.SteelBlue;
+            this.dataGridViewMarcacoes.Location = new System.Drawing.Point(22, 25);
+            this.dataGridViewMarcacoes.MultiSelect = false;
+            this.dataGridViewMarcacoes.Name = "dataGridViewMarcacoes";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMarcacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewMarcacoes.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewMarcacoes.Size = new System.Drawing.Size(549, 326);
+            this.dataGridViewMarcacoes.TabIndex = 53;
+            this.dataGridViewMarcacoes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMarcacoes_CellContentClick);
+            this.dataGridViewMarcacoes.DoubleClick += new System.EventHandler(this.dataGridViewMarcacoes_DoubleClick);
             // 
             // btnEliminarMarcacao
             // 
@@ -120,7 +262,7 @@
             this.btnEliminarMarcacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarMarcacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarMarcacao.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminarMarcacao.Location = new System.Drawing.Point(300, 567);
+            this.btnEliminarMarcacao.Location = new System.Drawing.Point(193, 371);
             this.btnEliminarMarcacao.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarMarcacao.Name = "btnEliminarMarcacao";
             this.btnEliminarMarcacao.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -131,55 +273,9 @@
             this.btnEliminarMarcacao.UseVisualStyleBackColor = false;
             this.btnEliminarMarcacao.Click += new System.EventHandler(this.btnAlteraPassword_Click);
             // 
-            // dataGridViewMarcacoes
-            // 
-            this.dataGridViewMarcacoes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewMarcacoes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.dataGridViewMarcacoes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewMarcacoes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMarcacoes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewMarcacoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewMarcacoes.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewMarcacoes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewMarcacoes.EnableHeadersVisualStyles = false;
-            this.dataGridViewMarcacoes.GridColor = System.Drawing.Color.SteelBlue;
-            this.dataGridViewMarcacoes.Location = new System.Drawing.Point(168, 222);
-            this.dataGridViewMarcacoes.MultiSelect = false;
-            this.dataGridViewMarcacoes.Name = "dataGridViewMarcacoes";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMarcacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewMarcacoes.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewMarcacoes.Size = new System.Drawing.Size(549, 326);
-            this.dataGridViewMarcacoes.TabIndex = 53;
-            this.dataGridViewMarcacoes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMarcacoes_CellContentClick);
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.txtNIF);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -187,13 +283,25 @@
             this.groupBox1.Controls.Add(this.txtNome);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(181, 61);
+            this.groupBox1.Location = new System.Drawing.Point(311, 79);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(520, 155);
+            this.groupBox1.Size = new System.Drawing.Size(520, 141);
             this.groupBox1.TabIndex = 54;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Pesquisar Por:";
+            this.groupBox1.Text = "Pesquisar Consulta Por:";
             this.groupBox1.UseCompatibleTextRendering = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(209, 32);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(5);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 70;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // txtNIF
             // 
@@ -261,14 +369,13 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.label1.Location = new System.Drawing.Point(21, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(372, 39);
+            this.label1.Size = new System.Drawing.Size(181, 39);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Desmarcar Consultas";
+            this.label1.Text = "Consultas";
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.btnVoltar);
             this.panelMenu.Controls.Add(this.pictureBox2);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -276,25 +383,6 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(232, 748);
             this.panelMenu.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_editar_64;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(0, 424);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(232, 65);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Alterar Marcação";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnVoltar
             // 
@@ -339,7 +427,7 @@
             this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitulo.Location = new System.Drawing.Point(0, 0);
             this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new System.Drawing.Size(1110, 40);
+            this.panelTitulo.Size = new System.Drawing.Size(1394, 40);
             this.panelTitulo.TabIndex = 0;
             // 
             // btnMaximizar
@@ -347,7 +435,7 @@
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(1055, 11);
+            this.btnMaximizar.Location = new System.Drawing.Point(1339, 11);
             this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
@@ -362,7 +450,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1075, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(1359, 11);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(16, 16);
@@ -376,7 +464,7 @@
             this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
-            this.btnFechar.Location = new System.Drawing.Point(1351, 11);
+            this.btnFechar.Location = new System.Drawing.Point(1635, 11);
             this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(16, 16);
@@ -400,7 +488,7 @@
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(1039, 11);
+            this.btnMinimizar.Location = new System.Drawing.Point(1323, 11);
             this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
@@ -418,14 +506,14 @@
             this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
             this.painelPrincipal.Name = "painelPrincipal";
-            this.painelPrincipal.Size = new System.Drawing.Size(1110, 788);
+            this.painelPrincipal.Size = new System.Drawing.Size(1394, 788);
             this.painelPrincipal.TabIndex = 4;
             // 
             // MenuMarcacoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1110, 788);
+            this.ClientSize = new System.Drawing.Size(1394, 788);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -434,6 +522,9 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMarcacoes)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -477,5 +568,12 @@
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridViewMarcacoes;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dataConsultaAdiar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker horaConsultaAdiar;
     }
 }
