@@ -77,8 +77,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnVoltar_Click_1(object sender, EventArgs e)
         {
-            FormMenu formMenu = new FormMenu(enfermeiro);
-            formMenu.Show();
+            this.Close();
+            /*FormMenu formMenu = new FormMenu(enfermeiro);
+            formMenu.Show();*/
         }
 
         private void btnAlteraPassword_Click(object sender, EventArgs e)

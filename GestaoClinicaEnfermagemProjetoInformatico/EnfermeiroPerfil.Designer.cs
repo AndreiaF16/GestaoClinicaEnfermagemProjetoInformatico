@@ -57,7 +57,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.btnAlteraPassword = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelPrincipal = new System.Windows.Forms.Panel();
@@ -378,7 +377,6 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.panelMenu.Controls.Add(this.btnAlteraPassword);
             this.panelMenu.Controls.Add(this.btnVoltar);
             this.panelMenu.Controls.Add(this.pictureBox2);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -386,26 +384,6 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(232, 742);
             this.panelMenu.TabIndex = 1;
-            // 
-            // btnAlteraPassword
-            // 
-            this.btnAlteraPassword.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnAlteraPassword.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_re_digite_o_código_pin_64;
-            this.btnAlteraPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAlteraPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlteraPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlteraPassword.ForeColor = System.Drawing.Color.Black;
-            this.btnAlteraPassword.Location = new System.Drawing.Point(5, 504);
-            this.btnAlteraPassword.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAlteraPassword.Name = "btnAlteraPassword";
-            this.btnAlteraPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnAlteraPassword.Size = new System.Drawing.Size(222, 65);
-            this.btnAlteraPassword.TabIndex = 11;
-            this.btnAlteraPassword.Text = "Alterar Password";
-            this.btnAlteraPassword.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAlteraPassword.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnAlteraPassword.UseVisualStyleBackColor = false;
-            this.btnAlteraPassword.Click += new System.EventHandler(this.btnAlteraPassword_Click);
             // 
             // btnVoltar
             // 
@@ -509,7 +487,6 @@
         private System.Windows.Forms.Panel painelPrincipal;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelPrincipal;
-        private System.Windows.Forms.Button btnAlteraPassword;
         private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox1;
