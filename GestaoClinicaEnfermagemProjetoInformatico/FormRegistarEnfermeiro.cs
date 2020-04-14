@@ -156,8 +156,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             var dtNascimento = dataNascimento.Value;
             string email = txtEmail.Text;
             string username = txtUsername.Text;
-           // string password = txtPassword.Text;
-           // string confirmaPassword = txtConfirmaPassword.Text;
             string passCript = CalculaHash("User1234*");
 
             if (!VerificarDadosInseridos())
@@ -171,17 +169,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
                     
-                        string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES('" + nome.ToString() + "','" + funcao.ToString() + "','" + telemovel.ToString() + "','" + dtNascimento.ToString("MM/dd/yyyy") + "','" + username.ToString() + "','" + passCript.ToString() + "','" + email.ToString() + "');";
-                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                        sqlCommand.ExecuteNonQuery();
-                        MessageBox.Show("Enfermeiro registado com Sucesso!");
+                    string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES(@nome,@funcao,@contacto,@dataNascimento,@username,@password,@email);";
+                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                    sqlCommand.Parameters.AddWithValue("@nome", txtNome.Text);
+                    sqlCommand.Parameters.AddWithValue("@funcao", txtFuncao.Text);
+                    sqlCommand.Parameters.AddWithValue("@contacto", txtContacto.Text);
+                    sqlCommand.Parameters.AddWithValue("@dataNascimento", dataNascimento.Value);
+                    sqlCommand.Parameters.AddWithValue("@username", txtUsername.Text);
+                    sqlCommand.Parameters.AddWithValue("@password", passCript);
+                    sqlCommand.Parameters.AddWithValue("@email", txtEmail.Text);
+
+
+                    sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Enfermeiro registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     connection.Close();
                 }
                 catch (SqlException excep)
                 {
 
-                    MessageBox.Show(excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a avaliação objetivo", excep.Message);
                 }
                
                 }

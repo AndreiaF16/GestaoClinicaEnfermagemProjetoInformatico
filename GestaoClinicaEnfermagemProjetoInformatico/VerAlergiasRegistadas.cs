@@ -78,7 +78,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (!VerificarDadosInseridos())
             {
-                MessageBox.Show("Dados incorretos!");
+                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -88,8 +88,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     connection.Open();
 
-                    string queryUpdateData = "UPDATE Alergia SET nome = '" + txtNome.Text + "' ,sintomas = '" + txtSintomas.Text + "' WHERE IdAlergia = '" + alergia.IdAlergia + "';";
+                    string queryUpdateData = "UPDATE Alergia SET nome = @nome, sintomas = @sintomas WHERE IdAlergia = @IdAlergia";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
+                    sqlCommand.Parameters.AddWithValue("@nome", nome);
+                    sqlCommand.Parameters.AddWithValue("@sintomas", sintomas);
+                    sqlCommand.Parameters.AddWithValue("@IdAlergia", alergia.IdAlergia);
+
                     sqlCommand.ExecuteNonQuery();
                     foreach (var alergia in listaAlergias)
                     {
@@ -198,7 +202,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Alergia order by IdAlergia, Nome", conn);
+            SqlCommand cmd = new SqlCommand("select * from Alergia order by Nome", conn);
 
             SqlDataReader reader = cmd.ExecuteReader();
 

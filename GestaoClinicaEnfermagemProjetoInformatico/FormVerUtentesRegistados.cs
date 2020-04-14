@@ -85,8 +85,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE IdEnfermeiro =  " +enfermeiro.IdEnfermeiro , conn);
-
+            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE IdEnfermeiro =  @IdEnfermeiro", conn);
+            cmd.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -244,8 +244,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 conn.Open();
                 com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  " + utente.Nif, conn);
-
+                SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif = @NifPaciente", conn);
+                cmd.Parameters.AddWithValue("@NifPaciente", utente.Nif);
                 SqlDataReader reader = cmd.ExecuteReader();
                 Paciente paciente = null;
 
@@ -279,7 +279,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             else
             {
-                MessageBox.Show("Não é possivel iniciar uma consulta porque não tem utentes associados!!!");
+                MessageBox.Show("Não é possivel iniciar uma consulta porque não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -302,8 +302,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 conn.Open();
                 com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  " + utente.Nif, conn);
-
+                SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  @NifPaciente", conn);
+                cmd.Parameters.AddWithValue("@NifPaciente", utente.Nif);
                 SqlDataReader reader = cmd.ExecuteReader();
                 Paciente paciente = null;
 
@@ -335,7 +335,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             else
             {
-                MessageBox.Show("Não é possivel registar uma consulta porque não tem utentes associados!!!");
+                MessageBox.Show("Não é possivel registar uma consulta porque não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -355,8 +355,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
             utentes = new List<UtenteGridView>();
-            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE IdEnfermeiro =  " + enfermeiro.IdEnfermeiro, conn);
-
+            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE IdEnfermeiro =  @IdEnfermeiro", conn);
+            cmd.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -415,7 +415,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             else
             {
-                MessageBox.Show("Não tem utentes associados para poder selecionar o historico do mesmo");
+                MessageBox.Show("Não tem utentes associados para poder selecionar o histórico do mesmo", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -444,7 +444,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             else
             {
-                MessageBox.Show("Não tem utentes associados para poder ver os detalhes do mesmo");
+                MessageBox.Show("Não tem utentes associados para poder ver os detalhes do mesmo", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

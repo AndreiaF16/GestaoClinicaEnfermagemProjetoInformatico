@@ -73,11 +73,11 @@
             // lblHistoriaAtual
             // 
             this.lblHistoriaAtual.AutoSize = true;
-            this.lblHistoriaAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHistoriaAtual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblHistoriaAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHistoriaAtual.ForeColor = System.Drawing.Color.Black;
             this.lblHistoriaAtual.Location = new System.Drawing.Point(9, 75);
             this.lblHistoriaAtual.Name = "lblHistoriaAtual";
-            this.lblHistoriaAtual.Size = new System.Drawing.Size(122, 20);
+            this.lblHistoriaAtual.Size = new System.Drawing.Size(111, 20);
             this.lblHistoriaAtual.TabIndex = 2;
             this.lblHistoriaAtual.Text = "Nome Doença";
             // 
@@ -107,10 +107,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.Window;
             this.groupBox2.Controls.Add(this.lblHistoriaAtual);
             this.groupBox2.Controls.Add(this.txtNome);
             this.groupBox2.Controls.Add(this.lblSintomatologia);
             this.groupBox2.Controls.Add(this.txtSintomas);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(79, 126);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(641, 467);
@@ -129,11 +131,11 @@
             // lblSintomatologia
             // 
             this.lblSintomatologia.AutoSize = true;
-            this.lblSintomatologia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSintomatologia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblSintomatologia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSintomatologia.ForeColor = System.Drawing.Color.Black;
             this.lblSintomatologia.Location = new System.Drawing.Point(6, 326);
             this.lblSintomatologia.Name = "lblSintomatologia";
-            this.lblSintomatologia.Size = new System.Drawing.Size(84, 20);
+            this.lblSintomatologia.Size = new System.Drawing.Size(76, 20);
             this.lblSintomatologia.TabIndex = 3;
             this.lblSintomatologia.Text = "Sintomas";
             // 

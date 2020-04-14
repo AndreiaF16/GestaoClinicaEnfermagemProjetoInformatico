@@ -122,10 +122,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryUpdateData = "UPDATE Enfermeiro SET Nome = '"+ txtNome.Text + "',Funcao ='" + txtFuncao.Text + "',Contacto ='" + txtContacto.Text+ "',Email ='" + txtEmail.Text + "',Username ='" + txtUsername.Text + "'WHERE [IdEnfermeiro] = '" + enfermeiro.IdEnfermeiro + "' ;";
+                    string queryUpdateData = "UPDATE Enfermeiro SET Nome = @nome,Funcao = @funcao,Contacto = @contacto,Email = @email,Username = @username WHERE IdEnfermeiro = @IdEnfermeiro";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
+                    sqlCommand.Parameters.AddWithValue("@nome", txtNome.Text);
+                    sqlCommand.Parameters.AddWithValue("@funcao", txtFuncao.Text);
+                    sqlCommand.Parameters.AddWithValue("@email", txtEmail.Text);
+                    sqlCommand.Parameters.AddWithValue("@username", txtUsername.Text);
+                    sqlCommand.Parameters.AddWithValue("@contacto", txtContacto.Text);
+                    sqlCommand.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Dados atualizados com Sucesso!");
+                    MessageBox.Show("Perfil atualizado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                    
                     connection.Close();
 
@@ -135,13 +141,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     enfermeiro.email = txtEmail.Text;
                     enfermeiro.username = txtUsername.Text;
                     parent.updateLogedIn(enfermeiro);
-
                     this.Close();
                 }
                 catch (SqlException excep)
                 {
-
-                    MessageBox.Show(excep.Message);
+                    MessageBox.Show("Por erro interno é impossível atualizar os dados do perfil", excep.Message);
                 }
             }
 

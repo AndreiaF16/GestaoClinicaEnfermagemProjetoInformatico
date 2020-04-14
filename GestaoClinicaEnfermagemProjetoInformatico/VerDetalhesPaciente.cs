@@ -44,8 +44,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Consulta WHERE IdPaciente =  " + paciente.IdPaciente, conn);
-
+            SqlCommand cmd = new SqlCommand("select * from Consulta WHERE IdPaciente =  @IdPaciente", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
             // Paciente paciente = null;
 
@@ -155,7 +155,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select doenca.Nome, doencaP.data, doencaP.observacoes from DoencaPaciente doencaP JOIN Doenca doenca ON doencaP.IdDoenca = doenca.IdDoenca WHERE IdPaciente = " + paciente.IdPaciente, conn);
+            SqlCommand cmd = new SqlCommand("select doenca.Nome, doencaP.data, doencaP.observacoes from DoencaPaciente doencaP JOIN Doenca doenca ON doencaP.IdDoenca = doenca.IdDoenca WHERE IdPaciente = @IdPaciente", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -178,7 +179,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
                 conn.Open();
                 com.Connection = conn;
-                SqlCommand cmd = new SqlCommand("select alergia.Nome, alergiaP.data, alergiaP.observacoes from AlergiaPaciente alergiaP JOIN Alergia alergia ON alergia.IdAlergia = AlergiaP.IdAlergia WHERE IdPaciente = " + paciente.IdPaciente, conn);
+                SqlCommand cmd = new SqlCommand("select alergia.Nome, alergiaP.data, alergiaP.observacoes from AlergiaPaciente alergiaP JOIN Alergia alergia ON alergia.IdAlergia = AlergiaP.IdAlergia WHERE IdPaciente = @IdPaciente ", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())

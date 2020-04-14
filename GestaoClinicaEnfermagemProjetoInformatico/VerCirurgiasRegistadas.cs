@@ -131,8 +131,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     connection.Open();
 
-                    string queryUpdateData = "UPDATE Cirurgia SET nome = '" + txtNome.Text + "' ,caracterizacao = '" + txtSintomas.Text + "' WHERE IdCirurgia = '" + cirurgia.IdCirurgia + "';";
+                    string queryUpdateData = "UPDATE Cirurgia SET nome = @nome, caracterizacao = @caracterizacao WHERE IdCirurgia = @IdCirurgia";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
+                    sqlCommand.Parameters.AddWithValue("@nome", nome);
+                    sqlCommand.Parameters.AddWithValue("@caracterizacao", caracterizacao);
+                    sqlCommand.Parameters.AddWithValue("@IdCirurgia", cirurgia.IdCirurgia);
                     sqlCommand.ExecuteNonQuery();
                     foreach (var cirurgia in listaCirurgias)
                     {

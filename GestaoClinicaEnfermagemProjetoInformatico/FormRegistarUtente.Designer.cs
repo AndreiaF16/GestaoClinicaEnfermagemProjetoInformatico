@@ -130,7 +130,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(41, 473);
+            this.txtEmail.Location = new System.Drawing.Point(38, 447);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(494, 26);
             this.txtEmail.TabIndex = 17;
@@ -140,7 +140,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label2.Location = new System.Drawing.Point(38, 433);
+            this.label2.Location = new System.Drawing.Point(35, 407);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 20);
             this.label2.TabIndex = 16;
@@ -242,7 +242,7 @@
             this.lblProfissao.AutoSize = true;
             this.lblProfissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProfissao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblProfissao.Location = new System.Drawing.Point(40, 597);
+            this.lblProfissao.Location = new System.Drawing.Point(44, 557);
             this.lblProfissao.Name = "lblProfissao";
             this.lblProfissao.Size = new System.Drawing.Size(79, 20);
             this.lblProfissao.TabIndex = 12;
@@ -251,7 +251,7 @@
             // txtNif
             // 
             this.txtNif.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNif.Location = new System.Drawing.Point(313, 545);
+            this.txtNif.Location = new System.Drawing.Point(310, 515);
             this.txtNif.MaxLength = 9;
             this.txtNif.Name = "txtNif";
             this.txtNif.Size = new System.Drawing.Size(222, 29);
@@ -263,7 +263,7 @@
             this.lblNif.AutoSize = true;
             this.lblNif.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNif.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblNif.Location = new System.Drawing.Point(312, 512);
+            this.lblNif.Location = new System.Drawing.Point(309, 482);
             this.lblNif.Name = "lblNif";
             this.lblNif.Size = new System.Drawing.Size(39, 20);
             this.lblNif.TabIndex = 10;
@@ -272,7 +272,7 @@
             // dataNascimento
             // 
             this.dataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataNascimento.Location = new System.Drawing.Point(44, 164);
+            this.dataNascimento.Location = new System.Drawing.Point(41, 131);
             this.dataNascimento.Name = "dataNascimento";
             this.dataNascimento.Size = new System.Drawing.Size(493, 29);
             this.dataNascimento.TabIndex = 9;
@@ -283,7 +283,7 @@
             this.lblDataNascimento.AutoSize = true;
             this.lblDataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDataNascimento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblDataNascimento.Location = new System.Drawing.Point(37, 127);
+            this.lblDataNascimento.Location = new System.Drawing.Point(34, 94);
             this.lblDataNascimento.Name = "lblDataNascimento";
             this.lblDataNascimento.Size = new System.Drawing.Size(136, 20);
             this.lblDataNascimento.TabIndex = 8;
@@ -292,7 +292,7 @@
             // txtContacto
             // 
             this.txtContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContacto.Location = new System.Drawing.Point(44, 545);
+            this.txtContacto.Location = new System.Drawing.Point(41, 515);
             this.txtContacto.MaxLength = 9;
             this.txtContacto.Name = "txtContacto";
             this.txtContacto.Size = new System.Drawing.Size(199, 29);
@@ -302,7 +302,7 @@
             // txtMorada
             // 
             this.txtMorada.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMorada.Location = new System.Drawing.Point(41, 245);
+            this.txtMorada.Location = new System.Drawing.Point(38, 212);
             this.txtMorada.Name = "txtMorada";
             this.txtMorada.Size = new System.Drawing.Size(494, 29);
             this.txtMorada.TabIndex = 5;
@@ -313,7 +313,7 @@
             this.lblFuncao.AutoSize = true;
             this.lblFuncao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFuncao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblFuncao.Location = new System.Drawing.Point(40, 213);
+            this.lblFuncao.Location = new System.Drawing.Point(37, 180);
             this.lblFuncao.Name = "lblFuncao";
             this.lblFuncao.Size = new System.Drawing.Size(67, 20);
             this.lblFuncao.TabIndex = 4;
@@ -324,7 +324,7 @@
             this.txtNome.BackColor = System.Drawing.Color.White;
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNome.ForeColor = System.Drawing.Color.Black;
-            this.txtNome.Location = new System.Drawing.Point(40, 74);
+            this.txtNome.Location = new System.Drawing.Point(44, 44);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(494, 29);
             this.txtNome.TabIndex = 3;
@@ -335,7 +335,7 @@
             this.lblNome.AutoSize = true;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblNome.Location = new System.Drawing.Point(40, 33);
+            this.lblNome.Location = new System.Drawing.Point(44, 21);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(55, 20);
             this.lblNome.TabIndex = 2;
@@ -370,6 +370,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
             this.groupBox1.Controls.Add(this.lblNome);
             this.groupBox1.Controls.Add(this.lblOutraProfissao);
             this.groupBox1.Controls.Add(this.txtNome);
@@ -398,7 +399,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(208, 42);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(642, 688);
+            this.groupBox1.Size = new System.Drawing.Size(642, 656);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             // 
@@ -407,7 +408,7 @@
             this.lblOutraProfissao.AutoSize = true;
             this.lblOutraProfissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOutraProfissao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblOutraProfissao.Location = new System.Drawing.Point(312, 597);
+            this.lblOutraProfissao.Location = new System.Drawing.Point(316, 557);
             this.lblOutraProfissao.Name = "lblOutraProfissao";
             this.lblOutraProfissao.Size = new System.Drawing.Size(53, 20);
             this.lblOutraProfissao.TabIndex = 29;
@@ -416,7 +417,7 @@
             // 
             // txtOutraProfissao
             // 
-            this.txtOutraProfissao.Location = new System.Drawing.Point(316, 643);
+            this.txtOutraProfissao.Location = new System.Drawing.Point(320, 603);
             this.txtOutraProfissao.Name = "txtOutraProfissao";
             this.txtOutraProfissao.Size = new System.Drawing.Size(221, 26);
             this.txtOutraProfissao.TabIndex = 28;
@@ -424,7 +425,7 @@
             // 
             // txtLocalidade
             // 
-            this.txtLocalidade.Location = new System.Drawing.Point(316, 383);
+            this.txtLocalidade.Location = new System.Drawing.Point(313, 357);
             this.txtLocalidade.Name = "txtLocalidade";
             this.txtLocalidade.Size = new System.Drawing.Size(222, 26);
             this.txtLocalidade.TabIndex = 27;
@@ -435,7 +436,7 @@
             this.lblLocalidade.AutoSize = true;
             this.lblLocalidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLocalidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblLocalidade.Location = new System.Drawing.Point(312, 351);
+            this.lblLocalidade.Location = new System.Drawing.Point(309, 325);
             this.lblLocalidade.Name = "lblLocalidade";
             this.lblLocalidade.Size = new System.Drawing.Size(90, 20);
             this.lblLocalidade.TabIndex = 26;
@@ -446,7 +447,7 @@
             this.lblTelemovel.AutoSize = true;
             this.lblTelemovel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelemovel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblTelemovel.Location = new System.Drawing.Point(40, 522);
+            this.lblTelemovel.Location = new System.Drawing.Point(37, 492);
             this.lblTelemovel.Name = "lblTelemovel";
             this.lblTelemovel.Size = new System.Drawing.Size(84, 20);
             this.lblTelemovel.TabIndex = 6;
@@ -454,7 +455,7 @@
             // 
             // txtCodPostalSuf
             // 
-            this.txtCodPostalSuf.Location = new System.Drawing.Point(144, 383);
+            this.txtCodPostalSuf.Location = new System.Drawing.Point(141, 357);
             this.txtCodPostalSuf.MaxLength = 3;
             this.txtCodPostalSuf.Name = "txtCodPostalSuf";
             this.txtCodPostalSuf.Size = new System.Drawing.Size(99, 26);
@@ -464,7 +465,7 @@
             // 
             // txtCodPostalPre
             // 
-            this.txtCodPostalPre.Location = new System.Drawing.Point(44, 383);
+            this.txtCodPostalPre.Location = new System.Drawing.Point(41, 357);
             this.txtCodPostalPre.MaxLength = 4;
             this.txtCodPostalPre.Name = "txtCodPostalPre";
             this.txtCodPostalPre.Size = new System.Drawing.Size(94, 26);
@@ -476,7 +477,7 @@
             this.lbCodPostalP.AutoSize = true;
             this.lbCodPostalP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCodPostalP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lbCodPostalP.Location = new System.Drawing.Point(40, 347);
+            this.lbCodPostalP.Location = new System.Drawing.Point(37, 321);
             this.lbCodPostalP.Name = "lbCodPostalP";
             this.lbCodPostalP.Size = new System.Drawing.Size(111, 20);
             this.lbCodPostalP.TabIndex = 23;
@@ -491,7 +492,7 @@
             "Estudante",
             "Outra",
             "Professor"});
-            this.cbProfissoes.Location = new System.Drawing.Point(44, 643);
+            this.cbProfissoes.Location = new System.Drawing.Point(48, 603);
             this.cbProfissoes.Name = "cbProfissoes";
             this.cbProfissoes.Size = new System.Drawing.Size(199, 28);
             this.cbProfissoes.Sorted = true;
@@ -502,7 +503,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label4.Location = new System.Drawing.Point(312, 279);
+            this.label4.Location = new System.Drawing.Point(309, 246);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 20);
             this.label4.TabIndex = 21;
@@ -510,14 +511,14 @@
             // 
             // txtAndar
             // 
-            this.txtAndar.Location = new System.Drawing.Point(316, 308);
+            this.txtAndar.Location = new System.Drawing.Point(313, 275);
             this.txtAndar.Name = "txtAndar";
             this.txtAndar.Size = new System.Drawing.Size(222, 26);
             this.txtAndar.TabIndex = 20;
             // 
             // txtNumeroCasa
             // 
-            this.txtNumeroCasa.Location = new System.Drawing.Point(44, 304);
+            this.txtNumeroCasa.Location = new System.Drawing.Point(41, 271);
             this.txtNumeroCasa.Name = "txtNumeroCasa";
             this.txtNumeroCasa.Size = new System.Drawing.Size(199, 26);
             this.txtNumeroCasa.TabIndex = 19;
@@ -528,7 +529,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label3.Location = new System.Drawing.Point(40, 279);
+            this.label3.Location = new System.Drawing.Point(37, 246);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 20);
             this.label3.TabIndex = 18;

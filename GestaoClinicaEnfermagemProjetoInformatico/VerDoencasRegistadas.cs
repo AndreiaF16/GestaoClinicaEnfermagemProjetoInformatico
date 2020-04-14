@@ -131,8 +131,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     connection.Open();
 
-                    string queryUpdateData = "UPDATE Doenca SET nome = '" + txtNome.Text + "' ,sintomas = '" + txtSintomas.Text + "' WHERE IdDoenca = '" + doenca.IdDoenca + "';";
+                    string queryUpdateData = "UPDATE Doenca SET nome = @nome, sintomas = @sintomas WHERE IdDoenca = @@IdDoenca";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
+                    sqlCommand.Parameters.AddWithValue("@nome", nome);
+                    sqlCommand.Parameters.AddWithValue("@sintomas", sintomas);
+                    sqlCommand.Parameters.AddWithValue("@IdDoenca", doenca.IdDoenca);
                     sqlCommand.ExecuteNonQuery();
                     foreach (var doenca in listaDoencas)
                     {

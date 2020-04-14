@@ -18,7 +18,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Enfermeiro enfermeiro = null;
         private List<AgendamentoConsultaGridView> auxiliar = new List<AgendamentoConsultaGridView>();
         private List<AgendamentoConsultaGridView> agendamentos = new List<AgendamentoConsultaGridView>();
-        private AgendamentoConsultaGridView agenda = null;
+        private AgendamentoConsultaGridView agenda = new AgendamentoConsultaGridView();
         private FormMenu formMenu = null;
         public MenuMarcacoes(Enfermeiro enf, FormMenu formM)
         {
@@ -41,7 +41,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             if (dataGridViewMarcacoes.Rows.Count > 1)
             {
-
+               
                 int i = dataGridViewMarcacoes.CurrentCell.RowIndex;
                 if (dataGridViewMarcacoes.Rows[i].Cells[1].Value != null)
                 {
@@ -55,14 +55,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     if (agenda != null)
                     {
+                        string data = DateTime.ParseExact(agenda.dataProximaConsulta, "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
                         Paciente paciente1 = ClasseAuxiliarBD.getPacienteByNif(agenda.NifPaciente);
 
                         var resposta = MessageBox.Show("Tem a certeza que deseja eliminar esta consulta?", "Eliminar Consulta!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (resposta == DialogResult.Yes)
                         {
                             conn.Open();
-                            string queryInsertData = "DELETE from AgendamentoConsulta WHERE IdEnfermeiro = " + enfermeiro.IdEnfermeiro + " AND IdPaciente = " + paciente1.IdPaciente + " AND dataProximaConsulta = '" + DateTime.ParseExact(agenda.dataProximaConsulta, "dd/MM/yyyy", null).ToString("MM/dd/yyyy") + "' AND horaProximaConsulta = '" + agenda.horaProximaConsulta + "';";
+                            string queryInsertData = "DELETE from AgendamentoConsulta WHERE IdEnfermeiro =@IdEnfermeiro AND IdPaciente = @IdPaciente AND dataProximaConsulta = @dataProximaConsulta AND horaProximaConsulta = @horaProximaConsulta ";
                             SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
+                            sqlCommand.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
+                            sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente1.IdPaciente);
+                            sqlCommand.Parameters.AddWithValue("@dataProximaConsulta", data);
+                            sqlCommand.Parameters.AddWithValue("@horaProximaConsulta", agenda.horaProximaConsulta);
+
+
                             sqlCommand.ExecuteNonQuery();
                             MessageBox.Show("Consulta desmarcada com Sucesso!");
                             conn.Close();

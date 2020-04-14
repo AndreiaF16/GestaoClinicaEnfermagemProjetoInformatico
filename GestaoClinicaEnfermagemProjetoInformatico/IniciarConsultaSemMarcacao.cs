@@ -310,8 +310,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Consulta(tensaoArterial,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro) VALUES(' " + tensaoArterial.ToString() + " ',' " + historiaAtual.ToString() + " ',' " + sintomatologia.ToString() + " ',' " + sinais.ToString() + " ',' " + escalaDor.ToString() + " ',' " + paciente.IdPaciente + " ',' " + enfermeiro.IdEnfermeiro + "');";
+                    string queryInsertData = "INSERT INTO Consulta(tensaoArterial,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro,) VALUES(@tensaoArterial,@historiaAtual,@sintomatologia,@sinais,@escalaDor,@idPaciente,@idEnfermeiro);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                    
+                    sqlCommand.Parameters.AddWithValue("@tensaoArterial", txtTensaoArterial.Text);
+                    sqlCommand.Parameters.AddWithValue("@historiaAtual", txtHistoriaAtual.Text);
+                    sqlCommand.Parameters.AddWithValue("@sintomatologia", txtSintomatologia.Text);
+                    sqlCommand.Parameters.AddWithValue("@sinais", txtSinais.Text);
+                    sqlCommand.Parameters.AddWithValue("@escalaDor", lblEscala.Text);
+                    sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
+                    sqlCommand.Parameters.AddWithValue("@idEnfermeiro", enfermeiro.IdEnfermeiro);
+                 
                     sqlCommand.ExecuteNonQuery();
                   //  string queryInsertDataLucro = "INSERT INTO Lucro(valor) VALUES(' " + valor.ToString() + "');";
                  //   SqlCommand sqlCommand1 = new SqlCommand(queryInsertDataLucro, connection);

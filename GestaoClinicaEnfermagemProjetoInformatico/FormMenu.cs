@@ -155,7 +155,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             else 
             {
-                MessageBox.Show("Houve um problema interno! \n Por favor volte a fazer login!");
+                MessageBox.Show("Houve um problema interno! \n Por favor volte a fazer login!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Login login = new Login();
                 login.Show();
                 this.Close();
@@ -181,7 +181,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select agendamento.horaProximaConsulta, agendamento.dataProximaConsulta, p.Nome, p.Nif from AgendamentoConsulta agendamento INNER JOIN Paciente p ON agendamento.IdPaciente = p.IdPaciente WHERE agendamento.IdEnfermeiro =  " + enfermeiro.IdEnfermeiro + " AND agendamento.dataProximaConsulta = '" + DateTime.Now.ToString("MM/dd/yyyy") + "' AND ConsultaRealizada= 0 ORDER BY agendamento.horaProximaConsulta", conn);
+            SqlCommand cmd = new SqlCommand("select agendamento.horaProximaConsulta, agendamento.dataProximaConsulta, p.Nome, p.Nif from AgendamentoConsulta agendamento INNER JOIN Paciente p ON agendamento.IdPaciente = p.IdPaciente WHERE agendamento.IdEnfermeiro =  @IdEnfermeiro AND agendamento.dataProximaConsulta = '" + DateTime.Now.ToString("MM/dd/yyyy") + "' AND ConsultaRealizada= 0 ORDER BY agendamento.horaProximaConsulta", conn);
+            cmd.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -202,7 +203,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             auxiliar = consultaAgendada;
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = consultaAgendada };
             dataGridViewConsultasHoje.DataSource = bindingSource1;
-           // dataGridViewConsultasHoje.DataSource = consultaAgendada;
             dataGridViewConsultasHoje.Columns[0].HeaderText = "Hora Consulta";
             dataGridViewConsultasHoje.Columns[1].HeaderText = "Data Consulta";
             dataGridViewConsultasHoje.Columns[2].HeaderText = "Nome Utente";
@@ -260,7 +260,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             else 
             {
-                MessageBox.Show("Não é possivel iniciar uma consulta porque não tem consultas agendadas para hoje!!!");
+                MessageBox.Show("Não é possivel iniciar uma consulta porque não tem consultas agendadas para hoje!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

@@ -18,6 +18,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlCommand com = new SqlCommand();
         private List<CirurgiaPaciente> listaCirurgiaPacientes = new List<CirurgiaPaciente>();
         private List<ExamePaciente> listaExamePacientes = new List<ExamePaciente>();
+        private List<AvaliacaoObjetivo> listaAvaliacaoObjetivo = new List<AvaliacaoObjetivo>();
+
 
         public VerMaisDetalhesPaciente(Paciente pac)
         {
@@ -68,6 +70,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             cirurgiasPaciente();
             examesPaciente();
+            avaliacaoObjetivo();
         }
 
         private void UpdateDataGridViewCirurgias()
@@ -83,7 +86,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select cirurgia.Nome, cirurgiaP.data, cirurgiaP.observacoes from CirurgiaPaciente cirurgiaP JOIN Cirurgia cirurgia ON cirurgia.IdCirurgia = cirurgiaP.IdCirurgia WHERE IdPaciente = " + paciente.IdPaciente, conn);
+            SqlCommand cmd = new SqlCommand("select cirurgia.Nome, cirurgiaP.data, cirurgiaP.observacoes from CirurgiaPaciente cirurgiaP JOIN Cirurgia cirurgia ON cirurgia.IdCirurgia = cirurgiaP.IdCirurgia WHERE IdPaciente = @IdPaciente", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -112,11 +116,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewExames.Columns[3].HeaderText = "Observações";
         }
 
+        private void UpdateDataGridViewAvaliacao()
+        {
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaAvaliacaoObjetivo };
+            dataGridViewAvaliacaoObjetivo.DataSource = bindingSource1;
+            dataGridViewAvaliacaoObjetivo.Columns[0].HeaderText = "Data da Avaliação Objetivo";
+            dataGridViewAvaliacaoObjetivo.Columns[1].HeaderText = "Peso (KG)";
+            dataGridViewAvaliacaoObjetivo.Columns[2].HeaderText = "Altura (cm)";
+            dataGridViewAvaliacaoObjetivo.Columns[3].HeaderText = "IMC";
+        }
+
+
         private void examesPaciente()
         {
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select tipo.nome, exame.data, exame.designacao, exame.observacoes from tipoExame tipo JOIN Exame exame ON tipo.IdTipoExame = exame.idTipoExame WHERE idPaciente = " + paciente.IdPaciente, conn);
+            SqlCommand cmd = new SqlCommand("select tipo.nome, exame.data, exame.designacao, exame.observacoes from tipoExame tipo JOIN Exame exame ON tipo.IdTipoExame = exame.idTipoExame WHERE idPaciente = @IdPaciente", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -134,6 +150,29 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             conn.Close();
             UpdateDataGridViewExames();
+        }
+
+        private void avaliacaoObjetivo()
+        {
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select * from AvaliacaoObjetivo WHERE IdPaciente = @IdPaciente ORDER BY data", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                AvaliacaoObjetivo avaliacao = new AvaliacaoObjetivo
+                {
+                    data = data,
+                    peso = Convert.ToDecimal(reader["peso"]),
+                    altura = (int)reader["altura"],
+                };
+                avaliacao.IMC = Math.Round(avaliacao.peso / (Convert.ToDecimal(avaliacao.altura * avaliacao.altura) / 10000), 2);
+                listaAvaliacaoObjetivo.Add(avaliacao);
+            }
+            conn.Close();
+            UpdateDataGridViewAvaliacao();
         }
     }
 }

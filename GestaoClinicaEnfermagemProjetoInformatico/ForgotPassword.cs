@@ -37,20 +37,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     cmd.ExecuteNonQuery();
                     conn.Close();
 
-                    MessageBox.Show("Passe mudada com sucesso!");
+                    MessageBox.Show("Passe mudada com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Por erro interno é impossível alterar a palavra passe", ex.ToString());
 
                 }
-
-
             }
             else
             {
-                MessageBox.Show("As palavras passes não correspodem, volte a insesir");
+                MessageBox.Show("As palavras passes não correspodem, volte a insesir", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

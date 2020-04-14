@@ -85,10 +85,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 try
                 {
                     conn.Open();
-
-                   // MessageBox.Show(peso.ToString() + "               " +  peso.ToString().Replace(",","."));
-                    string queryInsertData = "INSERT INTO AvaliacaoObjetivo(data,peso,altura,IdPaciente) VALUES('" + data.ToString("MM/dd/yyyy") + "','" + peso.ToString().Replace(",", ".") + "','" + altura + "','" + paciente.IdPaciente + "');";
+                    string queryInsertData = "INSERT INTO AvaliacaoObjetivo(data,peso,altura,IdPaciente) VALUES(@data, @peso, @altura, @IdPaciente);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
+                    sqlCommand.Parameters.AddWithValue("@data", dataAvaliacaoObjetivo.Value);
+                    sqlCommand.Parameters.AddWithValue("@peso", UpDownPeso.Value);
+                    sqlCommand.Parameters.AddWithValue("@altura", UpDownAltura.Value);
+                    sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Avaliação Objetivo registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
@@ -97,7 +99,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show(/*"Por erro interno é impossível registar a avaliação objetivo",*/ excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a avaliação objetivo", excep.Message);
                 }
             }
         }
@@ -107,13 +109,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             avaliacaoObjetivo.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from AvaliacaoObjetivo WHERE IdPaciente = " + paciente.IdPaciente, conn);
+            SqlCommand cmd = new SqlCommand("select * from AvaliacaoObjetivo WHERE IdPaciente = @IdPaciente ORDER BY data", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
-
             while (reader.Read())
             {
                 string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-              //  string variavel = (string)reader["peso"]; //(Convert.ToDecimal(reader["peso"])).ToString();
                 AvaliacaoObjetivo avaliacao = new AvaliacaoObjetivo
                 {
                     data = data,

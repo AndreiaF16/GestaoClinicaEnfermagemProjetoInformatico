@@ -162,8 +162,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     connection.Open();
 
-                    string queryUpdateData = "UPDATE tipoExame SET nome = '" + txtNome.Text + "' ,categoria = '" + txtCategoria.Text + "' ,designacao = '" + txtDesignacao.Text + "' WHERE IdTipoExame = '" + exame.IdTipoExame + "';";
+                    string queryUpdateData = "UPDATE tipoExame SET nome = @nome, categoria = @categoria, designacao = @designacao WHERE IdTipoExame = @IdTipoExame";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
+                    sqlCommand.Parameters.AddWithValue("@nome", nome);
+                    sqlCommand.Parameters.AddWithValue("@categoria", categoria);
+                    sqlCommand.Parameters.AddWithValue("@designacao", designacao);
+                    sqlCommand.Parameters.AddWithValue("@IdTipoExame", exame.IdTipoExame);
                     sqlCommand.ExecuteNonQuery();
                     foreach (var doenca in listaExames)
                     {

@@ -82,8 +82,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO tipoExame(nome,categoria,designacao) VALUES(' " + nome.ToString() + " ',' " + categoria.ToString() + " ',' " + designacao.ToString() + "');";
+                    string queryInsertData = "INSERT INTO tipoExame(nome,categoria,designacao) VALUES(@nome,@categoria,@designacao);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                    sqlCommand.Parameters.AddWithValue("@nome", nome);
+                    sqlCommand.Parameters.AddWithValue("@categoria", categoria);
+                    sqlCommand.Parameters.AddWithValue("@designacao", designacao);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Exame registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();

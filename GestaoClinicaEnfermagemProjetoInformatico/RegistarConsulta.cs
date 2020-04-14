@@ -115,7 +115,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (!VerificarDadosInseridos())
             {
-                MessageBox.Show("Dados incorretos!");
+                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -123,12 +123,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
-                    string queryInsertData = "INSERT INTO AgendamentoConsulta(horaProximaConsulta,dataProximaConsulta,idPaciente,idEnfermeiro)VALUES('" + string.Format("{0:00}", hrConsulta.Hour) + ":" + string.Format("{0:00}", hrConsulta.Minute) + "','" + dtaConsulta.ToString("MM/dd/yyyy") + "','" + paciente.IdPaciente + "','" + enfermeiro.IdEnfermeiro + "');";
-
-
+                    string queryInsertData = "INSERT INTO AgendamentoConsulta(horaProximaConsulta,dataProximaConsulta,idPaciente,idEnfermeiro)VALUES(@horaProximaConsulta,@dataProximaConsulta,@idPaciente,@idEnfermeiro)";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                    sqlCommand.Parameters.AddWithValue("@horaProximaConsulta", string.Format("{0:00}", hrConsulta.Hour) + ":" + string.Format("{0:00}", hrConsulta.Minute));
+                    sqlCommand.Parameters.AddWithValue("@dataProximaConsulta", dtaConsulta.ToString("MM/dd/yyyy"));
+                    sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
+                    sqlCommand.Parameters.AddWithValue("@idEnfermeiro", enfermeiro.IdEnfermeiro);
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Consulta registada com Sucesso!");
+                    MessageBox.Show("Consulta registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // this.Close();
                     connection.Close();
                     UpdateGridViewConsultas();
@@ -138,7 +140,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 catch (SqlException excep)
                 {
 
-                    MessageBox.Show(excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a consulta", excep.Message);
                 }
 
             }

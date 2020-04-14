@@ -36,8 +36,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE IdEnfermeiro =  " + enfermeiro.IdEnfermeiro, conn);
-
+            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE IdEnfermeiro =  @IdEnfermeiro", conn);
+            cmd.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -122,20 +122,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            string nome = textBox1.Text;
-            var dtNascimento = dataNascimento.Value;
-            string rua = txtMorada.Text;
-            string numeroCasa = txtNumeroCasa.Text;
-            string andarCasa = txtAndar.Text;
-            string codPostalPrefixo = txtCodPostalPre.Text;
-            string codPostalSufixo = txtCodPostalSuf.Text;
-            string localidade = txtLocalidade.Text;
-            string email = txtEmail.Text;
-            string telemovel = txtContacto.Text;
-            string nif = textBox2.Text;
-            string profissao = (String)cbProfissoes.SelectedItem;
-
+        {           
             if (!VerificarDadosInseridos())
             {
                 MessageBox.Show("Dados incorretos!");
@@ -148,15 +135,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     connection.Open();
 
-                    string queryUpdateData = "UPDATE Paciente SET nome = '" + textBox1.Text + "' ,email = '" + txtEmail.Text + "' ,contacto = '" + txtContacto.Text + "' , nif = '" + textBox2.Text + "' , profissao = '" + cbProfissoes.SelectedItem.ToString() + "' ,rua = '" + txtMorada.Text + "' ,numeroCasa = '" + txtNumeroCasa.Text + "' ,andar = '" + txtAndar.Text + "' ,codPostalPrefixo = '" + txtCodPostalPre.Text + "' ,codPostalSufixo = '" + txtCodPostalSuf.Text + "' ,localidade = '" + txtLocalidade.Text + "' WHERE Nif = '" + paciente.Nif + "';";
+                    string queryUpdateData = "UPDATE Paciente SET Nome = @nome, Email = @email, Contacto = @contacto,Nif = @nif,Profissao = @profissao,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,localidade = @localidade WHERE Nif = @NifPaciente";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
+                    sqlCommand.Parameters.AddWithValue("@nome", textBox1.Text);
+                    sqlCommand.Parameters.AddWithValue("@email", txtEmail.Text);
+                    sqlCommand.Parameters.AddWithValue("@contacto", txtContacto.Text);
+                    sqlCommand.Parameters.AddWithValue("@nif", textBox2.Text);
+                    sqlCommand.Parameters.AddWithValue("@profissao",(String)cbProfissoes.SelectedItem);
+                    sqlCommand.Parameters.AddWithValue("@rua", txtMorada.Text);
+                    sqlCommand.Parameters.AddWithValue("@numeroCasa", txtNumeroCasa.Text);
+                    sqlCommand.Parameters.AddWithValue("@andar", txtAndar.Text);
+                    sqlCommand.Parameters.AddWithValue("@codPostalPrefixo", txtCodPostalPre.Text);
+                    sqlCommand.Parameters.AddWithValue("@codPostalSufixo", txtCodPostalSuf.Text);
+                    sqlCommand.Parameters.AddWithValue("@localidade", txtLocalidade.Text);
+                    sqlCommand.Parameters.AddWithValue("@NifPaciente", paciente.Nif);
+
                     sqlCommand.ExecuteNonQuery();
                     foreach (var utente in utentes)
                     {
                         if (Convert.ToString(utente.Nif).Equals(textBox2.Text))
                         {
-                            //utente.Nome = textBox1.Text;
-
                             utente.Nome=  textBox1.Text ;
                             utente.Rua = txtMorada.Text ;
                             utente.NumeroCasa = Convert.ToInt16(txtNumeroCasa.Text);
@@ -169,8 +167,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                             utente.Nif = Convert.ToDouble(textBox2.Text);
                         }
                     }
-                    MessageBox.Show("Paciente alterado com Sucesso!");
-                    //this.Close();
+                    MessageBox.Show("Paciente alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateDataGridView();
                     formulario.UpdateUtentes();
                     connection.Close();
@@ -178,7 +175,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 catch (SqlException excep)
                 {
 
-                    MessageBox.Show(excep.Message);
+                    MessageBox.Show("Por erro interno é impossível alterar os dados do utente!", excep.Message);
 
                 }
 

@@ -91,8 +91,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Open();
 
-                    string queryInsertData = "INSERT INTO DoencaPaciente(IdDoenca,IdPaciente,data,observacoes) VALUES('" + doenca + "','" + paciente.IdPaciente + "','" + data.ToString("MM/dd/yyyy") + "','" + observacoes.ToString() + "');";
+                    string queryInsertData = "INSERT INTO DoencaPaciente(IdDoenca,IdPaciente,data,observacoes) VALUES(@IdDoenca, @IdPaciente, @data, @observacoes);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
+                    sqlCommand.Parameters.AddWithValue("@IdDoenca", doenca);
+                    sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                    sqlCommand.Parameters.AddWithValue("@data", dataDiagnostico.Value);
+                    sqlCommand.Parameters.AddWithValue("@observacoes", txtObservacoes.Text);
+
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Doença registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
@@ -101,7 +106,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show("Impossível inserir doença", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a doença", excep.Message);
 
                 }
             }
@@ -112,7 +117,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             doencaPacientes.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select doenca.Nome, doencaP.data, doencaP.observacoes from DoencaPaciente doencaP JOIN Doenca doenca ON doencaP.IdDoenca = doenca.IdDoenca WHERE IdPaciente = " + paciente.IdPaciente, conn);
+            SqlCommand cmd = new SqlCommand("select doenca.Nome, doencaP.data, doencaP.observacoes from DoencaPaciente doencaP JOIN Doenca doenca ON doencaP.IdDoenca = doenca.IdDoenca WHERE IdPaciente = @IdPaciente ORDER BY doencaP.data, doenca.Nome", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())

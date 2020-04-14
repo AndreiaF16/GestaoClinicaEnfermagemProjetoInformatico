@@ -88,8 +88,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Open();
 
-                    string queryInsertData = "INSERT INTO CirurgiaPaciente(IdCirurgia,IdPaciente,data,observacoes) VALUES('" + alergia + "','" + paciente.IdPaciente + "','" + data.ToString("MM/dd/yyyy") + "','" + observacoes.ToString() + "');";
+                    string queryInsertData = "INSERT INTO CirurgiaPaciente(IdCirurgia,IdPaciente,data,observacoes) VALUES(@IdAlergia, @IdPaciente, @data, @observacoes);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
+                    sqlCommand.Parameters.AddWithValue("@IdAlergia", alergia);
+                    sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                    sqlCommand.Parameters.AddWithValue("@data", dataDiagnostico.Value);
+                    sqlCommand.Parameters.AddWithValue("@observacoes", txtObservacoes.Text);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Cirurgia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
@@ -98,7 +102,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show("Impossível inserir cirurgia", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a cirurgia", excep.Message);
                 }
             }
         }
@@ -108,9 +112,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             cirurgiaPacientes.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select cirurgia.Nome, cirurgiaP.data, cirurgiaP.observacoes from CirurgiaPaciente cirurgiaP JOIN Cirurgia cirurgia ON cirurgia.IdCirurgia = cirurgiaP.IdCirurgia WHERE IdPaciente = " + paciente.IdPaciente, conn);
+            SqlCommand cmd = new SqlCommand("select cirurgia.Nome, cirurgiaP.data, cirurgiaP.observacoes from CirurgiaPaciente cirurgiaP JOIN Cirurgia cirurgia ON cirurgia.IdCirurgia = cirurgiaP.IdCirurgia WHERE IdPaciente = @IdPaciente ORDER BY cirurgiaP.data, cirurgia.Nome", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
-
             while (reader.Read())
             {
                 string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");

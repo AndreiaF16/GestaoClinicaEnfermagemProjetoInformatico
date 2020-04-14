@@ -98,18 +98,30 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,contacto,nif,profissao,rua,numeroCasa,andar,codPostalPrefixo,codPostalSufixo,localidade, IdEnfermeiro) VALUES('" + nome.ToString() + "','" + dtNascimento.ToString("MM/dd/yyyy") + "','" + email.ToString() + "','"
-                        + telemovel.ToString() + "','" + nif.ToString() + "','" + profissao.ToString() + "','" + rua.ToString() + "','" + numeroCasa.ToString() + "','" + andarCasa.ToString() + "','" + codPostalPrefixo.ToString() + "','" + codPostalSufixo.ToString() + "','" + localidade.ToString() + "' , " + enfermeiro.IdEnfermeiro + ");";
+                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,contacto,nif,profissao,rua,numeroCasa,andar,codPostalPrefixo,codPostalSufixo,localidade, IdEnfermeiro) VALUES(@nome,@dataNascimento,@email,@contacto,@nif,@profissao,@rua,@numeroCasa,@andar,@codPostalPrefixo,@codPostalSufixo,@localidade,@IdEnfermeiro);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                    sqlCommand.Parameters.AddWithValue("@nome", txtNome.Text);
+                    sqlCommand.Parameters.AddWithValue("@dataNascimento", dataNascimento.Value);
+                    sqlCommand.Parameters.AddWithValue("@email", txtEmail.Text);
+                    sqlCommand.Parameters.AddWithValue("@contacto", txtContacto.Text);
+                    sqlCommand.Parameters.AddWithValue("@nif", txtNif.Text);
+                    sqlCommand.Parameters.AddWithValue("@profissao", profissao);
+                    sqlCommand.Parameters.AddWithValue("@rua", txtMorada.Text);
+                    sqlCommand.Parameters.AddWithValue("@numeroCasa", txtNumeroCasa.Text);
+                    sqlCommand.Parameters.AddWithValue("@andar", txtAndar.Text);
+                    sqlCommand.Parameters.AddWithValue("@codPostalPrefixo", txtCodPostalPre.Text);
+                    sqlCommand.Parameters.AddWithValue("@codPostalSufixo", txtCodPostalSuf.Text);
+                    sqlCommand.Parameters.AddWithValue("@localidade", txtLocalidade.Text);
+                    sqlCommand.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Paciente registado com Sucesso!");
+                    MessageBox.Show("Utente registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     connection.Close();
                 }
                 catch (SqlException excep)
                 {
 
-                    MessageBox.Show(excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o utente!", excep.Message);
 
                 }
 

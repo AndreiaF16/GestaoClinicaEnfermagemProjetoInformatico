@@ -83,8 +83,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Open();
 
-                    string queryInsertData = "INSERT INTO Exame(idPaciente,idTipoExame,data,designacao,observacoes) VALUES('" + paciente.IdPaciente + " ',' " + exame + " ',' " + data.ToString("MM/dd/yyyy") + " ',' " + designacao.ToString() + " ',' " + observacoes.ToString() + "');";
+                    string queryInsertData = "INSERT INTO Exame(idPaciente,idTipoExame,data,designacao,observacoes) VALUES(@IdPaciente, @idTipoExame, @data, @designacao, @observacoes);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
+                    sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                    sqlCommand.Parameters.AddWithValue("@idTipoExame", exame);
+                    sqlCommand.Parameters.AddWithValue("@data", dataDiagnostico.Value);
+                    sqlCommand.Parameters.AddWithValue("@designacao", txtDesignacao.Text);
+                    sqlCommand.Parameters.AddWithValue("@observacoes", txtObservacoes.Text);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Exame registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
@@ -93,9 +98,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException excep)
                 {
-                    //MessageBox.Show("Erro interno, impossível inserir exame", excep.Message);
-                    MessageBox.Show(excep.Message);
-
+                    MessageBox.Show("Erro interno, impossível inserir o exame", excep.Message);
                 }
             }
         }
@@ -105,8 +108,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             examePacientes.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select tipo.nome, exame.data, exame.designacao, exame.observacoes from tipoExame tipo JOIN Exame exame ON tipo.IdTipoExame = exame.idTipoExame WHERE idPaciente = " + paciente.IdPaciente, conn);
-
+            SqlCommand cmd = new SqlCommand("select tipo.nome, exame.data, exame.designacao, exame.observacoes from tipoExame tipo JOIN Exame exame ON tipo.IdTipoExame = exame.idTipoExame WHERE idPaciente = @IdPaciente ORDER BY exame.data, tipo.nome", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())

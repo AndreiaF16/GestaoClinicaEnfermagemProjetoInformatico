@@ -69,16 +69,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Cirurgia(Nome,Caracterizacao) VALUES(' " + nome.ToString() + " ',' " + caracterizacao.ToString() + "');";
+                    string queryInsertData = "INSERT INTO Cirurgia(Nome,Caracterizacao) VALUES(@Nome, @Caracterizacao);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                    sqlCommand.Parameters.AddWithValue("@Nome", txtNome.Text);
+                    sqlCommand.Parameters.AddWithValue("@Caracterizacao", txtSintomas.Text);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Cirurgia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //    AdicionarVisualizarDoencaPaciente.reiniciar();
                     connection.Close();
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show(excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a cirurgia", excep.Message);
                 }
             }
     }

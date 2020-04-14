@@ -107,7 +107,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         conn.Close();
                     }
-                    MessageBox.Show("Impossível inserir alergia", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a alergia", excep.Message);
                 }
             }
         }
@@ -116,9 +116,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             alergiasPacientes.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select alergia.Nome, alergiaP.data, alergiaP.observacoes from AlergiaPaciente alergiaP JOIN Alergia alergia ON alergia.IdAlergia = AlergiaP.IdAlergia WHERE IdPaciente = " + paciente.IdPaciente, conn);
-            SqlDataReader reader = cmd.ExecuteReader();
+           // SqlCommand cmd = new SqlCommand("select alergia.Nome, alergiaP.data, alergiaP.observacoes from AlergiaPaciente alergiaP JOIN Alergia alergia ON alergia.IdAlergia = AlergiaP.IdAlergia WHERE IdPaciente = " + paciente.IdPaciente, conn);
+          //  SqlDataReader reader = cmd.ExecuteReader();
 
+
+            SqlCommand cmd = new SqlCommand("select alergia.Nome, alergiaP.data, alergiaP.observacoes from AlergiaPaciente alergiaP JOIN Alergia alergia ON alergia.IdAlergia = AlergiaP.IdAlergia WHERE IdPaciente = @IdPaciente ORDER BY alergiaP.data, alergia.Nome", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+            SqlDataReader reader = cmd.ExecuteReader();
+            
             while (reader.Read())
             {
                 string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");

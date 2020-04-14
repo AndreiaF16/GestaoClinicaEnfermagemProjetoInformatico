@@ -68,8 +68,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Consulta WHERE IdPaciente =  " + paciente.IdPaciente, conn);
-
+            SqlCommand cmd = new SqlCommand("select * from Consulta WHERE IdPaciente = @IdPaciente", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
             // Paciente paciente = null;
 
@@ -77,7 +77,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 consultasPaciente = new ConsultasPaciente
                 {
-                    // IdHistorico = (int)reader["IdHistorico"],
                     dataConsulta = Convert.ToDateTime(reader["dataConsulta"]),
                     horaInicioConsulta = (string)reader["horaInicioConsulta"],
                     tensaoArterial = (int)reader["tensaoArterial"],
@@ -87,14 +86,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     escalaDor = (string)reader["escalaDor"],
                     valorConsulta = Convert.ToDouble(reader["valorConsulta"]),
                     horaFimConsulta = (string)reader["horaFimConsulta"],
-                  //  localizacaoDor = (string)reader["localizacaoDor"]
-
-                    //  IdPaciente = (int)reader["IdPaciente"]
                 };
                 listaConsultasPaciente.Add(consultasPaciente);
             }
             conn.Close();
-            //dataGridViewHistoricoClinico.DataSource = listaHistorico;
             UpdateDataGridView();
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaConsultasPaciente };
             dataGridViewUtentes.DataSource = bindingSource1;
@@ -114,14 +109,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[6].HeaderText = "Dor";
             dataGridViewUtentes.Columns[7].HeaderText = "Valor Consulta";
             dataGridViewUtentes.Columns[8].HeaderText = "Hora Fim Consulta";
-
-
-
-         /*   listaConsultasPaciente = utentes;
-
-            dataGridViewUtentes.Update();
-            dataGridViewUtentes.Refresh();*/
-
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
