@@ -116,10 +116,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             alergiasPacientes.Clear();
             conn.Open();
             com.Connection = conn;
-           // SqlCommand cmd = new SqlCommand("select alergia.Nome, alergiaP.data, alergiaP.observacoes from AlergiaPaciente alergiaP JOIN Alergia alergia ON alergia.IdAlergia = AlergiaP.IdAlergia WHERE IdPaciente = " + paciente.IdPaciente, conn);
-          //  SqlDataReader reader = cmd.ExecuteReader();
-
-
             SqlCommand cmd = new SqlCommand("select alergia.Nome, alergiaP.data, alergiaP.observacoes from AlergiaPaciente alergiaP JOIN Alergia alergia ON alergia.IdAlergia = AlergiaP.IdAlergia WHERE IdPaciente = @IdPaciente ORDER BY alergiaP.data, alergia.Nome", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -223,17 +219,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from AlergiaPaciente WHERE IdEnfermeiro = @IdPaciente", conn);
+            SqlCommand cmd = new SqlCommand("select * from AlergiaPaciente WHERE IdPaciente = @IdPaciente", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                string hora = (string)reader["horaProximaConsulta"];
-                DateTime dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-
-                if (data.ToShortDateString().Equals(dataConsulta.ToShortDateString()) && hora.Equals(string.Format("{0:00}", horaSup.Hour) + ":" + string.Format("{0:00}", horaSup.Minute)))
+                DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                int alergia = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
+                if (dataDiagnostico.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && alergia == (int)reader["IdAlergia"])
                 {
-                    MessageBox.Show("O horário que pretende marcar a consulta está indisponível, já existe consulta nesse momento. Tende outra data e/ou outra hora.");
+                    MessageBox.Show("Não é possível registar essa alergia, porque já esta registada na data que selecionou. Escolha outra data ou outra alergia!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     conn.Close();
                     return false;
                 }

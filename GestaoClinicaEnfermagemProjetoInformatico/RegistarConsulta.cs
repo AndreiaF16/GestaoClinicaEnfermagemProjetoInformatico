@@ -125,7 +125,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Open();
                     string queryInsertData = "INSERT INTO AgendamentoConsulta(horaProximaConsulta,dataProximaConsulta,idPaciente,idEnfermeiro)VALUES(@horaProximaConsulta,@dataProximaConsulta,@idPaciente,@idEnfermeiro)";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.Parameters.AddWithValue("@horaProximaConsulta",Encriptacao.Encrypt(string.Format("{0:00}", hrConsulta.Hour) + ":" + string.Format("{0:00}", hrConsulta.Minute)));
+                    sqlCommand.Parameters.AddWithValue("@horaProximaConsulta",string.Format("{0:00}", hrConsulta.Hour) + ":" + string.Format("{0:00}", hrConsulta.Minute));
                     sqlCommand.Parameters.AddWithValue("@dataProximaConsulta", dtaConsulta.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@idPaciente",paciente.IdPaciente.ToString());
                     sqlCommand.Parameters.AddWithValue("@idEnfermeiro", enfermeiro.IdEnfermeiro.ToString());
@@ -213,7 +213,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 AgendamentoConsultaGridView agendamento = new AgendamentoConsultaGridView
                 {
                     dataProximaConsulta = dataConsulta,
-                    horaProximaConsulta =Encriptacao.Decrypt((string)reader["horaProximaConsulta"]),
+                    horaProximaConsulta =(string)reader["horaProximaConsulta"],
                     NomePaciente = (string)reader["Nome"],
                     NifPaciente = Convert.ToDouble(reader["Nif"]),
                 };
