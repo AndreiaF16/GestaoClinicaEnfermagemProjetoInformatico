@@ -243,6 +243,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_configurações_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-configurações-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_configurações_70 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-configurações-70", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_crie_um_novo_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-crie-um-novo-50", resourceCulture);
@@ -406,6 +426,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         internal static System.Drawing.Bitmap icons8_remover_relógio_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-remover-relógio-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_sair_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-sair-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_sair_70 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-sair-70", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
