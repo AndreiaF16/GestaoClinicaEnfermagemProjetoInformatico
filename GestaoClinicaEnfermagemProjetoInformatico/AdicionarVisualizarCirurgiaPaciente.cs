@@ -92,8 +92,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.Parameters.AddWithValue("@IdAlergia", alergia);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                    sqlCommand.Parameters.AddWithValue("@data", dataDiagnostico.Value);
-                    sqlCommand.Parameters.AddWithValue("@observacoes", txtObservacoes.Text);
+                    sqlCommand.Parameters.AddWithValue("@data", data.ToString("MM/dd/yyyy"));
+                    sqlCommand.Parameters.AddWithValue("@observacoes", observacoes);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Cirurgia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();

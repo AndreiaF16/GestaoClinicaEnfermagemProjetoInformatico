@@ -37,8 +37,9 @@
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBoxDoenca = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtProcurar = new System.Windows.Forms.TextBox();
+            this.comboBoxDoenca = new System.Windows.Forms.ComboBox();
             this.lblFuncao = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtObservacoes = new System.Windows.Forms.TextBox();
@@ -64,6 +65,7 @@
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoencas)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -102,8 +104,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.comboBoxDoenca);
-            this.groupBox1.Controls.Add(this.txtProcurar);
             this.groupBox1.Controls.Add(this.lblFuncao);
             this.groupBox1.Controls.Add(this.btnGuardar);
             this.groupBox1.Controls.Add(this.txtObservacoes);
@@ -112,12 +114,34 @@
             this.groupBox1.Controls.Add(this.dataDiagnostico);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
-            this.groupBox1.Location = new System.Drawing.Point(98, 63);
+            this.groupBox1.Location = new System.Drawing.Point(98, 45);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(911, 312);
+            this.groupBox1.Size = new System.Drawing.Size(911, 330);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registar Doença";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtProcurar);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Black;
+            this.groupBox2.Location = new System.Drawing.Point(497, 11);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(236, 60);
+            this.groupBox2.TabIndex = 55;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Pesquisar Nome da Doença:";
+            // 
+            // txtProcurar
+            // 
+            this.txtProcurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProcurar.Location = new System.Drawing.Point(6, 24);
+            this.txtProcurar.Name = "txtProcurar";
+            this.txtProcurar.Size = new System.Drawing.Size(204, 26);
+            this.txtProcurar.TabIndex = 54;
+            this.txtProcurar.TextChanged += new System.EventHandler(this.txtProcurar_TextChanged);
+            this.txtProcurar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProcurar_KeyDown);
             // 
             // comboBoxDoenca
             // 
@@ -127,15 +151,7 @@
             this.comboBoxDoenca.Name = "comboBoxDoenca";
             this.comboBoxDoenca.Size = new System.Drawing.Size(260, 28);
             this.comboBoxDoenca.TabIndex = 53;
-            // 
-            // txtProcurar
-            // 
-            this.txtProcurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProcurar.Location = new System.Drawing.Point(469, 33);
-            this.txtProcurar.Name = "txtProcurar";
-            this.txtProcurar.Size = new System.Drawing.Size(204, 26);
-            this.txtProcurar.TabIndex = 54;
-            this.txtProcurar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProcurar_KeyDown);
+            this.comboBoxDoenca.Text = "Selecione a Doença";
             // 
             // lblFuncao
             // 
@@ -214,7 +230,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label1.Location = new System.Drawing.Point(287, 42);
+            this.label1.Location = new System.Drawing.Point(453, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 25);
             this.label1.TabIndex = 51;
@@ -463,6 +479,8 @@
             this.panelFormulario.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoencas)).EndInit();
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -504,5 +522,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox txtProcurar;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

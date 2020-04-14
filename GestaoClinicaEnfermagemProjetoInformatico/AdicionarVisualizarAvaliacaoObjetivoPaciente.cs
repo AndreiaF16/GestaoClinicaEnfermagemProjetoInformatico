@@ -87,7 +87,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     conn.Open();
                     string queryInsertData = "INSERT INTO AvaliacaoObjetivo(data,peso,altura,IdPaciente) VALUES(@data, @peso, @altura, @IdPaciente);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
-                    sqlCommand.Parameters.AddWithValue("@data", dataAvaliacaoObjetivo.Value);
+                    sqlCommand.Parameters.AddWithValue("@data", data.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@peso", UpDownPeso.Value);
                     sqlCommand.Parameters.AddWithValue("@altura", UpDownAltura.Value);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);

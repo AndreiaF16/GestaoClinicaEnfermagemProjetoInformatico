@@ -59,6 +59,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelTitulo.SuspendLayout();
@@ -71,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelFormulario.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.painelPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -181,7 +183,7 @@
             // txtProcurar
             // 
             this.txtProcurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProcurar.Location = new System.Drawing.Point(480, 19);
+            this.txtProcurar.Location = new System.Drawing.Point(11, 25);
             this.txtProcurar.Name = "txtProcurar";
             this.txtProcurar.Size = new System.Drawing.Size(204, 26);
             this.txtProcurar.TabIndex = 54;
@@ -191,17 +193,18 @@
             // 
             this.comboBoxDoenca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDoenca.FormattingEnabled = true;
-            this.comboBoxDoenca.Location = new System.Drawing.Point(191, 19);
+            this.comboBoxDoenca.Location = new System.Drawing.Point(182, 47);
             this.comboBoxDoenca.Name = "comboBoxDoenca";
-            this.comboBoxDoenca.Size = new System.Drawing.Size(260, 28);
+            this.comboBoxDoenca.Size = new System.Drawing.Size(273, 28);
             this.comboBoxDoenca.TabIndex = 53;
+            this.comboBoxDoenca.Text = "Selecione a Cirurgia";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(41, 29);
+            this.label3.Location = new System.Drawing.Point(33, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 20);
             this.label3.TabIndex = 52;
@@ -212,7 +215,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label1.Location = new System.Drawing.Point(240, 47);
+            this.label1.Location = new System.Drawing.Point(468, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 25);
             this.label1.TabIndex = 51;
@@ -289,7 +292,7 @@
             this.lblDataNascimento.AutoSize = true;
             this.lblDataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDataNascimento.ForeColor = System.Drawing.Color.Black;
-            this.lblDataNascimento.Location = new System.Drawing.Point(41, 82);
+            this.lblDataNascimento.Location = new System.Drawing.Point(33, 118);
             this.lblDataNascimento.Name = "lblDataNascimento";
             this.lblDataNascimento.Size = new System.Drawing.Size(132, 20);
             this.lblDataNascimento.TabIndex = 14;
@@ -298,16 +301,16 @@
             // txtObservacoes
             // 
             this.txtObservacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObservacoes.Location = new System.Drawing.Point(190, 125);
+            this.txtObservacoes.Location = new System.Drawing.Point(182, 161);
             this.txtObservacoes.Multiline = true;
             this.txtObservacoes.Name = "txtObservacoes";
-            this.txtObservacoes.Size = new System.Drawing.Size(494, 167);
+            this.txtObservacoes.Size = new System.Drawing.Size(494, 149);
             this.txtObservacoes.TabIndex = 13;
             // 
             // dataDiagnostico
             // 
             this.dataDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataDiagnostico.Location = new System.Drawing.Point(191, 76);
+            this.dataDiagnostico.Location = new System.Drawing.Point(183, 112);
             this.dataDiagnostico.Name = "dataDiagnostico";
             this.dataDiagnostico.Size = new System.Drawing.Size(493, 26);
             this.dataDiagnostico.TabIndex = 15;
@@ -323,7 +326,7 @@
             this.lblFuncao.AutoSize = true;
             this.lblFuncao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFuncao.ForeColor = System.Drawing.Color.Black;
-            this.lblFuncao.Location = new System.Drawing.Point(41, 128);
+            this.lblFuncao.Location = new System.Drawing.Point(33, 174);
             this.lblFuncao.Name = "lblFuncao";
             this.lblFuncao.Size = new System.Drawing.Size(102, 20);
             this.lblFuncao.TabIndex = 12;
@@ -405,8 +408,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.comboBoxDoenca);
-            this.groupBox1.Controls.Add(this.txtProcurar);
             this.groupBox1.Controls.Add(this.lblFuncao);
             this.groupBox1.Controls.Add(this.btnGuardar);
             this.groupBox1.Controls.Add(this.txtObservacoes);
@@ -415,12 +418,24 @@
             this.groupBox1.Controls.Add(this.dataDiagnostico);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
-            this.groupBox1.Location = new System.Drawing.Point(55, 75);
+            this.groupBox1.Location = new System.Drawing.Point(55, 45);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(950, 300);
+            this.groupBox1.Size = new System.Drawing.Size(950, 330);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registar Cirurgia";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtProcurar);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Black;
+            this.groupBox2.Location = new System.Drawing.Point(461, 22);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(230, 66);
+            this.groupBox2.TabIndex = 58;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Pesquisar Nome da Cirurgia:";
             // 
             // label2
             // 
@@ -470,6 +485,8 @@
             this.panelFormulario.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.painelPrincipal.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -504,5 +521,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel painelPrincipal;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

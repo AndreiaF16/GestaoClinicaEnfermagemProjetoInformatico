@@ -171,13 +171,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     
                     string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES(@nome,@funcao,@contacto,@dataNascimento,@username,@password,@email);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.Parameters.AddWithValue("@nome", txtNome.Text);
-                    sqlCommand.Parameters.AddWithValue("@funcao", txtFuncao.Text);
-                    sqlCommand.Parameters.AddWithValue("@contacto", txtContacto.Text);
-                    sqlCommand.Parameters.AddWithValue("@dataNascimento", dataNascimento.Value);
-                    sqlCommand.Parameters.AddWithValue("@username", txtUsername.Text);
+                    sqlCommand.Parameters.AddWithValue("@nome", nome);
+                    sqlCommand.Parameters.AddWithValue("@funcao", funcao);
+                    sqlCommand.Parameters.AddWithValue("@contacto", telemovel);
+                    sqlCommand.Parameters.AddWithValue("@dataNascimento", dtNascimento.ToString("MM/dd/yyyy"));
+                    sqlCommand.Parameters.AddWithValue("@username", username);
                     sqlCommand.Parameters.AddWithValue("@password", passCript);
-                    sqlCommand.Parameters.AddWithValue("@email", txtEmail.Text);
+                    sqlCommand.Parameters.AddWithValue("@email", email);
 
 
                     sqlCommand.ExecuteNonQuery();

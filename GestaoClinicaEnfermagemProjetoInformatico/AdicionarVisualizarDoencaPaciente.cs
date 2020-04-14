@@ -95,8 +95,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.Parameters.AddWithValue("@IdDoenca", doenca);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                    sqlCommand.Parameters.AddWithValue("@data", dataDiagnostico.Value);
-                    sqlCommand.Parameters.AddWithValue("@observacoes", txtObservacoes.Text);
+                    sqlCommand.Parameters.AddWithValue("@data", data.ToString("MM/dd/yyyy"));
+                    sqlCommand.Parameters.AddWithValue("@observacoes", observacoes);
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Doença registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -224,6 +224,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
             return true;
+        }
+
+        private void txtProcurar_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

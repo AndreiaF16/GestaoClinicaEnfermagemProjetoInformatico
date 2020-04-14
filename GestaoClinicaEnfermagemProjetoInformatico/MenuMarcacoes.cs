@@ -71,7 +71,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
                             sqlCommand.ExecuteNonQuery();
-                            MessageBox.Show("Consulta desmarcada com Sucesso!");
+                            MessageBox.Show("Consulta desmarcada com Sucesso!", "Consulta Desmarcada Consulta!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             conn.Close();
                             UpdateGridViewConsultas();
                             formMenu.UpdateGridViewConsultas();
@@ -91,7 +91,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (!VerificarDadosInseridos() || agenda== null)
             {
-                MessageBox.Show("Dados incorretos!");
+                MessageBox.Show("Dados incorretos!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -104,7 +104,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     string queryUpdateData = "UPDATE AgendamentoConsulta SET horaProximaConsulta = '" + string.Format("{0:00}", hrConsulta.Hour) + ":" + string.Format("{0:00}", hrConsulta.Minute) + "', dataProximaConsulta = '" + dtaConsulta.ToString("MM/dd/yyyy") + "' WHERE IdPaciente = '" + paciente.IdPaciente + "' AND horaProximaConsulta = '" + agenda.horaProximaConsulta + "' AND dataProximaConsulta = '" + DateTime.ParseExact(agenda.dataProximaConsulta, "dd/MM/yyyy", null).ToString("MM/dd/yyyy") + "';";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Marcação alterada com Sucesso!");
+                    MessageBox.Show("Marcação alterada com Sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                     UpdateGridViewConsultas();
 
@@ -237,27 +237,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             auxiliar = agendamentos;
             
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = auxiliar };
-           // bindingSource1.RemoveAt(auxiliar.Count);
             dataGridViewMarcacoes.DataSource = bindingSource1;
 
             dataGridViewMarcacoes.Columns[0].HeaderText = "Hora Consulta";
             dataGridViewMarcacoes.Columns[1].HeaderText = "Data Consulta";
             dataGridViewMarcacoes.Columns[2].HeaderText = "Nome Utente";
             dataGridViewMarcacoes.Columns[3].HeaderText = "Nif Paciente";
-           // MessageBox.Show((dataGridViewMarcacoes.Rows.Count).ToString());
-           // dataGridViewMarcacoes.Rows.RemoveAt(dataGridViewMarcacoes.Rows.Count);
-
             conn.Close();
-
-
-          /*  for (int i = 1; i < dataGridViewMarcacoes.RowCount; i++)
-            {
-                if (dataGridViewMarcacoes.Rows[i].Cells[0].Value == null)
-                {
-                    dataGridViewMarcacoes.Rows.RemoveAt(i);
-                    i--;
-                }
-            }*/
         }
 
         private List<AgendamentoConsultaGridView> filtrosDePesquisa()

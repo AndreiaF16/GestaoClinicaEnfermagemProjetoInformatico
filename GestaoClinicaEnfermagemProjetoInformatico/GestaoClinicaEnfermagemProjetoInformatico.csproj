@@ -104,6 +104,7 @@
     <Compile Include="Doencas.Designer.cs">
       <DependentUpon>Doencas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Encriptacao.cs" />
     <Compile Include="Exame.cs" />
     <Compile Include="ExamePaciente.cs" />
     <Compile Include="HistoricoPaciente.cs" />

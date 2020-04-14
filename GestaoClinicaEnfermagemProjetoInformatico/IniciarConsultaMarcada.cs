@@ -174,16 +174,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         string queryInsertData = "INSERT INTO Consulta(dataConsulta,horaInicioConsulta,tensaoArterial,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro,valorConsulta,horaFimConsulta) VALUES(@dataConsulta,@horaInicioConsulta,@tensaoArterial,@historiaAtual,@sintomatologia,@sinais,@escalaDor,@idPaciente,@idEnfermeiro,@valorConsulta,@horaFimConsulta);";
                         SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                         sqlCommand.Parameters.AddWithValue("@dataConsulta", inicio);
-                        sqlCommand.Parameters.AddWithValue("@horaInicioConsulta",inicio);
-                        sqlCommand.Parameters.AddWithValue("@tensaoArterial", txtTensaoArterial.Text);
-                        sqlCommand.Parameters.AddWithValue("@historiaAtual", txtHistoriaAtual.Text);
-                        sqlCommand.Parameters.AddWithValue("@sintomatologia", txtSintomatologia.Text);
-                        sqlCommand.Parameters.AddWithValue("@sinais", txtSinais.Text);
-                        sqlCommand.Parameters.AddWithValue("@escalaDor", lblEscala.Text);
+                        sqlCommand.Parameters.AddWithValue("@horaInicioConsulta", string.Format("{0:00}", inicio.Hour) + ":" + string.Format("{0:00}", inicio.Minute));
+                        sqlCommand.Parameters.AddWithValue("@tensaoArterial", tensaoArterial);
+                        sqlCommand.Parameters.AddWithValue("@historiaAtual", historiaAtual);
+                        sqlCommand.Parameters.AddWithValue("@sintomatologia", sintomatologia);
+                        sqlCommand.Parameters.AddWithValue("@sinais", sinais);
+                        sqlCommand.Parameters.AddWithValue("@escalaDor", escalaDor);
                         sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
                         sqlCommand.Parameters.AddWithValue("@idEnfermeiro", enfermeiro.IdEnfermeiro);
                         sqlCommand.Parameters.AddWithValue("@valorConsulta", valor);
-                        sqlCommand.Parameters.AddWithValue("@horaFimConsulta", horaFim);
+                        sqlCommand.Parameters.AddWithValue("@horaFimConsulta", string.Format("{0:00}", horaFim.Hour) + ":" + string.Format("{0:00}", horaFim.Minute));
+
                         sqlCommand.ExecuteNonQuery();
 
                         MessageBox.Show("Consulta efetuada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);

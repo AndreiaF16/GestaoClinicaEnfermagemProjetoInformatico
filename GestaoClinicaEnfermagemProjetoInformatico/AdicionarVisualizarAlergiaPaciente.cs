@@ -93,8 +93,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.Parameters.AddWithValue("@IdAlergia", alergia);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                    sqlCommand.Parameters.AddWithValue("@data", dataDiagnostico.Value);
-                    sqlCommand.Parameters.AddWithValue("@observacoes", txtObservacoes.Text);
+                    sqlCommand.Parameters.AddWithValue("@data", data.ToString("MM/dd/yyyy"));
+                    sqlCommand.Parameters.AddWithValue("@observacoes", observacoes);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Alergia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
@@ -220,7 +220,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-          
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select * from AlergiaPaciente WHERE IdEnfermeiro = @IdPaciente", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string hora = (string)reader["horaProximaConsulta"];
+                DateTime dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+
+                if (data.ToShortDateString().Equals(dataConsulta.ToShortDateString()) && hora.Equals(string.Format("{0:00}", horaSup.Hour) + ":" + string.Format("{0:00}", horaSup.Minute)))
+                {
+                    MessageBox.Show("O horário que pretende marcar a consulta está indisponível, já existe consulta nesse momento. Tende outra data e/ou outra hora.");
+                    conn.Close();
+                    return false;
+                }
+
+            }
+            conn.Close();
             return true;
         }
     }
