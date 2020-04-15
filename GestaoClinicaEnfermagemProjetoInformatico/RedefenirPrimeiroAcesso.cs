@@ -84,5 +84,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             return true;
         }
+
+        private void PrimeiroAcesso_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

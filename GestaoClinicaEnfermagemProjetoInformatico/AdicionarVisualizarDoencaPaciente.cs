@@ -222,6 +222,25 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select * from DoencaPaciente WHERE IdPaciente = @IdPaciente", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                int doenca = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
+                if (dataDiagnostico.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && doenca == (int)reader["IdDoenca"])
+                {
+                    MessageBox.Show("Não é possível registar essa doenca, porque já esta registada na data que selecionou. Escolha outra doenca ou outra cirurgia!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    conn.Close();
+                    return false;
+                }
+
+            }
+            conn.Close();
 
             return true;
         }

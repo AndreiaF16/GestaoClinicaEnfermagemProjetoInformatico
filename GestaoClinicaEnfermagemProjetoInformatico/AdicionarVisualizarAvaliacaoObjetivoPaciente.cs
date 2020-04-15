@@ -149,6 +149,33 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
+
+            if (Convert.ToDecimal(peso)  <= 0 || Convert.ToInt32(altura) <= 0)
+            {
+                MessageBox.Show("O peso e/ou a altura não podem ser inferiores a 0, por valor corriga os valores!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            /* conn.Open();
+             com.Connection = conn;
+
+             SqlCommand cmd = new SqlCommand("select * from AvaliacaoObjetivo WHERE IdPaciente = @IdPaciente", conn);
+             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+             SqlDataReader reader = cmd.ExecuteReader();
+             while (reader.Read())
+             {
+                 DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                 //int alergia = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
+                 if (dataAvaliacaoObjetivo.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()))
+                 {
+                     MessageBox.Show("Não é possível registar essa alergia, porque já esta registada na data que selecionou. Escolha outra data ou outra alergia!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     conn.Close();
+                     return false;
+                 }
+
+             }
+             conn.Close();
+             return true;*/
             return true;
         }
     }

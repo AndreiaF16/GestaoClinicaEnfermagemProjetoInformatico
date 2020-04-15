@@ -33,7 +33,6 @@
             this.txtConfirmarNovaPassword = new System.Windows.Forms.TextBox();
             this.txtNovaPassword = new System.Windows.Forms.TextBox();
             this.panelTitulo = new System.Windows.Forms.Panel();
-            this.lblDia = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
@@ -72,7 +71,6 @@
             // panelTitulo
             // 
             this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
-            this.panelTitulo.Controls.Add(this.lblDia);
             this.panelTitulo.Controls.Add(this.lblHora);
             this.panelTitulo.Controls.Add(this.btnFechar);
             this.panelTitulo.Controls.Add(this.btnMaximizar);
@@ -83,17 +81,6 @@
             this.panelTitulo.Name = "panelTitulo";
             this.panelTitulo.Size = new System.Drawing.Size(806, 40);
             this.panelTitulo.TabIndex = 18;
-            // 
-            // lblDia
-            // 
-            this.lblDia.AutoSize = true;
-            this.lblDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblDia.Location = new System.Drawing.Point(657, 9);
-            this.lblDia.Name = "lblDia";
-            this.lblDia.Size = new System.Drawing.Size(57, 20);
-            this.lblDia.TabIndex = 12;
-            this.lblDia.Text = "label1";
             // 
             // lblHora
             // 
@@ -201,7 +188,6 @@
             // 
             // data
             // 
-            this.data.Tick += new System.EventHandler(this.data_Tick);
             // 
             // btnAlterarPassword
             // 
@@ -248,7 +234,6 @@
         private System.Windows.Forms.TextBox txtConfirmarNovaPassword;
         private System.Windows.Forms.TextBox txtNovaPassword;
         private System.Windows.Forms.Panel panelTitulo;
-        private System.Windows.Forms.Label lblDia;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.PictureBox btnFechar;
         private System.Windows.Forms.PictureBox btnMaximizar;

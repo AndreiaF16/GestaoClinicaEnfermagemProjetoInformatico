@@ -119,6 +119,7 @@
             this.Name = "PrimeiroAcesso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RedefinirPrimeiroAcesso";
+            this.Load += new System.EventHandler(this.PrimeiroAcesso_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

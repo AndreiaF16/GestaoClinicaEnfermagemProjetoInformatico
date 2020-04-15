@@ -107,7 +107,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 this.WindowState = FormWindowState.Maximized;
             }
-            else /*(this.WindowState == FormWindowState.Maximized)*/
+            else
             {
                 this.WindowState = FormWindowState.Normal;
             }
@@ -116,11 +116,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void data_Tick(object sender, EventArgs e)
-        {
-            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
     }
 }

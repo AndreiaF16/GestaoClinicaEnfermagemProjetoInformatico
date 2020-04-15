@@ -212,6 +212,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select * from Exame WHERE IdPaciente = @IdPaciente", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                int exame = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
+                if (dataDiagnostico.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && exame == (int)reader["idTipoExame"])
+                {
+                    MessageBox.Show("Não é possível registar esse exame, porque já esta registada na data que selecionou. Escolha outra data ou outro exame!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    conn.Close();
+                    return false;
+                }
+
+            }
+            conn.Close();
+
             return true;
         }
 
