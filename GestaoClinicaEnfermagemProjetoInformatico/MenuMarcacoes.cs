@@ -147,6 +147,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
+            if (agendamentos == null) {
+                MessageBox.Show("Não pode alterar uma consulta porque não tem um dia e/ou consulta selecionado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+
             conn.Open();
             com.Connection = conn;
 
