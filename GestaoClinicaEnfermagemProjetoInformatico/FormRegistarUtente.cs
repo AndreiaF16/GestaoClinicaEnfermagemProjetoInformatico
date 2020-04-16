@@ -89,7 +89,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (!VerificarDadosInseridos())
             {
-                MessageBox.Show("Dados incorretos!");
+                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -233,7 +233,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 this.WindowState = FormWindowState.Maximized;
             }
-            else /*(this.WindowState == FormWindowState.Maximized)*/
+            else 
             {
                 this.WindowState = FormWindowState.Normal;
             }
@@ -242,7 +242,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnMinimizar_Click_1(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-
         }
 
         private void hora_Tick(object sender, EventArgs e)

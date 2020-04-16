@@ -105,7 +105,36 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ATENÇÃO, FALTA IMPLEMENTAR!!!");
+            MessageBox.Show("ATENÇÃO, FALTA IMPLEMENTAR!!!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ProdutosEmStock produtosEmStock = new ProdutosEmStock();
+            produtosEmStock.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("ATENÇÃO, FALTA IMPLEMENTAR!!!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Fornecedor fornecedor = new Fornecedor();
+            fornecedor.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Despesas despesas = new Despesas();
+            despesas.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            RegistarEncomendas registarEncomendas = new RegistarEncomendas();
+            registarEncomendas.Show();
         }
     }
 }

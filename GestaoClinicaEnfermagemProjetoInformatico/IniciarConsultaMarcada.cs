@@ -281,5 +281,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             AdicionarVisualizarAvaliacaoObjetivoPaciente adicionarVisualizarAvaliacaoObjetivoPaciente = new AdicionarVisualizarAvaliacaoObjetivoPaciente(paciente);
             adicionarVisualizarAvaliacaoObjetivoPaciente.Show();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AdicionarVisualizarProdutosStockConsulta adicionarVisualizarProdutosStockConsulta = new AdicionarVisualizarProdutosStockConsulta();
+            adicionarVisualizarProdutosStockConsulta.Show();
+        }
     }
 }

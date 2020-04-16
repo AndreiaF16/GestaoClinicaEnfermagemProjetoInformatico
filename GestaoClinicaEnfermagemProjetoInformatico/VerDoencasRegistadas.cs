@@ -131,7 +131,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     connection.Open();
 
-                    string queryUpdateData = "UPDATE Doenca SET nome = @nome, sintomas = @sintomas WHERE IdDoenca = @@IdDoenca";
+                    string queryUpdateData = "UPDATE Doenca SET nome = @nome, sintomas = @sintomas WHERE IdDoenca = @IdDoenca";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
                     sqlCommand.Parameters.AddWithValue("@nome", nome);
                     sqlCommand.Parameters.AddWithValue("@sintomas", sintomas);

@@ -73,7 +73,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             if (!VerificarDadosInseridos())
             {
-                MessageBox.Show("Dados incorretos!");
+                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

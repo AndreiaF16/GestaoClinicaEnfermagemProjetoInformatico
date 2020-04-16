@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdicionarVerTipoDespesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarVerTipoDespesa.Designer.cs">
+      <DependentUpon>AdicionarVerTipoDespesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdicionarVisualizarAlergiaPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,12 @@
     <Compile Include="AdicionarVisualizarExamePaciente.Designer.cs">
       <DependentUpon>AdicionarVisualizarExamePaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdicionarVisualizarProdutosStockConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarVisualizarProdutosStockConsulta.Designer.cs">
+      <DependentUpon>AdicionarVisualizarProdutosStockConsulta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Alergia.cs" />
     <Compile Include="Alergias.cs">
       <SubType>Form</SubType>
@@ -94,8 +106,15 @@
     <Compile Include="Cirurgias.Designer.cs">
       <DependentUpon>Cirurgias.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClassFornecedor.cs" />
     <Compile Include="ComboBoxItem.cs" />
     <Compile Include="ConsultasPaciente.cs" />
+    <Compile Include="Despesas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Despesas.Designer.cs">
+      <DependentUpon>Despesas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Doenca.cs" />
     <Compile Include="DoencaPaciente.cs" />
     <Compile Include="Doencas.cs">
@@ -104,17 +123,49 @@
     <Compile Include="Doencas.Designer.cs">
       <DependentUpon>Doencas.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditarEncomenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarEncomenda.Designer.cs">
+      <DependentUpon>EditarEncomenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Encomendas.cs" />
     <Compile Include="Encriptacao.cs" />
     <Compile Include="Exame.cs" />
     <Compile Include="ExamePaciente.cs" />
+    <Compile Include="Fornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fornecedor.Designer.cs">
+      <DependentUpon>Fornecedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="HistoricoPaciente.cs" />
     <Compile Include="AgendamentoConsultaGridView.cs" />
     <Compile Include="ClasseAuxiliarBD.cs" />
+    <Compile Include="LinhaEncomenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LinhaEncomenda.Designer.cs">
+      <DependentUpon>LinhaEncomenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="PopupForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PopupForm.Designer.cs">
       <DependentUpon>PopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProdutosEmStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProdutosEmStock.Designer.cs">
+      <DependentUpon>ProdutosEmStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProdutosStock.cs" />
+    <Compile Include="RegistarEncomendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistarEncomendas.Designer.cs">
+      <DependentUpon>RegistarEncomendas.cs</DependentUpon>
     </Compile>
     <Compile Include="RegistarExames.cs">
       <SubType>Form</SubType>
@@ -122,6 +173,7 @@
     <Compile Include="RegistarExames.Designer.cs">
       <DependentUpon>RegistarExames.cs</DependentUpon>
     </Compile>
+    <Compile Include="TipoDespesa.cs" />
     <Compile Include="VerAlergiasRegistadas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -338,6 +390,9 @@
     <Compile Include="VerMaisDetalhesPaciente.Designer.cs">
       <DependentUpon>VerMaisDetalhesPaciente.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdicionarVerTipoDespesa.resx">
+      <DependentUpon>AdicionarVerTipoDespesa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdicionarVisualizarAlergiaPaciente.resx">
       <DependentUpon>AdicionarVisualizarAlergiaPaciente.cs</DependentUpon>
     </EmbeddedResource>
@@ -353,17 +408,38 @@
     <EmbeddedResource Include="AdicionarVisualizarExamePaciente.resx">
       <DependentUpon>AdicionarVisualizarExamePaciente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarVisualizarProdutosStockConsulta.resx">
+      <DependentUpon>AdicionarVisualizarProdutosStockConsulta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Alergias.resx">
       <DependentUpon>Alergias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cirurgias.resx">
       <DependentUpon>Cirurgias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Despesas.resx">
+      <DependentUpon>Despesas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Doencas.resx">
       <DependentUpon>Doencas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditarEncomenda.resx">
+      <DependentUpon>EditarEncomenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fornecedor.resx">
+      <DependentUpon>Fornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LinhaEncomenda.resx">
+      <DependentUpon>LinhaEncomenda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PopupForm.resx">
       <DependentUpon>PopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProdutosEmStock.resx">
+      <DependentUpon>ProdutosEmStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistarEncomendas.resx">
+      <DependentUpon>RegistarEncomendas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistarExames.resx">
       <DependentUpon>RegistarExames.cs</DependentUpon>
