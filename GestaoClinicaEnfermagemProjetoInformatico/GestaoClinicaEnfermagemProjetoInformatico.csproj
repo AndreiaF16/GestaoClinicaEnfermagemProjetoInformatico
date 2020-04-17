@@ -148,6 +148,7 @@
     <Compile Include="LinhaEncomenda.Designer.cs">
       <DependentUpon>LinhaEncomenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListarProdutos.cs" />
     <Compile Include="PopupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -708,6 +709,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-sair-70.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-seta-longa-à-direita-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-seta-longa-à-esquerda-100.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

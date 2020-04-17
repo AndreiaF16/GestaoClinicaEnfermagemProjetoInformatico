@@ -45,6 +45,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.Close();
         }
 
+        public void Delete(int idEncomenda)
+        {
+            throw new NotImplementedException();
+        }
+
         private void hora_Tick(object sender, EventArgs e)
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
@@ -106,6 +111,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Encomenda registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
                     UpdateDataGridView();
+                    Encomendas enc = new Encomendas 
+                    { 
+                        IdEncomenda = Convert.ToInt32(encomenda),
+
+                    };
+                    LinhaEncomenda linha = new LinhaEncomenda(enc, this);
+                    linha.Show();
 
                 }
                 catch (SqlException excep)
@@ -233,6 +245,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 e.Handled = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string encomenda = "127";
+
+            Encomendas enc = new Encomendas
+            {
+                IdEncomenda = Convert.ToInt32(encomenda),
+
+            };
+            LinhaEncomenda linha = new LinhaEncomenda(enc, this);
+            linha.Show();
         }
     }
 }

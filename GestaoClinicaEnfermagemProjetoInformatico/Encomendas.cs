@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    class Encomendas
+    public class Encomendas
     {
         public int IdEncomenda { get; set; }
         public string nome { get; set; }
