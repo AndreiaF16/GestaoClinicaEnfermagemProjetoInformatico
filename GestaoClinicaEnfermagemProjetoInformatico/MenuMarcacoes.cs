@@ -408,9 +408,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 int i = dataGridViewMarcacoes.CurrentCell.RowIndex;
                 if (i != auxiliar.Count +1)
                 {
-
-
-                    MessageBox.Show(i.ToString());
                     foreach (var marcar in auxiliar)
                     {
                         if (marcar.NifPaciente == Double.Parse(dataGridViewMarcacoes.Rows[i].Cells[3].Value.ToString()))

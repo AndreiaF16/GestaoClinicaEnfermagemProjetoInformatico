@@ -100,7 +100,7 @@
             this.pictureBoxCorpo.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg;
             this.pictureBoxCorpo.Location = new System.Drawing.Point(20, 40);
             this.pictureBoxCorpo.Name = "pictureBoxCorpo";
-            this.pictureBoxCorpo.Size = new System.Drawing.Size(737, 696);
+            this.pictureBoxCorpo.Size = new System.Drawing.Size(737, 677);
             this.pictureBoxCorpo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxCorpo.TabIndex = 1;
             this.pictureBoxCorpo.TabStop = false;
