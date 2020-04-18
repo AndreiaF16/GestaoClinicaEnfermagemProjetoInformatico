@@ -127,6 +127,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             textBox.Location = PointToScreen(e.Location);
 
             pictureBoxCorpo.Controls.Add(textBox);
+            listBox1.Items.Clear();
 
             // string dor = textBox.Text;
             for (int i = 0; i < this.pictureBoxCorpo.Controls.Count; i++)
@@ -136,8 +137,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     TextBox txtserial = (TextBox)this.pictureBoxCorpo.Controls[i];
                     string value = txtserial.Text;
-
                     listBox1.Items.Add(value.ToString());
+
                 }
             }
         }
