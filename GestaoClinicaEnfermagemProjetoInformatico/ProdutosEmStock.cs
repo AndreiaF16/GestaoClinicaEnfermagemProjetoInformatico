@@ -15,13 +15,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
-        private Paciente paciente = new Paciente();
-      //  private List<ComboBoxItem> doencas = new List<ComboBoxItem>();
-      //  private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
         private List<ProdutosStock> produtosStocks = new List<ProdutosStock>();
-        public ProdutosEmStock()
+        private LinhaEncomenda linhaEncomenda = null;
+        public ProdutosEmStock(LinhaEncomenda encomenda)
         {
             InitializeComponent();
+            linhaEncomenda = encomenda;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         }
@@ -101,6 +100,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Produto registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
                     UpdateDataGridView();
+                    if (linhaEncomenda != null)
+                    {
+                        linhaEncomenda.UpdateListBox();
+                    }
 
                 }
                 catch (SqlException excep)
@@ -173,5 +176,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             return true;
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("FALTA IMPLEMENTAR!");
+        }
     }
 }

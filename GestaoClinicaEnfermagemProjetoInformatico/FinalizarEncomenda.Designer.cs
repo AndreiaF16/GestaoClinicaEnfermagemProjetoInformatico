@@ -1,6 +1,6 @@
 ﻿namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    partial class EditarEncomenda
+    partial class FinalizarEncomenda
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditarEncomenda));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinalizarEncomenda));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -49,6 +49,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblDataNascimento = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtNumeroEncomenda = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.dataVEntregaReal = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -61,8 +63,6 @@
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.txtNumeroEncomenda = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -211,6 +211,7 @@
             // 
             // dataGridViewEncomendas
             // 
+            this.dataGridViewEncomendas.AllowUserToAddRows = false;
             this.dataGridViewEncomendas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewEncomendas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.dataGridViewEncomendas.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -262,9 +263,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.label2.Location = new System.Drawing.Point(3, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(337, 39);
+            this.label2.Size = new System.Drawing.Size(381, 39);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Editar Encomendas";
+            this.label2.Text = "Finalizar Encomendas";
             // 
             // lblDataNascimento
             // 
@@ -299,7 +300,26 @@
             this.groupBox1.Size = new System.Drawing.Size(1093, 330);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Editar Encomenda";
+            this.groupBox1.Text = "Finalizar Encomenda";
+            // 
+            // txtNumeroEncomenda
+            // 
+            this.txtNumeroEncomenda.Enabled = false;
+            this.txtNumeroEncomenda.Location = new System.Drawing.Point(323, 47);
+            this.txtNumeroEncomenda.Name = "txtNumeroEncomenda";
+            this.txtNumeroEncomenda.Size = new System.Drawing.Size(493, 26);
+            this.txtNumeroEncomenda.TabIndex = 70;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(47, 50);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(177, 20);
+            this.label5.TabIndex = 69;
+            this.label5.Text = "Número da Encomenda";
             // 
             // txtId
             // 
@@ -442,26 +462,7 @@
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
-            // txtNumeroEncomenda
-            // 
-            this.txtNumeroEncomenda.Enabled = false;
-            this.txtNumeroEncomenda.Location = new System.Drawing.Point(323, 47);
-            this.txtNumeroEncomenda.Name = "txtNumeroEncomenda";
-            this.txtNumeroEncomenda.Size = new System.Drawing.Size(493, 26);
-            this.txtNumeroEncomenda.TabIndex = 70;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(47, 50);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(177, 20);
-            this.label5.TabIndex = 69;
-            this.label5.Text = "Número da Encomenda";
-            // 
-            // EditarEncomenda
+            // FinalizarEncomenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -469,7 +470,7 @@
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "EditarEncomenda";
+            this.Name = "FinalizarEncomenda";
             this.Text = "EditarEncomenda";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.EditarEncomenda_Load);

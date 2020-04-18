@@ -82,6 +82,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             horaConsulta.ShowUpDown = true;
 
             UpdateGridViewConsultas();
+            dataGridViewConsultas.Columns[0].Width = dataGridViewConsultas.Columns[0].Width - 100;
+            dataGridViewConsultas.Columns[1].Width = dataGridViewConsultas.Columns[1].Width - 100;
+            dataGridViewConsultas.Columns[2].Width = dataGridViewConsultas.Columns[2].Width + 150;
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -225,10 +228,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewConsultas.Columns[1].HeaderText = "Data Consulta";
             dataGridViewConsultas.Columns[2].HeaderText = "Nome Utente";
             dataGridViewConsultas.Columns[3].HeaderText = "Nif Paciente";
-            dataGridViewConsultas.Columns[0].Width = dataGridViewConsultas.Columns[0].Width - 100;
-            dataGridViewConsultas.Columns[1].Width = dataGridViewConsultas.Columns[1].Width - 100;
-            dataGridViewConsultas.Columns[2].Width = dataGridViewConsultas.Columns[2].Width + 150;
-
             conn.Close();
         }
 

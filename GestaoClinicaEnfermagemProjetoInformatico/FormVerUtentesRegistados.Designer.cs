@@ -214,6 +214,7 @@
             // 
             // dataGridViewUtentes
             // 
+            this.dataGridViewUtentes.AllowUserToAddRows = false;
             this.dataGridViewUtentes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.dataGridViewUtentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewUtentes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;

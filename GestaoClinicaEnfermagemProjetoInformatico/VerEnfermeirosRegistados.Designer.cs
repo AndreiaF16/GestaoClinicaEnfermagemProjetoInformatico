@@ -86,6 +86,7 @@
             // 
             // dataGridViewEnfermeiros
             // 
+            this.dataGridViewEnfermeiros.AllowUserToAddRows = false;
             this.dataGridViewEnfermeiros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewEnfermeiros.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.dataGridViewEnfermeiros.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -110,7 +111,7 @@
             this.dataGridViewEnfermeiros.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewEnfermeiros.EnableHeadersVisualStyles = false;
             this.dataGridViewEnfermeiros.GridColor = System.Drawing.Color.SteelBlue;
-            this.dataGridViewEnfermeiros.Location = new System.Drawing.Point(10, 145);
+            this.dataGridViewEnfermeiros.Location = new System.Drawing.Point(10, 147);
             this.dataGridViewEnfermeiros.MultiSelect = false;
             this.dataGridViewEnfermeiros.Name = "dataGridViewEnfermeiros";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;

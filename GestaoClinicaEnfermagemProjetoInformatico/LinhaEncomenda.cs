@@ -49,37 +49,74 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (listaEncomenda.Count > 0)
+            {
+                try
+                {
+                    conn.Open();
+                    foreach (var item in listaEncomenda)
+                    {
+                        string queryInsertData = "INSERT INTO LinhaEncomenda(quantidade,idProdutoStock,idEncomenda) VALUES(@Quantidade,@IdProdutoStock,@IdEncomenda);";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
+                        sqlCommand.Parameters.AddWithValue("@Quantidade", item.quant);
+                        sqlCommand.Parameters.AddWithValue("@IdProdutoStock", item.id);
+                        sqlCommand.Parameters.AddWithValue("@IdEncomenda", encomendas.IdEncomenda);
+                        sqlCommand.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Encomenda registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    conn.Close();
+                    this.Close();
+                }
+                catch (SqlException excep)
+                {
+                    MessageBox.Show("Por erro interno é impossível registar a encomenda", excep.Message);
+                }
+            } 
+            else
+            {
+                MessageBox.Show("A lista de ENcomenda não contem items. Para poder registar a encomenda, tem de ter pelo menos um item", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private Boolean VerificarDadosInseridos()
+        {
+            string quantidade = Convert.ToString(numericUpDownQuant.Value);
+
+
+            if (quantidade == string.Empty)
+            {
+                MessageBox.Show("Campo Obrigatório, por favor preencha o campo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+            if (Convert.ToInt32(quantidade) <= 0)
+            {
+                MessageBox.Show("A quantidade tem de ser superior a 0. Por favor corrija!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ProdutosEmStock produtos = new ProdutosEmStock();
+            ProdutosEmStock produtos = new ProdutosEmStock(this);
             produtos.Show();              
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             registar.Delete(encomendas.IdEncomenda);
+            this.Close();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            ComboBoxItem idProduto = (listBoxProdutos.SelectedItem as ComboBoxItem);
-            listBoxEncomenda.Items.Add(idProduto);
-            foreach (var produto in listaProdutos)
-            {
-                if (produto.nome.Equals(idProduto.Value))
-                {
-                    ListarProdutos listar = produto;
-                    listar.quant = Convert.ToInt16(numericUpDownQuant.Value);
-                    listaEncomenda.Add(listar);
-
-                }
-            }
+            
         }
 
-        private void UpdateListBox()
+        public void UpdateListBox()
         {
             listaProdutos.Clear();
             conn.Open();
@@ -112,6 +149,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void listBoxProdutos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            if (!VerificarDadosInseridos())
+            {
+                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                ComboBoxItem idProduto = (listBoxProdutos.SelectedItem as ComboBoxItem);
+                listBoxEncomenda.Items.Add(idProduto);
+                foreach (var produto in listaProdutos)
+                {
+                    if (produto.nome.Equals(idProduto.Text))
+                    {
+                        ListarProdutos listar = produto;
+                        listar.quant = Convert.ToInt16(numericUpDownQuant.Value);
+                        listaEncomenda.Add(listar);
+                    }
+                }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            
+            
+            ComboBoxItem idProduto = (listBoxEncomenda.SelectedItem as ComboBoxItem);
+            listBoxEncomenda.Items.Remove(idProduto);
+            foreach (var produto in listaProdutos)
+            {
+                if (produto.nome.Equals(idProduto.Text))
+                {
+                    ListarProdutos listar = produto;
+                    listaEncomenda.Remove(listar);
+                }
+            }
         }
     }
 }

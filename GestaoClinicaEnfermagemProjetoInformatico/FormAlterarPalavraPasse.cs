@@ -30,8 +30,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 try
                 {
                     SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                    SqlCommand cmd = new SqlCommand("UPDATE [dbo].[Enfermeiro] SET [password] = '" + Validacoes.CalculaHash(txtConfirmarNovaPassword.Text) + "', [passwordDefault] = 0 WHERE [IdEnfermeiro] = '" + enfermeiro.IdEnfermeiro + "' ", conn);
-
+                    SqlCommand cmd = new SqlCommand("UPDATE Enfermeiro SET password = @Password, passwordDefault = 0 WHERE IdEnfermeiro = @IdEnfermeiro ", conn);
+                    cmd.Parameters.AddWithValue("@Password", Validacoes.CalculaHash(txtConfirmarNovaPassword.Text));
+                    cmd.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
                     conn.Open();
 
                     cmd.ExecuteNonQuery();

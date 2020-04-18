@@ -16,7 +16,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private DateTime inicio;
-        private DateTime real;
         private ClassFornecedor fornecedor = new ClassFornecedor();
         private List<ComboBoxItem> encomendas = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
@@ -27,7 +26,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             inicio = DateTime.Now;
             labelData.Text = inicio.ToString("dd/MM/yyyy");
 
-            real = DateTime.Now;
             labelData.ForeColor = Color.Black;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             dataEntregaPrevista.MinDate = DateTime.Now;
@@ -47,7 +45,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void Delete(int idEncomenda)
         {
-            throw new NotImplementedException();
+            try
+            {
+                conn.Open();
+
+                string queryInsertData ="Delete from Encomenda WHERE IdEncomenda = @IdEncomenda";
+                SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
+                sqlCommand.Parameters.AddWithValue("@IdEncomenda", idEncomenda);
+                sqlCommand.ExecuteNonQuery();
+                conn.Close();
+                UpdateDataGridView();
+              
+            }
+            catch (SqlException excep)
+            {
+                MessageBox.Show("Por erro interno é impossível eliminar a encomenda", excep.Message);
+            }
         }
 
         private void hora_Tick(object sender, EventArgs e)
@@ -99,11 +112,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Open();
 
-                    string queryInsertData = "INSERT INTO Encomenda(IdEncomenda,idFornecedor,dataRegistoEncomenda,dataEntregaPrevista,dataEntregaReal) VALUES(@IdEncomenda,@IdFornecedor,@DataRegistoEncomenda,@DataEntregaPrevista,@DataEntregaReal);";
+                    string queryInsertData = "INSERT INTO Encomenda(IdEncomenda,idFornecedor,dataRegistoEncomenda,dataEntregaPrevista) VALUES(@IdEncomenda,@IdFornecedor,@DataRegistoEncomenda,@DataEntregaPrevista);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.Parameters.AddWithValue("@DataEntregaPrevista", data.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@DataRegistoEncomenda", inicio.ToString("MM/dd/yyyy"));
-                    sqlCommand.Parameters.AddWithValue("@DataEntregaReal", real.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@IdFornecedor", fornecedor);
                     sqlCommand.Parameters.AddWithValue("@IdEncomenda", encomenda);
 
@@ -122,19 +134,24 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException excep)
                 {
+
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar a encomenda", excep.Message);
 
                 }
             }
         }
 
-        private void UpdateDataGridView()
+        public void UpdateDataGridView()
         {
             listaEncomendas.Clear();
             conn.Open();
             com.Connection = conn;
     
-             SqlCommand cmd = new SqlCommand("select enc.IdEncomenda, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor ORDER BY dataRegistoEncomenda", conn);
+             SqlCommand cmd = new SqlCommand("select enc.IdEncomenda, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor WHERE enc.dataEntregaReal IS NULL ORDER BY dataRegistoEncomenda", conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -200,14 +217,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private Boolean VerificarDadosInseridos()
         {
-            string nome = comboBoxFornecedor.Text;
-
-
-            if (nome == string.Empty)
+            int nome = comboBoxFornecedor.SelectedIndex;
+            string id = txtNumeroEncomenda.Text;
+            //OPCAO ESTUPIDA DO DAVID
+            if (nome <0 || id == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatório, por favor preencha o campo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
-            }          
+            }
+
+            foreach (var encomenda in listaEncomendas)
+            {
+                if (encomenda.IdEncomenda == Convert.ToInt32(id))
+                {
+                    MessageBox.Show("Número de Encoemenda já existe, registe outro número!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+
+
             return true;
         }
 
@@ -234,7 +263,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button4_Click(object sender, EventArgs e)
         {
-            EditarEncomenda editarEncomenda = new EditarEncomenda();
+            FinalizarEncomenda editarEncomenda = new FinalizarEncomenda(this);
             editarEncomenda.Show();
         }
 

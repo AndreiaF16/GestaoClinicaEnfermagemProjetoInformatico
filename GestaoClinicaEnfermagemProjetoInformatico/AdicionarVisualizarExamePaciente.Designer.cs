@@ -261,6 +261,7 @@
             // 
             // dataGridViewExames
             // 
+            this.dataGridViewExames.AllowUserToAddRows = false;
             this.dataGridViewExames.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewExames.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.dataGridViewExames.BorderStyle = System.Windows.Forms.BorderStyle.None;

@@ -245,6 +245,7 @@
             // 
             // dataGridViewAvaliacaoObjetivo
             // 
+            this.dataGridViewAvaliacaoObjetivo.AllowUserToAddRows = false;
             this.dataGridViewAvaliacaoObjetivo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewAvaliacaoObjetivo.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.dataGridViewAvaliacaoObjetivo.BorderStyle = System.Windows.Forms.BorderStyle.None;

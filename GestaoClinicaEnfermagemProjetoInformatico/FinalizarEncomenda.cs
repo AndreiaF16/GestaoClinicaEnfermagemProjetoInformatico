@@ -11,17 +11,18 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class EditarEncomenda : Form
+    public partial class FinalizarEncomenda : Form
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private Encomendas encomendas = null;
         private List<Encomendas> listaEncomendas = new List<Encomendas>();
         private List<Encomendas> auxiliar = new List<Encomendas>();
-
-        public EditarEncomenda()
+        private RegistarEncomendas registarEncomendas = null;
+        public FinalizarEncomenda(RegistarEncomendas enc)
         {
             InitializeComponent();
+            registarEncomendas = enc;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             //dataVEntregaReal.MinDate = DateTime.Now;
         }
@@ -64,14 +65,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             listaEncomendas.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select enc.IdEncomenda, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista, enc.dataEntregaReal from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor ORDER BY enc.IdEncomenda", conn);
+            SqlCommand cmd = new SqlCommand("select enc.IdEncomenda, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista, enc.dataEntregaReal from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor WHERE enc.dataEntregaReal IS NULL ORDER BY enc.IdEncomenda", conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
                 string dataRegistoEnc = DateTime.ParseExact(reader["dataRegistoEncomenda"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
                 string dataEntregaPrev = DateTime.ParseExact(reader["dataEntregaPrevista"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-                string dataEntregaR = DateTime.ParseExact(reader["dataEntregaReal"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+
+                string dataEntregaR = "";
+
+                if (reader["dataEntregaReal"].ToString() != "")
+                {                
+                    dataEntregaR = DateTime.ParseExact(reader["dataEntregaReal"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                }
                
                 Encomendas encomendas = new Encomendas
                 {
@@ -125,49 +132,41 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 txtFornecedor.Text = encomendas.nome;
                 labelData.Text = encomendas.dataRegisto;
                 txtDataEntregaPrevista.Text = encomendas.dataEntregaPrevista;
-                dataVEntregaReal.Value = DateTime.ParseExact(encomendas.dataEntregaReal, "dd/MM/yyyy", null) ;
+              //  dataVEntregaReal.Value = DateTime.ParseExact(encomendas.dataEntregaReal, "dd/MM/yyyy", null) ;
             }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            try
+            if (encomendas != null)
             {
-                DateTime dataEntregaReal = dataVEntregaReal.Value;
-
-                conn.Open();
-
-                string queryUpdateData = "UPDATE Encomenda SET dataEntregaReal = @dataEntregaReal WHERE IdEncomenda = " + encomendas.IdEncomenda ;
-                SqlCommand sqlCommand = new SqlCommand(queryUpdateData, conn);
-                sqlCommand.Parameters.AddWithValue("@dataEntregaReal", dataEntregaReal);
-                sqlCommand.ExecuteNonQuery();
-                foreach (var encomenda in listaEncomendas)
+                try
                 {
-                         encomenda.dataEntregaReal =Convert.ToString(dataVEntregaReal.Value);
+                    DateTime dataEntregaReal = dataVEntregaReal.Value;
+
+                    conn.Open();
+
+                    string queryUpdateData = "UPDATE Encomenda SET dataEntregaReal = @dataEntregaReal WHERE IdEncomenda = " + encomendas.IdEncomenda;
+                    SqlCommand sqlCommand = new SqlCommand(queryUpdateData, conn);
+                    sqlCommand.Parameters.AddWithValue("@dataEntregaReal", dataEntregaReal);
+                    sqlCommand.ExecuteNonQuery();
+                    foreach (var encomenda in listaEncomendas)
+                    {
+                        encomenda.dataEntregaReal = Convert.ToString(dataVEntregaReal.Value);
+                    }
+                    MessageBox.Show("Encomenda alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    conn.Close();
+                    UpdateDataGridView();
+                    if (registarEncomendas != null)
+                    {
+                        registarEncomendas.UpdateDataGridView();
+                    }
                 }
-                MessageBox.Show("Encomenda alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                conn.Close();
-                UpdateDataGridView();
-
+                catch (SqlException excep)
+                {
+                    MessageBox.Show("Erro interno, não foi possível alterar a encomenda!", excep.Message);
+                }
             }
-            catch (SqlException excep)
-            {
-               MessageBox.Show("Erro interno, não foi possível alterar a encomenda!", excep.Message);
-            }  
         }
-
-        /*private Boolean VerificarDadosInseridos()
-        {
-            DateTime data = dataEntregaReal.Value;
-
-            if (Convert.ToString(data == string.Empty)|| categoria == string.Empty || designacao == string.Empty)
-            {
-                MessageBox.Show("Campos Obrigatório, por favor preencha o campo obrigatorio!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            return true;
-        }
-        */
     }
 }

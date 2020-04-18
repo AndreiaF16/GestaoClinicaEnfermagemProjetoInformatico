@@ -172,6 +172,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void FormMenu_Load(object sender, EventArgs e)
         {
             UpdateGridViewConsultas();
+            dataGridViewConsultasHoje.Columns[0].Width = dataGridViewConsultasHoje.Columns[0].Width - 100;
+            dataGridViewConsultasHoje.Columns[1].Width = dataGridViewConsultasHoje.Columns[1].Width - 100;
+            dataGridViewConsultasHoje.Columns[2].Width = dataGridViewConsultasHoje.Columns[2].Width + 150;
         }
 
         public void UpdateGridViewConsultas() 
@@ -207,9 +210,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewConsultasHoje.Columns[1].HeaderText = "Data Consulta";
             dataGridViewConsultasHoje.Columns[2].HeaderText = "Nome Utente";
             dataGridViewConsultasHoje.Columns[3].HeaderText = "Nif";
-            dataGridViewConsultasHoje.Columns[0].Width = dataGridViewConsultasHoje.Columns[0].Width - 100;
-            dataGridViewConsultasHoje.Columns[1].Width = dataGridViewConsultasHoje.Columns[1].Width - 100;
-            dataGridViewConsultasHoje.Columns[2].Width = dataGridViewConsultasHoje.Columns[2].Width + 150;
+       
             conn.Close();
         }
 

@@ -110,7 +110,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ProdutosEmStock produtosEmStock = new ProdutosEmStock();
+            ProdutosEmStock produtosEmStock = new ProdutosEmStock(null);
             produtosEmStock.Show();
         }
 

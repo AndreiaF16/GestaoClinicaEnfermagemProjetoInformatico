@@ -223,6 +223,7 @@
             // 
             // dataGridViewCirurgias
             // 
+            this.dataGridViewCirurgias.AllowUserToAddRows = false;
             this.dataGridViewCirurgias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewCirurgias.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.dataGridViewCirurgias.BorderStyle = System.Windows.Forms.BorderStyle.None;

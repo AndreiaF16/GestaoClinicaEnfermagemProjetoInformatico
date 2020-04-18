@@ -66,6 +66,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string nome = txtNome.Text;
             UpdateDataGridView();
             auxiliar = utentes;
+            dataGridViewUtentes.Columns[0].Width = dataGridViewUtentes.Columns[0].Width + 200;
+            dataGridViewUtentes.Columns[2].Width = dataGridViewUtentes.Columns[2].Width + 80;
+            dataGridViewUtentes.Columns[6].Width = dataGridViewUtentes.Columns[6].Width + 150;
 
             conn.Close();
         }
@@ -202,10 +205,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[9].HeaderText = "Código";
             dataGridViewUtentes.Columns[10].HeaderText = "Postal";
             dataGridViewUtentes.Columns[11].HeaderText = "Localidade";
-            dataGridViewUtentes.Columns[0].Width = dataGridViewUtentes.Columns[0].Width + 200;
-            dataGridViewUtentes.Columns[2].Width = dataGridViewUtentes.Columns[2].Width + 80;
-            dataGridViewUtentes.Columns[6].Width = dataGridViewUtentes.Columns[6].Width + 150;
-
+       
             auxiliar = utentes;
         
             dataGridViewUtentes.Update();
@@ -275,59 +275,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 dataGridViewUtentes.DataSource = filtrosDePesquisa();
             }
-        }
-
-        private void dataGridViewUtentes_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            int i = dataGridViewUtentes.CurrentCell.RowIndex;
-            //UtenteGridView utente = null; ;
-
-
-            //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
-            foreach (var ut in auxiliar)
-            {
-                if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
-                {
-                    paciente = ut;
-                }
-
-            }
-            if (paciente != null)
-            {
-                textBox1.Text = paciente.Nome;
-                txtMorada.Text = paciente.Rua;
-                txtNumeroCasa.Text = Convert.ToString(paciente.NumeroCasa);
-                txtAndar.Text = paciente.Andar;
-                txtCodPostalPre.Text = Convert.ToString(paciente.codPostalPrefixo);
-                txtCodPostalSuf.Text = Convert.ToString(paciente.codPostalSufixo);
-                txtLocalidade.Text = paciente.localidade;
-                txtEmail.Text = paciente.Email;
-                txtContacto.Text = Convert.ToString(paciente.Contacto);
-                textBox2.Text = Convert.ToString(paciente.Nif);
-
-                int a = 0;
-                foreach (var CmbItem in cbProfissoes.Items)
-                {
-
-                    var tempMeasured = CmbItem.ToString();
-                    //MessageBox.Show(tempMeasured);
-                    if (tempMeasured.Equals(paciente.Profissao))
-                    {
-                        cbProfissoes.SelectedIndex = a;
-                    }
-                    i++;
-                }
-                //(String)cbProfissoes.SelectedItem = utente.Profissao;
-
-            }
-
-
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -410,6 +357,51 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void dataGridViewUtentes_MouseDoubleClick_1(object sender, MouseEventArgs e)
+        {
+            int i = dataGridViewUtentes.CurrentCell.RowIndex;
+            //UtenteGridView utente = null; ;
+
+
+            //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
+            foreach (var ut in auxiliar)
+            {
+                if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                {
+                    paciente = ut;
+                }
+
+            }
+            if (paciente != null)
+            {
+                textBox1.Text = paciente.Nome;
+                txtMorada.Text = paciente.Rua;
+                txtNumeroCasa.Text = Convert.ToString(paciente.NumeroCasa);
+                txtAndar.Text = paciente.Andar;
+                txtCodPostalPre.Text = Convert.ToString(paciente.codPostalPrefixo);
+                txtCodPostalSuf.Text = Convert.ToString(paciente.codPostalSufixo);
+                txtLocalidade.Text = paciente.localidade;
+                txtEmail.Text = paciente.Email;
+                txtContacto.Text = Convert.ToString(paciente.Contacto);
+                textBox2.Text = Convert.ToString(paciente.Nif);
+
+                int a = 0;
+                foreach (var CmbItem in cbProfissoes.Items)
+                {
+
+                    var tempMeasured = CmbItem.ToString();
+                    //MessageBox.Show(tempMeasured);
+                    if (tempMeasured.Equals(paciente.Profissao))
+                    {
+                        cbProfissoes.SelectedIndex = a;
+                    }
+                    i++;
+                }
+                //(String)cbProfissoes.SelectedItem = utente.Profissao;
+
             }
         }
     }

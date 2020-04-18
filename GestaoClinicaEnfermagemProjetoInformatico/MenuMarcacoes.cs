@@ -43,8 +43,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                
                 int i = dataGridViewMarcacoes.CurrentCell.RowIndex;
-                if (dataGridViewMarcacoes.Rows[i].Cells[1].Value != null)
+                //dataGridViewMarcacoes.CurrentRow.
+                if (i != auxiliar.Count + 1)
                 {
+                   // if (dataGridViewMarcacoes.Rows[i].Cells[1].Value != null)
+               // {
                     agenda = new AgendamentoConsultaGridView
                     {
                         horaProximaConsulta = dataGridViewMarcacoes.Rows[i].Cells[0].Value.ToString(),
@@ -78,10 +81,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         }
                     }
                 }
-                agenda = null;
                 var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
                 dataGridViewMarcacoes.DataSource = bindingSource1;
+                agenda = null;
+
             }
+            agenda = null;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -251,6 +257,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewMarcacoes.Columns[2].HeaderText = "Nome Utente";
             dataGridViewMarcacoes.Columns[3].HeaderText = "Nif Paciente";
             conn.Close();
+            CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dataGridViewMarcacoes.DataSource];
+
+            currencyManager1.SuspendBinding();
+            //   dataGridViewMarcacoes.CurrentCell = null;
+            //   dataGridViewMarcacoes.Rows[dataGridViewMarcacoes.Rows.Count -1].Disable = false;
         }
 
         private List<AgendamentoConsultaGridView> filtrosDePesquisa()
@@ -395,20 +406,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (dataGridViewMarcacoes.Rows.Count > 0 )
             {
                 int i = dataGridViewMarcacoes.CurrentCell.RowIndex;
-                foreach (var marcar in auxiliar)
+                if (i != auxiliar.Count +1)
                 {
-                    if (marcar.NifPaciente == Double.Parse(dataGridViewMarcacoes.Rows[i].Cells[3].Value.ToString()))
+
+
+                    MessageBox.Show(i.ToString());
+                    foreach (var marcar in auxiliar)
                     {
-                        if (dataGridViewMarcacoes.Rows[i].Cells[1].Value != null)
+                        if (marcar.NifPaciente == Double.Parse(dataGridViewMarcacoes.Rows[i].Cells[3].Value.ToString()))
                         {
-                            if (marcar.dataProximaConsulta.Equals(dataGridViewMarcacoes.Rows[i].Cells[1].Value.ToString()))
+                            if (dataGridViewMarcacoes.Rows[i].Cells[1].Value != null)
                             {
-                                if (marcar.horaProximaConsulta.Equals(dataGridViewMarcacoes.Rows[i].Cells[0].Value.ToString()))
+                                if (marcar.dataProximaConsulta.Equals(dataGridViewMarcacoes.Rows[i].Cells[1].Value.ToString()))
                                 {
-                                    agenda = marcar;
+                                    if (marcar.horaProximaConsulta.Equals(dataGridViewMarcacoes.Rows[i].Cells[0].Value.ToString()))
+                                    {
+                                        agenda = marcar;
+                                    }
                                 }
                             }
-                        }                    
+                        }
                     }
                 }
                 if (agenda != null)
@@ -423,6 +440,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void dataConsultaAdiar_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuMarcacoes_Load(object sender, EventArgs e)
         {
 
         }

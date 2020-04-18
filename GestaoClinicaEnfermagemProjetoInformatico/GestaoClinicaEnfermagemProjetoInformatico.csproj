@@ -123,11 +123,11 @@
     <Compile Include="Doencas.Designer.cs">
       <DependentUpon>Doencas.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditarEncomenda.cs">
+    <Compile Include="FinalizarEncomenda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditarEncomenda.Designer.cs">
-      <DependentUpon>EditarEncomenda.cs</DependentUpon>
+    <Compile Include="FinalizarEncomenda.Designer.cs">
+      <DependentUpon>FinalizarEncomenda.cs</DependentUpon>
     </Compile>
     <Compile Include="Encomendas.cs" />
     <Compile Include="Encriptacao.cs" />
@@ -424,8 +424,8 @@
     <EmbeddedResource Include="Doencas.resx">
       <DependentUpon>Doencas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditarEncomenda.resx">
-      <DependentUpon>EditarEncomenda.cs</DependentUpon>
+    <EmbeddedResource Include="FinalizarEncomenda.resx">
+      <DependentUpon>FinalizarEncomenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fornecedor.resx">
       <DependentUpon>Fornecedor.cs</DependentUpon>

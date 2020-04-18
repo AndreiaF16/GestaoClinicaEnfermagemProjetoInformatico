@@ -209,6 +209,7 @@
             // 
             // dataGridViewMarcacoes
             // 
+            this.dataGridViewMarcacoes.AllowUserToAddRows = false;
             this.dataGridViewMarcacoes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewMarcacoes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.dataGridViewMarcacoes.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -522,6 +523,7 @@
             this.Name = "MenuMarcacoes";
             this.Text = "Marcacoes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MenuMarcacoes_Load);
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
             this.groupBox3.ResumeLayout(false);
