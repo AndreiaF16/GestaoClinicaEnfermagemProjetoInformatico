@@ -153,6 +153,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void Fornecedor_Load(object sender, EventArgs e)
         {
             UpdateDataGridView();
+            dataGridViewFornecedores.Columns[0].Width = dataGridViewFornecedores.Columns[0].Width + 100;
+            dataGridViewFornecedores.Columns[1].Width = dataGridViewFornecedores.Columns[1].Width - 70;
+            dataGridViewFornecedores.Columns[2].Width = dataGridViewFornecedores.Columns[2].Width - 70;
+            dataGridViewFornecedores.Columns[3].Width = dataGridViewFornecedores.Columns[3].Width + 60;
+            dataGridViewFornecedores.Columns[4].Width = dataGridViewFornecedores.Columns[4].Width + 100;
 
         }
 
@@ -185,11 +190,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewFornecedores.Columns[2].HeaderText = "Contacto";
             dataGridViewFornecedores.Columns[3].HeaderText = "Email";
             dataGridViewFornecedores.Columns[4].HeaderText = "Observações";
-            dataGridViewFornecedores.Columns[0].Width = dataGridViewFornecedores.Columns[0].Width + 100;
-            dataGridViewFornecedores.Columns[1].Width = dataGridViewFornecedores.Columns[1].Width - 70;
-            dataGridViewFornecedores.Columns[2].Width = dataGridViewFornecedores.Columns[2].Width - 70;
-            dataGridViewFornecedores.Columns[3].Width = dataGridViewFornecedores.Columns[3].Width + 60;
-            dataGridViewFornecedores.Columns[4].Width = dataGridViewFornecedores.Columns[4].Width + 100;
+            
             dataGridViewFornecedores.Columns[5].Visible = false;
 
 
