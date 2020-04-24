@@ -110,7 +110,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaExamePacientes };
             dataGridViewExames.DataSource = bindingSource1;
-            dataGridViewExames.Columns[0].HeaderText = "Cirurgia";
+            dataGridViewExames.Columns[0].HeaderText = "Tipo de Exame";
             dataGridViewExames.Columns[1].HeaderText = "Data de Diagnóstico";
             dataGridViewExames.Columns[2].HeaderText = "Designação";
             dataGridViewExames.Columns[3].HeaderText = "Observações";

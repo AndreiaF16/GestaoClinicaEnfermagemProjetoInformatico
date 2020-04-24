@@ -20,6 +20,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<ComboBoxItem> encomendas = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
         private List<Encomendas> listaEncomendas = new List<Encomendas>();
+        private List<Encomendas> todasEncomendas = new List<Encomendas>();
+
         public RegistarEncomendas()
         {
             InitializeComponent();
@@ -178,6 +180,28 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
             dataGridViewEncomendas.Update();
             dataGridViewEncomendas.Refresh();
+
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd1 = new SqlCommand("select enc.IdEncomenda, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor ORDER BY dataRegistoEncomenda", conn);
+            SqlDataReader reader1 = cmd1.ExecuteReader();
+
+            while (reader1.Read())
+            {
+                string dataRegistoEnc = DateTime.ParseExact(reader1["dataRegistoEncomenda"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                string dataEntregaPrev = DateTime.ParseExact(reader1["dataEntregaPrevista"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+
+                Encomendas encomendas = new Encomendas
+                {
+                    IdEncomenda = (int)reader1["IdEncomenda"],
+                    nome = (string)reader1["nome"],
+                    dataRegisto = dataRegistoEnc,
+                    dataEntregaPrevista = dataEntregaPrev,
+                };
+                todasEncomendas.Add(encomendas);
+            }
+            conn.Close();
         }
 
         private void txtProcurar_KeyDown(object sender, KeyEventArgs e)
@@ -226,11 +250,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
-            foreach (var encomenda in listaEncomendas)
+            foreach (var encomenda in todasEncomendas)
             {
                 if (encomenda.IdEncomenda == Convert.ToInt32(id))
                 {
-                    MessageBox.Show("Número de Encoemenda já existe, registe outro número!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Número de Encomenda já existe, registe outro número!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }

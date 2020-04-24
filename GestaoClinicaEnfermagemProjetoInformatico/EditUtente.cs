@@ -54,9 +54,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     Rua = (string)reader["Rua"],
                     NumeroCasa = (int)reader["NumeroCasa"],
                     Andar = (string)reader["Andar"],
-                    codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
-                    codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
-                    localidade = (string)reader["localidade"],
+                    codigoPostal = Convert.ToDouble(reader["codPostalPrefixo"]).ToString() + "-" + Convert.ToDouble(reader["codPostalSufixo"]).ToString(),
+                // codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
+                // codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                localidade = (string)reader["localidade"],
 
                 };
                 utentes.Add(utente);
@@ -162,8 +163,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                             utente.Rua = txtMorada.Text ;
                             utente.NumeroCasa = Convert.ToInt16(txtNumeroCasa.Text);
                             utente.Andar = txtAndar.Text;
-                            utente.codPostalPrefixo = Convert.ToDouble(txtCodPostalPre.Text);
-                            utente.codPostalSufixo = Convert.ToDouble(txtCodPostalSuf.Text);
+                            utente.codigoPostal = txtCodPostalPre.Text + "-" + txtCodPostalSuf.Text;
+                          //  utente.codPostalPrefixo = Convert.ToDouble(txtCodPostalPre.Text);
+                           // utente.codPostalSufixo = Convert.ToDouble(txtCodPostalSuf.Text);
                             utente.localidade = txtLocalidade.Text;
                             utente.Email = txtEmail.Text;
                             utente.Contacto = Convert.ToDouble(txtContacto.Text);
@@ -202,9 +204,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[6].HeaderText = "Morada";
             dataGridViewUtentes.Columns[7].HeaderText = "Nr";
             dataGridViewUtentes.Columns[8].HeaderText = "Andar";
-            dataGridViewUtentes.Columns[9].HeaderText = "Código";
-            dataGridViewUtentes.Columns[10].HeaderText = "Postal";
-            dataGridViewUtentes.Columns[11].HeaderText = "Localidade";
+            dataGridViewUtentes.Columns[9].HeaderText = "Código Postal";
+           // dataGridViewUtentes.Columns[10].HeaderText = "Postal";
+            dataGridViewUtentes.Columns[10].HeaderText = "Localidade";
        
             auxiliar = utentes;
         
@@ -377,12 +379,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (paciente != null)
             {
+                string[] cp;
                 textBox1.Text = paciente.Nome;
                 txtMorada.Text = paciente.Rua;
                 txtNumeroCasa.Text = Convert.ToString(paciente.NumeroCasa);
                 txtAndar.Text = paciente.Andar;
-                txtCodPostalPre.Text = Convert.ToString(paciente.codPostalPrefixo);
-                txtCodPostalSuf.Text = Convert.ToString(paciente.codPostalSufixo);
+                cp = paciente.codigoPostal.Split('-');
+                txtCodPostalPre.Text = cp[0];// Convert.ToString(paciente.codPostalPrefixo);
+                txtCodPostalSuf.Text = cp[1]; //Convert.ToString(paciente.codPostalSufixo);
                 txtLocalidade.Text = paciente.localidade;
                 txtEmail.Text = paciente.Email;
                 txtContacto.Text = Convert.ToString(paciente.Contacto);
