@@ -188,6 +188,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void FormRegistarUtente_Load(object sender, EventArgs e)
         {
             this.txtNome.Focus();
+            dataNascimento.Value = DateTime.Now;
         }
         public void LimpaCampos(Control.ControlCollection textBoxs)
         {
@@ -274,6 +275,72 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 e.Handled = true;
                 MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbProfissoes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbProfissoes.SelectedItem.ToString() == "Outra")
+            {
+                lblOutraProfissao.Visible = true;
+                txtOutraProfissao.Visible = true;
+            }
+        }
+
+        private void dataNascimento_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbAcordos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+
+
+            if (cbAcordos.SelectedItem.ToString() == "Seguradora")
+            {
+                lblSeguradora.Visible = true;
+                txtSeguradora.Visible = true;
+                lblNApolice.Visible = true;
+                txtNApolice.Visible = true;
+                lblNomeSusbsistema.Visible = false;
+                txtNomeSusbsistema.Visible = false;
+                lblNSubsistema.Visible = false;
+                txtNomeSusbsistema.Visible = false;
+                lblSNS.Visible = false;
+                txtSNS.Visible = false;
+            } 
+            else if (cbAcordos.SelectedItem.ToString() == "Subsistema de Saúde")
+            {
+                lblSeguradora.Visible = false;
+                txtSeguradora.Visible = false;
+                lblNApolice.Visible = false;
+                txtNApolice.Visible = false;
+                lblNomeSusbsistema.Visible = true;
+                txtNomeSusbsistema.Visible = true;
+                lblNSubsistema.Visible = true;
+                txtNSubsistema.Visible = true;
+                lblSNS.Visible = false;
+                txtSNS.Visible = false;
+
+            }
+            else
+            {
+                lblSeguradora.Visible = false;
+                txtSeguradora.Visible = false;
+                lblNApolice.Visible = false;
+                txtNApolice.Visible = false;
+                lblNomeSusbsistema.Visible = false;
+                txtNomeSusbsistema.Visible = false;
+                lblNSubsistema.Visible = false;
+                txtNomeSusbsistema.Visible = false;
+                lblSNS.Visible = true;
+                txtSNS.Visible = true;
             }
         }
     }

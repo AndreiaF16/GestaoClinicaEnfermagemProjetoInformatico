@@ -213,6 +213,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_document_text_accept_103510 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_document_text_accept_103510", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_document_text_accept_103510__1_ {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_document_text_accept_103510 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_adicionar_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-adicionar-50", resourceCulture);

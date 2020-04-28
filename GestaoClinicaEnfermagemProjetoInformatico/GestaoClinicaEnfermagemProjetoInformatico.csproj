@@ -716,5 +716,11 @@
   <ItemGroup>
     <None Include="Resources\icons8-seta-longa-à-esquerda-100.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_document_text_accept_103510.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_document_text_accept_103510 %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
