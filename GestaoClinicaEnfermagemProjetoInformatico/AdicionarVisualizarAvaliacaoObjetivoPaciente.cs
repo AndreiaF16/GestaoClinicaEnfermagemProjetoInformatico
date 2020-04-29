@@ -184,5 +184,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
 
         }
+        public void LimpaCampos(Control.ControlCollection textBoxs)
+        {
+            foreach (Control txt in textBoxs)
+            {
+                if (txt.GetType() == typeof(TextBox))
+                {
+                    txt.Text = string.Empty;
+                    this.Close();
+                }
+            }
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.LimpaCampos(this.panelFormulario.Controls);
+        }
     }
 }

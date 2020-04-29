@@ -338,7 +338,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 lblNomeSusbsistema.Visible = false;
                 txtNomeSusbsistema.Visible = false;
                 lblNSubsistema.Visible = false;
-                txtNomeSusbsistema.Visible = false;
+                txtNSubsistema.Visible = false;
                 lblSNS.Visible = true;
                 txtSNS.Visible = true;
             }

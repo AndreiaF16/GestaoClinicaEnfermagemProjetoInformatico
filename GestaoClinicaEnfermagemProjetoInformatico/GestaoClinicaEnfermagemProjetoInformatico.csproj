@@ -722,5 +722,8 @@
   <ItemGroup>
     <None Include="Resources\iconfinder_document_text_accept_103510 %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_aiga_nursery_134173.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
