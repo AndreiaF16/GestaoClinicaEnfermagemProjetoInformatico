@@ -119,20 +119,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string historiaAtual = txtHistoriaAtual.Text;
             string sintomatologia = txtSintomatologia.Text;
             string sinais = txtSinais.Text;
-            string tensaoArterial = txtTensaoArterial.Text;
+            //string tensaoArterial = txtTensaoArterial.Text;
             string escalaDor = lblEscala.Text;
             string valorConsulta = txtValorConsulta.Text;
 
-            if (historiaAtual == string.Empty || sintomatologia == string.Empty || sinais == string.Empty || tensaoArterial == string.Empty || escalaDor == string.Empty || valorConsulta == string.Empty)
+            if (historiaAtual == string.Empty || sintomatologia == string.Empty || sinais == string.Empty ||  escalaDor == string.Empty || valorConsulta == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha os campos obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if(Convert.ToInt16(tensaoArterial) <= 0)
+            /*if(Convert.ToInt16(tensaoArterial) <= 0)
             {
                 MessageBox.Show("A tensão arterial tem de ter um valor superior a zero", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
-            }
+            }*/
             if (Convert.ToDecimal(valorConsulta) <= 0)
             {
                 MessageBox.Show("O valor da consulta tem que ser superior a zero", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -155,7 +155,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 string historiaAtual = txtHistoriaAtual.Text;
                 string sintomatologia = txtSintomatologia.Text;
                 string sinais = txtSinais.Text;
-                string tensaoArterial = txtTensaoArterial.Text;
+                //string tensaoArterial = txtTensaoArterial.Text;
                 string escalaDor = lblEscala.Text;
                 double valor = Convert.ToDouble(txtValorConsulta.Text);
                 DateTime horaFim = DateTime.Now;
@@ -175,7 +175,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                         sqlCommand.Parameters.AddWithValue("@dataConsulta", inicio);
                         sqlCommand.Parameters.AddWithValue("@horaInicioConsulta", string.Format("{0:00}", inicio.Hour) + ":" + string.Format("{0:00}", inicio.Minute));
-                        sqlCommand.Parameters.AddWithValue("@tensaoArterial", tensaoArterial);
+                       // sqlCommand.Parameters.AddWithValue("@tensaoArterial", tensaoArterial);
                         sqlCommand.Parameters.AddWithValue("@historiaAtual", historiaAtual);
                         sqlCommand.Parameters.AddWithValue("@sintomatologia", sintomatologia);
                         sqlCommand.Parameters.AddWithValue("@sinais", sinais);

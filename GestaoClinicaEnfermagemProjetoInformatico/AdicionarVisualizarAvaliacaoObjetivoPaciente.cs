@@ -30,6 +30,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void AdicionarVisualizarAvaliacaoObjetivoPaciente_Load(object sender, EventArgs e)
         {
             UpdateDataGridView();
+            dataAvaliacaoObjetivo.Value = DateTime.Now;
         }
 
         private void hora_Tick(object sender, EventArgs e)
@@ -177,6 +178,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
              conn.Close();
              return true;*/
             return true;
+        }
+
+        private void dataAvaliacaoObjetivo_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
