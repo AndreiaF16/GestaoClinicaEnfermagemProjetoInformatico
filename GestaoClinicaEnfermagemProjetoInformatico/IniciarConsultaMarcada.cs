@@ -171,7 +171,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                         connection.Open();
 
-                        string queryInsertData = "INSERT INTO Consulta(dataConsulta,horaInicioConsulta,tensaoArterial,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro,valorConsulta,horaFimConsulta) VALUES(@dataConsulta,@horaInicioConsulta,@tensaoArterial,@historiaAtual,@sintomatologia,@sinais,@escalaDor,@idPaciente,@idEnfermeiro,@valorConsulta,@horaFimConsulta);";
+                        string queryInsertData = "INSERT INTO Consulta(dataConsulta,horaInicioConsulta,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro,valorConsulta,horaFimConsulta) VALUES(@dataConsulta,@horaInicioConsulta,@historiaAtual,@sintomatologia,@sinais,@escalaDor,@idPaciente,@idEnfermeiro,@valorConsulta,@horaFimConsulta);";
                         SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                         sqlCommand.Parameters.AddWithValue("@dataConsulta", inicio);
                         sqlCommand.Parameters.AddWithValue("@horaInicioConsulta", string.Format("{0:00}", inicio.Hour) + ":" + string.Format("{0:00}", inicio.Minute));
@@ -286,6 +286,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             AdicionarVisualizarProdutosStockConsulta adicionarVisualizarProdutosStockConsulta = new AdicionarVisualizarProdutosStockConsulta();
             adicionarVisualizarProdutosStockConsulta.Show();
+        }
+
+        private void btnSemDor_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

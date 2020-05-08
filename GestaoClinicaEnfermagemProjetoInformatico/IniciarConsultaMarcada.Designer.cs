@@ -237,7 +237,7 @@
             this.lblDorMaxima.AutoSize = true;
             this.lblDorMaxima.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDorMaxima.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblDorMaxima.Location = new System.Drawing.Point(620, 72);
+            this.lblDorMaxima.Location = new System.Drawing.Point(619, 103);
             this.lblDorMaxima.Name = "lblDorMaxima";
             this.lblDorMaxima.Size = new System.Drawing.Size(90, 16);
             this.lblDorMaxima.TabIndex = 18;
@@ -248,7 +248,7 @@
             this.lblDorMuitoForte.AutoSize = true;
             this.lblDorMuitoForte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDorMuitoForte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblDorMuitoForte.Location = new System.Drawing.Point(493, 72);
+            this.lblDorMuitoForte.Location = new System.Drawing.Point(492, 103);
             this.lblDorMuitoForte.Name = "lblDorMuitoForte";
             this.lblDorMuitoForte.Size = new System.Drawing.Size(114, 16);
             this.lblDorMuitoForte.TabIndex = 16;
@@ -347,7 +347,7 @@
             this.lblDorForte.AutoSize = true;
             this.lblDorForte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDorForte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblDorForte.Location = new System.Drawing.Point(389, 72);
+            this.lblDorForte.Location = new System.Drawing.Point(388, 103);
             this.lblDorForte.Name = "lblDorForte";
             this.lblDorForte.Size = new System.Drawing.Size(73, 16);
             this.lblDorForte.TabIndex = 15;
@@ -358,7 +358,7 @@
             this.lblDorModerada.AutoSize = true;
             this.lblDorModerada.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDorModerada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblDorModerada.Location = new System.Drawing.Point(242, 72);
+            this.lblDorModerada.Location = new System.Drawing.Point(241, 103);
             this.lblDorModerada.Name = "lblDorModerada";
             this.lblDorModerada.Size = new System.Drawing.Size(108, 16);
             this.lblDorModerada.TabIndex = 13;
@@ -369,7 +369,7 @@
             this.lblDorLigeira.AutoSize = true;
             this.lblDorLigeira.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDorLigeira.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblDorLigeira.Location = new System.Drawing.Point(132, 72);
+            this.lblDorLigeira.Location = new System.Drawing.Point(131, 103);
             this.lblDorLigeira.Name = "lblDorLigeira";
             this.lblDorLigeira.Size = new System.Drawing.Size(85, 16);
             this.lblDorLigeira.TabIndex = 11;
@@ -385,7 +385,7 @@
             this.lblSemDor.AutoSize = true;
             this.lblSemDor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSemDor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblSemDor.Location = new System.Drawing.Point(21, 72);
+            this.lblSemDor.Location = new System.Drawing.Point(20, 103);
             this.lblSemDor.Name = "lblSemDor";
             this.lblSemDor.Size = new System.Drawing.Size(68, 16);
             this.lblSemDor.TabIndex = 9;
@@ -645,9 +645,9 @@
             this.groupBox1.Controls.Add(this.lblDorMaxima);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
-            this.groupBox1.Location = new System.Drawing.Point(49, 529);
+            this.groupBox1.Location = new System.Drawing.Point(49, 505);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(725, 188);
+            this.groupBox1.Size = new System.Drawing.Size(725, 212);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Escala da Dor:";
@@ -655,12 +655,14 @@
             // btnSemDor
             // 
             this.btnSemDor.BackColor = System.Drawing.Color.Lime;
+            this.btnSemDor.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnSemDor.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_feliz_26;
             this.btnSemDor.Location = new System.Drawing.Point(15, 25);
             this.btnSemDor.Name = "btnSemDor";
-            this.btnSemDor.Size = new System.Drawing.Size(83, 44);
+            this.btnSemDor.Size = new System.Drawing.Size(83, 75);
             this.btnSemDor.TabIndex = 8;
             this.btnSemDor.UseVisualStyleBackColor = false;
+            this.btnSemDor.Click += new System.EventHandler(this.btnSemDor_Click);
             this.btnSemDor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnSemDor_MouseClick);
             // 
             // btnDorLigeira
@@ -669,7 +671,7 @@
             this.btnDorLigeira.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_feliz_261;
             this.btnDorLigeira.Location = new System.Drawing.Point(134, 25);
             this.btnDorLigeira.Name = "btnDorLigeira";
-            this.btnDorLigeira.Size = new System.Drawing.Size(83, 44);
+            this.btnDorLigeira.Size = new System.Drawing.Size(83, 75);
             this.btnDorLigeira.TabIndex = 10;
             this.btnDorLigeira.UseVisualStyleBackColor = false;
             this.btnDorLigeira.Click += new System.EventHandler(this.btnDorLigeira_Click);
@@ -680,7 +682,7 @@
             this.btnDorModerada.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_neutro_30;
             this.btnDorModerada.Location = new System.Drawing.Point(255, 25);
             this.btnDorModerada.Name = "btnDorModerada";
-            this.btnDorModerada.Size = new System.Drawing.Size(83, 44);
+            this.btnDorModerada.Size = new System.Drawing.Size(83, 75);
             this.btnDorModerada.TabIndex = 12;
             this.btnDorModerada.UseVisualStyleBackColor = false;
             this.btnDorModerada.Click += new System.EventHandler(this.btnDorModerada_Click);
@@ -691,7 +693,7 @@
             this.btnDorMuitoForte.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_triste_26;
             this.btnDorMuitoForte.Location = new System.Drawing.Point(509, 25);
             this.btnDorMuitoForte.Name = "btnDorMuitoForte";
-            this.btnDorMuitoForte.Size = new System.Drawing.Size(83, 44);
+            this.btnDorMuitoForte.Size = new System.Drawing.Size(83, 75);
             this.btnDorMuitoForte.TabIndex = 17;
             this.btnDorMuitoForte.UseVisualStyleBackColor = false;
             this.btnDorMuitoForte.Click += new System.EventHandler(this.btnDorMuitoForte_Click);
@@ -702,7 +704,7 @@
             this.btnDorForte.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_neutro_30;
             this.btnDorForte.Location = new System.Drawing.Point(379, 25);
             this.btnDorForte.Name = "btnDorForte";
-            this.btnDorForte.Size = new System.Drawing.Size(83, 44);
+            this.btnDorForte.Size = new System.Drawing.Size(83, 75);
             this.btnDorForte.TabIndex = 14;
             this.btnDorForte.UseVisualStyleBackColor = false;
             this.btnDorForte.Click += new System.EventHandler(this.btnDorForte_Click);
@@ -713,7 +715,7 @@
             this.btnLocalizacaoDor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLocalizacaoDor.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_homem_de_pé_50;
             this.btnLocalizacaoDor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLocalizacaoDor.Location = new System.Drawing.Point(239, 115);
+            this.btnLocalizacaoDor.Location = new System.Drawing.Point(255, 143);
             this.btnLocalizacaoDor.Name = "btnLocalizacaoDor";
             this.btnLocalizacaoDor.Size = new System.Drawing.Size(213, 63);
             this.btnLocalizacaoDor.TabIndex = 20;
@@ -728,7 +730,7 @@
             this.btnDorMaxima.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_chorando_26;
             this.btnDorMaxima.Location = new System.Drawing.Point(623, 25);
             this.btnDorMaxima.Name = "btnDorMaxima";
-            this.btnDorMaxima.Size = new System.Drawing.Size(83, 44);
+            this.btnDorMaxima.Size = new System.Drawing.Size(83, 75);
             this.btnDorMaxima.TabIndex = 19;
             this.btnDorMaxima.UseVisualStyleBackColor = false;
             this.btnDorMaxima.Click += new System.EventHandler(this.btnDorMaxima_Click);

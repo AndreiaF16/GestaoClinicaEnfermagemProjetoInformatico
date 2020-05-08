@@ -29,8 +29,43 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void AdicionarVisualizarAvaliacaoObjetivoPaciente_Load(object sender, EventArgs e)
         {
-            UpdateDataGridView();
+           // UpdateDataGridView();
             dataAvaliacaoObjetivo.Value = DateTime.Now;
+
+            if (paciente.Sexo.Equals("Feminino")) 
+            {
+                lblPA.Visible = true;
+                txtPA.Visible = true;
+                lblCMPA.Visible = true;
+                lblINR.Visible = true;
+                upDownINR.Visible = true;
+                lblUltimaMestruacao.Visible = true;
+                dataUltimaMenstruacao.Visible = true;
+                lblMenopausa.Visible = true;
+                UpDownIdadeMenopausa.Visible = true;
+                lblAnos.Visible = true;
+                lblMetodoContracetivo.Visible = true;
+                comboBoxMetodoContracetivo.Visible = true;
+                lblDIU.Visible = true;
+                radioButtonSim.Visible = true;
+                radioButtonNao.Visible = true;
+                lblBMT.Visible = true;
+                txtBMT.Visible = true;
+                lblmg.Visible = true;
+                lblAC.Visible = true;
+                txtAC.Visible = true;
+                lblAP.Visible = true;
+                txtAP.Visible = true;
+                lblMenarca.Visible = true;
+                upDownMenarca.Visible = true;
+                lblanos2.Visible = true;
+                lblGravidezes.Visible = true;
+                upDownGravidezes.Visible = true;
+                lblFilhosVivos.Visible = true;
+                upDownFilhosVivos.Visible = true;
+                lblAbortos.Visible = true;
+                upDownAbortos.Visible = true;
+            }
         }
 
         private void hora_Tick(object sender, EventArgs e)
@@ -95,7 +130,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Avaliação Objetivo registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
-                    UpdateDataGridView();
+                    //UpdateDataGridView();
 
                 }
                 catch (SqlException excep)
@@ -105,7 +140,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void UpdateDataGridView()
+    /*    private void UpdateDataGridView()
         {
             avaliacaoObjetivo.Clear();
             conn.Open();
@@ -137,7 +172,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
             dataGridViewAvaliacaoObjetivo.Update();
             dataGridViewAvaliacaoObjetivo.Refresh();
-        }
+        }*/
 
         private Boolean VerificarDadosInseridos()
         {
@@ -180,10 +215,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             return true;
         }
 
-        private void dataAvaliacaoObjetivo_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
         public void LimpaCampos(Control.ControlCollection textBoxs)
         {
             foreach (Control txt in textBoxs)
@@ -204,341 +235,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             AdicionarVisualizarAvaliacaoObjetivoBebe adicionarVisualizarAvaliacaoObjetivoBebe = new AdicionarVisualizarAvaliacaoObjetivoBebe();
             adicionarVisualizarAvaliacaoObjetivoBebe.Show();
-        }
+        }      
 
-        private void panelFormulario_Paint(object sender, PaintEventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
-
-        }
-
-        private void panelMenu_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblCMPA_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPA_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblPA_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void upDownAbortos_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblAbortos_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void upDownFilhosVivos_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblFilhosVivos_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void upDownGravidezes_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblGravidezes_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void upDownMenarca_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblMenarca_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtObservacoes_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblObservacoes_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTerapeutica_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTerapeutica_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void upDownINR_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblINR_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtAP_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblAP_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtAC_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblAC_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblmg_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtBMT_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblBMT_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkNao_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkSim_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDIU_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblMetodoContracetivo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblAnos_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UpDownIdadeMenopausa_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblMenopausa_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataUltimaMenstruacao_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtSPO2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblSPO2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTemp_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTemperatura_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTemperatura_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFC_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblFC_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblMMHG_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTensaoArterial_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTensaoArterial_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblKG_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UpDownAltura_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblCM_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UpDownPeso_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblAltura_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblPeso_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDataAvaliacaoObjetivo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridViewAvaliacaoObjetivo_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void painelPrincipal_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelTitulo_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblDia_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblHora_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTitulo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnFechar_Click(object sender, EventArgs e)
-        {
-
+            VerAvaliacaoObjetivo verAvaliacaoObjetivo = new VerAvaliacaoObjetivo(paciente);
+            verAvaliacaoObjetivo.Show();
         }
     }
 }

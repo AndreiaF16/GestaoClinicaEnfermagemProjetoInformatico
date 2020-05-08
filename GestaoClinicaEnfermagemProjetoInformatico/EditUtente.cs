@@ -123,6 +123,50 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
 
+            DateTime data = dataNascimento.Value;
+
+            if ((data - DateTime.Today).TotalDays > 0)
+            {
+                MessageBox.Show("A data de nascimento tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            string numeroSNS = txtSNS.Text;
+
+            if (cbAcordos.SelectedItem.Equals("SNS"))
+            {
+                if (numeroSNS == string.Empty)
+                {
+                    MessageBox.Show("Campo Obrigatório, por favor preencha o campo do número do SNS!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+
+            string nomeSubsistema = txtNomeSubsistema.Text;
+            string numeroSubsistema = txtNSubsistema.Text;
+            if (cbAcordos.SelectedItem.Equals("Subsistema de Saúde"))
+            {
+                if (nomeSubsistema == string.Empty || numeroSubsistema == string.Empty)
+                {
+                    MessageBox.Show("Campo(s) Obrigatório(s), por favor preencha o(s) campo(s) do nome do Subsistema e/ou  do número do Subsistema!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+
+            string nomeSeguradora = txtNomeSeguradora.Text;
+            string numeroApolice = txtNApolice.Text;
+
+            if (cbAcordos.SelectedItem.Equals("Seguradora"))
+            {
+                if (nomeSeguradora == string.Empty || numeroApolice == string.Empty)
+                {
+                    MessageBox.Show("Campo(s) Obrigatório(s), por favor preencha o(s) campo(s) do nome da seguradora e/ou do número da apolice da seguradora!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
             return true;
         }
 

@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdicionarVisualizarAvaliacaoObjetivoPaciente));
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonNao = new System.Windows.Forms.RadioButton();
+            this.radioButtonSim = new System.Windows.Forms.RadioButton();
             this.lblCMPA = new System.Windows.Forms.Label();
             this.txtPA = new System.Windows.Forms.TextBox();
             this.lblPA = new System.Windows.Forms.Label();
@@ -46,7 +44,7 @@
             this.lblFilhosVivos = new System.Windows.Forms.Label();
             this.upDownGravidezes = new System.Windows.Forms.NumericUpDown();
             this.lblGravidezes = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblanos2 = new System.Windows.Forms.Label();
             this.upDownMenarca = new System.Windows.Forms.NumericUpDown();
             this.lblMenarca = new System.Windows.Forms.Label();
             this.txtObservacoes = new System.Windows.Forms.TextBox();
@@ -62,16 +60,14 @@
             this.lblmg = new System.Windows.Forms.Label();
             this.txtBMT = new System.Windows.Forms.TextBox();
             this.lblBMT = new System.Windows.Forms.Label();
-            this.checkNao = new System.Windows.Forms.CheckBox();
-            this.checkSim = new System.Windows.Forms.CheckBox();
             this.lblDIU = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxMetodoContracetivo = new System.Windows.Forms.ComboBox();
             this.lblMetodoContracetivo = new System.Windows.Forms.Label();
             this.lblAnos = new System.Windows.Forms.Label();
             this.UpDownIdadeMenopausa = new System.Windows.Forms.NumericUpDown();
             this.lblMenopausa = new System.Windows.Forms.Label();
             this.dataUltimaMenstruacao = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblUltimaMestruacao = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSPO2 = new System.Windows.Forms.TextBox();
             this.lblSPO2 = new System.Windows.Forms.Label();
@@ -93,23 +89,24 @@
             this.lblDataAvaliacaoObjetivo = new System.Windows.Forms.Label();
             this.dataAvaliacaoObjetivo = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridViewAvaliacaoObjetivo = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.btnAvaliacaoBebe = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.panelTitulo = new System.Windows.Forms.Panel();
             this.lblDia = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.hora = new System.Windows.Forms.Timer(this.components);
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnAvaliacaoBebe = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.PictureBox();
-            this.lblTitulo = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
-            this.hora = new System.Windows.Forms.Timer(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -121,10 +118,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.UpDownIdadeMenopausa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownAltura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownPeso)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAvaliacaoObjetivo)).BeginInit();
             this.panelMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelTitulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
@@ -142,25 +138,27 @@
             this.painelPrincipal.Name = "painelPrincipal";
             this.painelPrincipal.Size = new System.Drawing.Size(1356, 742);
             this.painelPrincipal.TabIndex = 6;
-            this.painelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.painelPrincipal_Paint);
             // 
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
             this.panelFormulario.Controls.Add(this.groupBox1);
             this.panelFormulario.Controls.Add(this.label1);
-            this.panelFormulario.Controls.Add(this.dataGridViewAvaliacaoObjetivo);
+            this.panelFormulario.Controls.Add(this.btnCancelar);
             this.panelFormulario.Controls.Add(this.label2);
+            this.panelFormulario.Controls.Add(this.btnGuardar);
             this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFormulario.Location = new System.Drawing.Point(232, 40);
             this.panelFormulario.Name = "panelFormulario";
             this.panelFormulario.Size = new System.Drawing.Size(1124, 702);
             this.panelFormulario.TabIndex = 2;
-            this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.radioButtonNao);
+            this.groupBox1.Controls.Add(this.radioButtonSim);
             this.groupBox1.Controls.Add(this.lblCMPA);
             this.groupBox1.Controls.Add(this.txtPA);
             this.groupBox1.Controls.Add(this.lblPA);
@@ -170,7 +168,7 @@
             this.groupBox1.Controls.Add(this.lblFilhosVivos);
             this.groupBox1.Controls.Add(this.upDownGravidezes);
             this.groupBox1.Controls.Add(this.lblGravidezes);
-            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.lblanos2);
             this.groupBox1.Controls.Add(this.upDownMenarca);
             this.groupBox1.Controls.Add(this.lblMenarca);
             this.groupBox1.Controls.Add(this.txtObservacoes);
@@ -186,16 +184,14 @@
             this.groupBox1.Controls.Add(this.lblmg);
             this.groupBox1.Controls.Add(this.txtBMT);
             this.groupBox1.Controls.Add(this.lblBMT);
-            this.groupBox1.Controls.Add(this.checkNao);
-            this.groupBox1.Controls.Add(this.checkSim);
             this.groupBox1.Controls.Add(this.lblDIU);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.comboBoxMetodoContracetivo);
             this.groupBox1.Controls.Add(this.lblMetodoContracetivo);
             this.groupBox1.Controls.Add(this.lblAnos);
             this.groupBox1.Controls.Add(this.UpDownIdadeMenopausa);
             this.groupBox1.Controls.Add(this.lblMenopausa);
             this.groupBox1.Controls.Add(this.dataUltimaMenstruacao);
-            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.lblUltimaMestruacao);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtSPO2);
             this.groupBox1.Controls.Add(this.lblSPO2);
@@ -218,25 +214,52 @@
             this.groupBox1.Controls.Add(this.dataAvaliacaoObjetivo);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
-            this.groupBox1.Location = new System.Drawing.Point(10, 59);
+            this.groupBox1.Location = new System.Drawing.Point(10, 45);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1095, 482);
+            this.groupBox1.Size = new System.Drawing.Size(1095, 596);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registar Avaliação Objetivo";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // radioButtonNao
+            // 
+            this.radioButtonNao.AutoSize = true;
+            this.radioButtonNao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonNao.ForeColor = System.Drawing.Color.Black;
+            this.radioButtonNao.Location = new System.Drawing.Point(864, 175);
+            this.radioButtonNao.Name = "radioButtonNao";
+            this.radioButtonNao.Size = new System.Drawing.Size(56, 24);
+            this.radioButtonNao.TabIndex = 106;
+            this.radioButtonNao.TabStop = true;
+            this.radioButtonNao.Text = "Não";
+            this.radioButtonNao.UseVisualStyleBackColor = true;
+            this.radioButtonNao.Visible = false;
+            // 
+            // radioButtonSim
+            // 
+            this.radioButtonSim.AutoSize = true;
+            this.radioButtonSim.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonSim.ForeColor = System.Drawing.Color.Black;
+            this.radioButtonSim.Location = new System.Drawing.Point(758, 175);
+            this.radioButtonSim.Name = "radioButtonSim";
+            this.radioButtonSim.Size = new System.Drawing.Size(54, 24);
+            this.radioButtonSim.TabIndex = 105;
+            this.radioButtonSim.TabStop = true;
+            this.radioButtonSim.Text = "Sim";
+            this.radioButtonSim.UseVisualStyleBackColor = true;
+            this.radioButtonSim.Visible = false;
             // 
             // lblCMPA
             // 
             this.lblCMPA.AutoSize = true;
             this.lblCMPA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCMPA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblCMPA.ForeColor = System.Drawing.Color.Black;
             this.lblCMPA.Location = new System.Drawing.Point(571, 423);
             this.lblCMPA.Name = "lblCMPA";
             this.lblCMPA.Size = new System.Drawing.Size(30, 20);
             this.lblCMPA.TabIndex = 104;
             this.lblCMPA.Text = "cm";
-            this.lblCMPA.Click += new System.EventHandler(this.lblCMPA_Click);
+            this.lblCMPA.Visible = false;
             // 
             // txtPA
             // 
@@ -245,23 +268,23 @@
             this.txtPA.Name = "txtPA";
             this.txtPA.Size = new System.Drawing.Size(216, 26);
             this.txtPA.TabIndex = 103;
-            this.txtPA.TextChanged += new System.EventHandler(this.txtPA_TextChanged);
+            this.txtPA.Visible = false;
             // 
             // lblPA
             // 
             this.lblPA.AutoSize = true;
             this.lblPA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblPA.ForeColor = System.Drawing.Color.Black;
             this.lblPA.Location = new System.Drawing.Point(25, 423);
             this.lblPA.Name = "lblPA";
             this.lblPA.Size = new System.Drawing.Size(34, 20);
             this.lblPA.TabIndex = 102;
             this.lblPA.Text = "PA:";
-            this.lblPA.Click += new System.EventHandler(this.lblPA_Click);
+            this.lblPA.Visible = false;
             // 
             // upDownAbortos
             // 
-            this.upDownAbortos.Location = new System.Drawing.Point(780, 423);
+            this.upDownAbortos.Location = new System.Drawing.Point(780, 461);
             this.upDownAbortos.Maximum = new decimal(new int[] {
             999,
             0,
@@ -270,23 +293,23 @@
             this.upDownAbortos.Name = "upDownAbortos";
             this.upDownAbortos.Size = new System.Drawing.Size(227, 26);
             this.upDownAbortos.TabIndex = 101;
-            this.upDownAbortos.ValueChanged += new System.EventHandler(this.upDownAbortos_ValueChanged);
+            this.upDownAbortos.Visible = false;
             // 
             // lblAbortos
             // 
             this.lblAbortos.AutoSize = true;
             this.lblAbortos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAbortos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblAbortos.Location = new System.Drawing.Point(677, 426);
+            this.lblAbortos.ForeColor = System.Drawing.Color.Black;
+            this.lblAbortos.Location = new System.Drawing.Point(677, 464);
             this.lblAbortos.Name = "lblAbortos";
             this.lblAbortos.Size = new System.Drawing.Size(69, 20);
             this.lblAbortos.TabIndex = 100;
             this.lblAbortos.Text = "Abortos:";
-            this.lblAbortos.Click += new System.EventHandler(this.lblAbortos_Click);
+            this.lblAbortos.Visible = false;
             // 
             // upDownFilhosVivos
             // 
-            this.upDownFilhosVivos.Location = new System.Drawing.Point(780, 385);
+            this.upDownFilhosVivos.Location = new System.Drawing.Point(780, 423);
             this.upDownFilhosVivos.Maximum = new decimal(new int[] {
             999,
             0,
@@ -295,23 +318,23 @@
             this.upDownFilhosVivos.Name = "upDownFilhosVivos";
             this.upDownFilhosVivos.Size = new System.Drawing.Size(227, 26);
             this.upDownFilhosVivos.TabIndex = 99;
-            this.upDownFilhosVivos.ValueChanged += new System.EventHandler(this.upDownFilhosVivos_ValueChanged);
+            this.upDownFilhosVivos.Visible = false;
             // 
             // lblFilhosVivos
             // 
             this.lblFilhosVivos.AutoSize = true;
             this.lblFilhosVivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFilhosVivos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblFilhosVivos.Location = new System.Drawing.Point(677, 387);
+            this.lblFilhosVivos.ForeColor = System.Drawing.Color.Black;
+            this.lblFilhosVivos.Location = new System.Drawing.Point(677, 425);
             this.lblFilhosVivos.Name = "lblFilhosVivos";
             this.lblFilhosVivos.Size = new System.Drawing.Size(97, 20);
             this.lblFilhosVivos.TabIndex = 98;
             this.lblFilhosVivos.Text = "Filhos Vivos:";
-            this.lblFilhosVivos.Click += new System.EventHandler(this.lblFilhosVivos_Click);
+            this.lblFilhosVivos.Visible = false;
             // 
             // upDownGravidezes
             // 
-            this.upDownGravidezes.Location = new System.Drawing.Point(780, 346);
+            this.upDownGravidezes.Location = new System.Drawing.Point(780, 372);
             this.upDownGravidezes.Maximum = new decimal(new int[] {
             999,
             0,
@@ -320,35 +343,35 @@
             this.upDownGravidezes.Name = "upDownGravidezes";
             this.upDownGravidezes.Size = new System.Drawing.Size(227, 26);
             this.upDownGravidezes.TabIndex = 97;
-            this.upDownGravidezes.ValueChanged += new System.EventHandler(this.upDownGravidezes_ValueChanged);
+            this.upDownGravidezes.Visible = false;
             // 
             // lblGravidezes
             // 
             this.lblGravidezes.AutoSize = true;
             this.lblGravidezes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGravidezes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblGravidezes.Location = new System.Drawing.Point(677, 348);
+            this.lblGravidezes.ForeColor = System.Drawing.Color.Black;
+            this.lblGravidezes.Location = new System.Drawing.Point(677, 374);
             this.lblGravidezes.Name = "lblGravidezes";
             this.lblGravidezes.Size = new System.Drawing.Size(93, 20);
             this.lblGravidezes.TabIndex = 95;
             this.lblGravidezes.Text = "Gravidezes:";
-            this.lblGravidezes.Click += new System.EventHandler(this.lblGravidezes_Click);
+            this.lblGravidezes.Visible = false;
             // 
-            // label8
+            // lblanos2
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label8.Location = new System.Drawing.Point(1028, 309);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 20);
-            this.label8.TabIndex = 94;
-            this.label8.Text = "anos";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+            this.lblanos2.AutoSize = true;
+            this.lblanos2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblanos2.ForeColor = System.Drawing.Color.Black;
+            this.lblanos2.Location = new System.Drawing.Point(1025, 339);
+            this.lblanos2.Name = "lblanos2";
+            this.lblanos2.Size = new System.Drawing.Size(44, 20);
+            this.lblanos2.TabIndex = 94;
+            this.lblanos2.Text = "anos";
+            this.lblanos2.Visible = false;
             // 
             // upDownMenarca
             // 
-            this.upDownMenarca.Location = new System.Drawing.Point(758, 307);
+            this.upDownMenarca.Location = new System.Drawing.Point(758, 333);
             this.upDownMenarca.Maximum = new decimal(new int[] {
             999,
             0,
@@ -357,66 +380,62 @@
             this.upDownMenarca.Name = "upDownMenarca";
             this.upDownMenarca.Size = new System.Drawing.Size(249, 26);
             this.upDownMenarca.TabIndex = 93;
-            this.upDownMenarca.ValueChanged += new System.EventHandler(this.upDownMenarca_ValueChanged);
+            this.upDownMenarca.Visible = false;
             // 
             // lblMenarca
             // 
             this.lblMenarca.AutoSize = true;
             this.lblMenarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMenarca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblMenarca.Location = new System.Drawing.Point(677, 312);
+            this.lblMenarca.ForeColor = System.Drawing.Color.Black;
+            this.lblMenarca.Location = new System.Drawing.Point(677, 338);
             this.lblMenarca.Name = "lblMenarca";
             this.lblMenarca.Size = new System.Drawing.Size(75, 20);
             this.lblMenarca.TabIndex = 92;
             this.lblMenarca.Text = "Menarca:";
-            this.lblMenarca.Click += new System.EventHandler(this.lblMenarca_Click);
+            this.lblMenarca.Visible = false;
             // 
             // txtObservacoes
             // 
             this.txtObservacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObservacoes.Location = new System.Drawing.Point(780, 459);
+            this.txtObservacoes.Location = new System.Drawing.Point(122, 493);
             this.txtObservacoes.Multiline = true;
             this.txtObservacoes.Name = "txtObservacoes";
-            this.txtObservacoes.Size = new System.Drawing.Size(227, 20);
+            this.txtObservacoes.Size = new System.Drawing.Size(885, 90);
             this.txtObservacoes.TabIndex = 91;
-            this.txtObservacoes.TextChanged += new System.EventHandler(this.txtObservacoes_TextChanged);
             // 
             // lblObservacoes
             // 
             this.lblObservacoes.AutoSize = true;
             this.lblObservacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblObservacoes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblObservacoes.Location = new System.Drawing.Point(677, 459);
+            this.lblObservacoes.ForeColor = System.Drawing.Color.Black;
+            this.lblObservacoes.Location = new System.Drawing.Point(6, 496);
             this.lblObservacoes.Name = "lblObservacoes";
             this.lblObservacoes.Size = new System.Drawing.Size(106, 20);
             this.lblObservacoes.TabIndex = 90;
             this.lblObservacoes.Text = "Observações:";
-            this.lblObservacoes.Click += new System.EventHandler(this.lblObservacoes_Click);
             // 
             // txtTerapeutica
             // 
             this.txtTerapeutica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTerapeutica.Location = new System.Drawing.Point(338, 381);
+            this.txtTerapeutica.Location = new System.Drawing.Point(122, 384);
             this.txtTerapeutica.Name = "txtTerapeutica";
-            this.txtTerapeutica.Size = new System.Drawing.Size(216, 26);
+            this.txtTerapeutica.Size = new System.Drawing.Size(46, 26);
             this.txtTerapeutica.TabIndex = 89;
-            this.txtTerapeutica.TextChanged += new System.EventHandler(this.txtTerapeutica_TextChanged);
             // 
             // lblTerapeutica
             // 
             this.lblTerapeutica.AutoSize = true;
             this.lblTerapeutica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTerapeutica.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblTerapeutica.ForeColor = System.Drawing.Color.Black;
             this.lblTerapeutica.Location = new System.Drawing.Point(25, 387);
             this.lblTerapeutica.Name = "lblTerapeutica";
             this.lblTerapeutica.Size = new System.Drawing.Size(97, 20);
             this.lblTerapeutica.TabIndex = 88;
             this.lblTerapeutica.Text = "Terapêutica:";
-            this.lblTerapeutica.Click += new System.EventHandler(this.lblTerapeutica_Click);
             // 
             // upDownINR
             // 
-            this.upDownINR.Location = new System.Drawing.Point(338, 341);
+            this.upDownINR.Location = new System.Drawing.Point(338, 458);
             this.upDownINR.Maximum = new decimal(new int[] {
             999,
             0,
@@ -425,135 +444,111 @@
             this.upDownINR.Name = "upDownINR";
             this.upDownINR.Size = new System.Drawing.Size(216, 26);
             this.upDownINR.TabIndex = 87;
-            this.upDownINR.ValueChanged += new System.EventHandler(this.upDownINR_ValueChanged);
+            this.upDownINR.Visible = false;
             // 
             // lblINR
             // 
             this.lblINR.AutoSize = true;
             this.lblINR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblINR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblINR.Location = new System.Drawing.Point(25, 348);
+            this.lblINR.ForeColor = System.Drawing.Color.Black;
+            this.lblINR.Location = new System.Drawing.Point(25, 461);
             this.lblINR.Name = "lblINR";
             this.lblINR.Size = new System.Drawing.Size(41, 20);
             this.lblINR.TabIndex = 85;
             this.lblINR.Text = "INR:";
-            this.lblINR.Click += new System.EventHandler(this.lblINR_Click);
+            this.lblINR.Visible = false;
             // 
             // txtAP
             // 
             this.txtAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAP.Location = new System.Drawing.Point(757, 269);
+            this.txtAP.Location = new System.Drawing.Point(757, 295);
             this.txtAP.Name = "txtAP";
             this.txtAP.Size = new System.Drawing.Size(250, 26);
             this.txtAP.TabIndex = 84;
-            this.txtAP.TextChanged += new System.EventHandler(this.txtAP_TextChanged);
+            this.txtAP.Visible = false;
             // 
             // lblAP
             // 
             this.lblAP.AutoSize = true;
             this.lblAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblAP.Location = new System.Drawing.Point(677, 272);
+            this.lblAP.ForeColor = System.Drawing.Color.Black;
+            this.lblAP.Location = new System.Drawing.Point(677, 298);
             this.lblAP.Name = "lblAP";
             this.lblAP.Size = new System.Drawing.Size(34, 20);
             this.lblAP.TabIndex = 83;
             this.lblAP.Text = "AP:";
-            this.lblAP.Click += new System.EventHandler(this.lblAP_Click);
+            this.lblAP.Visible = false;
             // 
             // txtAC
             // 
             this.txtAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAC.Location = new System.Drawing.Point(757, 229);
+            this.txtAC.Location = new System.Drawing.Point(757, 255);
             this.txtAC.Name = "txtAC";
             this.txtAC.Size = new System.Drawing.Size(250, 26);
             this.txtAC.TabIndex = 82;
-            this.txtAC.TextChanged += new System.EventHandler(this.txtAC_TextChanged);
+            this.txtAC.Visible = false;
             // 
             // lblAC
             // 
             this.lblAC.AutoSize = true;
             this.lblAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblAC.Location = new System.Drawing.Point(677, 229);
+            this.lblAC.ForeColor = System.Drawing.Color.Black;
+            this.lblAC.Location = new System.Drawing.Point(677, 255);
             this.lblAC.Name = "lblAC";
             this.lblAC.Size = new System.Drawing.Size(35, 20);
             this.lblAC.TabIndex = 81;
             this.lblAC.Text = "AC:";
-            this.lblAC.Click += new System.EventHandler(this.lblAC_Click);
+            this.lblAC.Visible = false;
             // 
             // lblmg
             // 
             this.lblmg.AutoSize = true;
             this.lblmg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblmg.Location = new System.Drawing.Point(1028, 182);
+            this.lblmg.ForeColor = System.Drawing.Color.Black;
+            this.lblmg.Location = new System.Drawing.Point(1033, 129);
             this.lblmg.Name = "lblmg";
             this.lblmg.Size = new System.Drawing.Size(47, 20);
             this.lblmg.TabIndex = 80;
             this.lblmg.Text = "mg/dl";
-            this.lblmg.Click += new System.EventHandler(this.lblmg_Click);
+            this.lblmg.Visible = false;
             // 
             // txtBMT
             // 
             this.txtBMT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBMT.Location = new System.Drawing.Point(757, 179);
+            this.txtBMT.Location = new System.Drawing.Point(757, 205);
             this.txtBMT.Name = "txtBMT";
             this.txtBMT.Size = new System.Drawing.Size(250, 26);
             this.txtBMT.TabIndex = 79;
-            this.txtBMT.TextChanged += new System.EventHandler(this.txtBMT_TextChanged);
+            this.txtBMT.Visible = false;
             // 
             // lblBMT
             // 
             this.lblBMT.AutoSize = true;
             this.lblBMT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBMT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblBMT.Location = new System.Drawing.Point(677, 182);
+            this.lblBMT.ForeColor = System.Drawing.Color.Black;
+            this.lblBMT.Location = new System.Drawing.Point(677, 208);
             this.lblBMT.Name = "lblBMT";
             this.lblBMT.Size = new System.Drawing.Size(46, 20);
             this.lblBMT.TabIndex = 78;
             this.lblBMT.Text = "BMT:";
-            this.lblBMT.Click += new System.EventHandler(this.lblBMT_Click);
-            // 
-            // checkNao
-            // 
-            this.checkNao.AutoSize = true;
-            this.checkNao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.checkNao.Location = new System.Drawing.Point(924, 132);
-            this.checkNao.Name = "checkNao";
-            this.checkNao.Size = new System.Drawing.Size(60, 24);
-            this.checkNao.TabIndex = 77;
-            this.checkNao.Text = "Não";
-            this.checkNao.UseVisualStyleBackColor = true;
-            this.checkNao.CheckedChanged += new System.EventHandler(this.checkNao_CheckedChanged);
-            // 
-            // checkSim
-            // 
-            this.checkSim.AutoSize = true;
-            this.checkSim.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.checkSim.Location = new System.Drawing.Point(791, 132);
-            this.checkSim.Name = "checkSim";
-            this.checkSim.Size = new System.Drawing.Size(58, 24);
-            this.checkSim.TabIndex = 76;
-            this.checkSim.Text = "Sim";
-            this.checkSim.UseVisualStyleBackColor = true;
-            this.checkSim.CheckedChanged += new System.EventHandler(this.checkSim_CheckedChanged);
+            this.lblBMT.Visible = false;
             // 
             // lblDIU
             // 
             this.lblDIU.AutoSize = true;
             this.lblDIU.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDIU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblDIU.Location = new System.Drawing.Point(677, 133);
+            this.lblDIU.ForeColor = System.Drawing.Color.Black;
+            this.lblDIU.Location = new System.Drawing.Point(677, 177);
             this.lblDIU.Name = "lblDIU";
             this.lblDIU.Size = new System.Drawing.Size(42, 20);
             this.lblDIU.TabIndex = 75;
             this.lblDIU.Text = "DIU:";
-            this.lblDIU.Click += new System.EventHandler(this.lblDIU_Click);
+            this.lblDIU.Visible = false;
             // 
-            // comboBox1
+            // comboBoxMetodoContracetivo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxMetodoContracetivo.FormattingEnabled = true;
+            this.comboBoxMetodoContracetivo.Items.AddRange(new object[] {
             "Pílula 21 cp + 7 dias pausa",
             "Pilula 24 cp + 4 dias placebo",
             "Pilula 28 cp sem pausa",
@@ -566,39 +561,39 @@
             "Contracepção de Emergência",
             "Métodos de auto-observação",
             "Laqueação tubária bilateral"});
-            this.comboBox1.Location = new System.Drawing.Point(854, 82);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(153, 28);
-            this.comboBox1.TabIndex = 74;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBoxMetodoContracetivo.Location = new System.Drawing.Point(854, 125);
+            this.comboBoxMetodoContracetivo.Name = "comboBoxMetodoContracetivo";
+            this.comboBoxMetodoContracetivo.Size = new System.Drawing.Size(153, 28);
+            this.comboBoxMetodoContracetivo.TabIndex = 74;
+            this.comboBoxMetodoContracetivo.Visible = false;
             // 
             // lblMetodoContracetivo
             // 
             this.lblMetodoContracetivo.AutoSize = true;
             this.lblMetodoContracetivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMetodoContracetivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblMetodoContracetivo.Location = new System.Drawing.Point(677, 89);
+            this.lblMetodoContracetivo.ForeColor = System.Drawing.Color.Black;
+            this.lblMetodoContracetivo.Location = new System.Drawing.Point(677, 129);
             this.lblMetodoContracetivo.Name = "lblMetodoContracetivo";
             this.lblMetodoContracetivo.Size = new System.Drawing.Size(160, 20);
             this.lblMetodoContracetivo.TabIndex = 73;
             this.lblMetodoContracetivo.Text = "Método Contracetivo:";
-            this.lblMetodoContracetivo.Click += new System.EventHandler(this.lblMetodoContracetivo_Click);
+            this.lblMetodoContracetivo.Visible = false;
             // 
             // lblAnos
             // 
             this.lblAnos.AutoSize = true;
             this.lblAnos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblAnos.Location = new System.Drawing.Point(1039, 45);
+            this.lblAnos.ForeColor = System.Drawing.Color.Black;
+            this.lblAnos.Location = new System.Drawing.Point(1039, 79);
             this.lblAnos.Name = "lblAnos";
             this.lblAnos.Size = new System.Drawing.Size(44, 20);
             this.lblAnos.TabIndex = 72;
             this.lblAnos.Text = "anos";
-            this.lblAnos.Click += new System.EventHandler(this.lblAnos_Click);
+            this.lblAnos.Visible = false;
             // 
             // UpDownIdadeMenopausa
             // 
-            this.UpDownIdadeMenopausa.Location = new System.Drawing.Point(791, 39);
+            this.UpDownIdadeMenopausa.Location = new System.Drawing.Point(809, 77);
             this.UpDownIdadeMenopausa.Maximum = new decimal(new int[] {
             999,
             0,
@@ -607,53 +602,52 @@
             this.UpDownIdadeMenopausa.Name = "UpDownIdadeMenopausa";
             this.UpDownIdadeMenopausa.Size = new System.Drawing.Size(216, 26);
             this.UpDownIdadeMenopausa.TabIndex = 71;
-            this.UpDownIdadeMenopausa.ValueChanged += new System.EventHandler(this.UpDownIdadeMenopausa_ValueChanged);
+            this.UpDownIdadeMenopausa.Visible = false;
             // 
             // lblMenopausa
             // 
             this.lblMenopausa.AutoSize = true;
             this.lblMenopausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMenopausa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblMenopausa.Location = new System.Drawing.Point(677, 42);
+            this.lblMenopausa.ForeColor = System.Drawing.Color.Black;
+            this.lblMenopausa.Location = new System.Drawing.Point(673, 83);
             this.lblMenopausa.Name = "lblMenopausa";
             this.lblMenopausa.Size = new System.Drawing.Size(97, 20);
             this.lblMenopausa.TabIndex = 69;
             this.lblMenopausa.Text = "Menopausa:";
-            this.lblMenopausa.Click += new System.EventHandler(this.lblMenopausa_Click);
+            this.lblMenopausa.Visible = false;
             // 
             // dataUltimaMenstruacao
             // 
             this.dataUltimaMenstruacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataUltimaMenstruacao.Location = new System.Drawing.Point(338, 456);
+            this.dataUltimaMenstruacao.Location = new System.Drawing.Point(864, 36);
             this.dataUltimaMenstruacao.Name = "dataUltimaMenstruacao";
             this.dataUltimaMenstruacao.Size = new System.Drawing.Size(216, 26);
             this.dataUltimaMenstruacao.TabIndex = 68;
             this.dataUltimaMenstruacao.Value = new System.DateTime(2020, 4, 29, 0, 0, 0, 0);
-            this.dataUltimaMenstruacao.ValueChanged += new System.EventHandler(this.dataUltimaMenstruacao_ValueChanged);
+            this.dataUltimaMenstruacao.Visible = false;
             // 
-            // label6
+            // lblUltimaMestruacao
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label6.Location = new System.Drawing.Point(25, 456);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(194, 20);
-            this.label6.TabIndex = 67;
-            this.label6.Text = "Data Última menstruação:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.lblUltimaMestruacao.AutoSize = true;
+            this.lblUltimaMestruacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUltimaMestruacao.ForeColor = System.Drawing.Color.Black;
+            this.lblUltimaMestruacao.Location = new System.Drawing.Point(664, 42);
+            this.lblUltimaMestruacao.Name = "lblUltimaMestruacao";
+            this.lblUltimaMestruacao.Size = new System.Drawing.Size(194, 20);
+            this.lblUltimaMestruacao.TabIndex = 67;
+            this.lblUltimaMestruacao.Text = "Data Última menstruação:";
+            this.lblUltimaMestruacao.Visible = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(571, 312);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(23, 20);
             this.label5.TabIndex = 66;
             this.label5.Text = "%";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // txtSPO2
             // 
@@ -662,31 +656,28 @@
             this.txtSPO2.Name = "txtSPO2";
             this.txtSPO2.Size = new System.Drawing.Size(216, 26);
             this.txtSPO2.TabIndex = 65;
-            this.txtSPO2.TextChanged += new System.EventHandler(this.txtSPO2_TextChanged);
             // 
             // lblSPO2
             // 
             this.lblSPO2.AutoSize = true;
             this.lblSPO2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSPO2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblSPO2.ForeColor = System.Drawing.Color.Black;
             this.lblSPO2.Location = new System.Drawing.Point(25, 312);
             this.lblSPO2.Name = "lblSPO2";
             this.lblSPO2.Size = new System.Drawing.Size(55, 20);
             this.lblSPO2.TabIndex = 64;
             this.lblSPO2.Text = "SPO2:";
-            this.lblSPO2.Click += new System.EventHandler(this.lblSPO2_Click);
             // 
             // lblTemp
             // 
             this.lblTemp.AutoSize = true;
             this.lblTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTemp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblTemp.ForeColor = System.Drawing.Color.Black;
             this.lblTemp.Location = new System.Drawing.Point(571, 272);
             this.lblTemp.Name = "lblTemp";
             this.lblTemp.Size = new System.Drawing.Size(26, 20);
             this.lblTemp.TabIndex = 63;
             this.lblTemp.Text = "ºC";
-            this.lblTemp.Click += new System.EventHandler(this.lblTemp_Click);
             // 
             // txtTemperatura
             // 
@@ -695,31 +686,28 @@
             this.txtTemperatura.Name = "txtTemperatura";
             this.txtTemperatura.Size = new System.Drawing.Size(216, 26);
             this.txtTemperatura.TabIndex = 62;
-            this.txtTemperatura.TextChanged += new System.EventHandler(this.txtTemperatura_TextChanged);
             // 
             // lblTemperatura
             // 
             this.lblTemperatura.AutoSize = true;
             this.lblTemperatura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTemperatura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblTemperatura.ForeColor = System.Drawing.Color.Black;
             this.lblTemperatura.Location = new System.Drawing.Point(25, 272);
             this.lblTemperatura.Name = "lblTemperatura";
             this.lblTemperatura.Size = new System.Drawing.Size(104, 20);
             this.lblTemperatura.TabIndex = 61;
             this.lblTemperatura.Text = "Temperatura:";
-            this.lblTemperatura.Click += new System.EventHandler(this.lblTemperatura_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(571, 229);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 20);
             this.label3.TabIndex = 60;
             this.label3.Text = "p/min";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // txtFC
             // 
@@ -728,31 +716,28 @@
             this.txtFC.Name = "txtFC";
             this.txtFC.Size = new System.Drawing.Size(216, 26);
             this.txtFC.TabIndex = 59;
-            this.txtFC.TextChanged += new System.EventHandler(this.txtFC_TextChanged);
             // 
             // lblFC
             // 
             this.lblFC.AutoSize = true;
             this.lblFC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblFC.ForeColor = System.Drawing.Color.Black;
             this.lblFC.Location = new System.Drawing.Point(25, 229);
             this.lblFC.Name = "lblFC";
             this.lblFC.Size = new System.Drawing.Size(160, 20);
             this.lblFC.TabIndex = 58;
             this.lblFC.Text = "Frequência Cardíaca:";
-            this.lblFC.Click += new System.EventHandler(this.lblFC_Click);
             // 
             // lblMMHG
             // 
             this.lblMMHG.AutoSize = true;
             this.lblMMHG.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMMHG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblMMHG.ForeColor = System.Drawing.Color.Black;
             this.lblMMHG.Location = new System.Drawing.Point(571, 182);
             this.lblMMHG.Name = "lblMMHG";
             this.lblMMHG.Size = new System.Drawing.Size(56, 20);
             this.lblMMHG.TabIndex = 57;
             this.lblMMHG.Text = "mmHg";
-            this.lblMMHG.Click += new System.EventHandler(this.lblMMHG_Click);
             // 
             // txtTensaoArterial
             // 
@@ -761,31 +746,28 @@
             this.txtTensaoArterial.Name = "txtTensaoArterial";
             this.txtTensaoArterial.Size = new System.Drawing.Size(216, 26);
             this.txtTensaoArterial.TabIndex = 56;
-            this.txtTensaoArterial.TextChanged += new System.EventHandler(this.txtTensaoArterial_TextChanged);
             // 
             // lblTensaoArterial
             // 
             this.lblTensaoArterial.AutoSize = true;
             this.lblTensaoArterial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTensaoArterial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblTensaoArterial.ForeColor = System.Drawing.Color.Black;
             this.lblTensaoArterial.Location = new System.Drawing.Point(25, 182);
             this.lblTensaoArterial.Name = "lblTensaoArterial";
             this.lblTensaoArterial.Size = new System.Drawing.Size(120, 20);
             this.lblTensaoArterial.TabIndex = 55;
             this.lblTensaoArterial.Text = "Tensão Arterial:";
-            this.lblTensaoArterial.Click += new System.EventHandler(this.lblTensaoArterial_Click);
             // 
             // lblKG
             // 
             this.lblKG.AutoSize = true;
             this.lblKG.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblKG.ForeColor = System.Drawing.Color.Black;
             this.lblKG.Location = new System.Drawing.Point(571, 85);
             this.lblKG.Name = "lblKG";
             this.lblKG.Size = new System.Drawing.Size(26, 20);
             this.lblKG.TabIndex = 54;
             this.lblKG.Text = "kg";
-            this.lblKG.Click += new System.EventHandler(this.lblKG_Click);
             // 
             // UpDownAltura
             // 
@@ -798,19 +780,17 @@
             this.UpDownAltura.Name = "UpDownAltura";
             this.UpDownAltura.Size = new System.Drawing.Size(216, 26);
             this.UpDownAltura.TabIndex = 53;
-            this.UpDownAltura.ValueChanged += new System.EventHandler(this.UpDownAltura_ValueChanged);
             // 
             // lblCM
             // 
             this.lblCM.AutoSize = true;
             this.lblCM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblCM.ForeColor = System.Drawing.Color.Black;
             this.lblCM.Location = new System.Drawing.Point(571, 133);
             this.lblCM.Name = "lblCM";
             this.lblCM.Size = new System.Drawing.Size(30, 20);
             this.lblCM.TabIndex = 52;
             this.lblCM.Text = "cm";
-            this.lblCM.Click += new System.EventHandler(this.lblCM_Click);
             // 
             // UpDownPeso
             // 
@@ -824,43 +804,39 @@
             this.UpDownPeso.Name = "UpDownPeso";
             this.UpDownPeso.Size = new System.Drawing.Size(216, 26);
             this.UpDownPeso.TabIndex = 51;
-            this.UpDownPeso.ValueChanged += new System.EventHandler(this.UpDownPeso_ValueChanged);
             // 
             // lblAltura
             // 
             this.lblAltura.AutoSize = true;
             this.lblAltura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAltura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblAltura.ForeColor = System.Drawing.Color.Black;
             this.lblAltura.Location = new System.Drawing.Point(25, 133);
             this.lblAltura.Name = "lblAltura";
             this.lblAltura.Size = new System.Drawing.Size(55, 20);
             this.lblAltura.TabIndex = 49;
             this.lblAltura.Text = "Altura:";
-            this.lblAltura.Click += new System.EventHandler(this.lblAltura_Click);
             // 
             // lblPeso
             // 
             this.lblPeso.AutoSize = true;
             this.lblPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPeso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblPeso.ForeColor = System.Drawing.Color.Black;
             this.lblPeso.Location = new System.Drawing.Point(25, 89);
             this.lblPeso.Name = "lblPeso";
             this.lblPeso.Size = new System.Drawing.Size(49, 20);
             this.lblPeso.TabIndex = 12;
             this.lblPeso.Text = "Peso:";
-            this.lblPeso.Click += new System.EventHandler(this.lblPeso_Click);
             // 
             // lblDataAvaliacaoObjetivo
             // 
             this.lblDataAvaliacaoObjetivo.AutoSize = true;
             this.lblDataAvaliacaoObjetivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataAvaliacaoObjetivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.lblDataAvaliacaoObjetivo.ForeColor = System.Drawing.Color.Black;
             this.lblDataAvaliacaoObjetivo.Location = new System.Drawing.Point(25, 42);
             this.lblDataAvaliacaoObjetivo.Name = "lblDataAvaliacaoObjetivo";
             this.lblDataAvaliacaoObjetivo.Size = new System.Drawing.Size(289, 20);
             this.lblDataAvaliacaoObjetivo.TabIndex = 14;
             this.lblDataAvaliacaoObjetivo.Text = "Data Registo da Avaliação Diagnóstico:";
-            this.lblDataAvaliacaoObjetivo.Click += new System.EventHandler(this.lblDataAvaliacaoObjetivo_Click);
             // 
             // dataAvaliacaoObjetivo
             // 
@@ -870,93 +846,158 @@
             this.dataAvaliacaoObjetivo.Size = new System.Drawing.Size(216, 26);
             this.dataAvaliacaoObjetivo.TabIndex = 15;
             this.dataAvaliacaoObjetivo.Value = new System.DateTime(2020, 4, 29, 0, 0, 0, 0);
-            this.dataAvaliacaoObjetivo.ValueChanged += new System.EventHandler(this.dataAvaliacaoObjetivo_ValueChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label1.Location = new System.Drawing.Point(594, 17);
+            this.label1.Location = new System.Drawing.Point(598, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 25);
             this.label1.TabIndex = 51;
             this.label1.Text = "Utente: ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // dataGridViewAvaliacaoObjetivo
-            // 
-            this.dataGridViewAvaliacaoObjetivo.AllowUserToAddRows = false;
-            this.dataGridViewAvaliacaoObjetivo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewAvaliacaoObjetivo.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.dataGridViewAvaliacaoObjetivo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewAvaliacaoObjetivo.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAvaliacaoObjetivo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewAvaliacaoObjetivo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewAvaliacaoObjetivo.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewAvaliacaoObjetivo.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewAvaliacaoObjetivo.EnableHeadersVisualStyles = false;
-            this.dataGridViewAvaliacaoObjetivo.GridColor = System.Drawing.Color.SteelBlue;
-            this.dataGridViewAvaliacaoObjetivo.Location = new System.Drawing.Point(10, 547);
-            this.dataGridViewAvaliacaoObjetivo.Name = "dataGridViewAvaliacaoObjetivo";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAvaliacaoObjetivo.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewAvaliacaoObjetivo.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewAvaliacaoObjetivo.Size = new System.Drawing.Size(1093, 143);
-            this.dataGridViewAvaliacaoObjetivo.TabIndex = 50;
-            this.dataGridViewAvaliacaoObjetivo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAvaliacaoObjetivo_CellContentClick);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.label2.Location = new System.Drawing.Point(3, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(491, 39);
+            this.label2.Size = new System.Drawing.Size(419, 33);
             this.label2.TabIndex = 2;
             this.label2.Text = "Avaliação Objetivo do Utente";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.btnAvaliacaoBebe);
-            this.panelMenu.Controls.Add(this.btnCancelar);
             this.panelMenu.Controls.Add(this.btnVoltar);
             this.panelMenu.Controls.Add(this.pictureBox2);
-            this.panelMenu.Controls.Add(this.btnGuardar);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 40);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(232, 702);
             this.panelMenu.TabIndex = 1;
-            this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
+            // 
+            // panelTitulo
+            // 
+            this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
+            this.panelTitulo.Controls.Add(this.lblDia);
+            this.panelTitulo.Controls.Add(this.lblHora);
+            this.panelTitulo.Controls.Add(this.btnMaximizar);
+            this.panelTitulo.Controls.Add(this.pictureBox1);
+            this.panelTitulo.Controls.Add(this.btnFechar);
+            this.panelTitulo.Controls.Add(this.lblTitulo);
+            this.panelTitulo.Controls.Add(this.btnMinimizar);
+            this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitulo.Location = new System.Drawing.Point(0, 0);
+            this.panelTitulo.Name = "panelTitulo";
+            this.panelTitulo.Size = new System.Drawing.Size(1356, 40);
+            this.panelTitulo.TabIndex = 0;
+            // 
+            // lblDia
+            // 
+            this.lblDia.AutoSize = true;
+            this.lblDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblDia.Location = new System.Drawing.Point(621, 17);
+            this.lblDia.Name = "lblDia";
+            this.lblDia.Size = new System.Drawing.Size(57, 20);
+            this.lblDia.TabIndex = 10;
+            this.lblDia.Text = "label1";
+            // 
+            // lblHora
+            // 
+            this.lblHora.AutoSize = true;
+            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHora.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblHora.Location = new System.Drawing.Point(893, 17);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(57, 20);
+            this.lblHora.TabIndex = 9;
+            this.lblHora.Text = "label1";
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblTitulo.Location = new System.Drawing.Point(3, 14);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(312, 20);
+            this.lblTitulo.TabIndex = 6;
+            this.lblTitulo.Text = "Siltes Saúde - Clinica de Enfermagem";
+            // 
+            // hora
+            // 
+            this.hora.Enabled = true;
+            this.hora.Tick += new System.EventHandler(this.hora_Tick);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnCancelar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_cancelar_501;
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnCancelar.Location = new System.Drawing.Point(652, 646);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnCancelar.Size = new System.Drawing.Size(228, 50);
+            this.btnCancelar.TabIndex = 49;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_guardar_todos_50;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(222, 646);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGuardar.Size = new System.Drawing.Size(342, 50);
+            this.btnGuardar.TabIndex = 48;
+            this.btnGuardar.Text = "                Registar Avaliação Objetivo";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_visível_50;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(1, 313);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(230, 76);
+            this.button1.TabIndex = 51;
+            this.button1.Text = "Ver Avaliações Objetivo Anteriores";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btnAvaliacaoBebe
             // 
@@ -967,7 +1008,7 @@
             this.btnAvaliacaoBebe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAvaliacaoBebe.ForeColor = System.Drawing.Color.Black;
             this.btnAvaliacaoBebe.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnAvaliacaoBebe.Location = new System.Drawing.Point(2, 278);
+            this.btnAvaliacaoBebe.Location = new System.Drawing.Point(0, 136);
             this.btnAvaliacaoBebe.Margin = new System.Windows.Forms.Padding(2);
             this.btnAvaliacaoBebe.Name = "btnAvaliacaoBebe";
             this.btnAvaliacaoBebe.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -979,33 +1020,13 @@
             this.btnAvaliacaoBebe.UseVisualStyleBackColor = false;
             this.btnAvaliacaoBebe.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnCancelar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._91025699_237925080669313_1596905141716385792_n;
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(4, 534);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnCancelar.Size = new System.Drawing.Size(228, 78);
-            this.btnCancelar.TabIndex = 49;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
             // btnVoltar
             // 
             this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
             this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoltar.ForeColor = System.Drawing.Color.Black;
             this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnVoltar.Location = new System.Drawing.Point(2, 624);
@@ -1029,69 +1050,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90876545_253870845754605_8447427972255711232_n;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(2, 454);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGuardar.Size = new System.Drawing.Size(230, 76);
-            this.btnGuardar.TabIndex = 48;
-            this.btnGuardar.Text = "                Registar Avaliação Objetivo";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // panelTitulo
-            // 
-            this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
-            this.panelTitulo.Controls.Add(this.lblDia);
-            this.panelTitulo.Controls.Add(this.lblHora);
-            this.panelTitulo.Controls.Add(this.btnMaximizar);
-            this.panelTitulo.Controls.Add(this.pictureBox1);
-            this.panelTitulo.Controls.Add(this.btnFechar);
-            this.panelTitulo.Controls.Add(this.lblTitulo);
-            this.panelTitulo.Controls.Add(this.btnMinimizar);
-            this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitulo.Location = new System.Drawing.Point(0, 0);
-            this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new System.Drawing.Size(1356, 40);
-            this.panelTitulo.TabIndex = 0;
-            this.panelTitulo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTitulo_Paint);
-            // 
-            // lblDia
-            // 
-            this.lblDia.AutoSize = true;
-            this.lblDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblDia.Location = new System.Drawing.Point(621, 17);
-            this.lblDia.Name = "lblDia";
-            this.lblDia.Size = new System.Drawing.Size(57, 20);
-            this.lblDia.TabIndex = 10;
-            this.lblDia.Text = "label1";
-            this.lblDia.Click += new System.EventHandler(this.lblDia_Click);
-            // 
-            // lblHora
-            // 
-            this.lblHora.AutoSize = true;
-            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHora.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblHora.Location = new System.Drawing.Point(893, 17);
-            this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(57, 20);
-            this.lblHora.TabIndex = 9;
-            this.lblHora.Text = "label1";
-            this.lblHora.Click += new System.EventHandler(this.lblHora_Click);
             // 
             // btnMaximizar
             // 
@@ -1133,19 +1091,6 @@
             this.btnFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnFechar.TabIndex = 7;
             this.btnFechar.TabStop = false;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTitulo.Location = new System.Drawing.Point(3, 14);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(312, 20);
-            this.lblTitulo.TabIndex = 6;
-            this.lblTitulo.Text = "Siltes Saúde - Clinica de Enfermagem";
-            this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             // 
             // btnMinimizar
             // 
@@ -1161,10 +1106,22 @@
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
-            // hora
+            // button2
             // 
-            this.hora.Enabled = true;
-            this.hora.Tick += new System.EventHandler(this.hora_Tick);
+            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button2.Location = new System.Drawing.Point(272, 382);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button2.Size = new System.Drawing.Size(380, 28);
+            this.button2.TabIndex = 56;
+            this.button2.Text = "Botao Ver Terapeuticas todas";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // AdicionarVisualizarAvaliacaoObjetivoPaciente
             // 
@@ -1191,11 +1148,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.UpDownIdadeMenopausa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownAltura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownPeso)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAvaliacaoObjetivo)).EndInit();
             this.panelMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
@@ -1214,7 +1170,6 @@
         private System.Windows.Forms.Label lblDataAvaliacaoObjetivo;
         private System.Windows.Forms.DateTimePicker dataAvaliacaoObjetivo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridViewAvaliacaoObjetivo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button btnVoltar;
@@ -1253,16 +1208,14 @@
         private System.Windows.Forms.Label lblmg;
         private System.Windows.Forms.TextBox txtBMT;
         private System.Windows.Forms.Label lblBMT;
-        private System.Windows.Forms.CheckBox checkNao;
-        private System.Windows.Forms.CheckBox checkSim;
         private System.Windows.Forms.Label lblDIU;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxMetodoContracetivo;
         private System.Windows.Forms.Label lblMetodoContracetivo;
         private System.Windows.Forms.Label lblAnos;
         private System.Windows.Forms.NumericUpDown UpDownIdadeMenopausa;
         private System.Windows.Forms.Label lblMenopausa;
         private System.Windows.Forms.DateTimePicker dataUltimaMenstruacao;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblUltimaMestruacao;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtSPO2;
         private System.Windows.Forms.TextBox txtTerapeutica;
@@ -1274,7 +1227,7 @@
         private System.Windows.Forms.Label lblFilhosVivos;
         private System.Windows.Forms.NumericUpDown upDownGravidezes;
         private System.Windows.Forms.Label lblGravidezes;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblanos2;
         private System.Windows.Forms.NumericUpDown upDownMenarca;
         private System.Windows.Forms.Label lblMenarca;
         private System.Windows.Forms.Label lblCMPA;
@@ -1282,5 +1235,9 @@
         private System.Windows.Forms.Label lblPA;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAvaliacaoBebe;
+        private System.Windows.Forms.RadioButton radioButtonNao;
+        private System.Windows.Forms.RadioButton radioButtonSim;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
