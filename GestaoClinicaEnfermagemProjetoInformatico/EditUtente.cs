@@ -15,25 +15,30 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class EditUtente : Form
     {
         private Enfermeiro enfermeiro = null;
-        private UtenteGridView paciente = null;
+      //  private UtenteGridView paciente = null;
+        private Paciente pacientee = null;
 
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private List<UtenteGridView> utentes = new List<UtenteGridView>();
         private List<UtenteGridView> auxiliar = new List<UtenteGridView>();
         private FormVerUtentesRegistados formulario = null;
-        public EditUtente(Enfermeiro enf, FormVerUtentesRegistados form)
+        public EditUtente(Enfermeiro enf, Paciente pac, FormVerUtentesRegistados form)
         {
             InitializeComponent();
             enfermeiro = enf;
             formulario = form;
+            pacientee = pac;
+            label1.Text = "Nome do Paciente: " + pacientee.Nome;
+
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         }
 
         private void EditUtente_Load(object sender, EventArgs e)
         {
-            conn.Open();
+            preencherDados();
+            /*conn.Open();
             com.Connection = conn;
 
             SqlCommand cmd = new SqlCommand("select * from Paciente WHERE IdEnfermeiro =  @IdEnfermeiro", conn);
@@ -57,19 +62,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     codigoPostal = Convert.ToDouble(reader["codPostalPrefixo"]).ToString() + "-" + Convert.ToDouble(reader["codPostalSufixo"]).ToString(),
                 // codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
                 // codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
-                localidade = (string)reader["localidade"],
-
+                    localidade = (string)reader["localidade"],
                 };
                 utentes.Add(utente);
 
 
-            }
-            string nome = txtNome.Text;
-            UpdateDataGridView();
+            }*/
+            //UpdateDataGridView();
             auxiliar = utentes;
-            dataGridViewUtentes.Columns[0].Width = dataGridViewUtentes.Columns[0].Width + 200;
-            dataGridViewUtentes.Columns[2].Width = dataGridViewUtentes.Columns[2].Width + 80;
-            dataGridViewUtentes.Columns[6].Width = dataGridViewUtentes.Columns[6].Width + 150;
+     
 
             conn.Close();
         }
@@ -126,7 +127,39 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
-        {           
+        {
+
+            string acordo = (String)cbAcordos.SelectedItem;
+            string nomeSeguradora = txtNomeSeguradora.Text;
+            string numeroApolice = txtNApolice.Text;
+            string nomeSubsistema = txtNomeSubsistema.Text;
+            string numeroSubsistema = txtNSubsistema.Text;
+            string numeroSNS = txtSNS.Text;
+            string sexo = "";
+            if (radioButtonMasculino.Checked == true)
+            {
+                sexo = "Masculino";
+            }
+            if (radioButtonFeminino.Checked == true)
+            {
+                sexo = "Feminino";
+            }
+            if (radioButtonIndefinido.Checked == true)
+            {
+                sexo = "Indefinido";
+            }
+            string planoVacinacao = "";
+            if (radioButtonAtualizado.Checked == true)
+            {
+                planoVacinacao = "Atualizado";
+            }
+            if (radioButtonNaoAtualziado.Checked == true)
+            {
+                planoVacinacao = "Não Atualizado";
+            }
+
+
+
             if (!VerificarDadosInseridos())
             {
                 MessageBox.Show("Dados incorretos!");
@@ -139,12 +172,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     connection.Open();
 
-                    string queryUpdateData = "UPDATE Paciente SET Nome = @nome, Email = @email, Contacto = @contacto,Nif = @nif,Profissao = @profissao,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,localidade = @localidade WHERE Nif = @NifPaciente";
+                    string queryUpdateData = "UPDATE Paciente SET Nome = @nome, Email = @email, Contacto = @contacto,Nif = @nif,Profissao = @profissao,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,localidade = @localidade,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao WHERE Nif = @NifPaciente";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
-                    sqlCommand.Parameters.AddWithValue("@nome", textBox1.Text);
+                    sqlCommand.Parameters.AddWithValue("@nome", textBoxNome.Text);
                     sqlCommand.Parameters.AddWithValue("@email", txtEmail.Text);
                     sqlCommand.Parameters.AddWithValue("@contacto", txtContacto.Text);
-                    sqlCommand.Parameters.AddWithValue("@nif", textBox2.Text);
+                    sqlCommand.Parameters.AddWithValue("@nif", textBoxNif.Text);
                     sqlCommand.Parameters.AddWithValue("@profissao",(String)cbProfissoes.SelectedItem);
                     sqlCommand.Parameters.AddWithValue("@rua", txtMorada.Text);
                     sqlCommand.Parameters.AddWithValue("@numeroCasa", txtNumeroCasa.Text);
@@ -152,14 +185,47 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.Parameters.AddWithValue("@codPostalPrefixo", txtCodPostalPre.Text);
                     sqlCommand.Parameters.AddWithValue("@codPostalSufixo", txtCodPostalSuf.Text);
                     sqlCommand.Parameters.AddWithValue("@localidade", txtLocalidade.Text);
-                    sqlCommand.Parameters.AddWithValue("@NifPaciente", paciente.Nif);
+                    sqlCommand.Parameters.AddWithValue("@NifPaciente", pacientee.Nif);
+                    sqlCommand.Parameters.AddWithValue("@acordo", acordo);
+                    sqlCommand.Parameters.AddWithValue("@nomeSeguradora", nomeSeguradora);
 
+                    if (numeroApolice != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@numeroApoliceSeguradora", Convert.ToInt32(numeroApolice));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@numeroApoliceSeguradora", DBNull.Value);
+                    }
+
+                    sqlCommand.Parameters.AddWithValue("@nomeSubsistema", nomeSubsistema);
+
+                    if (numeroSubsistema != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@numeroSubsistema", Convert.ToInt32(numeroSubsistema));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@numeroSubsistema", DBNull.Value);
+                    }
+
+                    if (numeroSNS != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@numeroSNS", Convert.ToInt32(numeroSNS));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@numeroSNS", DBNull.Value);
+                    }
+
+                    sqlCommand.Parameters.AddWithValue("@sexo", sexo);
+                    sqlCommand.Parameters.AddWithValue("@planoVacinacao", planoVacinacao);
                     sqlCommand.ExecuteNonQuery();
                     foreach (var utente in utentes)
                     {
-                        if (Convert.ToString(utente.Nif).Equals(textBox2.Text))
+                        if (Convert.ToString(utente.Nif).Equals(textBoxNif.Text))
                         {
-                            utente.Nome=  textBox1.Text ;
+                            utente.Nome=  textBoxNome.Text ;
                             utente.Rua = txtMorada.Text ;
                             utente.NumeroCasa = Convert.ToInt16(txtNumeroCasa.Text);
                             utente.Andar = txtAndar.Text;
@@ -169,11 +235,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                             utente.localidade = txtLocalidade.Text;
                             utente.Email = txtEmail.Text;
                             utente.Contacto = Convert.ToDouble(txtContacto.Text);
-                            utente.Nif = Convert.ToDouble(textBox2.Text);
+                            utente.Nif = Convert.ToDouble(textBoxNif.Text);
                         }
                     }
                     MessageBox.Show("Paciente alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    UpdateDataGridView();
+                 //   UpdateDataGridView();
                     formulario.UpdateUtentes();
                     connection.Close();
                 }
@@ -189,7 +255,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
        
 
-        private void UpdateDataGridView()
+       /* private void UpdateDataGridView()
         {
             dataGridViewUtentes.DataSource = new List<UtenteGridView>();
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = utentes };
@@ -212,7 +278,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         
             dataGridViewUtentes.Update();
             dataGridViewUtentes.Refresh();
-        }
+        }*/
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -223,7 +289,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private List<UtenteGridView> filtrosDePesquisa()
+      /*  private List<UtenteGridView> filtrosDePesquisa()
         {
             auxiliar = new List<UtenteGridView>();
             if (txtNIF.Text != "" && txtNome.Text == "")
@@ -262,22 +328,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             auxiliar = utentes;
             return utentes;
         }
-
-        private void txtNome_KeyDown(object sender, KeyEventArgs e)
+        */
+      /*  private void txtNome_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 dataGridViewUtentes.DataSource = filtrosDePesquisa();
             }
-        }
+        }*/
 
-        private void txtNIF_KeyDown(object sender, KeyEventArgs e)
+      /*  private void txtNIF_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 dataGridViewUtentes.DataSource = filtrosDePesquisa();
             }
-        }
+        }*/
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
@@ -362,50 +428,132 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void dataGridViewUtentes_MouseDoubleClick_1(object sender, MouseEventArgs e)
+       private void preencherDados()
         {
-            int i = dataGridViewUtentes.CurrentCell.RowIndex;
-            //UtenteGridView utente = null; ;
-
-
-            //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
-            foreach (var ut in auxiliar)
+            
+            if (pacientee != null)
             {
-                if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
-                {
-                    paciente = ut;
-                }
+              //  string[] cp;
+                textBoxNome.Text = pacientee.Nome;
+                dataNascimento.Value = pacientee.DataNascimento;
+                txtMorada.Text = pacientee.Rua;
+                txtNumeroCasa.Text = Convert.ToString(pacientee.NumeroCasa);
+                txtAndar.Text = pacientee.Andar;
+            //    cp = pacientee.codigoPostal.Split('-');
+                txtCodPostalPre.Text = Convert.ToString(pacientee.codPostalPrefixo);
+                txtCodPostalSuf.Text = Convert.ToString(pacientee.codPostalSufixo);
+                txtLocalidade.Text = pacientee.localidade;
+                txtEmail.Text = pacientee.Email;
+                txtContacto.Text = Convert.ToString(pacientee.Contacto);
+                textBoxNif.Text = Convert.ToString(pacientee.Nif);
 
-            }
-            if (paciente != null)
-            {
-                string[] cp;
-                textBox1.Text = paciente.Nome;
-                txtMorada.Text = paciente.Rua;
-                txtNumeroCasa.Text = Convert.ToString(paciente.NumeroCasa);
-                txtAndar.Text = paciente.Andar;
-                cp = paciente.codigoPostal.Split('-');
-                txtCodPostalPre.Text = cp[0];// Convert.ToString(paciente.codPostalPrefixo);
-                txtCodPostalSuf.Text = cp[1]; //Convert.ToString(paciente.codPostalSufixo);
-                txtLocalidade.Text = paciente.localidade;
-                txtEmail.Text = paciente.Email;
-                txtContacto.Text = Convert.ToString(paciente.Contacto);
-                textBox2.Text = Convert.ToString(paciente.Nif);
-
+               // cbProfissoes.Text = pacientee.Profissao;
                 int a = 0;
                 foreach (var CmbItem in cbProfissoes.Items)
                 {
 
                     var tempMeasured = CmbItem.ToString();
                     //MessageBox.Show(tempMeasured);
-                    if (tempMeasured.Equals(paciente.Profissao))
+                    if (tempMeasured.Equals(pacientee.Profissao))
                     {
                         cbProfissoes.SelectedIndex = a;
                     }
-                    i++;
+                    a++;
                 }
+                
                 //(String)cbProfissoes.SelectedItem = utente.Profissao;
 
+                int b = 0;
+                foreach (var CmbItem in cbAcordos.Items)
+                {
+
+                    var tempMeasured = CmbItem.ToString();
+                    //MessageBox.Show(tempMeasured);
+                    if (tempMeasured.Equals(pacientee.Acordo))
+                    {
+                        cbAcordos.SelectedIndex = b;
+                    }
+                    b++;
+                }
+
+                txtNomeSeguradora.Text = pacientee.NomeSeguradora;
+                txtNApolice.Text = Convert.ToString(pacientee.NumeroApoliceSeguradora);
+
+                txtNomeSubsistema.Text = pacientee.NomeSubsistema;
+                txtNSubsistema.Text = Convert.ToString(pacientee.NumeroSubsistema);
+                txtSNS.Text = Convert.ToString(pacientee.NumeroSNS);
+                //                groupBoxSexo.Text = pacientee.Sexo;
+
+                if (pacientee.Sexo.Equals("Masculino"))
+                {
+                    radioButtonMasculino.Checked = true;
+                }
+
+
+                if (pacientee.Sexo.Equals("Feminino"))
+                {
+                    radioButtonFeminino.Checked = true;
+                }
+
+
+                if (pacientee.Sexo.Equals("Indefinido"))
+                {
+                    radioButtonIndefinido.Checked = true;
+                }
+
+
+                if (pacientee.PlanoVacinacao.Equals("Atualizado"))
+                {
+                    radioButtonAtualizado.Checked = true;
+                }
+                if (pacientee.PlanoVacinacao.Equals("Não Atualizado"))
+                {
+                    radioButtonNaoAtualziado.Checked = true;
+                }           
+            }
+        }
+
+        private void cbAcordos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbAcordos.SelectedItem.ToString() == "Seguradora")
+            {
+                lblSeguradora.Visible = true;
+                txtNomeSeguradora.Visible = true;
+                lblNApolice.Visible = true;
+                txtNApolice.Visible = true;
+                lblNomeSusbsistema.Visible = false;
+                txtNomeSubsistema.Visible = false;
+                lblNSubsistema.Visible = false;
+                txtNSubsistema.Visible = false;
+                lblSNS.Visible = false;
+                txtSNS.Visible = false;
+            }
+            if (cbAcordos.SelectedItem.ToString() == "Subsistema de Saúde")
+            {
+                lblSeguradora.Visible = false;
+                txtNomeSeguradora.Visible = false;
+                lblNApolice.Visible = false;
+                txtNApolice.Visible = false;
+                lblNomeSusbsistema.Visible = true;
+                txtNomeSubsistema.Visible = true;
+                lblNSubsistema.Visible = true;
+                txtNSubsistema.Visible = true;
+                lblSNS.Visible = false;
+                txtSNS.Visible = false;
+
+            }
+            if (cbAcordos.SelectedItem.ToString() == "SNS")
+            {
+                lblSeguradora.Visible = false;
+                txtNomeSeguradora.Visible = false;
+                lblNApolice.Visible = false;
+                txtNApolice.Visible = false;
+                lblNomeSusbsistema.Visible = false;
+                txtNomeSubsistema.Visible = false;
+                lblNSubsistema.Visible = false;
+                txtNSubsistema.Visible = false;
+                lblSNS.Visible = true;
+                txtSNS.Visible = true;
             }
         }
     }

@@ -108,12 +108,28 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     codigoPostal = Convert.ToDouble(reader["codPostalPrefixo"]).ToString() + "-" + Convert.ToDouble(reader["codPostalSufixo"]).ToString(),
                 //  codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
                 //   codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
-                localidade = (string)reader["localidade"],
+                    localidade = (string)reader["localidade"],
+                    Acordo = (string)reader["Acordo"],
 
+                    NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
+                    //NomeSeguradora = (string)reader["NomeSeguradora"] |,
+
+                    NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? 0 : (int)reader["NumeroApoliceSeguradora"]),
+                    // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
+
+                    NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
+                    // NomeSubsistema = (string)reader["NomeSubsistema"],
+
+                    NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? 0 : (int)reader["NumeroSubsistema"]),
+                   // NumeroSubsistema = (int)reader["NumeroSubsistema"],
+
+                    NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? 0 : (int)reader["NumeroSNS"]),
+                    //NumeroSNS = (int)reader["NumeroSNS"],
+
+                    Sexo = (string)reader["Sexo"],
+                    PlanoVacinacao = (string)reader["PlanoVacinacao"]
                 };
                 utentes.Add(utente);
-                
-
             }
             string nome = txtNome.Text;
             UpdateDataGridView();
@@ -204,11 +220,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[7].HeaderText = "Nr";
             dataGridViewUtentes.Columns[8].HeaderText = "Andar";
             dataGridViewUtentes.Columns[9].HeaderText = "Código Postal";
-          //  dataGridViewUtentes.Columns[10].HeaderText = "Postal";
             dataGridViewUtentes.Columns[10].HeaderText = "Localidade";
-        
+            dataGridViewUtentes.Columns[11].HeaderText = "Acordo"; 
+            dataGridViewUtentes.Columns[12].HeaderText = "Nome da Seguradora"; 
+            dataGridViewUtentes.Columns[13].HeaderText = "Numero da Apolice da Seguradora";
+            dataGridViewUtentes.Columns[14].HeaderText = "Nome do Subsistema";
+            dataGridViewUtentes.Columns[15].HeaderText = "Número do Subsistema";
+            dataGridViewUtentes.Columns[16].HeaderText = "Número do SNS";
+            dataGridViewUtentes.Columns[17].HeaderText = "Sexo";
+            dataGridViewUtentes.Columns[18].HeaderText = "Plano de Vacinacao";
 
-      
+
             auxiliar = utentes;
 
             dataGridViewUtentes.Update();
@@ -270,7 +292,25 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
                         localidade = (string)reader["localidade"],
                         IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                        Acordo = (string)reader["Acordo"],
 
+                        NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
+                        //NomeSeguradora = (string)reader["NomeSeguradora"] |,
+
+                        NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? 0 : (int)reader["NumeroApoliceSeguradora"]),
+                        // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
+
+                        NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
+                        // NomeSubsistema = (string)reader["NomeSubsistema"],
+
+                        NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? 0 : (int)reader["NumeroSubsistema"]),
+                        // NumeroSubsistema = (int)reader["NumeroSubsistema"],
+
+                        NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? 0 : (int)reader["NumeroSNS"]),
+                        //NumeroSNS = (int)reader["NumeroSNS"],
+
+                        Sexo = (string)reader["Sexo"],
+                        PlanoVacinacao = (string)reader["PlanoVacinacao"]
 
                     };
                 }
@@ -328,6 +368,25 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
                         localidade = (string)reader["localidade"],
                         IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                        Acordo = (string)reader["Acordo"],
+
+                        NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
+                        //NomeSeguradora = (string)reader["NomeSeguradora"] |,
+
+                        NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? 0 : (int)reader["NumeroApoliceSeguradora"]),
+                        // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
+
+                        NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
+                        // NomeSubsistema = (string)reader["NomeSubsistema"],
+
+                        NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? 0 : (int)reader["NumeroSubsistema"]),
+                        // NumeroSubsistema = (int)reader["NumeroSubsistema"],
+
+                        NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? 0 : (int)reader["NumeroSNS"]),
+                        //NumeroSNS = (int)reader["NumeroSNS"],
+
+                        Sexo = (string)reader["Sexo"],
+                        PlanoVacinacao = (string)reader["PlanoVacinacao"]
                     };
                 }
 
@@ -349,10 +408,74 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button3_Click(object sender, EventArgs e)
         {
-            EditUtente editar = new EditUtente(enfermeiro, this);
-            editar.Show();
-        }
+            if (dataGridViewUtentes.Rows.Count > 1)
+            {
+                int i = dataGridViewUtentes.CurrentCell.RowIndex;
+                UtenteGridView utente = null; ;
 
+
+                //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
+                foreach (var ut in auxiliar)
+                {
+                    if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                    {
+                        utente = ut;
+                    }
+                }
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  @NifPaciente", conn);
+                cmd.Parameters.AddWithValue("@NifPaciente", utente.Nif);
+                SqlDataReader reader = cmd.ExecuteReader();
+                Paciente paciente = null;
+
+                if (reader.Read())
+                {
+                    paciente = new Paciente
+                    {
+                        IdPaciente = (int)reader["IdPaciente"],
+                        Nome = (string)reader["nome"],
+                        DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                        Email = (string)reader["email"],
+                        Contacto = Convert.ToDouble(reader["contacto"]),
+                        Nif = Convert.ToDouble(reader["nif"]),
+                        Profissao = (string)reader["Profissao"],
+                        Rua = (string)reader["Rua"],
+                        NumeroCasa = (int)reader["NumeroCasa"],
+                        Andar = (string)reader["Andar"],
+                        codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
+                        codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                        localidade = (string)reader["localidade"],
+                        IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                        Acordo = (string)reader["Acordo"],
+
+                        NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
+                        //NomeSeguradora = (string)reader["NomeSeguradora"] |,
+
+                        NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? 0 : (int)reader["NumeroApoliceSeguradora"]),
+                        // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
+
+                        NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
+                        // NomeSubsistema = (string)reader["NomeSubsistema"],
+
+                        NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? 0 : (int)reader["NumeroSubsistema"]),
+                        // NumeroSubsistema = (int)reader["NumeroSubsistema"],
+
+                        NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? 0 : (int)reader["NumeroSNS"]),
+                        //NumeroSNS = (int)reader["NumeroSNS"],
+
+                        Sexo = (string)reader["Sexo"],
+                        PlanoVacinacao = (string)reader["PlanoVacinacao"]
+                    };
+                }
+
+                conn.Close();
+
+                EditUtente editar = new EditUtente(enfermeiro, paciente, this);
+                editar.Show();
+            }
+        }
         public void UpdateUtentes() 
         {
             conn.Open();
@@ -381,6 +504,25 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     //    codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
                     //     codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
                     localidade = (string)reader["localidade"],
+                    Acordo = (string)reader["Acordo"],
+
+                    NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
+                    //NomeSeguradora = (string)reader["NomeSeguradora"] |,
+
+                    NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? 0 : (int)reader["NumeroApoliceSeguradora"]),
+                    // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
+
+                    NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
+                    // NomeSubsistema = (string)reader["NomeSubsistema"],
+
+                    NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? 0 : (int)reader["NumeroSubsistema"]),
+                    // NumeroSubsistema = (int)reader["NumeroSubsistema"],
+
+                    NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? 0 : (int)reader["NumeroSNS"]),
+                    //NumeroSNS = (int)reader["NumeroSNS"],
+
+                    Sexo = (string)reader["Sexo"],
+                    PlanoVacinacao = (string)reader["PlanoVacinacao"]
 
                 };
                 utentes.Add(utente);

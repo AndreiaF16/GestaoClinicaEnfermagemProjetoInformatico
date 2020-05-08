@@ -45,7 +45,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string email = txtEmail.Text;
             string telemovel = txtContacto.Text;
             string nif = txtNif.Text;
-            string profissao =  (String)cbProfissoes.SelectedItem; ;
+            string profissao =  (String)cbProfissoes.SelectedItem;
 
             if (nome == string.Empty || rua == string.Empty || codPostalPrefixo == string.Empty || codPostalSufixo == string.Empty
                 || localidade == string.Empty || email == string.Empty || telemovel == string.Empty || nif == string.Empty || profissao == string.Empty)
@@ -86,6 +86,37 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string telemovel = txtContacto.Text;
             string nif = txtNif.Text;
             string profissao = (String)cbProfissoes.SelectedItem;
+            string acordo = (String)cbAcordos.SelectedItem;
+            string nomeSeguradora = txtNomeSeguradora.Text;
+            string numeroApolice = txtNApolice.Text;
+            string nomeSubsistema = txtNomeSubsistema.Text;
+            string numeroSubsistema = txtNSubsistema.Text;
+            string numeroSNS = txtSNS.Text;
+            string sexo = "";
+            if (radioButtonMasculino.Checked == true) 
+            {
+                sexo = "Masculino";
+            }
+            if (radioButtonFeminino.Checked == true)
+            {
+                sexo = "Feminino";
+            }
+            if (radioButtonIndefinido.Checked == true)
+            {
+                sexo = "Indefinido";
+            }
+            
+
+            string planoVacinacao = "";
+            if (radioButtonAtualizado.Checked == true)
+            {
+                planoVacinacao = "Atualizado";
+            }
+            if (radioButtonNaoAtualziado.Checked == true)
+            {
+                planoVacinacao = "Não Atualizado";
+            }
+
 
             if (!VerificarDadosInseridos())
             {
@@ -98,21 +129,56 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,contacto,nif,profissao,rua,numeroCasa,andar,codPostalPrefixo,codPostalSufixo,localidade, IdEnfermeiro) VALUES(@nome,@dataNascimento,@email,@contacto,@nif,@profissao,@rua,@numeroCasa,@andar,@codPostalPrefixo,@codPostalSufixo,@localidade,@IdEnfermeiro);";
+                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,Contacto,nif,profissao,rua,numeroCasa,Andar,codPostalPrefixo,codPostalSufixo,localidade,IdEnfermeiro,Acordo,NomeSeguradora,NumeroApoliceSeguradora,NomeSubsistema,NumeroSubsistema,NumeroSNS,Sexo,PlanoVacinacao) VALUES(@nome,@dataNascimento,@email,@contacto,@nif,@profissao,@rua,@numeroCasa,@andar,@codPostalPrefixo,@codPostalSufixo,@localidade,@IdEnfermeiro, @acordo, @nomeSeguradora, @numeroApoliceSeguradora, @nomeSubsistema, @numeroSubsistema, @numeroSNS, @sexo, @planoVacinacao);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@nome", nome);
                     sqlCommand.Parameters.AddWithValue("@dataNascimento", dtNascimento.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@email", email);
-                    sqlCommand.Parameters.AddWithValue("@contacto", telemovel);
-                    sqlCommand.Parameters.AddWithValue("@nif", nif);
+                    sqlCommand.Parameters.AddWithValue("@contacto", Convert.ToInt32(telemovel));
+                    sqlCommand.Parameters.AddWithValue("@nif", Convert.ToInt32(nif));
                     sqlCommand.Parameters.AddWithValue("@profissao", profissao);
                     sqlCommand.Parameters.AddWithValue("@rua", rua);
-                    sqlCommand.Parameters.AddWithValue("@numeroCasa", numeroCasa);
+                    sqlCommand.Parameters.AddWithValue("@numeroCasa", Convert.ToInt32(numeroCasa));
                     sqlCommand.Parameters.AddWithValue("@andar", andarCasa);
-                    sqlCommand.Parameters.AddWithValue("@codPostalPrefixo", codPostalSufixo);
-                    sqlCommand.Parameters.AddWithValue("@codPostalSufixo", codPostalPrefixo);
+                    sqlCommand.Parameters.AddWithValue("@codPostalPrefixo", Convert.ToInt32(codPostalSufixo));
+                    sqlCommand.Parameters.AddWithValue("@codPostalSufixo", Convert.ToInt32(codPostalPrefixo));
                     sqlCommand.Parameters.AddWithValue("@localidade", localidade);
                     sqlCommand.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
+                    sqlCommand.Parameters.AddWithValue("@acordo", acordo);
+                    sqlCommand.Parameters.AddWithValue("@nomeSeguradora", nomeSeguradora);
+
+                    if (numeroApolice != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@numeroApoliceSeguradora", Convert.ToInt32(numeroApolice));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@numeroApoliceSeguradora", DBNull.Value);
+                    }
+
+                    sqlCommand.Parameters.AddWithValue("@nomeSubsistema", nomeSubsistema);
+
+                    if (numeroSubsistema != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@numeroSubsistema", Convert.ToInt32(numeroSubsistema));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@numeroSubsistema", DBNull.Value);
+                    }
+
+                    if (numeroSNS != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@numeroSNS", Convert.ToInt32(numeroSNS));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@numeroSNS", DBNull.Value);
+                    }
+
+                    sqlCommand.Parameters.AddWithValue("@sexo", sexo);
+                    sqlCommand.Parameters.AddWithValue("@planoVacinacao", planoVacinacao);
+
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Utente registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
@@ -299,44 +365,41 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void cbAcordos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-
-
             if (cbAcordos.SelectedItem.ToString() == "Seguradora")
             {
                 lblSeguradora.Visible = true;
-                txtSeguradora.Visible = true;
+                txtNomeSeguradora.Visible = true;
                 lblNApolice.Visible = true;
                 txtNApolice.Visible = true;
                 lblNomeSusbsistema.Visible = false;
-                txtNomeSusbsistema.Visible = false;
+                txtNomeSubsistema.Visible = false;
                 lblNSubsistema.Visible = false;
-                txtNomeSusbsistema.Visible = false;
+                txtNSubsistema.Visible = false;
                 lblSNS.Visible = false;
                 txtSNS.Visible = false;
             } 
-            else if (cbAcordos.SelectedItem.ToString() == "Subsistema de Saúde")
+            if (cbAcordos.SelectedItem.ToString() == "Subsistema de Saúde")
             {
                 lblSeguradora.Visible = false;
-                txtSeguradora.Visible = false;
+                txtNomeSeguradora.Visible = false;
                 lblNApolice.Visible = false;
                 txtNApolice.Visible = false;
                 lblNomeSusbsistema.Visible = true;
-                txtNomeSusbsistema.Visible = true;
+                txtNomeSubsistema.Visible = true;
                 lblNSubsistema.Visible = true;
                 txtNSubsistema.Visible = true;
                 lblSNS.Visible = false;
                 txtSNS.Visible = false;
 
             }
-            else
+            if (cbAcordos.SelectedItem.ToString() == "SNS")
             {
                 lblSeguradora.Visible = false;
-                txtSeguradora.Visible = false;
+                txtNomeSeguradora.Visible = false;
                 lblNApolice.Visible = false;
                 txtNApolice.Visible = false;
                 lblNomeSusbsistema.Visible = false;
-                txtNomeSusbsistema.Visible = false;
+                txtNomeSubsistema.Visible = false;
                 lblNSubsistema.Visible = false;
                 txtNSubsistema.Visible = false;
                 lblSNS.Visible = true;
@@ -347,6 +410,33 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtSNS_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNSubsistema_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNApolice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

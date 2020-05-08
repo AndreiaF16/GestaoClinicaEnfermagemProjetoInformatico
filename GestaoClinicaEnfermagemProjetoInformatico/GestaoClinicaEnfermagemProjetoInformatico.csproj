@@ -734,5 +734,11 @@
   <ItemGroup>
     <None Include="Resources\iconfinder_aiga_nursery_134173.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-guardar-todos-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancelar-50.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
