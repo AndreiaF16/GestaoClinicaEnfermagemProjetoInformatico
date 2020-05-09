@@ -79,13 +79,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     dataConsulta = Convert.ToDateTime(reader["dataConsulta"]),
                     horaInicioConsulta = (string)reader["horaInicioConsulta"],
-                    tensaoArterial = (int)reader["tensaoArterial"],
                     historiaAtual = (string)reader["historiaAtual"],
                     sintomatologia = (string)reader["sintomatologia"],
                     sinais = (string)reader["sinais"],
                     escalaDor = (string)reader["escalaDor"],
                     valorConsulta = Convert.ToDouble(reader["valorConsulta"]),
-                    horaFimConsulta = (string)reader["horaFimConsulta"],
                 };
                 listaConsultasPaciente.Add(consultasPaciente);
             }
@@ -102,13 +100,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.DataSource = bindingSource1;
             dataGridViewUtentes.Columns[0].HeaderText = "Data Consulta";
             dataGridViewUtentes.Columns[1].HeaderText = "Hora Inicio Consulta";
-            dataGridViewUtentes.Columns[2].HeaderText = "Tensão Arterial";
-            dataGridViewUtentes.Columns[3].HeaderText = "História Atual";
-            dataGridViewUtentes.Columns[4].HeaderText = "Sintomatologia";
-            dataGridViewUtentes.Columns[5].HeaderText = "Sinais";
-            dataGridViewUtentes.Columns[6].HeaderText = "Dor";
-            dataGridViewUtentes.Columns[7].HeaderText = "Valor Consulta";
-            dataGridViewUtentes.Columns[8].HeaderText = "Hora Fim Consulta";
+            dataGridViewUtentes.Columns[2].HeaderText = "História Atual";
+            dataGridViewUtentes.Columns[3].HeaderText = "Sintomatologia";
+            dataGridViewUtentes.Columns[4].HeaderText = "Sinais";
+            dataGridViewUtentes.Columns[5].HeaderText = "Dor";
+            dataGridViewUtentes.Columns[6].HeaderText = "Valor Consulta (€)";
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)

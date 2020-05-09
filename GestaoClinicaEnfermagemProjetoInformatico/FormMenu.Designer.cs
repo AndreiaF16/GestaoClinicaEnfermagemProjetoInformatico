@@ -45,6 +45,9 @@
             this.dataGridViewConsultasHoje = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnTipoParto = new System.Windows.Forms.Button();
+            this.btnAleitamento = new System.Windows.Forms.Button();
+            this.btnMetodoContracetivo = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -249,18 +252,70 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.btnTipoParto);
+            this.groupBox1.Controls.Add(this.btnAleitamento);
+            this.groupBox1.Controls.Add(this.btnMetodoContracetivo);
             this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Navy;
-            this.groupBox1.Location = new System.Drawing.Point(193, 17);
+            this.groupBox1.Location = new System.Drawing.Point(22, 17);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(730, 188);
+            this.groupBox1.Size = new System.Drawing.Size(1041, 146);
             this.groupBox1.TabIndex = 59;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registar, Visualizar e Editar Lista de:";
+            // 
+            // btnTipoParto
+            // 
+            this.btnTipoParto.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnTipoParto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTipoParto.ForeColor = System.Drawing.Color.Black;
+            this.btnTipoParto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTipoParto.Location = new System.Drawing.Point(867, 51);
+            this.btnTipoParto.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTipoParto.Name = "btnTipoParto";
+            this.btnTipoParto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnTipoParto.Size = new System.Drawing.Size(140, 48);
+            this.btnTipoParto.TabIndex = 64;
+            this.btnTipoParto.Text = "Tipo Parto";
+            this.btnTipoParto.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnTipoParto.UseVisualStyleBackColor = false;
+            // 
+            // btnAleitamento
+            // 
+            this.btnAleitamento.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAleitamento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAleitamento.ForeColor = System.Drawing.Color.Black;
+            this.btnAleitamento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAleitamento.Location = new System.Drawing.Point(727, 51);
+            this.btnAleitamento.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAleitamento.Name = "btnAleitamento";
+            this.btnAleitamento.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnAleitamento.Size = new System.Drawing.Size(140, 48);
+            this.btnAleitamento.TabIndex = 63;
+            this.btnAleitamento.Text = "Aleitamento";
+            this.btnAleitamento.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAleitamento.UseVisualStyleBackColor = false;
+            // 
+            // btnMetodoContracetivo
+            // 
+            this.btnMetodoContracetivo.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnMetodoContracetivo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMetodoContracetivo.ForeColor = System.Drawing.Color.Black;
+            this.btnMetodoContracetivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMetodoContracetivo.Location = new System.Drawing.Point(587, 51);
+            this.btnMetodoContracetivo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMetodoContracetivo.Name = "btnMetodoContracetivo";
+            this.btnMetodoContracetivo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnMetodoContracetivo.Size = new System.Drawing.Size(140, 48);
+            this.btnMetodoContracetivo.TabIndex = 62;
+            this.btnMetodoContracetivo.Text = "Metodo Contracetivo";
+            this.btnMetodoContracetivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnMetodoContracetivo.UseVisualStyleBackColor = false;
+            this.btnMetodoContracetivo.Click += new System.EventHandler(this.btnMetodoContracetivo_Click);
             // 
             // button7
             // 
@@ -268,11 +323,11 @@
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button7.ForeColor = System.Drawing.Color.Black;
             this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(539, 51);
+            this.button7.Location = new System.Drawing.Point(447, 51);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.button7.Size = new System.Drawing.Size(140, 87);
+            this.button7.Size = new System.Drawing.Size(140, 48);
             this.button7.TabIndex = 61;
             this.button7.Text = "Exames";
             this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -285,11 +340,11 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button6.ForeColor = System.Drawing.Color.Black;
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(375, 51);
+            this.button6.Location = new System.Drawing.Point(307, 51);
             this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.button6.Size = new System.Drawing.Size(140, 87);
+            this.button6.Size = new System.Drawing.Size(140, 48);
             this.button6.TabIndex = 60;
             this.button6.Text = "Cirurgias";
             this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -302,11 +357,11 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button5.ForeColor = System.Drawing.Color.Black;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(203, 51);
+            this.button5.Location = new System.Drawing.Point(167, 51);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.button5.Size = new System.Drawing.Size(140, 87);
+            this.button5.Size = new System.Drawing.Size(140, 48);
             this.button5.TabIndex = 59;
             this.button5.Text = "Alergias";
             this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -323,7 +378,7 @@
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.button4.Size = new System.Drawing.Size(140, 87);
+            this.button4.Size = new System.Drawing.Size(140, 48);
             this.button4.TabIndex = 58;
             this.button4.Text = "Doenças";
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -354,7 +409,7 @@
             this.btnRegistarUtente.ForeColor = System.Drawing.Color.Black;
             this.btnRegistarUtente.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._91029693_887056538410859_7048263335300562944_n1;
             this.btnRegistarUtente.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnRegistarUtente.Location = new System.Drawing.Point(5, 215);
+            this.btnRegistarUtente.Location = new System.Drawing.Point(5, 210);
             this.btnRegistarUtente.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistarUtente.Name = "btnRegistarUtente";
             this.btnRegistarUtente.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -374,7 +429,7 @@
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_marcador_50;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.Location = new System.Drawing.Point(5, 311);
+            this.button1.Location = new System.Drawing.Point(5, 301);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -415,7 +470,7 @@
             this.btnDefinicoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDefinicoes.ForeColor = System.Drawing.Color.Black;
             this.btnDefinicoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDefinicoes.Location = new System.Drawing.Point(6, 519);
+            this.btnDefinicoes.Location = new System.Drawing.Point(6, 524);
             this.btnDefinicoes.Margin = new System.Windows.Forms.Padding(2);
             this.btnDefinicoes.Name = "btnDefinicoes";
             this.btnDefinicoes.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -434,7 +489,7 @@
             this.button3.ForeColor = System.Drawing.Color.Black;
             this.button3.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_crie_um_novo_50;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button3.Location = new System.Drawing.Point(5, 407);
+            this.button3.Location = new System.Drawing.Point(5, 392);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -455,7 +510,7 @@
             this.buttonTerminarSessao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTerminarSessao.ForeColor = System.Drawing.Color.Black;
             this.buttonTerminarSessao.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.buttonTerminarSessao.Location = new System.Drawing.Point(7, 615);
+            this.buttonTerminarSessao.Location = new System.Drawing.Point(6, 615);
             this.buttonTerminarSessao.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTerminarSessao.Name = "buttonTerminarSessao";
             this.buttonTerminarSessao.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -638,36 +693,39 @@
 
         private System.Windows.Forms.Panel painelPrincipal;
         private System.Windows.Forms.Panel panelMenu;
-        private System.Windows.Forms.Button btnRegistarUtente;
         private System.Windows.Forms.Panel panelTitulo;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.PictureBox btnMinimizar;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button buttonTerminarSessao;
         private System.Windows.Forms.PictureBox btnFechar;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnAdmin;
-        private System.Windows.Forms.Panel panelFormulario;
         private System.Windows.Forms.PictureBox btnMaximizar;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblDia;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer hora;
-        private System.Windows.Forms.Button btnDefinicoes;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridViewConsultasHoje;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtNIF;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Panel panelFormulario;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.TextBox txtNIF;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dataGridViewConsultasHoje;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnTipoParto;
+        private System.Windows.Forms.Button btnAleitamento;
+        private System.Windows.Forms.Button btnMetodoContracetivo;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnRegistarUtente;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAdmin;
+        private System.Windows.Forms.Button btnDefinicoes;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonTerminarSessao;
     }
 }

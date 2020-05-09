@@ -14,10 +14,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class Alergias : Form
     {
         AdicionarVisualizarAlergiaPaciente adicionar = null;
-        public Alergias(AdicionarVisualizarAlergiaPaciente adicionarVisualizarDoencaPaciente)
+        public Alergias(AdicionarVisualizarAlergiaPaciente adicionarVisualizarAlergiaPaciente)
         {
             InitializeComponent();
-            adicionar = adicionarVisualizarDoencaPaciente;
+            adicionar = adicionarVisualizarAlergiaPaciente;
         }
 
         private void Alergias_Load(object sender, EventArgs e)

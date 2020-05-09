@@ -80,11 +80,42 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             while (reader.Read())
             {
                 string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-                AvaliacaoObjetivo avaliacao = new AvaliacaoObjetivo
-                {
+
+                // string dataMestruacao = "";
+                // string var = reader["dataUltimaMestruacao"].ToString();
+                /* if (!reader["dataUltimaMestruacao"].ToString().Equals(String.Empty))
+                 {
+                     dataMestruacao = DateTime.ParseExact(reader["dataUltimaMestruacao"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                 }*/
+                //  string data = data,
+             
+       
+                    AvaliacaoObjetivo avaliacao = new AvaliacaoObjetivo
+                {           
                     data = data,
                     peso = Convert.ToDecimal(reader["peso"]),
                     altura = (int)reader["altura"],
+                    pressaoArterial = (int)reader["pressaoArterial"],
+                    frequenciaCardiaca = (int)reader["frequenciaCardiaca"],
+                    temperatura = Convert.ToDecimal(reader["temperatura"]),
+                    saturacaoOxigenio = (int)reader["saturacaoOxigenio"],
+                    //dataUltimaMestruacao = dataMestruacao,
+
+                  
+                    dataUltimaMestruacao = (reader["dataUltimaMestruacao"].ToString() == "" ? "" : DateTime.ParseExact(reader["dataUltimaMestruacao"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy")),
+
+                    menopausa = ((reader["menopausa"] == DBNull.Value) ? 0 : (int)reader["menopausa"]),
+                    IdMetodoContracetivo = ((reader["IdMetodoContracetivo"] == DBNull.Value) ? 0 : (int)reader["IdMetodoContracetivo"]),
+                    DIU = ((reader["DIU"] == DBNull.Value) ? "" : (string)reader["DIU"]),
+                    concentracaoGlicoseSangue = ((reader["concentracaoGlicoseSangue"] == DBNull.Value) ? 0 : (int)reader["concentracaoGlicoseSangue"]),
+                    AC = ((reader["AC"] == DBNull.Value) ? 0 : (int)reader["AC"]),
+                    AP = ((reader["AP"] == DBNull.Value) ? 0 : (int)reader["AP"]),
+                    INR = ((reader["INR"] == DBNull.Value) ? 0 : (int)reader["INR"]),
+                    Menarca = ((reader["Menarca"] == DBNull.Value) ? 0 : (int)reader["Menarca"]),
+                    gravidez = ((reader["gravidez"] == DBNull.Value) ? 0 : (int)reader["gravidez"]),
+                    filhosVivos = ((reader["filhosVivos"] == DBNull.Value) ? 0 : (int)reader["filhosVivos"]),
+                    abortos = ((reader["abortos"] == DBNull.Value) ? 0 : (int)reader["abortos"]),
+                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
                 };
                 avaliacao.IMC = Math.Round(avaliacao.peso / (Convert.ToDecimal(avaliacao.altura * avaliacao.altura) / 10000), 2);
                 listaAvaliacaoObjetivo.Add(avaliacao);
@@ -100,6 +131,38 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewAvaliacaoObjetivo.Columns[1].HeaderText = "Peso (KG)";
             dataGridViewAvaliacaoObjetivo.Columns[2].HeaderText = "Altura (cm)";
             dataGridViewAvaliacaoObjetivo.Columns[3].HeaderText = "IMC";
+            dataGridViewAvaliacaoObjetivo.Columns[4].HeaderText = "Pressão Arterial";
+            dataGridViewAvaliacaoObjetivo.Columns[5].HeaderText = "Frequência Cardiaca";
+            dataGridViewAvaliacaoObjetivo.Columns[6].HeaderText = "Temperatura";
+            dataGridViewAvaliacaoObjetivo.Columns[7].HeaderText = "Saturação Oxigénio";
+            dataGridViewAvaliacaoObjetivo.Columns[8].HeaderText = "Data Última Mestruação";
+            dataGridViewAvaliacaoObjetivo.Columns[9].HeaderText = "Menopausa (idade)";
+            dataGridViewAvaliacaoObjetivo.Columns[10].HeaderText = "Método Contracetivo";
+            dataGridViewAvaliacaoObjetivo.Columns[11].HeaderText = "DIU";
+            dataGridViewAvaliacaoObjetivo.Columns[12].HeaderText = "BMT";
+            dataGridViewAvaliacaoObjetivo.Columns[13].HeaderText = "AC";
+            dataGridViewAvaliacaoObjetivo.Columns[14].HeaderText = "AP";
+            dataGridViewAvaliacaoObjetivo.Columns[15].HeaderText = "INR";
+            dataGridViewAvaliacaoObjetivo.Columns[16].HeaderText = "Menarca (idade)";
+            dataGridViewAvaliacaoObjetivo.Columns[17].HeaderText = "Gravidezes";
+            dataGridViewAvaliacaoObjetivo.Columns[18].HeaderText = "Filhos Vivos";
+            dataGridViewAvaliacaoObjetivo.Columns[19].HeaderText = "Abortos";
+            dataGridViewAvaliacaoObjetivo.Columns[20].HeaderText = "Observacoes";
+            if (!paciente.Sexo.Equals("Feminino"))
+            {
+                dataGridViewAvaliacaoObjetivo.Columns[8].Visible = false; 
+                dataGridViewAvaliacaoObjetivo.Columns[9].Visible = false;
+                dataGridViewAvaliacaoObjetivo.Columns[10].Visible = false;
+                dataGridViewAvaliacaoObjetivo.Columns[11].Visible = false;
+                dataGridViewAvaliacaoObjetivo.Columns[12].Visible = false;
+                dataGridViewAvaliacaoObjetivo.Columns[13].Visible = false;
+                dataGridViewAvaliacaoObjetivo.Columns[14].Visible = false;
+                dataGridViewAvaliacaoObjetivo.Columns[15].Visible = false;
+                dataGridViewAvaliacaoObjetivo.Columns[16].Visible = false;
+                dataGridViewAvaliacaoObjetivo.Columns[17].Visible = false;
+                dataGridViewAvaliacaoObjetivo.Columns[18].Visible = false;
+                dataGridViewAvaliacaoObjetivo.Columns[19].Visible = false;
+            }
         }
     }
 }

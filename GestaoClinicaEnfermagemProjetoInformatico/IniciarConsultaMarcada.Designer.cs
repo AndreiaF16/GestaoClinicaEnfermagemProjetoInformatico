@@ -495,7 +495,7 @@
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.Black;
             this.button7.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button7.Location = new System.Drawing.Point(5, 351);
+            this.button7.Location = new System.Drawing.Point(5, 331);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -516,7 +516,7 @@
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.Black;
             this.button6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button6.Location = new System.Drawing.Point(5, 289);
+            this.button6.Location = new System.Drawing.Point(5, 273);
             this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -537,7 +537,7 @@
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.Black;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.Location = new System.Drawing.Point(5, 225);
+            this.button5.Location = new System.Drawing.Point(5, 213);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -558,7 +558,7 @@
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.Black;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.Location = new System.Drawing.Point(5, 161);
+            this.button4.Location = new System.Drawing.Point(5, 153);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -579,7 +579,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.Location = new System.Drawing.Point(5, 99);
+            this.button2.Location = new System.Drawing.Point(5, 95);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -713,13 +713,14 @@
             // 
             this.btnLocalizacaoDor.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnLocalizacaoDor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLocalizacaoDor.ForeColor = System.Drawing.Color.Black;
             this.btnLocalizacaoDor.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_homem_de_pé_50;
             this.btnLocalizacaoDor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLocalizacaoDor.Location = new System.Drawing.Point(255, 143);
             this.btnLocalizacaoDor.Name = "btnLocalizacaoDor";
             this.btnLocalizacaoDor.Size = new System.Drawing.Size(213, 63);
             this.btnLocalizacaoDor.TabIndex = 20;
-            this.btnLocalizacaoDor.Text = "Localização/Irradiacao";
+            this.btnLocalizacaoDor.Text = "Localização/Irradiação";
             this.btnLocalizacaoDor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLocalizacaoDor.UseVisualStyleBackColor = false;
             this.btnLocalizacaoDor.Click += new System.EventHandler(this.btnLocalizacaoDor_Click);

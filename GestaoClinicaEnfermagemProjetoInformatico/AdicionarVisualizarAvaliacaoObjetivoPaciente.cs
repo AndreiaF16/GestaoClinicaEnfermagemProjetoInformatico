@@ -17,6 +17,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
         private List<AvaliacaoObjetivo> avaliacaoObjetivo = new List<AvaliacaoObjetivo>();
+        private List<ComboBoxItem> metodosContracetivos = new List<ComboBoxItem>();
+        private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
 
         public AdicionarVisualizarAvaliacaoObjetivoPaciente(Paciente pac)
         {
@@ -24,19 +26,38 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             paciente = pac;
             label1.Text = "Nome do Paciente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            dataAvaliacaoObjetivo.Value = DateTime.Now;
         }
 
+        public void reiniciar()
+        {
+            metodosContracetivos.Clear();
+            comboBoxMetodoContracetivo.Items.Clear();
+            auxiliar.Clear();
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select * from MetodoContracetivo ", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Text = (string)reader["nomeMetodoContracetivo"];
+                item.Value = (int)reader["IdMetodoContracetivo"];
+                comboBoxMetodoContracetivo.Items.Add(item);
+                metodosContracetivos.Add(item);
+            }
 
+            conn.Close();
+        }
         private void AdicionarVisualizarAvaliacaoObjetivoPaciente_Load(object sender, EventArgs e)
         {
-           // UpdateDataGridView();
-            dataAvaliacaoObjetivo.Value = DateTime.Now;
+            // UpdateDataGridView();
+            reiniciar();
+            
 
             if (paciente.Sexo.Equals("Feminino")) 
             {
-                lblPA.Visible = true;
-                txtPA.Visible = true;
-                lblCMPA.Visible = true;
+            
                 lblINR.Visible = true;
                 upDownINR.Visible = true;
                 lblUltimaMestruacao.Visible = true;
@@ -114,19 +135,85 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             else
             {
                 DateTime data = dataAvaliacaoObjetivo.Value;
+                DateTime dataUltimaMestruacao = dataUltimaMenstruacao.Value;
+
                 int altura = Convert.ToInt16(UpDownAltura.Text);
                 decimal peso = Convert.ToDecimal(UpDownPeso.Text);
                 float ba = Convert.ToSingle(UpDownPeso.Text);
+                int metodoContracetivo = -1;
+                string DIU = "";
+
+                if (paciente.Sexo == "Feminino"){
+                    metodoContracetivo = (comboBoxMetodoContracetivo.SelectedItem as ComboBoxItem).Value;
+
+                    
+                    if (radioButtonSim.Checked == true)
+                    {
+                        DIU = "Sim";
+                    }
+                    if (radioButtonNao.Checked == true)
+                    {
+                        DIU = "Não";
+                    } 
+                }
+
 
                 try
                 {
                     conn.Open();
-                    string queryInsertData = "INSERT INTO AvaliacaoObjetivo(data,peso,altura,IdPaciente) VALUES(@data, @peso, @altura, @IdPaciente);";
+                    string queryInsertData = "INSERT INTO AvaliacaoObjetivo(data,peso,altura,IdPaciente,pressaoArterial,frequenciaCardiaca,temperatura,saturacaoOxigenio,dataUltimaMestruacao,menopausa,IdMetodoContracetivo,DIU,concentracaoGlicoseSangue,AC,AP,INR,Menarca,gravidez,filhosVivos,abortos,observacoes) VALUES(@data, @peso, @altura, @IdPaciente, @pressaoArterial, @frequenciaCardiaca, @temperatura, @saturacaoOxigenio, @dataUltimaMestruacao, @menopausa, @IdMetodoContracetivo, @DIU, @concentracaoGlicoseSangue, @AC, @AP, @INR, @Menarca, @gravidez, @filhosVivos, @abortos, @observacoes); ";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.Parameters.AddWithValue("@data", data.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@peso", UpDownPeso.Value);
                     sqlCommand.Parameters.AddWithValue("@altura", UpDownAltura.Value);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                    sqlCommand.Parameters.AddWithValue("@pressaoArterial", txtTensaoArterial.Text);
+                    sqlCommand.Parameters.AddWithValue("@frequenciaCardiaca", txtFC.Text);
+                    sqlCommand.Parameters.AddWithValue("@temperatura", numericUpDownTemperatura.Value);
+                    sqlCommand.Parameters.AddWithValue("@saturacaoOxigenio", txtSPO2.Text);
+                    //sqlCommand.Parameters.AddWithValue("@dataUltimaMestruacao", dataUltimaMestruacao.ToString("MM/dd/yyyy"));
+
+                    if (paciente.Sexo == "Feminino")
+                    {
+                        sqlCommand.Parameters.AddWithValue("@dataUltimaMestruacao", dataUltimaMestruacao.ToString("MM/dd/yyyy"));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@dataUltimaMestruacao", DBNull.Value);
+                    }
+
+                    sqlCommand.Parameters.AddWithValue("@menopausa", UpDownIdadeMenopausa.Value);
+                    //sqlCommand.Parameters.AddWithValue("@IdMetodoContracetivo", metodoContracetivo);
+                   // sqlCommand.Parameters.AddWithValue("@DIU", DIU);
+
+                    if (metodoContracetivo != -1)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@IdMetodoContracetivo", Convert.ToInt32(metodoContracetivo));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@IdMetodoContracetivo", DBNull.Value);
+                    }
+
+
+                    if (DIU != String.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@DIU", Convert.ToInt32(DIU));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@DIU", DBNull.Value);
+                    }
+
+                    sqlCommand.Parameters.AddWithValue("@concentracaoGlicoseSangue", txtBMT.Text);
+                    sqlCommand.Parameters.AddWithValue("@AC", txtAC.Text);
+                    sqlCommand.Parameters.AddWithValue("@AP", txtAP.Text);
+                    sqlCommand.Parameters.AddWithValue("@INR", upDownINR.Value);
+                    sqlCommand.Parameters.AddWithValue("@Menarca", upDownMenarca.Value);
+                    sqlCommand.Parameters.AddWithValue("@gravidez", upDownGravidezes.Value);
+                    sqlCommand.Parameters.AddWithValue("@filhosVivos", upDownFilhosVivos.Value);
+                    sqlCommand.Parameters.AddWithValue("@abortos", upDownAbortos.Value);
+                    sqlCommand.Parameters.AddWithValue("@observacoes", txtObservacoes.Text);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Avaliação Objetivo registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
@@ -191,27 +278,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 MessageBox.Show("O peso e/ou a altura não podem ser inferiores a 0, por valor corriga os valores!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
-            /* conn.Open();
-             com.Connection = conn;
-
-             SqlCommand cmd = new SqlCommand("select * from AvaliacaoObjetivo WHERE IdPaciente = @IdPaciente", conn);
-             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-             SqlDataReader reader = cmd.ExecuteReader();
-             while (reader.Read())
-             {
-                 DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                 //int alergia = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
-                 if (dataAvaliacaoObjetivo.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()))
-                 {
-                     MessageBox.Show("Não é possível registar essa alergia, porque já esta registada na data que selecionou. Escolha outra data ou outra alergia!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                     conn.Close();
-                     return false;
-                 }
-
-             }
-             conn.Close();
-             return true;*/
             return true;
         }
 
@@ -241,6 +307,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             VerAvaliacaoObjetivo verAvaliacaoObjetivo = new VerAvaliacaoObjetivo(paciente);
             verAvaliacaoObjetivo.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AdicionarMetodosContracetivos metodoContracetivo = new AdicionarMetodosContracetivos(this);
+            metodoContracetivo.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ainda NÃO IMPLEMENTADO");
         }
     }
 }

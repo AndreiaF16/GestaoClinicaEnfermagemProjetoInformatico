@@ -429,5 +429,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             RegistarExames registarExames = new RegistarExames(null);
             registarExames.Show();
         }
+
+        private void btnMetodoContracetivo_Click(object sender, EventArgs e)
+        {
+            AdicionarMetodosContracetivos metodosContracetivos = new AdicionarMetodosContracetivos(null);
+            metodosContracetivos.Show();
+        }
     }
 }
