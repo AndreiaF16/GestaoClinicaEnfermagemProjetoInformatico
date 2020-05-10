@@ -48,6 +48,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdicionarTipoAleitamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarTipoAleitamento.Designer.cs">
+      <DependentUpon>AdicionarTipoAleitamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarTipoParto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarTipoParto.Designer.cs">
+      <DependentUpon>AdicionarTipoParto.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdicionarVerTipoDespesa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +174,7 @@
     <Compile Include="AdicionarMetodosContracetivos.Designer.cs">
       <DependentUpon>AdicionarMetodosContracetivos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Parto.cs" />
     <Compile Include="PopupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -422,6 +435,18 @@
     <Compile Include="VerMaisDetalhesPaciente.Designer.cs">
       <DependentUpon>VerMaisDetalhesPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerEditarPartosRegistados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerEditarPartosRegistados.Designer.cs">
+      <DependentUpon>VerEditarPartosRegistados.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdicionarTipoAleitamento.resx">
+      <DependentUpon>AdicionarTipoAleitamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarTipoParto.resx">
+      <DependentUpon>AdicionarTipoParto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdicionarVerTipoDespesa.resx">
       <DependentUpon>AdicionarVerTipoDespesa.cs</DependentUpon>
     </EmbeddedResource>
@@ -590,6 +615,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerEditarMetodosContracetivos.resx">
       <DependentUpon>VerEditarMetodosContracetivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerEditarPartosRegistados.resx">
+      <DependentUpon>VerEditarPartosRegistados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerEnfermeirosRegistados.resx">
       <DependentUpon>VerEnfermeirosRegistados.cs</DependentUpon>

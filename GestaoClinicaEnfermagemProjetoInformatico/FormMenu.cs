@@ -435,5 +435,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             AdicionarMetodosContracetivos metodosContracetivos = new AdicionarMetodosContracetivos(null);
             metodosContracetivos.Show();
         }
+
+        private void btnTipoParto_Click(object sender, EventArgs e)
+        {
+            AdicionarTipoParto adicionarTipoParto = new AdicionarTipoParto(null);
+            adicionarTipoParto.Show();
+        }
     }
 }

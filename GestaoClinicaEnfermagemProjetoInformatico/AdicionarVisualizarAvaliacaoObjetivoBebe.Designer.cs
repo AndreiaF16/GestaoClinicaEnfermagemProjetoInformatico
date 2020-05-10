@@ -30,27 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdicionarVisualizarAvaliacaoObjetivoBebe));
-            this.lblCMPA = new System.Windows.Forms.Label();
-            this.txtPA = new System.Windows.Forms.TextBox();
-            this.lblPA = new System.Windows.Forms.Label();
             this.panelTitulo = new System.Windows.Forms.Panel();
             this.lblDia = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
-            this.btnMaximizar = new System.Windows.Forms.PictureBox();
-            this.fechar = new System.Windows.Forms.PictureBox();
-            this.btnFechar = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.txtObservacoes = new System.Windows.Forms.TextBox();
             this.lblObservacoes = new System.Windows.Forms.Label();
-            this.txtTerapeutica = new System.Windows.Forms.TextBox();
             this.lblTerapeutica = new System.Windows.Forms.Label();
             this.upDownINR = new System.Windows.Forms.NumericUpDown();
             this.lblINR = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAleitamento = new System.Windows.Forms.TextBox();
@@ -60,9 +49,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.cbTipoParto = new System.Windows.Forms.ComboBox();
             this.groupBoxPartoDistocico = new System.Windows.Forms.GroupBox();
@@ -110,14 +98,20 @@
             this.lblPeso = new System.Windows.Forms.Label();
             this.lblDataAvaliacaoObjetivo = new System.Windows.Forms.Label();
             this.dataAvaliacaoObjetivo = new System.Windows.Forms.DateTimePicker();
+            this.btnTipoAleitamento = new System.Windows.Forms.Button();
+            this.btnTipoParto = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnMaximizar = new System.Windows.Forms.PictureBox();
+            this.fechar = new System.Windows.Forms.PictureBox();
+            this.btnFechar = new System.Windows.Forms.PictureBox();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.panelTitulo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fechar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownINR)).BeginInit();
             this.panelMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -131,37 +125,12 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownAltura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownPeso)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fechar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblCMPA
-            // 
-            this.lblCMPA.AutoSize = true;
-            this.lblCMPA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCMPA.ForeColor = System.Drawing.Color.Black;
-            this.lblCMPA.Location = new System.Drawing.Point(571, 423);
-            this.lblCMPA.Name = "lblCMPA";
-            this.lblCMPA.Size = new System.Drawing.Size(30, 20);
-            this.lblCMPA.TabIndex = 104;
-            this.lblCMPA.Text = "cm";
-            // 
-            // txtPA
-            // 
-            this.txtPA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPA.Location = new System.Drawing.Point(338, 420);
-            this.txtPA.Name = "txtPA";
-            this.txtPA.Size = new System.Drawing.Size(216, 26);
-            this.txtPA.TabIndex = 103;
-            // 
-            // lblPA
-            // 
-            this.lblPA.AutoSize = true;
-            this.lblPA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPA.ForeColor = System.Drawing.Color.Black;
-            this.lblPA.Location = new System.Drawing.Point(25, 423);
-            this.lblPA.Name = "lblPA";
-            this.lblPA.Size = new System.Drawing.Size(34, 20);
-            this.lblPA.TabIndex = 102;
-            this.lblPA.Text = "PA:";
             // 
             // panelTitulo
             // 
@@ -201,47 +170,6 @@
             this.lblHora.TabIndex = 9;
             this.lblHora.Text = "label1";
             // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(1330, 11);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMaximizar.TabIndex = 7;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
-            // 
-            // fechar
-            // 
-            this.fechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.fechar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.fechar.Image = ((System.Drawing.Image)(resources.GetObject("fechar.Image")));
-            this.fechar.Location = new System.Drawing.Point(1350, 11);
-            this.fechar.Margin = new System.Windows.Forms.Padding(2);
-            this.fechar.Name = "fechar";
-            this.fechar.Size = new System.Drawing.Size(16, 16);
-            this.fechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fechar.TabIndex = 8;
-            this.fechar.TabStop = false;
-            this.fechar.Click += new System.EventHandler(this.fechar_Click);
-            // 
-            // btnFechar
-            // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
-            this.btnFechar.Location = new System.Drawing.Point(1626, 11);
-            this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(16, 16);
-            this.btnFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnFechar.TabIndex = 7;
-            this.btnFechar.TabStop = false;
-            // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
@@ -253,27 +181,13 @@
             this.lblTitulo.TabIndex = 6;
             this.lblTitulo.Text = "Siltes Saúde - Clinica de Enfermagem";
             // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(1314, 11);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimizar.TabIndex = 3;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            // 
             // txtObservacoes
             // 
             this.txtObservacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObservacoes.Location = new System.Drawing.Point(137, 485);
+            this.txtObservacoes.Location = new System.Drawing.Point(137, 466);
             this.txtObservacoes.Multiline = true;
             this.txtObservacoes.Name = "txtObservacoes";
-            this.txtObservacoes.Size = new System.Drawing.Size(522, 106);
+            this.txtObservacoes.Size = new System.Drawing.Size(522, 125);
             this.txtObservacoes.TabIndex = 91;
             // 
             // lblObservacoes
@@ -281,19 +195,11 @@
             this.lblObservacoes.AutoSize = true;
             this.lblObservacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblObservacoes.ForeColor = System.Drawing.Color.Black;
-            this.lblObservacoes.Location = new System.Drawing.Point(25, 485);
+            this.lblObservacoes.Location = new System.Drawing.Point(25, 469);
             this.lblObservacoes.Name = "lblObservacoes";
             this.lblObservacoes.Size = new System.Drawing.Size(106, 20);
             this.lblObservacoes.TabIndex = 90;
             this.lblObservacoes.Text = "Observações:";
-            // 
-            // txtTerapeutica
-            // 
-            this.txtTerapeutica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTerapeutica.Location = new System.Drawing.Point(338, 381);
-            this.txtTerapeutica.Name = "txtTerapeutica";
-            this.txtTerapeutica.Size = new System.Drawing.Size(216, 26);
-            this.txtTerapeutica.TabIndex = 89;
             // 
             // lblTerapeutica
             // 
@@ -332,6 +238,8 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.panelMenu.Controls.Add(this.btnTipoParto);
+            this.panelMenu.Controls.Add(this.btnTipoAleitamento);
             this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.btnVoltar);
             this.panelMenu.Controls.Add(this.pictureBox2);
@@ -340,56 +248,6 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(232, 748);
             this.panelMenu.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_visível_50;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.Location = new System.Drawing.Point(0, 116);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(230, 76);
-            this.button1.TabIndex = 52;
-            this.button1.Text = "Ver Avaliações Objetivo Anteriores";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
-            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVoltar.Location = new System.Drawing.Point(0, 652);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
-            this.btnVoltar.TabIndex = 5;
-            this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnVoltar.UseVisualStyleBackColor = false;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
             // 
             // label2
             // 
@@ -457,7 +315,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(25, 456);
+            this.label6.Location = new System.Drawing.Point(25, 432);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 20);
             this.label6.TabIndex = 67;
@@ -489,49 +347,10 @@
             this.panelFormulario.Size = new System.Drawing.Size(1153, 748);
             this.panelFormulario.TabIndex = 2;
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button2.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_cancelar_501;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(652, 667);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(228, 50);
-            this.button2.TabIndex = 57;
-            this.button2.Text = "Cancelar";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button3.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_guardar_todos_50;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button3.Location = new System.Drawing.Point(188, 667);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button3.Size = new System.Drawing.Size(342, 50);
-            this.button3.TabIndex = 56;
-            this.button3.Text = "                Registar Avaliação Objetivo";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.groupBox9);
             this.groupBox1.Controls.Add(this.groupBoxPartoDistocico);
             this.groupBox1.Controls.Add(this.groupBox7);
@@ -542,12 +361,8 @@
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.lblCMPC);
             this.groupBox1.Controls.Add(this.txtPC);
-            this.groupBox1.Controls.Add(this.lblCMPA);
-            this.groupBox1.Controls.Add(this.txtPA);
-            this.groupBox1.Controls.Add(this.lblPA);
             this.groupBox1.Controls.Add(this.txtObservacoes);
             this.groupBox1.Controls.Add(this.lblObservacoes);
-            this.groupBox1.Controls.Add(this.txtTerapeutica);
             this.groupBox1.Controls.Add(this.lblTerapeutica);
             this.groupBox1.Controls.Add(this.upDownINR);
             this.groupBox1.Controls.Add(this.lblINR);
@@ -583,6 +398,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registar Avaliação Objetivo do Bebé";
             // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.Black;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button4.Location = new System.Drawing.Point(314, 378);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Name = "button4";
+            this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button4.Size = new System.Drawing.Size(280, 28);
+            this.button4.TabIndex = 128;
+            this.button4.Text = "Botao Ver Terapeuticas todas";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.cbTipoParto);
@@ -597,10 +429,6 @@
             // cbTipoParto
             // 
             this.cbTipoParto.FormattingEnabled = true;
-            this.cbTipoParto.Items.AddRange(new object[] {
-            "Eutócico",
-            "Distócico",
-            "Cesariana"});
             this.cbTipoParto.Location = new System.Drawing.Point(15, 21);
             this.cbTipoParto.Name = "cbTipoParto";
             this.cbTipoParto.Size = new System.Drawing.Size(201, 28);
@@ -892,7 +720,7 @@
             this.lblCMPC.AutoSize = true;
             this.lblCMPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCMPC.ForeColor = System.Drawing.Color.Black;
-            this.lblCMPC.Location = new System.Drawing.Point(571, 453);
+            this.lblCMPC.Location = new System.Drawing.Point(571, 427);
             this.lblCMPC.Name = "lblCMPC";
             this.lblCMPC.Size = new System.Drawing.Size(30, 20);
             this.lblCMPC.TabIndex = 106;
@@ -901,7 +729,7 @@
             // txtPC
             // 
             this.txtPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPC.Location = new System.Drawing.Point(338, 450);
+            this.txtPC.Location = new System.Drawing.Point(338, 427);
             this.txtPC.Name = "txtPC";
             this.txtPC.Size = new System.Drawing.Size(216, 26);
             this.txtPC.TabIndex = 105;
@@ -1115,6 +943,185 @@
             this.dataAvaliacaoObjetivo.TabIndex = 15;
             this.dataAvaliacaoObjetivo.Value = new System.DateTime(2020, 4, 29, 0, 0, 0, 0);
             // 
+            // btnTipoAleitamento
+            // 
+            this.btnTipoAleitamento.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnTipoAleitamento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTipoAleitamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTipoAleitamento.ForeColor = System.Drawing.Color.Black;
+            this.btnTipoAleitamento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTipoAleitamento.Location = new System.Drawing.Point(0, 190);
+            this.btnTipoAleitamento.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTipoAleitamento.Name = "btnTipoAleitamento";
+            this.btnTipoAleitamento.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnTipoAleitamento.Size = new System.Drawing.Size(229, 67);
+            this.btnTipoAleitamento.TabIndex = 61;
+            this.btnTipoAleitamento.Text = "Adicionar Tipo Aleitamento";
+            this.btnTipoAleitamento.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnTipoAleitamento.UseVisualStyleBackColor = false;
+            // 
+            // btnTipoParto
+            // 
+            this.btnTipoParto.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnTipoParto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTipoParto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTipoParto.ForeColor = System.Drawing.Color.Black;
+            this.btnTipoParto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTipoParto.Location = new System.Drawing.Point(0, 256);
+            this.btnTipoParto.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTipoParto.Name = "btnTipoParto";
+            this.btnTipoParto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnTipoParto.Size = new System.Drawing.Size(229, 67);
+            this.btnTipoParto.TabIndex = 62;
+            this.btnTipoParto.Text = "Adicionar Tipo Parto";
+            this.btnTipoParto.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnTipoParto.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button2.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_cancelar_501;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button2.Location = new System.Drawing.Point(652, 667);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button2.Size = new System.Drawing.Size(228, 50);
+            this.button2.TabIndex = 57;
+            this.button2.Text = "Cancelar";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button3.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_guardar_todos_50;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button3.Location = new System.Drawing.Point(188, 667);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button3.Size = new System.Drawing.Size(342, 50);
+            this.button3.TabIndex = 56;
+            this.button3.Text = "                Registar Avaliação Objetivo";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_visível_50;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(0, 116);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(230, 76);
+            this.button1.TabIndex = 52;
+            this.button1.Text = "Ver Avaliações Objetivo Anteriores";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
+            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnVoltar.Location = new System.Drawing.Point(0, 652);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
+            this.btnVoltar.TabIndex = 5;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnVoltar.UseVisualStyleBackColor = false;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnMaximizar
+            // 
+            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
+            this.btnMaximizar.Location = new System.Drawing.Point(1330, 11);
+            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
+            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMaximizar.TabIndex = 7;
+            this.btnMaximizar.TabStop = false;
+            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            // 
+            // fechar
+            // 
+            this.fechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.fechar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.fechar.Image = ((System.Drawing.Image)(resources.GetObject("fechar.Image")));
+            this.fechar.Location = new System.Drawing.Point(1350, 11);
+            this.fechar.Margin = new System.Windows.Forms.Padding(2);
+            this.fechar.Name = "fechar";
+            this.fechar.Size = new System.Drawing.Size(16, 16);
+            this.fechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.fechar.TabIndex = 8;
+            this.fechar.TabStop = false;
+            this.fechar.Click += new System.EventHandler(this.fechar_Click);
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
+            this.btnFechar.Location = new System.Drawing.Point(1626, 11);
+            this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(16, 16);
+            this.btnFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnFechar.TabIndex = 7;
+            this.btnFechar.TabStop = false;
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
+            this.btnMinimizar.Location = new System.Drawing.Point(1314, 11);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizar.TabIndex = 3;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
             // AdicionarVisualizarAvaliacaoObjetivoBebe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1127,13 +1134,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fechar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownINR)).EndInit();
             this.panelMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.painelPrincipal.ResumeLayout(false);
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
@@ -1155,6 +1157,11 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UpDownAltura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownPeso)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fechar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1162,9 +1169,6 @@
         #endregion
         private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label lblCMPA;
-        private System.Windows.Forms.TextBox txtPA;
-        private System.Windows.Forms.Label lblPA;
         private System.Windows.Forms.Panel panelTitulo;
         private System.Windows.Forms.Label lblDia;
         private System.Windows.Forms.Label lblHora;
@@ -1175,7 +1179,6 @@
         private System.Windows.Forms.PictureBox btnMinimizar;
         private System.Windows.Forms.TextBox txtObservacoes;
         private System.Windows.Forms.Label lblObservacoes;
-        private System.Windows.Forms.TextBox txtTerapeutica;
         private System.Windows.Forms.Label lblTerapeutica;
         private System.Windows.Forms.NumericUpDown upDownINR;
         private System.Windows.Forms.Label lblINR;
@@ -1240,5 +1243,8 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnTipoParto;
+        private System.Windows.Forms.Button btnTipoAleitamento;
     }
 }

@@ -11,21 +11,26 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class RegistarExames : Form
+    public partial class AdicionarTipoParto : Form
     {
-        public RegistarExames(AdicionarVisualizarExamePaciente adicionarVisualizarExamePaciente)
+
+        AdicionarVisualizarAvaliacaoObjetivoBebe adicionar = null;
+
+        public AdicionarTipoParto(AdicionarVisualizarAvaliacaoObjetivoBebe avaliacaoBebe)
         {
             InitializeComponent();
+            adicionar = avaliacaoBebe;
         }
 
-        private void RegistarExames_Load(object sender, EventArgs e)
+        private void AdicionarTipoParto_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void btnVoltar_Click(object sender, EventArgs e)
+        private void hora_Tick(object sender, EventArgs e)
         {
-            this.Close();
+            lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
+            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -54,16 +59,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void hora_Tick(object sender, EventArgs e)
+        private void btnVoltar_Click(object sender, EventArgs e)
         {
-            lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
-            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+          /*  if (adicionar != null)
+            {
+                adicionar.reiniciar();
+            }*/
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            VerExamesRegistados verExamesRegistados = new VerExamesRegistados();
-            verExamesRegistados.Show();
+            VerEditarPartosRegistados verEditarPartosRegistados = new VerEditarPartosRegistados();
+            verEditarPartosRegistados.Show();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -74,49 +82,39 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             else
             {
-                string nome = txtNome.Text;
-                string categoria = txtCategoria.Text;
-                string designacao = txtDesignacao.Text;
+                string tipoParto = txtTipoParto.Text;
+                string observacao = txtObservações.Text;
                 try
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO tipoExame(nome,categoria,designacao) VALUES(@nome,@categoria,@designacao);";
+                    string queryInsertData = "INSERT INTO Parto(tipoParto,Observacoes) VALUES(@tipoParto,@observacao);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.Parameters.AddWithValue("@nome", nome);
-                    sqlCommand.Parameters.AddWithValue("@categoria", categoria);
-                    sqlCommand.Parameters.AddWithValue("@designacao", designacao);
+                    sqlCommand.Parameters.AddWithValue("@tipoParto", tipoParto);
+                    sqlCommand.Parameters.AddWithValue("@observacao", observacao);
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Exame registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Tipo de Parto registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show("Erro interno, não foi possível registar o exame!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível registar o tipo de parto!", excep.Message);
                 }
             }
         }
 
         private Boolean VerificarDadosInseridos()
         {
-            string nome = txtNome.Text;
-            string categoria = txtCategoria.Text;
-            string designacao = txtDesignacao.Text;
+            string tipoParto = txtTipoParto.Text;
 
-
-            if (nome == string.Empty || categoria == string.Empty || designacao == string.Empty)
+            if (tipoParto == string.Empty)
             {
-                MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campo Obrigatório, por favor preencha o campo tipo de parto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
             return true;
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
