@@ -61,7 +61,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-          /*  if (adicionar != null)
+          /* if (adicionar != null)
             {
                 adicionar.reiniciar();
             }*/

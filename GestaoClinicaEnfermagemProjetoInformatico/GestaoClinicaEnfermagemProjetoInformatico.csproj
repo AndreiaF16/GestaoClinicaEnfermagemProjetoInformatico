@@ -108,6 +108,7 @@
     <Compile Include="AdicionarVisualizarProdutosStockConsulta.Designer.cs">
       <DependentUpon>AdicionarVisualizarProdutosStockConsulta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Aleitamento.cs" />
     <Compile Include="Alergia.cs" />
     <Compile Include="Alergias.cs">
       <SubType>Form</SubType>
@@ -116,6 +117,7 @@
       <DependentUpon>Alergias.cs</DependentUpon>
     </Compile>
     <Compile Include="AvaliacaoObjetivo.cs" />
+    <Compile Include="AvaliacaoObjetivoBebe.cs" />
     <Compile Include="Cirurgia.cs" />
     <Compile Include="CirurgiaPaciente.cs" />
     <Compile Include="Cirurgias.cs">
@@ -409,6 +411,12 @@
     <Compile Include="VerDoencasRegistadas.Designer.cs">
       <DependentUpon>VerDoencasRegistadas.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerEditarAleitamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerEditarAleitamento.Designer.cs">
+      <DependentUpon>VerEditarAleitamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerEditarMetodosContracetivos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -612,6 +620,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerDoencasRegistadas.resx">
       <DependentUpon>VerDoencasRegistadas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerEditarAleitamento.resx">
+      <DependentUpon>VerEditarAleitamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerEditarMetodosContracetivos.resx">
       <DependentUpon>VerEditarMetodosContracetivos.cs</DependentUpon>

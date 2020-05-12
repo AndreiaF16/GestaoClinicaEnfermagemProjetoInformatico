@@ -81,6 +81,11 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.painelPrincipal = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtDiagnostico = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -93,6 +98,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.painelPrincipal.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblEscala
@@ -110,7 +116,7 @@
             // txtValorConsulta
             // 
             this.txtValorConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorConsulta.Location = new System.Drawing.Point(898, 552);
+            this.txtValorConsulta.Location = new System.Drawing.Point(178, 33);
             this.txtValorConsulta.Name = "txtValorConsulta";
             this.txtValorConsulta.Size = new System.Drawing.Size(114, 26);
             this.txtValorConsulta.TabIndex = 24;
@@ -121,11 +127,11 @@
             this.lblCustoConsulta.AutoSize = true;
             this.lblCustoConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustoConsulta.ForeColor = System.Drawing.Color.Black;
-            this.lblCustoConsulta.Location = new System.Drawing.Point(894, 529);
+            this.lblCustoConsulta.Location = new System.Drawing.Point(6, 39);
             this.lblCustoConsulta.Name = "lblCustoConsulta";
-            this.lblCustoConsulta.Size = new System.Drawing.Size(132, 20);
+            this.lblCustoConsulta.Size = new System.Drawing.Size(157, 20);
             this.lblCustoConsulta.TabIndex = 23;
-            this.lblCustoConsulta.Text = "Valor Consulta:";
+            this.lblCustoConsulta.Text = "Valor da Consulta:";
             // 
             // lblDia
             // 
@@ -396,7 +402,7 @@
             this.lblSinais.AutoSize = true;
             this.lblSinais.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSinais.ForeColor = System.Drawing.Color.Black;
-            this.lblSinais.Location = new System.Drawing.Point(35, 315);
+            this.lblSinais.Location = new System.Drawing.Point(19, 225);
             this.lblSinais.Name = "lblSinais";
             this.lblSinais.Size = new System.Drawing.Size(56, 20);
             this.lblSinais.TabIndex = 6;
@@ -405,19 +411,19 @@
             // txtSinais
             // 
             this.txtSinais.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSinais.Location = new System.Drawing.Point(146, 263);
+            this.txtSinais.Location = new System.Drawing.Point(146, 225);
             this.txtSinais.Multiline = true;
             this.txtSinais.Name = "txtSinais";
-            this.txtSinais.Size = new System.Drawing.Size(458, 116);
+            this.txtSinais.Size = new System.Drawing.Size(526, 76);
             this.txtSinais.TabIndex = 5;
             // 
             // txtSintomatologia
             // 
             this.txtSintomatologia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSintomatologia.Location = new System.Drawing.Point(146, 151);
+            this.txtSintomatologia.Location = new System.Drawing.Point(146, 125);
             this.txtSintomatologia.Multiline = true;
             this.txtSintomatologia.Name = "txtSintomatologia";
-            this.txtSintomatologia.Size = new System.Drawing.Size(458, 103);
+            this.txtSintomatologia.Size = new System.Drawing.Size(526, 76);
             this.txtSintomatologia.TabIndex = 4;
             // 
             // lblSintomatologia
@@ -425,7 +431,7 @@
             this.lblSintomatologia.AutoSize = true;
             this.lblSintomatologia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSintomatologia.ForeColor = System.Drawing.Color.Black;
-            this.lblSintomatologia.Location = new System.Drawing.Point(6, 198);
+            this.lblSintomatologia.Location = new System.Drawing.Point(11, 125);
             this.lblSintomatologia.Name = "lblSintomatologia";
             this.lblSintomatologia.Size = new System.Drawing.Size(119, 20);
             this.lblSintomatologia.TabIndex = 3;
@@ -436,7 +442,7 @@
             this.lblHistoriaAtual.AutoSize = true;
             this.lblHistoriaAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHistoriaAtual.ForeColor = System.Drawing.Color.Black;
-            this.lblHistoriaAtual.Location = new System.Drawing.Point(9, 75);
+            this.lblHistoriaAtual.Location = new System.Drawing.Point(11, 19);
             this.lblHistoriaAtual.Name = "lblHistoriaAtual";
             this.lblHistoriaAtual.Size = new System.Drawing.Size(108, 20);
             this.lblHistoriaAtual.TabIndex = 2;
@@ -448,20 +454,18 @@
             this.txtHistoriaAtual.Location = new System.Drawing.Point(146, 19);
             this.txtHistoriaAtual.Multiline = true;
             this.txtHistoriaAtual.Name = "txtHistoriaAtual";
-            this.txtHistoriaAtual.Size = new System.Drawing.Size(458, 119);
+            this.txtHistoriaAtual.Size = new System.Drawing.Size(526, 76);
             this.txtHistoriaAtual.TabIndex = 1;
             // 
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.groupBox4);
+            this.panelFormulario.Controls.Add(this.label3);
             this.panelFormulario.Controls.Add(this.groupBox3);
             this.panelFormulario.Controls.Add(this.groupBox2);
             this.panelFormulario.Controls.Add(this.groupBox1);
             this.panelFormulario.Controls.Add(this.label1);
-            this.panelFormulario.Controls.Add(this.btnCancelar);
-            this.panelFormulario.Controls.Add(this.btnGuardar);
-            this.panelFormulario.Controls.Add(this.txtValorConsulta);
-            this.panelFormulario.Controls.Add(this.lblCustoConsulta);
             this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFormulario.Location = new System.Drawing.Point(232, 40);
             this.panelFormulario.Name = "panelFormulario";
@@ -471,6 +475,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox3.Controls.Add(this.button8);
             this.groupBox3.Controls.Add(this.button7);
             this.groupBox3.Controls.Add(this.button6);
             this.groupBox3.Controls.Add(this.button5);
@@ -495,7 +500,7 @@
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.Black;
             this.button7.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button7.Location = new System.Drawing.Point(5, 331);
+            this.button7.Location = new System.Drawing.Point(5, 313);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -516,7 +521,7 @@
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.Black;
             this.button6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button6.Location = new System.Drawing.Point(5, 273);
+            this.button6.Location = new System.Drawing.Point(5, 255);
             this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -537,7 +542,7 @@
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.Black;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.Location = new System.Drawing.Point(5, 213);
+            this.button5.Location = new System.Drawing.Point(5, 195);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -558,7 +563,7 @@
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.Black;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.Location = new System.Drawing.Point(5, 153);
+            this.button4.Location = new System.Drawing.Point(5, 135);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -579,7 +584,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.Location = new System.Drawing.Point(5, 95);
+            this.button2.Location = new System.Drawing.Point(5, 77);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -600,7 +605,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.Location = new System.Drawing.Point(5, 37);
+            this.button1.Location = new System.Drawing.Point(5, 19);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -615,6 +620,8 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox2.Controls.Add(this.txtDiagnostico);
+            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.lblHistoriaAtual);
             this.groupBox2.Controls.Add(this.txtHistoriaAtual);
             this.groupBox2.Controls.Add(this.lblSintomatologia);
@@ -716,9 +723,9 @@
             this.btnLocalizacaoDor.ForeColor = System.Drawing.Color.Black;
             this.btnLocalizacaoDor.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_homem_de_pé_50;
             this.btnLocalizacaoDor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLocalizacaoDor.Location = new System.Drawing.Point(255, 143);
+            this.btnLocalizacaoDor.Location = new System.Drawing.Point(227, 141);
             this.btnLocalizacaoDor.Name = "btnLocalizacaoDor";
-            this.btnLocalizacaoDor.Size = new System.Drawing.Size(213, 63);
+            this.btnLocalizacaoDor.Size = new System.Drawing.Size(244, 63);
             this.btnLocalizacaoDor.TabIndex = 20;
             this.btnLocalizacaoDor.Text = "Localização/Irradiação";
             this.btnLocalizacaoDor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -741,7 +748,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label1.Location = new System.Drawing.Point(6, 3);
+            this.label1.Location = new System.Drawing.Point(468, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 25);
             this.label1.TabIndex = 0;
@@ -750,17 +757,17 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnCancelar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._91025699_237925080669313_1596905141716385792_n;
+            this.btnCancelar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_cancelar_50;
             this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(866, 652);
+            this.btnCancelar.Location = new System.Drawing.Point(164, 103);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnCancelar.Size = new System.Drawing.Size(170, 65);
+            this.btnCancelar.Size = new System.Drawing.Size(128, 49);
             this.btnCancelar.TabIndex = 26;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -771,17 +778,17 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90876545_253870845754605_8447427972255711232_n;
+            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_guardar_todos_50;
             this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(866, 583);
+            this.btnGuardar.Location = new System.Drawing.Point(10, 103);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGuardar.Size = new System.Drawing.Size(170, 65);
+            this.btnGuardar.Size = new System.Drawing.Size(128, 49);
             this.btnGuardar.TabIndex = 25;
             this.btnGuardar.Text = "Registar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -800,6 +807,70 @@
             this.painelPrincipal.Name = "painelPrincipal";
             this.painelPrincipal.Size = new System.Drawing.Size(1386, 788);
             this.painelPrincipal.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(19, 331);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 20);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Diagnóstico:";
+            // 
+            // txtDiagnostico
+            // 
+            this.txtDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiagnostico.Location = new System.Drawing.Point(146, 331);
+            this.txtDiagnostico.Multiline = true;
+            this.txtDiagnostico.Name = "txtDiagnostico";
+            this.txtDiagnostico.Size = new System.Drawing.Size(526, 76);
+            this.txtDiagnostico.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.label3.Location = new System.Drawing.Point(6, 1);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(173, 39);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Consulta:";
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button8.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_adicionar_50;
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.ForeColor = System.Drawing.Color.Black;
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button8.Location = new System.Drawing.Point(5, 373);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
+            this.button8.Name = "button8";
+            this.button8.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button8.Size = new System.Drawing.Size(202, 60);
+            this.button8.TabIndex = 36;
+            this.button8.Text = "Falta form, me esqueci Laboratorias...";
+            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button8.UseVisualStyleBackColor = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.Color.White;
+            this.groupBox4.Controls.Add(this.btnGuardar);
+            this.groupBox4.Controls.Add(this.btnCancelar);
+            this.groupBox4.Controls.Add(this.txtValorConsulta);
+            this.groupBox4.Controls.Add(this.lblCustoConsulta);
+            this.groupBox4.Location = new System.Drawing.Point(781, 505);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(308, 212);
+            this.groupBox4.TabIndex = 31;
+            this.groupBox4.TabStop = false;
             // 
             // IniciarConsultaMarcada
             // 
@@ -828,6 +899,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.painelPrincipal.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -885,5 +958,10 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.TextBox txtDiagnostico;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }

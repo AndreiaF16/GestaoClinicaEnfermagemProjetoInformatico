@@ -441,5 +441,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             AdicionarTipoParto adicionarTipoParto = new AdicionarTipoParto(null);
             adicionarTipoParto.Show();
         }
+
+        private void btnAleitamento_Click(object sender, EventArgs e)
+        {
+            AdicionarTipoAleitamento adicionarTipoAleitamento = new AdicionarTipoAleitamento(null);
+            adicionarTipoAleitamento.Show();
+        }
     }
 }

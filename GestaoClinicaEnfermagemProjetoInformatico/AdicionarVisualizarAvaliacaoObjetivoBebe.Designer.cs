@@ -33,22 +33,32 @@
             this.panelTitulo = new System.Windows.Forms.Panel();
             this.lblDia = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
+            this.btnMaximizar = new System.Windows.Forms.PictureBox();
+            this.fechar = new System.Windows.Forms.PictureBox();
+            this.btnFechar = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.txtObservacoes = new System.Windows.Forms.TextBox();
             this.lblObservacoes = new System.Windows.Forms.Label();
             this.lblTerapeutica = new System.Windows.Forms.Label();
             this.upDownINR = new System.Windows.Forms.NumericUpDown();
             this.lblINR = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnTipoParto = new System.Windows.Forms.Button();
+            this.btnTipoAleitamento = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAleitamento = new System.Windows.Forms.TextBox();
             this.cbAleitamento = new System.Windows.Forms.ComboBox();
             this.lblAleitamentoArtificial = new System.Windows.Forms.Label();
             this.hora = new System.Windows.Forms.Timer(this.components);
-            this.label6 = new System.Windows.Forms.Label();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -57,32 +67,24 @@
             this.radioButtonForceps = new System.Windows.Forms.RadioButton();
             this.radioButtonVentosa = new System.Windows.Forms.RadioButton();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.radioButtonSim = new System.Windows.Forms.RadioButton();
-            this.radioButtonNao = new System.Windows.Forms.RadioButton();
+            this.radioButtonSimEpidoral = new System.Windows.Forms.RadioButton();
+            this.radioButtonNaoEpidoral = new System.Windows.Forms.RadioButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.radioButtonSimEp = new System.Windows.Forms.RadioButton();
             this.radioButtonNaoEp = new System.Windows.Forms.RadioButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.lblIndice1 = new System.Windows.Forms.Label();
-            this.txtIndice1 = new System.Windows.Forms.TextBox();
-            this.txtIndice2 = new System.Windows.Forms.TextBox();
-            this.lblIndice5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtIndice10 = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.radioButtonRean = new System.Windows.Forms.RadioButton();
-            this.radioButtonNaoRean = new System.Windows.Forms.RadioButton();
+            this.radioButtonReanSim = new System.Windows.Forms.RadioButton();
+            this.radioButtonReanNao = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioButtonFotoSim = new System.Windows.Forms.RadioButton();
             this.radioButtonFotoNao = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblCMPC = new System.Windows.Forms.Label();
-            this.txtPC = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSPO2 = new System.Windows.Forms.TextBox();
             this.lblSPO2 = new System.Windows.Forms.Label();
             this.lblTemp = new System.Windows.Forms.Label();
-            this.txtTemperatura = new System.Windows.Forms.TextBox();
             this.lblTemperatura = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtFC = new System.Windows.Forms.TextBox();
@@ -98,20 +100,20 @@
             this.lblPeso = new System.Windows.Forms.Label();
             this.lblDataAvaliacaoObjetivo = new System.Windows.Forms.Label();
             this.dataAvaliacaoObjetivo = new System.Windows.Forms.DateTimePicker();
-            this.btnTipoAleitamento = new System.Windows.Forms.Button();
-            this.btnTipoParto = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnMaximizar = new System.Windows.Forms.PictureBox();
-            this.fechar = new System.Windows.Forms.PictureBox();
-            this.btnFechar = new System.Windows.Forms.PictureBox();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.radioButton1M = new System.Windows.Forms.RadioButton();
+            this.radioButton5M = new System.Windows.Forms.RadioButton();
+            this.radioButton10M = new System.Windows.Forms.RadioButton();
+            this.numericUpDownTemperatura = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtPerimetro = new System.Windows.Forms.TextBox();
             this.panelTitulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fechar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownINR)).BeginInit();
             this.panelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -125,11 +127,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownAltura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownPeso)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fechar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTemperatura)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitulo
@@ -153,7 +151,7 @@
             this.lblDia.AutoSize = true;
             this.lblDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblDia.Location = new System.Drawing.Point(621, 17);
+            this.lblDia.Location = new System.Drawing.Point(499, 14);
             this.lblDia.Name = "lblDia";
             this.lblDia.Size = new System.Drawing.Size(57, 20);
             this.lblDia.TabIndex = 10;
@@ -170,6 +168,47 @@
             this.lblHora.TabIndex = 9;
             this.lblHora.Text = "label1";
             // 
+            // btnMaximizar
+            // 
+            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
+            this.btnMaximizar.Location = new System.Drawing.Point(1330, 11);
+            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
+            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMaximizar.TabIndex = 7;
+            this.btnMaximizar.TabStop = false;
+            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            // 
+            // fechar
+            // 
+            this.fechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.fechar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.fechar.Image = ((System.Drawing.Image)(resources.GetObject("fechar.Image")));
+            this.fechar.Location = new System.Drawing.Point(1350, 11);
+            this.fechar.Margin = new System.Windows.Forms.Padding(2);
+            this.fechar.Name = "fechar";
+            this.fechar.Size = new System.Drawing.Size(16, 16);
+            this.fechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.fechar.TabIndex = 8;
+            this.fechar.TabStop = false;
+            this.fechar.Click += new System.EventHandler(this.fechar_Click);
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
+            this.btnFechar.Location = new System.Drawing.Point(1626, 11);
+            this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(16, 16);
+            this.btnFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnFechar.TabIndex = 7;
+            this.btnFechar.TabStop = false;
+            // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
@@ -180,6 +219,20 @@
             this.lblTitulo.Size = new System.Drawing.Size(312, 20);
             this.lblTitulo.TabIndex = 6;
             this.lblTitulo.Text = "Siltes Saúde - Clinica de Enfermagem";
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
+            this.btnMinimizar.Location = new System.Drawing.Point(1314, 11);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizar.TabIndex = 3;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
             // txtObservacoes
             // 
@@ -249,6 +302,90 @@
             this.panelMenu.Size = new System.Drawing.Size(232, 748);
             this.panelMenu.TabIndex = 1;
             // 
+            // btnTipoParto
+            // 
+            this.btnTipoParto.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnTipoParto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTipoParto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTipoParto.ForeColor = System.Drawing.Color.Black;
+            this.btnTipoParto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTipoParto.Location = new System.Drawing.Point(0, 256);
+            this.btnTipoParto.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTipoParto.Name = "btnTipoParto";
+            this.btnTipoParto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnTipoParto.Size = new System.Drawing.Size(229, 67);
+            this.btnTipoParto.TabIndex = 62;
+            this.btnTipoParto.Text = "Adicionar Tipo Parto";
+            this.btnTipoParto.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnTipoParto.UseVisualStyleBackColor = false;
+            // 
+            // btnTipoAleitamento
+            // 
+            this.btnTipoAleitamento.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnTipoAleitamento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTipoAleitamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTipoAleitamento.ForeColor = System.Drawing.Color.Black;
+            this.btnTipoAleitamento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTipoAleitamento.Location = new System.Drawing.Point(0, 190);
+            this.btnTipoAleitamento.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTipoAleitamento.Name = "btnTipoAleitamento";
+            this.btnTipoAleitamento.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnTipoAleitamento.Size = new System.Drawing.Size(229, 67);
+            this.btnTipoAleitamento.TabIndex = 61;
+            this.btnTipoAleitamento.Text = "Adicionar Tipo Aleitamento";
+            this.btnTipoAleitamento.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnTipoAleitamento.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_visível_50;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(0, 116);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(230, 76);
+            this.button1.TabIndex = 52;
+            this.button1.Text = "Ver Avaliações Objetivo Anteriores";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
+            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnVoltar.Location = new System.Drawing.Point(0, 652);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
+            this.btnVoltar.TabIndex = 5;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnVoltar.UseVisualStyleBackColor = false;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -283,10 +420,6 @@
             // cbAleitamento
             // 
             this.cbAleitamento.FormattingEnabled = true;
-            this.cbAleitamento.Items.AddRange(new object[] {
-            "Artificial",
-            "Materno",
-            "Misto"});
             this.cbAleitamento.Location = new System.Drawing.Point(17, 24);
             this.cbAleitamento.Name = "cbAleitamento";
             this.cbAleitamento.Size = new System.Drawing.Size(201, 28);
@@ -309,17 +442,6 @@
             // 
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(25, 432);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 20);
-            this.label6.TabIndex = 67;
-            this.label6.Text = "PC:";
             // 
             // painelPrincipal
             // 
@@ -347,9 +469,52 @@
             this.panelFormulario.Size = new System.Drawing.Size(1153, 748);
             this.panelFormulario.TabIndex = 2;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button2.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_cancelar_501;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button2.Location = new System.Drawing.Point(652, 667);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button2.Size = new System.Drawing.Size(228, 50);
+            this.button2.TabIndex = 57;
+            this.button2.Text = "Cancelar";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button3.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_guardar_todos_50;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button3.Location = new System.Drawing.Point(188, 667);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button3.Size = new System.Drawing.Size(342, 50);
+            this.button3.TabIndex = 56;
+            this.button3.Text = "                Registar Avaliação Objetivo";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.numericUpDownTemperatura);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.groupBox9);
             this.groupBox1.Controls.Add(this.groupBoxPartoDistocico);
@@ -360,7 +525,7 @@
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.lblCMPC);
-            this.groupBox1.Controls.Add(this.txtPC);
+            this.groupBox1.Controls.Add(this.txtPerimetro);
             this.groupBox1.Controls.Add(this.txtObservacoes);
             this.groupBox1.Controls.Add(this.lblObservacoes);
             this.groupBox1.Controls.Add(this.lblTerapeutica);
@@ -373,7 +538,6 @@
             this.groupBox1.Controls.Add(this.txtSPO2);
             this.groupBox1.Controls.Add(this.lblSPO2);
             this.groupBox1.Controls.Add(this.lblTemp);
-            this.groupBox1.Controls.Add(this.txtTemperatura);
             this.groupBox1.Controls.Add(this.lblTemperatura);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtFC);
@@ -478,8 +642,8 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.radioButtonSim);
-            this.groupBox7.Controls.Add(this.radioButtonNao);
+            this.groupBox7.Controls.Add(this.radioButtonSimEpidoral);
+            this.groupBox7.Controls.Add(this.radioButtonNaoEpidoral);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(683, 298);
             this.groupBox7.Name = "groupBox7";
@@ -488,31 +652,31 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Epidoral:";
             // 
-            // radioButtonSim
+            // radioButtonSimEpidoral
             // 
-            this.radioButtonSim.AutoSize = true;
-            this.radioButtonSim.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonSim.ForeColor = System.Drawing.Color.Black;
-            this.radioButtonSim.Location = new System.Drawing.Point(38, 22);
-            this.radioButtonSim.Name = "radioButtonSim";
-            this.radioButtonSim.Size = new System.Drawing.Size(52, 22);
-            this.radioButtonSim.TabIndex = 110;
-            this.radioButtonSim.TabStop = true;
-            this.radioButtonSim.Text = "Sim";
-            this.radioButtonSim.UseVisualStyleBackColor = true;
+            this.radioButtonSimEpidoral.AutoSize = true;
+            this.radioButtonSimEpidoral.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonSimEpidoral.ForeColor = System.Drawing.Color.Black;
+            this.radioButtonSimEpidoral.Location = new System.Drawing.Point(38, 22);
+            this.radioButtonSimEpidoral.Name = "radioButtonSimEpidoral";
+            this.radioButtonSimEpidoral.Size = new System.Drawing.Size(52, 22);
+            this.radioButtonSimEpidoral.TabIndex = 110;
+            this.radioButtonSimEpidoral.TabStop = true;
+            this.radioButtonSimEpidoral.Text = "Sim";
+            this.radioButtonSimEpidoral.UseVisualStyleBackColor = true;
             // 
-            // radioButtonNao
+            // radioButtonNaoEpidoral
             // 
-            this.radioButtonNao.AutoSize = true;
-            this.radioButtonNao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonNao.ForeColor = System.Drawing.Color.Black;
-            this.radioButtonNao.Location = new System.Drawing.Point(151, 21);
-            this.radioButtonNao.Name = "radioButtonNao";
-            this.radioButtonNao.Size = new System.Drawing.Size(54, 22);
-            this.radioButtonNao.TabIndex = 111;
-            this.radioButtonNao.TabStop = true;
-            this.radioButtonNao.Text = "Não";
-            this.radioButtonNao.UseVisualStyleBackColor = true;
+            this.radioButtonNaoEpidoral.AutoSize = true;
+            this.radioButtonNaoEpidoral.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonNaoEpidoral.ForeColor = System.Drawing.Color.Black;
+            this.radioButtonNaoEpidoral.Location = new System.Drawing.Point(151, 21);
+            this.radioButtonNaoEpidoral.Name = "radioButtonNaoEpidoral";
+            this.radioButtonNaoEpidoral.Size = new System.Drawing.Size(54, 22);
+            this.radioButtonNaoEpidoral.TabIndex = 111;
+            this.radioButtonNaoEpidoral.TabStop = true;
+            this.radioButtonNaoEpidoral.Text = "Não";
+            this.radioButtonNaoEpidoral.UseVisualStyleBackColor = true;
             // 
             // groupBox6
             // 
@@ -554,12 +718,9 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.lblIndice1);
-            this.groupBox5.Controls.Add(this.txtIndice1);
-            this.groupBox5.Controls.Add(this.txtIndice2);
-            this.groupBox5.Controls.Add(this.lblIndice5);
-            this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Controls.Add(this.txtIndice10);
+            this.groupBox5.Controls.Add(this.radioButton10M);
+            this.groupBox5.Controls.Add(this.radioButton5M);
+            this.groupBox5.Controls.Add(this.radioButton1M);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(682, 469);
             this.groupBox5.Name = "groupBox5";
@@ -568,70 +729,10 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Índice APGAR:";
             // 
-            // lblIndice1
-            // 
-            this.lblIndice1.AutoSize = true;
-            this.lblIndice1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndice1.ForeColor = System.Drawing.Color.Black;
-            this.lblIndice1.Location = new System.Drawing.Point(58, 16);
-            this.lblIndice1.Name = "lblIndice1";
-            this.lblIndice1.Size = new System.Drawing.Size(47, 32);
-            this.lblIndice1.TabIndex = 117;
-            this.lblIndice1.Text = "1º \r\nMinuto";
-            // 
-            // txtIndice1
-            // 
-            this.txtIndice1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIndice1.ForeColor = System.Drawing.Color.Black;
-            this.txtIndice1.Location = new System.Drawing.Point(28, 20);
-            this.txtIndice1.Name = "txtIndice1";
-            this.txtIndice1.Size = new System.Drawing.Size(24, 26);
-            this.txtIndice1.TabIndex = 116;
-            // 
-            // txtIndice2
-            // 
-            this.txtIndice2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIndice2.ForeColor = System.Drawing.Color.Black;
-            this.txtIndice2.Location = new System.Drawing.Point(164, 18);
-            this.txtIndice2.Name = "txtIndice2";
-            this.txtIndice2.Size = new System.Drawing.Size(24, 26);
-            this.txtIndice2.TabIndex = 118;
-            // 
-            // lblIndice5
-            // 
-            this.lblIndice5.AutoSize = true;
-            this.lblIndice5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndice5.ForeColor = System.Drawing.Color.Black;
-            this.lblIndice5.Location = new System.Drawing.Point(206, 15);
-            this.lblIndice5.Name = "lblIndice5";
-            this.lblIndice5.Size = new System.Drawing.Size(47, 32);
-            this.lblIndice5.TabIndex = 119;
-            this.lblIndice5.Text = "5º \r\nMinuto";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(353, 14);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 32);
-            this.label4.TabIndex = 121;
-            this.label4.Text = "10º \r\nMinuto";
-            // 
-            // txtIndice10
-            // 
-            this.txtIndice10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIndice10.ForeColor = System.Drawing.Color.Black;
-            this.txtIndice10.Location = new System.Drawing.Point(323, 15);
-            this.txtIndice10.Name = "txtIndice10";
-            this.txtIndice10.Size = new System.Drawing.Size(24, 26);
-            this.txtIndice10.TabIndex = 120;
-            // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.radioButtonRean);
-            this.groupBox4.Controls.Add(this.radioButtonNaoRean);
+            this.groupBox4.Controls.Add(this.radioButtonReanSim);
+            this.groupBox4.Controls.Add(this.radioButtonReanNao);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(682, 413);
             this.groupBox4.Name = "groupBox4";
@@ -640,31 +741,31 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Reanimação Fetal:";
             // 
-            // radioButtonRean
+            // radioButtonReanSim
             // 
-            this.radioButtonRean.AutoSize = true;
-            this.radioButtonRean.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonRean.ForeColor = System.Drawing.Color.Black;
-            this.radioButtonRean.Location = new System.Drawing.Point(39, 20);
-            this.radioButtonRean.Name = "radioButtonRean";
-            this.radioButtonRean.Size = new System.Drawing.Size(52, 22);
-            this.radioButtonRean.TabIndex = 114;
-            this.radioButtonRean.TabStop = true;
-            this.radioButtonRean.Text = "Sim";
-            this.radioButtonRean.UseVisualStyleBackColor = true;
+            this.radioButtonReanSim.AutoSize = true;
+            this.radioButtonReanSim.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonReanSim.ForeColor = System.Drawing.Color.Black;
+            this.radioButtonReanSim.Location = new System.Drawing.Point(39, 20);
+            this.radioButtonReanSim.Name = "radioButtonReanSim";
+            this.radioButtonReanSim.Size = new System.Drawing.Size(52, 22);
+            this.radioButtonReanSim.TabIndex = 114;
+            this.radioButtonReanSim.TabStop = true;
+            this.radioButtonReanSim.Text = "Sim";
+            this.radioButtonReanSim.UseVisualStyleBackColor = true;
             // 
-            // radioButtonNaoRean
+            // radioButtonReanNao
             // 
-            this.radioButtonNaoRean.AutoSize = true;
-            this.radioButtonNaoRean.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonNaoRean.ForeColor = System.Drawing.Color.Black;
-            this.radioButtonNaoRean.Location = new System.Drawing.Point(152, 18);
-            this.radioButtonNaoRean.Name = "radioButtonNaoRean";
-            this.radioButtonNaoRean.Size = new System.Drawing.Size(54, 22);
-            this.radioButtonNaoRean.TabIndex = 115;
-            this.radioButtonNaoRean.TabStop = true;
-            this.radioButtonNaoRean.Text = "Não";
-            this.radioButtonNaoRean.UseVisualStyleBackColor = true;
+            this.radioButtonReanNao.AutoSize = true;
+            this.radioButtonReanNao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonReanNao.ForeColor = System.Drawing.Color.Black;
+            this.radioButtonReanNao.Location = new System.Drawing.Point(152, 18);
+            this.radioButtonReanNao.Name = "radioButtonReanNao";
+            this.radioButtonReanNao.Size = new System.Drawing.Size(54, 22);
+            this.radioButtonReanNao.TabIndex = 115;
+            this.radioButtonReanNao.TabStop = true;
+            this.radioButtonReanNao.Text = "Não";
+            this.radioButtonReanNao.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -726,14 +827,6 @@
             this.lblCMPC.TabIndex = 106;
             this.lblCMPC.Text = "cm";
             // 
-            // txtPC
-            // 
-            this.txtPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPC.Location = new System.Drawing.Point(338, 427);
-            this.txtPC.Name = "txtPC";
-            this.txtPC.Size = new System.Drawing.Size(216, 26);
-            this.txtPC.TabIndex = 105;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -774,14 +867,6 @@
             this.lblTemp.Size = new System.Drawing.Size(26, 20);
             this.lblTemp.TabIndex = 63;
             this.lblTemp.Text = "ºC";
-            // 
-            // txtTemperatura
-            // 
-            this.txtTemperatura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTemperatura.Location = new System.Drawing.Point(338, 266);
-            this.txtTemperatura.Name = "txtTemperatura";
-            this.txtTemperatura.Size = new System.Drawing.Size(216, 26);
-            this.txtTemperatura.TabIndex = 62;
             // 
             // lblTemperatura
             // 
@@ -943,184 +1028,76 @@
             this.dataAvaliacaoObjetivo.TabIndex = 15;
             this.dataAvaliacaoObjetivo.Value = new System.DateTime(2020, 4, 29, 0, 0, 0, 0);
             // 
-            // btnTipoAleitamento
+            // radioButton1M
             // 
-            this.btnTipoAleitamento.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnTipoAleitamento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTipoAleitamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTipoAleitamento.ForeColor = System.Drawing.Color.Black;
-            this.btnTipoAleitamento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTipoAleitamento.Location = new System.Drawing.Point(0, 190);
-            this.btnTipoAleitamento.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTipoAleitamento.Name = "btnTipoAleitamento";
-            this.btnTipoAleitamento.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnTipoAleitamento.Size = new System.Drawing.Size(229, 67);
-            this.btnTipoAleitamento.TabIndex = 61;
-            this.btnTipoAleitamento.Text = "Adicionar Tipo Aleitamento";
-            this.btnTipoAleitamento.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnTipoAleitamento.UseVisualStyleBackColor = false;
+            this.radioButton1M.AutoSize = true;
+            this.radioButton1M.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1M.ForeColor = System.Drawing.Color.Black;
+            this.radioButton1M.Location = new System.Drawing.Point(6, 19);
+            this.radioButton1M.Name = "radioButton1M";
+            this.radioButton1M.Size = new System.Drawing.Size(88, 22);
+            this.radioButton1M.TabIndex = 124;
+            this.radioButton1M.TabStop = true;
+            this.radioButton1M.Text = "1º Minuto";
+            this.radioButton1M.UseVisualStyleBackColor = true;
             // 
-            // btnTipoParto
+            // radioButton5M
             // 
-            this.btnTipoParto.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnTipoParto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTipoParto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTipoParto.ForeColor = System.Drawing.Color.Black;
-            this.btnTipoParto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTipoParto.Location = new System.Drawing.Point(0, 256);
-            this.btnTipoParto.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTipoParto.Name = "btnTipoParto";
-            this.btnTipoParto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnTipoParto.Size = new System.Drawing.Size(229, 67);
-            this.btnTipoParto.TabIndex = 62;
-            this.btnTipoParto.Text = "Adicionar Tipo Parto";
-            this.btnTipoParto.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnTipoParto.UseVisualStyleBackColor = false;
+            this.radioButton5M.AutoSize = true;
+            this.radioButton5M.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton5M.ForeColor = System.Drawing.Color.Black;
+            this.radioButton5M.Location = new System.Drawing.Point(157, 19);
+            this.radioButton5M.Name = "radioButton5M";
+            this.radioButton5M.Size = new System.Drawing.Size(88, 22);
+            this.radioButton5M.TabIndex = 125;
+            this.radioButton5M.TabStop = true;
+            this.radioButton5M.Text = "5º Minuto";
+            this.radioButton5M.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // radioButton10M
             // 
-            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button2.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_cancelar_501;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(652, 667);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(228, 50);
-            this.button2.TabIndex = 57;
-            this.button2.Text = "Cancelar";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button2.UseVisualStyleBackColor = false;
+            this.radioButton10M.AutoSize = true;
+            this.radioButton10M.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton10M.ForeColor = System.Drawing.Color.Black;
+            this.radioButton10M.Location = new System.Drawing.Point(291, 19);
+            this.radioButton10M.Name = "radioButton10M";
+            this.radioButton10M.Size = new System.Drawing.Size(96, 22);
+            this.radioButton10M.TabIndex = 126;
+            this.radioButton10M.TabStop = true;
+            this.radioButton10M.Text = "10º Minuto";
+            this.radioButton10M.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // numericUpDownTemperatura
             // 
-            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button3.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_guardar_todos_50;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button3.Location = new System.Drawing.Point(188, 667);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button3.Size = new System.Drawing.Size(342, 50);
-            this.button3.TabIndex = 56;
-            this.button3.Text = "                Registar Avaliação Objetivo";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button3.UseVisualStyleBackColor = false;
+            this.numericUpDownTemperatura.DecimalPlaces = 2;
+            this.numericUpDownTemperatura.Location = new System.Drawing.Point(338, 262);
+            this.numericUpDownTemperatura.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            131072});
+            this.numericUpDownTemperatura.Name = "numericUpDownTemperatura";
+            this.numericUpDownTemperatura.Size = new System.Drawing.Size(245, 26);
+            this.numericUpDownTemperatura.TabIndex = 129;
             // 
-            // button1
+            // label6
             // 
-            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_visível_50;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.Location = new System.Drawing.Point(0, 116);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(230, 76);
-            this.button1.TabIndex = 52;
-            this.button1.Text = "Ver Avaliações Objetivo Anteriores";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button1.UseVisualStyleBackColor = false;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(25, 432);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(34, 20);
+            this.label6.TabIndex = 67;
+            this.label6.Text = "PC:";
             // 
-            // btnVoltar
+            // txtPerimetro
             // 
-            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
-            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVoltar.Location = new System.Drawing.Point(0, 652);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
-            this.btnVoltar.TabIndex = 5;
-            this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnVoltar.UseVisualStyleBackColor = false;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(1330, 11);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMaximizar.TabIndex = 7;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
-            // 
-            // fechar
-            // 
-            this.fechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.fechar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.fechar.Image = ((System.Drawing.Image)(resources.GetObject("fechar.Image")));
-            this.fechar.Location = new System.Drawing.Point(1350, 11);
-            this.fechar.Margin = new System.Windows.Forms.Padding(2);
-            this.fechar.Name = "fechar";
-            this.fechar.Size = new System.Drawing.Size(16, 16);
-            this.fechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fechar.TabIndex = 8;
-            this.fechar.TabStop = false;
-            this.fechar.Click += new System.EventHandler(this.fechar_Click);
-            // 
-            // btnFechar
-            // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
-            this.btnFechar.Location = new System.Drawing.Point(1626, 11);
-            this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(16, 16);
-            this.btnFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnFechar.TabIndex = 7;
-            this.btnFechar.TabStop = false;
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(1314, 11);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimizar.TabIndex = 3;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            this.txtPerimetro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPerimetro.Location = new System.Drawing.Point(338, 427);
+            this.txtPerimetro.Name = "txtPerimetro";
+            this.txtPerimetro.Size = new System.Drawing.Size(216, 26);
+            this.txtPerimetro.TabIndex = 105;
             // 
             // AdicionarVisualizarAvaliacaoObjetivoBebe
             // 
@@ -1132,10 +1109,16 @@
             this.Name = "AdicionarVisualizarAvaliacaoObjetivoBebe";
             this.Text = "AdicionarVisualizarAvaliacaoObjetivoBebe";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.AdicionarVisualizarAvaliacaoObjetivoBebe_Load);
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fechar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownINR)).EndInit();
             this.panelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.painelPrincipal.ResumeLayout(false);
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
@@ -1157,11 +1140,7 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UpDownAltura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownPeso)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fechar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTemperatura)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1189,7 +1168,6 @@
         private System.Windows.Forms.ComboBox cbAleitamento;
         private System.Windows.Forms.Label lblAleitamentoArtificial;
         private System.Windows.Forms.Timer hora;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel painelPrincipal;
         private System.Windows.Forms.Panel panelFormulario;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -1197,7 +1175,6 @@
         private System.Windows.Forms.TextBox txtSPO2;
         private System.Windows.Forms.Label lblSPO2;
         private System.Windows.Forms.Label lblTemp;
-        private System.Windows.Forms.TextBox txtTemperatura;
         private System.Windows.Forms.Label lblTemperatura;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtFC;
@@ -1214,22 +1191,15 @@
         private System.Windows.Forms.Label lblDataAvaliacaoObjetivo;
         private System.Windows.Forms.DateTimePicker dataAvaliacaoObjetivo;
         private System.Windows.Forms.Label lblCMPC;
-        private System.Windows.Forms.TextBox txtPC;
         private System.Windows.Forms.ComboBox cbTipoParto;
         private System.Windows.Forms.RadioButton radioButtonForceps;
         private System.Windows.Forms.RadioButton radioButtonVentosa;
         private System.Windows.Forms.RadioButton radioButtonNaoEp;
         private System.Windows.Forms.RadioButton radioButtonSimEp;
-        private System.Windows.Forms.RadioButton radioButtonNao;
-        private System.Windows.Forms.RadioButton radioButtonSim;
-        private System.Windows.Forms.RadioButton radioButtonNaoRean;
-        private System.Windows.Forms.RadioButton radioButtonRean;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtIndice10;
-        private System.Windows.Forms.Label lblIndice5;
-        private System.Windows.Forms.TextBox txtIndice2;
-        private System.Windows.Forms.Label lblIndice1;
-        private System.Windows.Forms.TextBox txtIndice1;
+        private System.Windows.Forms.RadioButton radioButtonNaoEpidoral;
+        private System.Windows.Forms.RadioButton radioButtonSimEpidoral;
+        private System.Windows.Forms.RadioButton radioButtonReanNao;
+        private System.Windows.Forms.RadioButton radioButtonReanSim;
         private System.Windows.Forms.RadioButton radioButtonFotoNao;
         private System.Windows.Forms.RadioButton radioButtonFotoSim;
         private System.Windows.Forms.Button button1;
@@ -1246,5 +1216,11 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnTipoParto;
         private System.Windows.Forms.Button btnTipoAleitamento;
+        private System.Windows.Forms.RadioButton radioButton1M;
+        private System.Windows.Forms.RadioButton radioButton10M;
+        private System.Windows.Forms.RadioButton radioButton5M;
+        private System.Windows.Forms.NumericUpDown numericUpDownTemperatura;
+        private System.Windows.Forms.TextBox txtPerimetro;
+        private System.Windows.Forms.Label label6;
     }
 }

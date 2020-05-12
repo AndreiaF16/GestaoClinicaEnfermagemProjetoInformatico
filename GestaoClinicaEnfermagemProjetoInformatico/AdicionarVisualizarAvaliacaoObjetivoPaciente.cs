@@ -53,11 +53,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             // UpdateDataGridView();
             reiniciar();
-            
-
+           
             if (paciente.Sexo.Equals("Feminino")) 
             {
-            
                 lblINR.Visible = true;
                 upDownINR.Visible = true;
                 lblUltimaMestruacao.Visible = true;
@@ -145,7 +143,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 if (paciente.Sexo == "Feminino"){
                     metodoContracetivo = (comboBoxMetodoContracetivo.SelectedItem as ComboBoxItem).Value;
-
                     
                     if (radioButtonSim.Checked == true)
                     {
@@ -154,7 +151,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     if (radioButtonNao.Checked == true)
                     {
                         DIU = "Não";
-                    } 
+                    }
                 }
 
 
@@ -198,7 +195,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     if (DIU != String.Empty)
                     {
-                        sqlCommand.Parameters.AddWithValue("@DIU", Convert.ToInt32(DIU));
+                        sqlCommand.Parameters.AddWithValue("@DIU", Convert.ToString(DIU));
                     }
                     else
                     {
@@ -299,7 +296,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AdicionarVisualizarAvaliacaoObjetivoBebe adicionarVisualizarAvaliacaoObjetivoBebe = new AdicionarVisualizarAvaliacaoObjetivoBebe();
+            AdicionarVisualizarAvaliacaoObjetivoBebe adicionarVisualizarAvaliacaoObjetivoBebe = new AdicionarVisualizarAvaliacaoObjetivoBebe(paciente);
             adicionarVisualizarAvaliacaoObjetivoBebe.Show();
         }      
 

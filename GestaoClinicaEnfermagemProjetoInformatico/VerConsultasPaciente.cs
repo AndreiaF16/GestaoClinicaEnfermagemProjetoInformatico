@@ -84,6 +84,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sinais = (string)reader["sinais"],
                     escalaDor = (string)reader["escalaDor"],
                     valorConsulta = Convert.ToDouble(reader["valorConsulta"]),
+                    diagnostico = ((reader["diagnostico"] == DBNull.Value) ? "" : (string)reader["diagnostico"]),
                 };
                 listaConsultasPaciente.Add(consultasPaciente);
             }
@@ -105,6 +106,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[4].HeaderText = "Sinais";
             dataGridViewUtentes.Columns[5].HeaderText = "Dor";
             dataGridViewUtentes.Columns[6].HeaderText = "Valor Consulta (€)";
+            dataGridViewUtentes.Columns[7].HeaderText = "Diagnóstico";
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)

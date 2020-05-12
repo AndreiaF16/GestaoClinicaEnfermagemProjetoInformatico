@@ -70,32 +70,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void UpdateDataGridView()
-        {/*
+        {
             listaMetodosContracetivos.Clear();
             listaMetodosContracetivos = getMetodosContracetivos();
-            dataGridViewMetodosContracetivos.DataSource = new List<MetodoContracetivo>();
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaMetodosContracetivos };
-            dataGridViewMetodosContracetivos.DataSource = bindingSource1;
-            dataGridViewMetodosContracetivos.Columns[0].HeaderText = "Nome Método Contracetivo";
-            dataGridViewMetodosContracetivos.Columns[1].HeaderText = "Observações";
-            dataGridViewMetodosContracetivos.Columns[2].Visible = false;
-            foreach (var item in listaMetodosContracetivos)
-            {
-                auxiliar.Add(item);
-            }
-
-            dataGridViewMetodosContracetivos.Update();
-            dataGridViewMetodosContracetivos.Refresh();
-
-            */
-
-            listaMetodosContracetivos.Clear();
-            listaMetodosContracetivos = getMetodosContracetivos();
-            dataGridViewMetodos.DataSource = new List<Doencas>();
+            dataGridViewMetodos.DataSource = new List<MetodoContracetivo>();
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaMetodosContracetivos };
             dataGridViewMetodos.DataSource = bindingSource1;
-            dataGridViewMetodos.Columns[0].HeaderText = "Nome";
-            dataGridViewMetodos.Columns[1].HeaderText = "Sintomas";
+            dataGridViewMetodos.Columns[0].HeaderText = "Nome Método Contracetivo";
+            dataGridViewMetodos.Columns[1].HeaderText = "Observações";
             dataGridViewMetodos.Columns[2].Visible = false;
             foreach (var item in listaMetodosContracetivos)
             {
@@ -104,35 +86,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             dataGridViewMetodos.Update();
             dataGridViewMetodos.Refresh();
-
-
         }
 
         private List<MetodoContracetivo> getMetodosContracetivos()
         {
-            /*MetodoContracetivo met= new MetodoContracetivo();
-
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from MetodoContracetivo order by nomeMetodoContracetivo", conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                metodo = new MetodoContracetivo
-                {
-                    nomeMetodoContracetivo = (string)reader["nomeMetodoContracetivo"],
-                    observacao = (string)reader["observacoes"],
-                    IdMetodoContracetivo = (int)reader["IdMetodoContracetivo"],
-
-                };
-                listaMetodosContracetivos.Add(metodo);
-            }
-            conn.Close();
-            return listaMetodosContracetivos;*/
-
             conn.Open();
             com.Connection = conn;
 
@@ -160,7 +117,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
-            int id = Convert.ToInt32(txtId.Text);
+           // int id = Convert.ToInt32(txtId.Text);
             string nome = txtNome.Text;
             string observacao = txtObs.Text;
 
@@ -210,7 +167,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
             return true;
-            }
+        }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -244,9 +201,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             return auxiliar;
         }
 
-        private void dataGridViewMetodos_DoubleClick(object sender, EventArgs e)
+        private void dataGridViewMetodos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            int i = dataGridViewMetodos.CurrentCell.RowIndex;
+            metodo = null;
+            foreach (var m in auxiliar)
+            {
+                if (m.nomeMetodoContracetivo == dataGridViewMetodos.Rows[i].Cells[0].Value.ToString())
+                {
+                    metodo = m;
+                }
 
+            }
+            if (metodo != null)
+            {
+                txtNome.Text = metodo.nomeMetodoContracetivo;
+                txtObs.Text = metodo.observacao;
+            }
         }
     }
 }

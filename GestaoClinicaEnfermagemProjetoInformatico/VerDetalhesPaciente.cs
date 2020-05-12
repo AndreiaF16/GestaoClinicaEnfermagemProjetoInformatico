@@ -61,7 +61,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sinais = (string)reader["sinais"],
                     escalaDor = (string)reader["escalaDor"],
                     valorConsulta = Convert.ToDouble(reader["valorConsulta"]),
-                  //  horaFimConsulta = (string)reader["horaFimConsulta"],
+                  //  diagnostico = (string)reader["diagnostico"]
+
+                   // abortos = ((reader["abortos"] == DBNull.Value) ? 0 : (int)reader["abortos"]),
+                    diagnostico = ((reader["diagnostico"] == DBNull.Value) ? "" : (string)reader["diagnostico"]),
+
+
+                    //  horaFimConsulta = (string)reader["horaFimConsulta"],
                 };
                 listaConsultasPaciente.Add(consultasPaciente);
             }
@@ -121,6 +127,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[4].HeaderText = "Sinais";
             dataGridViewUtentes.Columns[5].HeaderText = "Dor";
             dataGridViewUtentes.Columns[6].HeaderText = "Valor Consulta (€)";
+            dataGridViewUtentes.Columns[7].HeaderText = "Diagnóstico";
            // dataGridViewUtentes.Columns[8].HeaderText = "Hora Fim Consulta";
 
         }

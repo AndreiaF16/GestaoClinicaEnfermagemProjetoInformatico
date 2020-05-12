@@ -66,9 +66,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewPartos.DataSource = bindingSource1;
             dataGridViewPartos.Columns[0].HeaderText = "Nome do Tipo de Parto";
             dataGridViewPartos.Columns[1].HeaderText = "Observações";
-            dataGridViewPartos.Columns[2].HeaderText = "ID";
-
-            //dataGridViewPartos.Columns[2].Visible = false;
+            dataGridViewPartos.Columns[2].Visible = false;
             foreach (var item in listaPartos)
             {
                 auxiliar.Add(item);

@@ -122,10 +122,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             //string tensaoArterial = txtTensaoArterial.Text;
             string escalaDor = lblEscala.Text;
             string valorConsulta = txtValorConsulta.Text;
+            string diagnostico = txtDiagnostico.Text;
 
-            if (historiaAtual == string.Empty || sintomatologia == string.Empty || sinais == string.Empty ||  escalaDor == string.Empty || valorConsulta == string.Empty)
+            if (historiaAtual == string.Empty || sintomatologia == string.Empty || sinais == string.Empty ||  escalaDor == string.Empty || valorConsulta == string.Empty || diagnostico == string.Empty)
             {
-                MessageBox.Show("Campos Obrigatórios, por favor preencha os campos obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campos Obrigatórios, por favor preencha os campos obrigatórios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             /*if(Convert.ToInt16(tensaoArterial) <= 0)
@@ -158,6 +159,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 //string tensaoArterial = txtTensaoArterial.Text;
                 string escalaDor = lblEscala.Text;
                 double valor = Convert.ToDouble(txtValorConsulta.Text);
+                string diag = txtDiagnostico.Text;
                 DateTime horaFim = DateTime.Now;
 
                 if (!VerificarDadosInseridos())
@@ -171,7 +173,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                         connection.Open();
 
-                        string queryInsertData = "INSERT INTO Consulta(dataConsulta,horaInicioConsulta,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro,valorConsulta,horaFimConsulta) VALUES(@dataConsulta,@horaInicioConsulta,@historiaAtual,@sintomatologia,@sinais,@escalaDor,@idPaciente,@idEnfermeiro,@valorConsulta,@horaFimConsulta);";
+                        string queryInsertData = "INSERT INTO Consulta(dataConsulta,horaInicioConsulta,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro,valorConsulta,horaFimConsulta,diagnostico) VALUES(@dataConsulta,@horaInicioConsulta,@historiaAtual,@sintomatologia,@sinais,@escalaDor,@idPaciente,@idEnfermeiro,@valorConsulta,@horaFimConsulta,@diagnostico);";
                         SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                         sqlCommand.Parameters.AddWithValue("@dataConsulta", inicio);
                         sqlCommand.Parameters.AddWithValue("@horaInicioConsulta", string.Format("{0:00}", inicio.Hour) + ":" + string.Format("{0:00}", inicio.Minute));
@@ -184,7 +186,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@idEnfermeiro", enfermeiro.IdEnfermeiro);
                         sqlCommand.Parameters.AddWithValue("@valorConsulta", valor);
                         sqlCommand.Parameters.AddWithValue("@horaFimConsulta", string.Format("{0:00}", horaFim.Hour) + ":" + string.Format("{0:00}", horaFim.Minute));
-
+                        sqlCommand.Parameters.AddWithValue("@diagnostico", diag);
                         sqlCommand.ExecuteNonQuery();
 
                         MessageBox.Show("Consulta efetuada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);

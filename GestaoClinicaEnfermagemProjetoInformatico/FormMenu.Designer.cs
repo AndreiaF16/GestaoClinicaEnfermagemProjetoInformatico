@@ -300,6 +300,7 @@
             this.btnAleitamento.Text = "Aleitamento";
             this.btnAleitamento.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnAleitamento.UseVisualStyleBackColor = false;
+            this.btnAleitamento.Click += new System.EventHandler(this.btnAleitamento_Click);
             // 
             // btnMetodoContracetivo
             // 
