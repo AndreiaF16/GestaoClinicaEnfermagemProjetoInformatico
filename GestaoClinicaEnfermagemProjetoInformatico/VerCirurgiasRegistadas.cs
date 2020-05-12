@@ -161,7 +161,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (nome == string.Empty || caracterizacao == string.Empty)
             {
-                MessageBox.Show("Campos Obrigatórios, por favor preencha os campos obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campo Obrigatório, por favor preencha o nome da cirurgia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

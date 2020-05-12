@@ -18,7 +18,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlCommand com = new SqlCommand();
         private List<CirurgiaPaciente> listaCirurgiaPacientes = new List<CirurgiaPaciente>();
         private List<ExamePaciente> listaExamePacientes = new List<ExamePaciente>();
-        private List<AvaliacaoObjetivo> listaAvaliacaoObjetivo = new List<AvaliacaoObjetivo>();
+        private List<DoencaPaciente> listaAlergiaPacientes = new List<DoencaPaciente>();
+        private List<DoencaPaciente> listaDoencaPacientes = new List<DoencaPaciente>();
 
 
         public VerMaisDetalhesPaciente(Paciente pac)
@@ -70,7 +71,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             cirurgiasPaciente();
             examesPaciente();
-            avaliacaoObjetivo();
+            doencasPaciente();
+            alergiasPaciente();
         }
 
         private void UpdateDataGridViewCirurgias()
@@ -81,6 +83,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewCirurgias.Columns[1].HeaderText = "Data de Diagnóstico";
             dataGridViewCirurgias.Columns[2].HeaderText = "Observações";
         }
+
+        private void UpdateDataGridViewDoencas()
+        {
+
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaDoencaPacientes };
+            dataGridViewDoencas.DataSource = bindingSource1;
+            dataGridViewDoencas.Columns[0].HeaderText = "Doença";
+            dataGridViewDoencas.Columns[1].HeaderText = "Data de Diagnóstico";
+            dataGridViewDoencas.Columns[2].HeaderText = "Observações";
+        }
+
+
+        private void UpdateDataGridViewAlergias()
+        {
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaAlergiaPacientes };
+            dataGridViewAlergias.DataSource = bindingSource1;
+            dataGridViewAlergias.Columns[0].HeaderText = "Alergia";
+            dataGridViewAlergias.Columns[1].HeaderText = "Data de Diagnóstico";
+            dataGridViewAlergias.Columns[2].HeaderText = "Observações";
+        }
+
 
         private void cirurgiasPaciente()
         {
@@ -116,14 +139,53 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewExames.Columns[3].HeaderText = "Observações";
         }
 
-        private void UpdateDataGridViewAvaliacao()
+        private void doencasPaciente()
         {
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaAvaliacaoObjetivo };
-            dataGridViewAvaliacaoObjetivo.DataSource = bindingSource1;
-            dataGridViewAvaliacaoObjetivo.Columns[0].HeaderText = "Data da Avaliação Objetivo";
-            dataGridViewAvaliacaoObjetivo.Columns[1].HeaderText = "Peso (KG)";
-            dataGridViewAvaliacaoObjetivo.Columns[2].HeaderText = "Altura (cm)";
-            dataGridViewAvaliacaoObjetivo.Columns[3].HeaderText = "IMC";
+
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select doenca.Nome, doencaP.data, doencaP.observacoes from DoencaPaciente doencaP JOIN Doenca doenca ON doencaP.IdDoenca = doenca.IdDoenca WHERE IdPaciente = @IdPaciente", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+
+                DoencaPaciente doencaPaciente = new DoencaPaciente
+                {
+                    nome = (string)reader["Nome"],
+                    data = data,
+                    observacoes = (string)reader["observacoes"],
+                };
+                listaDoencaPacientes.Add(doencaPaciente);
+            }
+            conn.Close();
+            UpdateDataGridViewDoencas();
+        }
+
+        private void alergiasPaciente()
+        {
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select alergia.Nome, alergiaP.data, alergiaP.observacoes from AlergiaPaciente alergiaP JOIN Alergia alergia ON alergia.IdAlergia = AlergiaP.IdAlergia WHERE IdPaciente = @IdPaciente ", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+
+                DoencaPaciente doencaPaciente = new DoencaPaciente
+                {
+                    nome = (string)reader["Nome"],
+                    data = data,
+                    observacoes = (string)reader["observacoes"],
+                };
+                listaAlergiaPacientes.Add(doencaPaciente);
+            }
+            conn.Close();
+            UpdateDataGridViewAlergias();
         }
 
 
@@ -150,29 +212,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             conn.Close();
             UpdateDataGridViewExames();
-        }
-
-        private void avaliacaoObjetivo()
-        {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from AvaliacaoObjetivo WHERE IdPaciente = @IdPaciente ORDER BY data", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-                AvaliacaoObjetivo avaliacao = new AvaliacaoObjetivo
-                {
-                    data = data,
-                    peso = Convert.ToDecimal(reader["peso"]),
-                    altura = (int)reader["altura"],
-                };
-                avaliacao.IMC = Math.Round(avaliacao.peso / (Convert.ToDecimal(avaliacao.altura * avaliacao.altura) / 10000), 2);
-                listaAvaliacaoObjetivo.Add(avaliacao);
-            }
-            conn.Close();
-            UpdateDataGridViewAvaliacao();
         }
     }
 }

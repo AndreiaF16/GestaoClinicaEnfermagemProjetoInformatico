@@ -191,12 +191,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Boolean VerificarDadosInseridos()
         {
             string nome = txtNome.Text;
-            string categoria = txtCategoria.Text;
-            string designacao = txtDesignacao.Text;
 
-            if (nome == string.Empty || categoria == string.Empty || designacao == string.Empty)
+            if (nome == string.Empty)
             {
-                MessageBox.Show("Campos Obrigatórios, por favor preencha os campos obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campo Obrigatório, por favor preencha o nome do exame!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

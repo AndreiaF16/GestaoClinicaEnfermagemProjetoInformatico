@@ -208,11 +208,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             string nome = comboBoxDoenca.Text;
             string observacoes = txtObservacoes.Text;
-           
+            DateTime data = dataDiagnostico.Value;
 
-            if (nome == string.Empty || observacoes == string.Empty )
+            if ((data - DateTime.Today).TotalDays > 0)
             {
-                MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data de diagnóstico da alergia tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (nome == string.Empty)
+            {
+                MessageBox.Show("Campo Obrigatório, por favor preencha o nome da alergia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             conn.Open();

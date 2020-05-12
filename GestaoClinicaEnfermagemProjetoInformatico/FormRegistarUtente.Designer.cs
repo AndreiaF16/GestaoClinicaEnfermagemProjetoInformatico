@@ -31,12 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistarUtente));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panelTitulo = new System.Windows.Forms.Panel();
             this.lblDia = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
+            this.btnFechar = new System.Windows.Forms.PictureBox();
+            this.btnMaximizar = new System.Windows.Forms.PictureBox();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblProfissao = new System.Windows.Forms.Label();
             this.txtNif = new System.Windows.Forms.TextBox();
@@ -51,11 +57,16 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButtonNaoAtualziado = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioButtonAtualizado = new System.Windows.Forms.RadioButton();
-            this.radioButtonIndefinido = new System.Windows.Forms.RadioButton();
-            this.radioButtonMasculino = new System.Windows.Forms.RadioButton();
+            this.radioButtonNaoAtualziado = new System.Windows.Forms.RadioButton();
+            this.groupBoxSexo = new System.Windows.Forms.GroupBox();
             this.radioButtonFeminino = new System.Windows.Forms.RadioButton();
+            this.radioButtonMasculino = new System.Windows.Forms.RadioButton();
+            this.radioButtonIndefinido = new System.Windows.Forms.RadioButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbAcordos = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtSNS = new System.Windows.Forms.TextBox();
             this.lblSNS = new System.Windows.Forms.Label();
             this.txtNSubsistema = new System.Windows.Forms.TextBox();
@@ -66,7 +77,6 @@
             this.lblNApolice = new System.Windows.Forms.Label();
             this.lblSeguradora = new System.Windows.Forms.Label();
             this.txtNomeSeguradora = new System.Windows.Forms.TextBox();
-            this.cbAcordos = new System.Windows.Forms.ComboBox();
             this.lblOutraProfissao = new System.Windows.Forms.Label();
             this.txtOutraProfissao = new System.Windows.Forms.TextBox();
             this.txtLocalidade = new System.Windows.Forms.TextBox();
@@ -80,36 +90,26 @@
             this.txtAndar = new System.Windows.Forms.TextBox();
             this.txtNumeroCasa = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.painelPrincipal = new System.Windows.Forms.Panel();
-            this.panelPrincipal = new System.Windows.Forms.Panel();
-            this.hora = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnFechar = new System.Windows.Forms.PictureBox();
-            this.btnMaximizar = new System.Windows.Forms.PictureBox();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBoxSexo = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.painelPrincipal = new System.Windows.Forms.Panel();
+            this.panelPrincipal = new System.Windows.Forms.Panel();
+            this.hora = new System.Windows.Forms.Timer(this.components);
             this.panelMenu.SuspendLayout();
-            this.panelTitulo.SuspendLayout();
-            this.panelFormulario.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.painelPrincipal.SuspendLayout();
-            this.panelPrincipal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.groupBoxSexo.SuspendLayout();
+            this.panelFormulario.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBoxSexo.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.painelPrincipal.SuspendLayout();
+            this.panelPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -125,6 +125,27 @@
             this.panelMenu.Size = new System.Drawing.Size(232, 714);
             this.panelMenu.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.iconfinder_document_text_accept_103510__1_;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(0, 332);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(230, 78);
+            this.button1.TabIndex = 44;
+            this.button1.Text = "               Consentimento do Uso de Dados";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -135,6 +156,36 @@
             this.label5.Size = new System.Drawing.Size(49, 20);
             this.label5.TabIndex = 43;
             this.label5.Text = "Sexo:";
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
+            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnVoltar.Location = new System.Drawing.Point(-5, 626);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
+            this.btnVoltar.TabIndex = 2;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnVoltar.UseVisualStyleBackColor = false;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // txtEmail
             // 
@@ -190,6 +241,49 @@
             this.lblHora.Size = new System.Drawing.Size(57, 20);
             this.lblHora.TabIndex = 11;
             this.lblHora.Text = "label1";
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
+            this.btnFechar.Location = new System.Drawing.Point(1336, 17);
+            this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(16, 16);
+            this.btnFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnFechar.TabIndex = 10;
+            this.btnFechar.TabStop = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click_1);
+            // 
+            // btnMaximizar
+            // 
+            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
+            this.btnMaximizar.Location = new System.Drawing.Point(1320, 17);
+            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
+            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMaximizar.TabIndex = 9;
+            this.btnMaximizar.TabStop = false;
+            this.btnMaximizar.Visible = false;
+            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
+            this.btnMinimizar.Location = new System.Drawing.Point(1304, 17);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizar.TabIndex = 8;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click_1);
             // 
             // label1
             // 
@@ -385,15 +479,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // radioButtonNaoAtualziado
+            // groupBox3
             // 
-            this.radioButtonNaoAtualziado.AutoSize = true;
-            this.radioButtonNaoAtualziado.Location = new System.Drawing.Point(140, 24);
-            this.radioButtonNaoAtualziado.Name = "radioButtonNaoAtualziado";
-            this.radioButtonNaoAtualziado.Size = new System.Drawing.Size(135, 24);
-            this.radioButtonNaoAtualziado.TabIndex = 48;
-            this.radioButtonNaoAtualziado.Text = "Não Atualizado";
-            this.radioButtonNaoAtualziado.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.radioButtonAtualizado);
+            this.groupBox3.Controls.Add(this.radioButtonNaoAtualziado);
+            this.groupBox3.Location = new System.Drawing.Point(600, 567);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(306, 62);
+            this.groupBox3.TabIndex = 51;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Plano Nacional de Vacinação:";
             // 
             // radioButtonAtualizado
             // 
@@ -405,15 +500,37 @@
             this.radioButtonAtualizado.Text = "Atualizado";
             this.radioButtonAtualizado.UseVisualStyleBackColor = true;
             // 
-            // radioButtonIndefinido
+            // radioButtonNaoAtualziado
             // 
-            this.radioButtonIndefinido.AutoSize = true;
-            this.radioButtonIndefinido.Location = new System.Drawing.Point(104, 23);
-            this.radioButtonIndefinido.Name = "radioButtonIndefinido";
-            this.radioButtonIndefinido.Size = new System.Drawing.Size(97, 24);
-            this.radioButtonIndefinido.TabIndex = 45;
-            this.radioButtonIndefinido.Text = "Indefinido";
-            this.radioButtonIndefinido.UseVisualStyleBackColor = true;
+            this.radioButtonNaoAtualziado.AutoSize = true;
+            this.radioButtonNaoAtualziado.Location = new System.Drawing.Point(140, 24);
+            this.radioButtonNaoAtualziado.Name = "radioButtonNaoAtualziado";
+            this.radioButtonNaoAtualziado.Size = new System.Drawing.Size(135, 24);
+            this.radioButtonNaoAtualziado.TabIndex = 48;
+            this.radioButtonNaoAtualziado.Text = "Não Atualizado";
+            this.radioButtonNaoAtualziado.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxSexo
+            // 
+            this.groupBoxSexo.Controls.Add(this.radioButtonFeminino);
+            this.groupBoxSexo.Controls.Add(this.radioButtonMasculino);
+            this.groupBoxSexo.Controls.Add(this.radioButtonIndefinido);
+            this.groupBoxSexo.Location = new System.Drawing.Point(600, 488);
+            this.groupBoxSexo.Name = "groupBoxSexo";
+            this.groupBoxSexo.Size = new System.Drawing.Size(206, 56);
+            this.groupBoxSexo.TabIndex = 50;
+            this.groupBoxSexo.TabStop = false;
+            this.groupBoxSexo.Text = "Sexo";
+            // 
+            // radioButtonFeminino
+            // 
+            this.radioButtonFeminino.AutoSize = true;
+            this.radioButtonFeminino.Location = new System.Drawing.Point(6, 23);
+            this.radioButtonFeminino.Name = "radioButtonFeminino";
+            this.radioButtonFeminino.Size = new System.Drawing.Size(37, 24);
+            this.radioButtonFeminino.TabIndex = 43;
+            this.radioButtonFeminino.Text = "F";
+            this.radioButtonFeminino.UseVisualStyleBackColor = true;
             // 
             // radioButtonMasculino
             // 
@@ -425,15 +542,49 @@
             this.radioButtonMasculino.Text = "M";
             this.radioButtonMasculino.UseVisualStyleBackColor = true;
             // 
-            // radioButtonFeminino
+            // radioButtonIndefinido
             // 
-            this.radioButtonFeminino.AutoSize = true;
-            this.radioButtonFeminino.Location = new System.Drawing.Point(6, 23);
-            this.radioButtonFeminino.Name = "radioButtonFeminino";
-            this.radioButtonFeminino.Size = new System.Drawing.Size(37, 24);
-            this.radioButtonFeminino.TabIndex = 43;
-            this.radioButtonFeminino.Text = "F";
-            this.radioButtonFeminino.UseVisualStyleBackColor = true;
+            this.radioButtonIndefinido.AutoSize = true;
+            this.radioButtonIndefinido.Location = new System.Drawing.Point(104, 23);
+            this.radioButtonIndefinido.Name = "radioButtonIndefinido";
+            this.radioButtonIndefinido.Size = new System.Drawing.Size(97, 24);
+            this.radioButtonIndefinido.TabIndex = 45;
+            this.radioButtonIndefinido.Text = "Indefinido";
+            this.radioButtonIndefinido.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.cbAcordos);
+            this.groupBox2.Location = new System.Drawing.Point(600, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(324, 100);
+            this.groupBox2.TabIndex = 31;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Selecione o tipo de acordo";
+            // 
+            // cbAcordos
+            // 
+            this.cbAcordos.FormattingEnabled = true;
+            this.cbAcordos.Items.AddRange(new object[] {
+            "Seguradora",
+            "Subsistema de Saúde",
+            "SNS"});
+            this.cbAcordos.Location = new System.Drawing.Point(6, 45);
+            this.cbAcordos.Name = "cbAcordos";
+            this.cbAcordos.Size = new System.Drawing.Size(280, 28);
+            this.cbAcordos.TabIndex = 31;
+            this.cbAcordos.SelectedIndexChanged += new System.EventHandler(this.cbAcordos_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.label6.Location = new System.Drawing.Point(135, 372);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(22, 20);
+            this.label6.TabIndex = 49;
+            this.label6.Text = " - ";
             // 
             // txtSNS
             // 
@@ -540,19 +691,6 @@
             this.txtNomeSeguradora.Size = new System.Drawing.Size(280, 26);
             this.txtNomeSeguradora.TabIndex = 32;
             this.txtNomeSeguradora.Visible = false;
-            // 
-            // cbAcordos
-            // 
-            this.cbAcordos.FormattingEnabled = true;
-            this.cbAcordos.Items.AddRange(new object[] {
-            "Seguradora",
-            "Subsistema de Saúde",
-            "SNS"});
-            this.cbAcordos.Location = new System.Drawing.Point(6, 45);
-            this.cbAcordos.Name = "cbAcordos";
-            this.cbAcordos.Size = new System.Drawing.Size(280, 28);
-            this.cbAcordos.TabIndex = 31;
-            this.cbAcordos.SelectedIndexChanged += new System.EventHandler(this.cbAcordos_SelectedIndexChanged);
             // 
             // lblOutraProfissao
             // 
@@ -687,33 +825,6 @@
             this.label3.TabIndex = 18;
             this.label3.Text = "Nº :";
             // 
-            // painelPrincipal
-            // 
-            this.painelPrincipal.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.painelPrincipal.Controls.Add(this.panelFormulario);
-            this.painelPrincipal.Controls.Add(this.panelMenu);
-            this.painelPrincipal.Controls.Add(this.panelTitulo);
-            this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.painelPrincipal.Name = "painelPrincipal";
-            this.painelPrincipal.Size = new System.Drawing.Size(1385, 754);
-            this.painelPrincipal.TabIndex = 1;
-            // 
-            // panelPrincipal
-            // 
-            this.panelPrincipal.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelPrincipal.Controls.Add(this.painelPrincipal);
-            this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(1385, 754);
-            this.panelPrincipal.TabIndex = 1;
-            // 
-            // hora
-            // 
-            this.hora.Enabled = true;
-            this.hora.Tick += new System.EventHandler(this.hora_Tick);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._91029693_887056538410859_7048263335300562944_n__1_;
@@ -766,143 +877,32 @@
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // button1
+            // painelPrincipal
             // 
-            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.iconfinder_document_text_accept_103510__1_;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 332);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(230, 78);
-            this.button1.TabIndex = 44;
-            this.button1.Text = "               Consentimento do Uso de Dados";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.painelPrincipal.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.painelPrincipal.Controls.Add(this.panelFormulario);
+            this.painelPrincipal.Controls.Add(this.panelMenu);
+            this.painelPrincipal.Controls.Add(this.panelTitulo);
+            this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.painelPrincipal.Name = "painelPrincipal";
+            this.painelPrincipal.Size = new System.Drawing.Size(1385, 754);
+            this.painelPrincipal.TabIndex = 1;
             // 
-            // btnVoltar
+            // panelPrincipal
             // 
-            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
-            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVoltar.Location = new System.Drawing.Point(-5, 626);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
-            this.btnVoltar.TabIndex = 2;
-            this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnVoltar.UseVisualStyleBackColor = false;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            this.panelPrincipal.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelPrincipal.Controls.Add(this.painelPrincipal);
+            this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.panelPrincipal.Name = "panelPrincipal";
+            this.panelPrincipal.Size = new System.Drawing.Size(1385, 754);
+            this.panelPrincipal.TabIndex = 1;
             // 
-            // pictureBox2
+            // hora
             // 
-            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // btnFechar
-            // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
-            this.btnFechar.Location = new System.Drawing.Point(1336, 17);
-            this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(16, 16);
-            this.btnFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnFechar.TabIndex = 10;
-            this.btnFechar.TabStop = false;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click_1);
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(1320, 17);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMaximizar.TabIndex = 9;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Visible = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(1304, 17);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimizar.TabIndex = 8;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click_1);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label6.Location = new System.Drawing.Point(135, 372);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(22, 20);
-            this.label6.TabIndex = 49;
-            this.label6.Text = " - ";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.cbAcordos);
-            this.groupBox2.Location = new System.Drawing.Point(600, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(324, 100);
-            this.groupBox2.TabIndex = 31;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Selecione o tipo de acordo";
-            // 
-            // groupBoxSexo
-            // 
-            this.groupBoxSexo.Controls.Add(this.radioButtonFeminino);
-            this.groupBoxSexo.Controls.Add(this.radioButtonMasculino);
-            this.groupBoxSexo.Controls.Add(this.radioButtonIndefinido);
-            this.groupBoxSexo.Location = new System.Drawing.Point(600, 488);
-            this.groupBoxSexo.Name = "groupBoxSexo";
-            this.groupBoxSexo.Size = new System.Drawing.Size(206, 56);
-            this.groupBoxSexo.TabIndex = 50;
-            this.groupBoxSexo.TabStop = false;
-            this.groupBoxSexo.Text = "Sexo";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.radioButtonAtualizado);
-            this.groupBox3.Controls.Add(this.radioButtonNaoAtualziado);
-            this.groupBox3.Location = new System.Drawing.Point(600, 567);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(306, 62);
-            this.groupBox3.TabIndex = 51;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Plano Nacional de Vacinação:";
+            this.hora.Enabled = true;
+            this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
             // FormRegistarUtente
             // 
@@ -918,24 +918,24 @@
             this.Load += new System.EventHandler(this.FormRegistarUtente_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.painelPrincipal.ResumeLayout(false);
-            this.panelPrincipal.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBoxSexo.ResumeLayout(false);
-            this.groupBoxSexo.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBoxSexo.ResumeLayout(false);
+            this.groupBoxSexo.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.painelPrincipal.ResumeLayout(false);
+            this.panelPrincipal.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

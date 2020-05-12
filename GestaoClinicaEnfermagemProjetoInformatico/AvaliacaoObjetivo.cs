@@ -18,7 +18,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public int saturacaoOxigenio { get; set; }
         public string dataUltimaMestruacao { get; set; }
         public int menopausa { get; set; }
-        public int IdMetodoContracetivo { get; set; }
+       // public int IdMetodoContracetivo { get; set; }
+        public string nomeMetodo { get; set; }
+
         public string DIU { get; set; }
         public int concentracaoGlicoseSangue { get; set; }
         public int AC { get; set; }
@@ -29,5 +31,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public int filhosVivos { get; set; }
         public int abortos { get; set; }
         public string observacoes { get; set; }
+
     }
 }

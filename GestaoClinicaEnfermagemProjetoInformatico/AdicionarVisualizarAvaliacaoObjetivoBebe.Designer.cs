@@ -60,6 +60,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numericUpDownTemperatura = new System.Windows.Forms.NumericUpDown();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.cbTipoParto = new System.Windows.Forms.ComboBox();
@@ -73,6 +74,9 @@
             this.radioButtonSimEp = new System.Windows.Forms.RadioButton();
             this.radioButtonNaoEp = new System.Windows.Forms.RadioButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.radioButton10M = new System.Windows.Forms.RadioButton();
+            this.radioButton5M = new System.Windows.Forms.RadioButton();
+            this.radioButton1M = new System.Windows.Forms.RadioButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.radioButtonReanSim = new System.Windows.Forms.RadioButton();
             this.radioButtonReanNao = new System.Windows.Forms.RadioButton();
@@ -81,6 +85,8 @@
             this.radioButtonFotoNao = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblCMPC = new System.Windows.Forms.Label();
+            this.txtPerimetro = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSPO2 = new System.Windows.Forms.TextBox();
             this.lblSPO2 = new System.Windows.Forms.Label();
@@ -100,12 +106,6 @@
             this.lblPeso = new System.Windows.Forms.Label();
             this.lblDataAvaliacaoObjetivo = new System.Windows.Forms.Label();
             this.dataAvaliacaoObjetivo = new System.Windows.Forms.DateTimePicker();
-            this.radioButton1M = new System.Windows.Forms.RadioButton();
-            this.radioButton5M = new System.Windows.Forms.RadioButton();
-            this.radioButton10M = new System.Windows.Forms.RadioButton();
-            this.numericUpDownTemperatura = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtPerimetro = new System.Windows.Forms.TextBox();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fechar)).BeginInit();
@@ -117,6 +117,7 @@
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTemperatura)).BeginInit();
             this.groupBox9.SuspendLayout();
             this.groupBoxPartoDistocico.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -127,7 +128,6 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownAltura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownPeso)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTemperatura)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitulo
@@ -335,6 +335,7 @@
             this.btnTipoAleitamento.Text = "Adicionar Tipo Aleitamento";
             this.btnTipoAleitamento.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnTipoAleitamento.UseVisualStyleBackColor = false;
+            this.btnTipoAleitamento.Click += new System.EventHandler(this.btnTipoAleitamento_Click);
             // 
             // button1
             // 
@@ -355,6 +356,7 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnVoltar
             // 
@@ -562,6 +564,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registar Avaliação Objetivo do Bebé";
             // 
+            // numericUpDownTemperatura
+            // 
+            this.numericUpDownTemperatura.DecimalPlaces = 2;
+            this.numericUpDownTemperatura.Location = new System.Drawing.Point(338, 262);
+            this.numericUpDownTemperatura.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            131072});
+            this.numericUpDownTemperatura.Name = "numericUpDownTemperatura";
+            this.numericUpDownTemperatura.Size = new System.Drawing.Size(245, 26);
+            this.numericUpDownTemperatura.TabIndex = 129;
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -729,6 +744,45 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Índice APGAR:";
             // 
+            // radioButton10M
+            // 
+            this.radioButton10M.AutoSize = true;
+            this.radioButton10M.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton10M.ForeColor = System.Drawing.Color.Black;
+            this.radioButton10M.Location = new System.Drawing.Point(291, 19);
+            this.radioButton10M.Name = "radioButton10M";
+            this.radioButton10M.Size = new System.Drawing.Size(96, 22);
+            this.radioButton10M.TabIndex = 126;
+            this.radioButton10M.TabStop = true;
+            this.radioButton10M.Text = "10º Minuto";
+            this.radioButton10M.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5M
+            // 
+            this.radioButton5M.AutoSize = true;
+            this.radioButton5M.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton5M.ForeColor = System.Drawing.Color.Black;
+            this.radioButton5M.Location = new System.Drawing.Point(157, 19);
+            this.radioButton5M.Name = "radioButton5M";
+            this.radioButton5M.Size = new System.Drawing.Size(88, 22);
+            this.radioButton5M.TabIndex = 125;
+            this.radioButton5M.TabStop = true;
+            this.radioButton5M.Text = "5º Minuto";
+            this.radioButton5M.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1M
+            // 
+            this.radioButton1M.AutoSize = true;
+            this.radioButton1M.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1M.ForeColor = System.Drawing.Color.Black;
+            this.radioButton1M.Location = new System.Drawing.Point(6, 19);
+            this.radioButton1M.Name = "radioButton1M";
+            this.radioButton1M.Size = new System.Drawing.Size(88, 22);
+            this.radioButton1M.TabIndex = 124;
+            this.radioButton1M.TabStop = true;
+            this.radioButton1M.Text = "1º Minuto";
+            this.radioButton1M.UseVisualStyleBackColor = true;
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.radioButtonReanSim);
@@ -826,6 +880,25 @@
             this.lblCMPC.Size = new System.Drawing.Size(30, 20);
             this.lblCMPC.TabIndex = 106;
             this.lblCMPC.Text = "cm";
+            // 
+            // txtPerimetro
+            // 
+            this.txtPerimetro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPerimetro.Location = new System.Drawing.Point(338, 427);
+            this.txtPerimetro.Name = "txtPerimetro";
+            this.txtPerimetro.Size = new System.Drawing.Size(216, 26);
+            this.txtPerimetro.TabIndex = 105;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(25, 432);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(34, 20);
+            this.label6.TabIndex = 67;
+            this.label6.Text = "PC:";
             // 
             // label5
             // 
@@ -1028,77 +1101,6 @@
             this.dataAvaliacaoObjetivo.TabIndex = 15;
             this.dataAvaliacaoObjetivo.Value = new System.DateTime(2020, 4, 29, 0, 0, 0, 0);
             // 
-            // radioButton1M
-            // 
-            this.radioButton1M.AutoSize = true;
-            this.radioButton1M.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1M.ForeColor = System.Drawing.Color.Black;
-            this.radioButton1M.Location = new System.Drawing.Point(6, 19);
-            this.radioButton1M.Name = "radioButton1M";
-            this.radioButton1M.Size = new System.Drawing.Size(88, 22);
-            this.radioButton1M.TabIndex = 124;
-            this.radioButton1M.TabStop = true;
-            this.radioButton1M.Text = "1º Minuto";
-            this.radioButton1M.UseVisualStyleBackColor = true;
-            // 
-            // radioButton5M
-            // 
-            this.radioButton5M.AutoSize = true;
-            this.radioButton5M.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5M.ForeColor = System.Drawing.Color.Black;
-            this.radioButton5M.Location = new System.Drawing.Point(157, 19);
-            this.radioButton5M.Name = "radioButton5M";
-            this.radioButton5M.Size = new System.Drawing.Size(88, 22);
-            this.radioButton5M.TabIndex = 125;
-            this.radioButton5M.TabStop = true;
-            this.radioButton5M.Text = "5º Minuto";
-            this.radioButton5M.UseVisualStyleBackColor = true;
-            // 
-            // radioButton10M
-            // 
-            this.radioButton10M.AutoSize = true;
-            this.radioButton10M.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton10M.ForeColor = System.Drawing.Color.Black;
-            this.radioButton10M.Location = new System.Drawing.Point(291, 19);
-            this.radioButton10M.Name = "radioButton10M";
-            this.radioButton10M.Size = new System.Drawing.Size(96, 22);
-            this.radioButton10M.TabIndex = 126;
-            this.radioButton10M.TabStop = true;
-            this.radioButton10M.Text = "10º Minuto";
-            this.radioButton10M.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDownTemperatura
-            // 
-            this.numericUpDownTemperatura.DecimalPlaces = 2;
-            this.numericUpDownTemperatura.Location = new System.Drawing.Point(338, 262);
-            this.numericUpDownTemperatura.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            131072});
-            this.numericUpDownTemperatura.Name = "numericUpDownTemperatura";
-            this.numericUpDownTemperatura.Size = new System.Drawing.Size(245, 26);
-            this.numericUpDownTemperatura.TabIndex = 129;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(25, 432);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 20);
-            this.label6.TabIndex = 67;
-            this.label6.Text = "PC:";
-            // 
-            // txtPerimetro
-            // 
-            this.txtPerimetro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPerimetro.Location = new System.Drawing.Point(338, 427);
-            this.txtPerimetro.Name = "txtPerimetro";
-            this.txtPerimetro.Size = new System.Drawing.Size(216, 26);
-            this.txtPerimetro.TabIndex = 105;
-            // 
             // AdicionarVisualizarAvaliacaoObjetivoBebe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1124,6 +1126,7 @@
             this.panelFormulario.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTemperatura)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBoxPartoDistocico.ResumeLayout(false);
             this.groupBoxPartoDistocico.PerformLayout();
@@ -1140,7 +1143,6 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UpDownAltura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownPeso)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTemperatura)).EndInit();
             this.ResumeLayout(false);
 
         }

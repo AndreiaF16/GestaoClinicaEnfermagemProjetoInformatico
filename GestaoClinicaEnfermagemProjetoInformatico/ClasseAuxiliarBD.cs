@@ -42,6 +42,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
                     localidade = (string)reader["localidade"],
                     IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                    Acordo = (string)reader["Acordo"],
+                    NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
+                    NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? 0 : (int)reader["NumeroApoliceSeguradora"]),
+                    NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
+                    NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? 0 : (int)reader["NumeroSubsistema"]),
+                    NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? 0 : (int)reader["NumeroSNS"]),
+                    Sexo = (string)reader["Sexo"],
+                    PlanoVacinacao = (string)reader["PlanoVacinacao"]
                 };
             }
 

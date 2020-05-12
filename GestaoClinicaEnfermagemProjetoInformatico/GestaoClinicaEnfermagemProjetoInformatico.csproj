@@ -399,6 +399,12 @@
     <Compile Include="Validacoes.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="VerDetalhesAvaliacaoObjetivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerDetalhesAvaliacaoObjetivo.Designer.cs">
+      <DependentUpon>VerDetalhesAvaliacaoObjetivo.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerDetalhesPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -614,6 +620,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SendCodeUsername.resx">
       <DependentUpon>SendCodeUsername.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerDetalhesAvaliacaoObjetivo.resx">
+      <DependentUpon>VerDetalhesAvaliacaoObjetivo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerDetalhesPaciente.resx">
       <DependentUpon>VerDetalhesPaciente.cs</DependentUpon>

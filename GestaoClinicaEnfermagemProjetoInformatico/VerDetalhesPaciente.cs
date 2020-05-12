@@ -18,9 +18,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlCommand com = new SqlCommand();
         private List<ConsultasPaciente> utentes = new List<ConsultasPaciente>();
         private List<ConsultasPaciente> listaConsultasPaciente = new List<ConsultasPaciente>();
-        private List<DoencaPaciente> listaDoencaPacientes = new List<DoencaPaciente>();
-        private List<CirurgiaPaciente> listaCirurgiaPacientes = new List<CirurgiaPaciente>();
-        private List<DoencaPaciente> listaAlergiaPacientes = new List<DoencaPaciente>();
 
         public VerDetalhesPaciente(Paciente pac)
         {
@@ -33,8 +30,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void VerDetalhesPaciente_Load(object sender, EventArgs e)
         {
             consultasRealizadas();
-            doencasPaciente();
-            alergiasPaciente();
+            
         }
 
         private void consultasRealizadas()
@@ -61,18 +57,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sinais = (string)reader["sinais"],
                     escalaDor = (string)reader["escalaDor"],
                     valorConsulta = Convert.ToDouble(reader["valorConsulta"]),
-                  //  diagnostico = (string)reader["diagnostico"]
-
-                   // abortos = ((reader["abortos"] == DBNull.Value) ? 0 : (int)reader["abortos"]),
                     diagnostico = ((reader["diagnostico"] == DBNull.Value) ? "" : (string)reader["diagnostico"]),
-
-
-                    //  horaFimConsulta = (string)reader["horaFimConsulta"],
                 };
                 listaConsultasPaciente.Add(consultasPaciente);
             }
             conn.Close();
-            //dataGridViewHistoricoClinico.DataSource = listaHistorico;
             UpdateDataGridView();
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaConsultasPaciente };
             dataGridViewUtentes.DataSource = bindingSource1;
@@ -128,88 +117,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[5].HeaderText = "Dor";
             dataGridViewUtentes.Columns[6].HeaderText = "Valor Consulta (€)";
             dataGridViewUtentes.Columns[7].HeaderText = "Diagnóstico";
-           // dataGridViewUtentes.Columns[8].HeaderText = "Hora Fim Consulta";
 
         }
 
-        private void UpdateDataGridViewDoencas()
-        {
-
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaDoencaPacientes };
-            dataGridViewDoencas.DataSource = bindingSource1;
-            dataGridViewDoencas.Columns[0].HeaderText = "Doença";
-            dataGridViewDoencas.Columns[1].HeaderText = "Data de Diagnóstico";
-            dataGridViewDoencas.Columns[2].HeaderText = "Observações";
-        }
-
-
-        private void UpdateDataGridViewAlergias()
-        {
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaAlergiaPacientes };
-            dataGridViewAlergias.DataSource = bindingSource1;
-            dataGridViewAlergias.Columns[0].HeaderText = "Alergia";
-            dataGridViewAlergias.Columns[1].HeaderText = "Data de Diagnóstico";
-            dataGridViewAlergias.Columns[2].HeaderText = "Observações";
-        }
-
-
-
-       
-        private void doencasPaciente()
-        {
-
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select doenca.Nome, doencaP.data, doencaP.observacoes from DoencaPaciente doencaP JOIN Doenca doenca ON doencaP.IdDoenca = doenca.IdDoenca WHERE IdPaciente = @IdPaciente", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-
-                DoencaPaciente doencaPaciente = new DoencaPaciente
-                {
-                    nome = (string)reader["Nome"],
-                    data = data,
-                    observacoes = (string)reader["observacoes"],
-                };
-                listaDoencaPacientes.Add(doencaPaciente);
-            }
-            conn.Close();
-            UpdateDataGridViewDoencas();          
-        }
-
-        private void alergiasPaciente()
-        {
-                conn.Open();
-                com.Connection = conn;
-                SqlCommand cmd = new SqlCommand("select alergia.Nome, alergiaP.data, alergiaP.observacoes from AlergiaPaciente alergiaP JOIN Alergia alergia ON alergia.IdAlergia = AlergiaP.IdAlergia WHERE IdPaciente = @IdPaciente ", conn);
-                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-
-                    DoencaPaciente doencaPaciente = new DoencaPaciente
-                    {
-                        nome = (string)reader["Nome"],
-                        data = data,
-                        observacoes = (string)reader["observacoes"],
-                    };
-                listaAlergiaPacientes.Add(doencaPaciente);
-                }
-                conn.Close();
-                UpdateDataGridViewAlergias();                      
-            }
-      
-
-        
-
+           
         private void button5_Click(object sender, EventArgs e)
         {
             VerMaisDetalhesPaciente ver = new VerMaisDetalhesPaciente(paciente);
+            ver.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerDetalhesAvaliacaoObjetivo ver = new VerDetalhesAvaliacaoObjetivo(paciente);
             ver.Show();
         }
     }

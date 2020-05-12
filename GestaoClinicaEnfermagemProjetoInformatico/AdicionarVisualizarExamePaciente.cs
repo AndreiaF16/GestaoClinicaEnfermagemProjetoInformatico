@@ -202,11 +202,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Boolean VerificarDadosInseridos()
         {
             string nome = comboBoxDoenca.Text;
-            string designacao = txtDesignacao.Text;
-            string observacoes = txtObservacoes.Text;
+            DateTime data = dataDiagnostico.Value;
 
+            if ((data - DateTime.Today).TotalDays > 0)
+            {
+                MessageBox.Show("A data do exame tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
-            if (nome == string.Empty || designacao == string.Empty || observacoes == string.Empty)
+            if (nome == string.Empty )
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

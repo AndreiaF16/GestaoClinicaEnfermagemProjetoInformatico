@@ -18,7 +18,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public FormRegistarUtente(Enfermeiro enf)
         {
             InitializeComponent();
-            enfermeiro = enf;       
+            enfermeiro = enf;
+            dataNascimento.Value = DateTime.Today;
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -47,20 +48,64 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string nif = txtNif.Text;
             string profissao =  (String)cbProfissoes.SelectedItem;
             string acordo = (String)cbAcordos.SelectedItem;
+            string nomeSeguradora = txtNomeSeguradora.Text;
+            string numeroApolice = txtNApolice.Text;
+            string numeroSNS = txtSNS.Text;
+            string numeroSubsistema = txtNSubsistema.Text;
+            string nomeSubsistema = txtNomeSubsistema.Text;
 
             if (nome == string.Empty || rua == string.Empty || codPostalPrefixo == string.Empty || codPostalSufixo == string.Empty
-                || localidade == string.Empty || email == string.Empty || telemovel == string.Empty || nif == string.Empty || profissao == string.Empty || acordo == string.Empty)
+                || localidade == string.Empty || telemovel == string.Empty || nif == string.Empty || profissao == string.Empty || acordo == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             
             Regex regexEmail = new Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
-            if (!regexEmail.IsMatch(txtEmail.Text))
+            if (!regexEmail.IsMatch(email))
             {
                 MessageBox.Show("Por favor, introduza um email válido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            if (Convert.ToInt32(numeroCasa) < 0)
+            {
+                MessageBox.Show("O Número da Casa não pode ser um valor negativo!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (codPostalPrefixo.Length != 4)
+            {
+                MessageBox.Show("O prefixo do código postal tem de ter exatamente 4 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (codPostalSufixo.Length != 3)
+            {
+                MessageBox.Show("O sufixo do código postal tem de ter exatamente 3 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (telemovel.Length != 9)
+            {
+                MessageBox.Show("O telemóvel tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (nif.Length != 9)
+            {
+                MessageBox.Show("O nif tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (numeroApolice.Length != 9)
+            {
+                MessageBox.Show("O número da apólice tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (numeroSNS.Length != 9)
+            {
+                MessageBox.Show("O número do SNS tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (numeroSubsistema.Length != 9)
+            {
+                MessageBox.Show("O número do subsistema tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             DateTime data = dataNascimento.Value;
 
@@ -70,8 +115,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
-            string numeroSNS = txtSNS.Text;
-
+            
             if (cbAcordos.SelectedItem.Equals("SNS"))
             {
                 if (numeroSNS == string.Empty)
@@ -82,8 +126,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
 
-            string nomeSubsistema = txtNomeSubsistema.Text;
-            string numeroSubsistema = txtNSubsistema.Text;
+           
+            
             if (cbAcordos.SelectedItem.Equals("Subsistema de Saúde"))
             {
                 if (nomeSubsistema == string.Empty || numeroSubsistema == string.Empty)
@@ -94,8 +138,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
 
-            string nomeSeguradora = txtNomeSeguradora.Text;
-            string numeroApolice = txtNApolice.Text;
+           
 
             if (cbAcordos.SelectedItem.Equals("Seguradora"))
             {

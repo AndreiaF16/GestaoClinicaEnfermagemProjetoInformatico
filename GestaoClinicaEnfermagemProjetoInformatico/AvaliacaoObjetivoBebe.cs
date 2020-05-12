@@ -15,12 +15,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public int pressaoArterial { get; set; }
         public decimal temperatura { get; set; }
         public int saturacaoOxigenio { get; set; }
-        public int menopausa { get; set; }
         public int INR { get; set; }
         public int Perimetro { get; set; }
-        public int IdTipoAleitamento { get; set; }
+        //public int IdTipoAleitamento { get; set; }
+        public string tipoAleitamento { get; set; }
         public string nomeLeiteArtificial { get; set; }
-        public int IdTipoParto { get; set; }
+        // public int IdTipoParto { get; set; }
+         public string tipoParto { get; set; }
+
         public string partoDistocico { get; set; }
         public string epidoral { get; set; }
         public string episotomia { get; set; }

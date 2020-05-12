@@ -262,6 +262,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             string peso = UpDownPeso.Text;
             string altura = UpDownAltura.Text;
+            string pressaArterial = txtTensaoArterial.Text;
+            string frequencia = txtFC.Text;
+            string temperatura = numericUpDownTemperatura.Text;
+            string SP02 = txtSPO2.Text;
+            string INR = upDownINR.Text;
+            string BTM = txtBMT.Text;
+            string AC = txtAC.Text;
+            string AP= txtAP.Text;
+            string Menarca = upDownMenarca.Text;
+            string gravidez = upDownGravidezes.Text;
+            string filhosVivos = upDownFilhosVivos.Text;
+            string abortos = upDownAbortos.Text;
 
             if (peso == string.Empty || altura == string.Empty)
             {
@@ -269,12 +281,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
-
-            if (Convert.ToDecimal(peso)  <= 0 || Convert.ToInt32(altura) <= 0)
+            if (Convert.ToDecimal(peso) <= 0 || Convert.ToInt32(altura) <= 0 || Convert.ToInt32(frequencia) <= 0 || Convert.ToInt32(pressaArterial) <= 0 || 
+                Convert.ToDecimal(temperatura) <= 0 || Convert.ToInt32(SP02) <= 0 || Convert.ToInt32(INR) <= 0 || 
+                Convert.ToInt32(BTM) <= 0 || Convert.ToInt32(AC) <= 0 || Convert.ToInt32(AP) <= 0 || Convert.ToInt32(Menarca) <= 0 || 
+                Convert.ToInt32(gravidez) <= 0 || Convert.ToInt32(filhosVivos) <= 0 || Convert.ToInt32(abortos) <= 0)
             {
-                MessageBox.Show("O peso e/ou a altura não podem ser inferiores a 0, por valor corriga os valores!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("O peso, e/ou a altura, e/ou a frequência cardiaca,  e/ou a pressão arterial, e/ou a temperatura, e/ou o SP02, e/ou o INR," +
+                    " e/ou o BTM, e/ou o AC, e/ou o AP, e/ou a Menarca, e /ou a gravidez, e/ou os filhos vivos, e/ou os abortos" +
+                    "não podem ser inferiores a 0, por valor corriga os valores!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+           
             return true;
         }
 
