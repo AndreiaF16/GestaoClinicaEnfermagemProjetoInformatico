@@ -147,6 +147,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 MessageBox.Show("Por favor, introduza um email válido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            if (telemovel.Length != 9)
+            {
+                MessageBox.Show("O telemóvel tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (nif.Length != 9)
+            {
+                MessageBox.Show("O nif tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             return true;
         }
 

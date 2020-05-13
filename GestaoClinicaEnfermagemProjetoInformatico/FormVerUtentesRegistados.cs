@@ -101,7 +101,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     Email = (string)reader["email"],
                     Contacto = Convert.ToDouble(reader["contacto"]),
                     Nif = Convert.ToDouble(reader["nif"]),
-                    Profissao = (string)reader["Profissao"],
+                    Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? 0 : (int)reader["nomeProfissao"]),
+
+                    // Profissao = (string)reader["Profissao"],
                     Rua = (string)reader["Rua"],
                     NumeroCasa = (int)reader["NumeroCasa"],
                     Andar = (string)reader["Andar"],
@@ -127,7 +129,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     //NumeroSNS = (int)reader["NumeroSNS"],
 
                     Sexo = (string)reader["Sexo"],
-                    PlanoVacinacao = (string)reader["PlanoVacinacao"]
+                    PlanoVacinacao = (string)reader["PlanoVacinacao"],
                 };
                 utentes.Add(utente);
             }
@@ -322,7 +324,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             else
             {
-                MessageBox.Show("Não é possivel iniciar uma consulta porque não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Não é possivel iniciar uma consulta, pois não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -397,7 +399,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             else
             {
-                MessageBox.Show("Não é possivel registar uma consulta porque não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Não é possivel registar uma consulta, pois não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -475,7 +477,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 EditUtente editar = new EditUtente(enfermeiro, paciente, this);
                 editar.Show();
             }
+            else 
+            {
+                MessageBox.Show("Não é possível editar um utente, pois não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
         public void UpdateUtentes() 
         {
             conn.Open();
@@ -495,7 +502,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     Email = (string)reader["email"],
                     Contacto = Convert.ToDouble(reader["contacto"]),
                     Nif = Convert.ToDouble(reader["nif"]),
-                    Profissao = (string)reader["Profissao"],
+                    Profissao = (int)reader["IdProfissao"],
                     Rua = (string)reader["Rua"],
                     NumeroCasa = (int)reader["NumeroCasa"],
                     Andar = (string)reader["Andar"],
@@ -591,7 +598,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             else
             {
-                MessageBox.Show("Não tem utentes associados para poder ver os detalhes do mesmo", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Não é possível ver os detalhes do utente, pois não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

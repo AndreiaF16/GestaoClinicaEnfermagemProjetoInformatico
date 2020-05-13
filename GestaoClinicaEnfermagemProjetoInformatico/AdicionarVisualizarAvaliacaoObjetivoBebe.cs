@@ -25,7 +25,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             InitializeComponent();
             paciente = pac;
-            label1.Text = "Nome do Paciente: " + paciente.Nome;
+            label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             dataAvaliacaoObjetivo.Value = DateTime.Now;
         }
@@ -161,6 +161,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 int altura = Convert.ToInt16(UpDownAltura.Text);
                 decimal peso = Convert.ToDecimal(UpDownPeso.Text);
                 float ba = Convert.ToSingle(UpDownPeso.Text);
+                int frequenciaCardiaca = Convert.ToInt16(txtFC.Text);
                 int tipoAleitamento = -1;
                 int tipoParto = -1;
                 string partoDistocico = "";
@@ -245,13 +246,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 try
                 {
                     conn.Open();
-                    string queryInsertData = "INSERT INTO AvaliacaoObjetivoBebe(dataRegisto,Peso,Altura,pressaoArterial,temperatura,saturacaoOxigenio,INR,Perimetro,IdTipoAleitamento,nomeLeiteArtificial,IdTipoParto,partoDistocico,epidoral,episotomia,reanimacaoFetal,indiceAPGAR,Fototerapia,observacoes,IdPaciente) VALUES(@dataRegisto, @Peso, @Altura, @pressaoArterial, @temperatura, @saturacaoOxigenio, @INR, @Perimetro, @tipoAleitamento, @nomeLeiteArtificial, @tipoParto, @partoDistocico, @epidoral, @episotomia, @reanimacaoFetal, @indiceAPGAR, @fototerapia, @observacoes, @IdPaciente); ";
+                    string queryInsertData = "INSERT INTO AvaliacaoObjetivoBebe(dataRegisto,Peso,Altura,pressaoArterial,frequenciaCardiaca,temperatura,saturacaoOxigenio,INR,Perimetro,IdTipoAleitamento,nomeLeiteArtificial,IdTipoParto,partoDistocico,epidoral,episotomia,reanimacaoFetal,indiceAPGAR,Fototerapia,observacoes,IdPaciente) VALUES(@dataRegisto, @Peso, @Altura, @pressaoArterial,@frequenciaCardiaca, @temperatura, @saturacaoOxigenio, @INR, @Perimetro, @tipoAleitamento, @nomeLeiteArtificial, @tipoParto, @partoDistocico, @epidoral, @episotomia, @reanimacaoFetal, @indiceAPGAR, @fototerapia, @observacoes, @IdPaciente); ";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.Parameters.AddWithValue("@dataRegisto", data.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@Peso", UpDownPeso.Value);
                     sqlCommand.Parameters.AddWithValue("@Altura", UpDownAltura.Value);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@pressaoArterial", txtTensaoArterial.Text);
+                    sqlCommand.Parameters.AddWithValue("@frequenciaCardiaca", txtFC.Text);
                     sqlCommand.Parameters.AddWithValue("@temperatura", numericUpDownTemperatura.Value);
                     sqlCommand.Parameters.AddWithValue("@saturacaoOxigenio", txtSPO2.Text);
                     sqlCommand.Parameters.AddWithValue("@INR", upDownINR.Value);

@@ -24,7 +24,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             enfermeiro = enf;
             utente = ut;
 
-            label1.Text = "Nome do Paciente: " + utente.Nome;
+            label1.Text = "Nome do Utente: " + utente.Nome;
             //  g = this.CreateGraphics();
         }
 

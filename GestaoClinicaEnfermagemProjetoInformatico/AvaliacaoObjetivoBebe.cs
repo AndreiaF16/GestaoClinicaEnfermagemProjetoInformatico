@@ -13,6 +13,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public int Altura { get; set; }
         public decimal IMC { get; set; }
         public int pressaoArterial { get; set; }
+        public int frequenciaCardiaca { get; set; }
         public decimal temperatura { get; set; }
         public int saturacaoOxigenio { get; set; }
         public int INR { get; set; }

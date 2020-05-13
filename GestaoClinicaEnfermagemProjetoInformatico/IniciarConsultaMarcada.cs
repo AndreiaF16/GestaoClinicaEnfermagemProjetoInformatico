@@ -29,7 +29,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             paciente = pac;
             formMenu = formM;
             agendamentoConsulta = agendamento;
-            label1.Text = "Nome do Paciente: " + paciente.Nome;
+            label1.Text = "Nome do Utente: " + paciente.Nome;
             inicio = DateTime.Now;
             labelData.Text = "Data Consulta: " + inicio.ToString("dd/MM/yyyy");
             labelHora.Text = "Hora Inicio Consulta: " + inicio.ToString("HH:mm");
@@ -139,9 +139,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 MessageBox.Show("O valor da consulta tem que ser superior a zero", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
-
-
             return true;
         }
 
@@ -209,15 +206,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
 
                 }
-            }
-        }
-
-        private void txtTensaoArterial_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //garantir que são inseridos apenas numeros
-            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
             }
         }
 

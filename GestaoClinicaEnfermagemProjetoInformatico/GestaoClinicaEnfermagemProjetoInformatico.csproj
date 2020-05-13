@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdicionarProfissao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarProfissao.Designer.cs">
+      <DependentUpon>AdicionarProfissao.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdicionarTipoAleitamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,12 @@
     <Compile Include="Doencas.Designer.cs">
       <DependentUpon>Doencas.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerEditarProfissao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerEditarProfissao.Designer.cs">
+      <DependentUpon>VerEditarProfissao.cs</DependentUpon>
+    </Compile>
     <Compile Include="FinalizarEncomenda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +202,7 @@
       <DependentUpon>ProdutosEmStock.cs</DependentUpon>
     </Compile>
     <Compile Include="ProdutosStock.cs" />
+    <Compile Include="ProfissaoPaciente.cs" />
     <Compile Include="RegistarEncomendas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -455,6 +468,9 @@
     <Compile Include="VerEditarPartosRegistados.Designer.cs">
       <DependentUpon>VerEditarPartosRegistados.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdicionarProfissao.resx">
+      <DependentUpon>AdicionarProfissao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdicionarTipoAleitamento.resx">
       <DependentUpon>AdicionarTipoAleitamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -638,6 +654,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerEditarPartosRegistados.resx">
       <DependentUpon>VerEditarPartosRegistados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerEditarProfissao.resx">
+      <DependentUpon>VerEditarProfissao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerEnfermeirosRegistados.resx">
       <DependentUpon>VerEnfermeirosRegistados.cs</DependentUpon>

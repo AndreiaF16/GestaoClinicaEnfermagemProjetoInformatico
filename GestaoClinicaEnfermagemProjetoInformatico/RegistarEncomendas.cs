@@ -243,7 +243,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             int nome = comboBoxFornecedor.SelectedIndex;
             string id = txtNumeroEncomenda.Text;
-            //OPCAO ESTUPIDA DO DAVID
+
+            DateTime dataPrevista = dataEntregaPrevista.Value;
+            DateTime thisDay = DateTime.Now;
+            int var = (int)((dataPrevista - DateTime.Today).TotalDays);
+
             if (nome <0 || id == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatório, por favor preencha o campo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -254,11 +258,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 if (encomenda.IdEncomenda == Convert.ToInt32(id))
                 {
-                    MessageBox.Show("Número de Encomenda já existe, registe outro número!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Número de Encomenda que colocou já existe, registe outro número de encomenda!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
 
+
+            if (Convert.ToInt32(id) <= 0)
+            {
+                MessageBox.Show("O Número de encomenda não pode ser um valor negativo!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+            if (var < 0)
+            {
+                MessageBox.Show("A data de entrega prevista não pode ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
 
             return true;

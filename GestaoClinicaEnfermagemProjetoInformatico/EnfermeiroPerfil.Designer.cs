@@ -231,11 +231,12 @@
             // 
             this.txtContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContacto.ForeColor = System.Drawing.Color.Black;
-            this.txtContacto.Location = new System.Drawing.Point(40, 248);
+            this.txtContacto.Location = new System.Drawing.Point(40, 265);
             this.txtContacto.MaxLength = 9;
             this.txtContacto.Name = "txtContacto";
             this.txtContacto.Size = new System.Drawing.Size(493, 26);
             this.txtContacto.TabIndex = 7;
+            this.txtContacto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContacto_KeyPress);
             // 
             // lblTitulo
             // 

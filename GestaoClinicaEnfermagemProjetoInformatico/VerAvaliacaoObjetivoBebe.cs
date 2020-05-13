@@ -22,7 +22,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             InitializeComponent();
             paciente = pac;
-            label1.Text = "Nome do Paciente: " + paciente.Nome;
+            label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         }

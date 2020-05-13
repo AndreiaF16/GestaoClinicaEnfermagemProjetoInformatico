@@ -49,9 +49,28 @@
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioButtonAtualizado = new System.Windows.Forms.RadioButton();
+            this.radioButtonNaoAtualziado = new System.Windows.Forms.RadioButton();
+            this.groupBoxSexo = new System.Windows.Forms.GroupBox();
+            this.radioButtonFeminino = new System.Windows.Forms.RadioButton();
+            this.radioButtonMasculino = new System.Windows.Forms.RadioButton();
+            this.radioButtonIndefinido = new System.Windows.Forms.RadioButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbAcordos = new System.Windows.Forms.ComboBox();
+            this.txtSNS = new System.Windows.Forms.TextBox();
+            this.lblSNS = new System.Windows.Forms.Label();
+            this.txtNSubsistema = new System.Windows.Forms.TextBox();
+            this.lblNSubsistema = new System.Windows.Forms.Label();
+            this.txtNomeSubsistema = new System.Windows.Forms.TextBox();
+            this.lblNomeSusbsistema = new System.Windows.Forms.Label();
+            this.txtNApolice = new System.Windows.Forms.TextBox();
+            this.lblNApolice = new System.Windows.Forms.Label();
+            this.lblSeguradora = new System.Windows.Forms.Label();
+            this.txtNomeSeguradora = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
-            this.textBoxNif = new System.Windows.Forms.TextBox();
-            this.textBoxNome = new System.Windows.Forms.TextBox();
+            this.txtNif = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.lblFuncao = new System.Windows.Forms.Label();
             this.txtMorada = new System.Windows.Forms.TextBox();
             this.lblDataNascimento = new System.Windows.Forms.Label();
@@ -73,25 +92,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.painelPrincipal = new System.Windows.Forms.Panel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButtonAtualizado = new System.Windows.Forms.RadioButton();
-            this.radioButtonNaoAtualziado = new System.Windows.Forms.RadioButton();
-            this.groupBoxSexo = new System.Windows.Forms.GroupBox();
-            this.radioButtonFeminino = new System.Windows.Forms.RadioButton();
-            this.radioButtonMasculino = new System.Windows.Forms.RadioButton();
-            this.radioButtonIndefinido = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cbAcordos = new System.Windows.Forms.ComboBox();
-            this.txtSNS = new System.Windows.Forms.TextBox();
-            this.lblSNS = new System.Windows.Forms.Label();
-            this.txtNSubsistema = new System.Windows.Forms.TextBox();
-            this.lblNSubsistema = new System.Windows.Forms.Label();
-            this.txtNomeSubsistema = new System.Windows.Forms.TextBox();
-            this.lblNomeSusbsistema = new System.Windows.Forms.Label();
-            this.txtNApolice = new System.Windows.Forms.TextBox();
-            this.lblNApolice = new System.Windows.Forms.Label();
-            this.lblSeguradora = new System.Windows.Forms.Label();
-            this.txtNomeSeguradora = new System.Windows.Forms.TextBox();
             this.enfermeiroBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
@@ -102,10 +102,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelFormulario.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.painelPrincipal.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBoxSexo.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.painelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.enfermeiroBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -348,8 +348,8 @@
             this.groupBox1.Controls.Add(this.lblSeguradora);
             this.groupBox1.Controls.Add(this.txtNomeSeguradora);
             this.groupBox1.Controls.Add(this.lblNome);
-            this.groupBox1.Controls.Add(this.textBoxNif);
-            this.groupBox1.Controls.Add(this.textBoxNome);
+            this.groupBox1.Controls.Add(this.txtNif);
+            this.groupBox1.Controls.Add(this.txtNome);
             this.groupBox1.Controls.Add(this.lblFuncao);
             this.groupBox1.Controls.Add(this.txtMorada);
             this.groupBox1.Controls.Add(this.lblOutraProfissao);
@@ -381,6 +381,220 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Editar Utente";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radioButtonAtualizado);
+            this.groupBox3.Controls.Add(this.radioButtonNaoAtualziado);
+            this.groupBox3.Location = new System.Drawing.Point(711, 496);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(306, 62);
+            this.groupBox3.TabIndex = 64;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Plano Nacional de Vacinação:";
+            // 
+            // radioButtonAtualizado
+            // 
+            this.radioButtonAtualizado.AutoSize = true;
+            this.radioButtonAtualizado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonAtualizado.ForeColor = System.Drawing.Color.Black;
+            this.radioButtonAtualizado.Location = new System.Drawing.Point(16, 24);
+            this.radioButtonAtualizado.Name = "radioButtonAtualizado";
+            this.radioButtonAtualizado.Size = new System.Drawing.Size(102, 24);
+            this.radioButtonAtualizado.TabIndex = 47;
+            this.radioButtonAtualizado.Text = "Atualizado";
+            this.radioButtonAtualizado.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonNaoAtualziado
+            // 
+            this.radioButtonNaoAtualziado.AutoSize = true;
+            this.radioButtonNaoAtualziado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonNaoAtualziado.ForeColor = System.Drawing.Color.Black;
+            this.radioButtonNaoAtualziado.Location = new System.Drawing.Point(140, 24);
+            this.radioButtonNaoAtualziado.Name = "radioButtonNaoAtualziado";
+            this.radioButtonNaoAtualziado.Size = new System.Drawing.Size(135, 24);
+            this.radioButtonNaoAtualziado.TabIndex = 48;
+            this.radioButtonNaoAtualziado.Text = "Não Atualizado";
+            this.radioButtonNaoAtualziado.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxSexo
+            // 
+            this.groupBoxSexo.Controls.Add(this.radioButtonFeminino);
+            this.groupBoxSexo.Controls.Add(this.radioButtonMasculino);
+            this.groupBoxSexo.Controls.Add(this.radioButtonIndefinido);
+            this.groupBoxSexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxSexo.ForeColor = System.Drawing.Color.Black;
+            this.groupBoxSexo.Location = new System.Drawing.Point(711, 434);
+            this.groupBoxSexo.Name = "groupBoxSexo";
+            this.groupBoxSexo.Size = new System.Drawing.Size(234, 56);
+            this.groupBoxSexo.TabIndex = 63;
+            this.groupBoxSexo.TabStop = false;
+            this.groupBoxSexo.Text = "Sexo";
+            // 
+            // radioButtonFeminino
+            // 
+            this.radioButtonFeminino.AutoSize = true;
+            this.radioButtonFeminino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonFeminino.Location = new System.Drawing.Point(6, 23);
+            this.radioButtonFeminino.Name = "radioButtonFeminino";
+            this.radioButtonFeminino.Size = new System.Drawing.Size(37, 24);
+            this.radioButtonFeminino.TabIndex = 43;
+            this.radioButtonFeminino.Text = "F";
+            this.radioButtonFeminino.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMasculino
+            // 
+            this.radioButtonMasculino.AutoSize = true;
+            this.radioButtonMasculino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonMasculino.Location = new System.Drawing.Point(49, 25);
+            this.radioButtonMasculino.Name = "radioButtonMasculino";
+            this.radioButtonMasculino.Size = new System.Drawing.Size(40, 24);
+            this.radioButtonMasculino.TabIndex = 44;
+            this.radioButtonMasculino.Text = "M";
+            this.radioButtonMasculino.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonIndefinido
+            // 
+            this.radioButtonIndefinido.AutoSize = true;
+            this.radioButtonIndefinido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonIndefinido.Location = new System.Drawing.Point(104, 23);
+            this.radioButtonIndefinido.Name = "radioButtonIndefinido";
+            this.radioButtonIndefinido.Size = new System.Drawing.Size(97, 24);
+            this.radioButtonIndefinido.TabIndex = 45;
+            this.radioButtonIndefinido.Text = "Indefinido";
+            this.radioButtonIndefinido.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.cbAcordos);
+            this.groupBox2.Location = new System.Drawing.Point(705, 21);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(324, 72);
+            this.groupBox2.TabIndex = 52;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Selecione o tipo de acordo";
+            // 
+            // cbAcordos
+            // 
+            this.cbAcordos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAcordos.FormattingEnabled = true;
+            this.cbAcordos.Items.AddRange(new object[] {
+            "Seguradora",
+            "Subsistema de Saúde",
+            "SNS"});
+            this.cbAcordos.Location = new System.Drawing.Point(9, 25);
+            this.cbAcordos.Name = "cbAcordos";
+            this.cbAcordos.Size = new System.Drawing.Size(280, 28);
+            this.cbAcordos.TabIndex = 31;
+            this.cbAcordos.SelectedIndexChanged += new System.EventHandler(this.cbAcordos_SelectedIndexChanged);
+            // 
+            // txtSNS
+            // 
+            this.txtSNS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSNS.Location = new System.Drawing.Point(705, 391);
+            this.txtSNS.MaxLength = 9;
+            this.txtSNS.Name = "txtSNS";
+            this.txtSNS.Size = new System.Drawing.Size(280, 26);
+            this.txtSNS.TabIndex = 62;
+            this.txtSNS.Visible = false;
+            // 
+            // lblSNS
+            // 
+            this.lblSNS.AutoSize = true;
+            this.lblSNS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSNS.ForeColor = System.Drawing.Color.Black;
+            this.lblSNS.Location = new System.Drawing.Point(710, 371);
+            this.lblSNS.Name = "lblSNS";
+            this.lblSNS.Size = new System.Drawing.Size(89, 20);
+            this.lblSNS.TabIndex = 61;
+            this.lblSNS.Text = "Nº do SNS:";
+            this.lblSNS.Visible = false;
+            // 
+            // txtNSubsistema
+            // 
+            this.txtNSubsistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNSubsistema.Location = new System.Drawing.Point(705, 328);
+            this.txtNSubsistema.MaxLength = 9;
+            this.txtNSubsistema.Name = "txtNSubsistema";
+            this.txtNSubsistema.Size = new System.Drawing.Size(280, 26);
+            this.txtNSubsistema.TabIndex = 60;
+            this.txtNSubsistema.Visible = false;
+            // 
+            // lblNSubsistema
+            // 
+            this.lblNSubsistema.AutoSize = true;
+            this.lblNSubsistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNSubsistema.ForeColor = System.Drawing.Color.Black;
+            this.lblNSubsistema.Location = new System.Drawing.Point(701, 305);
+            this.lblNSubsistema.Name = "lblNSubsistema";
+            this.lblNSubsistema.Size = new System.Drawing.Size(140, 20);
+            this.lblNSubsistema.TabIndex = 59;
+            this.lblNSubsistema.Text = "Nº do Subsistema:";
+            this.lblNSubsistema.Visible = false;
+            // 
+            // txtNomeSubsistema
+            // 
+            this.txtNomeSubsistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeSubsistema.Location = new System.Drawing.Point(705, 258);
+            this.txtNomeSubsistema.Name = "txtNomeSubsistema";
+            this.txtNomeSubsistema.Size = new System.Drawing.Size(280, 26);
+            this.txtNomeSubsistema.TabIndex = 58;
+            this.txtNomeSubsistema.Visible = false;
+            // 
+            // lblNomeSusbsistema
+            // 
+            this.lblNomeSusbsistema.AutoSize = true;
+            this.lblNomeSusbsistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNomeSusbsistema.ForeColor = System.Drawing.Color.Black;
+            this.lblNomeSusbsistema.Location = new System.Drawing.Point(701, 235);
+            this.lblNomeSusbsistema.Name = "lblNomeSusbsistema";
+            this.lblNomeSusbsistema.Size = new System.Drawing.Size(165, 20);
+            this.lblNomeSusbsistema.TabIndex = 57;
+            this.lblNomeSusbsistema.Text = "Nome do Subsistema:";
+            this.lblNomeSusbsistema.Visible = false;
+            // 
+            // txtNApolice
+            // 
+            this.txtNApolice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNApolice.Location = new System.Drawing.Point(705, 197);
+            this.txtNApolice.MaxLength = 9;
+            this.txtNApolice.Name = "txtNApolice";
+            this.txtNApolice.Size = new System.Drawing.Size(280, 26);
+            this.txtNApolice.TabIndex = 56;
+            this.txtNApolice.Visible = false;
+            // 
+            // lblNApolice
+            // 
+            this.lblNApolice.AutoSize = true;
+            this.lblNApolice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNApolice.ForeColor = System.Drawing.Color.Black;
+            this.lblNApolice.Location = new System.Drawing.Point(701, 174);
+            this.lblNApolice.Name = "lblNApolice";
+            this.lblNApolice.Size = new System.Drawing.Size(196, 20);
+            this.lblNApolice.TabIndex = 55;
+            this.lblNApolice.Text = "Nº Apólice da Seguradora:";
+            this.lblNApolice.Visible = false;
+            // 
+            // lblSeguradora
+            // 
+            this.lblSeguradora.AutoSize = true;
+            this.lblSeguradora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSeguradora.ForeColor = System.Drawing.Color.Black;
+            this.lblSeguradora.Location = new System.Drawing.Point(701, 104);
+            this.lblSeguradora.Name = "lblSeguradora";
+            this.lblSeguradora.Size = new System.Drawing.Size(165, 20);
+            this.lblSeguradora.TabIndex = 54;
+            this.lblSeguradora.Text = "Nome da Seguradora:";
+            this.lblSeguradora.Visible = false;
+            // 
+            // txtNomeSeguradora
+            // 
+            this.txtNomeSeguradora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeSeguradora.Location = new System.Drawing.Point(705, 127);
+            this.txtNomeSeguradora.Name = "txtNomeSeguradora";
+            this.txtNomeSeguradora.Size = new System.Drawing.Size(280, 26);
+            this.txtNomeSeguradora.TabIndex = 53;
+            this.txtNomeSeguradora.Visible = false;
+            // 
             // lblNome
             // 
             this.lblNome.AutoSize = true;
@@ -392,26 +606,26 @@
             this.lblNome.TabIndex = 10;
             this.lblNome.Text = "Nome:";
             // 
-            // textBoxNif
+            // txtNif
             // 
-            this.textBoxNif.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNif.Location = new System.Drawing.Point(178, 434);
-            this.textBoxNif.Name = "textBoxNif";
-            this.textBoxNif.Size = new System.Drawing.Size(199, 26);
-            this.textBoxNif.TabIndex = 51;
-            this.textBoxNif.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            this.textBoxNif.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            this.txtNif.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNif.Location = new System.Drawing.Point(178, 434);
+            this.txtNif.Name = "txtNif";
+            this.txtNif.Size = new System.Drawing.Size(199, 26);
+            this.txtNif.TabIndex = 51;
+            this.txtNif.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.txtNif.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
-            // textBoxNome
+            // txtNome
             // 
-            this.textBoxNome.BackColor = System.Drawing.Color.White;
-            this.textBoxNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNome.ForeColor = System.Drawing.Color.Black;
-            this.textBoxNome.Location = new System.Drawing.Point(179, 34);
-            this.textBoxNome.Name = "textBoxNome";
-            this.textBoxNome.Size = new System.Drawing.Size(494, 26);
-            this.textBoxNome.TabIndex = 11;
-            this.textBoxNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.txtNome.BackColor = System.Drawing.Color.White;
+            this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNome.ForeColor = System.Drawing.Color.Black;
+            this.txtNome.Location = new System.Drawing.Point(179, 34);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(494, 26);
+            this.txtNome.TabIndex = 11;
+            this.txtNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // lblFuncao
             // 
@@ -639,220 +853,6 @@
             this.painelPrincipal.Size = new System.Drawing.Size(1350, 744);
             this.painelPrincipal.TabIndex = 3;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.radioButtonAtualizado);
-            this.groupBox3.Controls.Add(this.radioButtonNaoAtualziado);
-            this.groupBox3.Location = new System.Drawing.Point(711, 496);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(306, 62);
-            this.groupBox3.TabIndex = 64;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Plano Nacional de Vacinação:";
-            // 
-            // radioButtonAtualizado
-            // 
-            this.radioButtonAtualizado.AutoSize = true;
-            this.radioButtonAtualizado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonAtualizado.ForeColor = System.Drawing.Color.Black;
-            this.radioButtonAtualizado.Location = new System.Drawing.Point(16, 24);
-            this.radioButtonAtualizado.Name = "radioButtonAtualizado";
-            this.radioButtonAtualizado.Size = new System.Drawing.Size(102, 24);
-            this.radioButtonAtualizado.TabIndex = 47;
-            this.radioButtonAtualizado.Text = "Atualizado";
-            this.radioButtonAtualizado.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonNaoAtualziado
-            // 
-            this.radioButtonNaoAtualziado.AutoSize = true;
-            this.radioButtonNaoAtualziado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonNaoAtualziado.ForeColor = System.Drawing.Color.Black;
-            this.radioButtonNaoAtualziado.Location = new System.Drawing.Point(140, 24);
-            this.radioButtonNaoAtualziado.Name = "radioButtonNaoAtualziado";
-            this.radioButtonNaoAtualziado.Size = new System.Drawing.Size(135, 24);
-            this.radioButtonNaoAtualziado.TabIndex = 48;
-            this.radioButtonNaoAtualziado.Text = "Não Atualizado";
-            this.radioButtonNaoAtualziado.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxSexo
-            // 
-            this.groupBoxSexo.Controls.Add(this.radioButtonFeminino);
-            this.groupBoxSexo.Controls.Add(this.radioButtonMasculino);
-            this.groupBoxSexo.Controls.Add(this.radioButtonIndefinido);
-            this.groupBoxSexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxSexo.ForeColor = System.Drawing.Color.Black;
-            this.groupBoxSexo.Location = new System.Drawing.Point(711, 434);
-            this.groupBoxSexo.Name = "groupBoxSexo";
-            this.groupBoxSexo.Size = new System.Drawing.Size(234, 56);
-            this.groupBoxSexo.TabIndex = 63;
-            this.groupBoxSexo.TabStop = false;
-            this.groupBoxSexo.Text = "Sexo";
-            // 
-            // radioButtonFeminino
-            // 
-            this.radioButtonFeminino.AutoSize = true;
-            this.radioButtonFeminino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonFeminino.Location = new System.Drawing.Point(6, 23);
-            this.radioButtonFeminino.Name = "radioButtonFeminino";
-            this.radioButtonFeminino.Size = new System.Drawing.Size(37, 24);
-            this.radioButtonFeminino.TabIndex = 43;
-            this.radioButtonFeminino.Text = "F";
-            this.radioButtonFeminino.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonMasculino
-            // 
-            this.radioButtonMasculino.AutoSize = true;
-            this.radioButtonMasculino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonMasculino.Location = new System.Drawing.Point(49, 25);
-            this.radioButtonMasculino.Name = "radioButtonMasculino";
-            this.radioButtonMasculino.Size = new System.Drawing.Size(40, 24);
-            this.radioButtonMasculino.TabIndex = 44;
-            this.radioButtonMasculino.Text = "M";
-            this.radioButtonMasculino.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonIndefinido
-            // 
-            this.radioButtonIndefinido.AutoSize = true;
-            this.radioButtonIndefinido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonIndefinido.Location = new System.Drawing.Point(104, 23);
-            this.radioButtonIndefinido.Name = "radioButtonIndefinido";
-            this.radioButtonIndefinido.Size = new System.Drawing.Size(97, 24);
-            this.radioButtonIndefinido.TabIndex = 45;
-            this.radioButtonIndefinido.Text = "Indefinido";
-            this.radioButtonIndefinido.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.cbAcordos);
-            this.groupBox2.Location = new System.Drawing.Point(705, 21);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(324, 72);
-            this.groupBox2.TabIndex = 52;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Selecione o tipo de acordo";
-            // 
-            // cbAcordos
-            // 
-            this.cbAcordos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbAcordos.FormattingEnabled = true;
-            this.cbAcordos.Items.AddRange(new object[] {
-            "Seguradora",
-            "Subsistema de Saúde",
-            "SNS"});
-            this.cbAcordos.Location = new System.Drawing.Point(9, 25);
-            this.cbAcordos.Name = "cbAcordos";
-            this.cbAcordos.Size = new System.Drawing.Size(280, 28);
-            this.cbAcordos.TabIndex = 31;
-            this.cbAcordos.SelectedIndexChanged += new System.EventHandler(this.cbAcordos_SelectedIndexChanged);
-            // 
-            // txtSNS
-            // 
-            this.txtSNS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSNS.Location = new System.Drawing.Point(705, 391);
-            this.txtSNS.MaxLength = 9;
-            this.txtSNS.Name = "txtSNS";
-            this.txtSNS.Size = new System.Drawing.Size(280, 26);
-            this.txtSNS.TabIndex = 62;
-            this.txtSNS.Visible = false;
-            // 
-            // lblSNS
-            // 
-            this.lblSNS.AutoSize = true;
-            this.lblSNS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSNS.ForeColor = System.Drawing.Color.Black;
-            this.lblSNS.Location = new System.Drawing.Point(710, 371);
-            this.lblSNS.Name = "lblSNS";
-            this.lblSNS.Size = new System.Drawing.Size(89, 20);
-            this.lblSNS.TabIndex = 61;
-            this.lblSNS.Text = "Nº do SNS:";
-            this.lblSNS.Visible = false;
-            // 
-            // txtNSubsistema
-            // 
-            this.txtNSubsistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNSubsistema.Location = new System.Drawing.Point(705, 328);
-            this.txtNSubsistema.MaxLength = 9;
-            this.txtNSubsistema.Name = "txtNSubsistema";
-            this.txtNSubsistema.Size = new System.Drawing.Size(280, 26);
-            this.txtNSubsistema.TabIndex = 60;
-            this.txtNSubsistema.Visible = false;
-            // 
-            // lblNSubsistema
-            // 
-            this.lblNSubsistema.AutoSize = true;
-            this.lblNSubsistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNSubsistema.ForeColor = System.Drawing.Color.Black;
-            this.lblNSubsistema.Location = new System.Drawing.Point(701, 305);
-            this.lblNSubsistema.Name = "lblNSubsistema";
-            this.lblNSubsistema.Size = new System.Drawing.Size(140, 20);
-            this.lblNSubsistema.TabIndex = 59;
-            this.lblNSubsistema.Text = "Nº do Subsistema:";
-            this.lblNSubsistema.Visible = false;
-            // 
-            // txtNomeSubsistema
-            // 
-            this.txtNomeSubsistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeSubsistema.Location = new System.Drawing.Point(705, 258);
-            this.txtNomeSubsistema.Name = "txtNomeSubsistema";
-            this.txtNomeSubsistema.Size = new System.Drawing.Size(280, 26);
-            this.txtNomeSubsistema.TabIndex = 58;
-            this.txtNomeSubsistema.Visible = false;
-            // 
-            // lblNomeSusbsistema
-            // 
-            this.lblNomeSusbsistema.AutoSize = true;
-            this.lblNomeSusbsistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomeSusbsistema.ForeColor = System.Drawing.Color.Black;
-            this.lblNomeSusbsistema.Location = new System.Drawing.Point(701, 235);
-            this.lblNomeSusbsistema.Name = "lblNomeSusbsistema";
-            this.lblNomeSusbsistema.Size = new System.Drawing.Size(165, 20);
-            this.lblNomeSusbsistema.TabIndex = 57;
-            this.lblNomeSusbsistema.Text = "Nome do Subsistema:";
-            this.lblNomeSusbsistema.Visible = false;
-            // 
-            // txtNApolice
-            // 
-            this.txtNApolice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNApolice.Location = new System.Drawing.Point(705, 197);
-            this.txtNApolice.MaxLength = 9;
-            this.txtNApolice.Name = "txtNApolice";
-            this.txtNApolice.Size = new System.Drawing.Size(280, 26);
-            this.txtNApolice.TabIndex = 56;
-            this.txtNApolice.Visible = false;
-            // 
-            // lblNApolice
-            // 
-            this.lblNApolice.AutoSize = true;
-            this.lblNApolice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNApolice.ForeColor = System.Drawing.Color.Black;
-            this.lblNApolice.Location = new System.Drawing.Point(701, 174);
-            this.lblNApolice.Name = "lblNApolice";
-            this.lblNApolice.Size = new System.Drawing.Size(196, 20);
-            this.lblNApolice.TabIndex = 55;
-            this.lblNApolice.Text = "Nº Apólice da Seguradora:";
-            this.lblNApolice.Visible = false;
-            // 
-            // lblSeguradora
-            // 
-            this.lblSeguradora.AutoSize = true;
-            this.lblSeguradora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSeguradora.ForeColor = System.Drawing.Color.Black;
-            this.lblSeguradora.Location = new System.Drawing.Point(701, 104);
-            this.lblSeguradora.Name = "lblSeguradora";
-            this.lblSeguradora.Size = new System.Drawing.Size(165, 20);
-            this.lblSeguradora.TabIndex = 54;
-            this.lblSeguradora.Text = "Nome da Seguradora:";
-            this.lblSeguradora.Visible = false;
-            // 
-            // txtNomeSeguradora
-            // 
-            this.txtNomeSeguradora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeSeguradora.Location = new System.Drawing.Point(705, 127);
-            this.txtNomeSeguradora.Name = "txtNomeSeguradora";
-            this.txtNomeSeguradora.Size = new System.Drawing.Size(280, 26);
-            this.txtNomeSeguradora.TabIndex = 53;
-            this.txtNomeSeguradora.Visible = false;
-            // 
             // enfermeiroBindingSource
             // 
             this.enfermeiroBindingSource.DataSource = typeof(GestaoClinicaEnfermagemProjetoInformatico.Enfermeiro);
@@ -881,12 +881,12 @@
             this.panelFormulario.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.painelPrincipal.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBoxSexo.ResumeLayout(false);
             this.groupBoxSexo.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.painelPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.enfermeiroBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -932,11 +932,11 @@
         private System.Windows.Forms.Label lblDataNascimento;
         private System.Windows.Forms.TextBox txtMorada;
         private System.Windows.Forms.Label lblFuncao;
-        private System.Windows.Forms.TextBox textBoxNome;
+        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel painelPrincipal;
-        private System.Windows.Forms.TextBox textBoxNif;
+        private System.Windows.Forms.TextBox txtNif;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox3;

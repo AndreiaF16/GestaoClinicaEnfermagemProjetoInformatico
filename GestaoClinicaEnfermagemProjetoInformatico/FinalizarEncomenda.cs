@@ -140,33 +140,52 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             if (encomendas != null)
             {
-                try
-                {
-                    DateTime dataEntregaReal = dataVEntregaReal.Value;
-
-                    conn.Open();
-
-                    string queryUpdateData = "UPDATE Encomenda SET dataEntregaReal = @dataEntregaReal WHERE IdEncomenda = " + encomendas.IdEncomenda;
-                    SqlCommand sqlCommand = new SqlCommand(queryUpdateData, conn);
-                    sqlCommand.Parameters.AddWithValue("@dataEntregaReal", dataEntregaReal);
-                    sqlCommand.ExecuteNonQuery();
-                    foreach (var encomenda in listaEncomendas)
+                if (!VerificarDadosInseridos())
                     {
-                        encomenda.dataEntregaReal = Convert.ToString(dataVEntregaReal.Value);
+                        MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    MessageBox.Show("Encomenda alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    conn.Close();
-                    UpdateDataGridView();
-                    if (registarEncomendas != null)
-                    {
-                        registarEncomendas.UpdateDataGridView();
+                    else {
+                        try
+                        {
+                            DateTime dataEntregaReal = dataVEntregaReal.Value;
+
+                            conn.Open();
+
+                            string queryUpdateData = "UPDATE Encomenda SET dataEntregaReal = @dataEntregaReal WHERE IdEncomenda = " + encomendas.IdEncomenda;
+                            SqlCommand sqlCommand = new SqlCommand(queryUpdateData, conn);
+                            sqlCommand.Parameters.AddWithValue("@dataEntregaReal", dataEntregaReal);
+                            sqlCommand.ExecuteNonQuery();
+                            foreach (var encomenda in listaEncomendas)
+                            {
+                                encomenda.dataEntregaReal = Convert.ToString(dataVEntregaReal.Value);
+                            }
+                            MessageBox.Show("Encomenda alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            conn.Close();
+                            UpdateDataGridView();
+                            if (registarEncomendas != null)
+                            {
+                                registarEncomendas.UpdateDataGridView();
+                            }
+                        }
+                        catch (SqlException excep)
+                        {
+                            MessageBox.Show("Erro interno, não foi possível alterar a encomenda!", excep.Message);
+                        }
                     }
-                }
-                catch (SqlException excep)
-                {
-                    MessageBox.Show("Erro interno, não foi possível alterar a encomenda!", excep.Message);
-                }
             }
+        }
+
+        private Boolean VerificarDadosInseridos()
+        {
+            DateTime data = dataVEntregaReal.Value;
+            int var = (int)((data - DateTime.Today).TotalDays);
+
+            if (var < 0)
+            {
+                MessageBox.Show("A data de marcação da consulta não pode ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
     }
 }

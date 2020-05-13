@@ -31,11 +31,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void dataGridViewPartos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            int i = dataGridViewPartos.CurrentCell.RowIndex;
+            int i = dataGridViewParto.CurrentCell.RowIndex;
             parto = null;
             foreach (var p in auxiliar)
             {
-                if (p.nomeParto == dataGridViewPartos.Rows[i].Cells[0].Value.ToString())
+                if (p.nomeParto == dataGridViewParto.Rows[i].Cells[0].Value.ToString())
                 {
                     parto = p;
                 }
@@ -53,7 +53,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (e.KeyCode == Keys.Enter)
             {
                 var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
-                dataGridViewPartos.DataSource = bindingSource1;
+                dataGridViewParto.DataSource = bindingSource1;
             }
         }
 
@@ -61,19 +61,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             listaPartos.Clear();
             listaPartos = getParto();
-            dataGridViewPartos.DataSource = new List<Parto>();
+            dataGridViewParto.DataSource = new List<Parto>();
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaPartos };
-            dataGridViewPartos.DataSource = bindingSource1;
-            dataGridViewPartos.Columns[0].HeaderText = "Nome do Tipo de Parto";
-            dataGridViewPartos.Columns[1].HeaderText = "Observações";
-            dataGridViewPartos.Columns[2].Visible = false;
+            dataGridViewParto.DataSource = bindingSource1;
+            dataGridViewParto.Columns[0].HeaderText = "Nome do Tipo de Parto";
+            dataGridViewParto.Columns[1].HeaderText = "Observações";
+            dataGridViewParto.Columns[2].Visible = false;
             foreach (var item in listaPartos)
             {
                 auxiliar.Add(item);
             }
 
-            dataGridViewPartos.Update();
-            dataGridViewPartos.Refresh();
+            dataGridViewParto.Update();
+            dataGridViewParto.Refresh();
 
         }
         private List<Parto> getParto()

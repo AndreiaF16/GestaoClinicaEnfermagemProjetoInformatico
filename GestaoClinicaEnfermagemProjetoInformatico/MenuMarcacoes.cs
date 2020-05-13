@@ -35,11 +35,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             horaConsultaAdiar.Format = DateTimePickerFormat.Custom;
             horaConsultaAdiar.CustomFormat = "HH:mm";
             horaConsultaAdiar.ShowUpDown = true;
+            //dataGridViewMarcacoes.CurrentCell.RowIndex;
+
         }
 
         private void btnAlteraPassword_Click(object sender, EventArgs e)
         {
-            if (dataGridViewMarcacoes.Rows.Count >= 1)
+            if (dataGridViewMarcacoes.Rows.Count >= 1 && dataGridViewMarcacoes.CurrentCell != null)
             {
                
                 int i = dataGridViewMarcacoes.CurrentCell.RowIndex;
@@ -231,7 +233,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select agendamento.dataProximaConsulta,  agendamento.horaProximaConsulta, p.Nome, p.Nif from AgendamentoConsulta agendamento INNER JOIN Paciente p ON agendamento.IdPaciente = p.IdPaciente WHERE agendamento.IdEnfermeiro =  " + enfermeiro.IdEnfermeiro + " AND ConsultaRealizada= 0 ORDER BY agendamento.horaProximaConsulta", conn);
+          //   string date = DateTime.ParseExact(DateTime.Now.ToString("MM/dd/yyyy"), "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
+           // DateTime date = DateTime.Now;
+            string mm = DateTime.Now.ToString("MM/dd/yyyy");
+          //  string aa = DateTime.Now.ToString("dd/MM/yyyy");
+
+            SqlCommand cmd = new SqlCommand("select agendamento.dataProximaConsulta,  agendamento.horaProximaConsulta, p.Nome, p.Nif from AgendamentoConsulta agendamento INNER JOIN Paciente p ON agendamento.IdPaciente = p.IdPaciente WHERE agendamento.IdEnfermeiro =  " + enfermeiro.IdEnfermeiro + " AND ConsultaRealizada= 0 AND agendamento.dataProximaConsulta >= @data ORDER BY agendamento.horaProximaConsulta", conn);
+            cmd.Parameters.AddWithValue("@data", mm);
+
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())

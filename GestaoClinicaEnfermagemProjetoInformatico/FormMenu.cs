@@ -447,5 +447,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             AdicionarTipoAleitamento adicionarTipoAleitamento = new AdicionarTipoAleitamento(null);
             adicionarTipoAleitamento.Show();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            AdicionarProfissao adicionarProfissao = new AdicionarProfissao(null);
+            adicionarProfissao.Show();
+        }
     }
 }

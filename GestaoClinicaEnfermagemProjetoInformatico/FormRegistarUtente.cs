@@ -14,11 +14,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class FormRegistarUtente : Form
     {
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
         private Enfermeiro enfermeiro = null;
+        private List<ComboBoxItem> profissoes = new List<ComboBoxItem>();
+        private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
+        private List<ProfissaoPaciente> profissaoPacientes = new List<ProfissaoPaciente>();
+
         public FormRegistarUtente(Enfermeiro enf)
         {
             InitializeComponent();
             enfermeiro = enf;
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             dataNascimento.Value = DateTime.Today;
         }
 
@@ -39,7 +46,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             var dtNascimento = dataNascimento.Value;
             string rua = txtMorada.Text;
             string numeroCasa = txtNumeroCasa.Text;
-            string andarCasa = txtAndar.Text;
             string codPostalPrefixo = txtCodPostalPre.Text;
             string codPostalSufixo = txtCodPostalSuf.Text;
             string localidade = txtLocalidade.Text;
@@ -206,17 +212,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 try
                 {
-                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                    connection.Open();
+                    conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    conn.Open();
 
-                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,Contacto,nif,profissao,rua,numeroCasa,Andar,codPostalPrefixo,codPostalSufixo,localidade,IdEnfermeiro,Acordo,NomeSeguradora,NumeroApoliceSeguradora,NomeSubsistema,NumeroSubsistema,NumeroSNS,Sexo,PlanoVacinacao) VALUES(@nome,@dataNascimento,@email,@contacto,@nif,@profissao,@rua,@numeroCasa,@andar,@codPostalPrefixo,@codPostalSufixo,@localidade,@IdEnfermeiro, @acordo, @nomeSeguradora, @numeroApoliceSeguradora, @nomeSubsistema, @numeroSubsistema, @numeroSNS, @sexo, @planoVacinacao);";
-                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,Contacto,nif,rua,numeroCasa,Andar,codPostalPrefixo,codPostalSufixo,localidade,IdEnfermeiro,Acordo,NomeSeguradora,NumeroApoliceSeguradora,NomeSubsistema,NumeroSubsistema,NumeroSNS,Sexo,PlanoVacinacao,IdProfissao) VALUES(@nome,@dataNascimento,@email,@contacto,@nif,@rua,@numeroCasa,@andar,@codPostalPrefixo,@codPostalSufixo,@localidade,@IdEnfermeiro, @acordo, @nomeSeguradora, @numeroApoliceSeguradora, @nomeSubsistema, @numeroSubsistema, @numeroSNS, @sexo, @planoVacinacao, @profissao);";
+                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.Parameters.AddWithValue("@nome", nome);
                     sqlCommand.Parameters.AddWithValue("@dataNascimento", dtNascimento.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@email", email);
                     sqlCommand.Parameters.AddWithValue("@contacto", Convert.ToInt32(telemovel));
                     sqlCommand.Parameters.AddWithValue("@nif", Convert.ToInt32(nif));
-                    sqlCommand.Parameters.AddWithValue("@profissao", profissao);
+                   // sqlCommand.Parameters.AddWithValue("@profissao", );
                     sqlCommand.Parameters.AddWithValue("@rua", rua);
                     sqlCommand.Parameters.AddWithValue("@numeroCasa", Convert.ToInt32(numeroCasa));
                     sqlCommand.Parameters.AddWithValue("@andar", andarCasa);
@@ -262,7 +268,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Utente registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
-                    connection.Close();
+                    conn.Close();
                 }
                 catch (SqlException excep)
                 {
@@ -517,6 +523,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 e.Handled = true;
             }
+        }
+
+        public void reiniciar()
+        {
+            profissoes.Clear();
+            cbProfissoes.Items.Clear();
+            auxiliar.Clear();
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select * from Profissao", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Text = (string)reader["nomeProfissao"];
+                item.Value = (int)reader["IdProfissao"];
+                cbProfissoes.Items.Add(item);
+                profissoes.Add(item);
+            }
+
+            conn.Close();
         }
     }
 }

@@ -29,7 +29,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             enfermeiro = enf;
             formulario = form;
             pacientee = pac;
-            label1.Text = "Nome do Paciente: " + pacientee.Nome;
+            label1.Text = "Nome do Utente: " + pacientee.Nome;
 
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
@@ -119,7 +119,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             var dtNascimento = dataNascimento.Value;
             string rua = txtMorada.Text;
             string numeroCasa = txtNumeroCasa.Text;
-            string andarCasa = txtAndar.Text;
             string codPostalPrefixo = txtCodPostalPre.Text;
             string codPostalSufixo = txtCodPostalSuf.Text;
             string localidade = txtLocalidade.Text;
@@ -142,11 +141,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
             Regex regexEmail = new Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
-            if (!regexEmail.IsMatch(txtEmail.Text))
+            if (!regexEmail.IsMatch(email))
             {
                 MessageBox.Show("Por favor, introduza um email válido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            if (Convert.ToInt32(numeroCasa) < 0)
+            {
+                MessageBox.Show("O Número da Casa não pode ser um valor negativo!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             if (codPostalPrefixo.Length != 4)
             {
@@ -270,10 +273,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     string queryUpdateData = "UPDATE Paciente SET Nome = @nome, Email = @email, Contacto = @contacto,Nif = @nif,Profissao = @profissao,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,localidade = @localidade,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao WHERE Nif = @NifPaciente";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
-                    sqlCommand.Parameters.AddWithValue("@nome", textBoxNome.Text);
+                    sqlCommand.Parameters.AddWithValue("@nome", txtNome.Text);
                     sqlCommand.Parameters.AddWithValue("@email", txtEmail.Text);
                     sqlCommand.Parameters.AddWithValue("@contacto", txtContacto.Text);
-                    sqlCommand.Parameters.AddWithValue("@nif", textBoxNif.Text);
+                    sqlCommand.Parameters.AddWithValue("@nif", txtNif.Text);
                     sqlCommand.Parameters.AddWithValue("@profissao",(String)cbProfissoes.SelectedItem);
                     sqlCommand.Parameters.AddWithValue("@rua", txtMorada.Text);
                     sqlCommand.Parameters.AddWithValue("@numeroCasa", txtNumeroCasa.Text);
@@ -319,9 +322,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     foreach (var utente in utentes)
                     {
-                        if (Convert.ToString(utente.Nif).Equals(textBoxNif.Text))
+                        if (Convert.ToString(utente.Nif).Equals(txtNif.Text))
                         {
-                            utente.Nome=  textBoxNome.Text ;
+                            utente.Nome=  txtNome.Text ;
                             utente.Rua = txtMorada.Text ;
                             utente.NumeroCasa = Convert.ToInt16(txtNumeroCasa.Text);
                             utente.Andar = txtAndar.Text;
@@ -331,7 +334,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                             utente.localidade = txtLocalidade.Text;
                             utente.Email = txtEmail.Text;
                             utente.Contacto = Convert.ToDouble(txtContacto.Text);
-                            utente.Nif = Convert.ToDouble(textBoxNif.Text);
+                            utente.Nif = Convert.ToDouble(txtNif.Text);
                         }
                     }
                     MessageBox.Show("Paciente alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -530,7 +533,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (pacientee != null)
             {
               //  string[] cp;
-                textBoxNome.Text = pacientee.Nome;
+                txtNome.Text = pacientee.Nome;
                 dataNascimento.Value = pacientee.DataNascimento;
                 txtMorada.Text = pacientee.Rua;
                 txtNumeroCasa.Text = Convert.ToString(pacientee.NumeroCasa);
@@ -541,7 +544,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 txtLocalidade.Text = pacientee.localidade;
                 txtEmail.Text = pacientee.Email;
                 txtContacto.Text = Convert.ToString(pacientee.Contacto);
-                textBoxNif.Text = Convert.ToString(pacientee.Nif);
+                txtNif.Text = Convert.ToString(pacientee.Nif);
 
                // cbProfissoes.Text = pacientee.Profissao;
                 int a = 0;

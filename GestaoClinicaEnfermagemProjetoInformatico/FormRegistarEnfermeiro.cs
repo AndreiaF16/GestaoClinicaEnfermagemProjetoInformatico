@@ -121,7 +121,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Boolean VerificarDadosInseridos()
         {
             string nome = txtNome.Text;
-            string funcao = txtFuncao.Text;
             string telemovel = txtContacto.Text;
             string dtNascimento = dataNascimento.Value.Date.ToString();
             string email = txtEmail.Text;
@@ -130,12 +129,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
           //  string confirmaPassword = txtConfirmaPassword.Text;
           //  string passCript = CalculaHash(password);
 
-            if (nome == string.Empty || funcao == string.Empty || telemovel == string.Empty || email == string.Empty || username == string.Empty )
+            if (nome == string.Empty || email == string.Empty || username == string.Empty )
             {
-                MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos (nome, email, username)!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
+            Regex regexEmail = new Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
+            if (!regexEmail.IsMatch(email))
+            {
+                MessageBox.Show("Por favor, introduza um email válido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (telemovel.Length != 9)
+            {
+                MessageBox.Show("O telemóvel tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             DateTime data = dataNascimento.Value;
 

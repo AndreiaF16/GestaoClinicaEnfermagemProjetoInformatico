@@ -240,7 +240,7 @@
             this.groupBox2.Controls.Add(this.txtProcurar);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(614, 25);
+            this.groupBox2.Location = new System.Drawing.Point(590, 109);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(236, 60);
             this.groupBox2.TabIndex = 60;
