@@ -275,6 +275,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string filhosVivos = upDownFilhosVivos.Text;
             string abortos = upDownAbortos.Text;
 
+
             if (peso == string.Empty || altura == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
