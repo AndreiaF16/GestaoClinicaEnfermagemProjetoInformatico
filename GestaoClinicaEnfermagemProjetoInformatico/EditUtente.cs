@@ -22,6 +22,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlCommand com = new SqlCommand();
         private List<UtenteGridView> utentes = new List<UtenteGridView>();
         private List<UtenteGridView> auxiliar = new List<UtenteGridView>();
+        private List<ComboBoxItem> profissoes = new List<ComboBoxItem>();
+
         private FormVerUtentesRegistados formulario = null;
         public EditUtente(Enfermeiro enf, Paciente pac, FormVerUtentesRegistados form)
         {
@@ -38,40 +40,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void EditUtente_Load(object sender, EventArgs e)
         {
             preencherDados();
-            /*conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE IdEnfermeiro =  @IdEnfermeiro", conn);
-            cmd.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-
-                UtenteGridView utente = new UtenteGridView
-                {
-                    Nome = (string)reader["nome"],
-                    DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                    Email = (string)reader["email"],
-                    Contacto = Convert.ToDouble(reader["contacto"]),
-                    Nif = Convert.ToDouble(reader["nif"]),
-                    Profissao = (string)reader["Profissao"],
-                    Rua = (string)reader["Rua"],
-                    NumeroCasa = (int)reader["NumeroCasa"],
-                    Andar = (string)reader["Andar"],
-                    codigoPostal = Convert.ToDouble(reader["codPostalPrefixo"]).ToString() + "-" + Convert.ToDouble(reader["codPostalSufixo"]).ToString(),
-                // codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
-                // codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
-                    localidade = (string)reader["localidade"],
-                };
-                utentes.Add(utente);
-
-
-            }*/
-            //UpdateDataGridView();
+            reiniciar();
             auxiliar = utentes;
-     
-
             conn.Close();
         }
 
@@ -125,7 +95,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string email = txtEmail.Text;
             string telemovel = txtContacto.Text;
             string nif = txtNif.Text;
-            string profissao = (String)cbProfissoes.SelectedItem;
+         //   string profissao = (String)cbProfissoes.SelectedItem;
             string acordo = (String)cbAcordos.SelectedItem;
             string nomeSeguradora = txtNomeSeguradora.Text;
             string numeroApolice = txtNApolice.Text;
@@ -134,7 +104,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string nomeSubsistema = txtNomeSubsistema.Text;
 
             if (nome == string.Empty || rua == string.Empty || codPostalPrefixo == string.Empty || codPostalSufixo == string.Empty
-                || localidade == string.Empty || telemovel == string.Empty || nif == string.Empty || profissao == string.Empty || acordo == string.Empty)
+                || localidade == string.Empty || telemovel == string.Empty || nif == string.Empty || acordo == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -144,46 +114,57 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (!regexEmail.IsMatch(email))
             {
                 MessageBox.Show("Por favor, introduza um email válido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+
             }
 
             if (Convert.ToInt32(numeroCasa) < 0)
             {
                 MessageBox.Show("O Número da Casa não pode ser um valor negativo!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+
             }
 
             if (codPostalPrefixo.Length != 4)
             {
                 MessageBox.Show("O prefixo do código postal tem de ter exatamente 4 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             if (codPostalSufixo.Length != 3)
             {
                 MessageBox.Show("O sufixo do código postal tem de ter exatamente 3 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
-            if (telemovel.Length != 9)
+            if (telemovel.Length != 9 )
             {
                 MessageBox.Show("O telemóvel tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
-            if (nif.Length != 9)
+            if (nif.Length != 9 )
             {
                 MessageBox.Show("O nif tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             if (numeroApolice.Length != 9)
             {
                 MessageBox.Show("O número da apólice tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             if (numeroSNS.Length != 9)
             {
                 MessageBox.Show("O número do SNS tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
-            if (numeroSubsistema.Length != 9)
+            if (numeroSubsistema.Length != 9 ) 
             {
                 MessageBox.Show("O número do subsistema tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
 
@@ -235,6 +216,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string numeroSubsistema = txtNSubsistema.Text;
             string numeroSNS = txtSNS.Text;
             string sexo = "";
+            int nomeProfissao = -1;
+
+
+            if (cbProfissoes.SelectedItem != null)
+            {
+                nomeProfissao = (cbProfissoes.SelectedItem as ComboBoxItem).Value;
+            }
             if (radioButtonMasculino.Checked == true)
             {
                 sexo = "Masculino";
@@ -271,13 +259,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     connection.Open();
 
-                    string queryUpdateData = "UPDATE Paciente SET Nome = @nome, Email = @email, Contacto = @contacto,Nif = @nif,Profissao = @profissao,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,localidade = @localidade,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao WHERE Nif = @NifPaciente";
+                    string queryUpdateData = "UPDATE Paciente SET Nome = @nome, Email = @email, Contacto = @contacto,Nif = @nif,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,localidade = @localidade,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, nomeProfissao = @nomeProfissao WHERE Nif = @NifPaciente";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
                     sqlCommand.Parameters.AddWithValue("@nome", txtNome.Text);
                     sqlCommand.Parameters.AddWithValue("@email", txtEmail.Text);
                     sqlCommand.Parameters.AddWithValue("@contacto", txtContacto.Text);
                     sqlCommand.Parameters.AddWithValue("@nif", txtNif.Text);
-                    sqlCommand.Parameters.AddWithValue("@profissao",(String)cbProfissoes.SelectedItem);
                     sqlCommand.Parameters.AddWithValue("@rua", txtMorada.Text);
                     sqlCommand.Parameters.AddWithValue("@numeroCasa", txtNumeroCasa.Text);
                     sqlCommand.Parameters.AddWithValue("@andar", txtAndar.Text);
@@ -288,6 +275,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.Parameters.AddWithValue("@acordo", acordo);
                     sqlCommand.Parameters.AddWithValue("@nomeSeguradora", nomeSeguradora);
 
+                    if (nomeProfissao != -1)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@nomeProfissao", Convert.ToInt32(nomeProfissao));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@nomeProfissao", DBNull.Value);
+                    }
                     if (numeroApolice != string.Empty)
                     {
                         sqlCommand.Parameters.AddWithValue("@numeroApoliceSeguradora", Convert.ToInt32(numeroApolice));
@@ -654,6 +649,33 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 lblSNS.Visible = true;
                 txtSNS.Visible = true;
             }
+        }
+
+        public void reiniciar()
+        {
+            profissoes.Clear();
+            cbProfissoes.Items.Clear();
+            auxiliar.Clear();
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select * from Profissao", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Text = (string)reader["nomeProfissao"];
+                item.Value = (int)reader["IdProfissao"];
+                cbProfissoes.Items.Add(item);
+                profissoes.Add(item);
+            }
+
+            conn.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AdicionarProfissao adicionarProfissao = new AdicionarProfissao(null, this);
+            adicionarProfissao.Show();
         }
     }
 }

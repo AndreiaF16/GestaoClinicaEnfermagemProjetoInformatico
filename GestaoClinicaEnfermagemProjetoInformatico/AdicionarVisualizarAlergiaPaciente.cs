@@ -74,12 +74,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!VerificarDadosInseridos())
+            if (VerificarDadosInseridos())
             {
-                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
+
                 int alergia = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
                 DateTime data = dataDiagnostico.Value;
                 string observacoes = txtObservacoes.Text;
@@ -88,7 +85,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Open();
 
-                    string queryInsertData = "INSERT INTO AlergiaPaciente(IdAlergia,IdPaciente,data,observacoes) VALUES(@IdAlergia, @IdPaciente, @data, @observacoes);";    
+                    string queryInsertData = "INSERT INTO AlergiaPaciente(IdAlergia,IdPaciente,data,observacoes) VALUES(@IdAlergia, @IdPaciente, @data, @observacoes);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.Parameters.AddWithValue("@IdAlergia", alergia);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
@@ -109,6 +106,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Por erro interno é impossível registar a alergia", excep.Message);
                 }
             }
+        
         }
         private void UpdateDataGridView()
         {
@@ -219,6 +217,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o nome da alergia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return false;
             }
             conn.Open();

@@ -20,11 +20,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<ComboBoxItem> aleitamento = new List<ComboBoxItem>();
         private List<ComboBoxItem> parto = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
-
+        private ErrorProvider errorProvider = new ErrorProvider();
         public AdicionarVisualizarAvaliacaoObjetivoBebe(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
+            errorProvider.ContainerControl = this;
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             dataAvaliacaoObjetivo.Value = DateTime.Now;
@@ -150,12 +151,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
+            if (VerificarDadosInseridos())
+            {                        
                 DateTime data = dataAvaliacaoObjetivo.Value;
 
                 int altura = Convert.ToInt16(UpDownAltura.Text);
@@ -366,6 +363,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (peso == string.Empty || altura == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+                if (UpDownPeso.Text == string.Empty)
+                {
+                    errorProvider.SetError(UpDownPeso, "O peso é obrigatório!");
+                }
+
+
+                if (UpDownAltura.Text == string.Empty)
+                {
+                    errorProvider.SetError(UpDownAltura, "A altura é obrigatória!");
+                }
+
                 return false;
             }
 

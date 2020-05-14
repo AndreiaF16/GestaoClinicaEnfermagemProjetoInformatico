@@ -20,6 +20,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<ComboBoxItem> profissoes = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
         private List<ProfissaoPaciente> profissaoPacientes = new List<ProfissaoPaciente>();
+        private ErrorProvider errorProvider = new ErrorProvider();
+        private ErrorProvider warning = new ErrorProvider();
+
 
         public FormRegistarUtente(Enfermeiro enf)
         {
@@ -52,7 +55,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string email = txtEmail.Text;
             string telemovel = txtContacto.Text;
             string nif = txtNif.Text;
-            string profissao =  (String)cbProfissoes.SelectedItem;
+           // string profissao =  (String)cbProfissoes.SelectedItem;
             string acordo = (String)cbAcordos.SelectedItem;
             string nomeSeguradora = txtNomeSeguradora.Text;
             string numeroApolice = txtNApolice.Text;
@@ -61,56 +64,105 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string nomeSubsistema = txtNomeSubsistema.Text;
 
             if (nome == string.Empty || rua == string.Empty || codPostalPrefixo == string.Empty || codPostalSufixo == string.Empty
-                || localidade == string.Empty || telemovel == string.Empty || nif == string.Empty || profissao == string.Empty || acordo == string.Empty)
+                || localidade == string.Empty || telemovel == string.Empty || nif == string.Empty || acordo == string.Empty)
             {
-                MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campos Obrigatórios, por favor preencha os campos vazios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtNome.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNome, "O nome é obrigatório!");
+                }
+
+                if (txtMorada.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtMorada, "A morada é obrigatória!");
+                }
+
+                if (codPostalPrefixo == string.Empty)
+                {
+                    errorProvider.SetError(txtCodPostalPre, "O prefixo do código portal é é obrigatório!");
+                }
+                if (codPostalSufixo == string.Empty)
+                {
+                    errorProvider.SetError(txtCodPostalSuf, "O sufixo do código postal é obrigatório!");
+                }
+                if (localidade == string.Empty)
+                {
+                    errorProvider.SetError(txtLocalidade, "A localidade é obrigatória!");
+                }
+                if (telemovel == string.Empty)
+                {
+                    errorProvider.SetError(txtContacto, "O telemóvel é obrigatório!");
+                }
+                if (nif == string.Empty)
+                {
+                    errorProvider.SetError(txtNif, "O nif é obrigatório!");
+                }
+
+                if (acordo == string.Empty)
+                {
+                    errorProvider.SetError(cbAcordos, "O acordo é obrigatório!");
+                }
                 return false;
             }
+
             
+
+
+
+
             Regex regexEmail = new Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
             if (!regexEmail.IsMatch(email))
             {
                 MessageBox.Show("Por favor, introduza um email válido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             if (Convert.ToInt32(numeroCasa) < 0)
             {
                 MessageBox.Show("O Número da Casa não pode ser um valor negativo!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
-            if (codPostalPrefixo.Length != 4)
+            if (codPostalPrefixo.Length != 4 )
             {
                 MessageBox.Show("O prefixo do código postal tem de ter exatamente 4 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             if (codPostalSufixo.Length != 3)
             {
                 MessageBox.Show("O sufixo do código postal tem de ter exatamente 3 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
-            if (telemovel.Length != 9)
+            if (telemovel.Length != 9 )
             {
                 MessageBox.Show("O telemóvel tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             if (nif.Length != 9)
             {
                 MessageBox.Show("O nif tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             if (numeroApolice.Length != 9)
             {
                 MessageBox.Show("O número da apólice tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
-            if (numeroSNS.Length != 9)
+            if (numeroSNS.Length != 9 && numeroSNS != null)
             {
                 MessageBox.Show("O número do SNS tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
-            if (numeroSubsistema.Length != 9)
+            if (numeroSubsistema.Length != 9 && numeroSubsistema != null)
             {
                 MessageBox.Show("O número do subsistema tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             DateTime data = dataNascimento.Value;
@@ -158,7 +210,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             return true;
         }
 
-            private void btnGuardar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
             string nome = txtNome.Text;
             var dtNascimento = dataNascimento.Value;
@@ -171,7 +223,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string email = txtEmail.Text;
             string telemovel = txtContacto.Text;
             string nif = txtNif.Text;
-            string profissao = (String)cbProfissoes.SelectedItem;
+            int nomeProfissao = -1;
+            //string profissao = (String)cbProfissoes.SelectedItem;
             string acordo = (String)cbAcordos.SelectedItem;
             string nomeSeguradora = txtNomeSeguradora.Text;
             string numeroApolice = txtNApolice.Text;
@@ -179,7 +232,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string numeroSubsistema = txtNSubsistema.Text;
             string numeroSNS = txtSNS.Text;
             string sexo = "";
-            if (radioButtonMasculino.Checked == true) 
+
+
+            if (cbProfissoes.SelectedItem != null)
+            {
+                nomeProfissao = (cbProfissoes.SelectedItem as ComboBoxItem).Value;
+            }
+            if (radioButtonMasculino.Checked == true)
             {
                 sexo = "Masculino";
             }
@@ -191,7 +250,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 sexo = "Indefinido";
             }
-            
+
 
             string planoVacinacao = "";
             if (radioButtonAtualizado.Checked == true)
@@ -204,25 +263,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
 
-            if (!VerificarDadosInseridos())
+            if (VerificarDadosInseridos())
             {
-                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
+
+                // MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 try
                 {
                     conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     conn.Open();
 
-                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,Contacto,nif,rua,numeroCasa,Andar,codPostalPrefixo,codPostalSufixo,localidade,IdEnfermeiro,Acordo,NomeSeguradora,NumeroApoliceSeguradora,NomeSubsistema,NumeroSubsistema,NumeroSNS,Sexo,PlanoVacinacao,IdProfissao) VALUES(@nome,@dataNascimento,@email,@contacto,@nif,@rua,@numeroCasa,@andar,@codPostalPrefixo,@codPostalSufixo,@localidade,@IdEnfermeiro, @acordo, @nomeSeguradora, @numeroApoliceSeguradora, @nomeSubsistema, @numeroSubsistema, @numeroSNS, @sexo, @planoVacinacao, @profissao);";
+                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,Contacto,nif,rua,numeroCasa,Andar,codPostalPrefixo,codPostalSufixo,localidade,IdEnfermeiro,Acordo,NomeSeguradora,NumeroApoliceSeguradora,NomeSubsistema,NumeroSubsistema,NumeroSNS,Sexo,PlanoVacinacao,IdProfissao) VALUES(@nome,@dataNascimento,@email,@contacto,@nif,@rua,@numeroCasa,@andar,@codPostalPrefixo,@codPostalSufixo,@localidade,@IdEnfermeiro, @acordo, @nomeSeguradora, @numeroApoliceSeguradora, @nomeSubsistema, @numeroSubsistema, @numeroSNS, @sexo, @planoVacinacao, @nomeProfissao);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.Parameters.AddWithValue("@nome", nome);
                     sqlCommand.Parameters.AddWithValue("@dataNascimento", dtNascimento.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@email", email);
                     sqlCommand.Parameters.AddWithValue("@contacto", Convert.ToInt32(telemovel));
                     sqlCommand.Parameters.AddWithValue("@nif", Convert.ToInt32(nif));
-                   // sqlCommand.Parameters.AddWithValue("@profissao", );
+                    // sqlCommand.Parameters.AddWithValue("@profissao", );
                     sqlCommand.Parameters.AddWithValue("@rua", rua);
                     sqlCommand.Parameters.AddWithValue("@numeroCasa", Convert.ToInt32(numeroCasa));
                     sqlCommand.Parameters.AddWithValue("@andar", andarCasa);
@@ -261,7 +318,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         sqlCommand.Parameters.AddWithValue("@numeroSNS", DBNull.Value);
                     }
-
+                    if (nomeProfissao != -1)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@nomeProfissao", Convert.ToInt32(nomeProfissao));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@nomeProfissao", DBNull.Value);
+                    }
                     sqlCommand.Parameters.AddWithValue("@sexo", sexo);
                     sqlCommand.Parameters.AddWithValue("@planoVacinacao", planoVacinacao);
 
@@ -276,11 +340,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Por erro interno é impossível registar o utente!", excep.Message);
 
                 }
-
             }
-
-            }
-        
+        }
 
         private void txtNumeroCasa_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -339,6 +400,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void FormRegistarUtente_Load(object sender, EventArgs e)
         {
+            reiniciar();
+            errorProvider.ContainerControl = this;
             this.txtNome.Focus();
             dataNascimento.Value = DateTime.Now;
         }
@@ -433,15 +496,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
-        }
-
-        private void cbProfissoes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(cbProfissoes.SelectedItem.ToString() == "Outra")
-            {
-                lblOutraProfissao.Visible = true;
-                txtOutraProfissao.Visible = true;
-            }
         }
 
         private void dataNascimento_ValueChanged(object sender, EventArgs e)
@@ -544,6 +598,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
             conn.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AdicionarProfissao adicionarProfissao = new AdicionarProfissao(this, null);
+            adicionarProfissao.Show();
         }
     }
 }

@@ -232,7 +232,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 conn.Open();
                 com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  " + consultaAgendada.NifPaciente, conn);
+                SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif =  " + consultaAgendada.NifPaciente, conn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
                 Paciente paciente = null;
@@ -247,7 +247,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         Email = (string)reader["email"],
                         Contacto = Convert.ToDouble(reader["contacto"]),
                         Nif = Convert.ToDouble(reader["nif"]),
-                        Profissao = (string)reader["Profissao"],
+                        Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                         Rua = (string)reader["Rua"],
                         NumeroCasa = (int)reader["NumeroCasa"],
                         Andar = (string)reader["Andar"],
@@ -362,7 +362,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 conn.Open();
                 com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  " + consultaAgendada.NifPaciente, conn);
+                SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif =  " + consultaAgendada.NifPaciente, conn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
                 Paciente paciente = null;
@@ -377,7 +377,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         Email = (string)reader["email"],
                         Contacto = Convert.ToDouble(reader["contacto"]),
                         Nif = Convert.ToDouble(reader["nif"]),
-                        Profissao = (string)reader["Profissao"],
+                        Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                         Rua = (string)reader["Rua"],
                         NumeroCasa = (int)reader["NumeroCasa"],
                         Andar = (string)reader["Andar"],
@@ -450,7 +450,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button8_Click(object sender, EventArgs e)
         {
-            AdicionarProfissao adicionarProfissao = new AdicionarProfissao(null);
+            AdicionarProfissao adicionarProfissao = new AdicionarProfissao(null, null);
             adicionarProfissao.Show();
         }
     }

@@ -14,10 +14,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class AdicionarProfissao : Form
     {
         FormRegistarUtente utente = null;
-        public AdicionarProfissao(FormRegistarUtente adicionarUtente)
+        EditUtente ut = null;
+        public AdicionarProfissao(FormRegistarUtente adicionarUtente, EditUtente editUtente)
         {
             InitializeComponent();
             utente = adicionarUtente;
+            ut = editUtente;
         }
 
         private void AdicionarProfissao_Load(object sender, EventArgs e)
@@ -30,6 +32,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (utente != null)
             {
                 utente.reiniciar();
+            }
+
+            if (ut != null )
+            {
+                ut.reiniciar();
             }
             this.Close();
         }
@@ -93,6 +100,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Profissão registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //    AdicionarVisualizarDoencaPaciente.reiniciar();
                     connection.Close();
+                    
                 }
                 catch (SqlException excep)
                 {

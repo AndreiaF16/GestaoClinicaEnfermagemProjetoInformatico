@@ -288,7 +288,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 MessageBox.Show("O peso, e/ou a altura, e/ou a frequência cardiaca,  e/ou a pressão arterial, e/ou a temperatura, e/ou o SP02, e/ou o INR," +
                     " e/ou o BTM, e/ou o AC, e/ou o AP, e/ou a Menarca, e /ou a gravidez, e/ou os filhos vivos, e/ou os abortos" +
-                    "não podem ser inferiores a 0, por valor corriga os valores!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    " não podem ser inferiores a 0, por valor corriga os valores!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
            

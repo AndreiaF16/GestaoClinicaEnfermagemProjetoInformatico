@@ -85,7 +85,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE IdEnfermeiro =  @IdEnfermeiro", conn);
+            SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE IdEnfermeiro =  @IdEnfermeiro", conn);
             cmd.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -101,7 +101,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     Email = (string)reader["email"],
                     Contacto = Convert.ToDouble(reader["contacto"]),
                     Nif = Convert.ToDouble(reader["nif"]),
-                    Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? 0 : (int)reader["nomeProfissao"]),
+                    Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
 
                     // Profissao = (string)reader["Profissao"],
                     Rua = (string)reader["Rua"],
@@ -271,7 +271,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 conn.Open();
                 com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif = @NifPaciente", conn);
+                SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif = @NifPaciente", conn);
                 cmd.Parameters.AddWithValue("@NifPaciente", utente.Nif);
                 SqlDataReader reader = cmd.ExecuteReader();
                 Paciente paciente = null;
@@ -286,7 +286,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         Email = (string)reader["email"],
                         Contacto = Convert.ToDouble(reader["contacto"]),
                         Nif = Convert.ToDouble(reader["nif"]),
-                        Profissao = (string)reader["Profissao"],
+                        Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                         Rua = (string)reader["Rua"],
                         NumeroCasa = (int)reader["NumeroCasa"],
                         Andar = (string)reader["Andar"],
@@ -347,7 +347,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 conn.Open();
                 com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  @NifPaciente", conn);
+                SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif =  @NifPaciente", conn);
                 cmd.Parameters.AddWithValue("@NifPaciente", utente.Nif);
                 SqlDataReader reader = cmd.ExecuteReader();
                 Paciente paciente = null;
@@ -362,7 +362,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         Email = (string)reader["email"],
                         Contacto = Convert.ToDouble(reader["contacto"]),
                         Nif = Convert.ToDouble(reader["nif"]),
-                        Profissao = (string)reader["Profissao"],
+                        Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                         Rua = (string)reader["Rua"],
                         NumeroCasa = (int)reader["NumeroCasa"],
                         Andar = (string)reader["Andar"],
@@ -427,7 +427,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 conn.Open();
                 com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select * from Paciente WHERE Nif =  @NifPaciente", conn);
+                SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif =  @NifPaciente", conn);
                 cmd.Parameters.AddWithValue("@NifPaciente", utente.Nif);
                 SqlDataReader reader = cmd.ExecuteReader();
                 Paciente paciente = null;
@@ -442,7 +442,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         Email = (string)reader["email"],
                         Contacto = Convert.ToDouble(reader["contacto"]),
                         Nif = Convert.ToDouble(reader["nif"]),
-                        Profissao = (string)reader["Profissao"],
+                        Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                         Rua = (string)reader["Rua"],
                         NumeroCasa = (int)reader["NumeroCasa"],
                         Andar = (string)reader["Andar"],
@@ -488,7 +488,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
             utentes = new List<UtenteGridView>();
-            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE IdEnfermeiro =  @IdEnfermeiro", conn);
+            SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE IdEnfermeiro =  @IdEnfermeiro", conn);
             cmd.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -502,7 +502,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     Email = (string)reader["email"],
                     Contacto = Convert.ToDouble(reader["contacto"]),
                     Nif = Convert.ToDouble(reader["nif"]),
-                    Profissao = (int)reader["IdProfissao"],
+                    Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                     Rua = (string)reader["Rua"],
                     NumeroCasa = (int)reader["NumeroCasa"],
                     Andar = (string)reader["Andar"],

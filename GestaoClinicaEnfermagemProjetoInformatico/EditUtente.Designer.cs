@@ -42,8 +42,6 @@
             this.btnVoltar = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.hora = new System.Windows.Forms.Timer(this.components);
-            this.lblOutraProfissao = new System.Windows.Forms.Label();
-            this.txtOutraProfissao = new System.Windows.Forms.TextBox();
             this.cbProfissoes = new System.Windows.Forms.ComboBox();
             this.lblProfissao = new System.Windows.Forms.Label();
             this.panelFormulario = new System.Windows.Forms.Panel();
@@ -93,6 +91,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.enfermeiroBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -260,27 +259,6 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
-            // lblOutraProfissao
-            // 
-            this.lblOutraProfissao.AutoSize = true;
-            this.lblOutraProfissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOutraProfissao.ForeColor = System.Drawing.Color.Black;
-            this.lblOutraProfissao.Location = new System.Drawing.Point(505, 453);
-            this.lblOutraProfissao.Name = "lblOutraProfissao";
-            this.lblOutraProfissao.Size = new System.Drawing.Size(53, 20);
-            this.lblOutraProfissao.TabIndex = 47;
-            this.lblOutraProfissao.Text = "Outra:";
-            this.lblOutraProfissao.Visible = false;
-            // 
-            // txtOutraProfissao
-            // 
-            this.txtOutraProfissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOutraProfissao.Location = new System.Drawing.Point(509, 476);
-            this.txtOutraProfissao.Name = "txtOutraProfissao";
-            this.txtOutraProfissao.Size = new System.Drawing.Size(184, 26);
-            this.txtOutraProfissao.TabIndex = 46;
-            this.txtOutraProfissao.Visible = false;
-            // 
             // cbProfissoes
             // 
             this.cbProfissoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -334,6 +312,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBoxSexo);
             this.groupBox1.Controls.Add(this.groupBox2);
@@ -352,9 +331,7 @@
             this.groupBox1.Controls.Add(this.txtNome);
             this.groupBox1.Controls.Add(this.lblFuncao);
             this.groupBox1.Controls.Add(this.txtMorada);
-            this.groupBox1.Controls.Add(this.lblOutraProfissao);
             this.groupBox1.Controls.Add(this.lblDataNascimento);
-            this.groupBox1.Controls.Add(this.txtOutraProfissao);
             this.groupBox1.Controls.Add(this.dataNascimento);
             this.groupBox1.Controls.Add(this.cbProfissoes);
             this.groupBox1.Controls.Add(this.label6);
@@ -857,6 +834,25 @@
             // 
             this.enfermeiroBindingSource.DataSource = typeof(GestaoClinicaEnfermagemProjetoInformatico.Enfermeiro);
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(497, 464);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button2.Size = new System.Drawing.Size(196, 40);
+            this.button2.TabIndex = 65;
+            this.button2.Text = "Adicionar Nova Profissão";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // EditUtente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -909,8 +905,6 @@
         private System.Windows.Forms.Timer hora;
         private System.Windows.Forms.TextBox utente;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Label lblOutraProfissao;
-        private System.Windows.Forms.TextBox txtOutraProfissao;
         private System.Windows.Forms.ComboBox cbProfissoes;
         private System.Windows.Forms.Label lblProfissao;
         private System.Windows.Forms.Panel panelFormulario;
@@ -958,5 +952,6 @@
         private System.Windows.Forms.Label lblNApolice;
         private System.Windows.Forms.Label lblSeguradora;
         private System.Windows.Forms.TextBox txtNomeSeguradora;
+        private System.Windows.Forms.Button button2;
     }
 }

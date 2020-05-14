@@ -57,6 +57,7 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioButtonAtualizado = new System.Windows.Forms.RadioButton();
             this.radioButtonNaoAtualziado = new System.Windows.Forms.RadioButton();
@@ -77,8 +78,6 @@
             this.lblNApolice = new System.Windows.Forms.Label();
             this.lblSeguradora = new System.Windows.Forms.Label();
             this.txtNomeSeguradora = new System.Windows.Forms.TextBox();
-            this.lblOutraProfissao = new System.Windows.Forms.Label();
-            this.txtOutraProfissao = new System.Windows.Forms.TextBox();
             this.txtLocalidade = new System.Windows.Forms.TextBox();
             this.lblLocalidade = new System.Windows.Forms.Label();
             this.lblTelemovel = new System.Windows.Forms.Label();
@@ -431,6 +430,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBoxSexo);
             this.groupBox1.Controls.Add(this.groupBox2);
@@ -446,9 +446,7 @@
             this.groupBox1.Controls.Add(this.lblSeguradora);
             this.groupBox1.Controls.Add(this.txtNomeSeguradora);
             this.groupBox1.Controls.Add(this.lblNome);
-            this.groupBox1.Controls.Add(this.lblOutraProfissao);
             this.groupBox1.Controls.Add(this.txtNome);
-            this.groupBox1.Controls.Add(this.txtOutraProfissao);
             this.groupBox1.Controls.Add(this.lblFuncao);
             this.groupBox1.Controls.Add(this.txtLocalidade);
             this.groupBox1.Controls.Add(this.txtMorada);
@@ -478,6 +476,25 @@
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(339, 591);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button2.Size = new System.Drawing.Size(196, 40);
+            this.button2.TabIndex = 45;
+            this.button2.Text = "Adicionar Nova Profissão";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox3
             // 
@@ -692,26 +709,6 @@
             this.txtNomeSeguradora.TabIndex = 32;
             this.txtNomeSeguradora.Visible = false;
             // 
-            // lblOutraProfissao
-            // 
-            this.lblOutraProfissao.AutoSize = true;
-            this.lblOutraProfissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOutraProfissao.ForeColor = System.Drawing.Color.Black;
-            this.lblOutraProfissao.Location = new System.Drawing.Point(309, 568);
-            this.lblOutraProfissao.Name = "lblOutraProfissao";
-            this.lblOutraProfissao.Size = new System.Drawing.Size(53, 20);
-            this.lblOutraProfissao.TabIndex = 29;
-            this.lblOutraProfissao.Text = "Outra:";
-            this.lblOutraProfissao.Visible = false;
-            // 
-            // txtOutraProfissao
-            // 
-            this.txtOutraProfissao.Location = new System.Drawing.Point(313, 603);
-            this.txtOutraProfissao.Name = "txtOutraProfissao";
-            this.txtOutraProfissao.Size = new System.Drawing.Size(221, 26);
-            this.txtOutraProfissao.TabIndex = 28;
-            this.txtOutraProfissao.Visible = false;
-            // 
             // txtLocalidade
             // 
             this.txtLocalidade.Location = new System.Drawing.Point(315, 369);
@@ -775,18 +772,11 @@
             // cbProfissoes
             // 
             this.cbProfissoes.FormattingEnabled = true;
-            this.cbProfissoes.Items.AddRange(new object[] {
-            "Advogado",
-            "Bombeiro",
-            "Estudante",
-            "Outra",
-            "Professor"});
             this.cbProfissoes.Location = new System.Drawing.Point(38, 603);
             this.cbProfissoes.Name = "cbProfissoes";
             this.cbProfissoes.Size = new System.Drawing.Size(199, 28);
             this.cbProfissoes.Sorted = true;
             this.cbProfissoes.TabIndex = 22;
-            this.cbProfissoes.SelectedIndexChanged += new System.EventHandler(this.cbProfissoes_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -983,8 +973,6 @@
         private System.Windows.Forms.Label lblDia;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer hora;
-        private System.Windows.Forms.Label lblOutraProfissao;
-        private System.Windows.Forms.TextBox txtOutraProfissao;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
@@ -1008,5 +996,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBoxSexo;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button2;
     }
 }
