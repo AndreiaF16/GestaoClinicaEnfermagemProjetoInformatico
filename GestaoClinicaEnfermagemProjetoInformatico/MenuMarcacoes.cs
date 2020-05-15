@@ -55,7 +55,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         horaProximaConsulta = dataGridViewMarcacoes.Rows[i].Cells[0].Value.ToString(),
                         dataProximaConsulta = dataGridViewMarcacoes.Rows[i].Cells[1].Value.ToString(),
                         NomePaciente = dataGridViewMarcacoes.Rows[i].Cells[2].Value.ToString(),
-                        NifPaciente = Convert.ToDouble(dataGridViewMarcacoes.Rows[i].Cells[3].Value.ToString())
+                        NifPaciente = Convert.ToInt32(dataGridViewMarcacoes.Rows[i].Cells[3].Value.ToString())
                     };
 
                     if (agenda != null)
@@ -252,7 +252,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     dataProximaConsulta = dataConsulta,
                     horaProximaConsulta = (string)reader["horaProximaConsulta"],
                     NomePaciente = (string)reader["Nome"],
-                    NifPaciente = Convert.ToDouble(reader["Nif"]),
+                    NifPaciente = Convert.ToInt32(reader["Nif"]),
                 };
                 agendamentos.Add(agendamento);
             }

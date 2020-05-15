@@ -14,6 +14,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class AdicionarTipoAleitamento : Form
     {
         AdicionarVisualizarAvaliacaoObjetivoPaciente adicionar = null;
+        private ErrorProvider errorProvider = new ErrorProvider();
         public AdicionarTipoAleitamento(AdicionarVisualizarAvaliacaoObjetivoPaciente avaliacaoPaciente)
         {
             InitializeComponent();
@@ -22,7 +23,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void AdicionarTipoAleitamento_Load(object sender, EventArgs e)
         {
-            
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -68,11 +70,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
+            if (VerificarDadosInseridos())
             {
                 string tipo = txtTipo.Text;
                 string observacoes = txtObs.Text;
@@ -106,6 +104,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 if (tipo == string.Empty)
                 {
                     MessageBox.Show("Campo Obrigatório, por favor preencha o tipo de aleitamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    if (txtTipo.Text == string.Empty)
+                    {
+                        errorProvider.SetError(txtTipo, "O tipo de aleitamento é obrigatório!");
+                    }
+
                     return false;
                 }
                 return true;

@@ -57,6 +57,8 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCodPostalPre = new System.Windows.Forms.TextBox();
+            this.txtCodPostalSuf = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioButtonAtualizado = new System.Windows.Forms.RadioButton();
@@ -81,8 +83,6 @@
             this.txtLocalidade = new System.Windows.Forms.TextBox();
             this.lblLocalidade = new System.Windows.Forms.Label();
             this.lblTelemovel = new System.Windows.Forms.Label();
-            this.txtCodPostalSuf = new System.Windows.Forms.TextBox();
-            this.txtCodPostalPre = new System.Windows.Forms.TextBox();
             this.lbCodPostalP = new System.Windows.Forms.Label();
             this.cbProfissoes = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -430,6 +430,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.txtCodPostalPre);
+            this.groupBox1.Controls.Add(this.txtCodPostalSuf);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBoxSexo);
@@ -452,9 +454,7 @@
             this.groupBox1.Controls.Add(this.txtMorada);
             this.groupBox1.Controls.Add(this.lblLocalidade);
             this.groupBox1.Controls.Add(this.lblTelemovel);
-            this.groupBox1.Controls.Add(this.txtCodPostalSuf);
             this.groupBox1.Controls.Add(this.txtContacto);
-            this.groupBox1.Controls.Add(this.txtCodPostalPre);
             this.groupBox1.Controls.Add(this.lblDataNascimento);
             this.groupBox1.Controls.Add(this.lbCodPostalP);
             this.groupBox1.Controls.Add(this.dataNascimento);
@@ -476,6 +476,26 @@
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // txtCodPostalPre
+            // 
+            this.txtCodPostalPre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodPostalPre.Location = new System.Drawing.Point(38, 372);
+            this.txtCodPostalPre.MaxLength = 4;
+            this.txtCodPostalPre.Name = "txtCodPostalPre";
+            this.txtCodPostalPre.Size = new System.Drawing.Size(99, 26);
+            this.txtCodPostalPre.TabIndex = 52;
+            this.txtCodPostalPre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodPostalPre_KeyPress_1);
+            // 
+            // txtCodPostalSuf
+            // 
+            this.txtCodPostalSuf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodPostalSuf.Location = new System.Drawing.Point(163, 372);
+            this.txtCodPostalSuf.MaxLength = 3;
+            this.txtCodPostalSuf.Name = "txtCodPostalSuf";
+            this.txtCodPostalSuf.Size = new System.Drawing.Size(99, 26);
+            this.txtCodPostalSuf.TabIndex = 38;
+            this.txtCodPostalSuf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodPostalSuf_KeyPress_1);
             // 
             // button2
             // 
@@ -739,25 +759,6 @@
             this.lblTelemovel.TabIndex = 6;
             this.lblTelemovel.Text = "Telemóvel:";
             // 
-            // txtCodPostalSuf
-            // 
-            this.txtCodPostalSuf.Location = new System.Drawing.Point(163, 369);
-            this.txtCodPostalSuf.MaxLength = 3;
-            this.txtCodPostalSuf.Name = "txtCodPostalSuf";
-            this.txtCodPostalSuf.Size = new System.Drawing.Size(99, 26);
-            this.txtCodPostalSuf.TabIndex = 25;
-            this.txtCodPostalSuf.TextChanged += new System.EventHandler(this.txtCodPostalSuf_TextChanged);
-            this.txtCodPostalSuf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodPostalSuf_KeyPress);
-            // 
-            // txtCodPostalPre
-            // 
-            this.txtCodPostalPre.Location = new System.Drawing.Point(40, 369);
-            this.txtCodPostalPre.MaxLength = 4;
-            this.txtCodPostalPre.Name = "txtCodPostalPre";
-            this.txtCodPostalPre.Size = new System.Drawing.Size(94, 26);
-            this.txtCodPostalPre.TabIndex = 24;
-            this.txtCodPostalPre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodPostalPre_KeyPress);
-            // 
             // lbCodPostalP
             // 
             this.lbCodPostalP.AutoSize = true;
@@ -799,6 +800,7 @@
             // txtNumeroCasa
             // 
             this.txtNumeroCasa.Location = new System.Drawing.Point(38, 290);
+            this.txtNumeroCasa.MaxLength = 9;
             this.txtNumeroCasa.Name = "txtNumeroCasa";
             this.txtNumeroCasa.Size = new System.Drawing.Size(199, 26);
             this.txtNumeroCasa.TabIndex = 19;
@@ -964,8 +966,6 @@
         private System.Windows.Forms.ComboBox cbProfissoes;
         private System.Windows.Forms.TextBox txtLocalidade;
         private System.Windows.Forms.Label lblLocalidade;
-        private System.Windows.Forms.TextBox txtCodPostalSuf;
-        private System.Windows.Forms.TextBox txtCodPostalPre;
         private System.Windows.Forms.Label lbCodPostalP;
         private System.Windows.Forms.PictureBox btnFechar;
         private System.Windows.Forms.PictureBox btnMaximizar;
@@ -997,5 +997,7 @@
         private System.Windows.Forms.GroupBox groupBoxSexo;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtCodPostalPre;
+        private System.Windows.Forms.TextBox txtCodPostalSuf;
     }
 }

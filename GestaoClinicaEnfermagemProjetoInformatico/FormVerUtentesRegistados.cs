@@ -98,14 +98,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     Nome = (string)reader["nome"],
                     DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                    Email = (string)reader["email"],
+                   // Email = (string)reader["email"],
+                    Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
+
                     Contacto = Convert.ToDouble(reader["contacto"]),
-                    Nif = Convert.ToDouble(reader["nif"]),
+                    Nif = Convert.ToInt32(reader["nif"]),
                     Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
 
                     // Profissao = (string)reader["Profissao"],
                     Rua = (string)reader["Rua"],
-                    NumeroCasa = (int)reader["NumeroCasa"],
+                    NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
+
+                  //  NumeroCasa = (int)reader["NumeroCasa"],
                     Andar = (string)reader["Andar"],
                     codigoPostal = Convert.ToDouble(reader["codPostalPrefixo"]).ToString() + "-" + Convert.ToDouble(reader["codPostalSufixo"]).ToString(),
                 //  codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
@@ -116,16 +120,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
                     //NomeSeguradora = (string)reader["NomeSeguradora"] |,
 
-                    NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? 0 : (int)reader["NumeroApoliceSeguradora"]),
+                    NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? null : (int?)reader["NumeroApoliceSeguradora"]),
                     // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
 
                     NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
                     // NomeSubsistema = (string)reader["NomeSubsistema"],
 
-                    NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? 0 : (int)reader["NumeroSubsistema"]),
+                    NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? null : (int?)reader["NumeroSubsistema"]),
                    // NumeroSubsistema = (int)reader["NumeroSubsistema"],
 
-                    NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? 0 : (int)reader["NumeroSNS"]),
+                    NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? null : (int?)reader["NumeroSNS"]),
                     //NumeroSNS = (int)reader["NumeroSNS"],
 
                     Sexo = (string)reader["Sexo"],
@@ -173,7 +177,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 foreach (UtenteGridView utente in utentes)
                 {
-                    if (utente.Nif == Convert.ToDouble(txtNIF.Text))
+                    if (utente.Nif == Convert.ToInt32(txtNIF.Text))
                     {
                         auxiliar.Add(utente);
                     }
@@ -195,7 +199,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 foreach (UtenteGridView utente in utentes)
                 {
-                    if (utente.Nome.ToLower().Contains(txtNome.Text.ToLower()) && utente.Nif == Convert.ToDouble(txtNIF.Text))
+                    if (utente.Nome.ToLower().Contains(txtNome.Text.ToLower()) && utente.Nif == Convert.ToInt32(txtNIF.Text))
                     {
                         auxiliar.Add(utente);
                     }
@@ -283,9 +287,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         IdPaciente = (int)reader["IdPaciente"],
                         Nome = (string)reader["nome"],
                         DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                        Email = (string)reader["email"],
+                        Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
                         Contacto = Convert.ToDouble(reader["contacto"]),
-                        Nif = Convert.ToDouble(reader["nif"]),
+                        Nif = Convert.ToInt32(reader["nif"]),
                         Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                         Rua = (string)reader["Rua"],
                         NumeroCasa = (int)reader["NumeroCasa"],
@@ -299,16 +303,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
                         //NomeSeguradora = (string)reader["NomeSeguradora"] |,
 
-                        NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? 0 : (int)reader["NumeroApoliceSeguradora"]),
+                        NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? null : (int?)reader["NumeroApoliceSeguradora"]),
                         // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
 
                         NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
                         // NomeSubsistema = (string)reader["NomeSubsistema"],
 
-                        NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? 0 : (int)reader["NumeroSubsistema"]),
+                        NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? null : (int?)reader["NumeroSubsistema"]),
                         // NumeroSubsistema = (int)reader["NumeroSubsistema"],
 
-                        NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? 0 : (int)reader["NumeroSNS"]),
+                        NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? null : (int?)reader["NumeroSNS"]),
                         //NumeroSNS = (int)reader["NumeroSNS"],
 
                         Sexo = (string)reader["Sexo"],
@@ -359,12 +363,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         IdPaciente = (int)reader["IdPaciente"],
                         Nome = (string)reader["nome"],
                         DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                        Email = (string)reader["email"],
+                        Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
                         Contacto = Convert.ToDouble(reader["contacto"]),
-                        Nif = Convert.ToDouble(reader["nif"]),
+                        Nif = Convert.ToInt32(reader["nif"]),
                         Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                         Rua = (string)reader["Rua"],
-                        NumeroCasa = (int)reader["NumeroCasa"],
+                        NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
+
+                       // NumeroCasa = (int)reader["NumeroCasa"],
                         Andar = (string)reader["Andar"],
                         codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
                         codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
@@ -375,16 +381,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
                         //NomeSeguradora = (string)reader["NomeSeguradora"] |,
 
-                        NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? 0 : (int)reader["NumeroApoliceSeguradora"]),
+                        NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? null : (int?)reader["NumeroApoliceSeguradora"]),
                         // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
 
                         NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
                         // NomeSubsistema = (string)reader["NomeSubsistema"],
 
-                        NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? 0 : (int)reader["NumeroSubsistema"]),
+                        NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? null : (int?)reader["NumeroSubsistema"]),
                         // NumeroSubsistema = (int)reader["NumeroSubsistema"],
 
-                        NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? 0 : (int)reader["NumeroSNS"]),
+                        NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? null : (int?)reader["NumeroSNS"]),
                         //NumeroSNS = (int)reader["NumeroSNS"],
 
                         Sexo = (string)reader["Sexo"],
@@ -439,12 +445,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         IdPaciente = (int)reader["IdPaciente"],
                         Nome = (string)reader["nome"],
                         DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                        Email = (string)reader["email"],
+                        Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
                         Contacto = Convert.ToDouble(reader["contacto"]),
-                        Nif = Convert.ToDouble(reader["nif"]),
+                        Nif = Convert.ToInt32(reader["nif"]),
                         Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                         Rua = (string)reader["Rua"],
-                        NumeroCasa = (int)reader["NumeroCasa"],
+                        NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
+
+                        // NumeroCasa = (int)reader["NumeroCasa"],
                         Andar = (string)reader["Andar"],
                         codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
                         codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
@@ -455,16 +463,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
                         //NomeSeguradora = (string)reader["NomeSeguradora"] |,
 
-                        NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? 0 : (int)reader["NumeroApoliceSeguradora"]),
+                        NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? null : (int?)reader["NumeroApoliceSeguradora"]),
                         // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
 
                         NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
                         // NomeSubsistema = (string)reader["NomeSubsistema"],
 
-                        NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? 0 : (int)reader["NumeroSubsistema"]),
+                        NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? null : (int?)reader["NumeroSubsistema"]),
                         // NumeroSubsistema = (int)reader["NumeroSubsistema"],
 
-                        NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? 0 : (int)reader["NumeroSNS"]),
+                        NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? null : (int?)reader["NumeroSNS"]),
                         //NumeroSNS = (int)reader["NumeroSNS"],
 
                         Sexo = (string)reader["Sexo"],
@@ -501,10 +509,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
                     Email = (string)reader["email"],
                     Contacto = Convert.ToDouble(reader["contacto"]),
-                    Nif = Convert.ToDouble(reader["nif"]),
+                    Nif = Convert.ToInt32(reader["nif"]),
                     Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                     Rua = (string)reader["Rua"],
-                    NumeroCasa = (int)reader["NumeroCasa"],
+                    NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
+
+                    // NumeroCasa = (int)reader["NumeroCasa"],
                     Andar = (string)reader["Andar"],
                     codigoPostal = Convert.ToDouble(reader["codPostalPrefixo"]).ToString() + "-" + Convert.ToDouble(reader["codPostalSufixo"]).ToString(),
 
@@ -516,16 +526,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
                     //NomeSeguradora = (string)reader["NomeSeguradora"] |,
 
-                    NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? 0 : (int)reader["NumeroApoliceSeguradora"]),
+                    NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? null : (int?)reader["NumeroApoliceSeguradora"]),
                     // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
 
                     NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
                     // NomeSubsistema = (string)reader["NomeSubsistema"],
 
-                    NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? 0 : (int)reader["NumeroSubsistema"]),
+                    NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? null : (int?)reader["NumeroSubsistema"]),
                     // NumeroSubsistema = (int)reader["NumeroSubsistema"],
 
-                    NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? 0 : (int)reader["NumeroSNS"]),
+                    NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? null : (int?)reader["NumeroSNS"]),
                     //NumeroSNS = (int)reader["NumeroSNS"],
 
                     Sexo = (string)reader["Sexo"],

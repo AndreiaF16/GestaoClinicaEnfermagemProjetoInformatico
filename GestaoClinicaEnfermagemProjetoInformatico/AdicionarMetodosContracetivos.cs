@@ -14,7 +14,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class AdicionarMetodosContracetivos : Form
     {
         AdicionarVisualizarAvaliacaoObjetivoPaciente adicionar = null;
-
+        private ErrorProvider errorProvider = new ErrorProvider();
         public AdicionarMetodosContracetivos(AdicionarVisualizarAvaliacaoObjetivoPaciente avaliacaoPaciente)
         {
             InitializeComponent();
@@ -24,7 +24,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void MetodosContracetivos_Load(object sender, EventArgs e)
         {
-
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -70,11 +71,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
+            if (VerificarDadosInseridos())
             {
                 string nome = txtNomeMetodo.Text;
                 string observacoes = txtObservacoes.Text;
@@ -108,9 +105,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o nome do método contracetivo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
+                if (txtNomeMetodo.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNomeMetodo, "O nome do método contracetivo é obrigatório!");
+                }
                 return false;
             }
 
+          
             return true;
         }
 

@@ -17,6 +17,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Enfermeiro enfermeiro = null;
       //  private UtenteGridView paciente = null;
         private Paciente pacientee = null;
+        private ProfissaoPaciente profissao = null;
 
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
@@ -149,19 +150,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
-            if (numeroApolice.Length != 9)
+            if (cbAcordos.SelectedItem.ToString() == "Seguradora" && numeroApolice.Length != 9 )
             {
                 MessageBox.Show("O número da apólice tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (numeroSNS.Length != 9)
+            if (cbAcordos.SelectedItem.ToString() == "SNS" && numeroSNS.Length != 9)
             {
                 MessageBox.Show("O número do SNS tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (numeroSubsistema.Length != 9 ) 
+            if (cbAcordos.SelectedItem.ToString() == "Subsistema de Saúde" && numeroSubsistema.Length != 9) 
             {
                 MessageBox.Show("O número do subsistema tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -203,6 +204,37 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
             }
 
+           /* conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE IdEnfermeiro =  " + enfermeiro.IdEnfermeiro, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int Nif = (int)(reader["Nif"]);
+                string Email = (string)reader["Email"];
+                //string hora = (string)reader["horaProximaConsulta"];
+                //  DateTime dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+
+
+                if (Email.Equals(pacientee.Email))
+                {
+                    MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.");
+                    conn.Close();
+                    return false;
+                }
+
+                if (pacientee.Nif == Convert.ToInt32(Nif))
+                {
+                    MessageBox.Show("O NIF que colocou já se encontra registado, coloque outro.");
+                    conn.Close();
+                    return false;
+                }
+
+            }
+            conn.Close();*/
+
             return true;
         }
 
@@ -215,6 +247,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string nomeSubsistema = txtNomeSubsistema.Text;
             string numeroSubsistema = txtNSubsistema.Text;
             string numeroSNS = txtSNS.Text;
+            var dtNascimento = dataNascimento.Value;
             string sexo = "";
             int nomeProfissao = -1;
 
@@ -247,11 +280,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
 
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
+            if (VerificarDadosInseridos())
             {
                 try
                 {
@@ -259,12 +288,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     connection.Open();
 
-                    string queryUpdateData = "UPDATE Paciente SET Nome = @nome, Email = @email, Contacto = @contacto,Nif = @nif,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,localidade = @localidade,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, nomeProfissao = @nomeProfissao WHERE Nif = @NifPaciente";
+                    string queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Email = @email, Contacto = @contacto,Nif = @nif,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,localidade = @localidade,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE Nif = @NifPaciente";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
                     sqlCommand.Parameters.AddWithValue("@nome", txtNome.Text);
                     sqlCommand.Parameters.AddWithValue("@email", txtEmail.Text);
                     sqlCommand.Parameters.AddWithValue("@contacto", txtContacto.Text);
                     sqlCommand.Parameters.AddWithValue("@nif", txtNif.Text);
+                    sqlCommand.Parameters.AddWithValue("@dataNascimento", dtNascimento.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@rua", txtMorada.Text);
                     sqlCommand.Parameters.AddWithValue("@numeroCasa", txtNumeroCasa.Text);
                     sqlCommand.Parameters.AddWithValue("@andar", txtAndar.Text);
@@ -329,13 +359,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                             utente.localidade = txtLocalidade.Text;
                             utente.Email = txtEmail.Text;
                             utente.Contacto = Convert.ToDouble(txtContacto.Text);
-                            utente.Nif = Convert.ToDouble(txtNif.Text);
+                            utente.Nif = Convert.ToInt32(txtNif.Text);
                         }
                     }
                     MessageBox.Show("Paciente alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                  //   UpdateDataGridView();
                     formulario.UpdateUtentes();
                     connection.Close();
+                    this.Close();
                 }
                 catch (SqlException excep)
                 {

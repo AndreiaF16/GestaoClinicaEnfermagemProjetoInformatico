@@ -16,7 +16,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public string NomePaciente { get; set; }
 
-        public double NifPaciente { get; set; }
+        public int NifPaciente { get; set; }
 
 
     }

@@ -16,6 +16,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private List<TipoDespesa> tipoDespesas = new List<TipoDespesa>();
+        private ErrorProvider errorProvider = new ErrorProvider();
         public AdicionarVerTipoDespesa()
         {
             InitializeComponent();
@@ -30,6 +31,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void AdicionarVerTipoDespesa_Load(object sender, EventArgs e)
         {
             UpdateDataGridView();
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -66,11 +69,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
+            if (VerificarDadosInseridos())
             {
                 string tipoDespesa = txtNome.Text;
                 string observacoes = txtObservacoes.Text;
@@ -142,12 +141,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private Boolean VerificarDadosInseridos()
         {
-            string designacao = txtNome.Text;
+            string tipoDespesa = txtNome.Text;
 
 
-            if (designacao == string.Empty)
+            if (tipoDespesa == string.Empty)
             {
-                MessageBox.Show("Campos obrigatório, por favor preencha o campo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campo obrigatório, por favor preencha o tipo de despesa!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (txtNome.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNome, "O tipo de despesa é obrigatório!");
+                }
                 return false;
             }
             return true;

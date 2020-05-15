@@ -15,6 +15,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
 
         AdicionarVisualizarAvaliacaoObjetivoBebe adicionar = null;
+        private ErrorProvider errorProvider = new ErrorProvider();
 
         public AdicionarTipoParto(AdicionarVisualizarAvaliacaoObjetivoBebe avaliacaoBebe)
         {
@@ -24,7 +25,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void AdicionarTipoParto_Load(object sender, EventArgs e)
         {
-
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void hora_Tick(object sender, EventArgs e)
@@ -76,12 +78,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
-            {
+            if (VerificarDadosInseridos())
+            {              
                 string tipoParto = txtTipoParto.Text;
                 string observacao = txtObservações.Text;
                 try
@@ -111,6 +109,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (tipoParto == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o campo tipo de parto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (txtTipoParto.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtTipoParto, "O nome do tipo de parto rua é obrigatório!");
+                }
                 return false;
             }
 

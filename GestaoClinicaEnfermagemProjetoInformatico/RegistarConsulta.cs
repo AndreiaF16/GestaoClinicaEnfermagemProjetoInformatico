@@ -116,12 +116,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
              DateTime dtaConsulta = dataConsulta.Value;
              DateTime hrConsulta = horaConsulta.Value;
 
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
+            if (VerificarDadosInseridos())
+            {             
                 try
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
@@ -218,7 +214,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     dataProximaConsulta = dataConsulta,
                     horaProximaConsulta =(string)reader["horaProximaConsulta"],
                     NomePaciente = (string)reader["Nome"],
-                    NifPaciente = Convert.ToDouble(reader["Nif"]),
+                    NifPaciente = Convert.ToInt32(reader["Nif"]),
                 };
                 consultasAgendadas.Add(agendamento); 
             }

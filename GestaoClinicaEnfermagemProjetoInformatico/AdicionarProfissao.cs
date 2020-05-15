@@ -15,6 +15,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         FormRegistarUtente utente = null;
         EditUtente ut = null;
+        private ErrorProvider errorProvider = new ErrorProvider();
         public AdicionarProfissao(FormRegistarUtente adicionarUtente, EditUtente editUtente)
         {
             InitializeComponent();
@@ -24,7 +25,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void AdicionarProfissao_Load(object sender, EventArgs e)
         {
-
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -81,12 +83,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
-            {
+            if (VerificarDadosInseridos())
+            {            
                 string nome = txtNome.Text;
                 try
                 {
@@ -118,7 +116,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o nome da profissão!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                if (txtNome.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNome, "O nome da profissão é obrigatório!");
+                }
+
                 return false;
+
+
             }
 
             return true;

@@ -197,7 +197,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     horaProximaConsulta = (string)reader["horaProximaConsulta"],
                     dataProximaConsulta = dataConsulta,
                     NomePaciente = (string)reader["Nome"],
-                    NifPaciente = Convert.ToDouble(reader["Nif"]),
+                    NifPaciente = Convert.ToInt32(reader["Nif"]),
                 };
 
                 consultaAgendada.Add(agendamento);
@@ -244,9 +244,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         IdPaciente = (int)reader["IdPaciente"],
                         Nome = (string)reader["nome"],
                         DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                        Email = (string)reader["email"],
+                        Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
                         Contacto = Convert.ToDouble(reader["contacto"]),
-                        Nif = Convert.ToDouble(reader["nif"]),
+                        Nif = Convert.ToInt32(reader["nif"]),
                         Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                         Rua = (string)reader["Rua"],
                         NumeroCasa = (int)reader["NumeroCasa"],
@@ -295,7 +295,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 foreach (AgendamentoConsultaGridView consulta in consultaAgendada)
                 {
-                    if (consulta.NifPaciente == Convert.ToDouble(txtNIF.Text))
+                    if (consulta.NifPaciente == Convert.ToInt32(txtNIF.Text))
                     {
                         auxiliar.Add(consulta);
                     }
@@ -317,7 +317,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 foreach (AgendamentoConsultaGridView consulta in consultaAgendada)
                 {
-                    if (consulta.NomePaciente.ToLower().Contains(txtNome.Text.ToLower()) && consulta.NifPaciente == Convert.ToDouble(txtNIF.Text))
+                    if (consulta.NomePaciente.ToLower().Contains(txtNome.Text.ToLower()) && consulta.NifPaciente == Convert.ToInt32(txtNIF.Text))
                     {
                         auxiliar.Add(consulta);
                     }
@@ -374,9 +374,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         IdPaciente = (int)reader["IdPaciente"],
                         Nome = (string)reader["nome"],
                         DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                        Email = (string)reader["email"],
+                        Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
                         Contacto = Convert.ToDouble(reader["contacto"]),
-                        Nif = Convert.ToDouble(reader["nif"]),
+                        Nif = Convert.ToInt32(reader["nif"]),
                         Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                         Rua = (string)reader["Rua"],
                         NumeroCasa = (int)reader["NumeroCasa"],

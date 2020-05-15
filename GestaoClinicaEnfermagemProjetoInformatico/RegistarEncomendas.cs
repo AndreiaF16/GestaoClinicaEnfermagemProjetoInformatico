@@ -99,12 +99,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!VerificarDadosInseridos())
+            if (VerificarDadosInseridos())
             {
-                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
+                
                 int fornecedor = (comboBoxFornecedor.SelectedItem as ComboBoxItem).Value;
                 DateTime data = dataEntregaPrevista.Value;
                 // string observacoes = txtObservacoes.Text;
@@ -258,7 +255,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 if (encomenda.IdEncomenda == Convert.ToInt32(id))
                 {
-                    MessageBox.Show("Número de Encomenda que colocou já existe, registe outro número de encomenda!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Número de Encomenda que colocou já está registado, registe outro número de encomenda!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }

@@ -19,14 +19,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<ComboBoxItem> alergias = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
         private List<DoencaPaciente> alergiasPacientes = new List<DoencaPaciente>();
+        private ErrorProvider errorProvider = new ErrorProvider();
         public AdicionarVisualizarAlergiaPaciente(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            dataDiagnostico.MinDate = DateTime.Now;
-        }
+            dataDiagnostico.MaxDate = DateTime.Now;
+
+    }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
@@ -37,6 +39,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             UpdateDataGridView();
             reiniciar();
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -218,8 +222,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o nome da alergia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                if (comboBoxDoenca.Text == string.Empty)
+                {
+                    errorProvider.SetError(this.comboBoxDoenca, "O nome da alergia é obrigatório!");
+                }
                 return false;
             }
+     
             conn.Open();
             com.Connection = conn;
 
