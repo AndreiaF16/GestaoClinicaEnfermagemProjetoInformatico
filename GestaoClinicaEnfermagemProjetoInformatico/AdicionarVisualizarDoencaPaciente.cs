@@ -74,12 +74,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!VerificarDadosInseridos())
+            if (VerificarDadosInseridos())
             {
-                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
+               
                 int doenca = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
                 DateTime data = dataDiagnostico.Value;
                 string observacoes = txtObservacoes.Text;

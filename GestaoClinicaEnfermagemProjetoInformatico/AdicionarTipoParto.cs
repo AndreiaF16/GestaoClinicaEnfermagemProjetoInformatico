@@ -72,6 +72,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
+            txtTipoParto.Text = "";
+            txtObservações.Text = "";
             VerEditarPartosRegistados verEditarPartosRegistados = new VerEditarPartosRegistados();
             verEditarPartosRegistados.Show();
         }
@@ -94,6 +96,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Tipo de Parto registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
+                    txtTipoParto.Text = "";
+                    txtObservações.Text = "";
                 }
                 catch (SqlException excep)
                 {
@@ -112,12 +116,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 if (txtTipoParto.Text == string.Empty)
                 {
-                    errorProvider.SetError(txtTipoParto, "O nome do tipo de parto rua é obrigatório!");
+                    errorProvider.SetError(txtTipoParto, "O nome do tipo de parto é obrigatório!");
                 }
+                else
+                {
+                    errorProvider.SetError(txtTipoParto, String.Empty);
+                }
+
                 return false;
             }
 
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtTipoParto.Text = "";
+            txtObservações.Text = "";
         }
     }
 }

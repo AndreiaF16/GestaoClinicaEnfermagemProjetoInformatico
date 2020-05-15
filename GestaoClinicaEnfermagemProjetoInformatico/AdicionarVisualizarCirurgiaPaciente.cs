@@ -74,11 +74,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
+            if (VerificarDadosInseridos())
             {
                 int alergia = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
                 DateTime data = dataDiagnostico.Value;

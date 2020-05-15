@@ -191,13 +191,13 @@
             // 
             // comboBoxDoenca
             // 
+            this.comboBoxDoenca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDoenca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDoenca.FormattingEnabled = true;
             this.comboBoxDoenca.Location = new System.Drawing.Point(182, 47);
             this.comboBoxDoenca.Name = "comboBoxDoenca";
             this.comboBoxDoenca.Size = new System.Drawing.Size(273, 28);
             this.comboBoxDoenca.TabIndex = 53;
-            this.comboBoxDoenca.Text = "Selecione a Cirurgia";
             // 
             // label3
             // 

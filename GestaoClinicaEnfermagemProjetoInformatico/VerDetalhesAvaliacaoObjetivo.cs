@@ -89,22 +89,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     peso = Convert.ToDecimal(reader["peso"]),
                     altura = (int)reader["altura"],
                     pressaoArterial = (int)reader["pressaoArterial"],
-                    frequenciaCardiaca = (int)reader["frequenciaCardiaca"],
-                    temperatura = Convert.ToDecimal(reader["temperatura"]),
-                    saturacaoOxigenio = (int)reader["saturacaoOxigenio"],
+                    frequenciaCardiaca = ((reader["frequenciaCardiaca"] == DBNull.Value) ? null : (int?)reader["frequenciaCardiaca"]),
+                    temperatura = ((reader["temperatura"] == DBNull.Value) ? null : (decimal?)reader["temperatura"]),
+                    saturacaoOxigenio = ((reader["saturacaoOxigenio"] == DBNull.Value) ? null : (int?)reader["saturacaoOxigenio"]),
                     //dataUltimaMestruacao = dataMestruacao,                
                     dataUltimaMestruacao = (reader["dataUltimaMestruacao"].ToString() == "" ? "" : DateTime.ParseExact(reader["dataUltimaMestruacao"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy")),
-                    menopausa = ((reader["menopausa"] == DBNull.Value) ? 0 : (int)reader["menopausa"]),
+                    menopausa = ((reader["menopausa"] == DBNull.Value) ? null : (int?)reader["menopausa"]),
                     nomeMetodo = ((reader["nomeMetodoContracetivo"] == DBNull.Value) ? "" : (string)reader["nomeMetodoContracetivo"]),
                     DIU = ((reader["DIU"] == DBNull.Value) ? "" : (string)reader["DIU"]),
-                    concentracaoGlicoseSangue = ((reader["concentracaoGlicoseSangue"] == DBNull.Value) ? 0 : (int)reader["concentracaoGlicoseSangue"]),
-                    AC = ((reader["AC"] == DBNull.Value) ? 0 : (int)reader["AC"]),
-                    AP = ((reader["AP"] == DBNull.Value) ? 0 : (int)reader["AP"]),
-                    INR = ((reader["INR"] == DBNull.Value) ? 0 : (int)reader["INR"]),
-                    Menarca = ((reader["Menarca"] == DBNull.Value) ? 0 : (int)reader["Menarca"]),
-                    gravidez = ((reader["gravidez"] == DBNull.Value) ? 0 : (int)reader["gravidez"]),
-                    filhosVivos = ((reader["filhosVivos"] == DBNull.Value) ? 0 : (int)reader["filhosVivos"]),
-                    abortos = ((reader["abortos"] == DBNull.Value) ? 0 : (int)reader["abortos"]),
+                    concentracaoGlicoseSangue = ((reader["concentracaoGlicoseSangue"] == DBNull.Value) ? null : (int?)reader["concentracaoGlicoseSangue"]),
+                    AC = ((reader["AC"] == DBNull.Value) ? null : (int?)reader["AC"]),
+                    AP = ((reader["AP"] == DBNull.Value) ? null : (int?)reader["AP"]),
+                    INR = ((reader["INR"] == DBNull.Value) ? null : (int?)reader["INR"]),
+                    Menarca = ((reader["Menarca"] == DBNull.Value) ? null : (int?)reader["Menarca"]),
+                    gravidez = ((reader["gravidez"] == DBNull.Value) ? null : (int?)reader["gravidez"]),
+                    filhosVivos = ((reader["filhosVivos"] == DBNull.Value) ? null : (int?)reader["filhosVivos"]),
+                    abortos = ((reader["abortos"] == DBNull.Value) ? null : (int?)reader["abortos"]),
                     observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
                 };
                 avaliacao.IMC = Math.Round(avaliacao.peso / (Convert.ToDecimal(avaliacao.altura * avaliacao.altura) / 10000), 2);
@@ -116,7 +116,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
             UpdateDataGridViewAvaliacao();
         }
-        private void UpdateDataGridViewAvaliacao()
+        public void UpdateDataGridViewAvaliacao()
         {
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaAvaliacaoObjetivo };
             dataGridViewAvaliacaoObjetivo.DataSource = bindingSource1;
@@ -162,7 +162,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select avaliacaoBebe.dataRegisto, avaliacaoBebe.Peso, avaliacaoBebe.Altura, avaliacaoBebe.pressaoArterial, avaliacaoBebe.temperatura, avaliacaoBebe.saturacaoOxigenio, avaliacaoBebe.INR, avaliacaoBebe.Perimetro, aleitamento.tipoAleitamento, avaliacaoBebe.nomeLeiteArtificial, parto.tipoParto, avaliacaoBebe.partoDistocico, avaliacaoBebe.epidoral, avaliacaoBebe.episotomia, avaliacaoBebe.reanimacaoFetal, avaliacaoBebe.indiceAPGAR, avaliacaoBebe.Fototerapia, avaliacaoBebe.observacoes from AvaliacaoObjetivoBebe avaliacaoBebe JOIN Aleitamento aleitamento ON avaliacaoBebe.IdTipoAleitamento = aleitamento.IdAleitamento JOIN Parto parto ON avaliacaoBebe.IdTipoParto = parto.IdParto WHERE IdPaciente = 1006 ORDER BY avaliacaoBebe.dataRegisto, aleitamento.tipoAleitamento, parto.tipoParto", conn);
+            SqlCommand cmd = new SqlCommand("select avaliacaoBebe.dataRegisto, avaliacaoBebe.Peso, avaliacaoBebe.Altura, avaliacaoBebe.pressaoArterial, avaliacaoBebe.temperatura, avaliacaoBebe.saturacaoOxigenio, avaliacaoBebe.INR, avaliacaoBebe.Perimetro, aleitamento.tipoAleitamento, avaliacaoBebe.nomeLeiteArtificial, parto.tipoParto, avaliacaoBebe.partoDistocico, avaliacaoBebe.epidoral, avaliacaoBebe.episotomia, avaliacaoBebe.reanimacaoFetal, avaliacaoBebe.indiceAPGAR, avaliacaoBebe.Fototerapia, avaliacaoBebe.observacoes from AvaliacaoObjetivoBebe avaliacaoBebe LEFT JOIN Aleitamento aleitamento ON avaliacaoBebe.IdTipoAleitamento = aleitamento.IdAleitamento LEFT JOIN Parto parto ON avaliacaoBebe.IdTipoParto = parto.IdParto WHERE IdPaciente = @IdPaciente ORDER BY avaliacaoBebe.dataRegisto, aleitamento.tipoAleitamento, parto.tipoParto", conn);
 
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -176,10 +176,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     Peso = Convert.ToDecimal(reader["peso"]),
                     Altura = (int)reader["altura"],
                     pressaoArterial = (int)reader["pressaoArterial"],
-                    temperatura = Convert.ToDecimal(reader["temperatura"]),
-                    saturacaoOxigenio = (int)reader["saturacaoOxigenio"],
-                    INR = ((reader["INR"] == DBNull.Value) ? 0 : (int)reader["INR"]),
-                    Perimetro = ((reader["Perimetro"] == DBNull.Value) ? 0 : (int)reader["Perimetro"]),
+                    temperatura = ((reader["temperatura"] == DBNull.Value) ? null : (decimal?)reader["temperatura"]),
+                    saturacaoOxigenio = ((reader["saturacaoOxigenio"] == DBNull.Value) ? null : (int?)reader["saturacaoOxigenio"]),
+                    INR = ((reader["INR"] == DBNull.Value) ? null : (int?)reader["INR"]),
+                    Perimetro = ((reader["Perimetro"] == DBNull.Value) ? null : (int?)reader["Perimetro"]),
                     tipoAleitamento = ((reader["tipoAleitamento"] == DBNull.Value) ? "" : (string)reader["tipoAleitamento"]),
                     nomeLeiteArtificial = ((reader["nomeLeiteArtificial"] == DBNull.Value) ? "" : (string)reader["nomeLeiteArtificial"]),
                     tipoParto = ((reader["tipoParto"] == DBNull.Value) ? "" : (string)reader["tipoParto"]),

@@ -507,7 +507,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     Nome = (string)reader["nome"],
                     DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                    Email = (string)reader["email"],
+                   // Email = (string)reader["email"],
+                    Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
                     Contacto = Convert.ToDouble(reader["contacto"]),
                     Nif = Convert.ToInt32(reader["nif"]),
                     Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),

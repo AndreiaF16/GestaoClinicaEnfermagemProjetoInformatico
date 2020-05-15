@@ -78,7 +78,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            txtNome.Text = "";
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -98,7 +98,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Profissão registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //    AdicionarVisualizarDoencaPaciente.reiniciar();
                     connection.Close();
-                    
+                    txtNome.Text = "";
+
                 }
                 catch (SqlException excep)
                 {
@@ -121,6 +122,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     errorProvider.SetError(txtNome, "O nome da profissão é obrigatório!");
                 }
+                else
+                {
+                    errorProvider.SetError(txtNome, String.Empty);
+                }
 
                 return false;
 
@@ -132,6 +137,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
+            txtNome.Text = "";
             VerEditarProfissao verEditarProfissao = new VerEditarProfissao();
             verEditarProfissao.Show();
         }

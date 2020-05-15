@@ -44,6 +44,7 @@
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblFuncao = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -182,6 +183,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.txtNome);
             this.groupBox1.Controls.Add(this.lblFuncao);
             this.groupBox1.Controls.Add(this.btnGuardar);
@@ -189,17 +191,38 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
-            this.groupBox1.Location = new System.Drawing.Point(19, 45);
+            this.groupBox1.Location = new System.Drawing.Point(19, 67);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1093, 330);
+            this.groupBox1.Size = new System.Drawing.Size(1093, 226);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registar Tipo de Despesa";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(805, 122);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(281, 76);
+            this.button1.TabIndex = 55;
+            this.button1.Text = "Limpar Campos";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // txtNome
             // 
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(159, 103);
+            this.txtNome.Location = new System.Drawing.Point(153, 45);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(620, 26);
             this.txtNome.TabIndex = 54;
@@ -209,7 +232,7 @@
             this.lblFuncao.AutoSize = true;
             this.lblFuncao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFuncao.ForeColor = System.Drawing.Color.Black;
-            this.lblFuncao.Location = new System.Drawing.Point(26, 168);
+            this.lblFuncao.Location = new System.Drawing.Point(20, 110);
             this.lblFuncao.Name = "lblFuncao";
             this.lblFuncao.Size = new System.Drawing.Size(102, 20);
             this.lblFuncao.TabIndex = 12;
@@ -224,7 +247,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(805, 135);
+            this.btnGuardar.Location = new System.Drawing.Point(805, 46);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -239,7 +262,7 @@
             // txtObservacoes
             // 
             this.txtObservacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObservacoes.Location = new System.Drawing.Point(159, 165);
+            this.txtObservacoes.Location = new System.Drawing.Point(153, 107);
             this.txtObservacoes.Multiline = true;
             this.txtObservacoes.Name = "txtObservacoes";
             this.txtObservacoes.Size = new System.Drawing.Size(620, 91);
@@ -250,7 +273,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(26, 109);
+            this.label3.Location = new System.Drawing.Point(20, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(129, 20);
             this.label3.TabIndex = 52;
@@ -307,7 +330,7 @@
             this.dataGridViewTipoDespesa.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewTipoDespesa.EnableHeadersVisualStyles = false;
             this.dataGridViewTipoDespesa.GridColor = System.Drawing.Color.SteelBlue;
-            this.dataGridViewTipoDespesa.Location = new System.Drawing.Point(19, 381);
+            this.dataGridViewTipoDespesa.Location = new System.Drawing.Point(19, 317);
             this.dataGridViewTipoDespesa.Name = "dataGridViewTipoDespesa";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
@@ -323,7 +346,7 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridViewTipoDespesa.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewTipoDespesa.Size = new System.Drawing.Size(1093, 284);
+            this.dataGridViewTipoDespesa.Size = new System.Drawing.Size(1093, 354);
             this.dataGridViewTipoDespesa.TabIndex = 50;
             // 
             // label2
@@ -432,5 +455,6 @@
         private System.Windows.Forms.DataGridView dataGridViewTipoDespesa;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.Button button1;
     }
 }

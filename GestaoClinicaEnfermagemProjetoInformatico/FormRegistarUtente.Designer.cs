@@ -56,6 +56,7 @@
             this.lblNome = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCodPostalPre = new System.Windows.Forms.TextBox();
             this.txtCodPostalSuf = new System.Windows.Forms.TextBox();
@@ -414,6 +415,7 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.button3);
             this.panelFormulario.Controls.Add(this.groupBox1);
             this.panelFormulario.Controls.Add(this.pictureBox1);
             this.panelFormulario.Controls.Add(this.lblTitulo);
@@ -426,6 +428,26 @@
             this.panelFormulario.Size = new System.Drawing.Size(1153, 714);
             this.panelFormulario.TabIndex = 2;
             this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button3.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button3.Location = new System.Drawing.Point(14, 320);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button3.Size = new System.Drawing.Size(161, 51);
+            this.button3.TabIndex = 56;
+            this.button3.Text = "Limpar Campos";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // groupBox1
             // 
@@ -601,6 +623,7 @@
             // 
             // cbAcordos
             // 
+            this.cbAcordos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAcordos.FormattingEnabled = true;
             this.cbAcordos.Items.AddRange(new object[] {
             "Seguradora",
@@ -772,6 +795,7 @@
             // 
             // cbProfissoes
             // 
+            this.cbProfissoes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProfissoes.FormattingEnabled = true;
             this.cbProfissoes.Location = new System.Drawing.Point(38, 603);
             this.cbProfissoes.Name = "cbProfissoes";
@@ -999,5 +1023,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtCodPostalPre;
         private System.Windows.Forms.TextBox txtCodPostalSuf;
+        private System.Windows.Forms.Button button3;
     }
 }

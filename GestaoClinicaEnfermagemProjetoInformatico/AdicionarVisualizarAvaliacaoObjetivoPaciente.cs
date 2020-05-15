@@ -19,6 +19,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<AvaliacaoObjetivo> avaliacaoObjetivo = new List<AvaliacaoObjetivo>();
         private List<ComboBoxItem> metodosContracetivos = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
+        private ErrorProvider errorProvider = new ErrorProvider();
 
         public AdicionarVisualizarAvaliacaoObjetivoPaciente(Paciente pac)
         {
@@ -26,7 +27,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             paciente = pac;
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            dataAvaliacaoObjetivo.Value = DateTime.Now;
+            errorProvider.ContainerControl = this;
+            dataAvaliacaoObjetivo.Value = DateTime.Today;
+
         }
 
         public void reiniciar()
@@ -53,7 +56,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             // UpdateDataGridView();
             reiniciar();
-           
+          
+
+
+            //if (data)
             if (paciente.Sexo.Equals("Feminino")) 
             {
                 lblINR.Visible = true;
@@ -69,12 +75,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 radioButtonSim.Visible = true;
                 radioButtonNao.Visible = true;
                 lblBMT.Visible = true;
-                txtBMT.Visible = true;
+                UpDownBTM.Visible = true;
                 lblmg.Visible = true;
                 lblAC.Visible = true;
-                txtAC.Visible = true;
+                UpDownAC.Visible = true;
                 lblAP.Visible = true;
-                txtAP.Visible = true;
+                UpDownAP.Visible = true;
                 lblMenarca.Visible = true;
                 upDownMenarca.Visible = true;
                 lblanos2.Visible = true;
@@ -126,24 +132,37 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
+            if (VerificarDadosInseridos())
             {
                 DateTime data = dataAvaliacaoObjetivo.Value;
                 DateTime dataUltimaMestruacao = dataUltimaMenstruacao.Value;
 
-                int altura = Convert.ToInt16(UpDownAltura.Text);
-                decimal peso = Convert.ToDecimal(UpDownPeso.Text);
                 float ba = Convert.ToSingle(UpDownPeso.Text);
+                int pressaoArterial = Convert.ToInt32(UpDownPressaoArterial.Text);
+                int frequenciaCardiaca = Convert.ToInt32(UpDownFC.Text);
+                decimal temperatura = Convert.ToDecimal(UpDownTemperatura.Text);
+                int saturacaoOxigenio = Convert.ToInt32(UpDownSPO2.Text);
+                int menopausa = Convert.ToInt32(UpDownIdadeMenopausa.Text);
+                int BTM = Convert.ToInt32(UpDownBTM.Text); //glicose no sangue
+                int AC = Convert.ToInt32(UpDownAC.Text);
+                int AP = Convert.ToInt32(UpDownAP.Text);
+                int INR = Convert.ToInt32(upDownINR.Text);
+                int menarca = Convert.ToInt32(upDownMenarca.Text);
+                int gravidezes = Convert.ToInt32(upDownGravidezes.Text);
+                int filhosVivos = Convert.ToInt32(upDownFilhosVivos.Text);
+                int abortos = Convert.ToInt32(upDownAbortos.Text);
+
                 int metodoContracetivo = -1;
                 string DIU = "";
 
-                if (paciente.Sexo == "Feminino"){
-                    metodoContracetivo = (comboBoxMetodoContracetivo.SelectedItem as ComboBoxItem).Value;
-                    
+                if (paciente.Sexo == "Feminino")
+                {
+                    if (!comboBoxMetodoContracetivo.Text.Equals(String.Empty))
+                    {
+                        metodoContracetivo = (comboBoxMetodoContracetivo.SelectedItem as ComboBoxItem).Value;
+
+                        
+                    }
                     if (radioButtonSim.Checked == true)
                     {
                         DIU = "Sim";
@@ -152,6 +171,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         DIU = "Não";
                     }
+
                 }
 
 
@@ -164,11 +184,36 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.Parameters.AddWithValue("@peso", UpDownPeso.Value);
                     sqlCommand.Parameters.AddWithValue("@altura", UpDownAltura.Value);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                    sqlCommand.Parameters.AddWithValue("@pressaoArterial", txtTensaoArterial.Text);
-                    sqlCommand.Parameters.AddWithValue("@frequenciaCardiaca", txtFC.Text);
-                    sqlCommand.Parameters.AddWithValue("@temperatura", numericUpDownTemperatura.Value);
-                    sqlCommand.Parameters.AddWithValue("@saturacaoOxigenio", txtSPO2.Text);
+                    sqlCommand.Parameters.AddWithValue("@pressaoArterial", pressaoArterial);
+                   
                     //sqlCommand.Parameters.AddWithValue("@dataUltimaMestruacao", dataUltimaMestruacao.ToString("MM/dd/yyyy"));
+
+                    if (saturacaoOxigenio > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@saturacaoOxigenio", Convert.ToString(saturacaoOxigenio));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@saturacaoOxigenio", DBNull.Value);
+                    }
+
+                    if (frequenciaCardiaca > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@frequenciaCardiaca", Convert.ToString(frequenciaCardiaca));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@frequenciaCardiaca", DBNull.Value);
+                    }
+
+                    if (temperatura > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@temperatura", Convert.ToString(temperatura));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@temperatura", DBNull.Value);
+                    }                   
 
                     if (paciente.Sexo == "Feminino")
                     {
@@ -179,11 +224,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@dataUltimaMestruacao", DBNull.Value);
                     }
 
-                    sqlCommand.Parameters.AddWithValue("@menopausa", UpDownIdadeMenopausa.Value);
-                    //sqlCommand.Parameters.AddWithValue("@IdMetodoContracetivo", metodoContracetivo);
-                   // sqlCommand.Parameters.AddWithValue("@DIU", DIU);
+                    if (menopausa > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@menopausa", Convert.ToInt32(menopausa));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@menopausa", DBNull.Value);
+                    }
 
-                    if (metodoContracetivo != -1)
+                    if (metodoContracetivo > 0)
                     {
                         sqlCommand.Parameters.AddWithValue("@IdMetodoContracetivo", Convert.ToInt32(metodoContracetivo));
                     }
@@ -202,20 +252,94 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@DIU", DBNull.Value);
                     }
 
-                    sqlCommand.Parameters.AddWithValue("@concentracaoGlicoseSangue", txtBMT.Text);
-                    sqlCommand.Parameters.AddWithValue("@AC", txtAC.Text);
-                    sqlCommand.Parameters.AddWithValue("@AP", txtAP.Text);
-                    sqlCommand.Parameters.AddWithValue("@INR", upDownINR.Value);
-                    sqlCommand.Parameters.AddWithValue("@Menarca", upDownMenarca.Value);
-                    sqlCommand.Parameters.AddWithValue("@gravidez", upDownGravidezes.Value);
-                    sqlCommand.Parameters.AddWithValue("@filhosVivos", upDownFilhosVivos.Value);
-                    sqlCommand.Parameters.AddWithValue("@abortos", upDownAbortos.Value);
+                    if (BTM > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@concentracaoGlicoseSangue", Convert.ToString(BTM));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@concentracaoGlicoseSangue", DBNull.Value);
+                    }
+
+                    if (AC > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@AC", Convert.ToString(AC));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@AC", DBNull.Value);
+                    }
+
+                    if (AP > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@AP", Convert.ToString(AP));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@AP", DBNull.Value);
+                    }
+
+                    if (INR > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@INR", Convert.ToString(INR));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@INR", DBNull.Value);
+                    }
+
+                    if (menarca > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@Menarca", Convert.ToString(menarca));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@Menarca", DBNull.Value);
+                    }
+
+                    if (gravidezes > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@gravidez", Convert.ToString(gravidezes));
+                    }
+                    else if (paciente.Sexo == "Feminino" && gravidezes == 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@gravidez", 0);
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@gravidez", DBNull.Value);
+                    }
+
+                    if (filhosVivos > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@filhosVivos", Convert.ToString(filhosVivos));
+                    }
+                    else if (paciente.Sexo == "Feminino" && filhosVivos == 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@filhosVivos", 0);
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@filhosVivos", DBNull.Value);
+                    }
+
+                    if (abortos > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@abortos", Convert.ToString(abortos));
+                    }
+                    else if(paciente.Sexo == "Feminino" && abortos == 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@abortos", 0);
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@abortos", DBNull.Value);
+                    }
+
                     sqlCommand.Parameters.AddWithValue("@observacoes", txtObservacoes.Text);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Avaliação Objetivo registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
-                    //UpdateDataGridView();
-
                 }
                 catch (SqlException excep)
                 {
@@ -262,65 +386,209 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             string peso = UpDownPeso.Text;
             string altura = UpDownAltura.Text;
-            string pressaArterial = txtTensaoArterial.Text;
-            string frequencia = txtFC.Text;
-            string temperatura = numericUpDownTemperatura.Text;
-            string SP02 = txtSPO2.Text;
+            string pressaArterial = UpDownPressaoArterial.Text;
+            string frequencia = UpDownFC.Text;
+            string temperatura = UpDownTemperatura.Text;
+            string SP02 = UpDownSPO2.Text;
+            string menopausa = UpDownIdadeMenopausa.Text;
             string INR = upDownINR.Text;
-            string BTM = txtBMT.Text;
-            string AC = txtAC.Text;
-            string AP= txtAP.Text;
-            string Menarca = upDownMenarca.Text;
+            string BTM = UpDownBTM.Text;
+            string AC = UpDownAC.Text;
+            string AP= UpDownAP.Text;
+            string menarca = upDownMenarca.Text;
             string gravidez = upDownGravidezes.Text;
             string filhosVivos = upDownFilhosVivos.Text;
             string abortos = upDownAbortos.Text;
+            DateTime data = dataAvaliacaoObjetivo.Value;
+
+            if ((data - DateTime.Today).TotalDays > 0)
+            {
+                MessageBox.Show("A data da avaliação objetivo tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
 
-            if (peso == string.Empty || altura == string.Empty)
+            if (peso == string.Empty || altura == string.Empty || pressaArterial == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
 
-            if (Convert.ToDecimal(peso) <= 0 || Convert.ToInt32(altura) <= 0 || Convert.ToInt32(frequencia) <= 0 || Convert.ToInt32(pressaArterial) <= 0 || 
-                Convert.ToDecimal(temperatura) <= 0 || Convert.ToInt32(SP02) <= 0 || Convert.ToInt32(INR) <= 0 || 
-                Convert.ToInt32(BTM) <= 0 || Convert.ToInt32(AC) <= 0 || Convert.ToInt32(AP) <= 0 || Convert.ToInt32(Menarca) <= 0 || 
-                Convert.ToInt32(gravidez) <= 0 || Convert.ToInt32(filhosVivos) <= 0 || Convert.ToInt32(abortos) <= 0)
-            {
-                MessageBox.Show("O peso, e/ou a altura, e/ou a frequência cardiaca,  e/ou a pressão arterial, e/ou a temperatura, e/ou o SP02, e/ou o INR," +
-                    " e/ou o BTM, e/ou o AC, e/ou o AP, e/ou a Menarca, e /ou a gravidez, e/ou os filhos vivos, e/ou os abortos" +
-                    " não podem ser inferiores a 0, por valor corriga os valores!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-           
-            return true;
-        }
-
-        public void LimpaCampos(Control.ControlCollection textBoxs)
-        {
-            foreach (Control txt in textBoxs)
-            {
-                if (txt.GetType() == typeof(TextBox))
+                if(UpDownPeso.Text == string.Empty)
                 {
-                    txt.Text = string.Empty;
-                    this.Close();
+                    errorProvider.SetError(UpDownPeso, "O peso é obrigatório!");
                 }
+
+
+                if (UpDownAltura.Text == string.Empty)
+                {
+                    errorProvider.SetError(UpDownAltura, "A altura é obrigatória!");
+                }
+
+                if (UpDownPressaoArterial.Text == string.Empty)
+                {
+                    errorProvider.SetError(UpDownPressaoArterial, "A pressão arterial é obrigatória!");
+                }
+                return false;
             }
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.LimpaCampos(this.panelFormulario.Controls);
+
+            if (Convert.ToDecimal(peso) <= 0 || Convert.ToInt32(altura) <= 0 || Convert.ToInt32(pressaArterial) <= 0)
+            {
+                MessageBox.Show("Não podem ser registados valores inferiores ou igual a 0, por valor corriga os valores!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Convert.ToDecimal(peso) <= 0)
+                {
+                    errorProvider.SetError(UpDownPeso, "O peso não pode ser inferior ou igual a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownPeso, String.Empty);
+                }
+
+                if (Convert.ToInt32(altura) <= 0)
+                {
+                    errorProvider.SetError(UpDownAltura, "A altura não pode ser inferior  ou igual a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownAltura, String.Empty);
+                }
+
+
+
+                if (Convert.ToInt32(pressaArterial) <= 0)
+                {
+                    errorProvider.SetError(UpDownPressaoArterial, "A pressão arterial não pode ser inferior ou igual a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownPressaoArterial, String.Empty);
+                }
+                return false;
+            }
+
+            if (Convert.ToInt32(frequencia) < 0 || Convert.ToDecimal(temperatura) < 0 || Convert.ToInt32(SP02) < 0 || Convert.ToInt32(menopausa) < 0 || 
+                Convert.ToInt32(BTM) < 0 || Convert.ToInt32(AC) < 0 || Convert.ToInt32(AP) < 0 || Convert.ToInt32(INR) < 0 || 
+                Convert.ToInt32(menarca) < 0 || Convert.ToInt32(gravidez) < 0 || Convert.ToInt32(filhosVivos) < 0 || Convert.ToInt32(abortos) < 0)
+            {
+                if (Convert.ToInt32(frequencia) < 0)
+                {
+                    errorProvider.SetError(UpDownFC, "A frequência cardiaca não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownFC, String.Empty);
+                }
+
+                if (Convert.ToDecimal(temperatura) < 0)
+                {
+                    errorProvider.SetError(UpDownTemperatura, "A temperatura não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownTemperatura, String.Empty);
+                }
+
+                if (Convert.ToInt32(SP02) < 0)
+                {
+                    errorProvider.SetError(UpDownSPO2, "A SP02 não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownSPO2, String.Empty);
+                }
+
+                if (Convert.ToInt32(menopausa) < 0)
+                {
+                    errorProvider.SetError(UpDownIdadeMenopausa, "A idade da menopausa não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownIdadeMenopausa, String.Empty);
+                }
+
+                if (Convert.ToInt32(BTM) < 0)
+                {
+                    errorProvider.SetError(UpDownBTM, "A BTM não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownBTM, String.Empty);
+                }
+
+                if (Convert.ToInt32(AC) < 0)
+                {
+                    errorProvider.SetError(UpDownAC, "A AC não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownAC, String.Empty);
+                }
+
+                if (Convert.ToInt32(AP) < 0)
+                {
+                    errorProvider.SetError(UpDownAP, "A AP não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownAP, String.Empty);
+                }
+
+                if (Convert.ToInt32(INR) < 0)
+                {
+                    errorProvider.SetError(upDownINR, "A INR não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(upDownINR, String.Empty);
+                }
+
+                if (Convert.ToInt32(menarca) < 0)
+                {
+                    errorProvider.SetError(upDownMenarca, "A menarca não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(upDownMenarca, String.Empty);
+                }
+
+                if (Convert.ToInt32(gravidez) < 0)
+                {
+                    errorProvider.SetError(upDownGravidezes, "O número de gravidezes não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(upDownGravidezes, String.Empty);
+                }
+                if (Convert.ToInt32(filhosVivos) < 0)
+                {
+                    errorProvider.SetError(upDownFilhosVivos, "O número de filhos vivos não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(upDownFilhosVivos, String.Empty);
+                }
+
+                if (Convert.ToInt32(abortos) < 0)
+                {
+                    errorProvider.SetError(upDownAbortos, "O número de abortos não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(upDownAbortos, String.Empty);
+                }
+                return false;
+            }
+
+            return true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AdicionarVisualizarAvaliacaoObjetivoBebe adicionarVisualizarAvaliacaoObjetivoBebe = new AdicionarVisualizarAvaliacaoObjetivoBebe(paciente);
+            AdicionarVisualizarAvaliacaoObjetivoBebe adicionarVisualizarAvaliacaoObjetivoBebe = new AdicionarVisualizarAvaliacaoObjetivoBebe(paciente/*, this, null*/);
             adicionarVisualizarAvaliacaoObjetivoBebe.Show();
         }      
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            VerAvaliacaoObjetivo verAvaliacaoObjetivo = new VerAvaliacaoObjetivo(paciente);
+            VerDetalhesAvaliacaoObjetivo verAvaliacaoObjetivo = new VerDetalhesAvaliacaoObjetivo(paciente);
             verAvaliacaoObjetivo.Show();
         }
 
@@ -333,6 +601,29 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void button2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Ainda NÃO IMPLEMENTADO");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dataAvaliacaoObjetivo.Value = DateTime.Today;
+            dataUltimaMenstruacao.Value = DateTime.Today;
+            UpDownPeso.Value = 0;
+            UpDownAltura.Value = 0;
+            UpDownPressaoArterial.Value = 0;
+            UpDownFC.Value = 0;
+            UpDownTemperatura.Value = 0;
+            UpDownSPO2.Value = 0;
+            upDownMenarca.Value = 0;
+            UpDownBTM.Value = 0;
+            UpDownAC.Value = 0;
+            UpDownAP.Value = 0;        
+            upDownINR.Value = 0;
+            upDownMenarca.Value = 0;
+            upDownGravidezes.Value = 0;
+            upDownFilhosVivos.Value = 0;
+            upDownAbortos.Value = 0;
+            txtObservacoes.Text = "";
+            reiniciar();
         }
     }
 }

@@ -98,6 +98,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Alergia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
+                    txtProcurar.Text = "";
+                    txtObservacoes.Text = "";
+                    dataDiagnostico.Value = DateTime.Today;
+                    comboBoxDoenca.SelectedItem = null;
+                    foreach (var pesquisa in filtrosDePesquisa())
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+                        item.Text = pesquisa.Text;
+                        item.Value = pesquisa.Value;
+                        comboBoxDoenca.Items.Add(item);
+                    }
                     UpdateDataGridView();
 
                 }
@@ -146,6 +157,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button4_Click(object sender, EventArgs e)
         {
+            txtProcurar.Text = "";
+            txtObservacoes.Text = "";
+            dataDiagnostico.Value = DateTime.Today;
+            comboBoxDoenca.SelectedItem = null;
+            foreach (var pesquisa in filtrosDePesquisa())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Text = pesquisa.Text;
+                item.Value = pesquisa.Value;
+                comboBoxDoenca.Items.Add(item);
+            }
             Alergias alergias = new Alergias(this);
             alergias.Show();
         }
@@ -249,6 +271,24 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             conn.Close();
             return true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            txtProcurar.Text = "";
+            txtObservacoes.Text = "";
+            dataDiagnostico.Value = DateTime.Today;
+            comboBoxDoenca.SelectedItem = null;
+            comboBoxDoenca.Items.Clear();
+            foreach (var pesquisa in filtrosDePesquisa())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Text = pesquisa.Text;
+                item.Value = pesquisa.Value;
+                comboBoxDoenca.Items.Add(item);
+            }
+           // filtrosDePesquisa();
+
         }
     }
 }

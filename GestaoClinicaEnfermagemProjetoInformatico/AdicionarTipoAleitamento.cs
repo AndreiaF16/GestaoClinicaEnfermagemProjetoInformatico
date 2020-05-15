@@ -109,16 +109,28 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         errorProvider.SetError(txtTipo, "O tipo de aleitamento é obrigatório!");
                     }
+                    else
+                    {
+                        errorProvider.SetError(txtTipo, String.Empty);
+                    }
 
-                    return false;
+                return false;
                 }
                 return true;
             }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            txtTipo.Text = "";
+            txtObs.Text = "";
             VerEditarAleitamento verEditarAleitamento = new VerEditarAleitamento();
             verEditarAleitamento.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtTipo.Text = "";
+            txtObs.Text = "";
         }
     }
 }

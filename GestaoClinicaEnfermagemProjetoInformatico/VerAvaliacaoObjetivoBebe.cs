@@ -73,7 +73,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select avaliacaoBebe.dataRegisto, avaliacaoBebe.Peso, avaliacaoBebe.Altura, avaliacaoBebe.pressaoArterial, avaliacaoBebe.temperatura, avaliacaoBebe.saturacaoOxigenio, avaliacaoBebe.INR, avaliacaoBebe.Perimetro, aleitamento.tipoAleitamento, avaliacaoBebe.nomeLeiteArtificial, parto.tipoParto, avaliacaoBebe.partoDistocico, avaliacaoBebe.epidoral, avaliacaoBebe.episotomia, avaliacaoBebe.reanimacaoFetal, avaliacaoBebe.indiceAPGAR, avaliacaoBebe.Fototerapia, avaliacaoBebe.observacoes from AvaliacaoObjetivoBebe avaliacaoBebe JOIN Aleitamento aleitamento ON avaliacaoBebe.IdTipoAleitamento = aleitamento.IdAleitamento JOIN Parto parto ON avaliacaoBebe.IdTipoParto = parto.IdParto WHERE IdPaciente = 1006 ORDER BY avaliacaoBebe.dataRegisto, aleitamento.tipoAleitamento, parto.tipoParto", conn);
+            SqlCommand cmd = new SqlCommand("select avaliacaoBebe.dataRegisto, avaliacaoBebe.Peso, avaliacaoBebe.Altura, avaliacaoBebe.pressaoArterial, avaliacaoBebe.temperatura, avaliacaoBebe.saturacaoOxigenio, avaliacaoBebe.INR, avaliacaoBebe.Perimetro, aleitamento.tipoAleitamento, avaliacaoBebe.nomeLeiteArtificial, parto.tipoParto, avaliacaoBebe.partoDistocico, avaliacaoBebe.epidoral, avaliacaoBebe.episotomia, avaliacaoBebe.reanimacaoFetal, avaliacaoBebe.indiceAPGAR, avaliacaoBebe.Fototerapia, avaliacaoBebe.observacoes from AvaliacaoObjetivoBebe avaliacaoBebe LEFT JOIN Aleitamento aleitamento ON avaliacaoBebe.IdTipoAleitamento = aleitamento.IdAleitamento LEFT JOIN Parto parto ON avaliacaoBebe.IdTipoParto = parto.IdParto WHERE IdPaciente = @IdPaciente ORDER BY avaliacaoBebe.dataRegisto, aleitamento.tipoAleitamento, parto.tipoParto", conn);
 
            // SqlCommand cmd = new SqlCommand("select avaliacao.data, avaliacao.peso, avaliacao.altura, avaliacao.pressaoArterial, avaliacao.frequenciaCardiaca, avaliacao.temperatura, avaliacao.saturacaoOxigenio, avaliacao.dataUltimaMestruacao, avaliacao.menopausa, metodo.nomeMetodoContracetivo, avaliacao.DIU, avaliacao.concentracaoGlicoseSangue, avaliacao.AC, avaliacao.AP, avaliacao.INR, avaliacao.Menarca, avaliacao.gravidez, avaliacao.filhosVivos, avaliacao.abortos, avaliacao.observacoes from AvaliacaoObjetivo avaliacao JOIN MetodoContracetivo metodo ON avaliacao.IdMetodoContracetivo = metodo.IdMetodoContracetivo WHERE IdPaciente = @IdPaciente ORDER BY avaliacao.data, metodo.nomeMetodoContracetivo", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
@@ -98,10 +98,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     Peso = Convert.ToDecimal(reader["peso"]),
                     Altura = (int)reader["altura"],
                     pressaoArterial = (int)reader["pressaoArterial"],
-                    temperatura = Convert.ToDecimal(reader["temperatura"]),
-                    saturacaoOxigenio = (int)reader["saturacaoOxigenio"],
-                    INR = ((reader["INR"] == DBNull.Value) ? 0 : (int)reader["INR"]),
-                    Perimetro = ((reader["Perimetro"] == DBNull.Value) ? 0 : (int)reader["Perimetro"]),
+                    temperatura = ((reader["temperatura"] == DBNull.Value) ? null : (decimal?)reader["temperatura"]),
+                    saturacaoOxigenio = ((reader["saturacaoOxigenio"] == DBNull.Value) ? null : (int?)reader["saturacaoOxigenio"]),
+
+                    INR = ((reader["INR"] == DBNull.Value) ? null : (int?)reader["INR"]),
+                    Perimetro = ((reader["Perimetro"] == DBNull.Value) ? null : (int?)reader["Perimetro"]),
                     tipoAleitamento = ((reader["tipoAleitamento"] == DBNull.Value) ? "" : (string)reader["tipoAleitamento"]),
                     nomeLeiteArtificial = ((reader["nomeLeiteArtificial"] == DBNull.Value) ? "" : (string)reader["nomeLeiteArtificial"]),
                     tipoParto = ((reader["tipoParto"] == DBNull.Value) ? "" : (string)reader["tipoParto"]),
@@ -123,7 +124,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             UpdateDataGridViewAvaliacao();
         }
 
-        private void UpdateDataGridViewAvaliacao()
+        public void UpdateDataGridViewAvaliacao()
         {
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaAvaliacaoObjetivoBebe };
             dataGridViewAvaliacaoObjetivoBebe.DataSource = bindingSource1;

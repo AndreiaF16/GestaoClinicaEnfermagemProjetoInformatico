@@ -21,14 +21,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<ComboBoxItem> parto = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
         private ErrorProvider errorProvider = new ErrorProvider();
+     
         public AdicionarVisualizarAvaliacaoObjetivoBebe(Paciente pac)
-        {
+        { 
             InitializeComponent();
-            paciente = pac;
+            paciente = pac; 
             errorProvider.ContainerControl = this;
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            dataAvaliacaoObjetivo.Value = DateTime.Now;
+            dataAvaliacaoObjetivo.Value = DateTime.Today;
+
         }
 
         public void reiniciar()
@@ -155,10 +157,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {                        
                 DateTime data = dataAvaliacaoObjetivo.Value;
 
-                int altura = Convert.ToInt16(UpDownAltura.Text);
+                int altura = Convert.ToInt32(UpDownAltura.Text);
                 decimal peso = Convert.ToDecimal(UpDownPeso.Text);
                 float ba = Convert.ToSingle(UpDownPeso.Text);
-                int frequenciaCardiaca = Convert.ToInt16(txtFC.Text);
+                int frequenciaCardiaca = Convert.ToInt32(UpDownFC.Text);
+                decimal temperatura = Convert.ToDecimal(UpDownTemperatura.Text);
+                int saturacaoOxigenio = Convert.ToInt32(UpDownSPO2.Text);
+                int INR = Convert.ToInt32(upDownINR.Text);
+                int Perimetro = Convert.ToInt32(UpDownPerimetro.Text);
+               // int nomeLeiteArtificial = Convert.ToInt32(txtAleitamento.Text);
+
                 int tipoAleitamento = -1;
                 int tipoParto = -1;
                 string partoDistocico = "";
@@ -248,16 +256,65 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.Parameters.AddWithValue("@dataRegisto", data.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@Peso", UpDownPeso.Value);
                     sqlCommand.Parameters.AddWithValue("@Altura", UpDownAltura.Value);
+                    sqlCommand.Parameters.AddWithValue("@pressaoArterial", UpDownPressaoArterial.Text);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                    sqlCommand.Parameters.AddWithValue("@pressaoArterial", txtTensaoArterial.Text);
-                    sqlCommand.Parameters.AddWithValue("@frequenciaCardiaca", txtFC.Text);
-                    sqlCommand.Parameters.AddWithValue("@temperatura", numericUpDownTemperatura.Value);
-                    sqlCommand.Parameters.AddWithValue("@saturacaoOxigenio", txtSPO2.Text);
-                    sqlCommand.Parameters.AddWithValue("@INR", upDownINR.Value);
-                    sqlCommand.Parameters.AddWithValue("@Perimetro", txtPerimetro.Text);
+                   
+                   // sqlCommand.Parameters.AddWithValue("@frequenciaCardiaca", UpDownFC.Text);
+                    //sqlCommand.Parameters.AddWithValue("@temperatura", UpDownTemperatura.Value);
+                   // sqlCommand.Parameters.AddWithValue("@saturacaoOxigenio", UpDownSPO2.Text);
+                    //sqlCommand.Parameters.AddWithValue("@INR", upDownINR.Value);
+                  //  sqlCommand.Parameters.AddWithValue("@Perimetro", UpDownPerimetro.Text);
                     sqlCommand.Parameters.AddWithValue("@nomeLeiteArtificial", txtAleitamento.Text);
 
-                    if (tipoAleitamento != -1)
+
+                    if (frequenciaCardiaca > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@frequenciaCardiaca", Convert.ToString(frequenciaCardiaca));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@frequenciaCardiaca", DBNull.Value);
+                    }
+
+                    if (temperatura > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@temperatura", Convert.ToString(temperatura));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@temperatura", DBNull.Value);
+                    }
+
+                    if (saturacaoOxigenio > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@saturacaoOxigenio", Convert.ToString(saturacaoOxigenio));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@saturacaoOxigenio", DBNull.Value);
+                    }
+
+                    if (INR > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@INR", Convert.ToString(INR));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@INR", DBNull.Value);
+                    }
+
+                    if (Perimetro > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@Perimetro", Convert.ToString(Perimetro));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@Perimetro", DBNull.Value);
+                    }
+
+                
+
+                    if (tipoAleitamento > 0)
                     {
                         sqlCommand.Parameters.AddWithValue("@tipoAleitamento", Convert.ToInt32(tipoAleitamento));
                     }
@@ -265,7 +322,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         sqlCommand.Parameters.AddWithValue("@tipoAleitamento", DBNull.Value);
                     }
-                    if (tipoParto != -1)
+                    if (tipoParto > 0)
                     {
                         sqlCommand.Parameters.AddWithValue("@tipoParto", Convert.ToInt32(tipoParto));
                     }
@@ -331,7 +388,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Avaliação Objetivo registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
-                    //UpdateDataGridView();
 
                 }
                 catch (SqlException excep)
@@ -341,26 +397,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //this.Close();
-            //mudar para limpar campos
-            this.LimpaCampos(this.panelFormulario.Controls);
-
-        }
-
         private Boolean VerificarDadosInseridos()
         {
             string peso = UpDownPeso.Text;
             string altura = UpDownAltura.Text;
-            string pressaArterial = txtTensaoArterial.Text;
-            string frequencia = txtFC.Text;
-            string temperatura = numericUpDownTemperatura.Text;
-            string SP02 = txtSPO2.Text;
+            string pressaArterial = UpDownPressaoArterial.Text;
+            string frequencia = UpDownFC.Text;
+            string temperatura = UpDownTemperatura.Text;
+            string SP02 = UpDownSPO2.Text;
             string INR = upDownINR.Text;
-            string PC = txtPerimetro.Text;
+            string PC = UpDownPerimetro.Text;
+            DateTime data = dataAvaliacaoObjetivo.Value;
 
-            if (peso == string.Empty || altura == string.Empty)
+            if ((data - DateTime.Today).TotalDays > 0)
+            {
+                MessageBox.Show("A data da avaliação objetivo tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+            if (peso == string.Empty || altura == string.Empty || pressaArterial == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -376,33 +432,129 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     errorProvider.SetError(UpDownAltura, "A altura é obrigatória!");
                 }
 
+                if (UpDownPressaoArterial.Text == string.Empty)
+                {
+                    errorProvider.SetError(UpDownPressaoArterial, "A pressão arterial é obrigatória!");
+                }
+
                 return false;
             }
 
             
-            if (Convert.ToDecimal(peso) <= 0 || Convert.ToInt32(altura) <= 0 || Convert.ToInt32(frequencia) <= 0 || Convert.ToInt32(pressaArterial) <= 0 || Convert.ToDecimal(temperatura) <= 0 || Convert.ToInt32(SP02) <= 0 || Convert.ToInt32(INR) <= 0 || Convert.ToInt32(PC) <= 0 )
+            if (Convert.ToDecimal(peso) <= 0 || Convert.ToInt32(altura) <= 0 || Convert.ToInt32(pressaArterial) <= 0)
             {
-                MessageBox.Show("O peso, e/ou a altura,e/ou a frequência cardiaca,  e/ou a pressão arterial, e/ou a temperatura, e/ou o SP02, e/ou o INR e/ou o PC não podem ser inferiores a 0, por valor corriga os valores!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Não podem ser registados valores inferiores ou igual a 0, por valor corriga os valores!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Convert.ToDecimal(peso) <= 0)
+                {
+                    errorProvider.SetError(UpDownPeso, "O peso não pode ser inferior ou igual a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownPeso, String.Empty);
+                }
+
+                if (Convert.ToInt32(altura) <= 0)
+                {
+                    errorProvider.SetError(UpDownAltura, "A altura não pode ser inferior  ou igual a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownAltura, String.Empty);
+                }
+
+                
+
+                if (Convert.ToInt32(pressaArterial) <= 0)
+                {
+                    errorProvider.SetError(UpDownPressaoArterial, "A pressão arterial não pode ser inferior ou igual a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownPressaoArterial, String.Empty);
+                }              
                 return false;
             }
 
-            string nomeLeiteArtificial = txtAleitamento.Text;
 
-            if (cbAleitamento.SelectedItem.Equals("Misto") || cbAleitamento.SelectedItem.Equals("Artificial"))
+            if (Convert.ToInt32(frequencia) < 0 ||  Convert.ToDecimal(temperatura) < 0 || Convert.ToInt32(SP02) < 0 || Convert.ToInt32(INR) < 0 || Convert.ToInt32(PC) < 0)
+            {
+                if (Convert.ToInt32(frequencia) < 0)
+                {
+                    errorProvider.SetError(UpDownFC, "A frequência cardiaca não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownFC, String.Empty);
+                }
+
+                if (Convert.ToDecimal(temperatura) < 0)
+                {
+                    errorProvider.SetError(UpDownTemperatura, "A temperatura não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownTemperatura, String.Empty);
+                }
+
+                if (Convert.ToInt32(SP02) < 0)
+                {
+                    errorProvider.SetError(UpDownSPO2, "A SP02 não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownSPO2, String.Empty);
+                }
+
+                if (Convert.ToInt32(INR) < 0)
+                {
+                    errorProvider.SetError(upDownINR, "A INR não pode ser inferior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(upDownINR, String.Empty);
+                }
+
+                if (Convert.ToInt32(PC) < 0)
+                {
+                    errorProvider.SetError(UpDownPerimetro, "O perímetro não pode ser inferior ou igual a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownPerimetro, String.Empty);
+                }
+                return false;
+            }
+            string nomeLeiteArtificial = txtAleitamento.Text;
+            string aleitamento = cbAleitamento.Text;
+
+            if (aleitamento.Equals("Misto") || aleitamento.Equals("Artificial"))
             {
                 if (nomeLeiteArtificial == string.Empty)
                 {
                     MessageBox.Show("Campo Obrigatório porque selecionou como tipo de aleitamento 'Artificial' ou 'Misto', por favor preencha o nome do leite artificial!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProvider.SetError(txtAleitamento, "Nome do aleitamento é obrigatório!");
                     return false;
+
                 }
+                else
+                {
+                    errorProvider.SetError(txtAleitamento, String.Empty);
+                }
+
             }
 
-            if (cbTipoParto.SelectedItem.Equals("Distócico") )
+            string parto = cbTipoParto.Text;
+            if (parto.Equals("Distócico") )
             {
                 if (radioButtonForceps.Checked == false && radioButtonVentosa.Checked == false)
                 {
                     MessageBox.Show("Campo Obrigatório porque selecionou como tipo de parto 'Distócico', por favor selecione qual parto Distócico foi realizado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProvider.SetError(cbAleitamento, "O tipo de parto distócico é obrigatório, porque selecionou como parto 'Distócico'!");
                     return false;
+                }
+                else
+                {
+                    errorProvider.SetError(cbAleitamento, String.Empty);
                 }
             }
             return true;
@@ -430,6 +582,35 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             VerAvaliacaoObjetivoBebe verAvaliacaoObjetivoBebe = new VerAvaliacaoObjetivoBebe(paciente);
             verAvaliacaoObjetivoBebe.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dataAvaliacaoObjetivo.Value = DateTime.Today;
+            UpDownPeso.Value = 0;
+            UpDownAltura.Value = 0;
+            UpDownPressaoArterial.Value = 0;
+            UpDownFC.Value = 0;
+            UpDownTemperatura.Value = 0;
+            UpDownSPO2.Value = 0;
+            upDownINR.Value = 0;
+            UpDownPerimetro.Value = 0;
+            txtAleitamento.Text = "";
+            radioButtonForceps.Checked = false;
+            radioButtonVentosa.Checked = false;
+            radioButtonSimEpidoral.Checked = false;
+            radioButtonNaoEpidoral.Checked = false;
+            radioButtonSimEp.Checked = false;
+            radioButtonNaoEp.Checked = false;
+            radioButtonReanSim.Checked = false;
+            radioButtonReanNao.Checked = false;
+            radioButton1M.Checked = false;
+            radioButton5M.Checked = false;
+            radioButton10M.Checked = false;
+            radioButtonFotoSim.Checked = false;
+            radioButtonFotoNao.Checked = false;
+            txtObservacoes.Text = "";
+            reiniciar();
         }
     }
 }

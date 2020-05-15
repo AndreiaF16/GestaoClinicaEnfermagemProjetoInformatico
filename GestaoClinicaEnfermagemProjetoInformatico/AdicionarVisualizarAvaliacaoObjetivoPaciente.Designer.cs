@@ -33,6 +33,13 @@
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.UpDownBTM = new System.Windows.Forms.NumericUpDown();
+            this.UpDownAP = new System.Windows.Forms.NumericUpDown();
+            this.UpDownAC = new System.Windows.Forms.NumericUpDown();
+            this.UpDownSPO2 = new System.Windows.Forms.NumericUpDown();
+            this.UpDownFC = new System.Windows.Forms.NumericUpDown();
+            this.UpDownPressaoArterial = new System.Windows.Forms.NumericUpDown();
+            this.UpDownTemperatura = new System.Windows.Forms.NumericUpDown();
             this.button2 = new System.Windows.Forms.Button();
             this.radioButtonNao = new System.Windows.Forms.RadioButton();
             this.radioButtonSim = new System.Windows.Forms.RadioButton();
@@ -50,12 +57,9 @@
             this.lblTerapeutica = new System.Windows.Forms.Label();
             this.upDownINR = new System.Windows.Forms.NumericUpDown();
             this.lblINR = new System.Windows.Forms.Label();
-            this.txtAP = new System.Windows.Forms.TextBox();
             this.lblAP = new System.Windows.Forms.Label();
-            this.txtAC = new System.Windows.Forms.TextBox();
             this.lblAC = new System.Windows.Forms.Label();
             this.lblmg = new System.Windows.Forms.Label();
-            this.txtBMT = new System.Windows.Forms.TextBox();
             this.lblBMT = new System.Windows.Forms.Label();
             this.lblDIU = new System.Windows.Forms.Label();
             this.comboBoxMetodoContracetivo = new System.Windows.Forms.ComboBox();
@@ -66,15 +70,12 @@
             this.dataUltimaMenstruacao = new System.Windows.Forms.DateTimePicker();
             this.lblUltimaMestruacao = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtSPO2 = new System.Windows.Forms.TextBox();
             this.lblSPO2 = new System.Windows.Forms.Label();
             this.lblTemp = new System.Windows.Forms.Label();
             this.lblTemperatura = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtFC = new System.Windows.Forms.TextBox();
             this.lblFC = new System.Windows.Forms.Label();
             this.lblMMHG = new System.Windows.Forms.Label();
-            this.txtTensaoArterial = new System.Windows.Forms.TextBox();
             this.lblTensaoArterial = new System.Windows.Forms.Label();
             this.lblKG = new System.Windows.Forms.Label();
             this.UpDownAltura = new System.Windows.Forms.NumericUpDown();
@@ -85,12 +86,11 @@
             this.lblDataAvaliacaoObjetivo = new System.Windows.Forms.Label();
             this.dataAvaliacaoObjetivo = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnAvaliacaoBebe = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelTitulo = new System.Windows.Forms.Panel();
@@ -102,11 +102,17 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.hora = new System.Windows.Forms.Timer(this.components);
-            this.button4 = new System.Windows.Forms.Button();
-            this.numericUpDownTemperatura = new System.Windows.Forms.NumericUpDown();
+            this.button3 = new System.Windows.Forms.Button();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownBTM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownAP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownAC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownSPO2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownFC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownPressaoArterial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownTemperatura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownAbortos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownFilhosVivos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownGravidezes)).BeginInit();
@@ -122,7 +128,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTemperatura)).BeginInit();
             this.SuspendLayout();
             // 
             // painelPrincipal
@@ -140,9 +145,9 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.button3);
             this.panelFormulario.Controls.Add(this.groupBox1);
             this.panelFormulario.Controls.Add(this.label1);
-            this.panelFormulario.Controls.Add(this.btnCancelar);
             this.panelFormulario.Controls.Add(this.label2);
             this.panelFormulario.Controls.Add(this.btnGuardar);
             this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -154,8 +159,17 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox1.Controls.Add(this.numericUpDownTemperatura);
+            this.groupBox1.Controls.Add(this.UpDownBTM);
+            this.groupBox1.Controls.Add(this.UpDownAP);
+            this.groupBox1.Controls.Add(this.UpDownAC);
+            this.groupBox1.Controls.Add(this.UpDownSPO2);
+            this.groupBox1.Controls.Add(this.UpDownFC);
+            this.groupBox1.Controls.Add(this.lblTerapeutica);
+            this.groupBox1.Controls.Add(this.comboBoxMetodoContracetivo);
             this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.UpDownPressaoArterial);
+            this.groupBox1.Controls.Add(this.lblMetodoContracetivo);
+            this.groupBox1.Controls.Add(this.UpDownTemperatura);
             this.groupBox1.Controls.Add(this.radioButtonNao);
             this.groupBox1.Controls.Add(this.radioButtonSim);
             this.groupBox1.Controls.Add(this.upDownAbortos);
@@ -169,34 +183,25 @@
             this.groupBox1.Controls.Add(this.lblMenarca);
             this.groupBox1.Controls.Add(this.txtObservacoes);
             this.groupBox1.Controls.Add(this.lblObservacoes);
-            this.groupBox1.Controls.Add(this.lblTerapeutica);
             this.groupBox1.Controls.Add(this.upDownINR);
             this.groupBox1.Controls.Add(this.lblINR);
-            this.groupBox1.Controls.Add(this.txtAP);
             this.groupBox1.Controls.Add(this.lblAP);
-            this.groupBox1.Controls.Add(this.txtAC);
             this.groupBox1.Controls.Add(this.lblAC);
             this.groupBox1.Controls.Add(this.lblmg);
-            this.groupBox1.Controls.Add(this.txtBMT);
             this.groupBox1.Controls.Add(this.lblBMT);
             this.groupBox1.Controls.Add(this.lblDIU);
-            this.groupBox1.Controls.Add(this.comboBoxMetodoContracetivo);
-            this.groupBox1.Controls.Add(this.lblMetodoContracetivo);
             this.groupBox1.Controls.Add(this.lblAnos);
             this.groupBox1.Controls.Add(this.UpDownIdadeMenopausa);
             this.groupBox1.Controls.Add(this.lblMenopausa);
             this.groupBox1.Controls.Add(this.dataUltimaMenstruacao);
             this.groupBox1.Controls.Add(this.lblUltimaMestruacao);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtSPO2);
             this.groupBox1.Controls.Add(this.lblSPO2);
             this.groupBox1.Controls.Add(this.lblTemp);
             this.groupBox1.Controls.Add(this.lblTemperatura);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtFC);
             this.groupBox1.Controls.Add(this.lblFC);
             this.groupBox1.Controls.Add(this.lblMMHG);
-            this.groupBox1.Controls.Add(this.txtTensaoArterial);
             this.groupBox1.Controls.Add(this.lblTensaoArterial);
             this.groupBox1.Controls.Add(this.lblKG);
             this.groupBox1.Controls.Add(this.UpDownAltura);
@@ -215,6 +220,101 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registar Avaliação Objetivo";
             // 
+            // UpDownBTM
+            // 
+            this.UpDownBTM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownBTM.Location = new System.Drawing.Point(782, 120);
+            this.UpDownBTM.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.UpDownBTM.Name = "UpDownBTM";
+            this.UpDownBTM.Size = new System.Drawing.Size(226, 26);
+            this.UpDownBTM.TabIndex = 138;
+            this.UpDownBTM.Visible = false;
+            // 
+            // UpDownAP
+            // 
+            this.UpDownAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownAP.Location = new System.Drawing.Point(781, 208);
+            this.UpDownAP.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.UpDownAP.Name = "UpDownAP";
+            this.UpDownAP.Size = new System.Drawing.Size(226, 26);
+            this.UpDownAP.TabIndex = 137;
+            this.UpDownAP.Visible = false;
+            // 
+            // UpDownAC
+            // 
+            this.UpDownAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownAC.Location = new System.Drawing.Point(781, 165);
+            this.UpDownAC.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.UpDownAC.Name = "UpDownAC";
+            this.UpDownAC.Size = new System.Drawing.Size(226, 26);
+            this.UpDownAC.TabIndex = 136;
+            this.UpDownAC.Visible = false;
+            // 
+            // UpDownSPO2
+            // 
+            this.UpDownSPO2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownSPO2.Location = new System.Drawing.Point(256, 316);
+            this.UpDownSPO2.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.UpDownSPO2.Name = "UpDownSPO2";
+            this.UpDownSPO2.Size = new System.Drawing.Size(245, 26);
+            this.UpDownSPO2.TabIndex = 135;
+            // 
+            // UpDownFC
+            // 
+            this.UpDownFC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownFC.Location = new System.Drawing.Point(256, 229);
+            this.UpDownFC.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.UpDownFC.Name = "UpDownFC";
+            this.UpDownFC.Size = new System.Drawing.Size(245, 26);
+            this.UpDownFC.TabIndex = 132;
+            // 
+            // UpDownPressaoArterial
+            // 
+            this.UpDownPressaoArterial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownPressaoArterial.Location = new System.Drawing.Point(256, 186);
+            this.UpDownPressaoArterial.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.UpDownPressaoArterial.Name = "UpDownPressaoArterial";
+            this.UpDownPressaoArterial.Size = new System.Drawing.Size(245, 26);
+            this.UpDownPressaoArterial.TabIndex = 131;
+            // 
+            // UpDownTemperatura
+            // 
+            this.UpDownTemperatura.DecimalPlaces = 2;
+            this.UpDownTemperatura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownTemperatura.Location = new System.Drawing.Point(256, 272);
+            this.UpDownTemperatura.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            131072});
+            this.UpDownTemperatura.Name = "UpDownTemperatura";
+            this.UpDownTemperatura.Size = new System.Drawing.Size(245, 26);
+            this.UpDownTemperatura.TabIndex = 107;
+            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -223,11 +323,11 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(321, 352);
+            this.button2.Location = new System.Drawing.Point(782, 24);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(280, 28);
+            this.button2.Size = new System.Drawing.Size(238, 28);
             this.button2.TabIndex = 56;
             this.button2.Text = "Botao Ver Terapeuticas todas";
             this.button2.UseVisualStyleBackColor = false;
@@ -238,7 +338,7 @@
             this.radioButtonNao.AutoSize = true;
             this.radioButtonNao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonNao.ForeColor = System.Drawing.Color.Black;
-            this.radioButtonNao.Location = new System.Drawing.Point(920, 83);
+            this.radioButtonNao.Location = new System.Drawing.Point(400, 398);
             this.radioButtonNao.Name = "radioButtonNao";
             this.radioButtonNao.Size = new System.Drawing.Size(56, 24);
             this.radioButtonNao.TabIndex = 106;
@@ -252,7 +352,7 @@
             this.radioButtonSim.AutoSize = true;
             this.radioButtonSim.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonSim.ForeColor = System.Drawing.Color.Black;
-            this.radioButtonSim.Location = new System.Drawing.Point(781, 81);
+            this.radioButtonSim.Location = new System.Drawing.Point(261, 396);
             this.radioButtonSim.Name = "radioButtonSim";
             this.radioButtonSim.Size = new System.Drawing.Size(54, 24);
             this.radioButtonSim.TabIndex = 105;
@@ -263,6 +363,7 @@
             // 
             // upDownAbortos
             // 
+            this.upDownAbortos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.upDownAbortos.Location = new System.Drawing.Point(781, 438);
             this.upDownAbortos.Maximum = new decimal(new int[] {
             999,
@@ -279,7 +380,7 @@
             this.lblAbortos.AutoSize = true;
             this.lblAbortos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAbortos.ForeColor = System.Drawing.Color.Black;
-            this.lblAbortos.Location = new System.Drawing.Point(678, 441);
+            this.lblAbortos.Location = new System.Drawing.Point(654, 441);
             this.lblAbortos.Name = "lblAbortos";
             this.lblAbortos.Size = new System.Drawing.Size(69, 20);
             this.lblAbortos.TabIndex = 100;
@@ -288,6 +389,7 @@
             // 
             // upDownFilhosVivos
             // 
+            this.upDownFilhosVivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.upDownFilhosVivos.Location = new System.Drawing.Point(781, 400);
             this.upDownFilhosVivos.Maximum = new decimal(new int[] {
             999,
@@ -304,7 +406,7 @@
             this.lblFilhosVivos.AutoSize = true;
             this.lblFilhosVivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFilhosVivos.ForeColor = System.Drawing.Color.Black;
-            this.lblFilhosVivos.Location = new System.Drawing.Point(678, 402);
+            this.lblFilhosVivos.Location = new System.Drawing.Point(654, 402);
             this.lblFilhosVivos.Name = "lblFilhosVivos";
             this.lblFilhosVivos.Size = new System.Drawing.Size(97, 20);
             this.lblFilhosVivos.TabIndex = 98;
@@ -313,6 +415,7 @@
             // 
             // upDownGravidezes
             // 
+            this.upDownGravidezes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.upDownGravidezes.Location = new System.Drawing.Point(781, 349);
             this.upDownGravidezes.Maximum = new decimal(new int[] {
             999,
@@ -329,7 +432,7 @@
             this.lblGravidezes.AutoSize = true;
             this.lblGravidezes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGravidezes.ForeColor = System.Drawing.Color.Black;
-            this.lblGravidezes.Location = new System.Drawing.Point(678, 351);
+            this.lblGravidezes.Location = new System.Drawing.Point(654, 351);
             this.lblGravidezes.Name = "lblGravidezes";
             this.lblGravidezes.Size = new System.Drawing.Size(93, 20);
             this.lblGravidezes.TabIndex = 95;
@@ -341,7 +444,7 @@
             this.lblanos2.AutoSize = true;
             this.lblanos2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblanos2.ForeColor = System.Drawing.Color.Black;
-            this.lblanos2.Location = new System.Drawing.Point(1031, 316);
+            this.lblanos2.Location = new System.Drawing.Point(1014, 320);
             this.lblanos2.Name = "lblanos2";
             this.lblanos2.Size = new System.Drawing.Size(44, 20);
             this.lblanos2.TabIndex = 94;
@@ -350,6 +453,7 @@
             // 
             // upDownMenarca
             // 
+            this.upDownMenarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.upDownMenarca.Location = new System.Drawing.Point(781, 310);
             this.upDownMenarca.Maximum = new decimal(new int[] {
             999,
@@ -366,7 +470,7 @@
             this.lblMenarca.AutoSize = true;
             this.lblMenarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMenarca.ForeColor = System.Drawing.Color.Black;
-            this.lblMenarca.Location = new System.Drawing.Point(678, 315);
+            this.lblMenarca.Location = new System.Drawing.Point(654, 315);
             this.lblMenarca.Name = "lblMenarca";
             this.lblMenarca.Size = new System.Drawing.Size(75, 20);
             this.lblMenarca.TabIndex = 92;
@@ -398,7 +502,7 @@
             this.lblTerapeutica.AutoSize = true;
             this.lblTerapeutica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTerapeutica.ForeColor = System.Drawing.Color.Black;
-            this.lblTerapeutica.Location = new System.Drawing.Point(32, 360);
+            this.lblTerapeutica.Location = new System.Drawing.Point(653, 24);
             this.lblTerapeutica.Name = "lblTerapeutica";
             this.lblTerapeutica.Size = new System.Drawing.Size(97, 20);
             this.lblTerapeutica.TabIndex = 88;
@@ -406,6 +510,7 @@
             // 
             // upDownINR
             // 
+            this.upDownINR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.upDownINR.Location = new System.Drawing.Point(781, 252);
             this.upDownINR.Maximum = new decimal(new int[] {
             999,
@@ -422,49 +527,31 @@
             this.lblINR.AutoSize = true;
             this.lblINR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblINR.ForeColor = System.Drawing.Color.Black;
-            this.lblINR.Location = new System.Drawing.Point(677, 258);
+            this.lblINR.Location = new System.Drawing.Point(653, 258);
             this.lblINR.Name = "lblINR";
             this.lblINR.Size = new System.Drawing.Size(41, 20);
             this.lblINR.TabIndex = 85;
             this.lblINR.Text = "INR:";
             this.lblINR.Visible = false;
             // 
-            // txtAP
-            // 
-            this.txtAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAP.Location = new System.Drawing.Point(781, 205);
-            this.txtAP.Name = "txtAP";
-            this.txtAP.Size = new System.Drawing.Size(227, 26);
-            this.txtAP.TabIndex = 84;
-            this.txtAP.Visible = false;
-            // 
             // lblAP
             // 
             this.lblAP.AutoSize = true;
             this.lblAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAP.ForeColor = System.Drawing.Color.Black;
-            this.lblAP.Location = new System.Drawing.Point(678, 208);
+            this.lblAP.Location = new System.Drawing.Point(654, 208);
             this.lblAP.Name = "lblAP";
             this.lblAP.Size = new System.Drawing.Size(34, 20);
             this.lblAP.TabIndex = 83;
             this.lblAP.Text = "AP:";
             this.lblAP.Visible = false;
             // 
-            // txtAC
-            // 
-            this.txtAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAC.Location = new System.Drawing.Point(781, 165);
-            this.txtAC.Name = "txtAC";
-            this.txtAC.Size = new System.Drawing.Size(227, 26);
-            this.txtAC.TabIndex = 82;
-            this.txtAC.Visible = false;
-            // 
             // lblAC
             // 
             this.lblAC.AutoSize = true;
             this.lblAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAC.ForeColor = System.Drawing.Color.Black;
-            this.lblAC.Location = new System.Drawing.Point(678, 165);
+            this.lblAC.Location = new System.Drawing.Point(654, 165);
             this.lblAC.Name = "lblAC";
             this.lblAC.Size = new System.Drawing.Size(35, 20);
             this.lblAC.TabIndex = 81;
@@ -476,28 +563,19 @@
             this.lblmg.AutoSize = true;
             this.lblmg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmg.ForeColor = System.Drawing.Color.Black;
-            this.lblmg.Location = new System.Drawing.Point(1036, 118);
+            this.lblmg.Location = new System.Drawing.Point(1019, 122);
             this.lblmg.Name = "lblmg";
             this.lblmg.Size = new System.Drawing.Size(47, 20);
             this.lblmg.TabIndex = 80;
             this.lblmg.Text = "mg/dl";
             this.lblmg.Visible = false;
             // 
-            // txtBMT
-            // 
-            this.txtBMT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBMT.Location = new System.Drawing.Point(781, 115);
-            this.txtBMT.Name = "txtBMT";
-            this.txtBMT.Size = new System.Drawing.Size(227, 26);
-            this.txtBMT.TabIndex = 79;
-            this.txtBMT.Visible = false;
-            // 
             // lblBMT
             // 
             this.lblBMT.AutoSize = true;
             this.lblBMT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBMT.ForeColor = System.Drawing.Color.Black;
-            this.lblBMT.Location = new System.Drawing.Point(678, 118);
+            this.lblBMT.Location = new System.Drawing.Point(654, 118);
             this.lblBMT.Name = "lblBMT";
             this.lblBMT.Size = new System.Drawing.Size(46, 20);
             this.lblBMT.TabIndex = 78;
@@ -509,7 +587,7 @@
             this.lblDIU.AutoSize = true;
             this.lblDIU.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDIU.ForeColor = System.Drawing.Color.Black;
-            this.lblDIU.Location = new System.Drawing.Point(678, 87);
+            this.lblDIU.Location = new System.Drawing.Point(34, 398);
             this.lblDIU.Name = "lblDIU";
             this.lblDIU.Size = new System.Drawing.Size(42, 20);
             this.lblDIU.TabIndex = 75;
@@ -518,8 +596,9 @@
             // 
             // comboBoxMetodoContracetivo
             // 
+            this.comboBoxMetodoContracetivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMetodoContracetivo.FormattingEnabled = true;
-            this.comboBoxMetodoContracetivo.Location = new System.Drawing.Point(212, 433);
+            this.comboBoxMetodoContracetivo.Location = new System.Drawing.Point(256, 436);
             this.comboBoxMetodoContracetivo.Name = "comboBoxMetodoContracetivo";
             this.comboBoxMetodoContracetivo.Size = new System.Drawing.Size(371, 28);
             this.comboBoxMetodoContracetivo.TabIndex = 74;
@@ -530,7 +609,7 @@
             this.lblMetodoContracetivo.AutoSize = true;
             this.lblMetodoContracetivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMetodoContracetivo.ForeColor = System.Drawing.Color.Black;
-            this.lblMetodoContracetivo.Location = new System.Drawing.Point(34, 444);
+            this.lblMetodoContracetivo.Location = new System.Drawing.Point(34, 441);
             this.lblMetodoContracetivo.Name = "lblMetodoContracetivo";
             this.lblMetodoContracetivo.Size = new System.Drawing.Size(160, 20);
             this.lblMetodoContracetivo.TabIndex = 73;
@@ -542,7 +621,7 @@
             this.lblAnos.AutoSize = true;
             this.lblAnos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAnos.ForeColor = System.Drawing.Color.Black;
-            this.lblAnos.Location = new System.Drawing.Point(1036, 36);
+            this.lblAnos.Location = new System.Drawing.Point(1022, 78);
             this.lblAnos.Name = "lblAnos";
             this.lblAnos.Size = new System.Drawing.Size(44, 20);
             this.lblAnos.TabIndex = 72;
@@ -551,7 +630,8 @@
             // 
             // UpDownIdadeMenopausa
             // 
-            this.UpDownIdadeMenopausa.Location = new System.Drawing.Point(781, 25);
+            this.UpDownIdadeMenopausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownIdadeMenopausa.Location = new System.Drawing.Point(780, 76);
             this.UpDownIdadeMenopausa.Maximum = new decimal(new int[] {
             999,
             0,
@@ -567,7 +647,7 @@
             this.lblMenopausa.AutoSize = true;
             this.lblMenopausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMenopausa.ForeColor = System.Drawing.Color.Black;
-            this.lblMenopausa.Location = new System.Drawing.Point(678, 27);
+            this.lblMenopausa.Location = new System.Drawing.Point(650, 82);
             this.lblMenopausa.Name = "lblMenopausa";
             this.lblMenopausa.Size = new System.Drawing.Size(97, 20);
             this.lblMenopausa.TabIndex = 69;
@@ -577,7 +657,7 @@
             // dataUltimaMenstruacao
             // 
             this.dataUltimaMenstruacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataUltimaMenstruacao.Location = new System.Drawing.Point(338, 396);
+            this.dataUltimaMenstruacao.Location = new System.Drawing.Point(256, 351);
             this.dataUltimaMenstruacao.Name = "dataUltimaMenstruacao";
             this.dataUltimaMenstruacao.Size = new System.Drawing.Size(245, 26);
             this.dataUltimaMenstruacao.TabIndex = 68;
@@ -589,7 +669,7 @@
             this.lblUltimaMestruacao.AutoSize = true;
             this.lblUltimaMestruacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUltimaMestruacao.ForeColor = System.Drawing.Color.Black;
-            this.lblUltimaMestruacao.Location = new System.Drawing.Point(32, 406);
+            this.lblUltimaMestruacao.Location = new System.Drawing.Point(32, 355);
             this.lblUltimaMestruacao.Name = "lblUltimaMestruacao";
             this.lblUltimaMestruacao.Size = new System.Drawing.Size(194, 20);
             this.lblUltimaMestruacao.TabIndex = 67;
@@ -601,19 +681,11 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(589, 312);
+            this.label5.Location = new System.Drawing.Point(527, 318);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(23, 20);
             this.label5.TabIndex = 66;
             this.label5.Text = "%";
-            // 
-            // txtSPO2
-            // 
-            this.txtSPO2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSPO2.Location = new System.Drawing.Point(338, 306);
-            this.txtSPO2.Name = "txtSPO2";
-            this.txtSPO2.Size = new System.Drawing.Size(245, 26);
-            this.txtSPO2.TabIndex = 65;
             // 
             // lblSPO2
             // 
@@ -631,7 +703,7 @@
             this.lblTemp.AutoSize = true;
             this.lblTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTemp.ForeColor = System.Drawing.Color.Black;
-            this.lblTemp.Location = new System.Drawing.Point(589, 272);
+            this.lblTemp.Location = new System.Drawing.Point(527, 278);
             this.lblTemp.Name = "lblTemp";
             this.lblTemp.Size = new System.Drawing.Size(26, 20);
             this.lblTemp.TabIndex = 63;
@@ -653,19 +725,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(589, 229);
+            this.label3.Location = new System.Drawing.Point(527, 235);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 20);
             this.label3.TabIndex = 60;
             this.label3.Text = "p/min";
-            // 
-            // txtFC
-            // 
-            this.txtFC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFC.Location = new System.Drawing.Point(338, 223);
-            this.txtFC.Name = "txtFC";
-            this.txtFC.Size = new System.Drawing.Size(245, 26);
-            this.txtFC.TabIndex = 59;
             // 
             // lblFC
             // 
@@ -683,19 +747,11 @@
             this.lblMMHG.AutoSize = true;
             this.lblMMHG.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMMHG.ForeColor = System.Drawing.Color.Black;
-            this.lblMMHG.Location = new System.Drawing.Point(589, 182);
+            this.lblMMHG.Location = new System.Drawing.Point(527, 188);
             this.lblMMHG.Name = "lblMMHG";
             this.lblMMHG.Size = new System.Drawing.Size(56, 20);
             this.lblMMHG.TabIndex = 57;
             this.lblMMHG.Text = "mmHg";
-            // 
-            // txtTensaoArterial
-            // 
-            this.txtTensaoArterial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTensaoArterial.Location = new System.Drawing.Point(338, 176);
-            this.txtTensaoArterial.Name = "txtTensaoArterial";
-            this.txtTensaoArterial.Size = new System.Drawing.Size(245, 26);
-            this.txtTensaoArterial.TabIndex = 56;
             // 
             // lblTensaoArterial
             // 
@@ -713,7 +769,7 @@
             this.lblKG.AutoSize = true;
             this.lblKG.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKG.ForeColor = System.Drawing.Color.Black;
-            this.lblKG.Location = new System.Drawing.Point(589, 85);
+            this.lblKG.Location = new System.Drawing.Point(527, 91);
             this.lblKG.Name = "lblKG";
             this.lblKG.Size = new System.Drawing.Size(26, 20);
             this.lblKG.TabIndex = 54;
@@ -721,7 +777,8 @@
             // 
             // UpDownAltura
             // 
-            this.UpDownAltura.Location = new System.Drawing.Point(338, 127);
+            this.UpDownAltura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownAltura.Location = new System.Drawing.Point(256, 133);
             this.UpDownAltura.Maximum = new decimal(new int[] {
             999,
             0,
@@ -736,7 +793,7 @@
             this.lblCM.AutoSize = true;
             this.lblCM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCM.ForeColor = System.Drawing.Color.Black;
-            this.lblCM.Location = new System.Drawing.Point(589, 133);
+            this.lblCM.Location = new System.Drawing.Point(527, 139);
             this.lblCM.Name = "lblCM";
             this.lblCM.Size = new System.Drawing.Size(30, 20);
             this.lblCM.TabIndex = 52;
@@ -745,7 +802,8 @@
             // UpDownPeso
             // 
             this.UpDownPeso.DecimalPlaces = 2;
-            this.UpDownPeso.Location = new System.Drawing.Point(338, 83);
+            this.UpDownPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownPeso.Location = new System.Drawing.Point(256, 89);
             this.UpDownPeso.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -784,18 +842,18 @@
             this.lblDataAvaliacaoObjetivo.ForeColor = System.Drawing.Color.Black;
             this.lblDataAvaliacaoObjetivo.Location = new System.Drawing.Point(32, 42);
             this.lblDataAvaliacaoObjetivo.Name = "lblDataAvaliacaoObjetivo";
-            this.lblDataAvaliacaoObjetivo.Size = new System.Drawing.Size(289, 20);
+            this.lblDataAvaliacaoObjetivo.Size = new System.Drawing.Size(203, 20);
             this.lblDataAvaliacaoObjetivo.TabIndex = 14;
-            this.lblDataAvaliacaoObjetivo.Text = "Data Registo da Avaliação Diagnóstico:";
+            this.lblDataAvaliacaoObjetivo.Text = "Data da Avaliação Objetivo:";
             // 
             // dataAvaliacaoObjetivo
             // 
             this.dataAvaliacaoObjetivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataAvaliacaoObjetivo.Location = new System.Drawing.Point(338, 36);
+            this.dataAvaliacaoObjetivo.Location = new System.Drawing.Point(256, 42);
             this.dataAvaliacaoObjetivo.Name = "dataAvaliacaoObjetivo";
             this.dataAvaliacaoObjetivo.Size = new System.Drawing.Size(245, 26);
             this.dataAvaliacaoObjetivo.TabIndex = 15;
-            this.dataAvaliacaoObjetivo.Value = new System.DateTime(2020, 5, 9, 0, 0, 0, 0);
+            this.dataAvaliacaoObjetivo.Value = new System.DateTime(2020, 5, 15, 0, 0, 0, 0);
             // 
             // label1
             // 
@@ -807,27 +865,6 @@
             this.label1.Size = new System.Drawing.Size(95, 25);
             this.label1.TabIndex = 51;
             this.label1.Text = "Utente: ";
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnCancelar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_cancelar_501;
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(652, 646);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnCancelar.Size = new System.Drawing.Size(228, 50);
-            this.btnCancelar.TabIndex = 49;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // label2
             // 
@@ -849,11 +886,11 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(222, 646);
+            this.btnGuardar.Location = new System.Drawing.Point(372, 646);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGuardar.Size = new System.Drawing.Size(342, 50);
+            this.btnGuardar.Size = new System.Drawing.Size(206, 50);
             this.btnGuardar.TabIndex = 48;
             this.btnGuardar.Text = "                Registar Avaliação Objetivo";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -866,7 +903,6 @@
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.panelMenu.Controls.Add(this.button4);
             this.panelMenu.Controls.Add(this.button1);
-            this.panelMenu.Controls.Add(this.btnAvaliacaoBebe);
             this.panelMenu.Controls.Add(this.btnVoltar);
             this.panelMenu.Controls.Add(this.pictureBox2);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -874,6 +910,24 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(232, 702);
             this.panelMenu.TabIndex = 1;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.Black;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(3, 297);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Name = "button4";
+            this.button4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button4.Size = new System.Drawing.Size(225, 67);
+            this.button4.TabIndex = 60;
+            this.button4.Text = "Adicionar Método Contracetivo";
+            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button1
             // 
@@ -895,27 +949,6 @@
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // btnAvaliacaoBebe
-            // 
-            this.btnAvaliacaoBebe.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnAvaliacaoBebe.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.iconfinder_aiga_nursery_134173;
-            this.btnAvaliacaoBebe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAvaliacaoBebe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAvaliacaoBebe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAvaliacaoBebe.ForeColor = System.Drawing.Color.Black;
-            this.btnAvaliacaoBebe.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnAvaliacaoBebe.Location = new System.Drawing.Point(1, 190);
-            this.btnAvaliacaoBebe.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAvaliacaoBebe.Name = "btnAvaliacaoBebe";
-            this.btnAvaliacaoBebe.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnAvaliacaoBebe.Size = new System.Drawing.Size(230, 76);
-            this.btnAvaliacaoBebe.TabIndex = 50;
-            this.btnAvaliacaoBebe.Text = "Bebé até 36 meses";
-            this.btnAvaliacaoBebe.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAvaliacaoBebe.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnAvaliacaoBebe.UseVisualStyleBackColor = false;
-            this.btnAvaliacaoBebe.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnVoltar
             // 
@@ -1057,36 +1090,26 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
-            // button4
+            // button3
             // 
-            this.button4.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(3, 297);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.button4.Size = new System.Drawing.Size(225, 67);
-            this.button4.TabIndex = 60;
-            this.button4.Text = "Adicionar Método Contracetivo";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // numericUpDownTemperatura
-            // 
-            this.numericUpDownTemperatura.DecimalPlaces = 2;
-            this.numericUpDownTemperatura.Location = new System.Drawing.Point(338, 266);
-            this.numericUpDownTemperatura.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            131072});
-            this.numericUpDownTemperatura.Name = "numericUpDownTemperatura";
-            this.numericUpDownTemperatura.Size = new System.Drawing.Size(245, 26);
-            this.numericUpDownTemperatura.TabIndex = 107;
+            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button3.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button3.Location = new System.Drawing.Point(578, 646);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button3.Size = new System.Drawing.Size(206, 50);
+            this.button3.TabIndex = 56;
+            this.button3.Text = "Limpar Campos";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // AdicionarVisualizarAvaliacaoObjetivoPaciente
             // 
@@ -1105,6 +1128,13 @@
             this.panelFormulario.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownBTM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownAP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownAC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownSPO2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownFC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownPressaoArterial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownTemperatura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownAbortos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownFilhosVivos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownGravidezes)).EndInit();
@@ -1121,7 +1151,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTemperatura)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1155,23 +1184,18 @@
         private System.Windows.Forms.NumericUpDown UpDownPeso;
         private System.Windows.Forms.Label lblKG;
         private System.Windows.Forms.Label lblTensaoArterial;
-        private System.Windows.Forms.TextBox txtTensaoArterial;
         private System.Windows.Forms.Label lblSPO2;
         private System.Windows.Forms.Label lblTemp;
         private System.Windows.Forms.Label lblTemperatura;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtFC;
         private System.Windows.Forms.Label lblFC;
         private System.Windows.Forms.Label lblMMHG;
         private System.Windows.Forms.Label lblTerapeutica;
         private System.Windows.Forms.NumericUpDown upDownINR;
         private System.Windows.Forms.Label lblINR;
-        private System.Windows.Forms.TextBox txtAP;
         private System.Windows.Forms.Label lblAP;
-        private System.Windows.Forms.TextBox txtAC;
         private System.Windows.Forms.Label lblAC;
         private System.Windows.Forms.Label lblmg;
-        private System.Windows.Forms.TextBox txtBMT;
         private System.Windows.Forms.Label lblBMT;
         private System.Windows.Forms.Label lblDIU;
         private System.Windows.Forms.ComboBox comboBoxMetodoContracetivo;
@@ -1182,7 +1206,6 @@
         private System.Windows.Forms.DateTimePicker dataUltimaMenstruacao;
         private System.Windows.Forms.Label lblUltimaMestruacao;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtSPO2;
         private System.Windows.Forms.TextBox txtObservacoes;
         private System.Windows.Forms.Label lblObservacoes;
         private System.Windows.Forms.NumericUpDown upDownAbortos;
@@ -1194,13 +1217,18 @@
         private System.Windows.Forms.Label lblanos2;
         private System.Windows.Forms.NumericUpDown upDownMenarca;
         private System.Windows.Forms.Label lblMenarca;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnAvaliacaoBebe;
         private System.Windows.Forms.RadioButton radioButtonNao;
         private System.Windows.Forms.RadioButton radioButtonSim;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.NumericUpDown numericUpDownTemperatura;
+        private System.Windows.Forms.NumericUpDown UpDownTemperatura;
+        private System.Windows.Forms.NumericUpDown UpDownPressaoArterial;
+        private System.Windows.Forms.NumericUpDown UpDownFC;
+        private System.Windows.Forms.NumericUpDown UpDownSPO2;
+        private System.Windows.Forms.NumericUpDown UpDownBTM;
+        private System.Windows.Forms.NumericUpDown UpDownAP;
+        private System.Windows.Forms.NumericUpDown UpDownAC;
+        private System.Windows.Forms.Button button3;
     }
 }

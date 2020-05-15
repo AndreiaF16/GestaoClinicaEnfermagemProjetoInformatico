@@ -36,6 +36,8 @@
             this.btnVoltar = new System.Windows.Forms.Button();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblHistoriaAtual = new System.Windows.Forms.Label();
             this.txtTipo = new System.Windows.Forms.TextBox();
@@ -51,7 +53,6 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.hora = new System.Windows.Forms.Timer(this.components);
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelMenu.SuspendLayout();
             this.painelPrincipal.SuspendLayout();
@@ -142,6 +143,7 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.button1);
             this.panelFormulario.Controls.Add(this.label2);
             this.panelFormulario.Controls.Add(this.groupBox2);
             this.panelFormulario.Controls.Add(this.btnGuardar);
@@ -151,6 +153,38 @@
             this.panelFormulario.Size = new System.Drawing.Size(1070, 739);
             this.panelFormulario.TabIndex = 2;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(781, 309);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(250, 78);
+            this.button1.TabIndex = 31;
+            this.button1.Text = "Limpar Campos";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.label2.Location = new System.Drawing.Point(3, 1);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(507, 39);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Adicionar Tipo de Aleitamento";
+            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Window;
@@ -158,20 +192,23 @@
             this.groupBox2.Controls.Add(this.txtTipo);
             this.groupBox2.Controls.Add(this.lblSintomatologia);
             this.groupBox2.Controls.Add(this.txtObs);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.MediumBlue;
             this.groupBox2.Location = new System.Drawing.Point(79, 126);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(681, 323);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Adicionar Tipo de Aleitamento";
             // 
             // lblHistoriaAtual
             // 
             this.lblHistoriaAtual.AutoSize = true;
-            this.lblHistoriaAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHistoriaAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHistoriaAtual.ForeColor = System.Drawing.Color.Black;
             this.lblHistoriaAtual.Location = new System.Drawing.Point(17, 47);
             this.lblHistoriaAtual.Name = "lblHistoriaAtual";
-            this.lblHistoriaAtual.Size = new System.Drawing.Size(169, 20);
+            this.lblHistoriaAtual.Size = new System.Drawing.Size(150, 20);
             this.lblHistoriaAtual.TabIndex = 2;
             this.lblHistoriaAtual.Text = "Tipo de Aleitamento";
             // 
@@ -187,11 +224,11 @@
             // lblSintomatologia
             // 
             this.lblSintomatologia.AutoSize = true;
-            this.lblSintomatologia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSintomatologia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSintomatologia.ForeColor = System.Drawing.Color.Black;
             this.lblSintomatologia.Location = new System.Drawing.Point(17, 129);
             this.lblSintomatologia.Name = "lblSintomatologia";
-            this.lblSintomatologia.Size = new System.Drawing.Size(113, 20);
+            this.lblSintomatologia.Size = new System.Drawing.Size(102, 20);
             this.lblSintomatologia.TabIndex = 3;
             this.lblSintomatologia.Text = "Observações";
             // 
@@ -213,7 +250,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(781, 229);
+            this.btnGuardar.Location = new System.Drawing.Point(781, 231);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -335,17 +372,6 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label2.Location = new System.Drawing.Point(3, 1);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(507, 39);
-            this.label2.TabIndex = 30;
-            this.label2.Text = "Adicionar Tipo de Aleitamento";
-            // 
             // AdicionarTipoAleitamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,5 +425,6 @@
         private System.Windows.Forms.PictureBox btnMinimizar;
         private System.Windows.Forms.Timer hora;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }

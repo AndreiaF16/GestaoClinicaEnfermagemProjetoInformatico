@@ -149,6 +149,12 @@
     <Compile Include="Doencas.Designer.cs">
       <DependentUpon>Doencas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerEditarProfissao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -516,6 +522,9 @@
     <EmbeddedResource Include="FinalizarEncomenda.resx">
       <DependentUpon>FinalizarEncomenda.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fornecedor.resx">
       <DependentUpon>Fornecedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -852,6 +861,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-adicionar-usuário-masculino-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-apagar-50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

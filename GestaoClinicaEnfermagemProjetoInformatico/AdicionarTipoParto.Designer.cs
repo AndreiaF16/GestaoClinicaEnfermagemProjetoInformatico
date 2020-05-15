@@ -36,6 +36,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblHistoriaAtual = new System.Windows.Forms.Label();
@@ -85,11 +86,11 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(0, 331);
+            this.button2.Location = new System.Drawing.Point(0, 311);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(230, 68);
+            this.button2.Size = new System.Drawing.Size(230, 88);
             this.button2.TabIndex = 32;
             this.button2.Text = "Ver e Editar os Tipos de Partos Registados";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -142,6 +143,7 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.button1);
             this.panelFormulario.Controls.Add(this.label2);
             this.panelFormulario.Controls.Add(this.groupBox2);
             this.panelFormulario.Controls.Add(this.btnGuardar);
@@ -150,6 +152,27 @@
             this.panelFormulario.Name = "panelFormulario";
             this.panelFormulario.Size = new System.Drawing.Size(1096, 731);
             this.panelFormulario.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(835, 362);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(222, 78);
+            this.button1.TabIndex = 31;
+            this.button1.Text = "Limpar Campos";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -169,20 +192,23 @@
             this.groupBox2.Controls.Add(this.txtTipoParto);
             this.groupBox2.Controls.Add(this.lblSintomatologia);
             this.groupBox2.Controls.Add(this.txtObservações);
-            this.groupBox2.Location = new System.Drawing.Point(10, 126);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.MediumBlue;
+            this.groupBox2.Location = new System.Drawing.Point(120, 170);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(710, 367);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Adicionar Tipo de Parto";
             // 
             // lblHistoriaAtual
             // 
             this.lblHistoriaAtual.AutoSize = true;
-            this.lblHistoriaAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHistoriaAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHistoriaAtual.ForeColor = System.Drawing.Color.Black;
             this.lblHistoriaAtual.Location = new System.Drawing.Point(17, 47);
             this.lblHistoriaAtual.Name = "lblHistoriaAtual";
-            this.lblHistoriaAtual.Size = new System.Drawing.Size(192, 20);
+            this.lblHistoriaAtual.Size = new System.Drawing.Size(171, 20);
             this.lblHistoriaAtual.TabIndex = 2;
             this.lblHistoriaAtual.Text = "Nome do Tipo de Parto";
             // 
@@ -199,11 +225,11 @@
             // lblSintomatologia
             // 
             this.lblSintomatologia.AutoSize = true;
-            this.lblSintomatologia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSintomatologia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSintomatologia.ForeColor = System.Drawing.Color.Black;
             this.lblSintomatologia.Location = new System.Drawing.Point(17, 141);
             this.lblSintomatologia.Name = "lblSintomatologia";
-            this.lblSintomatologia.Size = new System.Drawing.Size(113, 20);
+            this.lblSintomatologia.Size = new System.Drawing.Size(102, 20);
             this.lblSintomatologia.TabIndex = 3;
             this.lblSintomatologia.Text = "Observações";
             // 
@@ -226,7 +252,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(777, 267);
+            this.btnGuardar.Location = new System.Drawing.Point(835, 284);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -401,5 +427,6 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.PictureBox btnMinimizar;
         private System.Windows.Forms.Timer hora;
+        private System.Windows.Forms.Button button1;
     }
 }

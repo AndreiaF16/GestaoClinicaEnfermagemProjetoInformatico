@@ -85,7 +85,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("O tipo de despesa foi registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
-                    LimpaCampos(this.panelFormulario.Controls);
+                    txtNome.Text = "";
+                    txtObservacoes.Text = "";
                     UpdateDataGridView();
 
                 }
@@ -96,18 +97,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         conn.Close();
                     }
                     MessageBox.Show("Por erro interno é impossível registar o tipo de despesa", excep.Message);
-                }
-            }
-        }
-
-        public void LimpaCampos(Control.ControlCollection textBoxs)
-        {
-            foreach (Control txt in textBoxs)
-            {
-                if (txt.GetType() == typeof(TextBox))
-                {
-                    txt.Text = string.Empty;
-                    this.Close();
                 }
             }
         }
@@ -152,9 +141,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     errorProvider.SetError(txtNome, "O tipo de despesa é obrigatório!");
                 }
+                else
+                {
+                    errorProvider.SetError(txtNome, String.Empty);
+                }
+
                 return false;
             }
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtNome.Text = "";
+            txtObservacoes.Text = "";
         }
     }
 }

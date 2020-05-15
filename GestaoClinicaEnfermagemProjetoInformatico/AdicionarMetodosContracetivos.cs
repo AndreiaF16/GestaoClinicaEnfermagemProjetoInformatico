@@ -110,6 +110,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     errorProvider.SetError(txtNomeMetodo, "O nome do método contracetivo é obrigatório!");
                 }
+                else
+                {
+                    errorProvider.SetError(txtNomeMetodo, String.Empty);
+                }
                 return false;
             }
 
@@ -119,8 +123,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
+            txtNomeMetodo.Text = "";
+            txtObservacoes.Text = "";
             VerEditarMetodosContracetivos verEditarMetodosContracetivos = new VerEditarMetodosContracetivos();
             verEditarMetodosContracetivos.Show();
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtNomeMetodo.Text = "";
+            txtObservacoes.Text = "";
         }
     }
 }

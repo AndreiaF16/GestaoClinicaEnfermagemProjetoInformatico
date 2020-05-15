@@ -268,8 +268,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button6_Click(object sender, EventArgs e)
         {
-            AdicionarVisualizarAvaliacaoObjetivoPaciente adicionarVisualizarAvaliacaoObjetivoPaciente = new AdicionarVisualizarAvaliacaoObjetivoPaciente(paciente);
-            adicionarVisualizarAvaliacaoObjetivoPaciente.Show();
+            DateTime data = paciente.DataNascimento;
+            var calculoDatas = DateTime.Today - data;
+            var meses = Math.Round(DateTime.Today.Subtract(data).Days / (365.25 / 12));
+            if (meses > 36)
+            {
+                AdicionarVisualizarAvaliacaoObjetivoPaciente adicionarVisualizarAvaliacaoObjetivoPaciente = new AdicionarVisualizarAvaliacaoObjetivoPaciente(paciente);
+                adicionarVisualizarAvaliacaoObjetivoPaciente.Show();
+            }
+            else
+            {
+                AdicionarVisualizarAvaliacaoObjetivoBebe adicionarVisualizarAvaliacaoObjetivoBebe = new AdicionarVisualizarAvaliacaoObjetivoBebe(paciente/*, this, null*/);
+                adicionarVisualizarAvaliacaoObjetivoBebe.Show();
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)

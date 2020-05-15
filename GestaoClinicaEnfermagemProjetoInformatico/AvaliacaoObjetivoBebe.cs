@@ -12,12 +12,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public decimal Peso { get; set; }
         public int Altura { get; set; }
         public decimal IMC { get; set; }
-        public int pressaoArterial { get; set; }
-        public int frequenciaCardiaca { get; set; }
-        public decimal temperatura { get; set; }
-        public int saturacaoOxigenio { get; set; }
-        public int INR { get; set; }
-        public int Perimetro { get; set; }
+        public int? pressaoArterial { get; set; }
+        public int? frequenciaCardiaca { get; set; }
+        public decimal? temperatura { get; set; }
+        public int? saturacaoOxigenio { get; set; }
+        public int? INR { get; set; }
+        public int? Perimetro { get; set; }
         //public int IdTipoAleitamento { get; set; }
         public string tipoAleitamento { get; set; }
         public string nomeLeiteArtificial { get; set; }
