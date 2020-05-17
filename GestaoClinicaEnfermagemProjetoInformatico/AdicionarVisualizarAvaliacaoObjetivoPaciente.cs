@@ -39,7 +39,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             auxiliar.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from MetodoContracetivo ", conn);
+            SqlCommand cmd = new SqlCommand("select * from MetodoContracetivo order by nomeMetodoContracetivo asc", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -56,11 +56,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             // UpdateDataGridView();
             reiniciar();
-          
+
 
 
             //if (data)
-            if (paciente.Sexo.Equals("Feminino")) 
+            if (paciente.Sexo.Equals("Feminino"))
             {
                 lblINR.Visible = true;
                 upDownINR.Visible = true;
@@ -161,7 +161,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         metodoContracetivo = (comboBoxMetodoContracetivo.SelectedItem as ComboBoxItem).Value;
 
-                        
+
                     }
                     if (radioButtonSim.Checked == true)
                     {
@@ -185,7 +185,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.Parameters.AddWithValue("@altura", UpDownAltura.Value);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@pressaoArterial", pressaoArterial);
-                   
+
                     //sqlCommand.Parameters.AddWithValue("@dataUltimaMestruacao", dataUltimaMestruacao.ToString("MM/dd/yyyy"));
 
                     if (saturacaoOxigenio > 0)
@@ -213,7 +213,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     else
                     {
                         sqlCommand.Parameters.AddWithValue("@temperatura", DBNull.Value);
-                    }                   
+                    }
 
                     if (paciente.Sexo == "Feminino")
                     {
@@ -327,7 +327,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         sqlCommand.Parameters.AddWithValue("@abortos", Convert.ToString(abortos));
                     }
-                    else if(paciente.Sexo == "Feminino" && abortos == 0)
+                    else if (paciente.Sexo == "Feminino" && abortos == 0)
                     {
                         sqlCommand.Parameters.AddWithValue("@abortos", 0);
                     }
@@ -340,6 +340,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Avaliação Objetivo registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
@@ -348,39 +349,39 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-    /*    private void UpdateDataGridView()
-        {
-            avaliacaoObjetivo.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from AvaliacaoObjetivo WHERE IdPaciente = @IdPaciente ORDER BY data", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+        /*    private void UpdateDataGridView()
             {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-                AvaliacaoObjetivo avaliacao = new AvaliacaoObjetivo
+                avaliacaoObjetivo.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from AvaliacaoObjetivo WHERE IdPaciente = @IdPaciente ORDER BY data", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    data = data,
-                    peso = Convert.ToDecimal(reader["peso"]),
-                    altura = (int)reader["altura"],
-                };
-                avaliacao.IMC = Math.Round(avaliacao.peso / (Convert.ToDecimal(avaliacao.altura * avaliacao.altura)/ 10000),2);
-                avaliacaoObjetivo.Add(avaliacao);
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                    AvaliacaoObjetivo avaliacao = new AvaliacaoObjetivo
+                    {
+                        data = data,
+                        peso = Convert.ToDecimal(reader["peso"]),
+                        altura = (int)reader["altura"],
+                    };
+                    avaliacao.IMC = Math.Round(avaliacao.peso / (Convert.ToDecimal(avaliacao.altura * avaliacao.altura)/ 10000),2);
+                    avaliacaoObjetivo.Add(avaliacao);
 
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = avaliacaoObjetivo };
-            dataGridViewAvaliacaoObjetivo.DataSource = bindingSource1;
-            dataGridViewAvaliacaoObjetivo.Columns[0].HeaderText = "Data da Avaliação Objetivo";
-            dataGridViewAvaliacaoObjetivo.Columns[1].HeaderText = "Peso (KG)";
-            dataGridViewAvaliacaoObjetivo.Columns[2].HeaderText = "Altura (cm)";
-            dataGridViewAvaliacaoObjetivo.Columns[3].HeaderText = "IMC";
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = avaliacaoObjetivo };
+                dataGridViewAvaliacaoObjetivo.DataSource = bindingSource1;
+                dataGridViewAvaliacaoObjetivo.Columns[0].HeaderText = "Data da Avaliação Objetivo";
+                dataGridViewAvaliacaoObjetivo.Columns[1].HeaderText = "Peso (KG)";
+                dataGridViewAvaliacaoObjetivo.Columns[2].HeaderText = "Altura (cm)";
+                dataGridViewAvaliacaoObjetivo.Columns[3].HeaderText = "IMC";
 
 
-            conn.Close();
-            dataGridViewAvaliacaoObjetivo.Update();
-            dataGridViewAvaliacaoObjetivo.Refresh();
-        }*/
+                conn.Close();
+                dataGridViewAvaliacaoObjetivo.Update();
+                dataGridViewAvaliacaoObjetivo.Refresh();
+            }*/
 
         private Boolean VerificarDadosInseridos()
         {
@@ -394,7 +395,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string INR = upDownINR.Text;
             string BTM = UpDownBTM.Text;
             string AC = UpDownAC.Text;
-            string AP= UpDownAP.Text;
+            string AP = UpDownAP.Text;
             string menarca = upDownMenarca.Text;
             string gravidez = upDownGravidezes.Text;
             string filhosVivos = upDownFilhosVivos.Text;
@@ -412,9 +413,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                if(UpDownPeso.Text == string.Empty)
+                if (UpDownPeso.Text == string.Empty)
                 {
                     errorProvider.SetError(UpDownPeso, "O peso é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownPeso, String.Empty);
                 }
 
 
@@ -422,10 +427,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     errorProvider.SetError(UpDownAltura, "A altura é obrigatória!");
                 }
+                else
+                {
+                    errorProvider.SetError(UpDownAltura, String.Empty);
+                }
 
                 if (UpDownPressaoArterial.Text == string.Empty)
                 {
                     errorProvider.SetError(UpDownPressaoArterial, "A pressão arterial é obrigatória!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownPressaoArterial, String.Empty);
                 }
                 return false;
             }
@@ -464,8 +477,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
-            if (Convert.ToInt32(frequencia) < 0 || Convert.ToDecimal(temperatura) < 0 || Convert.ToInt32(SP02) < 0 || Convert.ToInt32(menopausa) < 0 || 
-                Convert.ToInt32(BTM) < 0 || Convert.ToInt32(AC) < 0 || Convert.ToInt32(AP) < 0 || Convert.ToInt32(INR) < 0 || 
+            if (Convert.ToInt32(frequencia) < 0 || Convert.ToDecimal(temperatura) < 0 || Convert.ToInt32(SP02) < 0 || Convert.ToInt32(menopausa) < 0 ||
+                Convert.ToInt32(BTM) < 0 || Convert.ToInt32(AC) < 0 || Convert.ToInt32(AP) < 0 || Convert.ToInt32(INR) < 0 ||
                 Convert.ToInt32(menarca) < 0 || Convert.ToInt32(gravidez) < 0 || Convert.ToInt32(filhosVivos) < 0 || Convert.ToInt32(abortos) < 0)
             {
                 if (Convert.ToInt32(frequencia) < 0)
@@ -584,10 +597,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             AdicionarVisualizarAvaliacaoObjetivoBebe adicionarVisualizarAvaliacaoObjetivoBebe = new AdicionarVisualizarAvaliacaoObjetivoBebe(paciente/*, this, null*/);
             adicionarVisualizarAvaliacaoObjetivoBebe.Show();
-        }      
+        }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            limparCampos();
             VerDetalhesAvaliacaoObjetivo verAvaliacaoObjetivo = new VerDetalhesAvaliacaoObjetivo(paciente);
             verAvaliacaoObjetivo.Show();
         }
@@ -605,6 +619,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button3_Click(object sender, EventArgs e)
         {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
             dataAvaliacaoObjetivo.Value = DateTime.Today;
             dataUltimaMenstruacao.Value = DateTime.Today;
             UpDownPeso.Value = 0;
@@ -616,7 +635,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             upDownMenarca.Value = 0;
             UpDownBTM.Value = 0;
             UpDownAC.Value = 0;
-            UpDownAP.Value = 0;        
+            UpDownAP.Value = 0;
             upDownINR.Value = 0;
             upDownMenarca.Value = 0;
             upDownGravidezes.Value = 0;

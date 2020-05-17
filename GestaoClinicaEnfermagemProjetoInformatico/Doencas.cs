@@ -14,10 +14,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class Doencas : Form
     {
         AdicionarVisualizarDoencaPaciente adicionar = null;
+        private ErrorProvider errorProvider = new ErrorProvider();
         public Doencas(AdicionarVisualizarDoencaPaciente adicionarVisualizarDoencaPaciente)
         {
             InitializeComponent();
             adicionar = adicionarVisualizarDoencaPaciente;
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+
         }
 
         private void Doencas_Load(object sender, EventArgs e)
@@ -74,12 +78,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
-            {
+            if (VerificarDadosInseridos())
+            {             
                 string nome = txtNome.Text;
                 string sintomas = txtSintomas.Text;
                 try
@@ -95,6 +95,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Doença registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //    AdicionarVisualizarDoencaPaciente.reiniciar();
                     connection.Close();
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
@@ -105,6 +106,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
+            limparCampos();
             VerDoencasRegistadas verDoencasRegistadas = new VerDoencasRegistadas();
             verDoencasRegistadas.Show();
         }
@@ -118,10 +120,30 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o nome da doença!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtNome.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNome, "O nome da doença é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtNome, String.Empty);
+                }
+
                 return false;
             }
 
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            txtNome.Text = "";
+            txtSintomas.Text = "";
         }
     }
 }

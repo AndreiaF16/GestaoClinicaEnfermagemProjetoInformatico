@@ -98,17 +98,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Alergia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
-                    txtProcurar.Text = "";
-                    txtObservacoes.Text = "";
-                    dataDiagnostico.Value = DateTime.Today;
-                    comboBoxDoenca.SelectedItem = null;
-                    foreach (var pesquisa in filtrosDePesquisa())
-                    {
-                        ComboBoxItem item = new ComboBoxItem();
-                        item.Text = pesquisa.Text;
-                        item.Value = pesquisa.Value;
-                        comboBoxDoenca.Items.Add(item);
-                    }
+
+                    limparCampos();
                     UpdateDataGridView();
 
                 }
@@ -157,17 +148,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button4_Click(object sender, EventArgs e)
         {
-            txtProcurar.Text = "";
-            txtObservacoes.Text = "";
-            dataDiagnostico.Value = DateTime.Today;
-            comboBoxDoenca.SelectedItem = null;
-            foreach (var pesquisa in filtrosDePesquisa())
-            {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = pesquisa.Text;
-                item.Value = pesquisa.Value;
-                comboBoxDoenca.Items.Add(item);
-            }
+            limparCampos();
             Alergias alergias = new Alergias(this);
             alergias.Show();
         }
@@ -179,7 +160,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             auxiliar.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Alergia ", conn);
+            SqlCommand cmd = new SqlCommand("select * from Alergia order by Nome asc", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -248,13 +229,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     errorProvider.SetError(this.comboBoxDoenca, "O nome da alergia é obrigatório!");
                 }
+                else
+                {
+                    errorProvider.SetError(comboBoxDoenca, String.Empty);
+                }
                 return false;
             }
      
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from AlergiaPaciente WHERE IdPaciente = @IdPaciente", conn);
+            SqlCommand cmd = new SqlCommand("select * from AlergiaPaciente WHERE IdPaciente = @IdPaciente order by data", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -275,6 +260,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button3_Click(object sender, EventArgs e)
         {
+            limparCampos();
+        }
+
+        private void limparCampos() 
+        {
             txtProcurar.Text = "";
             txtObservacoes.Text = "";
             dataDiagnostico.Value = DateTime.Today;
@@ -287,8 +277,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 item.Value = pesquisa.Value;
                 comboBoxDoenca.Items.Add(item);
             }
-           // filtrosDePesquisa();
-
         }
     }
 }

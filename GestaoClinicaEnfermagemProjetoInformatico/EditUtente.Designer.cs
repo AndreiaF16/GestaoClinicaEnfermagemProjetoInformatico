@@ -261,6 +261,7 @@
             // 
             // cbProfissoes
             // 
+            this.cbProfissoes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProfissoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbProfissoes.FormattingEnabled = true;
             this.cbProfissoes.Items.AddRange(new object[] {
@@ -471,6 +472,7 @@
             // 
             // cbAcordos
             // 
+            this.cbAcordos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAcordos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbAcordos.FormattingEnabled = true;
             this.cbAcordos.Items.AddRange(new object[] {
@@ -662,7 +664,7 @@
             this.dataNascimento.Name = "dataNascimento";
             this.dataNascimento.Size = new System.Drawing.Size(493, 26);
             this.dataNascimento.TabIndex = 15;
-            this.dataNascimento.Value = new System.DateTime(2020, 3, 29, 0, 0, 0, 0);
+            this.dataNascimento.Value = new System.DateTime(2020, 5, 17, 0, 0, 0, 0);
             // 
             // label6
             // 

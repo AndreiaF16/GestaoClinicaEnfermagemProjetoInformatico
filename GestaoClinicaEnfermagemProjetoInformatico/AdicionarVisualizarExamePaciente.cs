@@ -19,6 +19,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<ComboBoxItem> exames = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
         private List<ExamePaciente> examePacientes = new List<ExamePaciente>();
+        private ErrorProvider errorProvider = new ErrorProvider();
+
         public AdicionarVisualizarExamePaciente(Paciente pac)
         {
             InitializeComponent();
@@ -31,6 +33,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             UpdateDataGridView();
             reiniciar();
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -68,11 +73,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
+            if (VerificarDadosInseridos())
             {
                 int exame = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
                 DateTime data = dataDiagnostico.Value;
@@ -93,6 +94,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Exame registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
+                    limparCampos();
                     UpdateDataGridView();
 
                 }
@@ -139,6 +141,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button4_Click(object sender, EventArgs e)
         {
+            limparCampos();
             RegistarExames registarExames = new RegistarExames(this);
             registarExames.Show();
         }
@@ -212,7 +215,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (nome == string.Empty )
             {
-                MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campos Obrigatórios, por favor preencha o exame!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (comboBoxDoenca.Text == string.Empty)
+                {
+                    errorProvider.SetError(this.comboBoxDoenca, "O exame é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(comboBoxDoenca, String.Empty);
+                }
                 return false;
             }
 
@@ -242,6 +253,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            txtProcurar.Text = "";
+            txtObservacoes.Text = "";
+            dataDiagnostico.Value = DateTime.Today;
+            comboBoxDoenca.SelectedItem = null;
+            comboBoxDoenca.Items.Clear();
+            foreach (var pesquisa in filtrosDePesquisa())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Text = pesquisa.Text;
+                item.Value = pesquisa.Value;
+                comboBoxDoenca.Items.Add(item);
+            }
         }
     }
 }

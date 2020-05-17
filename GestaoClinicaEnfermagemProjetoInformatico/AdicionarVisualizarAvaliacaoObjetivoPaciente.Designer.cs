@@ -32,15 +32,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdicionarVisualizarAvaliacaoObjetivoPaciente));
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.UpDownBTM = new System.Windows.Forms.NumericUpDown();
             this.UpDownAP = new System.Windows.Forms.NumericUpDown();
             this.UpDownAC = new System.Windows.Forms.NumericUpDown();
             this.UpDownSPO2 = new System.Windows.Forms.NumericUpDown();
             this.UpDownFC = new System.Windows.Forms.NumericUpDown();
-            this.UpDownPressaoArterial = new System.Windows.Forms.NumericUpDown();
-            this.UpDownTemperatura = new System.Windows.Forms.NumericUpDown();
+            this.lblTerapeutica = new System.Windows.Forms.Label();
+            this.comboBoxMetodoContracetivo = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.UpDownPressaoArterial = new System.Windows.Forms.NumericUpDown();
+            this.lblMetodoContracetivo = new System.Windows.Forms.Label();
+            this.UpDownTemperatura = new System.Windows.Forms.NumericUpDown();
             this.radioButtonNao = new System.Windows.Forms.RadioButton();
             this.radioButtonSim = new System.Windows.Forms.RadioButton();
             this.upDownAbortos = new System.Windows.Forms.NumericUpDown();
@@ -54,7 +58,6 @@
             this.lblMenarca = new System.Windows.Forms.Label();
             this.txtObservacoes = new System.Windows.Forms.TextBox();
             this.lblObservacoes = new System.Windows.Forms.Label();
-            this.lblTerapeutica = new System.Windows.Forms.Label();
             this.upDownINR = new System.Windows.Forms.NumericUpDown();
             this.lblINR = new System.Windows.Forms.Label();
             this.lblAP = new System.Windows.Forms.Label();
@@ -62,8 +65,6 @@
             this.lblmg = new System.Windows.Forms.Label();
             this.lblBMT = new System.Windows.Forms.Label();
             this.lblDIU = new System.Windows.Forms.Label();
-            this.comboBoxMetodoContracetivo = new System.Windows.Forms.ComboBox();
-            this.lblMetodoContracetivo = new System.Windows.Forms.Label();
             this.lblAnos = new System.Windows.Forms.Label();
             this.UpDownIdadeMenopausa = new System.Windows.Forms.NumericUpDown();
             this.lblMenopausa = new System.Windows.Forms.Label();
@@ -102,7 +103,6 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.hora = new System.Windows.Forms.Timer(this.components);
-            this.button3 = new System.Windows.Forms.Button();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -155,6 +155,27 @@
             this.panelFormulario.Name = "panelFormulario";
             this.panelFormulario.Size = new System.Drawing.Size(1124, 702);
             this.panelFormulario.TabIndex = 2;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button3.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button3.Location = new System.Drawing.Point(578, 646);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button3.Size = new System.Drawing.Size(206, 50);
+            this.button3.TabIndex = 56;
+            this.button3.Text = "Limpar Campos";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox1
             // 
@@ -288,32 +309,26 @@
             this.UpDownFC.Size = new System.Drawing.Size(245, 26);
             this.UpDownFC.TabIndex = 132;
             // 
-            // UpDownPressaoArterial
+            // lblTerapeutica
             // 
-            this.UpDownPressaoArterial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpDownPressaoArterial.Location = new System.Drawing.Point(256, 186);
-            this.UpDownPressaoArterial.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.UpDownPressaoArterial.Name = "UpDownPressaoArterial";
-            this.UpDownPressaoArterial.Size = new System.Drawing.Size(245, 26);
-            this.UpDownPressaoArterial.TabIndex = 131;
+            this.lblTerapeutica.AutoSize = true;
+            this.lblTerapeutica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTerapeutica.ForeColor = System.Drawing.Color.Black;
+            this.lblTerapeutica.Location = new System.Drawing.Point(653, 24);
+            this.lblTerapeutica.Name = "lblTerapeutica";
+            this.lblTerapeutica.Size = new System.Drawing.Size(97, 20);
+            this.lblTerapeutica.TabIndex = 88;
+            this.lblTerapeutica.Text = "Terapêutica:";
             // 
-            // UpDownTemperatura
+            // comboBoxMetodoContracetivo
             // 
-            this.UpDownTemperatura.DecimalPlaces = 2;
-            this.UpDownTemperatura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpDownTemperatura.Location = new System.Drawing.Point(256, 272);
-            this.UpDownTemperatura.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            131072});
-            this.UpDownTemperatura.Name = "UpDownTemperatura";
-            this.UpDownTemperatura.Size = new System.Drawing.Size(245, 26);
-            this.UpDownTemperatura.TabIndex = 107;
+            this.comboBoxMetodoContracetivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMetodoContracetivo.FormattingEnabled = true;
+            this.comboBoxMetodoContracetivo.Location = new System.Drawing.Point(256, 436);
+            this.comboBoxMetodoContracetivo.Name = "comboBoxMetodoContracetivo";
+            this.comboBoxMetodoContracetivo.Size = new System.Drawing.Size(371, 28);
+            this.comboBoxMetodoContracetivo.TabIndex = 74;
+            this.comboBoxMetodoContracetivo.Visible = false;
             // 
             // button2
             // 
@@ -332,6 +347,45 @@
             this.button2.Text = "Botao Ver Terapeuticas todas";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // UpDownPressaoArterial
+            // 
+            this.UpDownPressaoArterial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownPressaoArterial.Location = new System.Drawing.Point(256, 186);
+            this.UpDownPressaoArterial.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.UpDownPressaoArterial.Name = "UpDownPressaoArterial";
+            this.UpDownPressaoArterial.Size = new System.Drawing.Size(245, 26);
+            this.UpDownPressaoArterial.TabIndex = 131;
+            // 
+            // lblMetodoContracetivo
+            // 
+            this.lblMetodoContracetivo.AutoSize = true;
+            this.lblMetodoContracetivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMetodoContracetivo.ForeColor = System.Drawing.Color.Black;
+            this.lblMetodoContracetivo.Location = new System.Drawing.Point(34, 441);
+            this.lblMetodoContracetivo.Name = "lblMetodoContracetivo";
+            this.lblMetodoContracetivo.Size = new System.Drawing.Size(160, 20);
+            this.lblMetodoContracetivo.TabIndex = 73;
+            this.lblMetodoContracetivo.Text = "Método Contracetivo:";
+            this.lblMetodoContracetivo.Visible = false;
+            // 
+            // UpDownTemperatura
+            // 
+            this.UpDownTemperatura.DecimalPlaces = 2;
+            this.UpDownTemperatura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownTemperatura.Location = new System.Drawing.Point(256, 272);
+            this.UpDownTemperatura.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            131072});
+            this.UpDownTemperatura.Name = "UpDownTemperatura";
+            this.UpDownTemperatura.Size = new System.Drawing.Size(245, 26);
+            this.UpDownTemperatura.TabIndex = 107;
             // 
             // radioButtonNao
             // 
@@ -497,17 +551,6 @@
             this.lblObservacoes.TabIndex = 90;
             this.lblObservacoes.Text = "Observações:";
             // 
-            // lblTerapeutica
-            // 
-            this.lblTerapeutica.AutoSize = true;
-            this.lblTerapeutica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTerapeutica.ForeColor = System.Drawing.Color.Black;
-            this.lblTerapeutica.Location = new System.Drawing.Point(653, 24);
-            this.lblTerapeutica.Name = "lblTerapeutica";
-            this.lblTerapeutica.Size = new System.Drawing.Size(97, 20);
-            this.lblTerapeutica.TabIndex = 88;
-            this.lblTerapeutica.Text = "Terapêutica:";
-            // 
             // upDownINR
             // 
             this.upDownINR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -593,28 +636,6 @@
             this.lblDIU.TabIndex = 75;
             this.lblDIU.Text = "DIU:";
             this.lblDIU.Visible = false;
-            // 
-            // comboBoxMetodoContracetivo
-            // 
-            this.comboBoxMetodoContracetivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMetodoContracetivo.FormattingEnabled = true;
-            this.comboBoxMetodoContracetivo.Location = new System.Drawing.Point(256, 436);
-            this.comboBoxMetodoContracetivo.Name = "comboBoxMetodoContracetivo";
-            this.comboBoxMetodoContracetivo.Size = new System.Drawing.Size(371, 28);
-            this.comboBoxMetodoContracetivo.TabIndex = 74;
-            this.comboBoxMetodoContracetivo.Visible = false;
-            // 
-            // lblMetodoContracetivo
-            // 
-            this.lblMetodoContracetivo.AutoSize = true;
-            this.lblMetodoContracetivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMetodoContracetivo.ForeColor = System.Drawing.Color.Black;
-            this.lblMetodoContracetivo.Location = new System.Drawing.Point(34, 441);
-            this.lblMetodoContracetivo.Name = "lblMetodoContracetivo";
-            this.lblMetodoContracetivo.Size = new System.Drawing.Size(160, 20);
-            this.lblMetodoContracetivo.TabIndex = 73;
-            this.lblMetodoContracetivo.Text = "Método Contracetivo:";
-            this.lblMetodoContracetivo.Visible = false;
             // 
             // lblAnos
             // 
@@ -1089,27 +1110,6 @@
             // 
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button3.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button3.Location = new System.Drawing.Point(578, 646);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button3.Size = new System.Drawing.Size(206, 50);
-            this.button3.TabIndex = 56;
-            this.button3.Text = "Limpar Campos";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // AdicionarVisualizarAvaliacaoObjetivoPaciente
             // 

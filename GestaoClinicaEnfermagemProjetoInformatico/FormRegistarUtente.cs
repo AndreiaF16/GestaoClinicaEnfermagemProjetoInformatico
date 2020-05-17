@@ -417,7 +417,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 planoVacinacao = "Atualizado";
             }
-            if (radioButtonNaoAtualziado.Checked == true)
+            if (radioButtonNaoAtualizado.Checked == true)
             {
                 planoVacinacao = "Não Atualizado";
             }
@@ -510,8 +510,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Utente registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    //this.Close();
                     conn.Close();
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
@@ -598,11 +599,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     this.Close();
                 }
             }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.LimpaCampos(this.panelFormulario.Controls);
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -806,5 +802,37 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 e.Handled = true;
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            txtNome.Text = "";
+            dataNascimento.Value = DateTime.Today;
+            txtMorada.Text = "";
+            txtNumeroCasa.Text = "";
+            txtAndar.Text = "";
+            txtCodPostalPre.Text = "";
+            txtCodPostalSuf.Text = "";
+            txtLocalidade.Text = "";
+            txtEmail.Text = "";
+            txtContacto.Text = "";
+            txtNif.Text = "";
+            txtNomeSeguradora.Text = "";
+            txtNApolice.Text = "";
+            txtNSubsistema.Text = "";
+            txtSNS.Text = "";
+            radioButtonFeminino.Checked = false;
+            radioButtonMasculino.Checked = false;
+            radioButtonIndefinido.Checked = false;
+            radioButtonAtualizado.Checked = false;
+            radioButtonNaoAtualizado.Checked = false;
+            reiniciar();
+        }
+
+
     }
 }

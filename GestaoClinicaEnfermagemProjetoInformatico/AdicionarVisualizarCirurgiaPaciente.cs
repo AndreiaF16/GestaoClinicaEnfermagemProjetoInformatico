@@ -19,6 +19,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<ComboBoxItem> cirurgias = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
         private List<DoencaPaciente> cirurgiaPacientes = new List<DoencaPaciente>();
+        private ErrorProvider errorProvider = new ErrorProvider();
+
 
         public AdicionarVisualizarCirurgiaPaciente(Paciente pac)
         {
@@ -26,6 +28,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             paciente = pac;
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void AdicionarVisualizarCirurgiaPaciente_Load(object sender, EventArgs e)
@@ -93,6 +97,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Cirurgia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
+                    limparCampos();
                     UpdateDataGridView();
 
                 }
@@ -136,6 +141,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button4_Click(object sender, EventArgs e)
         {
+            limparCampos();
             Cirurgias cirurgias = new Cirurgias(this);
             cirurgias.Show();
         }
@@ -147,7 +153,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             auxiliar.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Cirurgia", conn);
+            SqlCommand cmd = new SqlCommand("select * from Cirurgia order by nome asc", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -205,7 +211,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (nome == string.Empty)
             {
-                MessageBox.Show("Campos Obrigatórios, por favor selecione o campo da cirurgia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campos Obrigatórios, por favor selecione a cirurgia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (comboBoxDoenca.Text == string.Empty)
+                {
+                    errorProvider.SetError(this.comboBoxDoenca, "A cirurgia é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(comboBoxDoenca, String.Empty);
+                }
                 return false;
             }
 
@@ -218,7 +232,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from CirurgiaPaciente WHERE IdPaciente = @IdPaciente", conn);
+            SqlCommand cmd = new SqlCommand("select * from CirurgiaPaciente WHERE IdPaciente = @IdPaciente order by data", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -235,6 +249,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             conn.Close();
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos() 
+        {
+            txtProcurar.Text = "";
+            txtObservacoes.Text = "";
+            dataDiagnostico.Value = DateTime.Today;
+            comboBoxDoenca.SelectedItem = null;
+            comboBoxDoenca.Items.Clear();
+            foreach (var pesquisa in filtrosDePesquisa())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Text = pesquisa.Text;
+                item.Value = pesquisa.Value;
+                comboBoxDoenca.Items.Add(item);
+            }
         }
     }
   }

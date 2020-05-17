@@ -14,10 +14,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class Alergias : Form
     {
         AdicionarVisualizarAlergiaPaciente adicionar = null;
+        private ErrorProvider errorProvider = new ErrorProvider();
+
         public Alergias(AdicionarVisualizarAlergiaPaciente adicionarVisualizarAlergiaPaciente)
         {
             InitializeComponent();
             adicionar = adicionarVisualizarAlergiaPaciente;
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void Alergias_Load(object sender, EventArgs e)
@@ -27,12 +31,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
-            {
+            if (VerificarDadosInseridos())
+            {          
                 string nome = txtNome.Text;
                 string sintomas = txtSintomas.Text;
                 try
@@ -47,6 +47,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Alergia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
@@ -99,6 +100,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
+            limparCampos();
             VerAlergiasRegistadas verAlergiasRegistadas = new VerAlergiasRegistadas();
             verAlergiasRegistadas.Show();
 
@@ -109,15 +111,32 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Boolean VerificarDadosInseridos()
         {
             string nome = txtNome.Text;
-
-
             if (nome == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o nome da alergia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (txtNome.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNome, "O nome da alergia é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtNome, String.Empty);
+                }
                 return false;
             }
-
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            txtNome.Text = "";
+            txtSintomas.Text = "";
         }
     }
 }

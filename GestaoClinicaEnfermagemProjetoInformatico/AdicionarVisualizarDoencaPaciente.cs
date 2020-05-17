@@ -19,6 +19,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<ComboBoxItem> doencas = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
         private List<DoencaPaciente> doencaPacientes = new List<DoencaPaciente>();
+        private ErrorProvider errorProvider = new ErrorProvider();
+
         public AdicionarVisualizarDoencaPaciente(Paciente pac)
         {
             InitializeComponent();
@@ -26,7 +28,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             dataDiagnostico.MaxDate = DateTime.Now;
-
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
 
         }
 
@@ -95,6 +98,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Doença registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
+                    limparCampos();
                     UpdateDataGridView();
 
                 }
@@ -145,6 +149,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button4_Click(object sender, EventArgs e)
         {
+            limparCampos();
             Doencas doencas = new Doencas(this);
             doencas.Show();
         }
@@ -219,8 +224,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha a doença!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (comboBoxDoenca.Text == string.Empty)
+                {
+                    errorProvider.SetError(comboBoxDoenca, "A doença é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(comboBoxDoenca, String.Empty);
+                }
                 return false;
             }
+
             conn.Open();
             com.Connection = conn;
 
@@ -247,6 +261,28 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void txtProcurar_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            txtProcurar.Text = "";
+            txtObservacoes.Text = "";
+            dataDiagnostico.Value = DateTime.Today;
+            comboBoxDoenca.SelectedItem = null;
+            comboBoxDoenca.Items.Clear();
+            foreach (var pesquisa in filtrosDePesquisa())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Text = pesquisa.Text;
+                item.Value = pesquisa.Value;
+                comboBoxDoenca.Items.Add(item);
+            }
+            // filtrosDePesquisa();
         }
     }
 }

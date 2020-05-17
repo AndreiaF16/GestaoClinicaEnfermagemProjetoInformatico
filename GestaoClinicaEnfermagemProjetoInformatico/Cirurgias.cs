@@ -14,10 +14,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class Cirurgias : Form
     {
         AdicionarVisualizarCirurgiaPaciente adicionar = null;
+        private ErrorProvider errorProvider = new ErrorProvider();
+
         public Cirurgias(AdicionarVisualizarCirurgiaPaciente adicionarVisualizarCirurgiaPaciente)
         {
             InitializeComponent();
             adicionar = adicionarVisualizarCirurgiaPaciente;
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -56,12 +61,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
-            if (!VerificarDadosInseridos())
+            if (VerificarDadosInseridos())
             {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
-            {
+            
                 string nome = txtNome.Text;
                 string caracterizacao = txtSintomas.Text;
                 try
@@ -76,6 +78,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Cirurgia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
@@ -100,6 +103,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
+            limparCampos();
             VerCirurgiasRegistadas verCirurgiasRegistadas = new VerCirurgiasRegistadas();
             verCirurgiasRegistadas.Show();
         }
@@ -111,11 +115,29 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (nome == string.Empty)
             {
-                MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campos Obrigatórios, por favor preencha o nome da cirurgia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtNome.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNome, "O nome da cirurgia é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtNome, String.Empty);
+                }
                 return false;
             }
-
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            txtNome.Text = "";
+            txtSintomas.Text = "";
         }
     }
 }

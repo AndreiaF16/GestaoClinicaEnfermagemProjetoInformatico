@@ -42,7 +42,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             auxiliar.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Aleitamento", conn);
+            SqlCommand cmd = new SqlCommand("select * from Aleitamento order by tipoAleitamento asc", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -57,7 +57,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd1 = new SqlCommand("select * from Parto", conn);
+            SqlCommand cmd1 = new SqlCommand("select * from Parto order by tipoParto asc", conn);
             SqlDataReader reader1 = cmd1.ExecuteReader();
             while (reader1.Read())
             {
@@ -388,6 +388,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Avaliação Objetivo registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
+                    limparCampos();
 
                 }
                 catch (SqlException excep)
@@ -580,11 +581,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
+            limparCampos();
+
             VerAvaliacaoObjetivoBebe verAvaliacaoObjetivoBebe = new VerAvaliacaoObjetivoBebe(paciente);
             verAvaliacaoObjetivoBebe.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
         {
             dataAvaliacaoObjetivo.Value = DateTime.Today;
             UpDownPeso.Value = 0;

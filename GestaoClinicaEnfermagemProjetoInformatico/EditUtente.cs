@@ -24,8 +24,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<UtenteGridView> utentes = new List<UtenteGridView>();
         private List<UtenteGridView> auxiliar = new List<UtenteGridView>();
         private List<ComboBoxItem> profissoes = new List<ComboBoxItem>();
-
         private FormVerUtentesRegistados formulario = null;
+        private ErrorProvider errorProvider = new ErrorProvider();
         public EditUtente(Enfermeiro enf, Paciente pac, FormVerUtentesRegistados form)
         {
             InitializeComponent();
@@ -35,7 +35,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             label1.Text = "Nome do Utente: " + pacientee.Nome;
 
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void EditUtente_Load(object sender, EventArgs e)
@@ -105,7 +106,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string nomeSubsistema = txtNomeSubsistema.Text;
 
             if (nome == string.Empty || rua == string.Empty || codPostalPrefixo == string.Empty || codPostalSufixo == string.Empty
-                || localidade == string.Empty || telemovel == string.Empty || nif == string.Empty || acordo == string.Empty)
+                || localidade == string.Empty || telemovel == string.Empty || nif == string.Empty || acordo == String.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -241,15 +242,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
+            string nome = txtNome.Text;
+            var dtNascimento = dataNascimento.Value;
+            string rua = txtMorada.Text;
+            string numeroCasa = txtNumeroCasa.Text;
+            string andarCasa = txtAndar.Text;
+            string codPostalPrefixo = txtCodPostalPre.Text;
+            string codPostalSufixo = txtCodPostalSuf.Text;
+            string localidade = txtLocalidade.Text;
+            string email = txtEmail.Text;
+            string telemovel = txtContacto.Text;
+            string nif = txtNif.Text;
+            int nomeProfissao = -1;
+            //string profissao = (String)cbProfissoes.SelectedItem;
             string acordo = (String)cbAcordos.SelectedItem;
             string nomeSeguradora = txtNomeSeguradora.Text;
             string numeroApolice = txtNApolice.Text;
             string nomeSubsistema = txtNomeSubsistema.Text;
             string numeroSubsistema = txtNSubsistema.Text;
             string numeroSNS = txtSNS.Text;
-            var dtNascimento = dataNascimento.Value;
             string sexo = "";
-            int nomeProfissao = -1;
 
 
             if (cbProfissoes.SelectedItem != null)

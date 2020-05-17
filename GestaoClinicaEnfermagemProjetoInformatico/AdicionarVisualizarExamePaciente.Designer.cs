@@ -37,6 +37,7 @@
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtProcurar = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -106,6 +107,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtDesignacao);
@@ -124,6 +126,27 @@
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registar Exame";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(711, 194);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(214, 78);
+            this.button1.TabIndex = 61;
+            this.button1.Text = "Limpar Campos";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox2
             // 
@@ -151,7 +174,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(45, 158);
+            this.label4.Location = new System.Drawing.Point(18, 157);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 20);
             this.label4.TabIndex = 55;
@@ -160,28 +183,28 @@
             // txtDesignacao
             // 
             this.txtDesignacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesignacao.Location = new System.Drawing.Point(194, 155);
+            this.txtDesignacao.Location = new System.Drawing.Point(167, 153);
             this.txtDesignacao.Multiline = true;
             this.txtDesignacao.Name = "txtDesignacao";
-            this.txtDesignacao.Size = new System.Drawing.Size(494, 62);
+            this.txtDesignacao.Size = new System.Drawing.Size(521, 62);
             this.txtDesignacao.TabIndex = 56;
             // 
             // comboBoxDoenca
             // 
+            this.comboBoxDoenca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDoenca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDoenca.FormattingEnabled = true;
-            this.comboBoxDoenca.Location = new System.Drawing.Point(195, 42);
+            this.comboBoxDoenca.Location = new System.Drawing.Point(168, 40);
             this.comboBoxDoenca.Name = "comboBoxDoenca";
             this.comboBoxDoenca.Size = new System.Drawing.Size(260, 28);
             this.comboBoxDoenca.TabIndex = 53;
-            this.comboBoxDoenca.Text = "Selecione o Exame";
             // 
             // lblFuncao
             // 
             this.lblFuncao.AutoSize = true;
             this.lblFuncao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFuncao.ForeColor = System.Drawing.Color.Black;
-            this.lblFuncao.Location = new System.Drawing.Point(45, 245);
+            this.lblFuncao.Location = new System.Drawing.Point(18, 244);
             this.lblFuncao.Name = "lblFuncao";
             this.lblFuncao.Size = new System.Drawing.Size(102, 20);
             this.lblFuncao.TabIndex = 12;
@@ -200,7 +223,7 @@
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGuardar.Size = new System.Drawing.Size(204, 76);
+            this.btnGuardar.Size = new System.Drawing.Size(214, 76);
             this.btnGuardar.TabIndex = 48;
             this.btnGuardar.Text = "Registar Exame";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -211,10 +234,10 @@
             // txtObservacoes
             // 
             this.txtObservacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObservacoes.Location = new System.Drawing.Point(194, 242);
+            this.txtObservacoes.Location = new System.Drawing.Point(167, 241);
             this.txtObservacoes.Multiline = true;
             this.txtObservacoes.Name = "txtObservacoes";
-            this.txtObservacoes.Size = new System.Drawing.Size(494, 62);
+            this.txtObservacoes.Size = new System.Drawing.Size(521, 62);
             this.txtObservacoes.TabIndex = 13;
             // 
             // label3
@@ -222,7 +245,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(45, 52);
+            this.label3.Location = new System.Drawing.Point(18, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 20);
             this.label3.TabIndex = 52;
@@ -233,7 +256,7 @@
             this.lblDataNascimento.AutoSize = true;
             this.lblDataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDataNascimento.ForeColor = System.Drawing.Color.Black;
-            this.lblDataNascimento.Location = new System.Drawing.Point(45, 105);
+            this.lblDataNascimento.Location = new System.Drawing.Point(18, 104);
             this.lblDataNascimento.Name = "lblDataNascimento";
             this.lblDataNascimento.Size = new System.Drawing.Size(97, 20);
             this.lblDataNascimento.TabIndex = 14;
@@ -242,9 +265,9 @@
             // dataDiagnostico
             // 
             this.dataDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataDiagnostico.Location = new System.Drawing.Point(195, 99);
+            this.dataDiagnostico.Location = new System.Drawing.Point(168, 97);
             this.dataDiagnostico.Name = "dataDiagnostico";
-            this.dataDiagnostico.Size = new System.Drawing.Size(493, 26);
+            this.dataDiagnostico.Size = new System.Drawing.Size(520, 26);
             this.dataDiagnostico.TabIndex = 15;
             this.dataDiagnostico.Value = new System.DateTime(2020, 3, 29, 0, 0, 0, 0);
             // 
@@ -549,5 +572,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDesignacao;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button1;
     }
 }
