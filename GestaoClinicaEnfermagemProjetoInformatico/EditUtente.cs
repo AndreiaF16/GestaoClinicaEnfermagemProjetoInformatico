@@ -570,15 +570,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             
             if (pacientee != null)
             {
-              //  string[] cp;
+               string[] cp;
                 txtNome.Text = pacientee.Nome;
                 dataNascimento.Value = pacientee.DataNascimento;
                 txtMorada.Text = pacientee.Rua;
                 txtNumeroCasa.Text = Convert.ToString(pacientee.NumeroCasa);
                 txtAndar.Text = pacientee.Andar;
-            //    cp = pacientee.codigoPostal.Split('-');
-                txtCodPostalPre.Text = Convert.ToString(pacientee.codPostalPrefixo);
-                txtCodPostalSuf.Text = Convert.ToString(pacientee.codPostalSufixo);
+               cp = pacientee.codigoPostal.Split('-');
+                txtCodPostalPre.Text = Convert.ToString(cp[0]);
+                txtCodPostalSuf.Text = Convert.ToString(cp[1]);
                 txtLocalidade.Text = pacientee.localidade;
                 txtEmail.Text = pacientee.Email;
                 txtContacto.Text = Convert.ToString(pacientee.Contacto);

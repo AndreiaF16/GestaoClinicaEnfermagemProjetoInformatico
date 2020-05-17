@@ -92,7 +92,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             while (reader.Read())
             {
-                //string var = Convert.ToDouble(reader["codPostalPrefixo"]).ToString() + "-" + Convert.ToDouble(reader["codPostalSufixo"]).ToString();
 
                 UtenteGridView utente = new UtenteGridView
                 {
@@ -108,12 +107,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     // Profissao = (string)reader["Profissao"],
                     Rua = (string)reader["Rua"],
                     NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
+                    Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
 
-                  //  NumeroCasa = (int)reader["NumeroCasa"],
-                    Andar = (string)reader["Andar"],
-                    codigoPostal = Convert.ToDouble(reader["codPostalPrefixo"]).ToString() + "-" + Convert.ToDouble(reader["codPostalSufixo"]).ToString(),
-                //  codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
-                //   codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                    codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
+                    bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
+                    designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
                     localidade = (string)reader["localidade"],
                     Acordo = (string)reader["Acordo"],
 
@@ -225,16 +223,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[6].HeaderText = "Morada";
             dataGridViewUtentes.Columns[7].HeaderText = "Nr";
             dataGridViewUtentes.Columns[8].HeaderText = "Andar";
-            dataGridViewUtentes.Columns[9].HeaderText = "Código Postal";
-            dataGridViewUtentes.Columns[10].HeaderText = "Localidade";
-            dataGridViewUtentes.Columns[11].HeaderText = "Acordo"; 
-            dataGridViewUtentes.Columns[12].HeaderText = "Nome da Seguradora"; 
-            dataGridViewUtentes.Columns[13].HeaderText = "Numero da Apolice da Seguradora";
-            dataGridViewUtentes.Columns[14].HeaderText = "Nome do Subsistema";
-            dataGridViewUtentes.Columns[15].HeaderText = "Número do Subsistema";
-            dataGridViewUtentes.Columns[16].HeaderText = "Número do SNS";
-            dataGridViewUtentes.Columns[17].HeaderText = "Sexo";
-            dataGridViewUtentes.Columns[18].HeaderText = "Plano de Vacinacao";
+            dataGridViewUtentes.Columns[9].HeaderText = "Localidade";
+            dataGridViewUtentes.Columns[10].HeaderText = "Bairro/Local";
+            dataGridViewUtentes.Columns[11].HeaderText = "Código Postal";
+
+            dataGridViewUtentes.Columns[12].HeaderText = "Designação";
+
+            dataGridViewUtentes.Columns[13].HeaderText = "Acordo"; 
+            dataGridViewUtentes.Columns[14].HeaderText = "Nome da Seguradora"; 
+            dataGridViewUtentes.Columns[15].HeaderText = "Numero da Apolice da Seguradora";
+            dataGridViewUtentes.Columns[16].HeaderText = "Nome do Subsistema";
+            dataGridViewUtentes.Columns[17].HeaderText = "Número do Subsistema";
+            dataGridViewUtentes.Columns[18].HeaderText = "Número do SNS";
+            dataGridViewUtentes.Columns[19].HeaderText = "Sexo";
+            dataGridViewUtentes.Columns[20].HeaderText = "Plano de Vacinacao";
 
 
             auxiliar = utentes;
@@ -292,10 +294,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         Nif = Convert.ToInt32(reader["nif"]),
                         Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                         Rua = (string)reader["Rua"],
-                        NumeroCasa = (int)reader["NumeroCasa"],
-                        Andar = (string)reader["Andar"],
-                        codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
-                        codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                        NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
+                        Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
+                        codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
+                        bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
+                        designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
                         localidade = (string)reader["localidade"],
                         IdEnfermeiro = (int)reader["IdEnfermeiro"],
                         Acordo = (string)reader["Acordo"],
@@ -369,11 +372,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                         Rua = (string)reader["Rua"],
                         NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
-
-                       // NumeroCasa = (int)reader["NumeroCasa"],
-                        Andar = (string)reader["Andar"],
-                        codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
-                        codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                        Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
+                        codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
+                        bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
+                        designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
                         localidade = (string)reader["localidade"],
                         IdEnfermeiro = (int)reader["IdEnfermeiro"],
                         Acordo = (string)reader["Acordo"],
@@ -451,11 +453,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                         Rua = (string)reader["Rua"],
                         NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
+                        Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
 
-                        // NumeroCasa = (int)reader["NumeroCasa"],
-                        Andar = (string)reader["Andar"],
-                        codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
-                        codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                        codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
+                        bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
+                        designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
                         localidade = (string)reader["localidade"],
                         IdEnfermeiro = (int)reader["IdEnfermeiro"],
                         Acordo = (string)reader["Acordo"],
@@ -514,13 +516,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
                     Rua = (string)reader["Rua"],
                     NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
+                    Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
 
-                    // NumeroCasa = (int)reader["NumeroCasa"],
-                    Andar = (string)reader["Andar"],
-                    codigoPostal = Convert.ToDouble(reader["codPostalPrefixo"]).ToString() + "-" + Convert.ToDouble(reader["codPostalSufixo"]).ToString(),
-
-                    //    codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
-                    //     codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                    codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
+                    bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
+                    designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
                     localidade = (string)reader["localidade"],
                     Acordo = (string)reader["Acordo"],
 

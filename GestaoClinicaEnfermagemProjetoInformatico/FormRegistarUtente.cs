@@ -46,7 +46,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Boolean VerificarDadosInseridos()
         {
             string nome = txtNome.Text;
-            string rua = txtMorada.Text;
+            string rua = txtRua.Text;
             string numeroCasa = txtNumeroCasa.Text;
             string codPostalPrefixo = txtCodPostalPre.Text;
             string codPostalSufixo = txtCodPostalSuf.Text;
@@ -74,13 +74,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     errorProvider.SetError(txtNome, String.Empty);
                 }
 
-                if (txtMorada.Text == string.Empty)
+                if (txtRua.Text == string.Empty)
                 {
-                    errorProvider.SetError(txtMorada, "A morada é obrigatória!");
+                    errorProvider.SetError(txtRua, "A morada é obrigatória!");
                 }
                 else
                 {
-                    errorProvider.SetError(txtMorada, String.Empty);
+                    errorProvider.SetError(txtRua, String.Empty);
                 }
 
                 if (codPostalPrefixo == string.Empty)
@@ -374,11 +374,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             string nome = txtNome.Text;
             var dtNascimento = dataNascimento.Value;
-            string rua = txtMorada.Text;
-            string numeroCasa = txtNumeroCasa.Text;
-            string andarCasa = txtAndar.Text;
-            string codPostalPrefixo = txtCodPostalPre.Text;
-            string codPostalSufixo = txtCodPostalSuf.Text;
+            string rua = txtRua.Text;
+            string nrMorada = txtNumeroCasa.Text;
+            string andarPiso = txtAndarPiso.Text;
+            string codPrefixo = txtCodPostalPre.Text;
+            string codSufixo = txtCodPostalSuf.Text;
             string localidade = txtLocalidade.Text;
             string email = txtEmail.Text;
             string telemovel = txtContacto.Text;
@@ -391,6 +391,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string nomeSubsistema = txtNomeSubsistema.Text;
             string numeroSubsistema = txtNSubsistema.Text;
             string numeroSNS = txtSNS.Text;
+            string bairroLocal = txtBairroLocal.Text;
+            string designacao = txtDesignacao.Text;
             string sexo = "";
 
 
@@ -432,7 +434,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     conn.Open();
 
-                    string queryInsertData = "INSERT INTO Paciente(nome,dataNascimento,email,Contacto,nif,rua,numeroCasa,Andar,codPostalPrefixo,codPostalSufixo,localidade,IdEnfermeiro,Acordo,NomeSeguradora,NumeroApoliceSeguradora,NomeSubsistema,NumeroSubsistema,NumeroSNS,Sexo,PlanoVacinacao,IdProfissao) VALUES(@nome,@dataNascimento,@email,@contacto,@nif,@rua,@numeroCasa,@andar,@codPostalPrefixo,@codPostalSufixo,@localidade,@IdEnfermeiro, @acordo, @nomeSeguradora, @numeroApoliceSeguradora, @nomeSubsistema, @numeroSubsistema, @numeroSNS, @sexo, @planoVacinacao, @nomeProfissao);";
+                    string queryInsertData = "INSERT INTO Paciente(Nome,DataNascimento,Email,Contacto,Nif,Rua,NumeroCasa,Andar,localidade,bairroLocal,codPostalPrefixo,codPostalSufixo,designacao,IdEnfermeiro,Acordo,NomeSeguradora,NumeroApoliceSeguradora,NomeSubsistema,NumeroSubsistema,NumeroSNS,Sexo,PlanoVacinacao,IdProfissao) VALUES(@nome,@dataNascimento,@email,@contacto,@nif,@rua,@numeroMorada,@andarPiso,@localidade,@bairroLocal,@codPrefixo,@codSufixo,@designacao,@IdEnfermeiro,@acordo,@nomeSeguradora,@numeroApoliceSeguradora,@nomeSubsistema,@numeroSubsistema,@numeroSNS,@sexo,@planoVacinacao,@nomeProfissao);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.Parameters.AddWithValue("@nome", nome);
                     sqlCommand.Parameters.AddWithValue("@dataNascimento", dtNascimento.ToString("MM/dd/yyyy"));
@@ -441,21 +443,38 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     // sqlCommand.Parameters.AddWithValue("@profissao", );
                     sqlCommand.Parameters.AddWithValue("@rua", rua);
                     //sqlCommand.Parameters.AddWithValue("@numeroCasa", Convert.ToInt32(numeroCasa));
-                    sqlCommand.Parameters.AddWithValue("@andar", andarCasa);
-                    sqlCommand.Parameters.AddWithValue("@codPostalPrefixo", Convert.ToInt32(codPostalSufixo));
-                    sqlCommand.Parameters.AddWithValue("@codPostalSufixo", Convert.ToInt32(codPostalPrefixo));
                     sqlCommand.Parameters.AddWithValue("@localidade", localidade);
+                    sqlCommand.Parameters.AddWithValue("@codPrefixo", codPrefixo);
+                    sqlCommand.Parameters.AddWithValue("@codSufixo", codSufixo);
                     sqlCommand.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
                     sqlCommand.Parameters.AddWithValue("@acordo", acordo);
                     sqlCommand.Parameters.AddWithValue("@nomeSeguradora", nomeSeguradora);
 
-                    if (numeroCasa != string.Empty)
+                    if (nrMorada != string.Empty)
                     {
-                        sqlCommand.Parameters.AddWithValue("@numeroCasa", Convert.ToInt32(numeroCasa));
+                        sqlCommand.Parameters.AddWithValue("@numeroMorada", Convert.ToInt32(nrMorada));
                     }
                     else
                     {
-                        sqlCommand.Parameters.AddWithValue("@numeroCasa", DBNull.Value);
+                        sqlCommand.Parameters.AddWithValue("@numeroMorada", DBNull.Value);
+                    }
+
+                    if (andarPiso != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@andarPiso", Convert.ToString(andarPiso));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@andarPiso", DBNull.Value);
+                    }
+
+                    if (bairroLocal != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@bairroLocal", Convert.ToString(bairroLocal));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@bairroLocal", DBNull.Value);
                     }
 
                     if (numeroApolice != string.Empty)
@@ -476,6 +495,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@email", DBNull.Value);
                     }
 
+
+                    if (designacao != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@designacao", Convert.ToString(designacao.ToUpper()));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@designacao", DBNull.Value);
+                    }
 
 
                     sqlCommand.Parameters.AddWithValue("@nomeSubsistema", nomeSubsistema);
@@ -535,11 +563,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void txtCodPostalPre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //garantir que são inseridos apenas numeros
-            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+
         }
 
         private void txtCodPostalSuf_TextChanged(object sender, EventArgs e)
@@ -549,11 +573,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void txtCodPostalSuf_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //garantir que são inseridos apenas numeros
-            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+
         }
 
         private void txtContacto_KeyPress(object sender, KeyPressEventArgs e)
@@ -812,9 +832,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             txtNome.Text = "";
             dataNascimento.Value = DateTime.Today;
-            txtMorada.Text = "";
+            txtRua.Text = "";
             txtNumeroCasa.Text = "";
-            txtAndar.Text = "";
+            txtAndarPiso.Text = "";
             txtCodPostalPre.Text = "";
             txtCodPostalSuf.Text = "";
             txtLocalidade.Text = "";
@@ -830,6 +850,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             radioButtonIndefinido.Checked = false;
             radioButtonAtualizado.Checked = false;
             radioButtonNaoAtualizado.Checked = false;
+            errorProvider.Clear();
             reiniciar();
         }
 

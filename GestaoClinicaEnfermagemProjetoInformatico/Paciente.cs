@@ -18,12 +18,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public string Rua { get; set; }
         public int? NumeroCasa { get; set; }
         public string Andar { get; set; }
-
-     //   public string codigoPostal { get; set; }
-
-        public double codPostalPrefixo { get; set; }
-        public double codPostalSufixo { get; set; }
         public string localidade { get; set; }
+        public string bairroLocal { get; set; }
+
+        public string codigoPostal { get; set; }
+        public string designacao { get; set; }
 
         public int IdEnfermeiro { get; set; }
         public string Acordo { get; set; }
