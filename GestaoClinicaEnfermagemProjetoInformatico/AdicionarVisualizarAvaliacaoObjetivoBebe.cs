@@ -87,14 +87,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void cbTipoParto_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //ver se dá com Id
             if(cbTipoParto.SelectedItem.ToString()== "Distócico")
             {
                 groupBoxPartoDistocico.Visible = true;
                 radioButtonForceps.Visible = true;
                 radioButtonVentosa.Visible = true;
             }
+            else
+            {
+                groupBoxPartoDistocico.Visible = false;
+                radioButtonForceps.Visible = false;
+                radioButtonVentosa.Visible = false;
+            }
 
-            if (cbTipoParto.SelectedItem.ToString() == "Eutócico")
+         /*  if (cbTipoParto.SelectedItem.ToString() == "Eutócico")
             {
                 groupBoxPartoDistocico.Visible = false;
                 radioButtonForceps.Visible = false;
@@ -106,7 +113,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 groupBoxPartoDistocico.Visible = false;
                 radioButtonForceps.Visible = false;
                 radioButtonVentosa.Visible = false;
-            }
+            }*/
         }
 
         private void fechar_Click(object sender, EventArgs e)

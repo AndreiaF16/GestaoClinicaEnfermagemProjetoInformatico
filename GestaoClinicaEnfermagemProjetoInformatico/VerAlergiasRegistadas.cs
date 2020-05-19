@@ -18,11 +18,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Alergia alergia = null;
         private List<Alergia> listaAlergias = new List<Alergia>();
         private List<Alergia> auxiliar = new List<Alergia>();
-
+        private ErrorProvider errorProvider = new ErrorProvider();
         public VerAlergiasRegistadas()
         {
             InitializeComponent();
             conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void VerAlergiasRegistadas_Load(object sender, EventArgs e)
@@ -72,15 +74,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            int id =Convert.ToInt32( txtId.Text);
+            int id = Convert.ToInt32(txtId.Text);
             string nome = txtNome.Text;
             string sintomas = txtSintomas.Text;
 
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
+            if (VerificarDadosInseridos())
             {
                 try
                 {
@@ -102,6 +100,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
                     MessageBox.Show("Alergia alterada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
+                    limparCampos();
                     UpdateDataGridView();
 
                 }
@@ -109,7 +108,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     MessageBox.Show("Erro interno, não foi possível alterar a alergia!", excep.Message);
                 }
-
             }
         }
 
@@ -120,6 +118,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o nome da alergia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtNome.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNome, "O nome da alergia é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtNome, String.Empty);
+                }
                 return false;
             }
             return true;
@@ -218,6 +224,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
 
             return listaAlergias;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            txtNome.Text = "";
+            txtSintomas.Text = "";
+            //reiniciar();
+            errorProvider.Clear();
         }
     }
 }

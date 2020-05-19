@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IniciarConsultaMarcada));
             this.lblEscala = new System.Windows.Forms.Label();
-            this.txtValorConsulta = new System.Windows.Forms.TextBox();
             this.lblCustoConsulta = new System.Windows.Forms.Label();
             this.lblDia = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
@@ -61,7 +60,11 @@
             this.lblHistoriaAtual = new System.Windows.Forms.Label();
             this.txtHistoriaAtual = new System.Windows.Forms.TextBox();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -69,6 +72,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtDiagnostico = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSemDor = new System.Windows.Forms.Button();
             this.btnDorLigeira = new System.Windows.Forms.Button();
@@ -78,14 +83,10 @@
             this.btnLocalizacaoDor = new System.Windows.Forms.Button();
             this.btnDorMaxima = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.painelPrincipal = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtDiagnostico = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.UpDownPeso = new System.Windows.Forms.NumericUpDown();
+            this.txtValorConsulta = new System.Windows.Forms.TextBox();
+            this.button9 = new System.Windows.Forms.Button();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -94,11 +95,12 @@
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelFormulario.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.painelPrincipal.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownPeso)).BeginInit();
             this.SuspendLayout();
             // 
             // lblEscala
@@ -112,15 +114,6 @@
             this.lblEscala.TabIndex = 27;
             this.lblEscala.Text = "label2";
             this.lblEscala.Visible = false;
-            // 
-            // txtValorConsulta
-            // 
-            this.txtValorConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorConsulta.Location = new System.Drawing.Point(178, 33);
-            this.txtValorConsulta.Name = "txtValorConsulta";
-            this.txtValorConsulta.Size = new System.Drawing.Size(114, 26);
-            this.txtValorConsulta.TabIndex = 24;
-            this.txtValorConsulta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorConsulta_KeyPress);
             // 
             // lblCustoConsulta
             // 
@@ -472,6 +465,52 @@
             this.panelFormulario.Size = new System.Drawing.Size(1154, 748);
             this.panelFormulario.TabIndex = 2;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.Color.White;
+            this.groupBox4.Controls.Add(this.button9);
+            this.groupBox4.Controls.Add(this.UpDownPeso);
+            this.groupBox4.Controls.Add(this.btnGuardar);
+            this.groupBox4.Controls.Add(this.txtValorConsulta);
+            this.groupBox4.Controls.Add(this.lblCustoConsulta);
+            this.groupBox4.Location = new System.Drawing.Point(781, 505);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(308, 212);
+            this.groupBox4.TabIndex = 31;
+            this.groupBox4.TabStop = false;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_guardar_todos_50;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(56, 97);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGuardar.Size = new System.Drawing.Size(206, 48);
+            this.btnGuardar.TabIndex = 25;
+            this.btnGuardar.Text = "Registar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.label3.Location = new System.Drawing.Point(6, 1);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(173, 39);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Consulta:";
+            // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
@@ -490,6 +529,26 @@
             this.groupBox3.TabIndex = 29;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Acrescentar e Visualizar";
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button8.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_adicionar_50;
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.ForeColor = System.Drawing.Color.Black;
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button8.Location = new System.Drawing.Point(5, 373);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
+            this.button8.Name = "button8";
+            this.button8.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button8.Size = new System.Drawing.Size(202, 60);
+            this.button8.TabIndex = 36;
+            this.button8.Text = "Falta form, me esqueci Laboratorias...";
+            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button8.UseVisualStyleBackColor = false;
             // 
             // button7
             // 
@@ -634,6 +693,26 @@
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             // 
+            // txtDiagnostico
+            // 
+            this.txtDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiagnostico.Location = new System.Drawing.Point(146, 331);
+            this.txtDiagnostico.Multiline = true;
+            this.txtDiagnostico.Name = "txtDiagnostico";
+            this.txtDiagnostico.Size = new System.Drawing.Size(526, 76);
+            this.txtDiagnostico.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(19, 331);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 20);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Diagnóstico:";
+            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
@@ -754,48 +833,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Utente: ";
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnCancelar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_cancelar_50;
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(164, 103);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnCancelar.Size = new System.Drawing.Size(128, 49);
-            this.btnCancelar.TabIndex = 26;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_guardar_todos_50;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(10, 103);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGuardar.Size = new System.Drawing.Size(128, 49);
-            this.btnGuardar.TabIndex = 25;
-            this.btnGuardar.Text = "Registar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
             // painelPrincipal
             // 
             this.painelPrincipal.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -808,69 +845,49 @@
             this.painelPrincipal.Size = new System.Drawing.Size(1386, 788);
             this.painelPrincipal.TabIndex = 4;
             // 
-            // label2
+            // UpDownPeso
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(19, 331);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Diagnóstico:";
+            this.UpDownPeso.DecimalPlaces = 2;
+            this.UpDownPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownPeso.Location = new System.Drawing.Point(178, 65);
+            this.UpDownPeso.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            131072});
+            this.UpDownPeso.Name = "UpDownPeso";
+            this.UpDownPeso.Size = new System.Drawing.Size(114, 26);
+            this.UpDownPeso.TabIndex = 52;
             // 
-            // txtDiagnostico
+            // txtValorConsulta
             // 
-            this.txtDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiagnostico.Location = new System.Drawing.Point(146, 331);
-            this.txtDiagnostico.Multiline = true;
-            this.txtDiagnostico.Name = "txtDiagnostico";
-            this.txtDiagnostico.Size = new System.Drawing.Size(526, 76);
-            this.txtDiagnostico.TabIndex = 8;
+            this.txtValorConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorConsulta.Location = new System.Drawing.Point(178, 33);
+            this.txtValorConsulta.Name = "txtValorConsulta";
+            this.txtValorConsulta.Size = new System.Drawing.Size(114, 26);
+            this.txtValorConsulta.TabIndex = 24;
+            this.txtValorConsulta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorConsulta_KeyPress);
             // 
-            // label3
+            // button9
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label3.Location = new System.Drawing.Point(6, 1);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(173, 39);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "Consulta:";
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button8.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_adicionar_50;
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.Black;
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button8.Location = new System.Drawing.Point(5, 373);
-            this.button8.Margin = new System.Windows.Forms.Padding(2);
-            this.button8.Name = "button8";
-            this.button8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button8.Size = new System.Drawing.Size(202, 60);
-            this.button8.TabIndex = 36;
-            this.button8.Text = "Falta form, me esqueci Laboratorias...";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.BackColor = System.Drawing.Color.White;
-            this.groupBox4.Controls.Add(this.btnGuardar);
-            this.groupBox4.Controls.Add(this.btnCancelar);
-            this.groupBox4.Controls.Add(this.txtValorConsulta);
-            this.groupBox4.Controls.Add(this.lblCustoConsulta);
-            this.groupBox4.Location = new System.Drawing.Point(781, 505);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(308, 212);
-            this.groupBox4.TabIndex = 31;
-            this.groupBox4.TabStop = false;
+            this.button9.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button9.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
+            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.ForeColor = System.Drawing.Color.Black;
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button9.Location = new System.Drawing.Point(56, 145);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
+            this.button9.Name = "button9";
+            this.button9.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button9.Size = new System.Drawing.Size(206, 48);
+            this.button9.TabIndex = 33;
+            this.button9.Text = "Limpar Campos";
+            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // IniciarConsultaMarcada
             // 
@@ -893,14 +910,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.painelPrincipal.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownPeso)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -910,9 +928,7 @@
         private System.Windows.Forms.PictureBox btnMaximizar;
         private System.Windows.Forms.PictureBox btnFechar;
         private System.Windows.Forms.Label lblEscala;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.TextBox txtValorConsulta;
         private System.Windows.Forms.Label lblCustoConsulta;
         private System.Windows.Forms.Label lblDia;
         private System.Windows.Forms.Label lblHora;
@@ -963,5 +979,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.NumericUpDown UpDownPeso;
+        private System.Windows.Forms.TextBox txtValorConsulta;
+        private System.Windows.Forms.Button button9;
     }
 }

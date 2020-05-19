@@ -9,6 +9,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public class ProdutosStock
     {
         public string nome { get; set; }
+
+        public string nomeFornecedor { get; set; }
         public int quantidade { get; set; }
 
         public int iva { get; set; }

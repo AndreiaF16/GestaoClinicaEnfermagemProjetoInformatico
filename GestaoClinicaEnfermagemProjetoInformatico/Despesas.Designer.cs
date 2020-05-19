@@ -37,8 +37,6 @@
             this.hora = new System.Windows.Forms.Timer(this.components);
             this.lblTitulo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtProcurarDespesa = new System.Windows.Forms.TextBox();
@@ -46,17 +44,17 @@
             this.txtProcurarEncomenda = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxEncomenda = new System.Windows.Forms.ComboBox();
+            this.lblEncomenda = new System.Windows.Forms.Label();
             this.UpDownPreco = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxDoenca = new System.Windows.Forms.ComboBox();
+            this.comboBoxDespesa = new System.Windows.Forms.ComboBox();
             this.lblFuncao = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtObservacoes = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblDataNascimento = new System.Windows.Forms.Label();
-            this.dataDiagnostico = new System.Windows.Forms.DateTimePicker();
+            this.dataDespesa = new System.Windows.Forms.DateTimePicker();
             this.lblDia = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
             this.panelTitulo = new System.Windows.Forms.Panel();
@@ -70,7 +68,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.dataGridViewDoencas = new System.Windows.Forms.DataGridView();
             this.panelFormulario = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
@@ -109,22 +106,20 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.comboBoxEncomenda);
+            this.groupBox1.Controls.Add(this.lblEncomenda);
             this.groupBox1.Controls.Add(this.UpDownPreco);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.comboBoxDoenca);
+            this.groupBox1.Controls.Add(this.comboBoxDespesa);
             this.groupBox1.Controls.Add(this.lblFuncao);
             this.groupBox1.Controls.Add(this.btnGuardar);
             this.groupBox1.Controls.Add(this.txtObservacoes);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.lblDataNascimento);
-            this.groupBox1.Controls.Add(this.dataDiagnostico);
+            this.groupBox1.Controls.Add(this.dataDespesa);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
             this.groupBox1.Location = new System.Drawing.Point(19, 45);
@@ -133,24 +128,6 @@
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registar Despesa";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(446, 106);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(15, 14);
-            this.checkBox2.TabIndex = 77;
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(446, 42);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 76;
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -170,9 +147,9 @@
             this.groupBox2.Controls.Add(this.txtProcurarDespesa);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(20, 35);
+            this.groupBox2.Location = new System.Drawing.Point(6, 25);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(236, 60);
+            this.groupBox2.Size = new System.Drawing.Size(248, 60);
             this.groupBox2.TabIndex = 55;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Despesa";
@@ -190,9 +167,9 @@
             this.groupBox3.Controls.Add(this.txtProcurarEncomenda);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.Black;
-            this.groupBox3.Location = new System.Drawing.Point(20, 101);
+            this.groupBox3.Location = new System.Drawing.Point(6, 94);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(236, 60);
+            this.groupBox3.Size = new System.Drawing.Size(248, 60);
             this.groupBox3.TabIndex = 56;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Encomenda";
@@ -210,7 +187,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(619, 203);
+            this.label7.Location = new System.Drawing.Point(483, 203);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(438, 20);
             this.label7.TabIndex = 74;
@@ -221,37 +198,40 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(402, 197);
+            this.label6.Location = new System.Drawing.Point(401, 187);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(18, 20);
             this.label6.TabIndex = 73;
             this.label6.Text = "€";
             // 
-            // comboBox1
+            // comboBoxEncomenda
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(179, 101);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(260, 28);
-            this.comboBox1.TabIndex = 72;
-            this.comboBox1.Text = "Selecione a Encomenda";
+            this.comboBoxEncomenda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEncomenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEncomenda.FormattingEnabled = true;
+            this.comboBoxEncomenda.ItemHeight = 20;
+            this.comboBoxEncomenda.Location = new System.Drawing.Point(180, 84);
+            this.comboBoxEncomenda.Name = "comboBoxEncomenda";
+            this.comboBoxEncomenda.Size = new System.Drawing.Size(260, 28);
+            this.comboBoxEncomenda.TabIndex = 72;
+            this.comboBoxEncomenda.Visible = false;
             // 
-            // label4
+            // lblEncomenda
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(30, 109);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(151, 20);
-            this.label4.TabIndex = 71;
-            this.label4.Text = "Tipo de Encomenda";
+            this.lblEncomenda.AutoSize = true;
+            this.lblEncomenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEncomenda.ForeColor = System.Drawing.Color.Black;
+            this.lblEncomenda.Location = new System.Drawing.Point(30, 90);
+            this.lblEncomenda.Name = "lblEncomenda";
+            this.lblEncomenda.Size = new System.Drawing.Size(95, 20);
+            this.lblEncomenda.TabIndex = 71;
+            this.lblEncomenda.Text = "Encomenda";
+            this.lblEncomenda.Visible = false;
             // 
             // UpDownPreco
             // 
             this.UpDownPreco.DecimalPlaces = 2;
-            this.UpDownPreco.Location = new System.Drawing.Point(180, 195);
+            this.UpDownPreco.Location = new System.Drawing.Point(179, 181);
             this.UpDownPreco.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -266,21 +246,23 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(30, 197);
+            this.label5.Location = new System.Drawing.Point(30, 187);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 20);
             this.label5.TabIndex = 69;
             this.label5.Text = "Valor da Despesa";
             // 
-            // comboBoxDoenca
+            // comboBoxDespesa
             // 
-            this.comboBoxDoenca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxDoenca.FormattingEnabled = true;
-            this.comboBoxDoenca.Location = new System.Drawing.Point(180, 35);
-            this.comboBoxDoenca.Name = "comboBoxDoenca";
-            this.comboBoxDoenca.Size = new System.Drawing.Size(260, 28);
-            this.comboBoxDoenca.TabIndex = 53;
-            this.comboBoxDoenca.Text = "Selecione o Tipo de Despesa";
+            this.comboBoxDespesa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDespesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxDespesa.FormattingEnabled = true;
+            this.comboBoxDespesa.ItemHeight = 20;
+            this.comboBoxDespesa.Location = new System.Drawing.Point(180, 35);
+            this.comboBoxDespesa.Name = "comboBoxDespesa";
+            this.comboBoxDespesa.Size = new System.Drawing.Size(260, 28);
+            this.comboBoxDespesa.TabIndex = 53;
+            this.comboBoxDespesa.SelectedIndexChanged += new System.EventHandler(this.comboBoxDespesa_SelectedIndexChanged);
             // 
             // lblFuncao
             // 
@@ -302,7 +284,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(864, 119);
+            this.btnGuardar.Location = new System.Drawing.Point(837, 24);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -312,6 +294,7 @@
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtObservacoes
             // 
@@ -338,20 +321,20 @@
             this.lblDataNascimento.AutoSize = true;
             this.lblDataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDataNascimento.ForeColor = System.Drawing.Color.Black;
-            this.lblDataNascimento.Location = new System.Drawing.Point(30, 150);
+            this.lblDataNascimento.Location = new System.Drawing.Point(30, 138);
             this.lblDataNascimento.Name = "lblDataNascimento";
             this.lblDataNascimento.Size = new System.Drawing.Size(112, 20);
             this.lblDataNascimento.TabIndex = 14;
             this.lblDataNascimento.Text = "Data Despesa";
             // 
-            // dataDiagnostico
+            // dataDespesa
             // 
-            this.dataDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataDiagnostico.Location = new System.Drawing.Point(180, 144);
-            this.dataDiagnostico.Name = "dataDiagnostico";
-            this.dataDiagnostico.Size = new System.Drawing.Size(259, 26);
-            this.dataDiagnostico.TabIndex = 15;
-            this.dataDiagnostico.Value = new System.DateTime(2020, 3, 29, 0, 0, 0, 0);
+            this.dataDespesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataDespesa.Location = new System.Drawing.Point(179, 132);
+            this.dataDespesa.Name = "dataDespesa";
+            this.dataDespesa.Size = new System.Drawing.Size(259, 26);
+            this.dataDespesa.TabIndex = 15;
+            this.dataDespesa.Value = new System.DateTime(2020, 3, 29, 0, 0, 0, 0);
             // 
             // lblDia
             // 
@@ -550,13 +533,12 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridViewDoencas.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewDoencas.Size = new System.Drawing.Size(1093, 254);
+            this.dataGridViewDoencas.Size = new System.Drawing.Size(1093, 308);
             this.dataGridViewDoencas.TabIndex = 50;
             // 
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
-            this.panelFormulario.Controls.Add(this.label1);
             this.panelFormulario.Controls.Add(this.groupBox1);
             this.panelFormulario.Controls.Add(this.dataGridViewDoencas);
             this.panelFormulario.Controls.Add(this.label2);
@@ -565,16 +547,6 @@
             this.panelFormulario.Name = "panelFormulario";
             this.panelFormulario.Size = new System.Drawing.Size(1136, 706);
             this.panelFormulario.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(188, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(934, 55);
-            this.label1.TabIndex = 56;
-            this.label1.Text = "AINDA NÃO TEM CODIGO, Ñ FUNCIONA";
             // 
             // label2
             // 
@@ -642,13 +614,13 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtProcurarDespesa;
-        private System.Windows.Forms.ComboBox comboBoxDoenca;
+        private System.Windows.Forms.ComboBox comboBoxDespesa;
         private System.Windows.Forms.Label lblFuncao;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.TextBox txtObservacoes;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblDataNascimento;
-        private System.Windows.Forms.DateTimePicker dataDiagnostico;
+        private System.Windows.Forms.DateTimePicker dataDespesa;
         private System.Windows.Forms.Label lblDia;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.PictureBox btnMaximizar;
@@ -666,15 +638,12 @@
         private System.Windows.Forms.Panel painelPrincipal;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtProcurarEncomenda;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBoxEncomenda;
+        private System.Windows.Forms.Label lblEncomenda;
         private System.Windows.Forms.NumericUpDown UpDownPreco;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label1;
     }
 }

@@ -18,12 +18,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Doenca doenca = null;
         private List<Doenca> listaDoencas= new List<Doenca>();
         private List<Doenca> auxiliar = new List<Doenca>();
-
+        private ErrorProvider errorProvider = new ErrorProvider();
         public VerDoencasRegistadas()
         {
             InitializeComponent();
             conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -144,6 +145,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
                     MessageBox.Show("Doença alterada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
+                    limparCampos();
                     UpdateDataGridView();
 
                 }
@@ -162,6 +164,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o nome da cirurgia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtNome.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNome, "O nome do método contracetivo é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtNome, String.Empty);
+                }
                 return false;
             }
             return true;
@@ -217,6 +227,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 auxiliar.Add(item);
             }
             return auxiliar;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            txtNome.Text = "";
+            txtSintomas.Text = "";
+            errorProvider.Clear();
+
         }
     }
 }

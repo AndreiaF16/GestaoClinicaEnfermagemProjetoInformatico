@@ -20,6 +20,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Paciente paciente = null;
         private Lucro lucro = new Lucro();
         private DateTime inicio;
+        private ErrorProvider errorProvider = new ErrorProvider();
 
         public IniciarConsultaSemMarcacao(Enfermeiro enf, Paciente pac)
         {
@@ -34,13 +35,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             labelData.ForeColor = Color.White;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
-
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            limparCampos();
+            this.Close();       
         }
 
         private void IniciarConsulta_Load(object sender, EventArgs e)
@@ -92,16 +94,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string valorConsulta = txtValorConsulta.Text;
             string diagnostico = txtDiagnostico.Text;
 
-            if (historiaAtual == string.Empty || sintomatologia == string.Empty || sinais == string.Empty || escalaDor == string.Empty || valorConsulta == string.Empty || diagnostico == string.Empty)
+            if (valorConsulta == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha os campos obrigatórios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (valorConsulta == string.Empty)
+                {
+                    errorProvider.SetError(txtValorConsulta, "O valor da consulta é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtValorConsulta, String.Empty);
+                }
                 return false;
             }
-            /*if(Convert.ToInt16(tensaoArterial) <= 0)
-            {
-                MessageBox.Show("A tensão arterial tem de ter um valor superior a zero", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }*/
+      
             if (Convert.ToDecimal(valorConsulta) <= 0)
             {
                 MessageBox.Show("O valor da consulta tem que ser superior a zero", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -113,13 +119,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
         private void button1_Click_1(object sender, EventArgs e)
-        {
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
+        {          
                 string historiaAtual = txtHistoriaAtual.Text;
                 string sintomatologia = txtSintomatologia.Text;
                 string sinais = txtSinais.Text;
@@ -129,51 +129,88 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 string diag = txtDiagnostico.Text;
                 DateTime horaFim = DateTime.Now;
 
-                if (!VerificarDadosInseridos())
+            if (VerificarDadosInseridos())
+            {
+
+                try
                 {
-                    MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    try
+                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    connection.Open();
+
+                    string queryInsertData = "INSERT INTO Consulta(dataConsulta,horaInicioConsulta,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro,valorConsulta,horaFimConsulta,diagnostico) VALUES(@dataConsulta,@horaInicioConsulta,@historiaAtual,@sintomatologia,@sinais,@escalaDor,@idPaciente,@idEnfermeiro,@valorConsulta,@horaFimConsulta,@diagnostico);";
+                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                    sqlCommand.Parameters.AddWithValue("@dataConsulta", inicio);
+                    sqlCommand.Parameters.AddWithValue("@horaInicioConsulta", string.Format("{0:00}", inicio.Hour) + ":" + string.Format("{0:00}", inicio.Minute));
+                    // sqlCommand.Parameters.AddWithValue("@tensaoArterial", tensaoArterial);
+                    sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
+                    sqlCommand.Parameters.AddWithValue("@idEnfermeiro", enfermeiro.IdEnfermeiro);
+                    sqlCommand.Parameters.AddWithValue("@valorConsulta", valor);
+                    sqlCommand.Parameters.AddWithValue("@horaFimConsulta", string.Format("{0:00}", horaFim.Hour) + ":" + string.Format("{0:00}", horaFim.Minute));
+
+                    if (historiaAtual != string.Empty)
                     {
-                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                        connection.Open();
-
-                        string queryInsertData = "INSERT INTO Consulta(dataConsulta,horaInicioConsulta,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro,valorConsulta,horaFimConsulta,diagnostico) VALUES(@dataConsulta,@horaInicioConsulta,@historiaAtual,@sintomatologia,@sinais,@escalaDor,@idPaciente,@idEnfermeiro,@valorConsulta,@horaFimConsulta,@diagnostico);";
-                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                        sqlCommand.Parameters.AddWithValue("@dataConsulta", inicio);
-                        sqlCommand.Parameters.AddWithValue("@horaInicioConsulta", string.Format("{0:00}", inicio.Hour) + ":" + string.Format("{0:00}", inicio.Minute));
-                        // sqlCommand.Parameters.AddWithValue("@tensaoArterial", tensaoArterial);
-                        sqlCommand.Parameters.AddWithValue("@historiaAtual", historiaAtual);
-                        sqlCommand.Parameters.AddWithValue("@sintomatologia", sintomatologia);
-                        sqlCommand.Parameters.AddWithValue("@sinais", sinais);
-                        sqlCommand.Parameters.AddWithValue("@escalaDor", escalaDor);
-                        sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
-                        sqlCommand.Parameters.AddWithValue("@idEnfermeiro", enfermeiro.IdEnfermeiro);
-                        sqlCommand.Parameters.AddWithValue("@valorConsulta", valor);
-                        sqlCommand.Parameters.AddWithValue("@horaFimConsulta", string.Format("{0:00}", horaFim.Hour) + ":" + string.Format("{0:00}", horaFim.Minute));
-                        sqlCommand.Parameters.AddWithValue("@diagnostico", diag);
-                        sqlCommand.ExecuteNonQuery();
-
-                        MessageBox.Show("Consulta efetuada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
-                        connection.Close();
-                        connection.Open();
-                        /*
-                        string queryUpdateData = "UPDATE AgendamentoConsulta SET ConsultaRealizada = 1 WHERE IdPaciente = '" + paciente.IdPaciente + "' AND dataProximaConsulta = '" + DateTime.ParseExact(agendamentoConsulta.dataProximaConsulta, "dd/MM/yyyy", null).ToString("MM/dd/yyyy") + "' AND horaProximaConsulta = '" + agendamentoConsulta.horaProximaConsulta + "'; ";
-                        SqlCommand sqlCommand1 = new SqlCommand(queryUpdateData, connection);
-                        sqlCommand1.ExecuteNonQuery();
-                        connection.Close();*/
+                        sqlCommand.Parameters.AddWithValue("@historiaAtual", Convert.ToString(historiaAtual));
                     }
-                    catch (SqlException excep)
+                    else
                     {
-
-                        MessageBox.Show("Por erro interno é impossível registar a consulta", excep.Message);
+                        sqlCommand.Parameters.AddWithValue("@historiaAtual", DBNull.Value);
                     }
 
+                    if (sintomatologia != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@sintomatologia", Convert.ToString(sintomatologia));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@sintomatologia", DBNull.Value);
+                    }
+
+                    if (sinais != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@sinais", Convert.ToString(sinais));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@sinais", DBNull.Value);
+                    }
+
+                    if (escalaDor != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@escalaDor", Convert.ToString(escalaDor));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@escalaDor", DBNull.Value);
+                    }
+
+                    if (diag != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@diagnostico", Convert.ToString(diag));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@diagnostico", DBNull.Value);
+                    }
+
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Consulta efetuada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                    connection.Close();
+                    connection.Open();
+                    /*
+                    string queryUpdateData = "UPDATE AgendamentoConsulta SET ConsultaRealizada = 1 WHERE IdPaciente = '" + paciente.IdPaciente + "' AND dataProximaConsulta = '" + DateTime.ParseExact(agendamentoConsulta.dataProximaConsulta, "dd/MM/yyyy", null).ToString("MM/dd/yyyy") + "' AND horaProximaConsulta = '" + agendamentoConsulta.horaProximaConsulta + "'; ";
+                    SqlCommand sqlCommand1 = new SqlCommand(queryUpdateData, connection);
+                    sqlCommand1.ExecuteNonQuery();
+                    connection.Close();*/
                 }
+                catch (SqlException excep)
+                {
+
+                    MessageBox.Show("Por erro interno é impossível registar a consulta", excep.Message);
+                }
+
             }
+            
         }
 
         private void btnLocalizacaoDor_Click_1(object sender, EventArgs e)
@@ -268,6 +305,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             AdicionarVisualizarProdutosStockConsulta adicionarVisualizarProdutosStockConsulta = new AdicionarVisualizarProdutosStockConsulta();
             adicionarVisualizarProdutosStockConsulta.Show();
+        }
+
+        private void limparCampos()
+        {
+            txtDiagnostico.Text = "";
+            txtHistoriaAtual.Text = "";
+            txtSinais.Text = "";
+            txtSintomatologia.Text = "";
+            txtValorConsulta.Text = "";
+            lblEscala.Text = "";
+            errorProvider.Clear();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            limparCampos();
         }
     } 
 }

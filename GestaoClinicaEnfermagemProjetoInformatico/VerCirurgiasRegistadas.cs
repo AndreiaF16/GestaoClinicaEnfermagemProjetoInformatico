@@ -18,11 +18,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Cirurgia cirurgia = null;
         private List<Cirurgia> listaCirurgias = new List<Cirurgia>();
         private List<Cirurgia> auxiliar = new List<Cirurgia>();
+        private ErrorProvider errorProvider = new ErrorProvider();
 
         public VerCirurgiasRegistadas()
         {
             InitializeComponent();
             conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
 
         }
 
@@ -119,11 +122,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string nome = txtNome.Text;
             string caracterizacao = txtSintomas.Text;
 
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
+            if (VerificarDadosInseridos())
             {
                 try
                 {
@@ -144,6 +143,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
                     MessageBox.Show("Cirurgia alterada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
+                    limparCampos();
                     UpdateDataGridView();
 
                 }
@@ -162,6 +162,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome == string.Empty || caracterizacao == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o nome da cirurgia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtNome.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNome, "O nome da cirurgia é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtNome, String.Empty);
+                }
                 return false;
             }
             return true;
@@ -217,6 +225,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 auxiliar.Add(item);
             }
             return auxiliar;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            txtSintomas.Text = "";
+            txtNome.Text = "";
+            errorProvider.Clear();
         }
     }
 }

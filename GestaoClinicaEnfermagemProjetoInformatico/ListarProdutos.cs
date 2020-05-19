@@ -9,13 +9,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     class ListarProdutos
     {
 
-            public string nome { get; set; }
-            public decimal preco { get; set; }
-
-            public int iva { get; set; }
-
-            public int id { get; set; }
-
+        public string nome { get; set; }
+        public decimal preco { get; set; }
+        public int iva { get; set; }
         public int quant { get; set; }
+        public int id { get; set; }
+
     }
 }

@@ -18,10 +18,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Exame exame = null;
         private List<Exame> listaExames = new List<Exame>();
         private List<Exame> auxiliar = new List<Exame>();
+        private ErrorProvider errorProvider = new ErrorProvider();
+
         public VerExamesRegistados()
         {
             InitializeComponent();
             conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -177,6 +181,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
                     MessageBox.Show("Exame alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
+                    limparCampos();
                     UpdateDataGridView();
 
                 }
@@ -195,6 +200,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o nome do exame!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtNome.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNome, "O nome do exame é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtNome, String.Empty);
+                }
+
                 return false;
             }
             return true;
@@ -221,6 +235,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 auxiliar.Add(item);
             }
             return auxiliar;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            txtNome.Text = "";
+            txtDesignacao.Text = "";
+            txtCategoria.Text = "";
+            errorProvider.Clear();
         }
     }
 }

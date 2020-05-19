@@ -18,11 +18,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Aleitamento aleitamento = null;
         private List<Aleitamento> listaAleitamento = new List<Aleitamento>();
         private List<Aleitamento> auxiliar = new List<Aleitamento>();
+        private ErrorProvider errorProvider = new ErrorProvider();
 
         public VerEditarAleitamento()
         {
             InitializeComponent();
             conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void VerEditarAleitamento_Load(object sender, EventArgs e)
@@ -66,11 +69,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string tipo = txtTipo.Text;
             string obs = txtObs.Text;
 
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
+            if (VerificarDadosInseridos())
             {
                 try
                 {
@@ -91,6 +90,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
                     MessageBox.Show("Tipo de aleitamento alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
+                    limparCampos();
                     UpdateDataGridView();
 
                 }
@@ -158,6 +158,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (tipo == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o tipo de aleitamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtTipo.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtTipo, "O tipo de aleitamento é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtTipo, String.Empty);
+                }
+
                 return false;
             }
             return true;
@@ -213,6 +222,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 txtTipo.Text = aleitamento.tipoAleitamento;
                 txtObs.Text = aleitamento.Observacoes;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            txtObs.Text = "";
+            txtTipo.Text = "";
         }
     }
 }

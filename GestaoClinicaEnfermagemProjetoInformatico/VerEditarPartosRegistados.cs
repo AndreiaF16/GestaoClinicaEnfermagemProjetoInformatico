@@ -18,10 +18,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Parto parto = null;
         private List<Parto> listaPartos = new List<Parto>();
         private List<Parto> auxiliar = new List<Parto>();
+        private ErrorProvider errorProvider = new ErrorProvider();
         public VerEditarPartosRegistados()
         {
             InitializeComponent();
             conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void VerEditarPartosRegistados_Load(object sender, EventArgs e)
@@ -107,11 +110,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string nomeParto = txtNome.Text;
             string observacao = txtObservacoes.Text;
 
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
+            if (VerificarDadosInseridos())
             {
                 try
                 {
@@ -132,6 +131,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
                     MessageBox.Show("Tipo de parto alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
+                    limparCampos();
                     UpdateDataGridView();
 
                 }
@@ -151,6 +151,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o nome do tipo de parto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtNome.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNome, "O nome do tipo de parto é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtNome, String.Empty);
+                }
                 return false;
             }
             return true;
@@ -214,6 +222,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            txtNome.Text = "";
+            txtObservacoes.Text = "";
+            errorProvider.Clear();
         }
     }
 }

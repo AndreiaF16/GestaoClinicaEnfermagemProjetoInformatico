@@ -303,7 +303,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(871, 365);
+            this.btnCancelar.Location = new System.Drawing.Point(871, 323);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -325,7 +325,7 @@
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.Black;
             this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnLogin.Location = new System.Drawing.Point(871, 201);
+            this.btnLogin.Location = new System.Drawing.Point(871, 245);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.RightToLeft = System.Windows.Forms.RightToLeft.No;

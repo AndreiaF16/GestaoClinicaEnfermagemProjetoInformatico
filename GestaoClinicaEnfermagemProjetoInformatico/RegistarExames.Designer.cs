@@ -42,28 +42,29 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblSintomatologia = new System.Windows.Forms.Label();
             this.txtCategoria = new System.Windows.Forms.TextBox();
-            this.panelTitulo = new System.Windows.Forms.Panel();
-            this.hora = new System.Windows.Forms.Timer(this.components);
-            this.painelPrincipal = new System.Windows.Forms.Panel();
-            this.panelMenu = new System.Windows.Forms.Panel();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panelTitulo = new System.Windows.Forms.Panel();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.hora = new System.Windows.Forms.Timer(this.components);
+            this.painelPrincipal = new System.Windows.Forms.Panel();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelFormulario.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panelTitulo.SuspendLayout();
-            this.painelPrincipal.SuspendLayout();
-            this.panelMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            this.painelPrincipal.SuspendLayout();
+            this.panelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDia
@@ -102,6 +103,7 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.button1);
             this.panelFormulario.Controls.Add(this.label2);
             this.panelFormulario.Controls.Add(this.groupBox2);
             this.panelFormulario.Controls.Add(this.btnGuardar);
@@ -197,6 +199,27 @@
             this.txtCategoria.Size = new System.Drawing.Size(458, 87);
             this.txtCategoria.TabIndex = 4;
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90876545_253870845754605_8447427972255711232_n;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(778, 221);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGuardar.Size = new System.Drawing.Size(214, 78);
+            this.btnGuardar.TabIndex = 25;
+            this.btnGuardar.Text = "Registar Exame";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // panelTitulo
             // 
             this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
@@ -212,107 +235,6 @@
             this.panelTitulo.Name = "panelTitulo";
             this.panelTitulo.Size = new System.Drawing.Size(1294, 40);
             this.panelTitulo.TabIndex = 0;
-            // 
-            // hora
-            // 
-            this.hora.Enabled = true;
-            this.hora.Tick += new System.EventHandler(this.hora_Tick);
-            // 
-            // painelPrincipal
-            // 
-            this.painelPrincipal.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.painelPrincipal.Controls.Add(this.panelFormulario);
-            this.painelPrincipal.Controls.Add(this.panelMenu);
-            this.painelPrincipal.Controls.Add(this.panelTitulo);
-            this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.painelPrincipal.Name = "painelPrincipal";
-            this.painelPrincipal.Size = new System.Drawing.Size(1294, 765);
-            this.painelPrincipal.TabIndex = 6;
-            // 
-            // panelMenu
-            // 
-            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.panelMenu.Controls.Add(this.button2);
-            this.panelMenu.Controls.Add(this.btnVoltar);
-            this.panelMenu.Controls.Add(this.pictureBox2);
-            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 40);
-            this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(232, 725);
-            this.panelMenu.TabIndex = 1;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90876545_253870845754605_8447427972255711232_n;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(773, 312);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGuardar.Size = new System.Drawing.Size(214, 78);
-            this.btnGuardar.TabIndex = 25;
-            this.btnGuardar.Text = "Registar Exame";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button2.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_visualizar_arquivo_50;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.Location = new System.Drawing.Point(31, 324);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(170, 90);
-            this.button2.TabIndex = 32;
-            this.button2.Text = "Ver e Editar Exames Registados";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
-            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVoltar.Location = new System.Drawing.Point(0, 651);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
-            this.btnVoltar.TabIndex = 6;
-            this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnVoltar.UseVisualStyleBackColor = false;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
             // 
             // btnMaximizar
             // 
@@ -370,6 +292,107 @@
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
+            // hora
+            // 
+            this.hora.Enabled = true;
+            this.hora.Tick += new System.EventHandler(this.hora_Tick);
+            // 
+            // painelPrincipal
+            // 
+            this.painelPrincipal.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.painelPrincipal.Controls.Add(this.panelFormulario);
+            this.painelPrincipal.Controls.Add(this.panelMenu);
+            this.painelPrincipal.Controls.Add(this.panelTitulo);
+            this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.painelPrincipal.Name = "painelPrincipal";
+            this.painelPrincipal.Size = new System.Drawing.Size(1294, 765);
+            this.painelPrincipal.TabIndex = 6;
+            // 
+            // panelMenu
+            // 
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.panelMenu.Controls.Add(this.button2);
+            this.panelMenu.Controls.Add(this.btnVoltar);
+            this.panelMenu.Controls.Add(this.pictureBox2);
+            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelMenu.Location = new System.Drawing.Point(0, 40);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(232, 725);
+            this.panelMenu.TabIndex = 1;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button2.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_visualizar_arquivo_50;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.Location = new System.Drawing.Point(31, 324);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button2.Size = new System.Drawing.Size(170, 90);
+            this.button2.TabIndex = 32;
+            this.button2.Text = "Ver e Editar Exames Registados";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
+            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnVoltar.Location = new System.Drawing.Point(0, 651);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
+            this.btnVoltar.TabIndex = 6;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnVoltar.UseVisualStyleBackColor = false;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(778, 299);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(214, 78);
+            this.button1.TabIndex = 33;
+            this.button1.Text = "Limpar Campos";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // RegistarExames
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,13 +411,13 @@
             this.groupBox2.PerformLayout();
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
-            this.painelPrincipal.ResumeLayout(false);
-            this.panelMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            this.painelPrincipal.ResumeLayout(false);
+            this.panelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -425,5 +448,6 @@
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDesignacao;
+        private System.Windows.Forms.Button button1;
     }
 }

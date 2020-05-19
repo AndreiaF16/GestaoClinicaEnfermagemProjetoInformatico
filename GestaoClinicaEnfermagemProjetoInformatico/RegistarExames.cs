@@ -13,9 +13,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class RegistarExames : Form
     {
+        private ErrorProvider errorProvider = new ErrorProvider();
         public RegistarExames(AdicionarVisualizarExamePaciente adicionarVisualizarExamePaciente)
         {
             InitializeComponent();
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void RegistarExames_Load(object sender, EventArgs e)
@@ -68,11 +71,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
+            if (VerificarDadosInseridos())
             {
                 string nome = txtNome.Text;
                 string categoria = txtCategoria.Text;
@@ -90,6 +89,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Exame registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
@@ -105,6 +105,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o nome do exame!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtNome.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNome, "O nome do exame é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtNome, String.Empty);
+                }
                 return false;
             }
 
@@ -114,6 +122,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnCancelar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            txtCategoria.Text = "";
+            txtDesignacao.Text = "";
+            txtNome.Text = "";
+            errorProvider.Clear();
         }
     }
 }

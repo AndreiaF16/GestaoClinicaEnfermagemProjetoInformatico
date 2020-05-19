@@ -14,18 +14,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class LinhaEncomenda : Form
     {
         RegistarEncomendas registar = new RegistarEncomendas();
+        ClassFornecedor fornecedor = new ClassFornecedor();
         Encomendas encomendas = null;
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private List<ListarProdutos> listaProdutos = new List<ListarProdutos>();
         private List<ListarProdutos> listaEncomenda = new List<ListarProdutos>();
 
-        public LinhaEncomenda(Encomendas enc, RegistarEncomendas registarEncomendas)
+        public LinhaEncomenda(ClassFornecedor forn, Encomendas enc, RegistarEncomendas registarEncomendas)
         {
             InitializeComponent();
             encomendas = enc;
             registar = registarEncomendas;
+            fornecedor = forn;
+            label11.Text = "Fornecedor: " + fornecedor.nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = listaEncomenda };
+            dataGridViewEncomenda.DataSource = bindingSource2;
+            /*dataGridViewEncomenda.Columns[0].ReadOnly = true;
+            dataGridViewEncomenda.Columns[1].ReadOnly = true;
+            dataGridViewEncomenda.Columns[2].ReadOnly = true;
+            dataGridViewEncomenda.Columns[4].Visible = false;*/
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -70,7 +79,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar a encomenda", excep.Message);
+                    MessageBox.Show(/*"Por erro interno é impossível registar a encomenda",*/excep.Message);
                 }
             } 
             else
@@ -107,7 +116,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            registar.Delete(encomendas.IdEncomenda);
+            registar.Delete(encomendas.NFatura);
             this.Close();
         }
 
@@ -122,7 +131,38 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select IdProdutoStock, NomeProduto, precoUnitario, taxaIVA from ProdutoStock ORDER BY NomeProduto", conn);
+            SqlCommand cmd = new SqlCommand("select IdProdutoStock, NomeProduto, precoUnitario, taxaIVA from ProdutoStock WHERE IdFornecedor = " + fornecedor.IdFornecedor + " ORDER BY NomeProduto ", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                ListarProdutos produto = new ListarProdutos
+                {
+                    id = (int)reader["IdProdutoStock"],
+                    nome = (string)reader["NomeProduto"],
+                    preco = (decimal)reader["precoUnitario"],
+                    iva = (int)reader["taxaIVA"]
+                };
+                produto.quant = 0;
+                listaProdutos.Add(produto);
+               
+            }
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaProdutos };
+            dataGridViewListaProdutos.DataSource = bindingSource1;
+
+            conn.Close();
+            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = listaEncomenda };
+            dataGridViewEncomenda.DataSource = bindingSource2;
+           /* dataGridViewEncomenda.Columns[0].ReadOnly = true;
+            dataGridViewEncomenda.Columns[1].ReadOnly = true;
+            dataGridViewEncomenda.Columns[2].ReadOnly = true;
+            dataGridViewEncomenda.Columns[4].Visible = false;*/
+
+            /*listaProdutos.Clear();
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select IdProdutoStock, NomeProduto, precoUnitario, taxaIVA from ProdutoStock WHERE IdFornecedor = " +  fornecedor.IdFornecedor + " ORDER BY NomeProduto ", conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -143,7 +183,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 });
             }
            
-            conn.Close();
+            conn.Close();*/
         }
 
         private void listBoxProdutos_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -153,7 +193,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
+            int i = dataGridViewListaProdutos.CurrentCell.RowIndex;
+            foreach (var produto in listaProdutos)
+            {
 
+                    if (produto.id == Convert.ToInt32(dataGridViewListaProdutos.Rows[i].Cells[4].Value.ToString()))
+                {
+                    ListarProdutos listar = produto;
+                    listar.quant = 0;
+                    listaEncomenda.Add(listar);
+                }
+            }
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaEncomenda };
+            dataGridViewEncomenda.DataSource = bindingSource1;
+            /*
             if (!VerificarDadosInseridos())
             {
                 MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -171,12 +224,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         listaEncomenda.Add(listar);
                     }
                 }
-            }
+            }*/
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
+            /*
             
             ComboBoxItem idProduto = (listBoxEncomenda.SelectedItem as ComboBoxItem);
             listBoxEncomenda.Items.Remove(idProduto);
@@ -187,7 +240,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     ListarProdutos listar = produto;
                     listaEncomenda.Remove(listar);
                 }
-            }
+            }*/
         }
     }
 }

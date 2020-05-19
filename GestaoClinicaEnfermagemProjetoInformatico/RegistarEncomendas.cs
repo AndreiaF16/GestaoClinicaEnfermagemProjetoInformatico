@@ -16,11 +16,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private DateTime inicio;
-        private ClassFornecedor fornecedor = new ClassFornecedor();
+        private ClassFornecedor forn = new ClassFornecedor();
         private List<ComboBoxItem> encomendas = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
         private List<Encomendas> listaEncomendas = new List<Encomendas>();
         private List<Encomendas> todasEncomendas = new List<Encomendas>();
+
 
         public RegistarEncomendas()
         {
@@ -45,15 +46,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.Close();
         }
 
-        public void Delete(int idEncomenda)
+        public void Delete(string NFatura)
         {
             try
             {
                 conn.Open();
 
-                string queryInsertData ="Delete from Encomenda WHERE IdEncomenda = @IdEncomenda";
+                string queryInsertData = "Delete from Encomenda WHERE Nfatura = @Nfatura";
                 SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
-                sqlCommand.Parameters.AddWithValue("@IdEncomenda", idEncomenda);
+                sqlCommand.Parameters.AddWithValue("@Nfatura", NFatura);
                 sqlCommand.ExecuteNonQuery();
                 conn.Close();
                 UpdateDataGridView();
@@ -111,23 +112,46 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Open();
 
-                    string queryInsertData = "INSERT INTO Encomenda(IdEncomenda,idFornecedor,dataRegistoEncomenda,dataEntregaPrevista) VALUES(@IdEncomenda,@IdFornecedor,@DataRegistoEncomenda,@DataEntregaPrevista);";
+                    string queryInsertData = "INSERT INTO Encomenda(Nfatura,idFornecedor,dataRegistoEncomenda,dataEntregaPrevista) VALUES(@Nfatura,@IdFornecedor,@DataRegistoEncomenda,@DataEntregaPrevista);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.Parameters.AddWithValue("@DataEntregaPrevista", data.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@DataRegistoEncomenda", inicio.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@IdFornecedor", fornecedor);
-                    sqlCommand.Parameters.AddWithValue("@IdEncomenda", encomenda);
+                    sqlCommand.Parameters.AddWithValue("@Nfatura", encomenda);
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Encomenda registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
-                    UpdateDataGridView();
-                    Encomendas enc = new Encomendas 
-                    { 
-                        IdEncomenda = Convert.ToInt32(encomenda),
 
-                    };
-                    LinhaEncomenda linha = new LinhaEncomenda(enc, this);
+                    UpdateDataGridView();
+
+                    conn.Open();
+
+                    Encomendas enc = null;
+                    string nurEncomenda = txtNumeroEncomenda.Text;
+
+                    string queryInsertData1 = "SELECT * from Encomenda WHERE Nfatura = @Numfatura";
+
+                    SqlCommand sqlCommand1 = new SqlCommand(queryInsertData1, conn);
+                    sqlCommand1.Parameters.AddWithValue("@Numfatura", nurEncomenda);
+
+                    SqlDataReader reader = sqlCommand1.ExecuteReader();
+                    while (reader.Read())
+                    {
+
+                            enc = new Encomendas
+                            {
+                                IdEncomenda = (int)reader["IdEncomenda"],
+
+                            };
+                        
+
+                    }
+
+                    conn.Close();
+
+                  
+                   LinhaEncomenda linha = new LinhaEncomenda(getFornecedor(fornecedor), enc, this);
                     linha.Show();
 
                 }
@@ -144,13 +168,56 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
+        private ClassFornecedor getFornecedor(int enviarFornecedor)
+        {
+            conn.Open();
+
+
+            string queryInsertData = "SELECT * from Fornecedor WHERE IdFornecedor = " + enviarFornecedor;
+            SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
+
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+
+            ClassFornecedor forn = null;
+            while (reader.Read())
+            {
+
+               
+                if ((int)reader["IdFornecedor"] == enviarFornecedor)
+                {
+                    forn = new ClassFornecedor
+                    {
+                        nome = (string)reader["nome"],
+                        nif = ((reader["nif"] == DBNull.Value) ? null : (int?)reader["nif"]),
+                        contacto = ((reader["contacto"] == DBNull.Value) ? null : (int?)reader["contacto"]),
+
+                        email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
+                        rua = (string)reader["rua"],
+                        numeroMorada = ((reader["numeroMorada"] == DBNull.Value) ? null : (int?)reader["numeroMorada"]),
+                        andarPiso = ((reader["andarPiso"] == DBNull.Value) ? "" : (string)reader["andarPiso"]),
+                        localidade = (string)reader["localidade"],
+                        bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
+                        codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
+                        designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                        IdFornecedor =(int)(reader["IdFornecedor"])
+                    };
+                }
+                
+            }
+            conn.Close();
+
+            return forn;
+
+        }
+
         public void UpdateDataGridView()
         {
             listaEncomendas.Clear();
             conn.Open();
             com.Connection = conn;
     
-             SqlCommand cmd = new SqlCommand("select enc.IdEncomenda, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor WHERE enc.dataEntregaReal IS NULL ORDER BY dataRegistoEncomenda", conn);
+             SqlCommand cmd = new SqlCommand("select enc.NFatura, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor WHERE enc.dataEntregaReal IS NULL ORDER BY dataRegistoEncomenda", conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -160,7 +227,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 Encomendas encomendas = new Encomendas
                 {
-                    IdEncomenda = (int)reader["IdEncomenda"],
+                    NFatura = (string)reader["NFatura"],
                     nome = (string)reader["nome"],
                     dataRegisto = dataRegistoEnc,
                     dataEntregaPrevista = dataEntregaPrev,
@@ -181,7 +248,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd1 = new SqlCommand("select enc.IdEncomenda, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor ORDER BY dataRegistoEncomenda", conn);
+            SqlCommand cmd1 = new SqlCommand("select enc.NFatura, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor ORDER BY dataRegistoEncomenda", conn);
             SqlDataReader reader1 = cmd1.ExecuteReader();
 
             while (reader1.Read())
@@ -191,7 +258,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 Encomendas encomendas = new Encomendas
                 {
-                    IdEncomenda = (int)reader1["IdEncomenda"],
+                    NFatura = (string)reader1["NFatura"],
                     nome = (string)reader1["nome"],
                     dataRegisto = dataRegistoEnc,
                     dataEntregaPrevista = dataEntregaPrev,
@@ -253,7 +320,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             foreach (var encomenda in todasEncomendas)
             {
-                if (encomenda.IdEncomenda == Convert.ToInt32(id))
+                if (encomenda.NFatura == id)
                 {
                     MessageBox.Show("Número de Encomenda que colocou já está registado, registe outro número de encomenda!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -261,10 +328,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
 
-            if (Convert.ToInt32(id) <= 0)
+            /*if (id )
             {
                 MessageBox.Show("O Número de encomenda não pode ser um valor negativo!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
 
 
             if (var < 0)
@@ -304,26 +371,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             editarEncomenda.Show();
         }
 
-        private void txtNumeroEncomenda_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //garantir que são inseridos apenas numeros
-            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            string encomenda = "127";
 
-            Encomendas enc = new Encomendas
-            {
-                IdEncomenda = Convert.ToInt32(encomenda),
+        }
 
-            };
-            LinhaEncomenda linha = new LinhaEncomenda(enc, this);
-            linha.Show();
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            txtNumeroEncomenda.Text = "";
+            dataEntregaPrevista.Value = DateTime.Today;
+            reiniciar();
         }
     }
 }

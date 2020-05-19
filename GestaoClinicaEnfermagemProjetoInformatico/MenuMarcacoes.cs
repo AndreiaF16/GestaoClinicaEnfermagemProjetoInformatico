@@ -20,6 +20,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<AgendamentoConsultaGridView> agendamentos = new List<AgendamentoConsultaGridView>();
         private AgendamentoConsultaGridView agenda = new AgendamentoConsultaGridView();
         private FormMenu formMenu = null;
+        private ErrorProvider errorProvider = new ErrorProvider();
         public MenuMarcacoes(Enfermeiro enf, FormMenu formM)
         {
             InitializeComponent();
@@ -35,6 +36,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             horaConsultaAdiar.Format = DateTimePickerFormat.Custom;
             horaConsultaAdiar.CustomFormat = "HH:mm";
             horaConsultaAdiar.ShowUpDown = true;
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             //dataGridViewMarcacoes.CurrentCell.RowIndex;
 
         }
@@ -97,11 +100,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             DateTime dtaConsulta = dataConsultaAdiar.Value;
             DateTime hrConsulta = horaConsultaAdiar.Value;
 
-            if (!VerificarDadosInseridos() || agenda== null)
-            {
-                MessageBox.Show("Dados incorretos!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
+            if (VerificarDadosInseridos() || agenda== null)
             {
                 Paciente paciente = ClasseAuxiliarBD.getPacienteByNif(agenda.NifPaciente);
                 try
@@ -139,10 +138,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (var < 0)
             {
-                MessageBox.Show("A data de marcação da consulta não pode ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data de marcação da consulta não pode ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (horaConsultaAdiar.Text == string.Empty)
+                {
+                    errorProvider.SetError(horaConsultaAdiar, "A data de marcação tem de ser inferior à  data de hoje!");
+                }
+                else
+                {
+                    errorProvider.SetError(horaConsultaAdiar, String.Empty);
+                }
+
                 return false;
             }
-
             else if ((var == 0) && horaSup.Hour < thisDay.Hour)
             {
 

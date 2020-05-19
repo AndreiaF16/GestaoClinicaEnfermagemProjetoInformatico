@@ -82,7 +82,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                
                 Encomendas encomendas = new Encomendas
                 {
-                    IdEncomenda = (int)reader["IdEncomenda"],
+                    NFatura = (string)reader["NFatura"],
                     nome = (string)reader["nome"],
                     dataRegisto = dataRegistoEnc,
                     dataEntregaPrevista = dataEntregaPrev,
@@ -118,7 +118,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             int i = dataGridViewEncomendas.CurrentCell.RowIndex;
             foreach (var enc in auxiliar)
             {
-                if (enc.IdEncomenda == (Convert.ToInt32(dataGridViewEncomendas.Rows[i].Cells[0].Value)))
+                if (enc.NFatura == (Convert.ToString(dataGridViewEncomendas.Rows[i].Cells[0].Value)))
                 {
                     encomendas = enc;
                 }
@@ -126,7 +126,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (encomendas != null)
             {
-                txtNumeroEncomenda.Text = (encomendas.IdEncomenda).ToString();
+                txtNumeroEncomenda.Text = (encomendas.NFatura).ToString();
 
                 //txtNumeroEncomenda.Text = Convert.ToString(encomendas.IdEncomenda);
                 txtFornecedor.Text = encomendas.nome;
@@ -151,7 +151,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                             conn.Open();
 
-                            string queryUpdateData = "UPDATE Encomenda SET dataEntregaReal = @dataEntregaReal WHERE IdEncomenda = " + encomendas.IdEncomenda;
+                            string queryUpdateData = "UPDATE Encomenda SET dataEntregaReal = @dataEntregaReal WHERE IdEncomenda = " + encomendas.NFatura;
                             SqlCommand sqlCommand = new SqlCommand(queryUpdateData, conn);
                             sqlCommand.Parameters.AddWithValue("@dataEntregaReal", dataEntregaReal);
                             sqlCommand.ExecuteNonQuery();

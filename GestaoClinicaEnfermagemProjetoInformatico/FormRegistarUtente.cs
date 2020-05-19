@@ -841,9 +841,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             txtEmail.Text = "";
             txtContacto.Text = "";
             txtNif.Text = "";
+            txtBairroLocal.Text = "";
             txtNomeSeguradora.Text = "";
             txtNApolice.Text = "";
             txtNSubsistema.Text = "";
+            txtDesignacao.Text = "";
             txtSNS.Text = "";
             radioButtonFeminino.Checked = false;
             radioButtonMasculino.Checked = false;

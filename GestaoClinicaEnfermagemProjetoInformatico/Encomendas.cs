@@ -8,10 +8,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public class Encomendas
     {
-        public int IdEncomenda { get; set; }
+        public string NFatura { get; set; }
         public string nome { get; set; }
         public string dataRegisto { get; set; }
         public string dataEntregaPrevista { get; set; }
         public string dataEntregaReal { get; set; }
+
+        public int IdEncomenda { get; set; }
     }
 }

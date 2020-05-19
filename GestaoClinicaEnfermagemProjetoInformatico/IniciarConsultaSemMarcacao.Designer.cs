@@ -34,7 +34,6 @@
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.txtValorConsulta = new System.Windows.Forms.TextBox();
             this.lblCustoConsulta = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -86,6 +85,7 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.hora = new System.Windows.Forms.Timer(this.components);
+            this.button11 = new System.Windows.Forms.Button();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -132,7 +132,7 @@
             // 
             this.groupBox4.BackColor = System.Drawing.Color.White;
             this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Controls.Add(this.button2);
+            this.groupBox4.Controls.Add(this.button11);
             this.groupBox4.Controls.Add(this.txtValorConsulta);
             this.groupBox4.Controls.Add(this.lblCustoConsulta);
             this.groupBox4.Location = new System.Drawing.Point(775, 505);
@@ -150,38 +150,17 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.Location = new System.Drawing.Point(10, 103);
+            this.button1.Location = new System.Drawing.Point(51, 98);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(128, 49);
+            this.button1.Size = new System.Drawing.Size(206, 49);
             this.button1.TabIndex = 25;
             this.button1.Text = "Registar";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button2.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_cancelar_50;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(164, 103);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(128, 49);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "Cancelar";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // txtValorConsulta
             // 
@@ -871,6 +850,27 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button11.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.ForeColor = System.Drawing.Color.Black;
+            this.button11.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button11.Location = new System.Drawing.Point(51, 147);
+            this.button11.Margin = new System.Windows.Forms.Padding(2);
+            this.button11.Name = "button11";
+            this.button11.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button11.Size = new System.Drawing.Size(206, 48);
+            this.button11.TabIndex = 35;
+            this.button11.Text = "Limpar Campos";
+            this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button11.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // IniciarConsultaSemMarcacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -949,7 +949,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtValorConsulta;
         private System.Windows.Forms.Label lblCustoConsulta;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -964,5 +963,6 @@
         private System.Windows.Forms.Label labelData;
         private System.Windows.Forms.Label labelHora;
         private System.Windows.Forms.Label lblEscala;
+        private System.Windows.Forms.Button button11;
     }
 }
