@@ -29,12 +29,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             fornecedor = forn;
             label11.Text = "Fornecedor: " + fornecedor.nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = listaEncomenda };
+            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = encomendas };
             dataGridViewEncomenda.DataSource = bindingSource2;
-            /*dataGridViewEncomenda.Columns[0].ReadOnly = true;
+            dataGridViewEncomenda.Columns[0].ReadOnly = true;
             dataGridViewEncomenda.Columns[1].ReadOnly = true;
             dataGridViewEncomenda.Columns[2].ReadOnly = true;
-            dataGridViewEncomenda.Columns[4].Visible = false;*/
+            dataGridViewEncomenda.Columns[4].Visible = false;
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -79,32 +79,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show(/*"Por erro interno é impossível registar a encomenda",*/excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a encomenda",excep.Message);
                 }
             } 
             else
             {
-                MessageBox.Show("A lista de ENcomenda não contem items. Para poder registar a encomenda, tem de ter pelo menos um item", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("A lista de encomenda não contem items. Para poder registar a encomenda, tem de ter pelo menos um item", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private Boolean VerificarDadosInseridos()
         {
-            string quantidade = Convert.ToString(numericUpDownQuant.Value);
-
-
-            if (quantidade == string.Empty)
-            {
-                MessageBox.Show("Campo Obrigatório, por favor preencha o campo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-
-            if (Convert.ToInt32(quantidade) <= 0)
-            {
-                MessageBox.Show("A quantidade tem de ser superior a 0. Por favor corrija!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            
             return true;
         }
 
@@ -196,7 +182,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             int i = dataGridViewListaProdutos.CurrentCell.RowIndex;
             foreach (var produto in listaProdutos)
             {
-
                     if (produto.id == Convert.ToInt32(dataGridViewListaProdutos.Rows[i].Cells[4].Value.ToString()))
                 {
                     ListarProdutos listar = produto;
@@ -229,6 +214,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button5_Click(object sender, EventArgs e)
         {
+            int i = dataGridViewEncomenda.CurrentCell.RowIndex;
+            foreach (var produto in listaProdutos)
+            {
+                var sad = dataGridViewEncomenda.Rows[i].Cells[4];
+                if (produto.id == Convert.ToInt32(dataGridViewEncomenda.Rows[i].Cells[4].Value.ToString()))
+                {
+                    ListarProdutos listar = produto;
+                    listaEncomenda.Remove(listar);
+                }
+            }
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaEncomenda };
+            dataGridViewEncomenda.DataSource = bindingSource1;
             /*
             
             ComboBoxItem idProduto = (listBoxEncomenda.SelectedItem as ComboBoxItem);
@@ -241,6 +238,39 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     listaEncomenda.Remove(listar);
                 }
             }*/
+        }
+
+        private void hora_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
+            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+
+            this.WindowState = FormWindowState.Minimized;
+
+        }
+
+        private void dataGridViewEncomenda_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewEncomenda.IsCurrentCellDirty)
+            {
+                dataGridViewEncomenda.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
         }
     }
 }

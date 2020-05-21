@@ -31,12 +31,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             labelData.ForeColor = Color.Black;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            dataEntregaPrevista.MinDate = DateTime.Now;
+            dataEntregaPrevista.MinDate = DateTime.Today;
 
         }
 
         private void RegistarEncomendas_Load(object sender, EventArgs e)
         {
+            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = todasEncomendas };
+            dataGridViewEncomendas.DataSource = bindingSource2;
+            dataGridViewEncomendas.Columns[4].Visible = false;
             UpdateDataGridView();
             reiniciar();
         }
@@ -386,6 +389,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             txtNumeroEncomenda.Text = "";
             dataEntregaPrevista.Value = DateTime.Today;
             reiniciar();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            VerEncomendas verEncomendas = new VerEncomendas();
+            verEncomendas.Show();
         }
     }
 }

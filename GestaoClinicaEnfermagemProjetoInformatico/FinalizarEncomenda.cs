@@ -24,7 +24,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             InitializeComponent();
             registarEncomendas = enc;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            //dataVEntregaReal.MinDate = DateTime.Now;
+            dataVEntregaReal.MinDate = DateTime.Today;
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             listaEncomendas.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select enc.IdEncomenda, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista, enc.dataEntregaReal from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor WHERE enc.dataEntregaReal IS NULL ORDER BY enc.IdEncomenda", conn);
+            SqlCommand cmd = new SqlCommand("select enc.Nfatura, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista, enc.dataEntregaReal from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor WHERE enc.dataEntregaReal IS NULL ORDER BY enc.IdEncomenda", conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -82,7 +82,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                
                 Encomendas encomendas = new Encomendas
                 {
-                    NFatura = (string)reader["NFatura"],
+                    NFatura = (string)reader["Nfatura"],
                     nome = (string)reader["nome"],
                     dataRegisto = dataRegistoEnc,
                     dataEntregaPrevista = dataEntregaPrev,
@@ -97,7 +97,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewEncomendas.Columns[2].HeaderText = "Data de Registo da Encomanda";
             dataGridViewEncomendas.Columns[3].HeaderText = "Data de Entrega Prevista";
             dataGridViewEncomendas.Columns[4].HeaderText = "Data de Entrega Real";
-            
+            dataGridViewEncomendas.Columns[5].Visible = false;
+
             conn.Close();
             auxiliar = listaEncomendas;
             dataGridViewEncomendas.Update();
@@ -140,11 +141,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             if (encomendas != null)
             {
-                if (!VerificarDadosInseridos())
-                    {
-                        MessageBox.Show("Dados incorretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else {
+                if (VerificarDadosInseridos())
+                   
                         try
                         {
                             DateTime dataEntregaReal = dataVEntregaReal.Value;
@@ -172,7 +170,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                             MessageBox.Show("Erro interno, não foi possível alterar a encomenda!", excep.Message);
                         }
                     }
-            }
+            
         }
 
         private Boolean VerificarDadosInseridos()
@@ -182,7 +180,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (var < 0)
             {
-                MessageBox.Show("A data de marcação da consulta não pode ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data de entrega não pode ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
