@@ -19,6 +19,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<ComboBoxItem> despesa = new List<ComboBoxItem>();
         private List<ComboBoxItem> encomenda = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
+        private List<ComboBoxItem> pesquisarDespesas = new List<ComboBoxItem>();
+        private List<ComboBoxItem> pesquisarEncomendas = new List<ComboBoxItem>();
+        private List<ComboBoxItem> novoAuxiliar = new List<ComboBoxItem>();
 
         public Despesas()
         {
@@ -107,7 +110,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd1 = new SqlCommand("select * from Encomenda order by Nfatura asc", conn);
+            SqlCommand cmd1 = new SqlCommand("select * from Encomenda WHERE pago = 0 order by Nfatura asc", conn);
             SqlDataReader reader1 = cmd1.ExecuteReader();
             while (reader1.Read())
             {
@@ -133,6 +136,76 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 comboBoxEncomenda.Visible = false;
                 lblEncomenda.Visible = false;
             }
+        }
+
+        private void txtProcurarDespesa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                comboBoxDespesa.Items.Clear();
+                foreach (var pesquisa in filtrosDePesquisaDespesa())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = pesquisa.Text;
+                    item.Value = pesquisa.Value;
+                    comboBoxDespesa.Items.Add(item);
+                }
+
+            }
+        }
+
+        private void txtProcurarEncomenda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                comboBoxEncomenda.Items.Clear();
+                foreach (var pesquisa in filtrosDePesquisaEncomenda())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = pesquisa.Text;
+                    item.Value = pesquisa.Value;
+                    comboBoxEncomenda.Items.Add(item);
+                }
+
+            }
+        }
+
+        private List<ComboBoxItem> filtrosDePesquisaEncomenda()
+        {
+            novoAuxiliar = new List<ComboBoxItem>();
+            if (txtProcurarEncomenda.Text != "")
+            {
+                foreach (ComboBoxItem encomenda in pesquisarEncomendas)
+                {
+                    if (encomenda.Text.ToLower().Contains(txtProcurarEncomenda.Text.ToLower()))
+                    {
+                        novoAuxiliar.Add(encomenda);
+                    }
+                }
+                return novoAuxiliar;
+            }
+            novoAuxiliar = pesquisarEncomendas;
+            return novoAuxiliar;
+        }
+
+        private List<ComboBoxItem> filtrosDePesquisaDespesa()
+        {
+            novoAuxiliar = new List<ComboBoxItem>();
+            if (txtProcurarDespesa.Text != "")
+            {
+                foreach (ComboBoxItem despesa in pesquisarDespesas)
+                {
+                    if (despesa.Text.ToLower().Contains(txtProcurarDespesa.Text.ToLower()))
+                    {
+                        novoAuxiliar.Add(despesa);
+                    }
+                }
+                return novoAuxiliar;
+            }
+            novoAuxiliar = pesquisarDespesas;
+            return novoAuxiliar;
         }
     }
 }
