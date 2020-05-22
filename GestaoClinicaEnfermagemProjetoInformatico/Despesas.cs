@@ -16,12 +16,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private ErrorProvider errorProvider = new ErrorProvider();
+        private List<Despesa> listaDespesas = new List<Despesa>();
         private List<ComboBoxItem> despesa = new List<ComboBoxItem>();
         private List<ComboBoxItem> encomenda = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
-        private List<ComboBoxItem> pesquisarDespesas = new List<ComboBoxItem>();
+      /*  private List<ComboBoxItem> pesquisarDespesas = new List<ComboBoxItem>();
         private List<ComboBoxItem> pesquisarEncomendas = new List<ComboBoxItem>();
-        private List<ComboBoxItem> novoAuxiliar = new List<ComboBoxItem>();
+        private List<ComboBoxItem> novoAuxiliar = new List<ComboBoxItem>();*/
 
         public Despesas()
         {
@@ -35,7 +36,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void Despesas_Load(object sender, EventArgs e)
         {
             reiniciar();
-
+            UpdateDataGridView();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -83,7 +84,73 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-          
+            int encomenda = -1;
+            if (VerificarDadosInseridos())
+            {
+
+                int despesa = (comboBoxDespesa.SelectedItem as ComboBoxItem).Value;
+                if (comboBoxEncomenda.Text != "")
+                {
+                    encomenda = (comboBoxEncomenda.SelectedItem as ComboBoxItem).Value;
+                }
+                //int valorDespesa = Convert.ToInt32(UpDownPreco.Text);
+                DateTime data = dataDespesa.Value;
+                string observacoes = txtObservacoes.Text;
+
+                try
+                {
+                    conn.Open();
+
+                    string queryInsertData = "INSERT INTO Despesa(data,valor,observacoes,idTipoDespesa,idEncomenda) VALUES(@dataRegisto, @valorDespesa, @observacoes, @tipoDespesa,@encomenda);";
+                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
+                 //   sqlCommand.Parameters.AddWithValue("@tipoDespesa",despesa);
+                    sqlCommand.Parameters.AddWithValue("@tipoDespesa", despesa);
+                    sqlCommand.Parameters.AddWithValue("@dataRegisto", data.ToString("MM/dd/yyyy"));
+
+                    sqlCommand.Parameters.AddWithValue("@valorDespesa", UpDownPreco.Value);
+
+                    if (encomenda != -1)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@encomenda", Convert.ToString(encomenda));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@encomenda", DBNull.Value);
+                    }
+
+                    if (observacoes != String.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@observacoes", Convert.ToString(observacoes));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@observacoes", DBNull.Value);
+                    }
+
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Despesa registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    conn.Close();
+
+                    conn.Open();
+
+                    string queryUpdateData = "UPDATE Encomenda SET pago = 1 WHERE IdEncomenda = " + encomenda;
+                    SqlCommand sqlCommand1 = new SqlCommand(queryUpdateData, conn);
+                    sqlCommand1.ExecuteNonQuery();
+                    conn.Close();
+
+                    limparCampos();
+                    UpdateDataGridView();
+
+                }
+                catch (SqlException excep)
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                    MessageBox.Show("Por erro interno é impossível registar a alergia", excep.Message);
+                }
+            }
         }
 
         public void reiniciar()
@@ -155,6 +222,44 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
+        private List<ComboBoxItem> filtrosDePesquisaEncomenda()
+        {
+            auxiliar = new List<ComboBoxItem>();
+
+            if (txtProcurarEncomenda.Text != "")
+            {
+                foreach (ComboBoxItem enc in encomenda)
+                {
+                    if (enc.Text.ToLower().Contains(txtProcurarEncomenda.Text.ToLower()))
+                    {
+                        auxiliar.Add(enc);
+                    }
+                }
+                return auxiliar;
+            }
+            auxiliar = encomenda;
+            return auxiliar;
+        }
+
+        private List<ComboBoxItem> filtrosDePesquisaDespesa()
+        {
+            auxiliar = new List<ComboBoxItem>();
+
+            if (txtProcurarDespesa.Text != "")
+            {
+                foreach (ComboBoxItem des in despesa)
+                {
+                    if (des.Text.ToLower().Contains(txtProcurarDespesa.Text.ToLower()))
+                    {
+                        auxiliar.Add(des);
+                    }
+                }
+                return auxiliar;
+            }
+            auxiliar = despesa;
+            return auxiliar;
+        }
+
         private void txtProcurarEncomenda_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -172,40 +277,117 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private List<ComboBoxItem> filtrosDePesquisaEncomenda()
+        private Boolean VerificarDadosInseridos()
         {
-            novoAuxiliar = new List<ComboBoxItem>();
-            if (txtProcurarEncomenda.Text != "")
+            string despesa = comboBoxDespesa.Text;
+            string preco = UpDownPreco.Text;
+            DateTime data = dataDespesa.Value;
+
+            if ((data - DateTime.Today).TotalDays > 0)
             {
-                foreach (ComboBoxItem encomenda in pesquisarEncomendas)
-                {
-                    if (encomenda.Text.ToLower().Contains(txtProcurarEncomenda.Text.ToLower()))
-                    {
-                        novoAuxiliar.Add(encomenda);
-                    }
-                }
-                return novoAuxiliar;
+                MessageBox.Show("A data da despesa tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
-            novoAuxiliar = pesquisarEncomendas;
-            return novoAuxiliar;
+
+            if (despesa == string.Empty)
+            {
+                MessageBox.Show("Campos Obrigatórios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (comboBoxDespesa.Text == string.Empty)
+                {
+                    errorProvider.SetError(this.comboBoxDespesa, "O tipo de despesa é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(comboBoxDespesa, String.Empty);
+                }
+
+                if (UpDownPreco.Text == string.Empty)
+                {
+                    errorProvider.SetError(this.UpDownPreco, "O preço é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownPreco, String.Empty);
+                }
+                return false;
+            }
+            /*
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select * from AlergiaPaciente WHERE IdPaciente = @IdPaciente order by data", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                int alergia = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
+                if (dataDiagnostico.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && alergia == (int)reader["IdAlergia"])
+                {
+                    MessageBox.Show("Não é possível registar essa alergia, porque já esta registada na data que selecionou. Escolha outra data ou outra alergia!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    conn.Close();
+                    return false;
+                }
+
+            }
+            conn.Close();*/
+            return true;
         }
 
-        private List<ComboBoxItem> filtrosDePesquisaDespesa()
+        private void limparCampos()
         {
-            novoAuxiliar = new List<ComboBoxItem>();
-            if (txtProcurarDespesa.Text != "")
+            txtProcurarDespesa.Text = "";
+            txtProcurarEncomenda.Text = "";
+            txtObservacoes.Text = "";
+            dataDespesa.Value = DateTime.Today;          
+            UpDownPreco.Value = 0;
+            errorProvider.Clear();
+            reiniciar();            
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void UpdateDataGridView()
+        {
+            listaDespesas.Clear();
+            conn.Open();
+            com.Connection = conn;
+            // select despesa.data, despesa.valor, tDespesa.designacao, encomenda.Nfatura, despesa.observacoes from Despesa despesa JOIN tipoDespesa tDespesa ON despesa.idTipoDespesa = tDespesa.IdTipoDespesa JOIN Encomenda encomenda ON despesa.idEncomenda = encomenda.IdEncomenda;
+            string mesCorrente = DateTime.Now.Month.ToString() + "/1/" + DateTime.Now.Year.ToString();
+            string mesSeguinte = DateTime.Now.AddMonths(1).Month.ToString() + "/1/" + DateTime.Now.Year.ToString();
+            SqlCommand cmd = new SqlCommand("select despesa.data, despesa.valor, tDespesa.designacao, encomenda.Nfatura, despesa.observacoes from Despesa despesa JOIN tipoDespesa tDespesa ON despesa.idTipoDespesa = tDespesa.IdTipoDespesa LEFT JOIN Encomenda encomenda ON despesa.idEncomenda = encomenda.IdEncomenda WHERE despesa.data >= '" + mesCorrente + "' AND despesa.data < '" + mesSeguinte  + "' ORDER BY despesa.data", conn);
+           // cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
             {
-                foreach (ComboBoxItem despesa in pesquisarDespesas)
+                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+
+                Despesa desp = new Despesa
                 {
-                    if (despesa.Text.ToLower().Contains(txtProcurarDespesa.Text.ToLower()))
-                    {
-                        novoAuxiliar.Add(despesa);
-                    }
-                }
-                return novoAuxiliar;
+                    dataRegisto = data,
+                    tipoDespesa = (string)reader["designacao"],
+                    encomenda = ((reader["Nfatura"] == DBNull.Value) ? "" : (string)reader["Nfatura"]),
+                    valorDespesa = (decimal)reader["valor"],
+                    obs = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                };
+                listaDespesas.Add(desp);
             }
-            novoAuxiliar = pesquisarDespesas;
-            return novoAuxiliar;
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaDespesas };
+            dataGridViewDespesas.DataSource = bindingSource1;
+            dataGridViewDespesas.Columns[0].HeaderText = "Data da Despesa";
+            dataGridViewDespesas.Columns[1].HeaderText = "Tipo de Despesa";
+            dataGridViewDespesas.Columns[2].HeaderText = "Nr da Encomenda";
+            dataGridViewDespesas.Columns[3].HeaderText = "Valor da Despesa";
+            dataGridViewDespesas.Columns[4].HeaderText = "Observações";
+
+            conn.Close();
+            dataGridViewDespesas.Update();
+            dataGridViewDespesas.Refresh();
         }
     }
 }

@@ -135,6 +135,7 @@
     <Compile Include="ClassFornecedor.cs" />
     <Compile Include="ComboBoxItem.cs" />
     <Compile Include="ConsultasPaciente.cs" />
+    <Compile Include="Despesa.cs" />
     <Compile Include="Despesas.cs">
       <SubType>Form</SubType>
     </Compile>
