@@ -217,7 +217,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             int i = dataGridViewEncomenda.CurrentCell.RowIndex;
             foreach (var produto in listaProdutos)
             {
-                var sad = dataGridViewEncomenda.Rows[i].Cells[4];
+               // var sad = dataGridViewEncomenda.Rows[i].Cells[4];
                 if (produto.id == Convert.ToInt32(dataGridViewEncomenda.Rows[i].Cells[4].Value.ToString()))
                 {
                     ListarProdutos listar = produto;
@@ -263,14 +263,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             this.WindowState = FormWindowState.Minimized;
 
-        }
-
-        private void dataGridViewEncomenda_CurrentCellDirtyStateChanged(object sender, EventArgs e)
-        {
-            if (dataGridViewEncomenda.IsCurrentCellDirty)
-            {
-                dataGridViewEncomenda.CommitEdit(DataGridViewDataErrorContexts.Commit);
-            }
         }
     }
 }

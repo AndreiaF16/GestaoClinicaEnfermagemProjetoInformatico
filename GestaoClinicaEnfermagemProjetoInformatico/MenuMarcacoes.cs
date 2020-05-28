@@ -288,7 +288,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 foreach (AgendamentoConsultaGridView agendamentoConsulta in agendamentos)
                 {
-                    if (agendamentoConsulta.NifPaciente == Convert.ToDouble(txtNIF.Text))
+                    if (agendamentoConsulta.NifPaciente.ToString().Contains(txtNIF.Text))
                     {
                         auxiliar.Add(agendamentoConsulta);
                     }
@@ -310,7 +310,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 foreach (AgendamentoConsultaGridView agendamentoConsulta in agendamentos)
                 {
-                    if (agendamentoConsulta.NomePaciente.ToLower().Contains(txtNome.Text.ToLower()) && agendamentoConsulta.NifPaciente == Convert.ToDouble(txtNIF.Text))
+                    if (agendamentoConsulta.NomePaciente.ToLower().Contains(txtNome.Text.ToLower()) && agendamentoConsulta.NifPaciente.ToString().Contains(txtNIF.Text))
                     {
                         auxiliar.Add(agendamentoConsulta);
                     }
@@ -322,7 +322,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 foreach (AgendamentoConsultaGridView agendamentoConsulta in agendamentos)
                 {
                     DateTime data = DateTime.ParseExact(agendamentoConsulta.dataProximaConsulta, "dd/MM/yyyy", null);
-                    if (agendamentoConsulta.NomePaciente.ToLower().Contains(txtNome.Text.ToLower()) && agendamentoConsulta.NifPaciente == Convert.ToDouble(txtNIF.Text) && data.ToShortDateString().Equals(dataConsulta.Value.ToString("dd/MM/yyyy")))
+                    if (agendamentoConsulta.NomePaciente.ToLower().Contains(txtNome.Text.ToLower()) && agendamentoConsulta.NifPaciente.ToString().Contains(txtNIF.Text) && data.ToShortDateString().Equals(dataConsulta.Value.ToString("dd/MM/yyyy")))
                     {
                         auxiliar.Add(agendamentoConsulta);
                     }
@@ -335,7 +335,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 foreach (AgendamentoConsultaGridView agendamentoConsulta in agendamentos)
                 {
                     DateTime data = DateTime.ParseExact(agendamentoConsulta.dataProximaConsulta, "dd/MM/yyyy", null);
-                    if (agendamentoConsulta.NifPaciente == Convert.ToDouble(txtNIF.Text) && data.ToShortDateString().Equals(dataConsulta.Value.ToString("dd/MM/yyyy")))
+                    if (agendamentoConsulta.NifPaciente.ToString().Contains(txtNIF.Text) && data.ToShortDateString().Equals(dataConsulta.Value.ToString("dd/MM/yyyy")))
                     {
                         auxiliar.Add(agendamentoConsulta);
                     }

@@ -78,6 +78,12 @@
     <Compile Include="AdicionarVisualizarAlergiaPaciente.Designer.cs">
       <DependentUpon>AdicionarVisualizarAlergiaPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdicionarVisualizarAnaliseLaboratorialPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarVisualizarAnaliseLaboratorialPaciente.Designer.cs">
+      <DependentUpon>AdicionarVisualizarAnaliseLaboratorialPaciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdicionarVisualizarAvaliacaoObjetivoBebe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,20 @@
     <Compile Include="Alergias.Designer.cs">
       <DependentUpon>Alergias.cs</DependentUpon>
     </Compile>
+    <Compile Include="AlterarPacienteDeEnfermeiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlterarPacienteDeEnfermeiro.Designer.cs">
+      <DependentUpon>AlterarPacienteDeEnfermeiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnaliseLaboratorial.cs" />
+    <Compile Include="AnaliseLaboratorialPaciente.cs" />
+    <Compile Include="AnalisesLaboratoriais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalisesLaboratoriais.Designer.cs">
+      <DependentUpon>AnalisesLaboratoriais.cs</DependentUpon>
+    </Compile>
     <Compile Include="AvaliacaoObjetivo.cs" />
     <Compile Include="AvaliacaoObjetivoBebe.cs" />
     <Compile Include="Cirurgia.cs" />
@@ -157,6 +177,18 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="ListarEncomendas.cs" />
+    <Compile Include="VerDespesasTodas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerDespesasTodas.Designer.cs">
+      <DependentUpon>VerDespesasTodas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerEditarAnaliseLaboratorial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerEditarAnaliseLaboratorial.Designer.cs">
+      <DependentUpon>VerEditarAnaliseLaboratorial.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerEditarProfissao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -497,6 +529,9 @@
     <EmbeddedResource Include="AdicionarVisualizarAlergiaPaciente.resx">
       <DependentUpon>AdicionarVisualizarAlergiaPaciente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarVisualizarAnaliseLaboratorialPaciente.resx">
+      <DependentUpon>AdicionarVisualizarAnaliseLaboratorialPaciente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdicionarVisualizarAvaliacaoObjetivoBebe.resx">
       <DependentUpon>AdicionarVisualizarAvaliacaoObjetivoBebe.cs</DependentUpon>
     </EmbeddedResource>
@@ -517,6 +552,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Alergias.resx">
       <DependentUpon>Alergias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlterarPacienteDeEnfermeiro.resx">
+      <DependentUpon>AlterarPacienteDeEnfermeiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnalisesLaboratoriais.resx">
+      <DependentUpon>AnalisesLaboratoriais.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cirurgias.resx">
       <DependentUpon>Cirurgias.cs</DependentUpon>
@@ -654,6 +695,9 @@
     <EmbeddedResource Include="SendCodeUsername.resx">
       <DependentUpon>SendCodeUsername.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VerDespesasTodas.resx">
+      <DependentUpon>VerDespesasTodas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VerDetalhesAvaliacaoObjetivo.resx">
       <DependentUpon>VerDetalhesAvaliacaoObjetivo.cs</DependentUpon>
     </EmbeddedResource>
@@ -665,6 +709,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerEditarAleitamento.resx">
       <DependentUpon>VerEditarAleitamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerEditarAnaliseLaboratorial.resx">
+      <DependentUpon>VerEditarAnaliseLaboratorial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerEditarMetodosContracetivos.resx">
       <DependentUpon>VerEditarMetodosContracetivos.cs</DependentUpon>

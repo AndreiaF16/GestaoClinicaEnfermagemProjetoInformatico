@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    class Despesa
+    public class Despesa
 
     {
         public string dataRegisto { get; set; }

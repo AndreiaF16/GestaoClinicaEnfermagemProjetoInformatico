@@ -175,7 +175,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 foreach (UtenteGridView utente in utentes)
                 {
-                    if (utente.Nif == Convert.ToInt32(txtNIF.Text))
+                    if (utente.Nif.ToString().Contains(txtNIF.Text))
                     {
                         auxiliar.Add(utente);
                     }
@@ -197,7 +197,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 foreach (UtenteGridView utente in utentes)
                 {
-                    if (utente.Nome.ToLower().Contains(txtNome.Text.ToLower()) && utente.Nif == Convert.ToInt32(txtNIF.Text))
+                    if (utente.Nome.ToLower().Contains(txtNome.Text.ToLower()) && utente.Nif.ToString().Contains(txtNIF.Text))
                     {
                         auxiliar.Add(utente);
                     }

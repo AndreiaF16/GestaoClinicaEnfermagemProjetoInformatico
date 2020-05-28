@@ -224,5 +224,67 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             SendCodeUsername forgotUsername = new SendCodeUsername();
             forgotUsername.Show();
         }
+
+        private void Login_Enter(object sender, EventArgs e)
+        {
+            conn.Open();
+            com.Connection = conn;
+
+            byte[] hash;
+
+            hash = new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.ASCII.GetBytes(txtPassword.Text));
+
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+
+            SqlCommand cmd = new SqlCommand("select * from Enfermeiro where username = @username  AND password = @password", conn);
+            cmd.Parameters.AddWithValue("@username", txtUsername.Text);
+
+            cmd.Parameters.AddWithValue("@password", sb.ToString());
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+
+            if (reader.Read())
+            {
+                Enfermeiro enfermeiro = new Enfermeiro
+                {
+                    IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                    nome = (string)reader["nome"],
+                    funcao = (string)reader["funcao"],
+                    username = (string)reader["username"],
+                    contacto = Convert.ToDouble(reader["contacto"]),
+                    email = (string)reader["email"],
+                    permissao = (int)reader["permissao"]
+                };
+
+                if ((bool)reader["passwordDefault"] == true)
+                {
+
+                    PrimeiroAcesso redefenirPrimeiroAcesso = new PrimeiroAcesso(enfermeiro);
+                    redefenirPrimeiroAcesso.Show();
+                    txtUsername.Text = "";
+                    txtPassword.Text = "";
+
+                }
+                else
+                {
+                    MessageBox.Show("Login Efetuado com Sucesso", "Parabéns", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    FormMenu formMenu = new FormMenu(enfermeiro);
+                    formMenu.Show();
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nome de utilizador ou palavra passe errados. Volte a tentar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            conn.Close();
+        }
     }
 }

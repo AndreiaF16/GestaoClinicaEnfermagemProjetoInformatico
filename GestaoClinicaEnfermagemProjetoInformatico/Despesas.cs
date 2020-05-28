@@ -389,5 +389,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewDespesas.Update();
             dataGridViewDespesas.Refresh();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            VerDespesasTodas verDespesasTodas = new VerDespesasTodas();
+            verDespesasTodas.Show();
+        }
     }
 }

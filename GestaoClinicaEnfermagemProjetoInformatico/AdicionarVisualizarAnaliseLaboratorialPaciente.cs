@@ -11,17 +11,19 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class AdicionarVisualizarDoencaPaciente : Form
+
+    public partial class AdicionarVisualizarAnaliseLaboratorialPaciente : Form
     {
+
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
-        private List<ComboBoxItem> doencas = new List<ComboBoxItem>();
+        private List<ComboBoxItem> analises = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
-        private List<DoencaPaciente> doencaPacientes = new List<DoencaPaciente>();
+        private List<AnaliseLaboratorialPaciente> analisePaciente = new List<AnaliseLaboratorialPaciente>();
         private ErrorProvider errorProvider = new ErrorProvider();
 
-        public AdicionarVisualizarDoencaPaciente(Paciente pac)
+        public AdicionarVisualizarAnaliseLaboratorialPaciente(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
@@ -33,15 +35,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         }
 
-        private void btnVoltar_Click(object sender, EventArgs e)
+        private void AdicionarVisualizarAnaliseLaboratorialPaciente_Load(object sender, EventArgs e)
         {
-            this.Close();
+            UpdateDataGridView();
+            reiniciar();
         }
 
-        private void AdicionarVisualizarDoencaPaciente_Load(object sender, EventArgs e)
+        private void label4_Click(object sender, EventArgs e)
         {
-           UpdateDataGridView();
-            reiniciar();
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -76,28 +78,48 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
 
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (VerificarDadosInseridos())
             {
-               
-                int doenca = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
+
+                int analise = (comboBoxAnalise.SelectedItem as ComboBoxItem).Value;
                 DateTime data = dataDiagnostico.Value;
                 string observacoes = txtObservacoes.Text;
-
+                string resultados = txtResultados.Text;
                 try
                 {
                     conn.Open();
 
-                    string queryInsertData = "INSERT INTO DoencaPaciente(IdDoenca,IdPaciente,data,observacoes) VALUES(@IdDoenca, @IdPaciente, @data, @observacoes);";
+                    string queryInsertData = "INSERT INTO analisesLaboratoriaisPaciente(IdAnalisesLaboratoriais,IdPaciente,data,resultados,observacoes) VALUES(@IdAnalisesLaboratoriais,@IdPaciente,@data,@resultados,@Observacoes);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
-                    sqlCommand.Parameters.AddWithValue("@IdDoenca", doenca);
+                    sqlCommand.Parameters.AddWithValue("@IdAnalisesLaboratoriais", analise);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@data", data.ToString("MM/dd/yyyy"));
-                    sqlCommand.Parameters.AddWithValue("@observacoes", observacoes);
+                    if (resultados != String.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@resultados", Convert.ToString(resultados));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@resultados", DBNull.Value);
+                    }
+                    if (observacoes != String.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@Observacoes", Convert.ToString(observacoes));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@Observacoes", DBNull.Value);
+                    }
 
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Doença registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Análise registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
                     limparCampos();
                     UpdateDataGridView();
@@ -105,18 +127,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar a doença", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a análise laboratorial!", excep.Message);
 
                 }
             }
         }
 
-      private void UpdateDataGridView()
+        private void UpdateDataGridView()
         {
-            doencaPacientes.Clear();
+            analisePaciente.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select doenca.Nome, doencaP.data, doencaP.observacoes from DoencaPaciente doencaP JOIN Doenca doenca ON doencaP.IdDoenca = doenca.IdDoenca WHERE IdPaciente = @IdPaciente ORDER BY doencaP.data, doenca.Nome", conn);
+            SqlCommand cmd = new SqlCommand("select analise.NomeAnalise, analisesP.data, analisesP.resultados, analisesP.observacoes from analisesLaboratoriaisPaciente analisesP JOIN analisesLaboratoriais analise ON analisesP.IdAnalisesLaboratoriais = analise.IdAnalisesLaboratoriais WHERE IdPaciente = @IdPaciente ORDER BY analisesP.data, analise.NomeAnalise", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -124,52 +146,44 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-                DoencaPaciente doencaPaciente = new DoencaPaciente
+                AnaliseLaboratorialPaciente an = new AnaliseLaboratorialPaciente
                 {
-                    nome = (string)reader["Nome"],
+                    nome = (string)reader["NomeAnalise"],
                     data = data,
-                    observacoes = (string)reader["observacoes"],
+                    resultados = ((reader["resultados"] == DBNull.Value) ? "" : (string)reader["resultados"]),
+                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+
                 };
-                doencaPacientes.Add(doencaPaciente);
+                analisePaciente.Add(an);
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = doencaPacientes };         
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = analisePaciente };
             dataGridViewDoencas.DataSource = bindingSource1;
             dataGridViewDoencas.Columns[0].HeaderText = "Doença";
             dataGridViewDoencas.Columns[1].HeaderText = "Data de Diagnóstico";
-            dataGridViewDoencas.Columns[2].HeaderText = "Observações";
+            dataGridViewDoencas.Columns[2].HeaderText = "Resultados";
+            dataGridViewDoencas.Columns[3].HeaderText = "Observações";
 
             conn.Close();
             dataGridViewDoencas.Update();
             dataGridViewDoencas.Refresh();
         }
 
-        private void enfermeiroBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            limparCampos();
-            Doencas doencas = new Doencas(this);
-            doencas.Show();
-        }
         public void reiniciar()
         {
-            doencas.Clear();
-            comboBoxDoenca.Items.Clear();
+            analises.Clear();
+            comboBoxAnalise.Items.Clear();
             auxiliar.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Doenca ", conn);
+            SqlCommand cmd = new SqlCommand("select * from analisesLaboratoriais ", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader["Nome"];
-                item.Value = (int)reader["IdDoenca"];
-                comboBoxDoenca.Items.Add(item);
-                doencas.Add(item);
+                item.Text = (string)reader["NomeAnalise"];
+                item.Value = (int)reader["IdAnalisesLaboratoriais"];
+                comboBoxAnalise.Items.Add(item);
+                analises.Add(item);
             }
 
             conn.Close();
@@ -180,40 +194,40 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (e.KeyCode == Keys.Enter)
             {
 
-                comboBoxDoenca.Items.Clear();
+                comboBoxAnalise.Items.Clear();
                 foreach (var pesquisa in filtrosDePesquisa())
                 {
                     ComboBoxItem item = new ComboBoxItem();
                     item.Text = pesquisa.Text;
                     item.Value = pesquisa.Value;
-                    comboBoxDoenca.Items.Add(item);
+                    comboBoxAnalise.Items.Add(item);
                 }
-            
+
             }
         }
 
         private List<ComboBoxItem> filtrosDePesquisa()
         {
             auxiliar = new List<ComboBoxItem>();
-            if (txtProcurar.Text != "" )
+            if (txtProcurar.Text != "")
             {
-                foreach (ComboBoxItem doenca in doencas)
+                foreach (ComboBoxItem ana in analises)
                 {
-                    if (doenca.Text.ToLower().Contains(txtProcurar.Text.ToLower()))
+                    if (ana.Text.ToLower().Contains(txtProcurar.Text.ToLower()))
                     {
-                        auxiliar.Add(doenca);
+                        auxiliar.Add(ana);
                     }
                 }
                 return auxiliar;
             }
-            auxiliar = doencas;
+            auxiliar = analises;
             return auxiliar;
         }
 
 
         private Boolean VerificarDadosInseridos()
         {
-            string nome = comboBoxDoenca.Text;
+            string nome = comboBoxAnalise.Text;
             DateTime data = dataDiagnostico.Value;
 
             if ((data - DateTime.Today).TotalDays > 0)
@@ -225,17 +239,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha a doença!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (comboBoxDoenca.Text == string.Empty)
+                if (comboBoxAnalise.Text == string.Empty)
                 {
-                    errorProvider.SetError(comboBoxDoenca, "A doença é obrigatório!");
+                    errorProvider.SetError(comboBoxAnalise, "A doença é obrigatório!");
                 }
                 else
                 {
-                    errorProvider.SetError(comboBoxDoenca, String.Empty);
+                    errorProvider.SetError(comboBoxAnalise, String.Empty);
                 }
                 return false;
             }
-
+            /*
             conn.Open();
             com.Connection = conn;
 
@@ -245,7 +259,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             while (reader.Read())
             {
                 DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                int doenca = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
+                int doenca = (comboBoxAnalise.SelectedItem as ComboBoxItem).Value;
                 if (dataDiagnostico.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && doenca == (int)reader["IdDoenca"])
                 {
                     MessageBox.Show("Não é possível registar essa doenca, porque já esta registada na data que selecionou. Escolha outra doenca ou outra cirurgia!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -254,19 +268,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
 
             }
-            conn.Close();
+            conn.Close();*/
 
             return true;
-        }
-
-        private void txtProcurar_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            limparCampos();
         }
 
         private void limparCampos()
@@ -274,16 +278,28 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             txtProcurar.Text = "";
             txtObservacoes.Text = "";
             dataDiagnostico.Value = DateTime.Today;
-            comboBoxDoenca.SelectedItem = null;
-            comboBoxDoenca.Items.Clear();
+            comboBoxAnalise.SelectedItem = null;
+            comboBoxAnalise.Items.Clear();
             foreach (var pesquisa in filtrosDePesquisa())
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Text = pesquisa.Text;
                 item.Value = pesquisa.Value;
-                comboBoxDoenca.Items.Add(item);
+                comboBoxAnalise.Items.Add(item);
             }
             // filtrosDePesquisa();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+            AnalisesLaboratoriais analisesLaboratoriais = new AnalisesLaboratoriais(this);
+            analisesLaboratoriais.Show();
         }
     }
 }

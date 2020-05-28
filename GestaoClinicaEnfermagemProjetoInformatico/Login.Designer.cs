@@ -85,7 +85,7 @@
             this.panelMenu.Controls.Add(this.label1);
             this.panelMenu.Location = new System.Drawing.Point(0, 40);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(232, 671);
+            this.panelMenu.Size = new System.Drawing.Size(232, 800);
             this.panelMenu.TabIndex = 3;
             // 
             // pictureBox2
@@ -202,7 +202,7 @@
             this.panelFormulario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelFormulario.Location = new System.Drawing.Point(232, 40);
             this.panelFormulario.Name = "panelFormulario";
-            this.panelFormulario.Size = new System.Drawing.Size(1154, 671);
+            this.panelFormulario.Size = new System.Drawing.Size(1154, 800);
             this.panelFormulario.TabIndex = 4;
             this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
             // 
@@ -370,7 +370,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1386, 711);
+            this.ClientSize = new System.Drawing.Size(1386, 841);
             this.Controls.Add(this.panelFormulario);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelTitulo);
@@ -381,6 +381,7 @@
             this.Text = "Login";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Login_Load);
+            this.Enter += new System.EventHandler(this.Login_Enter);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

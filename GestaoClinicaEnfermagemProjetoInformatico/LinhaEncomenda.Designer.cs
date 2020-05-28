@@ -271,7 +271,6 @@
             this.dataGridViewEncomenda.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewEncomenda.Size = new System.Drawing.Size(784, 265);
             this.dataGridViewEncomenda.TabIndex = 67;
-            this.dataGridViewEncomenda.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridViewEncomenda_CurrentCellDirtyStateChanged);
             // 
             // dataGridViewListaProdutos
             // 

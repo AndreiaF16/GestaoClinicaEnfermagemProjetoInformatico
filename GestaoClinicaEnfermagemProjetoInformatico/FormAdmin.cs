@@ -105,7 +105,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ATENÇÃO, FALTA IMPLEMENTAR!!!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            AlterarPacienteDeEnfermeiro alterarPacienteDeEnfermeiro = new AlterarPacienteDeEnfermeiro();
+            alterarPacienteDeEnfermeiro.Show();
+            //MessageBox.Show("ATENÇÃO, FALTA IMPLEMENTAR!!!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void button4_Click(object sender, EventArgs e)

@@ -11,28 +11,23 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class AdicionarTipoAleitamento : Form
+    public partial class AnalisesLaboratoriais : Form
     {
-        AdicionarVisualizarAvaliacaoObjetivoPaciente adicionar = null;
+        AdicionarVisualizarAnaliseLaboratorialPaciente adicionar = null;
         private ErrorProvider errorProvider = new ErrorProvider();
-        public AdicionarTipoAleitamento(AdicionarVisualizarAvaliacaoObjetivoPaciente avaliacaoPaciente)
+
+        public AnalisesLaboratoriais(AdicionarVisualizarAnaliseLaboratorialPaciente adicionarVisualizarAnalisesLaboratoriais)
         {
             InitializeComponent();
-            adicionar = avaliacaoPaciente;
-        }
-
-        private void AdicionarTipoAleitamento_Load(object sender, EventArgs e)
-        {
-            errorProvider.ContainerControl = this;
-            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            adicionar = adicionarVisualizarAnalisesLaboratoriais;
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            if (adicionar != null)
+           /* if (adicionar != null)
             {
                 adicionar.reiniciar();
-            }
+            }*/
             this.Close();
         }
 
@@ -68,71 +63,84 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.WindowState = FormWindowState.Minimized;
         }
 
+        private void AnalisesLaboratoriais_Load(object sender, EventArgs e)
+        {
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (VerificarDadosInseridos())
             {
-                string tipo = txtTipo.Text;
+                string analise = txtAnalise.Text;
                 string observacoes = txtObs.Text;
                 try
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Aleitamento(tipoAleitamento,Observacoes) VALUES(@Nome, @Observacoes);";
+                    string queryInsertData = "INSERT INTO analisesLaboratoriais(NomeAnalise,Observacoes) VALUES(@Nome, @Observacoes);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.Parameters.AddWithValue("@Nome", tipo);
-                    sqlCommand.Parameters.AddWithValue("@Observacoes", observacoes);
+                    sqlCommand.Parameters.AddWithValue("@Nome", analise);
+                    if (observacoes != String.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@Observacoes", Convert.ToString(observacoes));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@Observacoes", DBNull.Value);
+                    }
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Tipo de Aleitamento registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
-                    txtTipo.Text = "";
+                    txtAnalise.Text = "";
                     txtObs.Text = "";
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar o tipo de aleitamento!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o nome da análise laboratorial!", excep.Message);
                 }
             }
         }
 
-            private Boolean VerificarDadosInseridos()
+        private Boolean VerificarDadosInseridos()
             {
-                string tipo = txtTipo.Text;
+                string tipo = txtAnalise.Text;
 
 
                 if (tipo == string.Empty)
                 {
                     MessageBox.Show("Campo Obrigatório, por favor preencha o tipo de aleitamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    if (txtTipo.Text == string.Empty)
+                    if (txtAnalise.Text == string.Empty)
                     {
-                        errorProvider.SetError(txtTipo, "O tipo de aleitamento é obrigatório!");
+                        errorProvider.SetError(txtAnalise, "O nome da análise laboratorial é obrigatório!");
                     }
                     else
                     {
-                        errorProvider.SetError(txtTipo, String.Empty);
+                        errorProvider.SetError(txtAnalise, String.Empty);
                     }
 
-                return false;
+                    return false;
                 }
                 return true;
             }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            txtTipo.Text = "";
-            txtObs.Text = "";
-            VerEditarAleitamento verEditarAleitamento = new VerEditarAleitamento();
-            verEditarAleitamento.Show();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            txtTipo.Text = "";
+            txtAnalise.Text = "";
             txtObs.Text = "";
             errorProvider.Clear();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txtAnalise.Text = "";
+            txtObs.Text = "";
+            VerEditarAnaliseLaboratorial verEditarAnaliseLaboratorial = new VerEditarAnaliseLaboratorial();
+            verEditarAnaliseLaboratorial.Show();
+
+        }
     }
 }
-

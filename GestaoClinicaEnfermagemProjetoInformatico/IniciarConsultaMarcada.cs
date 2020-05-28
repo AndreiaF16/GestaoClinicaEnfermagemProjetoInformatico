@@ -344,5 +344,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             lblEscala.Text = "";
             errorProvider.Clear();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            AdicionarVisualizarAnaliseLaboratorialPaciente adicionar = new AdicionarVisualizarAnaliseLaboratorialPaciente(paciente);
+            adicionar.Show();
+        }
     }
 }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public class MetodoContracetivo
+    public class AnaliseLaboratorial
     {
-        public string nomeMetodoContracetivo { get; set; }
+        public string nomeAnalise { get; set; }
 
         public string observacao { get; set; }
 
-        public int IdMetodoContracetivo { get; set; }
+        public int IdAnaliseLaboratorial { get; set; }
     }
 }

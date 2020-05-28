@@ -301,7 +301,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 foreach (AgendamentoConsultaGridView consulta in consultaAgendada)
                 {
-                    if (consulta.NifPaciente == Convert.ToInt32(txtNIF.Text))
+                    if (consulta.NifPaciente.ToString().Contains(txtNIF.Text))
                     {
                         auxiliar.Add(consulta);
                     }
@@ -323,7 +323,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 foreach (AgendamentoConsultaGridView consulta in consultaAgendada)
                 {
-                    if (consulta.NomePaciente.ToLower().Contains(txtNome.Text.ToLower()) && consulta.NifPaciente == Convert.ToInt32(txtNIF.Text))
+                    if (consulta.NomePaciente.ToLower().Contains(txtNome.Text.ToLower()) && consulta.NifPaciente.ToString().Contains(txtNIF.Text))
                     {
                         auxiliar.Add(consulta);
                     }
@@ -459,6 +459,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             AdicionarProfissao adicionarProfissao = new AdicionarProfissao(null, null);
             adicionarProfissao.Show();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            AnalisesLaboratoriais analisesLaboratoriais = new AnalisesLaboratoriais(null);
+            analisesLaboratoriais.Show();
         }
     }
 }
