@@ -29,7 +29,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             paciente = pac;
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            dataDiagnostico.MaxDate = DateTime.Now;
+            dataDiagnostico.MaxDate = DateTime.Today;
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
 
@@ -133,7 +133,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void UpdateDataGridView()
+        public void UpdateDataGridView()
         {
             analisePaciente.Clear();
             conn.Open();
@@ -232,7 +232,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
-                MessageBox.Show("A data de diagnóstico da doença tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data da analise tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -279,6 +279,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             txtObservacoes.Text = "";
             dataDiagnostico.Value = DateTime.Today;
             comboBoxAnalise.SelectedItem = null;
+            errorProvider.Clear();
             comboBoxAnalise.Items.Clear();
             foreach (var pesquisa in filtrosDePesquisa())
             {

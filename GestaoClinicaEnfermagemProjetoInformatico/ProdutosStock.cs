@@ -20,6 +20,5 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public string observacoes { get; set; }
 
         public decimal precoTotal { get; set; }
-
     }
 }

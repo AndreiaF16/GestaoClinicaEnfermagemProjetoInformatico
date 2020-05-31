@@ -142,6 +142,7 @@
     <Compile Include="AnalisesLaboratoriais.Designer.cs">
       <DependentUpon>AnalisesLaboratoriais.cs</DependentUpon>
     </Compile>
+    <Compile Include="AtualizarQuantidade.cs" />
     <Compile Include="AvaliacaoObjetivo.cs" />
     <Compile Include="AvaliacaoObjetivoBebe.cs" />
     <Compile Include="Cirurgia.cs" />

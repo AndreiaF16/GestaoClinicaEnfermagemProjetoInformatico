@@ -24,10 +24,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-           /* if (adicionar != null)
+            if (adicionar != null)
             {
                 adicionar.reiniciar();
-            }*/
+            }
             this.Close();
         }
 
@@ -94,6 +94,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Tipo de Aleitamento registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
+                   // adicionar.UpdateDataGridView();
                     txtAnalise.Text = "";
                     txtObs.Text = "";
                 }

@@ -138,5 +138,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             txtNome.Text = "";
             txtSintomas.Text = "";
         }
+
+        private void panelFormulario_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

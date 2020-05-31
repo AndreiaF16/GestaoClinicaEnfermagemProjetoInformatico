@@ -29,12 +29,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             fornecedor = forn;
             label11.Text = "Fornecedor: " + fornecedor.nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = encomendas };
-            dataGridViewEncomenda.DataSource = bindingSource2;
-            dataGridViewEncomenda.Columns[0].ReadOnly = true;
-            dataGridViewEncomenda.Columns[1].ReadOnly = true;
-            dataGridViewEncomenda.Columns[2].ReadOnly = true;
-            dataGridViewEncomenda.Columns[4].Visible = false;
+            //var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = encomendas };
+            //dataGridViewEncomenda.DataSource = bindingSource2;
+         
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -45,6 +42,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void LinhaEncomenda_Load(object sender, EventArgs e)
         {
             UpdateListBox();
+            dataGridViewEncomenda.Columns[0].ReadOnly = true;
+            dataGridViewEncomenda.Columns[1].ReadOnly = true;
+            dataGridViewEncomenda.Columns[2].ReadOnly = true;
+            dataGridViewEncomenda.Columns[4].Visible = false;
+            dataGridViewListaProdutos.Columns[4].Visible = false;
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -182,11 +185,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             int i = dataGridViewListaProdutos.CurrentCell.RowIndex;
             foreach (var produto in listaProdutos)
             {
-                    if (produto.id == Convert.ToInt32(dataGridViewListaProdutos.Rows[i].Cells[4].Value.ToString()))
+                if (produto.id == Convert.ToInt32(dataGridViewListaProdutos.Rows[i].Cells[4].Value.ToString()))
                 {
                     ListarProdutos listar = produto;
                     listar.quant = 0;
-                    listaEncomenda.Add(listar);
+                    //listaEncomenda.Add(listar);
+                    int existe = 0;
+                    foreach (var item in listaEncomenda)
+                    {
+                        if (listar.id == item.id)
+                        {
+                            existe = 1;
+                        }
+                    }
+                    if (existe == 0)
+                    {
+                        listaEncomenda.Add(listar);
+                    }
                 }
             }
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaEncomenda };
@@ -215,15 +230,24 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void button5_Click(object sender, EventArgs e)
         {
             int i = dataGridViewEncomenda.CurrentCell.RowIndex;
+            ListarProdutos listar = null;
             foreach (var produto in listaProdutos)
             {
                // var sad = dataGridViewEncomenda.Rows[i].Cells[4];
                 if (produto.id == Convert.ToInt32(dataGridViewEncomenda.Rows[i].Cells[4].Value.ToString()))
                 {
-                    ListarProdutos listar = produto;
-                    listaEncomenda.Remove(listar);
+                    listar = produto;
                 }
             }
+            foreach (var item in listaEncomenda)
+            {
+                if (listar != null && listar.id == item.id)
+                {
+                    listar = item;
+                }
+            }
+            listaEncomenda.Remove(listar);
+
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaEncomenda };
             dataGridViewEncomenda.DataSource = bindingSource1;
             /*

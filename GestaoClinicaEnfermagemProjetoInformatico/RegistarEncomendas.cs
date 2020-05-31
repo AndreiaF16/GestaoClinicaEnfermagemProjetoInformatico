@@ -40,6 +40,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = todasEncomendas };
             dataGridViewEncomendas.DataSource = bindingSource2;
             dataGridViewEncomendas.Columns[4].Visible = false;
+            dataGridViewEncomendas.Columns[5].Visible = false;
+
             UpdateDataGridView();
             reiniciar();
         }
@@ -65,7 +67,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             catch (SqlException excep)
             {
-                MessageBox.Show("Por erro interno é impossível eliminar a encomenda", excep.Message);
+                MessageBox.Show(/*"Por erro interno é impossível eliminar a encomenda",*/ excep.Message);
             }
         }
 
@@ -145,6 +147,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                             enc = new Encomendas
                             {
                                 IdEncomenda = (int)reader["IdEncomenda"],
+                                NFatura = (string)reader["Nfatura"],
 
                             };
                         
@@ -239,11 +242,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaEncomendas };
             dataGridViewEncomendas.DataSource = bindingSource1;
-            dataGridViewEncomendas.Columns[0].HeaderText = "Número da Encomenda";
+            dataGridViewEncomendas.Columns[0].HeaderText = "Número da Fatura";
             dataGridViewEncomendas.Columns[1].HeaderText = "Nome Fornecedor";
-            dataGridViewEncomendas.Columns[2].HeaderText = "Data de Registo da Encomanda";
+            dataGridViewEncomendas.Columns[2].HeaderText = "Data de Registo da Encomenda";
             dataGridViewEncomendas.Columns[3].HeaderText = "Data de Entrega Prevista";
             dataGridViewEncomendas.Columns[4].Visible = false;
+            dataGridViewEncomendas.Columns[5].Visible = false;
+
             conn.Close();
             dataGridViewEncomendas.Update();
             dataGridViewEncomendas.Refresh();

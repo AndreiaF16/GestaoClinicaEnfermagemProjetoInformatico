@@ -128,7 +128,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     connection.Open();
 
-                    string queryUpdateData = "UPDATE analisesLaboratoriais SET analisesLaboratoriais = @NomeAnalise, observacoes = @Observacoes WHERE IdAnalisesLaboratoriais = @IdAnalisesLaboratoriais";
+                    string queryUpdateData = "UPDATE analisesLaboratoriais SET NomeAnalise = @NomeAnalise, Observacoes = @Observacoes WHERE IdAnalisesLaboratoriais = @IdAnalisesLaboratoriais";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
                     sqlCommand.Parameters.AddWithValue("@NomeAnalise", nome);
                     sqlCommand.Parameters.AddWithValue("@Observacoes", observacao);
@@ -218,7 +218,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             errorProvider.Clear();
         }
 
-        private void panelFormulario_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void dataGridViewAnalises_DoubleClick(object sender, EventArgs e)
+        {
+            int i = dataGridViewAnalises.CurrentCell.RowIndex;
+            analise = null;
+            foreach (var a in auxiliar)
+            {
+                if (a.nomeAnalise == dataGridViewAnalises.Rows[i].Cells[0].Value.ToString())
+                {
+                    analise = a;
+                }
+
+            }
+            if (analise != null)
+            {
+                txtNome.Text = analise.nomeAnalise;
+                txtObs.Text = analise.observacao;
+            }
+        }
+
+        private void dataGridViewAnalises_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             int i = dataGridViewAnalises.CurrentCell.RowIndex;
             analise = null;

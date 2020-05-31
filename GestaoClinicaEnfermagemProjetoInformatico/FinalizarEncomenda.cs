@@ -19,6 +19,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<Encomendas> listaEncomendas = new List<Encomendas>();
         private List<Encomendas> auxiliar = new List<Encomendas>();
         private RegistarEncomendas registarEncomendas = null;
+        private List<AtualizarQuantidade> listaAtualizarQuantidades = new List<AtualizarQuantidade>();
         public FinalizarEncomenda(RegistarEncomendas enc)
         {
             InitializeComponent();
@@ -149,7 +150,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                             conn.Open();
 
-                            string queryUpdateData = "UPDATE Encomenda SET dataEntregaReal = @dataEntregaReal WHERE IdEncomenda = " + encomendas.NFatura;
+                            string queryUpdateData = "UPDATE Encomenda SET dataEntregaReal = @dataEntregaReal WHERE IdEncomenda = " + encomendas.IdEncomenda;
                             SqlCommand sqlCommand = new SqlCommand(queryUpdateData, conn);
                             sqlCommand.Parameters.AddWithValue("@dataEntregaReal", dataEntregaReal);
                             sqlCommand.ExecuteNonQuery();
@@ -159,7 +160,39 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                             }
                             MessageBox.Show("Encomenda alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             conn.Close();
-                            UpdateDataGridView();
+                        listaAtualizarQuantidades.Clear();
+                            conn.Open();
+                        //select produtoStock.IdProdutoStock, produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, linha.quantidade from ProdutoStock produtoStock JOIN LinhaEncomenda linha ON produtoStock.IdProdutoStock = linha.idProdutoStock WHERE linha.idEncomenda = 3009;
+
+                        SqlCommand cmd = new SqlCommand("select produtoStock.IdProdutoStock, produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, linha.quantidade from ProdutoStock produtoStock JOIN LinhaEncomenda linha ON produtoStock.IdProdutoStock = linha.idProdutoStock WHERE linha.idEncomenda = @IdEncomenda", conn);
+                        cmd.Parameters.AddWithValue("@IdEncomenda", encomendas.IdEncomenda);
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        
+                        while (reader.Read())
+                        {
+                            AtualizarQuantidade quantidade = new AtualizarQuantidade
+                            {
+                                IdProdutoStock = (int)reader["IdProdutoStock"],
+                                NomeProduto = (string)reader["NomeProduto"],
+                                quantidadeArmazenada = (int)reader["quantidadeArmazenada"],
+                                quantidade = (int)reader["quantidade"],
+
+                            };
+                            listaAtualizarQuantidades.Add(quantidade);
+                        }
+                        conn.Close();
+
+                        conn.Open();
+                        foreach (var item in listaAtualizarQuantidades)
+                        {
+                            string queryUpdateData2 = "UPDATE ProdutoStock SET quantidadeArmazenada = @quantidadeArmazenada WHERE IdProdutoStock = " + item.IdProdutoStock;
+                            SqlCommand sqlCommand2 = new SqlCommand(queryUpdateData2, conn);
+                            sqlCommand2.Parameters.AddWithValue("@quantidadeArmazenada", item.quantidadeArmazenada + item.quantidade);
+                            sqlCommand2.ExecuteNonQuery();
+                        }
+                        conn.Close();
+
+                        UpdateDataGridView();
                             if (registarEncomendas != null)
                             {
                                 registarEncomendas.UpdateDataGridView();
