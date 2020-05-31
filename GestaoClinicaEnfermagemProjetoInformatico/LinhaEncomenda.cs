@@ -47,6 +47,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewEncomenda.Columns[2].ReadOnly = true;
             dataGridViewEncomenda.Columns[4].Visible = false;
             dataGridViewListaProdutos.Columns[4].Visible = false;
+            dataGridViewListaProdutos.Columns[0].HeaderText = "Produto";
+            dataGridViewListaProdutos.Columns[1].HeaderText = "Preço Unitário (€)";
+            dataGridViewListaProdutos.Columns[2].HeaderText = "Taxa de IVA (%)";
+            dataGridViewListaProdutos.Columns[3].HeaderText = "Stock";
+            dataGridViewEncomenda.Columns[0].HeaderText = "Produto";
+            dataGridViewEncomenda.Columns[1].HeaderText = "Preço Unitário (€)";
+            dataGridViewEncomenda.Columns[2].HeaderText = "Taxa de IVA (%)";
+            dataGridViewEncomenda.Columns[3].HeaderText = "Quantidade Pretendida";
 
         }
 
@@ -120,7 +128,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select IdProdutoStock, NomeProduto, precoUnitario, taxaIVA from ProdutoStock WHERE IdFornecedor = " + fornecedor.IdFornecedor + " ORDER BY NomeProduto ", conn);
+            SqlCommand cmd = new SqlCommand("select IdProdutoStock, NomeProduto, precoUnitario, taxaIVA, quantidadeArmazenada from ProdutoStock WHERE IdFornecedor = " + fornecedor.IdFornecedor + " ORDER BY NomeProduto ", conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -130,9 +138,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     id = (int)reader["IdProdutoStock"],
                     nome = (string)reader["NomeProduto"],
                     preco = (decimal)reader["precoUnitario"],
-                    iva = (int)reader["taxaIVA"]
+                    iva = (int)reader["taxaIVA"],
+                    quant = (int)reader["quantidadeArmazenada"] 
                 };
-                produto.quant = 0;
+               // produto.quant = 0;
                 listaProdutos.Add(produto);
                
             }
@@ -142,11 +151,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
             var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = listaEncomenda };
             dataGridViewEncomenda.DataSource = bindingSource2;
-           /* dataGridViewEncomenda.Columns[0].ReadOnly = true;
-            dataGridViewEncomenda.Columns[1].ReadOnly = true;
-            dataGridViewEncomenda.Columns[2].ReadOnly = true;
-            dataGridViewEncomenda.Columns[4].Visible = false;*/
-
+          
             /*listaProdutos.Clear();
             conn.Open();
             com.Connection = conn;

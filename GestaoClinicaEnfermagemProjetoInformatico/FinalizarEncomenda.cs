@@ -66,7 +66,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             listaEncomendas.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select enc.Nfatura, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista, enc.dataEntregaReal from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor WHERE enc.dataEntregaReal IS NULL ORDER BY enc.IdEncomenda", conn);
+            SqlCommand cmd = new SqlCommand("select enc.IdEncomenda, enc.Nfatura, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista, enc.dataEntregaReal from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor WHERE enc.dataEntregaReal IS NULL ORDER BY enc.IdEncomenda", conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -83,6 +83,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                
                 Encomendas encomendas = new Encomendas
                 {
+                    IdEncomenda = (int)reader["IdEncomenda"],
                     NFatura = (string)reader["Nfatura"],
                     nome = (string)reader["nome"],
                     dataRegisto = dataRegistoEnc,
