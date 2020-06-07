@@ -15,7 +15,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
-        private Encomendas encomendas = null;
+        //private Encomendas encomendas = null;
         private List<Encomendas> listaEnc = new List<Encomendas>();
         private List<Encomendas> auxiliar = new List<Encomendas>();
 

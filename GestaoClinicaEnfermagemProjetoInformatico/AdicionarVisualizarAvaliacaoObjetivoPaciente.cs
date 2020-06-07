@@ -28,6 +28,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             dataAvaliacaoObjetivo.Value = DateTime.Today;
 
         }

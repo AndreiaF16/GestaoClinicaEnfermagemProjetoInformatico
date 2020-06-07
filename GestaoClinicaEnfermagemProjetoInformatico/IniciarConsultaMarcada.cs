@@ -350,5 +350,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             AdicionarVisualizarAnaliseLaboratorialPaciente adicionar = new AdicionarVisualizarAnaliseLaboratorialPaciente(paciente);
             adicionar.Show();
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            AdicionarVisualizarTratamentoPaciente adicionarVisualizarTratamentoPaciente = new AdicionarVisualizarTratamentoPaciente(paciente);
+            adicionarVisualizarTratamentoPaciente.Show();
+        }
     }
 }

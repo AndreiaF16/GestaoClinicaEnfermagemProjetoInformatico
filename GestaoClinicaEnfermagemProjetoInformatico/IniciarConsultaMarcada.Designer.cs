@@ -67,6 +67,7 @@
             this.txtValorConsulta = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button10 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -120,7 +121,7 @@
             this.lblCustoConsulta.AutoSize = true;
             this.lblCustoConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustoConsulta.ForeColor = System.Drawing.Color.Black;
-            this.lblCustoConsulta.Location = new System.Drawing.Point(6, 39);
+            this.lblCustoConsulta.Location = new System.Drawing.Point(6, 25);
             this.lblCustoConsulta.Name = "lblCustoConsulta";
             this.lblCustoConsulta.Size = new System.Drawing.Size(157, 20);
             this.lblCustoConsulta.TabIndex = 23;
@@ -395,7 +396,7 @@
             this.lblSinais.AutoSize = true;
             this.lblSinais.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSinais.ForeColor = System.Drawing.Color.Black;
-            this.lblSinais.Location = new System.Drawing.Point(19, 225);
+            this.lblSinais.Location = new System.Drawing.Point(19, 236);
             this.lblSinais.Name = "lblSinais";
             this.lblSinais.Size = new System.Drawing.Size(56, 20);
             this.lblSinais.TabIndex = 6;
@@ -404,19 +405,19 @@
             // txtSinais
             // 
             this.txtSinais.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSinais.Location = new System.Drawing.Point(146, 225);
+            this.txtSinais.Location = new System.Drawing.Point(146, 236);
             this.txtSinais.Multiline = true;
             this.txtSinais.Name = "txtSinais";
-            this.txtSinais.Size = new System.Drawing.Size(526, 76);
+            this.txtSinais.Size = new System.Drawing.Size(526, 87);
             this.txtSinais.TabIndex = 5;
             // 
             // txtSintomatologia
             // 
             this.txtSintomatologia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSintomatologia.Location = new System.Drawing.Point(146, 125);
+            this.txtSintomatologia.Location = new System.Drawing.Point(146, 130);
             this.txtSintomatologia.Multiline = true;
             this.txtSintomatologia.Name = "txtSintomatologia";
-            this.txtSintomatologia.Size = new System.Drawing.Size(526, 76);
+            this.txtSintomatologia.Size = new System.Drawing.Size(526, 87);
             this.txtSintomatologia.TabIndex = 4;
             // 
             // lblSintomatologia
@@ -424,7 +425,7 @@
             this.lblSintomatologia.AutoSize = true;
             this.lblSintomatologia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSintomatologia.ForeColor = System.Drawing.Color.Black;
-            this.lblSintomatologia.Location = new System.Drawing.Point(11, 125);
+            this.lblSintomatologia.Location = new System.Drawing.Point(19, 133);
             this.lblSintomatologia.Name = "lblSintomatologia";
             this.lblSintomatologia.Size = new System.Drawing.Size(119, 20);
             this.lblSintomatologia.TabIndex = 3;
@@ -435,7 +436,7 @@
             this.lblHistoriaAtual.AutoSize = true;
             this.lblHistoriaAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHistoriaAtual.ForeColor = System.Drawing.Color.Black;
-            this.lblHistoriaAtual.Location = new System.Drawing.Point(11, 19);
+            this.lblHistoriaAtual.Location = new System.Drawing.Point(19, 24);
             this.lblHistoriaAtual.Name = "lblHistoriaAtual";
             this.lblHistoriaAtual.Size = new System.Drawing.Size(108, 20);
             this.lblHistoriaAtual.TabIndex = 2;
@@ -444,10 +445,10 @@
             // txtHistoriaAtual
             // 
             this.txtHistoriaAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHistoriaAtual.Location = new System.Drawing.Point(146, 19);
+            this.txtHistoriaAtual.Location = new System.Drawing.Point(146, 24);
             this.txtHistoriaAtual.Multiline = true;
             this.txtHistoriaAtual.Name = "txtHistoriaAtual";
-            this.txtHistoriaAtual.Size = new System.Drawing.Size(526, 76);
+            this.txtHistoriaAtual.Size = new System.Drawing.Size(526, 87);
             this.txtHistoriaAtual.TabIndex = 1;
             // 
             // panelFormulario
@@ -488,11 +489,11 @@
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.Black;
             this.button9.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button9.Location = new System.Drawing.Point(56, 145);
+            this.button9.Location = new System.Drawing.Point(72, 146);
             this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
             this.button9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button9.Size = new System.Drawing.Size(206, 48);
+            this.button9.Size = new System.Drawing.Size(174, 48);
             this.button9.TabIndex = 33;
             this.button9.Text = "Limpar Campos";
             this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -504,7 +505,7 @@
             // 
             this.UpDownPeso.DecimalPlaces = 2;
             this.UpDownPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpDownPeso.Location = new System.Drawing.Point(178, 65);
+            this.UpDownPeso.Location = new System.Drawing.Point(188, 57);
             this.UpDownPeso.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -523,11 +524,11 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(56, 97);
+            this.btnGuardar.Location = new System.Drawing.Point(72, 98);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGuardar.Size = new System.Drawing.Size(206, 48);
+            this.btnGuardar.Size = new System.Drawing.Size(174, 48);
             this.btnGuardar.TabIndex = 25;
             this.btnGuardar.Text = "Registar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -538,7 +539,7 @@
             // txtValorConsulta
             // 
             this.txtValorConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorConsulta.Location = new System.Drawing.Point(178, 33);
+            this.txtValorConsulta.Location = new System.Drawing.Point(188, 25);
             this.txtValorConsulta.Name = "txtValorConsulta";
             this.txtValorConsulta.Size = new System.Drawing.Size(114, 26);
             this.txtValorConsulta.TabIndex = 24;
@@ -558,6 +559,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox3.Controls.Add(this.button10);
             this.groupBox3.Controls.Add(this.button8);
             this.groupBox3.Controls.Add(this.button7);
             this.groupBox3.Controls.Add(this.button6);
@@ -569,10 +571,31 @@
             this.groupBox3.ForeColor = System.Drawing.Color.MediumBlue;
             this.groupBox3.Location = new System.Drawing.Point(837, 44);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(252, 441);
+            this.groupBox3.Size = new System.Drawing.Size(252, 455);
             this.groupBox3.TabIndex = 29;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Acrescentar e Visualizar";
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button10.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_adicionar_50;
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.ForeColor = System.Drawing.Color.Black;
+            this.button10.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button10.Location = new System.Drawing.Point(16, 289);
+            this.button10.Margin = new System.Windows.Forms.Padding(2);
+            this.button10.Name = "button10";
+            this.button10.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button10.Size = new System.Drawing.Size(217, 53);
+            this.button10.TabIndex = 37;
+            this.button10.Text = "Tratamentos";
+            this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button10.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button8
             // 
@@ -583,11 +606,11 @@
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.Black;
             this.button8.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button8.Location = new System.Drawing.Point(16, 373);
+            this.button8.Location = new System.Drawing.Point(16, 395);
             this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button8.Size = new System.Drawing.Size(217, 60);
+            this.button8.Size = new System.Drawing.Size(217, 53);
             this.button8.TabIndex = 36;
             this.button8.Text = "Análises Laboratorias";
             this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -604,11 +627,11 @@
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.Black;
             this.button7.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button7.Location = new System.Drawing.Point(16, 313);
+            this.button7.Location = new System.Drawing.Point(16, 342);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button7.Size = new System.Drawing.Size(217, 60);
+            this.button7.Size = new System.Drawing.Size(217, 53);
             this.button7.TabIndex = 35;
             this.button7.Text = "Produtos a Usar";
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -625,11 +648,11 @@
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.Black;
             this.button6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button6.Location = new System.Drawing.Point(16, 255);
+            this.button6.Location = new System.Drawing.Point(16, 236);
             this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button6.Size = new System.Drawing.Size(217, 58);
+            this.button6.Size = new System.Drawing.Size(217, 53);
             this.button6.TabIndex = 34;
             this.button6.Text = "Avaliação Objetivo";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -646,11 +669,11 @@
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.Black;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.Location = new System.Drawing.Point(16, 195);
+            this.button5.Location = new System.Drawing.Point(16, 183);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button5.Size = new System.Drawing.Size(217, 60);
+            this.button5.Size = new System.Drawing.Size(217, 53);
             this.button5.TabIndex = 33;
             this.button5.Text = "Exames Paciente";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -667,11 +690,11 @@
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.Black;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.Location = new System.Drawing.Point(16, 135);
+            this.button4.Location = new System.Drawing.Point(16, 130);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button4.Size = new System.Drawing.Size(217, 60);
+            this.button4.Size = new System.Drawing.Size(217, 53);
             this.button4.TabIndex = 32;
             this.button4.Text = "Cirurgias Paciente";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -692,7 +715,7 @@
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(217, 58);
+            this.button2.Size = new System.Drawing.Size(217, 53);
             this.button2.TabIndex = 31;
             this.button2.Text = "Alergias Paciente";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -709,11 +732,11 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.Location = new System.Drawing.Point(16, 19);
+            this.button1.Location = new System.Drawing.Point(16, 24);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(217, 58);
+            this.button1.Size = new System.Drawing.Size(217, 53);
             this.button1.TabIndex = 30;
             this.button1.Text = "Doenças Paciente";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -734,17 +757,17 @@
             this.groupBox2.Controls.Add(this.txtSinais);
             this.groupBox2.Location = new System.Drawing.Point(49, 44);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(725, 441);
+            this.groupBox2.Size = new System.Drawing.Size(725, 455);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             // 
             // txtDiagnostico
             // 
             this.txtDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiagnostico.Location = new System.Drawing.Point(146, 331);
+            this.txtDiagnostico.Location = new System.Drawing.Point(146, 342);
             this.txtDiagnostico.Multiline = true;
             this.txtDiagnostico.Name = "txtDiagnostico";
-            this.txtDiagnostico.Size = new System.Drawing.Size(526, 76);
+            this.txtDiagnostico.Size = new System.Drawing.Size(526, 87);
             this.txtDiagnostico.TabIndex = 8;
             // 
             // label2
@@ -752,7 +775,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(19, 331);
+            this.label2.Location = new System.Drawing.Point(19, 342);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 20);
             this.label2.TabIndex = 7;
@@ -983,5 +1006,6 @@
         private System.Windows.Forms.NumericUpDown UpDownPeso;
         private System.Windows.Forms.TextBox txtValorConsulta;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }

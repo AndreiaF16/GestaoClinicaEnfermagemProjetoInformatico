@@ -66,6 +66,12 @@
     <Compile Include="AdicionarTipoParto.Designer.cs">
       <DependentUpon>AdicionarTipoParto.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdicionarTratamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarTratamento.Designer.cs">
+      <DependentUpon>AdicionarTratamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdicionarVerTipoDespesa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,14 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="ListarEncomendas.cs" />
+    <Compile Include="AdicionarVisualizarTratamentoPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarVisualizarTratamentoPaciente.Designer.cs">
+      <DependentUpon>AdicionarVisualizarTratamentoPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tratamento.cs" />
+    <Compile Include="TratamentoPaciente.cs" />
     <Compile Include="VerDespesasTodas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -524,6 +538,9 @@
     <EmbeddedResource Include="AdicionarTipoParto.resx">
       <DependentUpon>AdicionarTipoParto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarTratamento.resx">
+      <DependentUpon>AdicionarTratamento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdicionarVerTipoDespesa.resx">
       <DependentUpon>AdicionarVerTipoDespesa.cs</DependentUpon>
     </EmbeddedResource>
@@ -595,6 +612,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistarExames.resx">
       <DependentUpon>RegistarExames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarVisualizarTratamentoPaciente.resx">
+      <DependentUpon>AdicionarVisualizarTratamentoPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerAlergiasRegistadas.resx">
       <DependentUpon>VerAlergiasRegistadas.cs</DependentUpon>
