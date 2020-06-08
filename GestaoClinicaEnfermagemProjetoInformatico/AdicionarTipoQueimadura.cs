@@ -11,28 +11,27 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class AdicionarTratamento : Form
+    public partial class AdicionarTipoQueimadura : Form
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private ErrorProvider errorProvider = new ErrorProvider();
         AdicionarVisualizarTratamentoPaciente adicionar = null;
-        private List<Tratamento> listaTratamentos = new List<Tratamento>();
+        private List<Queimadura> tipoQueimadura = new List<Queimadura>();
 
-        public AdicionarTratamento(AdicionarVisualizarTratamentoPaciente adicionarVisualizarTratamentoPaciente)
+        public AdicionarTipoQueimadura(AdicionarVisualizarTratamentoPaciente adicionarVisualizarTratamentoPaciente)
         {
             InitializeComponent();
             adicionar = adicionarVisualizarTratamentoPaciente;
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
         }
 
-        private void AdicionarTratamento_Load(object sender, EventArgs e)
+        private void AdicionarTipoQueimadura_Load(object sender, EventArgs e)
         {
-            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = listaTratamentos };
-            dataGridViewTratamentos.DataSource = bindingSource2;
+            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = tipoQueimadura };
+            dataGridViewQueimaduras.DataSource = bindingSource2;
             UpdateDataGridView();
         }
 
@@ -62,15 +61,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void btnVoltar_Click(object sender, EventArgs e)
-        {
-            if (adicionar != null)
-            {
-                adicionar.reiniciar();
-            }
-            this.Close();
-        }
-
         private void hora_Tick(object sender, EventArgs e)
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
@@ -79,8 +69,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //nomeTratamento
-
             if (VerificarDadosInseridos())
             {
                 string nome = txtNome.Text;
@@ -89,20 +77,34 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Tratamento(nomeTratamento) VALUES(@NomeTratamento);";
+                    string queryInsertData = "INSERT INTO tipoQueimadura(tipoQueimadura) VALUES(@tipoQueimadura);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.Parameters.AddWithValue("@NomeTratamento", txtNome.Text);
+                    sqlCommand.Parameters.AddWithValue("@tipoQueimadura", txtNome.Text);
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Tratamento registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Tipo de Queimadura registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                     UpdateDataGridView();
                     limparCampos();
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar o tratamento", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o tipo de queimadura", excep.Message);
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            if (adicionar != null)
+            {
+                adicionar.reiniciar();
+            }
+            this.Close();
         }
 
         private Boolean VerificarDadosInseridos()
@@ -114,7 +116,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 if (txtNome.Text == string.Empty)
                 {
-                    errorProvider.SetError(txtNome, "O nome do tratamento é obrigatório!");
+                    errorProvider.SetError(txtNome, "O tipo de queimadura é obrigatório!");
                 }
                 else
                 {
@@ -131,35 +133,30 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             errorProvider.Clear();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            limparCampos();
-
-        }
         public void UpdateDataGridView()
         {
-            listaTratamentos.Clear();
+            tipoQueimadura.Clear();
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select nomeTratamento from Tratamento ORDER BY nomeTratamento asc", conn);
+            SqlCommand cmd = new SqlCommand("select tipoQueimadura from tipoQueimadura ORDER BY tipoQueimadura asc", conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                Tratamento encomendas = new Tratamento
+                Queimadura queima = new Queimadura
                 {
-                    nomeTratamento = (string)reader["nomeTratamento"]
+                    tipoQueimadura = (string)reader["tipoQueimadura"]
                 };
-                listaTratamentos.Add(encomendas);
+                tipoQueimadura.Add(queima);
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaTratamentos };
-            dataGridViewTratamentos.DataSource = bindingSource1;
-            dataGridViewTratamentos.Columns[0].HeaderText = "Nome do Tratamento";
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = tipoQueimadura };
+            dataGridViewQueimaduras.DataSource = bindingSource1;
+            dataGridViewQueimaduras.Columns[0].HeaderText = "Tipo de Queimadura";
 
             conn.Close();
-            dataGridViewTratamentos.Update();
-            dataGridViewTratamentos.Refresh();
+            dataGridViewQueimaduras.Update();
+            dataGridViewQueimaduras.Refresh();
         }
     }
 }

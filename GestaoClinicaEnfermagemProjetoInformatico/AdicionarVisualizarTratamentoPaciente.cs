@@ -16,6 +16,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private List<ComboBoxItem> tratamentos = new List<ComboBoxItem>();
+        private List<ComboBoxItem> queimaduras = new List<ComboBoxItem>();
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
         private Paciente paciente = new Paciente();
         private ErrorProvider errorProvider = new ErrorProvider();
@@ -87,7 +88,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 //int tratamento = -1;
                 float nrTratamento = Convert.ToSingle(UpDownNumeroTratamento.Text);
                 string dimensoes = txtDimensoes.Text;
-                string ulcera = txtBoxUlcera.Text;
+                string ulcera = txtGrauUlceraPressao.Text;
                 string tipoExsudado = txtExsudadoTipo.Text;
                 int quantidade = Convert.ToInt32(numericUpDownExcudado.Text);
                 string cheiro = txtExsudadoCheiro.Text;
@@ -101,13 +102,24 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 string suportePenso = txtSuportePenso.Text;
                 string observacoes = txtObservacoes.Text;
                 string escalaDor = lblEscala.Text;
-                string tipoQueimadura = txtTipoQueimadura.Text;
+                string IPTB = txtIPTB.Text;
+                int tipoQueimadura = -1;
+                int tipoUlcera = -1;
+                // int tipoQueimadura = (comboBoxTipoQueimadura.SelectedItem as ComboBoxItem).Value;
                 int tratamento = (comboBoxTratamento.SelectedItem as ComboBoxItem).Value; 
 
+                if (comboBoxTipoQueimadura.SelectedItem != null)
+                {
+                    tipoQueimadura = (comboBoxTipoQueimadura.SelectedItem as ComboBoxItem).Value;
+                }
+                if (comboBoxTipoUlcera.SelectedItem != null)
+                {
+                    tipoUlcera = (comboBoxTipoUlcera.SelectedItem as ComboBoxItem).Value;
+                }
                 try
                 {
                     conn.Open();
-                    string queryInsertData = "INSERT INTO TratamentoPaciente(IdTratamento,IdPaciente,data,numeroTratamento,dimensoes,grau,exsudadoTipo,exsudadoQuantidade,exsudadoCheiro,tecidoPredominante,areaCircundante,agenteLimpeza,aplicacaoFerida,aplicacaoAreaCircundante,aplicacaoPenso,aplicacaoTamanho,aplicacaoSuportePenso,ProximoTratamento,Observacoes,EscalaDor,tipoQueimadura) VALUES(@idTratamento,@IdPaciente,@data,@numeroTratamento,@dimensoes,@ulcera,@tipoExsudado,@quantidade,@cheiro,@tecidoPredominante,@areaCircundante,@agenteLimpeza,@ferida,@areaAplicaao,@tipoPenso,@tamanhoPenso,@suportePenso,@dataProximoTratamento,@observacoes,@escalaDor,@tipoQueimadura); ";
+                    string queryInsertData = "INSERT INTO TratamentoPaciente(IdTratamento,IdPaciente,data,numeroTratamento,dimensoes,grauUlceraPressao,exsudadoTipo,exsudadoQuantidade,exsudadoCheiro,tecidoPredominante,areaCircundante,agenteLimpeza,aplicacaoFerida,aplicacaoAreaCircundante,aplicacaoPenso,aplicacaoTamanho,aplicacaoSuportePenso,ProximoTratamento,Observacoes,EscalaDor,tipoQueimadura,IPTB,tipoUlcera) VALUES(@idTratamento,@IdPaciente,@data,@numeroTratamento,@dimensoes,@grauUlceraPressao,@tipoExsudado,@quantidade,@cheiro,@tecidoPredominante,@areaCircundante,@agenteLimpeza,@ferida,@areaAplicaao,@tipoPenso,@tamanhoPenso,@suportePenso,@dataProximoTratamento,@observacoes,@escalaDor,@tipoQueimadura,@IPTB,@tipoUlcera); ";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@data", data.ToString("MM/dd/yyyy"));
@@ -123,15 +135,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         sqlCommand.Parameters.AddWithValue("@dataProximoTratamento", dataPTratamento.ToString("MM/dd/yyyy"));
                     }
-
-                  /*  if (tratamento > 0)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@idTratamento", Convert.ToInt32(tratamento));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@idTratamento", DBNull.Value);
-                    }*/
 
                     if (nrTratamento > 0)
                     {
@@ -153,11 +156,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     if (ulcera != String.Empty)
                     {
-                        sqlCommand.Parameters.AddWithValue("@ulcera", Convert.ToString(ulcera));
+                        sqlCommand.Parameters.AddWithValue("@grauUlceraPressao", Convert.ToString(ulcera));
                     }
                     else
                     {
-                        sqlCommand.Parameters.AddWithValue("@ulcera", DBNull.Value);
+                        sqlCommand.Parameters.AddWithValue("@grauUlceraPressao", DBNull.Value);
                     }
 
                     if (tipoExsudado != String.Empty)
@@ -167,6 +170,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     else
                     {
                         sqlCommand.Parameters.AddWithValue("@tipoExsudado", DBNull.Value);
+                    }
+
+                    if (IPTB != String.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@IPTB", Convert.ToString(IPTB));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@IPTB", DBNull.Value);
                     }
 
                     if (quantidade > 0)
@@ -275,15 +287,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     else
                     {
                         sqlCommand.Parameters.AddWithValue("@escalaDor  ", DBNull.Value);
-                    }
+                    }                 
 
-                    if (tipoQueimadura != String.Empty)
+                   if (tipoQueimadura > 0)
                     {
-                        sqlCommand.Parameters.AddWithValue("@tipoQueimadura  ", Convert.ToString(tipoQueimadura));
+                        sqlCommand.Parameters.AddWithValue("@tipoQueimadura", Convert.ToInt32(tipoQueimadura));
                     }
                     else
                     {
-                        sqlCommand.Parameters.AddWithValue("@tipoQueimadura  ", DBNull.Value);
+                      sqlCommand.Parameters.AddWithValue("@tipoQueimadura", DBNull.Value);
+                    }
+                    if (tipoUlcera > 0)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@tipoUlcera", Convert.ToInt32(tipoUlcera));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@tipoUlcera", DBNull.Value);
                     }
 
                     sqlCommand.ExecuteNonQuery();
@@ -293,7 +313,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show(/*"Por erro interno é impossível registar o tratamento",*/ excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o tratamento", excep.Message);
                 }
             }
         }
@@ -316,38 +336,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 MessageBox.Show("A proxima data de tratamento tem de ser superior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
-            }
-
-            /* if (Convert.ToDecimal(nrTratamento) <= 0 || Convert.ToInt32(quantidade) <= 0 || Convert.ToInt32(tamanhoPenso) <= 0)
-             {
-                 MessageBox.Show("Não podem ser registados valores inferiores ou igual a 0, por valor corriga os valores!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                 if (Convert.ToDecimal(nrTratamento) <= 0)
-                 {
-                     errorProvider.SetError(UpDownNumeroTratamento, "O número do tratamento não pode ser inferior ou igual a 0!");
-                 }
-                 else
-                 {
-                     errorProvider.SetError(UpDownNumeroTratamento, String.Empty);
-                 }
-
-                 if (Convert.ToDecimal(quantidade) <= 0)
-                 {
-                     errorProvider.SetError(numericUpDownExcudado, "A quantidade não pode ser inferior ou igual a 0!");
-                 }
-                 else
-                 {
-                     errorProvider.SetError(numericUpDownExcudado, String.Empty);
-                 }
-
-                 if (Convert.ToDecimal(tamanhoPenso) <= 0)
-                 {
-                     errorProvider.SetError(numericUpDownTamanhoPenso, "O tamanho do penso não pode ser inferior ou igual a 0!");
-                 }
-                 else
-                 {
-                     errorProvider.SetError(numericUpDownTamanhoPenso, String.Empty);
-                 }
-             }*/
+            }       
 
              if (Convert.ToDecimal(nrTratamento) < 0 || Convert.ToInt32(quantidade) < 0 || Convert.ToInt32(tamanhoPenso) < 0)
              {
@@ -416,7 +405,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public void reiniciar()
         {
             tratamentos.Clear();
+            queimaduras.Clear();
+
             comboBoxTratamento.Items.Clear();
+            comboBoxTipoQueimadura.Items.Clear();
+
             auxiliar.Clear();
             conn.Open();
             com.Connection = conn;
@@ -429,6 +422,37 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 item.Value = (int)reader["IdTratamento"];
                 comboBoxTratamento.Items.Add(item);
                 tratamentos.Add(item);
+            }
+            conn.Close();
+
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd1 = new SqlCommand("select * from tipoQueimadura order by tipoQueimadura asc", conn);
+            SqlDataReader reader1 = cmd1.ExecuteReader();
+            while (reader1.Read())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Text = (string)reader1["tipoQueimadura"];
+                item.Value = (int)reader1["IdTipoQueimadura"];
+                comboBoxTipoQueimadura.Items.Add(item);
+                queimaduras.Add(item);
+            }
+
+            conn.Close();
+
+            conn.Close();
+
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd2 = new SqlCommand("select * from tipoUlcera order by tipoUlcera asc", conn);
+            SqlDataReader reader2 = cmd2.ExecuteReader();
+            while (reader2.Read())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Text = (string)reader2["tipoUlcera"];
+                item.Value = (int)reader2["IdTipoUlcera"];
+                comboBoxTipoUlcera.Items.Add(item);
+                queimaduras.Add(item);
             }
 
             conn.Close();
@@ -451,7 +475,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataProximoTratamento.Value = DateTime.Today;
             UpDownNumeroTratamento.Value = 0;
             txtDimensoes.Text = "";
-            txtBoxUlcera.Text = "";
+            txtUlcera.Text = "";
             txtExsudadoTipo.Text = "";
             numericUpDownExcudado.Value = 0;
             txtExsudadoCheiro.Text = "";
@@ -507,6 +531,557 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void txtDimensoes_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBoxTratamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxTratamento.SelectedItem.ToString() == "Ferida Cirúrgica" || comboBoxTratamento.SelectedItem.ToString() == "Ferida Traumática")
+            {
+                lblTipoQueimadura.Visible = false;
+                comboBoxTipoQueimadura.Visible = false;
+                lblDataTratamento.Visible = true;
+                dataTratamento.Visible = true;
+                lblNrTratamento.Visible = true;
+                UpDownNumeroTratamento.Visible = true;
+                lblTipoUlcera.Visible = false;
+                comboBoxTipoUlcera.Visible = false;
+                lblIPTB.Visible = false;
+                txtIPTB.Visible = false;
+                lblCorpoEstranho.Visible = false;
+                txtCorpoEstranho.Visible = false;
+                lblDermica.Visible = false;
+                txtDermica.Visible = false;
+                lblDimensoes.Visible = true;
+                txtDimensoes.Visible = true;
+                lblUlceraPressao.Visible = true;
+                txtUlcera.Visible = true;
+                groupBoxExsudado.Visible = true;
+                lblTipoExsudado.Visible = true;
+                txtExsudadoTipo.Visible = true;
+                lblQntExsudado.Visible = true;
+                numericUpDownExcudado.Visible = true;
+                lblCheiroExsudado.Visible = true;
+                txtExsudadoCheiro.Visible = true;
+                lblTecidoPredominante.Visible = true;
+                txtTecidoPredominante.Visible = true;
+                lblAreaCircundante.Visible = true;
+                txtAreaCircundante.Visible = true;
+                lblAgenteLimpeza.Visible = true;
+                txtAgenteLimpeza.Visible = true;
+                groupBoxAplicacao.Visible = true;
+                lblFerida.Visible = true;
+                txtFerida.Visible = true;
+                lblArea.Visible = true;
+                txtAreaCircundanteAplicacao.Visible = true;
+                groupBoxPenso.Visible = true;
+                lblTipoPenso.Visible = true;
+                txtTipoPenso.Visible = true;
+                lblTamanhoPenso.Visible = true;
+                numericUpDownTamanhoPenso.Visible = true;
+                lblSuportePenso.Visible = true;
+                txtSuportePenso.Visible = true;
+                lblProximoTratamento.Visible = true;
+                dataProximoTratamento.Visible = true;
+                lblObservacoes.Visible = true;
+                txtObservacoes.Visible = true;
+                groupBoxEscalaDor.Visible = true;
+                btnSemDor.Visible = true;
+                btnDorLigeira.Visible = true;
+                btnDorModerada.Visible = true;
+                btnDorForte.Visible = true;
+                btnDorMuitoForte.Visible = true;
+                btnDorMaxima.Visible = true;
+                lblSemDor.Visible = true;
+                lblDorLigeira.Visible = true;
+                lblDorModerada.Visible = true;
+                lblDorForte.Visible = true;
+                lblDorMuitoForte.Visible = true;
+                lblDorMaxima.Visible = true;
+                lblEscala.Visible = false;
+                btnLocalizacaoDor.Visible = true;
+            }
+
+            if (comboBoxTratamento.SelectedItem.ToString() == "Excisões")
+            {
+                lblTipoUlcera.Visible = false;
+                comboBoxTipoUlcera.Visible = false;
+                lblTipoQueimadura.Visible = false;
+                comboBoxTipoQueimadura.Visible = false;
+                lblDataTratamento.Visible = true;
+                dataTratamento.Visible = true;
+                lblNrTratamento.Visible = true;
+                UpDownNumeroTratamento.Visible = true;
+                lblIPTB.Visible = false;
+                txtIPTB.Visible = false;
+                lblCorpoEstranho.Visible = true;
+                txtCorpoEstranho.Visible = true;
+                lblDermica.Visible = true;
+                txtDermica.Visible = true;
+                lblDimensoes.Visible = false;
+                txtDimensoes.Visible = false;
+                lblUlceraPressao.Visible = false;
+                txtUlcera.Visible = false;
+                groupBoxExsudado.Visible = false;
+                lblTipoExsudado.Visible = false;
+                txtExsudadoTipo.Visible = false;
+                lblQntExsudado.Visible = false;
+                numericUpDownExcudado.Visible = false;
+                lblCheiroExsudado.Visible = false;
+                txtExsudadoCheiro.Visible = false;
+                lblTecidoPredominante.Visible = false;
+                txtTecidoPredominante.Visible = false;
+                lblAreaCircundante.Visible = false;
+                txtAreaCircundante.Visible = false;
+                lblAgenteLimpeza.Visible = false;
+                txtAgenteLimpeza.Visible = false;
+                groupBoxAplicacao.Visible = false;
+                lblFerida.Visible = false;
+                txtFerida.Visible = false;
+                lblArea.Visible = false;
+                txtAreaCircundanteAplicacao.Visible = false;
+                groupBoxPenso.Visible = false;
+                lblTipoPenso.Visible = false;
+                txtTipoPenso.Visible = false;
+                lblTamanhoPenso.Visible = false;
+                numericUpDownTamanhoPenso.Visible = false;
+                lblSuportePenso.Visible = false;
+                txtSuportePenso.Visible = false;
+                lblProximoTratamento.Visible = false;
+                dataProximoTratamento.Visible = false;
+                lblObservacoes.Visible = true;
+                txtObservacoes.Visible = true;
+                groupBoxEscalaDor.Visible = false;
+                btnSemDor.Visible = false;
+                btnDorLigeira.Visible = false;
+                btnDorModerada.Visible = false;
+                btnDorForte.Visible = false;
+                btnDorMuitoForte.Visible = false;
+                btnDorMaxima.Visible = false;
+                lblSemDor.Visible = false;
+                lblDorLigeira.Visible = false;
+                lblDorModerada.Visible = false;
+                lblDorForte.Visible = false;
+                lblDorMuitoForte.Visible = false;
+                lblDorMaxima.Visible = false;
+                lblEscala.Visible = false;
+                btnLocalizacaoDor.Visible = true;
+            }
+
+            
+
+            if (comboBoxTratamento.SelectedItem.ToString() == "Queimaduras")
+            {
+                lblTipoUlcera.Visible = false;
+                comboBoxTipoUlcera.Visible = false;
+                lblTipoQueimadura.Visible = true;
+                comboBoxTipoQueimadura.Visible = true;
+                lblDataTratamento.Visible = true;
+                dataTratamento.Visible = true;
+                lblNrTratamento.Visible = true;
+                UpDownNumeroTratamento.Visible = true;
+                lblIPTB.Visible = false;
+                txtIPTB.Visible = false;
+                lblCorpoEstranho.Visible = false;
+                txtCorpoEstranho.Visible = false;
+                lblDermica.Visible = false;
+                txtDermica.Visible = false;
+                lblDimensoes.Visible = true;
+                txtDimensoes.Visible = true;
+                lblUlceraPressao.Visible = true;
+                txtUlcera.Visible = true;
+                groupBoxExsudado.Visible = true;
+                lblTipoExsudado.Visible = true;
+                txtExsudadoTipo.Visible = true;
+                lblQntExsudado.Visible = true;
+                numericUpDownExcudado.Visible = true;
+                lblCheiroExsudado.Visible = true;
+                txtExsudadoCheiro.Visible = true;
+                lblTecidoPredominante.Visible = true;
+                txtTecidoPredominante.Visible = true;
+                lblAreaCircundante.Visible = true;
+                txtAreaCircundante.Visible = true;
+                lblAgenteLimpeza.Visible = true;
+                txtAgenteLimpeza.Visible = true;
+                groupBoxAplicacao.Visible = true;
+                lblFerida.Visible = true;
+                txtFerida.Visible = true;
+                lblArea.Visible = true;
+                txtAreaCircundanteAplicacao.Visible = true;
+                groupBoxPenso.Visible = true;
+                lblTipoPenso.Visible = true;
+                txtTipoPenso.Visible = true;
+                lblTamanhoPenso.Visible = true;
+                numericUpDownTamanhoPenso.Visible = true;
+                lblSuportePenso.Visible = true;
+                txtSuportePenso.Visible = true;
+                lblProximoTratamento.Visible = true;
+                dataProximoTratamento.Visible = true;
+                lblObservacoes.Visible = true;
+                txtObservacoes.Visible = true;
+                groupBoxEscalaDor.Visible = true;
+                btnSemDor.Visible = true;
+                btnDorLigeira.Visible = true;
+                btnDorModerada.Visible = true;
+                btnDorForte.Visible = true;
+                btnDorMuitoForte.Visible = true;
+                btnDorMaxima.Visible = true;
+                lblSemDor.Visible = true;
+                lblDorLigeira.Visible = true;
+                lblDorModerada.Visible = true;
+                lblDorForte.Visible = true;
+                lblDorMuitoForte.Visible = true;
+                lblDorMaxima.Visible = true;
+                lblEscala.Visible = false;
+                btnLocalizacaoDor.Visible = true;
+            }
+
+
+            if (comboBoxTratamento.SelectedItem.ToString() == "Úlceras")
+            {
+                lblTipoUlcera.Visible = true;
+                comboBoxTipoUlcera.Visible = true;
+                lblTipoQueimadura.Visible = false;
+                comboBoxTipoQueimadura.Visible = false;
+                lblDataTratamento.Visible = true;
+                dataTratamento.Visible = true;
+                lblNrTratamento.Visible = true;
+                UpDownNumeroTratamento.Visible = true;
+                lblIPTB.Visible = false;
+                txtIPTB.Visible = false;
+                lblCorpoEstranho.Visible = false;
+                txtCorpoEstranho.Visible = false;
+                lblDermica.Visible = false;
+                txtDermica.Visible = false;
+                lblDimensoes.Visible = true;
+                txtDimensoes.Visible = true;
+                lblUlceraPressao.Visible = true;
+                txtUlcera.Visible = true;
+                groupBoxExsudado.Visible = true;
+                lblTipoExsudado.Visible = true;
+                txtExsudadoTipo.Visible = true;
+                lblQntExsudado.Visible = true;
+                numericUpDownExcudado.Visible = true;
+                lblCheiroExsudado.Visible = true;
+                txtExsudadoCheiro.Visible = true;
+                lblTecidoPredominante.Visible = true;
+                txtTecidoPredominante.Visible = true;
+                lblAreaCircundante.Visible = true;
+                txtAreaCircundante.Visible = true;
+                lblAgenteLimpeza.Visible = true;
+                txtAgenteLimpeza.Visible = true;
+                groupBoxAplicacao.Visible = true;
+                lblFerida.Visible = true;
+                txtFerida.Visible = true;
+                lblArea.Visible = true;
+                txtAreaCircundanteAplicacao.Visible = true;
+                groupBoxPenso.Visible = true;
+                lblTipoPenso.Visible = true;
+                txtTipoPenso.Visible = true;
+                lblTamanhoPenso.Visible = true;
+                numericUpDownTamanhoPenso.Visible = true;
+                lblSuportePenso.Visible = true;
+                txtSuportePenso.Visible = true;
+                lblProximoTratamento.Visible = true;
+                dataProximoTratamento.Visible = true;
+                lblObservacoes.Visible = true;
+                txtObservacoes.Visible = true;
+                groupBoxEscalaDor.Visible = true;
+                btnSemDor.Visible = true;
+                btnDorLigeira.Visible = true;
+                btnDorModerada.Visible = true;
+                btnDorForte.Visible = true;
+                btnDorMuitoForte.Visible = true;
+                btnDorMaxima.Visible = true;
+                lblSemDor.Visible = true;
+                lblDorLigeira.Visible = true;
+                lblDorModerada.Visible = true;
+                lblDorForte.Visible = true;
+                lblDorMuitoForte.Visible = true;
+                lblDorMaxima.Visible = true;
+                lblEscala.Visible = false;
+                btnLocalizacaoDor.Visible = true;
+            }
+
+           
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AdicionarTipoQueimadura adicionarTipoQueimadura = new AdicionarTipoQueimadura(this);
+            adicionarTipoQueimadura.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AdicionarTipoUlcera adicionarTipoUlcera = new AdicionarTipoUlcera(this);
+            adicionarTipoUlcera.Show();
+        }
+
+        private void comboBoxTipoUlcera_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxTipoUlcera.SelectedItem.ToString() == "Pressão")
+            {
+                lblTipoUlcera.Visible = true;
+                comboBoxTipoUlcera.Visible = true;
+                lblTipoQueimadura.Visible = false;
+                comboBoxTipoQueimadura.Visible = false;
+                lblDataTratamento.Visible = true;
+                dataTratamento.Visible = true;
+                lblNrTratamento.Visible = true;
+                UpDownNumeroTratamento.Visible = true;
+                lblIPTB.Visible = true;
+                txtIPTB.Visible = true;
+                lblCorpoEstranho.Visible = false;
+                txtCorpoEstranho.Visible = false;
+                lblDermica.Visible = false;
+                txtDermica.Visible = false;
+                lblDimensoes.Visible = true;
+                txtDimensoes.Visible = true;
+                lblUlceraPressao.Visible = true;
+                txtUlcera.Visible = true;
+                groupBoxExsudado.Visible = true;
+                lblTipoExsudado.Visible = true;
+                txtExsudadoTipo.Visible = true;
+                lblQntExsudado.Visible = true;
+                numericUpDownExcudado.Visible = true;
+                lblCheiroExsudado.Visible = true;
+                txtExsudadoCheiro.Visible = true;
+                lblTecidoPredominante.Visible = true;
+                txtTecidoPredominante.Visible = true;
+                lblAreaCircundante.Visible = true;
+                txtAreaCircundante.Visible = true;
+                lblAgenteLimpeza.Visible = true;
+                txtAgenteLimpeza.Visible = true;
+                groupBoxAplicacao.Visible = true;
+                lblFerida.Visible = true;
+                txtFerida.Visible = true;
+                lblArea.Visible = true;
+                txtAreaCircundanteAplicacao.Visible = true;
+                groupBoxPenso.Visible = true;
+                lblTipoPenso.Visible = true;
+                txtTipoPenso.Visible = true;
+                lblTamanhoPenso.Visible = true;
+                numericUpDownTamanhoPenso.Visible = true;
+                lblSuportePenso.Visible = true;
+                txtSuportePenso.Visible = true;
+                lblProximoTratamento.Visible = true;
+                dataProximoTratamento.Visible = true;
+                lblObservacoes.Visible = true;
+                txtObservacoes.Visible = true;
+                groupBoxEscalaDor.Visible = true;
+                btnSemDor.Visible = true;
+                btnDorLigeira.Visible = true;
+                btnDorModerada.Visible = true;
+                btnDorForte.Visible = true;
+                btnDorMuitoForte.Visible = true;
+                btnDorMaxima.Visible = true;
+                lblSemDor.Visible = true;
+                lblDorLigeira.Visible = true;
+                lblDorModerada.Visible = true;
+                lblDorForte.Visible = true;
+                lblDorMuitoForte.Visible = true;
+                lblDorMaxima.Visible = true;
+                lblEscala.Visible = false;
+                btnLocalizacaoDor.Visible = true;
+            }
+
+            if (comboBoxTipoUlcera.SelectedItem.ToString() == "Arteriais")
+            {
+                lblTipoUlcera.Visible = true;
+                comboBoxTipoUlcera.Visible = true;
+                lblTipoQueimadura.Visible = false;
+                comboBoxTipoQueimadura.Visible = false;
+                lblDataTratamento.Visible = true;
+                dataTratamento.Visible = true;
+                lblNrTratamento.Visible = true;
+                UpDownNumeroTratamento.Visible = true;
+                lblIPTB.Visible = false;
+                txtIPTB.Visible = false;
+                lblCorpoEstranho.Visible = false;
+                txtCorpoEstranho.Visible = false;
+                lblDermica.Visible = false;
+                txtDermica.Visible = false;
+                lblDimensoes.Visible = true;
+                txtDimensoes.Visible = true;
+                lblUlceraPressao.Visible = true;
+                txtUlcera.Visible = true;
+                groupBoxExsudado.Visible = true;
+                lblTipoExsudado.Visible = true;
+                txtExsudadoTipo.Visible = true;
+                lblQntExsudado.Visible = true;
+                numericUpDownExcudado.Visible = true;
+                lblCheiroExsudado.Visible = true;
+                txtExsudadoCheiro.Visible = true;
+                lblTecidoPredominante.Visible = true;
+                txtTecidoPredominante.Visible = true;
+                lblAreaCircundante.Visible = true;
+                txtAreaCircundante.Visible = true;
+                lblAgenteLimpeza.Visible = true;
+                txtAgenteLimpeza.Visible = true;
+                groupBoxAplicacao.Visible = true;
+                lblFerida.Visible = true;
+                txtFerida.Visible = true;
+                lblArea.Visible = true;
+                txtAreaCircundanteAplicacao.Visible = true;
+                groupBoxPenso.Visible = true;
+                lblTipoPenso.Visible = true;
+                txtTipoPenso.Visible = true;
+                lblTamanhoPenso.Visible = true;
+                numericUpDownTamanhoPenso.Visible = true;
+                lblSuportePenso.Visible = true;
+                txtSuportePenso.Visible = true;
+                lblProximoTratamento.Visible = true;
+                dataProximoTratamento.Visible = true;
+                lblObservacoes.Visible = true;
+                txtObservacoes.Visible = true;
+                groupBoxEscalaDor.Visible = true;
+                btnSemDor.Visible = true;
+                btnDorLigeira.Visible = true;
+                btnDorModerada.Visible = true;
+                btnDorForte.Visible = true;
+                btnDorMuitoForte.Visible = true;
+                btnDorMaxima.Visible = true;
+                lblSemDor.Visible = true;
+                lblDorLigeira.Visible = true;
+                lblDorModerada.Visible = true;
+                lblDorForte.Visible = true;
+                lblDorMuitoForte.Visible = true;
+                lblDorMaxima.Visible = true;
+                lblEscala.Visible = false;
+                btnLocalizacaoDor.Visible = true;
+            }
+
+            if (comboBoxTipoUlcera.SelectedItem.ToString() == "Venosas")
+            {
+                lblTipoUlcera.Visible = true;
+                comboBoxTipoUlcera.Visible = true;
+                lblTipoQueimadura.Visible = false;
+                comboBoxTipoQueimadura.Visible = false;
+                lblDataTratamento.Visible = true;
+                dataTratamento.Visible = true;
+                lblNrTratamento.Visible = true;
+                UpDownNumeroTratamento.Visible = true;
+                lblIPTB.Visible = false;
+                txtIPTB.Visible = false;
+                lblCorpoEstranho.Visible = false;
+                txtCorpoEstranho.Visible = false;
+                lblDermica.Visible = false;
+                txtDermica.Visible = false;
+                lblDimensoes.Visible = true;
+                txtDimensoes.Visible = true;
+                lblUlceraPressao.Visible = true;
+                txtUlcera.Visible = true;
+                groupBoxExsudado.Visible = true;
+                lblTipoExsudado.Visible = true;
+                txtExsudadoTipo.Visible = true;
+                lblQntExsudado.Visible = true;
+                numericUpDownExcudado.Visible = true;
+                lblCheiroExsudado.Visible = true;
+                txtExsudadoCheiro.Visible = true;
+                lblTecidoPredominante.Visible = true;
+                txtTecidoPredominante.Visible = true;
+                lblAreaCircundante.Visible = true;
+                txtAreaCircundante.Visible = true;
+                lblAgenteLimpeza.Visible = true;
+                txtAgenteLimpeza.Visible = true;
+                groupBoxAplicacao.Visible = true;
+                lblFerida.Visible = true;
+                txtFerida.Visible = true;
+                lblArea.Visible = true;
+                txtAreaCircundanteAplicacao.Visible = true;
+                groupBoxPenso.Visible = true;
+                lblTipoPenso.Visible = true;
+                txtTipoPenso.Visible = true;
+                lblTamanhoPenso.Visible = true;
+                numericUpDownTamanhoPenso.Visible = true;
+                lblSuportePenso.Visible = true;
+                txtSuportePenso.Visible = true;
+                lblProximoTratamento.Visible = true;
+                dataProximoTratamento.Visible = true;
+                lblObservacoes.Visible = true;
+                txtObservacoes.Visible = true;
+                groupBoxEscalaDor.Visible = true;
+                btnSemDor.Visible = true;
+                btnDorLigeira.Visible = true;
+                btnDorModerada.Visible = true;
+                btnDorForte.Visible = true;
+                btnDorMuitoForte.Visible = true;
+                btnDorMaxima.Visible = true;
+                lblSemDor.Visible = true;
+                lblDorLigeira.Visible = true;
+                lblDorModerada.Visible = true;
+                lblDorForte.Visible = true;
+                lblDorMuitoForte.Visible = true;
+                lblDorMaxima.Visible = true;
+                lblEscala.Visible = false;
+                btnLocalizacaoDor.Visible = true;
+            }
+
+            if (comboBoxTipoUlcera.SelectedItem.ToString() == "Mistas")
+            {
+                lblTipoUlcera.Visible = true;
+                comboBoxTipoUlcera.Visible = true;
+                lblTipoQueimadura.Visible = false;
+                comboBoxTipoQueimadura.Visible = false;
+                lblDataTratamento.Visible = true;
+                dataTratamento.Visible = true;
+                lblNrTratamento.Visible = true;
+                UpDownNumeroTratamento.Visible = true;
+                lblIPTB.Visible = false;
+                txtIPTB.Visible = false;
+                lblCorpoEstranho.Visible = false;
+                txtCorpoEstranho.Visible = false;
+                lblDermica.Visible = false;
+                txtDermica.Visible = false;
+                lblDimensoes.Visible = true;
+                txtDimensoes.Visible = true;
+                lblUlceraPressao.Visible = true;
+                txtUlcera.Visible = true;
+                groupBoxExsudado.Visible = true;
+                lblTipoExsudado.Visible = true;
+                txtExsudadoTipo.Visible = true;
+                lblQntExsudado.Visible = true;
+                numericUpDownExcudado.Visible = true;
+                lblCheiroExsudado.Visible = true;
+                txtExsudadoCheiro.Visible = true;
+                lblTecidoPredominante.Visible = true;
+                txtTecidoPredominante.Visible = true;
+                lblAreaCircundante.Visible = true;
+                txtAreaCircundante.Visible = true;
+                lblAgenteLimpeza.Visible = true;
+                txtAgenteLimpeza.Visible = true;
+                groupBoxAplicacao.Visible = true;
+                lblFerida.Visible = true;
+                txtFerida.Visible = true;
+                lblArea.Visible = true;
+                txtAreaCircundanteAplicacao.Visible = true;
+                groupBoxPenso.Visible = true;
+                lblTipoPenso.Visible = true;
+                txtTipoPenso.Visible = true;
+                lblTamanhoPenso.Visible = true;
+                numericUpDownTamanhoPenso.Visible = true;
+                lblSuportePenso.Visible = true;
+                txtSuportePenso.Visible = true;
+                lblProximoTratamento.Visible = true;
+                dataProximoTratamento.Visible = true;
+                lblObservacoes.Visible = true;
+                txtObservacoes.Visible = true;
+                groupBoxEscalaDor.Visible = true;
+                btnSemDor.Visible = true;
+                btnDorLigeira.Visible = true;
+                btnDorModerada.Visible = true;
+                btnDorForte.Visible = true;
+                btnDorMuitoForte.Visible = true;
+                btnDorMaxima.Visible = true;
+                lblSemDor.Visible = true;
+                lblDorLigeira.Visible = true;
+                lblDorModerada.Visible = true;
+                lblDorForte.Visible = true;
+                lblDorMuitoForte.Visible = true;
+                lblDorMaxima.Visible = true;
+                lblEscala.Visible = false;
+                btnLocalizacaoDor.Visible = true;
+            }
         }
     }
 }

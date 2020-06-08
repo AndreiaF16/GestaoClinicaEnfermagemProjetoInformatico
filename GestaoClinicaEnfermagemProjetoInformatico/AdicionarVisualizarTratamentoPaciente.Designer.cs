@@ -47,16 +47,25 @@
             this.txtObservacoes = new System.Windows.Forms.TextBox();
             this.lblObservacoes = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtTipoQueimadura = new System.Windows.Forms.TextBox();
+            this.comboBoxTipoUlcera = new System.Windows.Forms.ComboBox();
+            this.lblTipoUlcera = new System.Windows.Forms.Label();
+            this.comboBoxTipoQueimadura = new System.Windows.Forms.ComboBox();
+            this.txtDermica = new System.Windows.Forms.TextBox();
+            this.lblDermica = new System.Windows.Forms.Label();
+            this.txtCorpoEstranho = new System.Windows.Forms.TextBox();
+            this.txtIPTB = new System.Windows.Forms.TextBox();
+            this.lblCorpoEstranho = new System.Windows.Forms.Label();
+            this.lblIPTB = new System.Windows.Forms.Label();
+            this.lblTipoQueimadura = new System.Windows.Forms.Label();
             this.dataProximoTratamento = new System.Windows.Forms.DateTimePicker();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBoxEscalaDor = new System.Windows.Forms.GroupBox();
             this.lblEscala = new System.Windows.Forms.Label();
             this.btnLocalizacaoDor = new System.Windows.Forms.Button();
             this.btnSemDor = new System.Windows.Forms.Button();
@@ -71,48 +80,45 @@
             this.btnDorMaxima = new System.Windows.Forms.Button();
             this.lblDorMuitoForte = new System.Windows.Forms.Label();
             this.lblDorMaxima = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.lblProximoTratamento = new System.Windows.Forms.Label();
+            this.groupBoxAplicacao = new System.Windows.Forms.GroupBox();
+            this.groupBoxPenso = new System.Windows.Forms.GroupBox();
             this.numericUpDownTamanhoPenso = new System.Windows.Forms.NumericUpDown();
             this.txtTipoPenso = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.lblTipoPenso = new System.Windows.Forms.Label();
+            this.lblTamanhoPenso = new System.Windows.Forms.Label();
+            this.lblArea = new System.Windows.Forms.Label();
             this.txtAreaCircundanteAplicacao = new System.Windows.Forms.TextBox();
             this.txtFerida = new System.Windows.Forms.TextBox();
             this.txtSuportePenso = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.lblSuportePenso = new System.Windows.Forms.Label();
+            this.lblFerida = new System.Windows.Forms.Label();
             this.txtAgenteLimpeza = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblAgenteLimpeza = new System.Windows.Forms.Label();
             this.txtAreaCircundante = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblAreaCircundante = new System.Windows.Forms.Label();
             this.txtTecidoPredominante = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblTecidoPredominante = new System.Windows.Forms.Label();
+            this.groupBoxExsudado = new System.Windows.Forms.GroupBox();
             this.txtExsudadoCheiro = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblCheiroExsudado = new System.Windows.Forms.Label();
             this.numericUpDownExcudado = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblQntExsudado = new System.Windows.Forms.Label();
             this.txtExsudadoTipo = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtBoxUlcera = new System.Windows.Forms.TextBox();
+            this.lblTipoExsudado = new System.Windows.Forms.Label();
+            this.txtUlcera = new System.Windows.Forms.TextBox();
             this.txtDimensoes = new System.Windows.Forms.TextBox();
-            this.lblSPO2 = new System.Windows.Forms.Label();
-            this.lblTensaoArterial = new System.Windows.Forms.Label();
+            this.lblUlceraPressao = new System.Windows.Forms.Label();
+            this.lblDimensoes = new System.Windows.Forms.Label();
             this.UpDownNumeroTratamento = new System.Windows.Forms.NumericUpDown();
-            this.lblAltura = new System.Windows.Forms.Label();
-            this.lblDataAvaliacaoObjetivo = new System.Windows.Forms.Label();
+            this.lblNrTratamento = new System.Windows.Forms.Label();
+            this.lblDataTratamento = new System.Windows.Forms.Label();
             this.dataTratamento = new System.Windows.Forms.DateTimePicker();
-            this.button3 = new System.Windows.Forms.Button();
-            this.txtCorpoEstranho = new System.Windows.Forms.TextBox();
-            this.txtIPTB = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtDermica = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.txtGrauUlceraPressao = new System.Windows.Forms.TextBox();
+            this.lblGrauUlceraPressao = new System.Windows.Forms.Label();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -123,11 +129,11 @@
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.groupBoxEscalaDor.SuspendLayout();
+            this.groupBoxAplicacao.SuspendLayout();
+            this.groupBoxPenso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTamanhoPenso)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxExsudado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExcudado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownNumeroTratamento)).BeginInit();
             this.SuspendLayout();
@@ -164,7 +170,7 @@
             this.lblDia.AutoSize = true;
             this.lblDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblDia.Location = new System.Drawing.Point(621, 17);
+            this.lblDia.Location = new System.Drawing.Point(532, 17);
             this.lblDia.Name = "lblDia";
             this.lblDia.Size = new System.Drawing.Size(57, 20);
             this.lblDia.TabIndex = 10;
@@ -244,6 +250,7 @@
             this.comboBoxTratamento.Name = "comboBoxTratamento";
             this.comboBoxTratamento.Size = new System.Drawing.Size(245, 28);
             this.comboBoxTratamento.TabIndex = 74;
+            this.comboBoxTratamento.SelectedIndexChanged += new System.EventHandler(this.comboBoxTratamento_SelectedIndexChanged);
             // 
             // lblMetodoContracetivo
             // 
@@ -309,6 +316,7 @@
             this.txtObservacoes.Name = "txtObservacoes";
             this.txtObservacoes.Size = new System.Drawing.Size(412, 108);
             this.txtObservacoes.TabIndex = 91;
+            this.txtObservacoes.Visible = false;
             // 
             // lblObservacoes
             // 
@@ -320,10 +328,13 @@
             this.lblObservacoes.Size = new System.Drawing.Size(106, 20);
             this.lblObservacoes.TabIndex = 90;
             this.lblObservacoes.Text = "Observações:";
+            this.lblObservacoes.Visible = false;
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.panelMenu.Controls.Add(this.button5);
+            this.panelMenu.Controls.Add(this.button2);
             this.panelMenu.Controls.Add(this.button4);
             this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.btnVoltar);
@@ -333,6 +344,24 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(232, 707);
             this.panelMenu.TabIndex = 1;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(3, 363);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button2.Size = new System.Drawing.Size(225, 67);
+            this.button2.TabIndex = 61;
+            this.button2.Text = "Adicionar Tipo Queimadura";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -412,38 +441,42 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.lblGrauUlceraPressao);
+            this.groupBox1.Controls.Add(this.txtGrauUlceraPressao);
+            this.groupBox1.Controls.Add(this.comboBoxTipoUlcera);
+            this.groupBox1.Controls.Add(this.lblTipoUlcera);
+            this.groupBox1.Controls.Add(this.comboBoxTipoQueimadura);
             this.groupBox1.Controls.Add(this.txtDermica);
-            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.lblDermica);
             this.groupBox1.Controls.Add(this.txtCorpoEstranho);
             this.groupBox1.Controls.Add(this.txtIPTB);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtTipoQueimadura);
+            this.groupBox1.Controls.Add(this.lblCorpoEstranho);
+            this.groupBox1.Controls.Add(this.lblIPTB);
+            this.groupBox1.Controls.Add(this.lblTipoQueimadura);
             this.groupBox1.Controls.Add(this.dataProximoTratamento);
-            this.groupBox1.Controls.Add(this.groupBox5);
+            this.groupBox1.Controls.Add(this.groupBoxEscalaDor);
             this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.lblProximoTratamento);
+            this.groupBox1.Controls.Add(this.groupBoxAplicacao);
             this.groupBox1.Controls.Add(this.txtAgenteLimpeza);
             this.groupBox1.Controls.Add(this.btnGuardar);
-            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.lblAgenteLimpeza);
             this.groupBox1.Controls.Add(this.txtAreaCircundante);
-            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.lblAreaCircundante);
             this.groupBox1.Controls.Add(this.txtTecidoPredominante);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.txtBoxUlcera);
+            this.groupBox1.Controls.Add(this.lblTecidoPredominante);
+            this.groupBox1.Controls.Add(this.groupBoxExsudado);
+            this.groupBox1.Controls.Add(this.txtUlcera);
             this.groupBox1.Controls.Add(this.txtDimensoes);
             this.groupBox1.Controls.Add(this.comboBoxTratamento);
             this.groupBox1.Controls.Add(this.lblMetodoContracetivo);
             this.groupBox1.Controls.Add(this.txtObservacoes);
             this.groupBox1.Controls.Add(this.lblObservacoes);
-            this.groupBox1.Controls.Add(this.lblSPO2);
-            this.groupBox1.Controls.Add(this.lblTensaoArterial);
+            this.groupBox1.Controls.Add(this.lblUlceraPressao);
+            this.groupBox1.Controls.Add(this.lblDimensoes);
             this.groupBox1.Controls.Add(this.UpDownNumeroTratamento);
-            this.groupBox1.Controls.Add(this.lblAltura);
-            this.groupBox1.Controls.Add(this.lblDataAvaliacaoObjetivo);
+            this.groupBox1.Controls.Add(this.lblNrTratamento);
+            this.groupBox1.Controls.Add(this.lblDataTratamento);
             this.groupBox1.Controls.Add(this.dataTratamento);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
@@ -454,58 +487,147 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registar Tratamento";
             // 
-            // label3
+            // comboBoxTipoUlcera
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(38, 71);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 20);
-            this.label3.TabIndex = 160;
-            this.label3.Text = "Tipo Queimadura";
+            this.comboBoxTipoUlcera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTipoUlcera.FormattingEnabled = true;
+            this.comboBoxTipoUlcera.Location = new System.Drawing.Point(262, 93);
+            this.comboBoxTipoUlcera.Name = "comboBoxTipoUlcera";
+            this.comboBoxTipoUlcera.Size = new System.Drawing.Size(245, 28);
+            this.comboBoxTipoUlcera.TabIndex = 169;
+            this.comboBoxTipoUlcera.Visible = false;
+            this.comboBoxTipoUlcera.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoUlcera_SelectedIndexChanged);
             // 
-            // txtTipoQueimadura
+            // lblTipoUlcera
             // 
-            this.txtTipoQueimadura.Location = new System.Drawing.Point(264, 65);
-            this.txtTipoQueimadura.Name = "txtTipoQueimadura";
-            this.txtTipoQueimadura.Size = new System.Drawing.Size(243, 26);
-            this.txtTipoQueimadura.TabIndex = 159;
+            this.lblTipoUlcera.AutoSize = true;
+            this.lblTipoUlcera.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoUlcera.ForeColor = System.Drawing.Color.Black;
+            this.lblTipoUlcera.Location = new System.Drawing.Point(38, 105);
+            this.lblTipoUlcera.Name = "lblTipoUlcera";
+            this.lblTipoUlcera.Size = new System.Drawing.Size(89, 20);
+            this.lblTipoUlcera.TabIndex = 168;
+            this.lblTipoUlcera.Text = "Tipo Úlcera";
+            this.lblTipoUlcera.Visible = false;
+            // 
+            // comboBoxTipoQueimadura
+            // 
+            this.comboBoxTipoQueimadura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTipoQueimadura.FormattingEnabled = true;
+            this.comboBoxTipoQueimadura.Location = new System.Drawing.Point(262, 59);
+            this.comboBoxTipoQueimadura.Name = "comboBoxTipoQueimadura";
+            this.comboBoxTipoQueimadura.Size = new System.Drawing.Size(245, 28);
+            this.comboBoxTipoQueimadura.TabIndex = 167;
+            this.comboBoxTipoQueimadura.Visible = false;
+            // 
+            // txtDermica
+            // 
+            this.txtDermica.Location = new System.Drawing.Point(262, 255);
+            this.txtDermica.Name = "txtDermica";
+            this.txtDermica.Size = new System.Drawing.Size(245, 26);
+            this.txtDermica.TabIndex = 166;
+            this.txtDermica.Visible = false;
+            // 
+            // lblDermica
+            // 
+            this.lblDermica.AutoSize = true;
+            this.lblDermica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDermica.ForeColor = System.Drawing.Color.Black;
+            this.lblDermica.Location = new System.Drawing.Point(35, 261);
+            this.lblDermica.Name = "lblDermica";
+            this.lblDermica.Size = new System.Drawing.Size(68, 20);
+            this.lblDermica.TabIndex = 165;
+            this.lblDermica.Text = "Dérmica";
+            this.lblDermica.Visible = false;
+            // 
+            // txtCorpoEstranho
+            // 
+            this.txtCorpoEstranho.Location = new System.Drawing.Point(262, 223);
+            this.txtCorpoEstranho.Name = "txtCorpoEstranho";
+            this.txtCorpoEstranho.Size = new System.Drawing.Size(245, 26);
+            this.txtCorpoEstranho.TabIndex = 164;
+            this.txtCorpoEstranho.Visible = false;
+            // 
+            // txtIPTB
+            // 
+            this.txtIPTB.Location = new System.Drawing.Point(262, 190);
+            this.txtIPTB.Name = "txtIPTB";
+            this.txtIPTB.Size = new System.Drawing.Size(245, 26);
+            this.txtIPTB.TabIndex = 163;
+            this.txtIPTB.Visible = false;
+            // 
+            // lblCorpoEstranho
+            // 
+            this.lblCorpoEstranho.AutoSize = true;
+            this.lblCorpoEstranho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCorpoEstranho.ForeColor = System.Drawing.Color.Black;
+            this.lblCorpoEstranho.Location = new System.Drawing.Point(35, 233);
+            this.lblCorpoEstranho.Name = "lblCorpoEstranho";
+            this.lblCorpoEstranho.Size = new System.Drawing.Size(121, 20);
+            this.lblCorpoEstranho.TabIndex = 162;
+            this.lblCorpoEstranho.Text = "Corpo Estranho";
+            this.lblCorpoEstranho.Visible = false;
+            // 
+            // lblIPTB
+            // 
+            this.lblIPTB.AutoSize = true;
+            this.lblIPTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIPTB.ForeColor = System.Drawing.Color.Black;
+            this.lblIPTB.Location = new System.Drawing.Point(38, 196);
+            this.lblIPTB.Name = "lblIPTB";
+            this.lblIPTB.Size = new System.Drawing.Size(44, 20);
+            this.lblIPTB.TabIndex = 161;
+            this.lblIPTB.Text = "IPTB";
+            this.lblIPTB.Visible = false;
+            // 
+            // lblTipoQueimadura
+            // 
+            this.lblTipoQueimadura.AutoSize = true;
+            this.lblTipoQueimadura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoQueimadura.ForeColor = System.Drawing.Color.Black;
+            this.lblTipoQueimadura.Location = new System.Drawing.Point(38, 68);
+            this.lblTipoQueimadura.Name = "lblTipoQueimadura";
+            this.lblTipoQueimadura.Size = new System.Drawing.Size(130, 20);
+            this.lblTipoQueimadura.TabIndex = 160;
+            this.lblTipoQueimadura.Text = "Tipo Queimadura";
+            this.lblTipoQueimadura.Visible = false;
             // 
             // dataProximoTratamento
             // 
             this.dataProximoTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataProximoTratamento.Location = new System.Drawing.Point(833, 385);
+            this.dataProximoTratamento.Location = new System.Drawing.Point(826, 410);
             this.dataProximoTratamento.Name = "dataProximoTratamento";
             this.dataProximoTratamento.Size = new System.Drawing.Size(245, 26);
             this.dataProximoTratamento.TabIndex = 158;
             this.dataProximoTratamento.Value = new System.DateTime(2020, 5, 15, 0, 0, 0, 0);
+            this.dataProximoTratamento.Visible = false;
             // 
-            // groupBox5
+            // groupBoxEscalaDor
             // 
-            this.groupBox5.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox5.Controls.Add(this.lblEscala);
-            this.groupBox5.Controls.Add(this.btnLocalizacaoDor);
-            this.groupBox5.Controls.Add(this.btnSemDor);
-            this.groupBox5.Controls.Add(this.lblSemDor);
-            this.groupBox5.Controls.Add(this.btnDorLigeira);
-            this.groupBox5.Controls.Add(this.lblDorLigeira);
-            this.groupBox5.Controls.Add(this.btnDorModerada);
-            this.groupBox5.Controls.Add(this.lblDorModerada);
-            this.groupBox5.Controls.Add(this.btnDorMuitoForte);
-            this.groupBox5.Controls.Add(this.btnDorForte);
-            this.groupBox5.Controls.Add(this.lblDorForte);
-            this.groupBox5.Controls.Add(this.btnDorMaxima);
-            this.groupBox5.Controls.Add(this.lblDorMuitoForte);
-            this.groupBox5.Controls.Add(this.lblDorMaxima);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.ForeColor = System.Drawing.Color.MediumBlue;
-            this.groupBox5.Location = new System.Drawing.Point(6, 486);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(638, 152);
-            this.groupBox5.TabIndex = 148;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Escala da Dor:";
+            this.groupBoxEscalaDor.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBoxEscalaDor.Controls.Add(this.lblEscala);
+            this.groupBoxEscalaDor.Controls.Add(this.btnLocalizacaoDor);
+            this.groupBoxEscalaDor.Controls.Add(this.btnSemDor);
+            this.groupBoxEscalaDor.Controls.Add(this.lblSemDor);
+            this.groupBoxEscalaDor.Controls.Add(this.btnDorLigeira);
+            this.groupBoxEscalaDor.Controls.Add(this.lblDorLigeira);
+            this.groupBoxEscalaDor.Controls.Add(this.btnDorModerada);
+            this.groupBoxEscalaDor.Controls.Add(this.lblDorModerada);
+            this.groupBoxEscalaDor.Controls.Add(this.btnDorMuitoForte);
+            this.groupBoxEscalaDor.Controls.Add(this.btnDorForte);
+            this.groupBoxEscalaDor.Controls.Add(this.lblDorForte);
+            this.groupBoxEscalaDor.Controls.Add(this.btnDorMaxima);
+            this.groupBoxEscalaDor.Controls.Add(this.lblDorMuitoForte);
+            this.groupBoxEscalaDor.Controls.Add(this.lblDorMaxima);
+            this.groupBoxEscalaDor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxEscalaDor.ForeColor = System.Drawing.Color.MediumBlue;
+            this.groupBoxEscalaDor.Location = new System.Drawing.Point(6, 486);
+            this.groupBoxEscalaDor.Name = "groupBoxEscalaDor";
+            this.groupBoxEscalaDor.Size = new System.Drawing.Size(638, 152);
+            this.groupBoxEscalaDor.TabIndex = 148;
+            this.groupBoxEscalaDor.TabStop = false;
+            this.groupBoxEscalaDor.Text = "Escala da Dor:";
+            this.groupBoxEscalaDor.Visible = false;
             // 
             // lblEscala
             // 
@@ -668,46 +790,69 @@
             this.lblDorMaxima.TabIndex = 18;
             this.lblDorMaxima.Text = "Dor Máxima";
             // 
-            // label13
+            // button3
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(598, 391);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(155, 20);
-            this.label13.TabIndex = 152;
-            this.label13.Text = "Próximo Tratamento:";
+            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button3.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button3.Location = new System.Drawing.Point(873, 588);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button3.Size = new System.Drawing.Size(206, 50);
+            this.button3.TabIndex = 56;
+            this.button3.Text = "Limpar Campos";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // groupBox3
+            // lblProximoTratamento
             // 
-            this.groupBox3.Controls.Add(this.groupBox4);
-            this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.txtAreaCircundanteAplicacao);
-            this.groupBox3.Controls.Add(this.txtFerida);
-            this.groupBox3.Controls.Add(this.txtSuportePenso);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(586, 146);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(502, 222);
-            this.groupBox3.TabIndex = 146;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Aplicação de:";
+            this.lblProximoTratamento.AutoSize = true;
+            this.lblProximoTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProximoTratamento.ForeColor = System.Drawing.Color.Black;
+            this.lblProximoTratamento.Location = new System.Drawing.Point(591, 416);
+            this.lblProximoTratamento.Name = "lblProximoTratamento";
+            this.lblProximoTratamento.Size = new System.Drawing.Size(155, 20);
+            this.lblProximoTratamento.TabIndex = 152;
+            this.lblProximoTratamento.Text = "Próximo Tratamento:";
+            this.lblProximoTratamento.Visible = false;
             // 
-            // groupBox4
+            // groupBoxAplicacao
             // 
-            this.groupBox4.Controls.Add(this.numericUpDownTamanhoPenso);
-            this.groupBox4.Controls.Add(this.txtTipoPenso);
-            this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Location = new System.Drawing.Point(6, 83);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(479, 93);
-            this.groupBox4.TabIndex = 157;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Penso";
+            this.groupBoxAplicacao.Controls.Add(this.groupBoxPenso);
+            this.groupBoxAplicacao.Controls.Add(this.lblArea);
+            this.groupBoxAplicacao.Controls.Add(this.txtAreaCircundanteAplicacao);
+            this.groupBoxAplicacao.Controls.Add(this.txtFerida);
+            this.groupBoxAplicacao.Controls.Add(this.txtSuportePenso);
+            this.groupBoxAplicacao.Controls.Add(this.lblSuportePenso);
+            this.groupBoxAplicacao.Controls.Add(this.lblFerida);
+            this.groupBoxAplicacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxAplicacao.Location = new System.Drawing.Point(577, 173);
+            this.groupBoxAplicacao.Name = "groupBoxAplicacao";
+            this.groupBoxAplicacao.Size = new System.Drawing.Size(502, 222);
+            this.groupBoxAplicacao.TabIndex = 146;
+            this.groupBoxAplicacao.TabStop = false;
+            this.groupBoxAplicacao.Text = "Aplicação de:";
+            this.groupBoxAplicacao.Visible = false;
+            // 
+            // groupBoxPenso
+            // 
+            this.groupBoxPenso.Controls.Add(this.numericUpDownTamanhoPenso);
+            this.groupBoxPenso.Controls.Add(this.txtTipoPenso);
+            this.groupBoxPenso.Controls.Add(this.lblTipoPenso);
+            this.groupBoxPenso.Controls.Add(this.lblTamanhoPenso);
+            this.groupBoxPenso.Location = new System.Drawing.Point(6, 83);
+            this.groupBoxPenso.Name = "groupBoxPenso";
+            this.groupBoxPenso.Size = new System.Drawing.Size(479, 93);
+            this.groupBoxPenso.TabIndex = 157;
+            this.groupBoxPenso.TabStop = false;
+            this.groupBoxPenso.Text = "Penso";
             // 
             // numericUpDownTamanhoPenso
             // 
@@ -729,38 +874,38 @@
             this.txtTipoPenso.Size = new System.Drawing.Size(245, 26);
             this.txtTipoPenso.TabIndex = 151;
             // 
-            // label15
+            // lblTipoPenso
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(6, 33);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(43, 20);
-            this.label15.TabIndex = 144;
-            this.label15.Text = "Tipo:";
+            this.lblTipoPenso.AutoSize = true;
+            this.lblTipoPenso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoPenso.ForeColor = System.Drawing.Color.Black;
+            this.lblTipoPenso.Location = new System.Drawing.Point(6, 33);
+            this.lblTipoPenso.Name = "lblTipoPenso";
+            this.lblTipoPenso.Size = new System.Drawing.Size(43, 20);
+            this.lblTipoPenso.TabIndex = 144;
+            this.lblTipoPenso.Text = "Tipo:";
             // 
-            // label12
+            // lblTamanhoPenso
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(6, 63);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(80, 20);
-            this.label12.TabIndex = 150;
-            this.label12.Text = "Tamanho:";
+            this.lblTamanhoPenso.AutoSize = true;
+            this.lblTamanhoPenso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTamanhoPenso.ForeColor = System.Drawing.Color.Black;
+            this.lblTamanhoPenso.Location = new System.Drawing.Point(6, 63);
+            this.lblTamanhoPenso.Name = "lblTamanhoPenso";
+            this.lblTamanhoPenso.Size = new System.Drawing.Size(80, 20);
+            this.lblTamanhoPenso.TabIndex = 150;
+            this.lblTamanhoPenso.Text = "Tamanho:";
             // 
-            // label16
+            // lblArea
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(12, 60);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(137, 20);
-            this.label16.TabIndex = 156;
-            this.label16.Text = "Área Circundante ";
+            this.lblArea.AutoSize = true;
+            this.lblArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArea.ForeColor = System.Drawing.Color.Black;
+            this.lblArea.Location = new System.Drawing.Point(12, 60);
+            this.lblArea.Name = "lblArea";
+            this.lblArea.Size = new System.Drawing.Size(137, 20);
+            this.lblArea.TabIndex = 156;
+            this.lblArea.Text = "Área Circundante ";
             // 
             // txtAreaCircundanteAplicacao
             // 
@@ -783,34 +928,35 @@
             this.txtSuportePenso.Size = new System.Drawing.Size(245, 26);
             this.txtSuportePenso.TabIndex = 149;
             // 
-            // label11
+            // lblSuportePenso
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(6, 187);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(115, 20);
-            this.label11.TabIndex = 148;
-            this.label11.Text = "Suporte Penso";
+            this.lblSuportePenso.AutoSize = true;
+            this.lblSuportePenso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSuportePenso.ForeColor = System.Drawing.Color.Black;
+            this.lblSuportePenso.Location = new System.Drawing.Point(6, 187);
+            this.lblSuportePenso.Name = "lblSuportePenso";
+            this.lblSuportePenso.Size = new System.Drawing.Size(115, 20);
+            this.lblSuportePenso.TabIndex = 148;
+            this.lblSuportePenso.Text = "Suporte Penso";
             // 
-            // label17
+            // lblFerida
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(12, 25);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(58, 20);
-            this.label17.TabIndex = 65;
-            this.label17.Text = "Ferida:";
+            this.lblFerida.AutoSize = true;
+            this.lblFerida.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFerida.ForeColor = System.Drawing.Color.Black;
+            this.lblFerida.Location = new System.Drawing.Point(12, 25);
+            this.lblFerida.Name = "lblFerida";
+            this.lblFerida.Size = new System.Drawing.Size(58, 20);
+            this.lblFerida.TabIndex = 65;
+            this.lblFerida.Text = "Ferida:";
             // 
             // txtAgenteLimpeza
             // 
-            this.txtAgenteLimpeza.Location = new System.Drawing.Point(834, 107);
+            this.txtAgenteLimpeza.Location = new System.Drawing.Point(818, 132);
             this.txtAgenteLimpeza.Name = "txtAgenteLimpeza";
             this.txtAgenteLimpeza.Size = new System.Drawing.Size(245, 26);
             this.txtAgenteLimpeza.TabIndex = 147;
+            this.txtAgenteLimpeza.Visible = false;
             // 
             // btnGuardar
             // 
@@ -833,68 +979,74 @@
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // label10
+            // lblAgenteLimpeza
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(595, 113);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(155, 20);
-            this.label10.TabIndex = 146;
-            this.label10.Text = " \tAgente de Limpeza ";
+            this.lblAgenteLimpeza.AutoSize = true;
+            this.lblAgenteLimpeza.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAgenteLimpeza.ForeColor = System.Drawing.Color.Black;
+            this.lblAgenteLimpeza.Location = new System.Drawing.Point(579, 138);
+            this.lblAgenteLimpeza.Name = "lblAgenteLimpeza";
+            this.lblAgenteLimpeza.Size = new System.Drawing.Size(155, 20);
+            this.lblAgenteLimpeza.TabIndex = 146;
+            this.lblAgenteLimpeza.Text = " \tAgente de Limpeza ";
+            this.lblAgenteLimpeza.Visible = false;
             // 
             // txtAreaCircundante
             // 
-            this.txtAreaCircundante.Location = new System.Drawing.Point(834, 75);
+            this.txtAreaCircundante.Location = new System.Drawing.Point(818, 100);
             this.txtAreaCircundante.Name = "txtAreaCircundante";
             this.txtAreaCircundante.Size = new System.Drawing.Size(245, 26);
             this.txtAreaCircundante.TabIndex = 145;
+            this.txtAreaCircundante.Visible = false;
             // 
-            // label9
+            // lblAreaCircundante
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(595, 81);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(137, 20);
-            this.label9.TabIndex = 144;
-            this.label9.Text = "Área Circundante ";
+            this.lblAreaCircundante.AutoSize = true;
+            this.lblAreaCircundante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAreaCircundante.ForeColor = System.Drawing.Color.Black;
+            this.lblAreaCircundante.Location = new System.Drawing.Point(579, 106);
+            this.lblAreaCircundante.Name = "lblAreaCircundante";
+            this.lblAreaCircundante.Size = new System.Drawing.Size(137, 20);
+            this.lblAreaCircundante.TabIndex = 144;
+            this.lblAreaCircundante.Text = "Área Circundante ";
+            this.lblAreaCircundante.Visible = false;
             // 
             // txtTecidoPredominante
             // 
-            this.txtTecidoPredominante.Location = new System.Drawing.Point(834, 43);
+            this.txtTecidoPredominante.Location = new System.Drawing.Point(818, 68);
             this.txtTecidoPredominante.Name = "txtTecidoPredominante";
             this.txtTecidoPredominante.Size = new System.Drawing.Size(245, 26);
             this.txtTecidoPredominante.TabIndex = 143;
+            this.txtTecidoPredominante.Visible = false;
             // 
-            // label8
+            // lblTecidoPredominante
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(595, 46);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(163, 20);
-            this.label8.TabIndex = 142;
-            this.label8.Text = "Tecido Predominante:";
+            this.lblTecidoPredominante.AutoSize = true;
+            this.lblTecidoPredominante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTecidoPredominante.ForeColor = System.Drawing.Color.Black;
+            this.lblTecidoPredominante.Location = new System.Drawing.Point(579, 71);
+            this.lblTecidoPredominante.Name = "lblTecidoPredominante";
+            this.lblTecidoPredominante.Size = new System.Drawing.Size(163, 20);
+            this.lblTecidoPredominante.TabIndex = 142;
+            this.lblTecidoPredominante.Text = "Tecido Predominante:";
+            this.lblTecidoPredominante.Visible = false;
             // 
-            // groupBox2
+            // groupBoxExsudado
             // 
-            this.groupBox2.Controls.Add(this.txtExsudadoCheiro);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.numericUpDownExcudado);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.txtExsudadoTipo);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(22, 357);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(485, 123);
-            this.groupBox2.TabIndex = 141;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Exsudado";
+            this.groupBoxExsudado.Controls.Add(this.txtExsudadoCheiro);
+            this.groupBoxExsudado.Controls.Add(this.lblCheiroExsudado);
+            this.groupBoxExsudado.Controls.Add(this.numericUpDownExcudado);
+            this.groupBoxExsudado.Controls.Add(this.lblQntExsudado);
+            this.groupBoxExsudado.Controls.Add(this.txtExsudadoTipo);
+            this.groupBoxExsudado.Controls.Add(this.lblTipoExsudado);
+            this.groupBoxExsudado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxExsudado.Location = new System.Drawing.Point(33, 359);
+            this.groupBoxExsudado.Name = "groupBoxExsudado";
+            this.groupBoxExsudado.Size = new System.Drawing.Size(485, 123);
+            this.groupBoxExsudado.TabIndex = 141;
+            this.groupBoxExsudado.TabStop = false;
+            this.groupBoxExsudado.Text = "Exsudado";
+            this.groupBoxExsudado.Visible = false;
             // 
             // txtExsudadoCheiro
             // 
@@ -902,17 +1054,18 @@
             this.txtExsudadoCheiro.Name = "txtExsudadoCheiro";
             this.txtExsudadoCheiro.Size = new System.Drawing.Size(245, 26);
             this.txtExsudadoCheiro.TabIndex = 145;
+            this.txtExsudadoCheiro.Visible = false;
             // 
-            // label7
+            // lblCheiroExsudado
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(12, 94);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 20);
-            this.label7.TabIndex = 144;
-            this.label7.Text = "Cheiro:";
+            this.lblCheiroExsudado.AutoSize = true;
+            this.lblCheiroExsudado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCheiroExsudado.ForeColor = System.Drawing.Color.Black;
+            this.lblCheiroExsudado.Location = new System.Drawing.Point(12, 94);
+            this.lblCheiroExsudado.Name = "lblCheiroExsudado";
+            this.lblCheiroExsudado.Size = new System.Drawing.Size(59, 20);
+            this.lblCheiroExsudado.TabIndex = 144;
+            this.lblCheiroExsudado.Text = "Cheiro:";
             // 
             // numericUpDownExcudado
             // 
@@ -926,17 +1079,18 @@
             this.numericUpDownExcudado.Name = "numericUpDownExcudado";
             this.numericUpDownExcudado.Size = new System.Drawing.Size(245, 26);
             this.numericUpDownExcudado.TabIndex = 142;
+            this.numericUpDownExcudado.Visible = false;
             // 
-            // label6
+            // lblQntExsudado
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(12, 62);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 20);
-            this.label6.TabIndex = 143;
-            this.label6.Text = "Quantidade:";
+            this.lblQntExsudado.AutoSize = true;
+            this.lblQntExsudado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQntExsudado.ForeColor = System.Drawing.Color.Black;
+            this.lblQntExsudado.Location = new System.Drawing.Point(12, 62);
+            this.lblQntExsudado.Name = "lblQntExsudado";
+            this.lblQntExsudado.Size = new System.Drawing.Size(96, 20);
+            this.lblQntExsudado.TabIndex = 143;
+            this.lblQntExsudado.Text = "Quantidade:";
             // 
             // txtExsudadoTipo
             // 
@@ -944,59 +1098,64 @@
             this.txtExsudadoTipo.Name = "txtExsudadoTipo";
             this.txtExsudadoTipo.Size = new System.Drawing.Size(245, 26);
             this.txtExsudadoTipo.TabIndex = 142;
+            this.txtExsudadoTipo.Visible = false;
             // 
-            // label4
+            // lblTipoExsudado
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(12, 25);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 20);
-            this.label4.TabIndex = 65;
-            this.label4.Text = "Tipo:";
+            this.lblTipoExsudado.AutoSize = true;
+            this.lblTipoExsudado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoExsudado.ForeColor = System.Drawing.Color.Black;
+            this.lblTipoExsudado.Location = new System.Drawing.Point(12, 25);
+            this.lblTipoExsudado.Name = "lblTipoExsudado";
+            this.lblTipoExsudado.Size = new System.Drawing.Size(43, 20);
+            this.lblTipoExsudado.TabIndex = 65;
+            this.lblTipoExsudado.Text = "Tipo:";
             // 
-            // txtBoxUlcera
+            // txtUlcera
             // 
-            this.txtBoxUlcera.Location = new System.Drawing.Point(262, 327);
-            this.txtBoxUlcera.Name = "txtBoxUlcera";
-            this.txtBoxUlcera.Size = new System.Drawing.Size(245, 26);
-            this.txtBoxUlcera.TabIndex = 140;
+            this.txtUlcera.Location = new System.Drawing.Point(262, 327);
+            this.txtUlcera.Name = "txtUlcera";
+            this.txtUlcera.Size = new System.Drawing.Size(245, 26);
+            this.txtUlcera.TabIndex = 140;
+            this.txtUlcera.Visible = false;
             // 
             // txtDimensoes
             // 
-            this.txtDimensoes.Location = new System.Drawing.Point(262, 286);
+            this.txtDimensoes.Location = new System.Drawing.Point(262, 291);
             this.txtDimensoes.Name = "txtDimensoes";
             this.txtDimensoes.Size = new System.Drawing.Size(245, 26);
             this.txtDimensoes.TabIndex = 139;
+            this.txtDimensoes.Visible = false;
             this.txtDimensoes.TextChanged += new System.EventHandler(this.txtDimensoes_TextChanged);
             // 
-            // lblSPO2
+            // lblUlceraPressao
             // 
-            this.lblSPO2.AutoSize = true;
-            this.lblSPO2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSPO2.ForeColor = System.Drawing.Color.Black;
-            this.lblSPO2.Location = new System.Drawing.Point(29, 330);
-            this.lblSPO2.Name = "lblSPO2";
-            this.lblSPO2.Size = new System.Drawing.Size(143, 20);
-            this.lblSPO2.TabIndex = 64;
-            this.lblSPO2.Text = "Ulcera de Pressão:";
+            this.lblUlceraPressao.AutoSize = true;
+            this.lblUlceraPressao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUlceraPressao.ForeColor = System.Drawing.Color.Black;
+            this.lblUlceraPressao.Location = new System.Drawing.Point(29, 330);
+            this.lblUlceraPressao.Name = "lblUlceraPressao";
+            this.lblUlceraPressao.Size = new System.Drawing.Size(143, 20);
+            this.lblUlceraPressao.TabIndex = 64;
+            this.lblUlceraPressao.Text = "Ulcera de Pressão:";
+            this.lblUlceraPressao.Visible = false;
             // 
-            // lblTensaoArterial
+            // lblDimensoes
             // 
-            this.lblTensaoArterial.AutoSize = true;
-            this.lblTensaoArterial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTensaoArterial.ForeColor = System.Drawing.Color.Black;
-            this.lblTensaoArterial.Location = new System.Drawing.Point(35, 291);
-            this.lblTensaoArterial.Name = "lblTensaoArterial";
-            this.lblTensaoArterial.Size = new System.Drawing.Size(89, 20);
-            this.lblTensaoArterial.TabIndex = 55;
-            this.lblTensaoArterial.Text = "Dimensões";
+            this.lblDimensoes.AutoSize = true;
+            this.lblDimensoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDimensoes.ForeColor = System.Drawing.Color.Black;
+            this.lblDimensoes.Location = new System.Drawing.Point(35, 299);
+            this.lblDimensoes.Name = "lblDimensoes";
+            this.lblDimensoes.Size = new System.Drawing.Size(89, 20);
+            this.lblDimensoes.TabIndex = 55;
+            this.lblDimensoes.Text = "Dimensões";
+            this.lblDimensoes.Visible = false;
             // 
             // UpDownNumeroTratamento
             // 
             this.UpDownNumeroTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpDownNumeroTratamento.Location = new System.Drawing.Point(262, 136);
+            this.UpDownNumeroTratamento.Location = new System.Drawing.Point(262, 128);
             this.UpDownNumeroTratamento.Maximum = new decimal(new int[] {
             999,
             0,
@@ -1005,112 +1164,79 @@
             this.UpDownNumeroTratamento.Name = "UpDownNumeroTratamento";
             this.UpDownNumeroTratamento.Size = new System.Drawing.Size(245, 26);
             this.UpDownNumeroTratamento.TabIndex = 53;
+            this.UpDownNumeroTratamento.Visible = false;
             // 
-            // lblAltura
+            // lblNrTratamento
             // 
-            this.lblAltura.AutoSize = true;
-            this.lblAltura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAltura.ForeColor = System.Drawing.Color.Black;
-            this.lblAltura.Location = new System.Drawing.Point(38, 142);
-            this.lblAltura.Name = "lblAltura";
-            this.lblAltura.Size = new System.Drawing.Size(151, 20);
-            this.lblAltura.TabIndex = 49;
-            this.lblAltura.Text = "Número Tratamento";
+            this.lblNrTratamento.AutoSize = true;
+            this.lblNrTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNrTratamento.ForeColor = System.Drawing.Color.Black;
+            this.lblNrTratamento.Location = new System.Drawing.Point(38, 137);
+            this.lblNrTratamento.Name = "lblNrTratamento";
+            this.lblNrTratamento.Size = new System.Drawing.Size(151, 20);
+            this.lblNrTratamento.TabIndex = 49;
+            this.lblNrTratamento.Text = "Número Tratamento";
+            this.lblNrTratamento.Visible = false;
             // 
-            // lblDataAvaliacaoObjetivo
+            // lblDataTratamento
             // 
-            this.lblDataAvaliacaoObjetivo.AutoSize = true;
-            this.lblDataAvaliacaoObjetivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataAvaliacaoObjetivo.ForeColor = System.Drawing.Color.Black;
-            this.lblDataAvaliacaoObjetivo.Location = new System.Drawing.Point(38, 110);
-            this.lblDataAvaliacaoObjetivo.Name = "lblDataAvaliacaoObjetivo";
-            this.lblDataAvaliacaoObjetivo.Size = new System.Drawing.Size(48, 20);
-            this.lblDataAvaliacaoObjetivo.TabIndex = 14;
-            this.lblDataAvaliacaoObjetivo.Text = "Data:";
+            this.lblDataTratamento.AutoSize = true;
+            this.lblDataTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataTratamento.ForeColor = System.Drawing.Color.Black;
+            this.lblDataTratamento.Location = new System.Drawing.Point(593, 29);
+            this.lblDataTratamento.Name = "lblDataTratamento";
+            this.lblDataTratamento.Size = new System.Drawing.Size(48, 20);
+            this.lblDataTratamento.TabIndex = 14;
+            this.lblDataTratamento.Text = "Data:";
+            this.lblDataTratamento.Visible = false;
             // 
             // dataTratamento
             // 
             this.dataTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataTratamento.Location = new System.Drawing.Point(262, 104);
+            this.dataTratamento.Location = new System.Drawing.Point(817, 23);
             this.dataTratamento.Name = "dataTratamento";
             this.dataTratamento.Size = new System.Drawing.Size(245, 26);
             this.dataTratamento.TabIndex = 15;
             this.dataTratamento.Value = new System.DateTime(2020, 5, 15, 0, 0, 0, 0);
+            this.dataTratamento.Visible = false;
             // 
-            // button3
+            // button5
             // 
-            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button3.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button3.Location = new System.Drawing.Point(873, 588);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button3.Size = new System.Drawing.Size(206, 50);
-            this.button3.TabIndex = 56;
-            this.button3.Text = "Limpar Campos";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button5.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.Black;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.Location = new System.Drawing.Point(3, 429);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Name = "button5";
+            this.button5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button5.Size = new System.Drawing.Size(225, 67);
+            this.button5.TabIndex = 62;
+            this.button5.Text = "Adicionar Tipo Úlcera";
+            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // txtCorpoEstranho
+            // txtGrauUlceraPressao
             // 
-            this.txtCorpoEstranho.Location = new System.Drawing.Point(262, 206);
-            this.txtCorpoEstranho.Name = "txtCorpoEstranho";
-            this.txtCorpoEstranho.Size = new System.Drawing.Size(245, 26);
-            this.txtCorpoEstranho.TabIndex = 164;
+            this.txtGrauUlceraPressao.Location = new System.Drawing.Point(262, 158);
+            this.txtGrauUlceraPressao.Name = "txtGrauUlceraPressao";
+            this.txtGrauUlceraPressao.Size = new System.Drawing.Size(245, 26);
+            this.txtGrauUlceraPressao.TabIndex = 170;
+            this.txtGrauUlceraPressao.Visible = false;
             // 
-            // txtIPTB
+            // lblGrauUlceraPressao
             // 
-            this.txtIPTB.Location = new System.Drawing.Point(262, 167);
-            this.txtIPTB.Name = "txtIPTB";
-            this.txtIPTB.Size = new System.Drawing.Size(245, 26);
-            this.txtIPTB.TabIndex = 163;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(38, 212);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(121, 20);
-            this.label5.TabIndex = 162;
-            this.label5.Text = "Corpo Estranho";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(44, 173);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 20);
-            this.label14.TabIndex = 161;
-            this.label14.Text = "IPTB";
-            // 
-            // txtDermica
-            // 
-            this.txtDermica.Location = new System.Drawing.Point(262, 244);
-            this.txtDermica.Name = "txtDermica";
-            this.txtDermica.Size = new System.Drawing.Size(245, 26);
-            this.txtDermica.TabIndex = 166;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(38, 252);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(68, 20);
-            this.label18.TabIndex = 165;
-            this.label18.Text = "Dérmica";
+            this.lblGrauUlceraPressao.AutoSize = true;
+            this.lblGrauUlceraPressao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGrauUlceraPressao.ForeColor = System.Drawing.Color.Black;
+            this.lblGrauUlceraPressao.Location = new System.Drawing.Point(44, 164);
+            this.lblGrauUlceraPressao.Name = "lblGrauUlceraPressao";
+            this.lblGrauUlceraPressao.Size = new System.Drawing.Size(49, 20);
+            this.lblGrauUlceraPressao.TabIndex = 172;
+            this.lblGrauUlceraPressao.Text = "Grau:";
+            this.lblGrauUlceraPressao.Visible = false;
             // 
             // AdicionarVisualizarTratamentoPaciente
             // 
@@ -1137,15 +1263,15 @@
             this.panelFormulario.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.groupBoxEscalaDor.ResumeLayout(false);
+            this.groupBoxEscalaDor.PerformLayout();
+            this.groupBoxAplicacao.ResumeLayout(false);
+            this.groupBoxAplicacao.PerformLayout();
+            this.groupBoxPenso.ResumeLayout(false);
+            this.groupBoxPenso.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTamanhoPenso)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxExsudado.ResumeLayout(false);
+            this.groupBoxExsudado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExcudado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownNumeroTratamento)).EndInit();
             this.ResumeLayout(false);
@@ -1178,42 +1304,42 @@
         private System.Windows.Forms.Panel painelPrincipal;
         private System.Windows.Forms.Panel panelFormulario;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label lblSPO2;
-        private System.Windows.Forms.Label lblTensaoArterial;
+        private System.Windows.Forms.Label lblUlceraPressao;
+        private System.Windows.Forms.Label lblDimensoes;
         private System.Windows.Forms.NumericUpDown UpDownNumeroTratamento;
-        private System.Windows.Forms.Label lblAltura;
-        private System.Windows.Forms.Label lblDataAvaliacaoObjetivo;
+        private System.Windows.Forms.Label lblNrTratamento;
+        private System.Windows.Forms.Label lblDataTratamento;
         private System.Windows.Forms.DateTimePicker dataTratamento;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxAplicacao;
         private System.Windows.Forms.DateTimePicker dataProximoTratamento;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxPenso;
         private System.Windows.Forms.NumericUpDown numericUpDownTamanhoPenso;
         private System.Windows.Forms.TextBox txtTipoPenso;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblTipoPenso;
+        private System.Windows.Forms.Label lblTamanhoPenso;
+        private System.Windows.Forms.Label lblArea;
         private System.Windows.Forms.TextBox txtAreaCircundanteAplicacao;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblProximoTratamento;
         private System.Windows.Forms.TextBox txtFerida;
         private System.Windows.Forms.TextBox txtSuportePenso;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label lblSuportePenso;
+        private System.Windows.Forms.Label lblFerida;
         private System.Windows.Forms.TextBox txtAgenteLimpeza;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblAgenteLimpeza;
         private System.Windows.Forms.TextBox txtAreaCircundante;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblAreaCircundante;
         private System.Windows.Forms.TextBox txtTecidoPredominante;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label lblTecidoPredominante;
+        private System.Windows.Forms.GroupBox groupBoxExsudado;
         private System.Windows.Forms.TextBox txtExsudadoCheiro;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblCheiroExsudado;
         private System.Windows.Forms.NumericUpDown numericUpDownExcudado;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblQntExsudado;
         private System.Windows.Forms.TextBox txtExsudadoTipo;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtBoxUlcera;
+        private System.Windows.Forms.Label lblTipoExsudado;
+        private System.Windows.Forms.TextBox txtUlcera;
         private System.Windows.Forms.TextBox txtDimensoes;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBoxEscalaDor;
         private System.Windows.Forms.Button btnSemDor;
         private System.Windows.Forms.Label lblSemDor;
         private System.Windows.Forms.Button btnDorLigeira;
@@ -1228,14 +1354,20 @@
         private System.Windows.Forms.Label lblDorMaxima;
         private System.Windows.Forms.Button btnLocalizacaoDor;
         private System.Windows.Forms.Label lblEscala;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtTipoQueimadura;
+        private System.Windows.Forms.Label lblTipoQueimadura;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox txtDermica;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lblDermica;
         private System.Windows.Forms.TextBox txtCorpoEstranho;
         private System.Windows.Forms.TextBox txtIPTB;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblCorpoEstranho;
+        private System.Windows.Forms.Label lblIPTB;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBoxTipoQueimadura;
+        private System.Windows.Forms.ComboBox comboBoxTipoUlcera;
+        private System.Windows.Forms.Label lblTipoUlcera;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label lblGrauUlceraPressao;
+        private System.Windows.Forms.TextBox txtGrauUlceraPressao;
     }
 }

@@ -11,28 +11,26 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class AdicionarTratamento : Form
+    public partial class AdicionarTipoUlcera : Form
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private ErrorProvider errorProvider = new ErrorProvider();
         AdicionarVisualizarTratamentoPaciente adicionar = null;
-        private List<Tratamento> listaTratamentos = new List<Tratamento>();
-
-        public AdicionarTratamento(AdicionarVisualizarTratamentoPaciente adicionarVisualizarTratamentoPaciente)
+        private List<Queimadura> tipoUlcera = new List<Queimadura>();
+        public AdicionarTipoUlcera(AdicionarVisualizarTratamentoPaciente adicionarVisualizarTratamentoPaciente)
         {
             InitializeComponent();
             adicionar = adicionarVisualizarTratamentoPaciente;
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
         }
 
-        private void AdicionarTratamento_Load(object sender, EventArgs e)
+        private void TipoUlcera_Load(object sender, EventArgs e)
         {
-            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = listaTratamentos };
-            dataGridViewTratamentos.DataSource = bindingSource2;
+            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = tipoUlcera };
+            dataGridViewUlceras.DataSource = bindingSource2;
             UpdateDataGridView();
         }
 
@@ -62,6 +60,43 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.WindowState = FormWindowState.Minimized;
         }
 
+        private void hora_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
+            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (VerificarDadosInseridos())
+            {
+                string nome = txtNome.Text;
+                try
+                {
+                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    connection.Open();
+
+                    string queryInsertData = "INSERT INTO tipoUlcera(tipoUlcera) VALUES(@tipoUlcera);";
+                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                    sqlCommand.Parameters.AddWithValue("@tipoUlcera", txtNome.Text);
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Tipo de úlcera registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    connection.Close();
+                    UpdateDataGridView();
+                    limparCampos();
+                }
+                catch (SqlException excep)
+                {
+                    MessageBox.Show("Por erro interno é impossível registar o tipo de úlcera", excep.Message);
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             if (adicionar != null)
@@ -71,50 +106,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.Close();
         }
 
-        private void hora_Tick(object sender, EventArgs e)
-        {
-            lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
-            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
-        }
-
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            //nomeTratamento
-
-            if (VerificarDadosInseridos())
-            {
-                string nome = txtNome.Text;
-                try
-                {
-                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                    connection.Open();
-
-                    string queryInsertData = "INSERT INTO Tratamento(nomeTratamento) VALUES(@NomeTratamento);";
-                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.Parameters.AddWithValue("@NomeTratamento", txtNome.Text);
-                    sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Tratamento registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    connection.Close();
-                    UpdateDataGridView();
-                    limparCampos();
-                }
-                catch (SqlException excep)
-                {
-                    MessageBox.Show("Por erro interno é impossível registar o tratamento", excep.Message);
-                }
-            }
-        }
-
         private Boolean VerificarDadosInseridos()
         {
             string nomeTratamento = txtNome.Text;
             if (nomeTratamento == string.Empty)
             {
-                MessageBox.Show("Campo Obrigatório, por favor preencha o nome do tratamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campo Obrigatório, por favor preencha o tipo de úlcera!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (txtNome.Text == string.Empty)
                 {
-                    errorProvider.SetError(txtNome, "O nome do tratamento é obrigatório!");
+                    errorProvider.SetError(txtNome, "O tipo de úlcera é obrigatório!");
                 }
                 else
                 {
@@ -131,35 +132,30 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             errorProvider.Clear();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            limparCampos();
-
-        }
         public void UpdateDataGridView()
         {
-            listaTratamentos.Clear();
+            tipoUlcera.Clear();
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select nomeTratamento from Tratamento ORDER BY nomeTratamento asc", conn);
+            SqlCommand cmd = new SqlCommand("select tipoUlcera from tipoUlcera ORDER BY tipoUlcera asc", conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                Tratamento encomendas = new Tratamento
+                Queimadura queima = new Queimadura
                 {
-                    nomeTratamento = (string)reader["nomeTratamento"]
+                    tipoQueimadura = (string)reader["tipoUlcera"]
                 };
-                listaTratamentos.Add(encomendas);
+                tipoUlcera.Add(queima);
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaTratamentos };
-            dataGridViewTratamentos.DataSource = bindingSource1;
-            dataGridViewTratamentos.Columns[0].HeaderText = "Nome do Tratamento";
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = tipoUlcera };
+            dataGridViewUlceras.DataSource = bindingSource1;
+            dataGridViewUlceras.Columns[0].HeaderText = "Tipo de Úlcera";
 
             conn.Close();
-            dataGridViewTratamentos.Update();
-            dataGridViewTratamentos.Refresh();
+            dataGridViewUlceras.Update();
+            dataGridViewUlceras.Refresh();
         }
     }
 }

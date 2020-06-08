@@ -66,6 +66,12 @@
     <Compile Include="AdicionarTipoParto.Designer.cs">
       <DependentUpon>AdicionarTipoParto.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdicionarTipoQueimadura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarTipoQueimadura.Designer.cs">
+      <DependentUpon>AdicionarTipoQueimadura.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdicionarTratamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,8 +196,16 @@
     <Compile Include="AdicionarVisualizarTratamentoPaciente.Designer.cs">
       <DependentUpon>AdicionarVisualizarTratamentoPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Queimadura.cs" />
+    <Compile Include="AdicionarTipoUlcera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarTipoUlcera.Designer.cs">
+      <DependentUpon>AdicionarTipoUlcera.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tratamento.cs" />
     <Compile Include="TratamentoPaciente.cs" />
+    <Compile Include="Ulcera.cs" />
     <Compile Include="VerDespesasTodas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -538,6 +552,9 @@
     <EmbeddedResource Include="AdicionarTipoParto.resx">
       <DependentUpon>AdicionarTipoParto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarTipoQueimadura.resx">
+      <DependentUpon>AdicionarTipoQueimadura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdicionarTratamento.resx">
       <DependentUpon>AdicionarTratamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -615,6 +632,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarVisualizarTratamentoPaciente.resx">
       <DependentUpon>AdicionarVisualizarTratamentoPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarTipoUlcera.resx">
+      <DependentUpon>AdicionarTipoUlcera.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerAlergiasRegistadas.resx">
       <DependentUpon>VerAlergiasRegistadas.cs</DependentUpon>
