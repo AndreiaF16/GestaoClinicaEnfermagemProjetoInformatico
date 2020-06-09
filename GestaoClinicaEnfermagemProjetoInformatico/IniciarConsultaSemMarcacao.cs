@@ -21,6 +21,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Lucro lucro = new Lucro();
         private DateTime inicio;
         private ErrorProvider errorProvider = new ErrorProvider();
+        private Consulta consulta = new Consulta();
+
 
         public IniciarConsultaSemMarcacao(Enfermeiro enf, Paciente pac)
         {
@@ -303,7 +305,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button7_Click(object sender, EventArgs e)
         {
-            AdicionarVisualizarProdutosStockConsulta adicionarVisualizarProdutosStockConsulta = new AdicionarVisualizarProdutosStockConsulta();
+            AdicionarVisualizarProdutosStockConsulta adicionarVisualizarProdutosStockConsulta = new AdicionarVisualizarProdutosStockConsulta(paciente, consulta);
             adicionarVisualizarProdutosStockConsulta.Show();
         }
 

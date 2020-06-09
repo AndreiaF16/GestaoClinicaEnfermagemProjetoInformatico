@@ -13,9 +13,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class LinhaEncomenda : Form
     {
-        RegistarEncomendas registar = new RegistarEncomendas();
-        ClassFornecedor fornecedor = new ClassFornecedor();
-        Encomendas encomendas = null;
+        private RegistarEncomendas registar = new RegistarEncomendas();
+        private ClassFornecedor fornecedor = new ClassFornecedor();
+        private Encomendas encomendas = null;
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private List<ListarProdutos> listaProdutos = new List<ListarProdutos>();
@@ -69,33 +69,36 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (listaEncomenda.Count > 0)
+            if (VerificarDadosInseridos())
             {
-                try
+                if (listaEncomenda.Count > 0)
                 {
-                    conn.Open();
-                    foreach (var item in listaEncomenda)
+                    try
                     {
-                        string queryInsertData = "INSERT INTO LinhaEncomenda(quantidade,idProdutoStock,idEncomenda) VALUES(@Quantidade,@IdProdutoStock,@IdEncomenda);";
-                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
-                        sqlCommand.Parameters.AddWithValue("@Quantidade", item.quant);
-                        sqlCommand.Parameters.AddWithValue("@IdProdutoStock", item.id);
-                        sqlCommand.Parameters.AddWithValue("@IdEncomenda", encomendas.IdEncomenda);
-                        sqlCommand.ExecuteNonQuery();
-                    }
+                        conn.Open();
+                        foreach (var item in listaEncomenda)
+                        {
+                            string queryInsertData = "INSERT INTO LinhaEncomenda(quantidade,idProdutoStock,idEncomenda) VALUES(@Quantidade,@IdProdutoStock,@IdEncomenda);";
+                            SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
+                            sqlCommand.Parameters.AddWithValue("@Quantidade", item.quant);
+                            sqlCommand.Parameters.AddWithValue("@IdProdutoStock", item.id);
+                            sqlCommand.Parameters.AddWithValue("@IdEncomenda", encomendas.IdEncomenda);
+                            sqlCommand.ExecuteNonQuery();
+                        }
 
-                    MessageBox.Show("Encomenda registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    conn.Close();
-                    this.Close();
+                        MessageBox.Show("Encomenda registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        conn.Close();
+                        this.Close();
+                    }
+                    catch (SqlException excep)
+                    {
+                        MessageBox.Show("Por erro interno é impossível registar a encomenda", excep.Message);
+                    }
                 }
-                catch (SqlException excep)
+                else
                 {
-                    MessageBox.Show("Por erro interno é impossível registar a encomenda",excep.Message);
+                    MessageBox.Show("A lista de encomenda não contem items. Para poder registar a encomenda, tem de ter pelo menos um item", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            } 
-            else
-            {
-                MessageBox.Show("A lista de encomenda não contem items. Para poder registar a encomenda, tem de ter pelo menos um item", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -115,6 +118,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             registar.Delete(encomendas.NFatura);
             this.Close();
+
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)

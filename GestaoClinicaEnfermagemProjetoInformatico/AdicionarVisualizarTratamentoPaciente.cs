@@ -103,6 +103,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 string observacoes = txtObservacoes.Text;
                 string escalaDor = lblEscala.Text;
                 string IPTB = txtIPTB.Text;
+                string corpoEstranho = txtCorpoEstranho.Text;
+                string dermica = txtDermica.Text;
                 int tipoQueimadura = -1;
                 int tipoUlcera = -1;
                 // int tipoQueimadura = (comboBoxTipoQueimadura.SelectedItem as ComboBoxItem).Value;
@@ -118,198 +120,262 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 try
                 {
-                    conn.Open();
-                    string queryInsertData = "INSERT INTO TratamentoPaciente(IdTratamento,IdPaciente,data,numeroTratamento,dimensoes,grauUlceraPressao,exsudadoTipo,exsudadoQuantidade,exsudadoCheiro,tecidoPredominante,areaCircundante,agenteLimpeza,aplicacaoFerida,aplicacaoAreaCircundante,aplicacaoPenso,aplicacaoTamanho,aplicacaoSuportePenso,ProximoTratamento,Observacoes,EscalaDor,tipoQueimadura,IPTB,tipoUlcera) VALUES(@idTratamento,@IdPaciente,@data,@numeroTratamento,@dimensoes,@grauUlceraPressao,@tipoExsudado,@quantidade,@cheiro,@tecidoPredominante,@areaCircundante,@agenteLimpeza,@ferida,@areaAplicaao,@tipoPenso,@tamanhoPenso,@suportePenso,@dataProximoTratamento,@observacoes,@escalaDor,@tipoQueimadura,@IPTB,@tipoUlcera); ";
-                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
-                    sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                    sqlCommand.Parameters.AddWithValue("@data", data.ToString("MM/dd/yyyy"));
-                    sqlCommand.Parameters.AddWithValue("@idTratamento", Convert.ToInt32(tratamento));
-
-                    //   sqlCommand.Parameters.AddWithValue("@dataProximoTratamento", dataPTratamento.ToString("MM/dd/yyyy"));
-
-                    if (dataPTratamento.ToShortDateString().Equals(DateTime.Today.ToShortDateString()))
+                    if (comboBoxTratamento.SelectedItem.ToString() == "Excisões")
                     {
-                        sqlCommand.Parameters.AddWithValue("@dataProximoTratamento", DBNull.Value);
+                        conn.Open();
+                        string queryInsertData1 = "INSERT INTO TratamentoExcisoes(IdTratamento,IdPaciente,data,numeroTratamento,corpoEstranho,dermica,observacoes,dataProximoTratamento) VALUES(@idTratamento,@IdPaciente,@data,@numeroTratamento,@corpoEstranho,@dermica,@observacoes,@dataProximoTratamento); ";
+                        SqlCommand sqlCommand1 = new SqlCommand(queryInsertData1, conn);
+                        sqlCommand1.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                        sqlCommand1.Parameters.AddWithValue("@data", data.ToString("MM/dd/yyyy"));
+                        sqlCommand1.Parameters.AddWithValue("@idTratamento", Convert.ToInt32(tratamento));
+
+                        if (nrTratamento > 0)
+                        {
+                            sqlCommand1.Parameters.AddWithValue("@numeroTratamento", Convert.ToString(nrTratamento));
+                        }
+                        else
+                        {
+                            sqlCommand1.Parameters.AddWithValue("@numeroTratamento", DBNull.Value);
+                        }
+
+                        if (dataPTratamento.ToShortDateString().Equals(DateTime.Today.ToShortDateString()))
+                        {
+                            sqlCommand1.Parameters.AddWithValue("@dataProximoTratamento", DBNull.Value);
+                        }
+                        else
+                        {
+                            sqlCommand1.Parameters.AddWithValue("@dataProximoTratamento", dataPTratamento.ToString("MM/dd/yyyy"));
+                        }
+
+                        if (dermica != String.Empty)
+                        {
+                            sqlCommand1.Parameters.AddWithValue("@dermica  ", Convert.ToString(dermica));
+                        }
+                        else
+                        {
+                            sqlCommand1.Parameters.AddWithValue("@dermica  ", DBNull.Value);
+                        }
+
+
+                        if (corpoEstranho != String.Empty)
+                        {
+                            sqlCommand1.Parameters.AddWithValue("@corpoEstranho  ", Convert.ToString(corpoEstranho));
+                        }
+                        else
+                        {
+                            sqlCommand1.Parameters.AddWithValue("@corpoEstranho  ", DBNull.Value);
+                        }
+
+                        if (observacoes != String.Empty)
+                        {
+                            sqlCommand1.Parameters.AddWithValue("@observacoes  ", Convert.ToString(observacoes));
+                        }
+                        else
+                        {
+                            sqlCommand1.Parameters.AddWithValue("@observacoes  ", DBNull.Value);
+                        }
+
+                        sqlCommand1.ExecuteNonQuery();
+                        MessageBox.Show("Tratamento registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        conn.Close();
+                        limparCampos();
+
                     }
                     else
                     {
-                        sqlCommand.Parameters.AddWithValue("@dataProximoTratamento", dataPTratamento.ToString("MM/dd/yyyy"));
-                    }
+                        conn.Open();
+                        string queryInsertData = "INSERT INTO TratamentoPaciente(IdTratamento,IdPaciente,data,numeroTratamento,dimensoes,grauUlceraPressao,exsudadoTipo,exsudadoQuantidade,exsudadoCheiro,tecidoPredominante,areaCircundante,agenteLimpeza,aplicacaoFerida,aplicacaoAreaCircundante,aplicacaoPenso,aplicacaoTamanho,aplicacaoSuportePenso,ProximoTratamento,Observacoes,EscalaDor,tipoQueimadura,IPTB,tipoUlcera) VALUES(@idTratamento,@IdPaciente,@data,@numeroTratamento,@dimensoes,@grauUlceraPressao,@tipoExsudado,@quantidade,@cheiro,@tecidoPredominante,@areaCircundante,@agenteLimpeza,@ferida,@areaAplicaao,@tipoPenso,@tamanhoPenso,@suportePenso,@dataProximoTratamento,@observacoes,@escalaDor,@tipoQueimadura,@IPTB,@tipoUlcera); ";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
+                        sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                        sqlCommand.Parameters.AddWithValue("@data", data.ToString("MM/dd/yyyy"));
+                        sqlCommand.Parameters.AddWithValue("@idTratamento", Convert.ToInt32(tratamento));
 
-                    if (nrTratamento > 0)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@numeroTratamento", Convert.ToString(nrTratamento));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@numeroTratamento", DBNull.Value);
-                    }
+                        //   sqlCommand.Parameters.AddWithValue("@dataProximoTratamento", dataPTratamento.ToString("MM/dd/yyyy"));
 
-                    if (dimensoes != String.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@dimensoes", Convert.ToString(dimensoes));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@dimensoes", DBNull.Value);
-                    }
+                        if (dataPTratamento.ToShortDateString().Equals(DateTime.Today.ToShortDateString()))
+                        {
+                            sqlCommand.Parameters.AddWithValue("@dataProximoTratamento", DBNull.Value);
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@dataProximoTratamento", dataPTratamento.ToString("MM/dd/yyyy"));
+                        }
 
-                    if (ulcera != String.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@grauUlceraPressao", Convert.ToString(ulcera));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@grauUlceraPressao", DBNull.Value);
-                    }
+                        if (nrTratamento > 0)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@numeroTratamento", Convert.ToString(nrTratamento));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@numeroTratamento", DBNull.Value);
+                        }
 
-                    if (tipoExsudado != String.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@tipoExsudado", Convert.ToString(tipoExsudado));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@tipoExsudado", DBNull.Value);
-                    }
+                        if (dimensoes != String.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@dimensoes", Convert.ToString(dimensoes));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@dimensoes", DBNull.Value);
+                        }
 
-                    if (IPTB != String.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@IPTB", Convert.ToString(IPTB));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@IPTB", DBNull.Value);
-                    }
+                        if (ulcera != String.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@grauUlceraPressao", Convert.ToString(ulcera));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@grauUlceraPressao", DBNull.Value);
+                        }
 
-                    if (quantidade > 0)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@quantidade ", Convert.ToInt32(quantidade));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@quantidade ", DBNull.Value);
-                    }
+                        if (tipoExsudado != String.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@tipoExsudado", Convert.ToString(tipoExsudado));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@tipoExsudado", DBNull.Value);
+                        }
+
+                        if (IPTB != String.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@IPTB", Convert.ToString(IPTB));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@IPTB", DBNull.Value);
+                        }
+
+                        if (quantidade > 0)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@quantidade ", Convert.ToInt32(quantidade));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@quantidade ", DBNull.Value);
+                        }
 
 
-                    if (cheiro != String.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@cheiro", Convert.ToString(cheiro));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@cheiro", DBNull.Value);
-                    }
+                        if (cheiro != String.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@cheiro", Convert.ToString(cheiro));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@cheiro", DBNull.Value);
+                        }
 
-                    if (tecidoPredominante != String.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@tecidoPredominante ", Convert.ToString(tecidoPredominante));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@tecidoPredominante ", DBNull.Value);
-                    }
+                        if (tecidoPredominante != String.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@tecidoPredominante ", Convert.ToString(tecidoPredominante));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@tecidoPredominante ", DBNull.Value);
+                        }
 
-                    if (areaCircundante != String.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@areaCircundante ", Convert.ToString(areaCircundante));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@areaCircundante ", DBNull.Value);
-                    }
+                        if (areaCircundante != String.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@areaCircundante ", Convert.ToString(areaCircundante));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@areaCircundante ", DBNull.Value);
+                        }
 
-                    if (agenteLimpeza != String.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@agenteLimpeza ", Convert.ToString(agenteLimpeza));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@agenteLimpeza ", DBNull.Value);
-                    }
+                        if (agenteLimpeza != String.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@agenteLimpeza ", Convert.ToString(agenteLimpeza));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@agenteLimpeza ", DBNull.Value);
+                        }
 
-                    if (ferida != String.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@ferida ", Convert.ToString(ferida));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@ferida ", DBNull.Value);
-                    }
-                    if (areaAplicaao != String.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@areaAplicaao ", Convert.ToString(areaAplicaao));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@areaAplicaao ", DBNull.Value);
-                    }
+                        if (ferida != String.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@ferida ", Convert.ToString(ferida));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@ferida ", DBNull.Value);
+                        }
+                        if (areaAplicaao != String.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@areaAplicaao ", Convert.ToString(areaAplicaao));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@areaAplicaao ", DBNull.Value);
+                        }
 
-                    if (tipoPenso != String.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@tipoPenso ", Convert.ToString(tipoPenso));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@tipoPenso ", DBNull.Value);
-                    }
+                        if (tipoPenso != String.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@tipoPenso ", Convert.ToString(tipoPenso));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@tipoPenso ", DBNull.Value);
+                        }
 
-                    if (tamanhoPenso != String.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@tamanhoPenso ", Convert.ToString(tamanhoPenso));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@tamanhoPenso ", DBNull.Value);
-                    }
+                        if (tamanhoPenso != String.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@tamanhoPenso ", Convert.ToString(tamanhoPenso));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@tamanhoPenso ", DBNull.Value);
+                        }
 
-                    if (suportePenso != String.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@suportePenso  ", Convert.ToString(suportePenso));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@suportePenso  ", DBNull.Value);
-                    }
+                        if (suportePenso != String.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@suportePenso  ", Convert.ToString(suportePenso));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@suportePenso  ", DBNull.Value);
+                        }
 
-                    if (observacoes != String.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@observacoes  ", Convert.ToString(observacoes));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@observacoes  ", DBNull.Value);
-                    }
+                        if (observacoes != String.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@observacoes  ", Convert.ToString(observacoes));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@observacoes  ", DBNull.Value);
+                        }
 
-                    if (escalaDor != "label2")
-                    {
-                        sqlCommand.Parameters.AddWithValue("@escalaDor  ", Convert.ToString(escalaDor));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@escalaDor  ", DBNull.Value);
-                    }                 
+                        if (escalaDor != "label2")
+                        {
+                            sqlCommand.Parameters.AddWithValue("@escalaDor  ", Convert.ToString(escalaDor));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@escalaDor  ", DBNull.Value);
+                        }
 
-                   if (tipoQueimadura > 0)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@tipoQueimadura", Convert.ToInt32(tipoQueimadura));
-                    }
-                    else
-                    {
-                      sqlCommand.Parameters.AddWithValue("@tipoQueimadura", DBNull.Value);
-                    }
-                    if (tipoUlcera > 0)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@tipoUlcera", Convert.ToInt32(tipoUlcera));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@tipoUlcera", DBNull.Value);
-                    }
+                        if (tipoQueimadura > 0)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@tipoQueimadura", Convert.ToInt32(tipoQueimadura));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@tipoQueimadura", DBNull.Value);
+                        }
+                        if (tipoUlcera > 0)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@tipoUlcera", Convert.ToInt32(tipoUlcera));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@tipoUlcera", DBNull.Value);
+                        }
 
-                    sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Tratamento registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    conn.Close();
-                    limparCampos();
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Tratamento registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        conn.Close();
+                        limparCampos();
+                    }
                 }
                 catch (SqlException excep)
                 {
@@ -471,14 +537,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void limparCampos()
         {
-            dataTratamento.Value = DateTime.Today;
-            dataProximoTratamento.Value = DateTime.Today;
             UpDownNumeroTratamento.Value = 0;
+            txtGrauUlceraPressao.Text = "";
+            txtIPTB.Text = "";
+            txtCorpoEstranho.Text = "";
+            txtDermica.Text = "";
             txtDimensoes.Text = "";
             txtUlcera.Text = "";
             txtExsudadoTipo.Text = "";
             numericUpDownExcudado.Value = 0;
             txtExsudadoCheiro.Text = "";
+            dataTratamento.Value = DateTime.Today;
             txtTecidoPredominante.Text = "";
             txtAreaCircundante.Text = "";
             txtAgenteLimpeza.Text = "";
@@ -487,7 +556,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             txtTipoPenso.Text = "";
             numericUpDownTamanhoPenso.Value = 0;
             txtSuportePenso.Text = "";
+            dataProximoTratamento.Value = DateTime.Today;
             txtObservacoes.Text = "";
+            lblEscala.Text = "label2";
             reiniciar();
             errorProvider.Clear();
         }
@@ -537,6 +608,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             if (comboBoxTratamento.SelectedItem.ToString() == "Ferida Cirúrgica" || comboBoxTratamento.SelectedItem.ToString() == "Ferida Traumática")
             {
+                txtGrauUlceraPressao.Visible = true;
+                lblGrauUlceraPressao.Visible = true;
                 lblTipoQueimadura.Visible = false;
                 comboBoxTipoQueimadura.Visible = false;
                 lblDataTratamento.Visible = true;
@@ -603,6 +676,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (comboBoxTratamento.SelectedItem.ToString() == "Excisões")
             {
+                //txtGrauUlceraPressao.Visible = true;
+                //lblGrauUlceraPressao.Visible = true;
                 lblTipoUlcera.Visible = false;
                 comboBoxTipoUlcera.Visible = false;
                 lblTipoQueimadura.Visible = false;
@@ -646,8 +721,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 numericUpDownTamanhoPenso.Visible = false;
                 lblSuportePenso.Visible = false;
                 txtSuportePenso.Visible = false;
-                lblProximoTratamento.Visible = false;
-                dataProximoTratamento.Visible = false;
+                lblProximoTratamento.Visible = true;
+                dataProximoTratamento.Visible = true;
                 lblObservacoes.Visible = true;
                 txtObservacoes.Visible = true;
                 groupBoxEscalaDor.Visible = false;
@@ -671,6 +746,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (comboBoxTratamento.SelectedItem.ToString() == "Queimaduras")
             {
+                txtGrauUlceraPressao.Visible = true;
+                lblGrauUlceraPressao.Visible = true;
                 lblTipoUlcera.Visible = false;
                 comboBoxTipoUlcera.Visible = false;
                 lblTipoQueimadura.Visible = true;
@@ -738,6 +815,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (comboBoxTratamento.SelectedItem.ToString() == "Úlceras")
             {
+                txtGrauUlceraPressao.Visible = true;
+                lblGrauUlceraPressao.Visible = true;
                 lblTipoUlcera.Visible = true;
                 comboBoxTipoUlcera.Visible = true;
                 lblTipoQueimadura.Visible = false;
@@ -821,6 +900,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             if (comboBoxTipoUlcera.SelectedItem.ToString() == "Pressão")
             {
+                txtGrauUlceraPressao.Visible = true;
+                lblGrauUlceraPressao.Visible = true;
                 lblTipoUlcera.Visible = true;
                 comboBoxTipoUlcera.Visible = true;
                 lblTipoQueimadura.Visible = false;
@@ -885,8 +966,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 btnLocalizacaoDor.Visible = true;
             }
 
-            if (comboBoxTipoUlcera.SelectedItem.ToString() == "Arteriais")
+            if (comboBoxTipoUlcera.SelectedItem.ToString() == "Arteriais" || comboBoxTipoUlcera.SelectedItem.ToString() == "Venosas" || comboBoxTipoUlcera.SelectedItem.ToString() == "Mistas")
             {
+                txtGrauUlceraPressao.Visible = true;
+                lblGrauUlceraPressao.Visible = true;
                 lblTipoUlcera.Visible = true;
                 comboBoxTipoUlcera.Visible = true;
                 lblTipoQueimadura.Visible = false;
@@ -916,6 +999,77 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 txtTecidoPredominante.Visible = true;
                 lblAreaCircundante.Visible = true;
                 txtAreaCircundante.Visible = true;
+                lblAgenteLimpeza.Visible = true;
+                txtAgenteLimpeza.Visible = true;
+                groupBoxAplicacao.Visible = true;
+                lblFerida.Visible = true;
+                txtFerida.Visible = true;
+                lblArea.Visible = true;
+                txtAreaCircundanteAplicacao.Visible = true;
+                groupBoxPenso.Visible = true;
+                lblTipoPenso.Visible = true;
+                txtTipoPenso.Visible = true;
+                lblTamanhoPenso.Visible = true;
+                numericUpDownTamanhoPenso.Visible = true;
+                lblSuportePenso.Visible = true;
+                txtSuportePenso.Visible = true;
+                lblProximoTratamento.Visible = true;
+                dataProximoTratamento.Visible = true;
+                lblObservacoes.Visible = true;
+                txtObservacoes.Visible = true;
+                groupBoxEscalaDor.Visible = true;
+                btnSemDor.Visible = true;
+                btnDorLigeira.Visible = true;
+                btnDorModerada.Visible = true;
+                btnDorForte.Visible = true;
+                btnDorMuitoForte.Visible = true;
+                btnDorMaxima.Visible = true;
+                lblSemDor.Visible = true;
+                lblDorLigeira.Visible = true;
+                lblDorModerada.Visible = true;
+                lblDorForte.Visible = true;
+                lblDorMuitoForte.Visible = true;
+                lblDorMaxima.Visible = true;
+                lblEscala.Visible = false;
+                btnLocalizacaoDor.Visible = true;
+            }           
+        }
+
+        private void comboBoxTipoQueimadura_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxTipoQueimadura.SelectedItem.ToString() == "Térmica" || comboBoxTipoQueimadura.SelectedItem.ToString() == "Química" || comboBoxTipoQueimadura.SelectedItem.ToString() == "Iónica" || comboBoxTipoQueimadura.SelectedItem.ToString() == "Solares")
+            {
+                txtGrauUlceraPressao.Visible = true;
+                lblGrauUlceraPressao.Visible = true;
+                lblTipoUlcera.Visible = false;
+                comboBoxTipoUlcera.Visible = false;
+                lblTipoQueimadura.Visible = true;
+                comboBoxTipoQueimadura.Visible = true;             
+                lblNrTratamento.Visible = true;
+                UpDownNumeroTratamento.Visible = true;
+                lblDataTratamento.Visible = true;
+                dataTratamento.Visible = true;
+                lblDimensoes.Visible = true;
+                txtDimensoes.Visible = true;
+                lblUlceraPressao.Visible = true;
+                txtUlcera.Visible = true;               
+                lblTipoExsudado.Visible = true;
+                txtExsudadoTipo.Visible = true;
+                lblQntExsudado.Visible = true;
+                numericUpDownExcudado.Visible = true;
+                lblCheiroExsudado.Visible = true;
+                txtExsudadoCheiro.Visible = true;
+                groupBoxExsudado.Visible = true;
+                lblTecidoPredominante.Visible = true;
+                txtTecidoPredominante.Visible = true;
+                lblAreaCircundante.Visible = true;
+                txtAreaCircundante.Visible = true;
+                lblIPTB.Visible = false;
+                txtIPTB.Visible = false;
+                lblCorpoEstranho.Visible = false;
+                txtCorpoEstranho.Visible = false;
+                lblDermica.Visible = true;
+                txtDermica.Visible = true;           
                 lblAgenteLimpeza.Visible = true;
                 txtAgenteLimpeza.Visible = true;
                 groupBoxAplicacao.Visible = true;
@@ -951,137 +1105,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 btnLocalizacaoDor.Visible = true;
             }
 
-            if (comboBoxTipoUlcera.SelectedItem.ToString() == "Venosas")
-            {
-                lblTipoUlcera.Visible = true;
-                comboBoxTipoUlcera.Visible = true;
-                lblTipoQueimadura.Visible = false;
-                comboBoxTipoQueimadura.Visible = false;
-                lblDataTratamento.Visible = true;
-                dataTratamento.Visible = true;
-                lblNrTratamento.Visible = true;
-                UpDownNumeroTratamento.Visible = true;
-                lblIPTB.Visible = false;
-                txtIPTB.Visible = false;
-                lblCorpoEstranho.Visible = false;
-                txtCorpoEstranho.Visible = false;
-                lblDermica.Visible = false;
-                txtDermica.Visible = false;
-                lblDimensoes.Visible = true;
-                txtDimensoes.Visible = true;
-                lblUlceraPressao.Visible = true;
-                txtUlcera.Visible = true;
-                groupBoxExsudado.Visible = true;
-                lblTipoExsudado.Visible = true;
-                txtExsudadoTipo.Visible = true;
-                lblQntExsudado.Visible = true;
-                numericUpDownExcudado.Visible = true;
-                lblCheiroExsudado.Visible = true;
-                txtExsudadoCheiro.Visible = true;
-                lblTecidoPredominante.Visible = true;
-                txtTecidoPredominante.Visible = true;
-                lblAreaCircundante.Visible = true;
-                txtAreaCircundante.Visible = true;
-                lblAgenteLimpeza.Visible = true;
-                txtAgenteLimpeza.Visible = true;
-                groupBoxAplicacao.Visible = true;
-                lblFerida.Visible = true;
-                txtFerida.Visible = true;
-                lblArea.Visible = true;
-                txtAreaCircundanteAplicacao.Visible = true;
-                groupBoxPenso.Visible = true;
-                lblTipoPenso.Visible = true;
-                txtTipoPenso.Visible = true;
-                lblTamanhoPenso.Visible = true;
-                numericUpDownTamanhoPenso.Visible = true;
-                lblSuportePenso.Visible = true;
-                txtSuportePenso.Visible = true;
-                lblProximoTratamento.Visible = true;
-                dataProximoTratamento.Visible = true;
-                lblObservacoes.Visible = true;
-                txtObservacoes.Visible = true;
-                groupBoxEscalaDor.Visible = true;
-                btnSemDor.Visible = true;
-                btnDorLigeira.Visible = true;
-                btnDorModerada.Visible = true;
-                btnDorForte.Visible = true;
-                btnDorMuitoForte.Visible = true;
-                btnDorMaxima.Visible = true;
-                lblSemDor.Visible = true;
-                lblDorLigeira.Visible = true;
-                lblDorModerada.Visible = true;
-                lblDorForte.Visible = true;
-                lblDorMuitoForte.Visible = true;
-                lblDorMaxima.Visible = true;
-                lblEscala.Visible = false;
-                btnLocalizacaoDor.Visible = true;
-            }
-
-            if (comboBoxTipoUlcera.SelectedItem.ToString() == "Mistas")
-            {
-                lblTipoUlcera.Visible = true;
-                comboBoxTipoUlcera.Visible = true;
-                lblTipoQueimadura.Visible = false;
-                comboBoxTipoQueimadura.Visible = false;
-                lblDataTratamento.Visible = true;
-                dataTratamento.Visible = true;
-                lblNrTratamento.Visible = true;
-                UpDownNumeroTratamento.Visible = true;
-                lblIPTB.Visible = false;
-                txtIPTB.Visible = false;
-                lblCorpoEstranho.Visible = false;
-                txtCorpoEstranho.Visible = false;
-                lblDermica.Visible = false;
-                txtDermica.Visible = false;
-                lblDimensoes.Visible = true;
-                txtDimensoes.Visible = true;
-                lblUlceraPressao.Visible = true;
-                txtUlcera.Visible = true;
-                groupBoxExsudado.Visible = true;
-                lblTipoExsudado.Visible = true;
-                txtExsudadoTipo.Visible = true;
-                lblQntExsudado.Visible = true;
-                numericUpDownExcudado.Visible = true;
-                lblCheiroExsudado.Visible = true;
-                txtExsudadoCheiro.Visible = true;
-                lblTecidoPredominante.Visible = true;
-                txtTecidoPredominante.Visible = true;
-                lblAreaCircundante.Visible = true;
-                txtAreaCircundante.Visible = true;
-                lblAgenteLimpeza.Visible = true;
-                txtAgenteLimpeza.Visible = true;
-                groupBoxAplicacao.Visible = true;
-                lblFerida.Visible = true;
-                txtFerida.Visible = true;
-                lblArea.Visible = true;
-                txtAreaCircundanteAplicacao.Visible = true;
-                groupBoxPenso.Visible = true;
-                lblTipoPenso.Visible = true;
-                txtTipoPenso.Visible = true;
-                lblTamanhoPenso.Visible = true;
-                numericUpDownTamanhoPenso.Visible = true;
-                lblSuportePenso.Visible = true;
-                txtSuportePenso.Visible = true;
-                lblProximoTratamento.Visible = true;
-                dataProximoTratamento.Visible = true;
-                lblObservacoes.Visible = true;
-                txtObservacoes.Visible = true;
-                groupBoxEscalaDor.Visible = true;
-                btnSemDor.Visible = true;
-                btnDorLigeira.Visible = true;
-                btnDorModerada.Visible = true;
-                btnDorForte.Visible = true;
-                btnDorMuitoForte.Visible = true;
-                btnDorMaxima.Visible = true;
-                lblSemDor.Visible = true;
-                lblDorLigeira.Visible = true;
-                lblDorModerada.Visible = true;
-                lblDorForte.Visible = true;
-                lblDorMuitoForte.Visible = true;
-                lblDorMaxima.Visible = true;
-                lblEscala.Visible = false;
-                btnLocalizacaoDor.Visible = true;
-            }
         }
     }
 }

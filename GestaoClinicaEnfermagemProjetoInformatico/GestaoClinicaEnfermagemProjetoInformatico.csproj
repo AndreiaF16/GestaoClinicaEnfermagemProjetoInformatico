@@ -167,6 +167,7 @@
     </Compile>
     <Compile Include="ClassFornecedor.cs" />
     <Compile Include="ComboBoxItem.cs" />
+    <Compile Include="Consulta.cs" />
     <Compile Include="ConsultasPaciente.cs" />
     <Compile Include="Despesa.cs" />
     <Compile Include="Despesas.cs">

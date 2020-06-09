@@ -47,6 +47,7 @@
             this.txtObservacoes = new System.Windows.Forms.TextBox();
             this.lblObservacoes = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
@@ -54,6 +55,8 @@
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblGrauUlceraPressao = new System.Windows.Forms.Label();
+            this.txtGrauUlceraPressao = new System.Windows.Forms.TextBox();
             this.comboBoxTipoUlcera = new System.Windows.Forms.ComboBox();
             this.lblTipoUlcera = new System.Windows.Forms.Label();
             this.comboBoxTipoQueimadura = new System.Windows.Forms.ComboBox();
@@ -116,9 +119,6 @@
             this.lblNrTratamento = new System.Windows.Forms.Label();
             this.lblDataTratamento = new System.Windows.Forms.Label();
             this.dataTratamento = new System.Windows.Forms.DateTimePicker();
-            this.button5 = new System.Windows.Forms.Button();
-            this.txtGrauUlceraPressao = new System.Windows.Forms.TextBox();
-            this.lblGrauUlceraPressao = new System.Windows.Forms.Label();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -345,6 +345,24 @@
             this.panelMenu.Size = new System.Drawing.Size(232, 707);
             this.panelMenu.TabIndex = 1;
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.Black;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.Location = new System.Drawing.Point(3, 429);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Name = "button5";
+            this.button5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button5.Size = new System.Drawing.Size(225, 67);
+            this.button5.TabIndex = 62;
+            this.button5.Text = "Adicionar Tipo Úlcera";
+            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -487,6 +505,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registar Tratamento";
             // 
+            // lblGrauUlceraPressao
+            // 
+            this.lblGrauUlceraPressao.AutoSize = true;
+            this.lblGrauUlceraPressao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGrauUlceraPressao.ForeColor = System.Drawing.Color.Black;
+            this.lblGrauUlceraPressao.Location = new System.Drawing.Point(44, 164);
+            this.lblGrauUlceraPressao.Name = "lblGrauUlceraPressao";
+            this.lblGrauUlceraPressao.Size = new System.Drawing.Size(49, 20);
+            this.lblGrauUlceraPressao.TabIndex = 172;
+            this.lblGrauUlceraPressao.Text = "Grau:";
+            this.lblGrauUlceraPressao.Visible = false;
+            // 
+            // txtGrauUlceraPressao
+            // 
+            this.txtGrauUlceraPressao.Location = new System.Drawing.Point(262, 158);
+            this.txtGrauUlceraPressao.Name = "txtGrauUlceraPressao";
+            this.txtGrauUlceraPressao.Size = new System.Drawing.Size(245, 26);
+            this.txtGrauUlceraPressao.TabIndex = 170;
+            this.txtGrauUlceraPressao.Visible = false;
+            // 
             // comboBoxTipoUlcera
             // 
             this.comboBoxTipoUlcera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -519,6 +557,7 @@
             this.comboBoxTipoQueimadura.Size = new System.Drawing.Size(245, 28);
             this.comboBoxTipoQueimadura.TabIndex = 167;
             this.comboBoxTipoQueimadura.Visible = false;
+            this.comboBoxTipoQueimadura.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoQueimadura_SelectedIndexChanged);
             // 
             // txtDermica
             // 
@@ -1199,44 +1238,6 @@
             this.dataTratamento.TabIndex = 15;
             this.dataTratamento.Value = new System.DateTime(2020, 5, 15, 0, 0, 0, 0);
             this.dataTratamento.Visible = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.Black;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(3, 429);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.button5.Size = new System.Drawing.Size(225, 67);
-            this.button5.TabIndex = 62;
-            this.button5.Text = "Adicionar Tipo Úlcera";
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // txtGrauUlceraPressao
-            // 
-            this.txtGrauUlceraPressao.Location = new System.Drawing.Point(262, 158);
-            this.txtGrauUlceraPressao.Name = "txtGrauUlceraPressao";
-            this.txtGrauUlceraPressao.Size = new System.Drawing.Size(245, 26);
-            this.txtGrauUlceraPressao.TabIndex = 170;
-            this.txtGrauUlceraPressao.Visible = false;
-            // 
-            // lblGrauUlceraPressao
-            // 
-            this.lblGrauUlceraPressao.AutoSize = true;
-            this.lblGrauUlceraPressao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGrauUlceraPressao.ForeColor = System.Drawing.Color.Black;
-            this.lblGrauUlceraPressao.Location = new System.Drawing.Point(44, 164);
-            this.lblGrauUlceraPressao.Name = "lblGrauUlceraPressao";
-            this.lblGrauUlceraPressao.Size = new System.Drawing.Size(49, 20);
-            this.lblGrauUlceraPressao.TabIndex = 172;
-            this.lblGrauUlceraPressao.Text = "Grau:";
-            this.lblGrauUlceraPressao.Visible = false;
             // 
             // AdicionarVisualizarTratamentoPaciente
             // 

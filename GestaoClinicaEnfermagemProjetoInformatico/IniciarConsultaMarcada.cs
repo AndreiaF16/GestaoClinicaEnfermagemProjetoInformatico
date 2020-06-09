@@ -22,6 +22,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private DateTime inicio;
         private List<HistoricoPaciente> historicoPaciente = new List<HistoricoPaciente>();
         private ErrorProvider errorProvider = new ErrorProvider();
+        private Consulta consulta = new Consulta();
 
         public IniciarConsultaMarcada(Enfermeiro enf, Paciente pac, FormMenu formM, AgendamentoConsultaGridView agendamento)
         {
@@ -320,7 +321,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button7_Click(object sender, EventArgs e)
         {
-            AdicionarVisualizarProdutosStockConsulta adicionarVisualizarProdutosStockConsulta = new AdicionarVisualizarProdutosStockConsulta();
+            AdicionarVisualizarProdutosStockConsulta adicionarVisualizarProdutosStockConsulta = new AdicionarVisualizarProdutosStockConsulta(paciente, consulta);
             adicionarVisualizarProdutosStockConsulta.Show();
         }
 
