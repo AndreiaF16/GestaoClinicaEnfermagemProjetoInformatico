@@ -67,16 +67,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             private void VerEncomendas_Load(object sender, EventArgs e)
         {
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaEncomenda };
-            dataGridViewEnfermeiros.DataSource = bindingSource1;
+            dataGridViewEncomendas.DataSource = bindingSource1;
 
             // dataGridViewEnfermeiros.DataSource = enfermeiros;
-            dataGridViewEnfermeiros.Columns[0].HeaderText = "Nome";
-            dataGridViewEnfermeiros.Columns[1].HeaderText = "Preço Unitário (€)";
-            dataGridViewEnfermeiros.Columns[2].HeaderText = "IVA";
-            dataGridViewEnfermeiros.Columns[3].HeaderText = "Quantidade Pedida";
-            dataGridViewEnfermeiros.Columns[4].HeaderText = "Preço por Produto sem IVA (€)";
-            dataGridViewEnfermeiros.Columns[5].HeaderText = "Preço por Produto com IVA(€)";
-            dataGridViewEnfermeiros.Columns[6].Visible = false;
+            dataGridViewEncomendas.Columns[0].HeaderText = "Nome";
+            dataGridViewEncomendas.Columns[1].HeaderText = "Preço Unitário (€)";
+            dataGridViewEncomendas.Columns[2].HeaderText = "IVA";
+            dataGridViewEncomendas.Columns[3].HeaderText = "Quantidade Pedida";
+            dataGridViewEncomendas.Columns[4].HeaderText = "Preço por Produto sem IVA (€)";
+            dataGridViewEncomendas.Columns[5].HeaderText = "Preço por Produto com IVA(€)";
+            dataGridViewEncomendas.Columns[6].Visible = false;
             /*
             conn.Open();
             com.Connection = conn;
@@ -164,7 +164,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             SqlCommand cmd1 = new SqlCommand("select fornecedor.nome, fornecedor.nif, fornecedor.email, encomenda.dataRegistoEncomenda, encomenda.dataEntregaPrevista from Encomenda encomenda JOIN Fornecedor fornecedor ON encomenda.idFornecedor = fornecedor.IdFornecedor WHERE IdEncomenda = @IdEncomenda", conn);
             cmd1.Parameters.AddWithValue("@IdEncomenda", idEncomenda);
             SqlDataReader reader1 = cmd1.ExecuteReader();
-            
+
             while (reader1.Read())
             {
                 string dataRegisto = DateTime.ParseExact(reader1["dataRegistoEncomenda"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
@@ -223,7 +223,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             lblTCIVA.Text = Convert.ToString(totalFaturaCIVA);
 
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaEncomenda };
-            dataGridViewEnfermeiros.DataSource = bindingSource1;
+            dataGridViewEncomendas.DataSource = bindingSource1;
 
 
 

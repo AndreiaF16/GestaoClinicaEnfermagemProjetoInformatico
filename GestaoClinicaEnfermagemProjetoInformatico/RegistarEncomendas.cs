@@ -335,13 +335,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
             }
 
-
-            /*if (id )
-            {
-                MessageBox.Show("O Número de encomenda não pode ser um valor negativo!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
-
-
             if (var < 0)
             {
                 MessageBox.Show("A data de entrega prevista não pode ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);

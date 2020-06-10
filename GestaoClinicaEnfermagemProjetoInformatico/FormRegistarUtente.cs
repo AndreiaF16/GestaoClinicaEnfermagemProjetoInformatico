@@ -604,8 +604,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             reiniciar();
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            errorProviderCerto.ContainerControl = this;
-            errorProviderCerto.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.txtNome.Focus();
             dataNascimento.Value = DateTime.Now;
         }

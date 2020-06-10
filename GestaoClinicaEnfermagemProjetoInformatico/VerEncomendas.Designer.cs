@@ -37,9 +37,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.lblTSIVA = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblTCIVA = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblEntregaPrevista = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblDataRegisto = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblNif = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblFornecedor = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbEncomendas = new System.Windows.Forms.ComboBox();
-            this.dataGridViewEnfermeiros = new System.Windows.Forms.DataGridView();
+            this.dataGridViewEncomendas = new System.Windows.Forms.DataGridView();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnVoltar = new System.Windows.Forms.Button();
@@ -52,23 +66,9 @@
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.hora = new System.Windows.Forms.Timer(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblFornecedor = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblNif = new System.Windows.Forms.Label();
-            this.lblDataRegisto = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lblEntregaPrevista = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.lblTCIVA = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblTSIVA = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEnfermeiros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEncomendas)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelTitulo.SuspendLayout();
@@ -119,13 +119,160 @@
             this.panelFormulario.Controls.Add(this.label4);
             this.panelFormulario.Controls.Add(this.label3);
             this.panelFormulario.Controls.Add(this.cbEncomendas);
-            this.panelFormulario.Controls.Add(this.dataGridViewEnfermeiros);
+            this.panelFormulario.Controls.Add(this.dataGridViewEncomendas);
             this.panelFormulario.Controls.Add(this.label1);
             this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFormulario.Location = new System.Drawing.Point(232, 40);
             this.panelFormulario.Name = "panelFormulario";
             this.panelFormulario.Size = new System.Drawing.Size(1092, 748);
             this.panelFormulario.TabIndex = 2;
+            // 
+            // lblTSIVA
+            // 
+            this.lblTSIVA.AutoSize = true;
+            this.lblTSIVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTSIVA.Location = new System.Drawing.Point(881, 270);
+            this.lblTSIVA.Name = "lblTSIVA";
+            this.lblTSIVA.Size = new System.Drawing.Size(60, 20);
+            this.lblTSIVA.TabIndex = 67;
+            this.lblTSIVA.Text = "label12";
+            this.lblTSIVA.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(764, 270);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(106, 20);
+            this.label8.TabIndex = 66;
+            this.label8.Text = "Total S/IVA:";
+            // 
+            // lblTCIVA
+            // 
+            this.lblTCIVA.AutoSize = true;
+            this.lblTCIVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTCIVA.Location = new System.Drawing.Point(881, 300);
+            this.lblTCIVA.Name = "lblTCIVA";
+            this.lblTCIVA.Size = new System.Drawing.Size(60, 20);
+            this.lblTCIVA.TabIndex = 65;
+            this.lblTCIVA.Text = "label12";
+            this.lblTCIVA.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(764, 300);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(106, 20);
+            this.label7.TabIndex = 64;
+            this.label7.Text = "Total C/IVA:";
+            // 
+            // lblEntregaPrevista
+            // 
+            this.lblEntregaPrevista.AutoSize = true;
+            this.lblEntregaPrevista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEntregaPrevista.Location = new System.Drawing.Point(322, 300);
+            this.lblEntregaPrevista.Name = "lblEntregaPrevista";
+            this.lblEntregaPrevista.Size = new System.Drawing.Size(60, 20);
+            this.lblEntregaPrevista.TabIndex = 63;
+            this.lblEntregaPrevista.Text = "label12";
+            this.lblEntregaPrevista.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(39, 300);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(216, 20);
+            this.label13.TabIndex = 62;
+            this.label13.Text = "Data de Entrega Prevista:";
+            // 
+            // lblDataRegisto
+            // 
+            this.lblDataRegisto.AutoSize = true;
+            this.lblDataRegisto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataRegisto.Location = new System.Drawing.Point(322, 270);
+            this.lblDataRegisto.Name = "lblDataRegisto";
+            this.lblDataRegisto.Size = new System.Drawing.Size(51, 20);
+            this.lblDataRegisto.TabIndex = 61;
+            this.lblDataRegisto.Text = "label8";
+            this.lblDataRegisto.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(39, 270);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(270, 20);
+            this.label9.TabIndex = 60;
+            this.label9.Text = "Data de Registo da Encomenda:";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(322, 230);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(60, 20);
+            this.lblEmail.TabIndex = 59;
+            this.lblEmail.Text = "label10";
+            this.lblEmail.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(39, 230);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(155, 20);
+            this.label11.TabIndex = 58;
+            this.label11.Text = "Email Fornecedor:";
+            // 
+            // lblNif
+            // 
+            this.lblNif.AutoSize = true;
+            this.lblNif.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNif.Location = new System.Drawing.Point(322, 189);
+            this.lblNif.Name = "lblNif";
+            this.lblNif.Size = new System.Drawing.Size(51, 20);
+            this.lblNif.TabIndex = 57;
+            this.lblNif.Text = "label7";
+            this.lblNif.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(39, 189);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(133, 20);
+            this.label6.TabIndex = 56;
+            this.label6.Text = "Nif Fornecedor:";
+            // 
+            // lblFornecedor
+            // 
+            this.lblFornecedor.AutoSize = true;
+            this.lblFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFornecedor.Location = new System.Drawing.Point(322, 155);
+            this.lblFornecedor.Name = "lblFornecedor";
+            this.lblFornecedor.Size = new System.Drawing.Size(51, 20);
+            this.lblFornecedor.TabIndex = 55;
+            this.lblFornecedor.Text = "label5";
+            this.lblFornecedor.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(39, 155);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 20);
+            this.label4.TabIndex = 54;
+            this.label4.Text = "Fornecedor:";
             // 
             // label3
             // 
@@ -147,13 +294,13 @@
             this.cbEncomendas.TabIndex = 52;
             this.cbEncomendas.SelectedIndexChanged += new System.EventHandler(this.cbEncomendas_SelectedIndexChanged);
             // 
-            // dataGridViewEnfermeiros
+            // dataGridViewEncomendas
             // 
-            this.dataGridViewEnfermeiros.AllowUserToAddRows = false;
-            this.dataGridViewEnfermeiros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewEnfermeiros.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.dataGridViewEnfermeiros.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewEnfermeiros.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridViewEncomendas.AllowUserToAddRows = false;
+            this.dataGridViewEncomendas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewEncomendas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.dataGridViewEncomendas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewEncomendas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -161,8 +308,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewEnfermeiros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewEnfermeiros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEncomendas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewEncomendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -170,13 +317,13 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewEnfermeiros.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewEnfermeiros.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewEnfermeiros.EnableHeadersVisualStyles = false;
-            this.dataGridViewEnfermeiros.GridColor = System.Drawing.Color.SteelBlue;
-            this.dataGridViewEnfermeiros.Location = new System.Drawing.Point(22, 346);
-            this.dataGridViewEnfermeiros.MultiSelect = false;
-            this.dataGridViewEnfermeiros.Name = "dataGridViewEnfermeiros";
+            this.dataGridViewEncomendas.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewEncomendas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewEncomendas.EnableHeadersVisualStyles = false;
+            this.dataGridViewEncomendas.GridColor = System.Drawing.Color.SteelBlue;
+            this.dataGridViewEncomendas.Location = new System.Drawing.Point(22, 346);
+            this.dataGridViewEncomendas.MultiSelect = false;
+            this.dataGridViewEncomendas.Name = "dataGridViewEncomendas";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -184,16 +331,16 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewEnfermeiros.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewEncomendas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewEnfermeiros.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewEnfermeiros.Size = new System.Drawing.Size(1047, 302);
-            this.dataGridViewEnfermeiros.TabIndex = 51;
-            this.dataGridViewEnfermeiros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEnfermeiros_CellContentClick);
+            this.dataGridViewEncomendas.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewEncomendas.Size = new System.Drawing.Size(1047, 302);
+            this.dataGridViewEncomendas.TabIndex = 51;
+            this.dataGridViewEncomendas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEnfermeiros_CellContentClick);
             // 
             // panelMenu
             // 
@@ -343,153 +490,6 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(39, 155);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 20);
-            this.label4.TabIndex = 54;
-            this.label4.Text = "Fornecedor:";
-            // 
-            // lblFornecedor
-            // 
-            this.lblFornecedor.AutoSize = true;
-            this.lblFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFornecedor.Location = new System.Drawing.Point(322, 155);
-            this.lblFornecedor.Name = "lblFornecedor";
-            this.lblFornecedor.Size = new System.Drawing.Size(51, 20);
-            this.lblFornecedor.TabIndex = 55;
-            this.lblFornecedor.Text = "label5";
-            this.lblFornecedor.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(39, 189);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(133, 20);
-            this.label6.TabIndex = 56;
-            this.label6.Text = "Nif Fornecedor:";
-            // 
-            // lblNif
-            // 
-            this.lblNif.AutoSize = true;
-            this.lblNif.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNif.Location = new System.Drawing.Point(322, 189);
-            this.lblNif.Name = "lblNif";
-            this.lblNif.Size = new System.Drawing.Size(51, 20);
-            this.lblNif.TabIndex = 57;
-            this.lblNif.Text = "label7";
-            this.lblNif.Visible = false;
-            // 
-            // lblDataRegisto
-            // 
-            this.lblDataRegisto.AutoSize = true;
-            this.lblDataRegisto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataRegisto.Location = new System.Drawing.Point(322, 270);
-            this.lblDataRegisto.Name = "lblDataRegisto";
-            this.lblDataRegisto.Size = new System.Drawing.Size(51, 20);
-            this.lblDataRegisto.TabIndex = 61;
-            this.lblDataRegisto.Text = "label8";
-            this.lblDataRegisto.Visible = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(39, 270);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(270, 20);
-            this.label9.TabIndex = 60;
-            this.label9.Text = "Data de Registo da Encomenda:";
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(322, 230);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(60, 20);
-            this.lblEmail.TabIndex = 59;
-            this.lblEmail.Text = "label10";
-            this.lblEmail.Visible = false;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(39, 230);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(155, 20);
-            this.label11.TabIndex = 58;
-            this.label11.Text = "Email Fornecedor:";
-            // 
-            // lblEntregaPrevista
-            // 
-            this.lblEntregaPrevista.AutoSize = true;
-            this.lblEntregaPrevista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEntregaPrevista.Location = new System.Drawing.Point(322, 300);
-            this.lblEntregaPrevista.Name = "lblEntregaPrevista";
-            this.lblEntregaPrevista.Size = new System.Drawing.Size(60, 20);
-            this.lblEntregaPrevista.TabIndex = 63;
-            this.lblEntregaPrevista.Text = "label12";
-            this.lblEntregaPrevista.Visible = false;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(39, 300);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(216, 20);
-            this.label13.TabIndex = 62;
-            this.label13.Text = "Data de Entrega Prevista:";
-            // 
-            // lblTCIVA
-            // 
-            this.lblTCIVA.AutoSize = true;
-            this.lblTCIVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTCIVA.Location = new System.Drawing.Point(881, 300);
-            this.lblTCIVA.Name = "lblTCIVA";
-            this.lblTCIVA.Size = new System.Drawing.Size(60, 20);
-            this.lblTCIVA.TabIndex = 65;
-            this.lblTCIVA.Text = "label12";
-            this.lblTCIVA.Visible = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(764, 300);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 20);
-            this.label7.TabIndex = 64;
-            this.label7.Text = "Total C/IVA:";
-            // 
-            // lblTSIVA
-            // 
-            this.lblTSIVA.AutoSize = true;
-            this.lblTSIVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTSIVA.Location = new System.Drawing.Point(881, 270);
-            this.lblTSIVA.Name = "lblTSIVA";
-            this.lblTSIVA.Size = new System.Drawing.Size(60, 20);
-            this.lblTSIVA.TabIndex = 67;
-            this.lblTSIVA.Text = "label12";
-            this.lblTSIVA.Visible = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(764, 270);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(106, 20);
-            this.label8.TabIndex = 66;
-            this.label8.Text = "Total S/IVA:";
-            // 
             // VerEncomendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -505,7 +505,7 @@
             this.painelPrincipal.ResumeLayout(false);
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEnfermeiros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEncomendas)).EndInit();
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelTitulo.ResumeLayout(false);
@@ -522,7 +522,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel painelPrincipal;
         private System.Windows.Forms.Panel panelFormulario;
-        private System.Windows.Forms.DataGridView dataGridViewEnfermeiros;
+        private System.Windows.Forms.DataGridView dataGridViewEncomendas;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnVoltar;

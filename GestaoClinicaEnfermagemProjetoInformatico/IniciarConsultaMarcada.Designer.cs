@@ -88,6 +88,7 @@
             this.btnDorMaxima = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.painelPrincipal = new System.Windows.Forms.Panel();
+            this.button11 = new System.Windows.Forms.Button();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -257,6 +258,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.panelMenu.Controls.Add(this.button11);
             this.panelMenu.Controls.Add(this.button3);
             this.panelMenu.Controls.Add(this.labelData);
             this.panelMenu.Controls.Add(this.lblEscala);
@@ -282,7 +284,7 @@
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button3.Size = new System.Drawing.Size(203, 90);
+            this.button3.Size = new System.Drawing.Size(216, 90);
             this.button3.TabIndex = 32;
             this.button3.Text = "Ver Dados das Consultas Anteriores";
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -913,6 +915,27 @@
             this.painelPrincipal.Size = new System.Drawing.Size(1386, 788);
             this.painelPrincipal.TabIndex = 4;
             // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button11.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_adicionar_50;
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.ForeColor = System.Drawing.Color.Black;
+            this.button11.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button11.Location = new System.Drawing.Point(10, 386);
+            this.button11.Margin = new System.Windows.Forms.Padding(2);
+            this.button11.Name = "button11";
+            this.button11.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button11.Size = new System.Drawing.Size(217, 53);
+            this.button11.TabIndex = 37;
+            this.button11.Text = "Medicação";
+            this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button11.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // IniciarConsultaMarcada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1007,5 +1030,6 @@
         private System.Windows.Forms.TextBox txtValorConsulta;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
     }
 }

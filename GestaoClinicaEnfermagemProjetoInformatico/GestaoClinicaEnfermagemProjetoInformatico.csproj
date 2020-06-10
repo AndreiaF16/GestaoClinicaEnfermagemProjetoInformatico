@@ -190,6 +190,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="InserirMedicacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InserirMedicacao.Designer.cs">
+      <DependentUpon>InserirMedicacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListarEncomendas.cs" />
     <Compile Include="AdicionarVisualizarTratamentoPaciente.cs">
       <SubType>Form</SubType>
@@ -197,6 +203,7 @@
     <Compile Include="AdicionarVisualizarTratamentoPaciente.Designer.cs">
       <DependentUpon>AdicionarVisualizarTratamentoPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Medicacao.cs" />
     <Compile Include="Queimadura.cs" />
     <Compile Include="AdicionarTipoUlcera.cs">
       <SubType>Form</SubType>
@@ -206,6 +213,8 @@
     </Compile>
     <Compile Include="Tratamento.cs" />
     <Compile Include="TratamentoPaciente.cs" />
+    <Compile Include="TratamentosAnteriores.cs" />
+    <Compile Include="TratamentoExcisoes.cs" />
     <Compile Include="Ulcera.cs" />
     <Compile Include="VerDespesasTodas.cs">
       <SubType>Form</SubType>
@@ -544,6 +553,13 @@
     <Compile Include="VerEditarPartosRegistados.Designer.cs">
       <DependentUpon>VerEditarPartosRegistados.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerProdutosConsulta.cs" />
+    <Compile Include="VerTratamentosAnteriores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerTratamentosAnteriores.Designer.cs">
+      <DependentUpon>VerTratamentosAnteriores.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdicionarProfissao.resx">
       <DependentUpon>AdicionarProfissao.cs</DependentUpon>
     </EmbeddedResource>
@@ -612,6 +628,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fornecedor.resx">
       <DependentUpon>Fornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InserirMedicacao.resx">
+      <DependentUpon>InserirMedicacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LinhaEncomenda.resx">
       <DependentUpon>LinhaEncomenda.cs</DependentUpon>
@@ -776,6 +795,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerMaisDetalhesPaciente.resx">
       <DependentUpon>VerMaisDetalhesPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerTratamentosAnteriores.resx">
+      <DependentUpon>VerTratamentosAnteriores.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\DataSources\Enfermeiro.datasource" />

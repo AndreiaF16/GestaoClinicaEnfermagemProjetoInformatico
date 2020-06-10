@@ -20,6 +20,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlCommand com = new SqlCommand();
         private List<ListarProdutos> listaProdutos = new List<ListarProdutos>();
         private List<ListarProdutos> listaEncomenda = new List<ListarProdutos>();
+        private ErrorProvider errorProvider = new ErrorProvider();
 
         public LinhaEncomenda(ClassFornecedor forn, Encomendas enc, RegistarEncomendas registarEncomendas)
         {
@@ -42,6 +43,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void LinhaEncomenda_Load(object sender, EventArgs e)
         {
             UpdateListBox();
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             dataGridViewEncomenda.Columns[0].ReadOnly = true;
             dataGridViewEncomenda.Columns[1].ReadOnly = true;
             dataGridViewEncomenda.Columns[2].ReadOnly = true;
@@ -104,7 +107,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private Boolean VerificarDadosInseridos()
         {
-            
+            foreach (var item in listaEncomenda)
+            {
+                if (item.quant <= 0)
+                {
+                    MessageBox.Show("A quantidade não pode ser igual ou inferior a 0!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    if (item.quant <= 0)
+                    {
+                        errorProvider.SetError(dataGridViewEncomenda, "A quantidade não pode ser igual ou inferior a 0!");
+                    }
+                    else
+                    {
+                        errorProvider.SetError(dataGridViewEncomenda, String.Empty);
+                    }
+                    return false;
+                }
+            }
             return true;
         }
 

@@ -18,6 +18,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlCommand com = new SqlCommand();
         private List<ConsultasPaciente> utentes = new List<ConsultasPaciente>();
         private List<ConsultasPaciente> listaConsultasPaciente = new List<ConsultasPaciente>();
+        private List<AnaliseLaboratorialPaciente> analisePaciente = new List<AnaliseLaboratorialPaciente>();
 
         public VerDetalhesPaciente(Paciente pac)
         {
@@ -30,7 +31,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void VerDetalhesPaciente_Load(object sender, EventArgs e)
         {
             consultasRealizadas();
-            
+            gridViewAnalises();
+
         }
 
         private void consultasRealizadas()
@@ -131,6 +133,41 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             VerDetalhesAvaliacaoObjetivo ver = new VerDetalhesAvaliacaoObjetivo(paciente);
             ver.Show();
+        }
+
+        public void gridViewAnalises()
+        {
+            analisePaciente.Clear();
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select analise.NomeAnalise, analisesP.data, analisesP.resultados, analisesP.observacoes from analisesLaboratoriaisPaciente analisesP JOIN analisesLaboratoriais analise ON analisesP.IdAnalisesLaboratoriais = analise.IdAnalisesLaboratoriais WHERE IdPaciente = @IdPaciente ORDER BY analisesP.data, analise.NomeAnalise", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+
+                AnaliseLaboratorialPaciente an = new AnaliseLaboratorialPaciente
+                {
+                    nome = (string)reader["NomeAnalise"],
+                    data = data,
+                    resultados = ((reader["resultados"] == DBNull.Value) ? "" : (string)reader["resultados"]),
+                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+
+                };
+                analisePaciente.Add(an);
+            }
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = analisePaciente };
+            dataGridViewAnalises.DataSource = bindingSource1;
+            dataGridViewAnalises.Columns[0].HeaderText = "Análise";
+            dataGridViewAnalises.Columns[1].HeaderText = "Data de Diagnóstico";
+            dataGridViewAnalises.Columns[2].HeaderText = "Resultados";
+            dataGridViewAnalises.Columns[3].HeaderText = "Observações";
+
+            conn.Close();
+            dataGridViewAnalises.Update();
+            dataGridViewAnalises.Refresh();
         }
     }
 }

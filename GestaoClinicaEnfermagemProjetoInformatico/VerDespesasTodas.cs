@@ -16,7 +16,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private List<Despesa> listaDespesas = new List<Despesa>();
+        private List<Encomendas> listaEncomendas = new List<Encomendas>();
+
         private List<Despesa> auxiliarDespesas = new List<Despesa>();
+        private List<Encomendas> auxiliarEncomendas = new List<Encomendas>();
 
         private List<ComboBoxItem> despesa = new List<ComboBoxItem>();
         private List<ComboBoxItem> encomenda = new List<ComboBoxItem>();
@@ -341,16 +344,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
             //despesa, encomenda e uma data
-            if (comboBoxDespesa.Text != "" && comboBoxEncomenda.Text != "" && checkBox1.Checked == true && checkBox2.Checked == false && checkBox4.Checked == false)
+            if (/*comboBoxDespesa.Text != "" &&*/ /*comboBoxEncomenda.Text != "" */ checkBox1.Checked == true && checkBox3.Checked == true && checkBox4.Checked == false)
             {
 
                 foreach (Despesa despesas in listaDespesas)
                 {
-                    DateTime data = DateTime.ParseExact(despesas.dataRegisto, "dd/MM/yyyy", null);
-
-                    if (despesas.tipoDespesa.ToLower().Contains(comboBoxDespesa.Text.ToLower()) && despesas.encomenda.ToLower().Contains(comboBoxEncomenda.Text.ToLower()) && (data.ToShortDateString().Equals(dataSoUma.Value.ToString("dd/MM/yyyy"))))
+                    foreach (Encomendas encomendas in listaEncomendas)
                     {
-                        auxiliarDespesas.Add(despesas);
+
+
+                        DateTime data = DateTime.ParseExact(despesas.dataRegisto, "dd/MM/yyyy", null);
+
+                        if (despesas.tipoDespesa.ToLower().Contains(comboBoxDespesa.Text.ToLower()) &&  encomendas.NFatura.ToLower().Contains(comboBoxEncomenda.Text.ToLower()) && (data.ToShortDateString().Equals(dataSoUma.Value.ToString("dd/MM/yyyy"))))
+                        {
+                            auxiliarEncomendas.Add(encomendas);
+                            auxiliarDespesas.Add(despesas);
+
+                        }
                     }
                 }
                 return auxiliarDespesas;

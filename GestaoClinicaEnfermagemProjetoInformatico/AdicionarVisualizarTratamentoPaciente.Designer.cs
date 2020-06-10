@@ -286,7 +286,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label1.Location = new System.Drawing.Point(598, 3);
+            this.label1.Location = new System.Drawing.Point(476, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 25);
             this.label1.TabIndex = 51;
@@ -400,6 +400,7 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnVoltar
             // 
@@ -871,7 +872,7 @@
             this.groupBoxAplicacao.Controls.Add(this.txtSuportePenso);
             this.groupBoxAplicacao.Controls.Add(this.lblSuportePenso);
             this.groupBoxAplicacao.Controls.Add(this.lblFerida);
-            this.groupBoxAplicacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxAplicacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxAplicacao.Location = new System.Drawing.Point(577, 173);
             this.groupBoxAplicacao.Name = "groupBoxAplicacao";
             this.groupBoxAplicacao.Size = new System.Drawing.Size(502, 222);
@@ -1078,7 +1079,7 @@
             this.groupBoxExsudado.Controls.Add(this.lblQntExsudado);
             this.groupBoxExsudado.Controls.Add(this.txtExsudadoTipo);
             this.groupBoxExsudado.Controls.Add(this.lblTipoExsudado);
-            this.groupBoxExsudado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxExsudado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxExsudado.Location = new System.Drawing.Point(33, 359);
             this.groupBoxExsudado.Name = "groupBoxExsudado";
             this.groupBoxExsudado.Size = new System.Drawing.Size(485, 123);

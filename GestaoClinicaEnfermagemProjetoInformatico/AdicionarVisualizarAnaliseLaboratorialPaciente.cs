@@ -157,15 +157,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 analisePaciente.Add(an);
             }
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = analisePaciente };
-            dataGridViewDoencas.DataSource = bindingSource1;
-            dataGridViewDoencas.Columns[0].HeaderText = "Doença";
-            dataGridViewDoencas.Columns[1].HeaderText = "Data de Diagnóstico";
-            dataGridViewDoencas.Columns[2].HeaderText = "Resultados";
-            dataGridViewDoencas.Columns[3].HeaderText = "Observações";
+            dataGridViewAnalises.DataSource = bindingSource1;
+            dataGridViewAnalises.Columns[0].HeaderText = "Análise";
+            dataGridViewAnalises.Columns[1].HeaderText = "Data de Diagnóstico";
+            dataGridViewAnalises.Columns[2].HeaderText = "Resultados";
+            dataGridViewAnalises.Columns[3].HeaderText = "Observações";
 
             conn.Close();
-            dataGridViewDoencas.Update();
-            dataGridViewDoencas.Refresh();
+            dataGridViewAnalises.Update();
+            dataGridViewAnalises.Refresh();
         }
 
         public void reiniciar()

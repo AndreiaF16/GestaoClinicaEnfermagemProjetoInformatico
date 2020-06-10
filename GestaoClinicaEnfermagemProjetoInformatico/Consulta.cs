@@ -10,8 +10,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
 
         public int IdConsulta { get; set; }
-        public int idPaciente { get; set; }
-        public int idEnfermeiro { get; set; }
 
     }
 }

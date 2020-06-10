@@ -108,6 +108,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // painelPrincipal
             // 
@@ -120,6 +121,7 @@
             this.painelPrincipal.Name = "painelPrincipal";
             this.painelPrincipal.Size = new System.Drawing.Size(1227, 770);
             this.painelPrincipal.TabIndex = 9;
+            this.painelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.painelPrincipal_Paint);
             // 
             // panelFormulario
             // 
@@ -181,6 +183,7 @@
             this.dataGridViewUlceras.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewUlceras.Size = new System.Drawing.Size(645, 268);
             this.dataGridViewUlceras.TabIndex = 53;
+            this.dataGridViewUlceras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUlceras_CellContentClick);
             // 
             // label2
             // 
@@ -192,6 +195,7 @@
             this.label2.Size = new System.Drawing.Size(369, 39);
             this.label2.TabIndex = 29;
             this.label2.Text = "Adicionar Tipo Úlcera";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // groupBox2
             // 
@@ -206,6 +210,7 @@
             this.groupBox2.Size = new System.Drawing.Size(645, 234);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // button1
             // 
@@ -238,6 +243,7 @@
             this.lblHistoriaAtual.Size = new System.Drawing.Size(89, 20);
             this.lblHistoriaAtual.TabIndex = 2;
             this.lblHistoriaAtual.Text = "Tipo Úlcera";
+            this.lblHistoriaAtual.Click += new System.EventHandler(this.lblHistoriaAtual_Click);
             // 
             // txtNome
             // 
@@ -247,6 +253,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(458, 76);
             this.txtNome.TabIndex = 1;
+            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // btnGuardar
             // 
@@ -284,6 +291,7 @@
             this.panelTitulo.Name = "panelTitulo";
             this.panelTitulo.Size = new System.Drawing.Size(1227, 40);
             this.panelTitulo.TabIndex = 0;
+            this.panelTitulo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTitulo_Paint);
             // 
             // lblDia
             // 
@@ -295,6 +303,7 @@
             this.lblDia.Size = new System.Drawing.Size(57, 20);
             this.lblDia.TabIndex = 12;
             this.lblDia.Text = "label1";
+            this.lblDia.Click += new System.EventHandler(this.lblDia_Click);
             // 
             // lblHora
             // 
@@ -306,6 +315,7 @@
             this.lblHora.Size = new System.Drawing.Size(57, 20);
             this.lblHora.TabIndex = 11;
             this.lblHora.Text = "label1";
+            this.lblHora.Click += new System.EventHandler(this.lblHora_Click);
             // 
             // btnMaximizar
             // 
@@ -348,6 +358,7 @@
             this.btnFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnFechar.TabIndex = 7;
             this.btnFechar.TabStop = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // lblTitulo
             // 
@@ -359,6 +370,7 @@
             this.lblTitulo.Size = new System.Drawing.Size(312, 20);
             this.lblTitulo.TabIndex = 6;
             this.lblTitulo.Text = "Siltes Saúde - Clinica de Enfermagem";
+            this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             // 
             // btnMinimizar
             // 
@@ -379,7 +391,7 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
-            // TipoUlcera
+            // AdicionarTipoUlcera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -387,7 +399,7 @@
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "TipoUlcera";
+            this.Name = "AdicionarTipoUlcera";
             this.Text = "TipoUlcera";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.TipoUlcera_Load);

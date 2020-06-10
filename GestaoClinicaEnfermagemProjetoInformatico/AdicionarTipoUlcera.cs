@@ -157,5 +157,65 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUlceras.Update();
             dataGridViewUlceras.Refresh();
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void painelPrincipal_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewUlceras_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblHistoriaAtual_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelTitulo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblDia_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblHora_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
