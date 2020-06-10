@@ -324,5 +324,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             limparCampos();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            AdicionarVisualizarTratamentoPaciente adicionarVisualizarTratamentoPaciente = new AdicionarVisualizarTratamentoPaciente(paciente);
+            adicionarVisualizarTratamentoPaciente.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            AdicionarVisualizarAnaliseLaboratorialPaciente adicionar = new AdicionarVisualizarAnaliseLaboratorialPaciente(paciente);
+            adicionar.Show();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            InserirMedicacao inserirMedicacao = new InserirMedicacao(paciente);
+            inserirMedicacao.Show();
+        }
     } 
 }
