@@ -363,5 +363,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             InserirMedicacao inserirMedicacao = new InserirMedicacao(paciente);
             inserirMedicacao.Show();
         }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            AtitudesTerapeuticasPaciente atitudesTerapeuticasPaciente = new AtitudesTerapeuticasPaciente(paciente);
+            atitudesTerapeuticasPaciente.Show();
+        }
     }
 }

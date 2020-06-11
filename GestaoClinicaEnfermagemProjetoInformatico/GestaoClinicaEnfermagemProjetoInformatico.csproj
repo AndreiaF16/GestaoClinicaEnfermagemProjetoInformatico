@@ -48,6 +48,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdicionarAlgariacaoPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarAlgariacaoPaciente.Designer.cs">
+      <DependentUpon>AdicionarAlgariacaoPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarAspiracaoSecrecaoPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarAspiracaoSecrecaoPaciente.Designer.cs">
+      <DependentUpon>AdicionarAspiracaoSecrecaoPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarCateterismoPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarCateterismoPaciente.Designer.cs">
+      <DependentUpon>AdicionarCateterismoPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarColheitaUrinaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarColheitaUrinaPaciente.Designer.cs">
+      <DependentUpon>AdicionarColheitaUrinaPaciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdicionarProfissao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +101,12 @@
     </Compile>
     <Compile Include="AdicionarTratamento.Designer.cs">
       <DependentUpon>AdicionarTratamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarVerTipoAtitudeTerapeutica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarVerTipoAtitudeTerapeutica.Designer.cs">
+      <DependentUpon>AdicionarVerTipoAtitudeTerapeutica.cs</DependentUpon>
     </Compile>
     <Compile Include="AdicionarVerTipoDespesa.cs">
       <SubType>Form</SubType>
@@ -132,6 +162,12 @@
     <Compile Include="AdicionarVisualizarProdutosStockConsulta.Designer.cs">
       <DependentUpon>AdicionarVisualizarProdutosStockConsulta.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdministrarMedicacaoPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministrarMedicacaoPaciente.Designer.cs">
+      <DependentUpon>AdministrarMedicacaoPaciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Aleitamento.cs" />
     <Compile Include="Alergia.cs" />
     <Compile Include="Alergias.cs">
@@ -153,6 +189,12 @@
     </Compile>
     <Compile Include="AnalisesLaboratoriais.Designer.cs">
       <DependentUpon>AnalisesLaboratoriais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AtitudesTerapeuticasPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AtitudesTerapeuticasPaciente.Designer.cs">
+      <DependentUpon>AtitudesTerapeuticasPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="AtualizarQuantidade.cs" />
     <Compile Include="AvaliacaoObjetivo.cs" />
@@ -560,6 +602,18 @@
     <Compile Include="VerTratamentosAnteriores.Designer.cs">
       <DependentUpon>VerTratamentosAnteriores.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdicionarAlgariacaoPaciente.resx">
+      <DependentUpon>AdicionarAlgariacaoPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarAspiracaoSecrecaoPaciente.resx">
+      <DependentUpon>AdicionarAspiracaoSecrecaoPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarCateterismoPaciente.resx">
+      <DependentUpon>AdicionarCateterismoPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarColheitaUrinaPaciente.resx">
+      <DependentUpon>AdicionarColheitaUrinaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdicionarProfissao.resx">
       <DependentUpon>AdicionarProfissao.cs</DependentUpon>
     </EmbeddedResource>
@@ -574,6 +628,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarTratamento.resx">
       <DependentUpon>AdicionarTratamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarVerTipoAtitudeTerapeutica.resx">
+      <DependentUpon>AdicionarVerTipoAtitudeTerapeutica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarVerTipoDespesa.resx">
       <DependentUpon>AdicionarVerTipoDespesa.cs</DependentUpon>
@@ -602,6 +659,9 @@
     <EmbeddedResource Include="AdicionarVisualizarProdutosStockConsulta.resx">
       <DependentUpon>AdicionarVisualizarProdutosStockConsulta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdministrarMedicacaoPaciente.resx">
+      <DependentUpon>AdministrarMedicacaoPaciente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Alergias.resx">
       <DependentUpon>Alergias.cs</DependentUpon>
     </EmbeddedResource>
@@ -610,6 +670,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AnalisesLaboratoriais.resx">
       <DependentUpon>AnalisesLaboratoriais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AtitudesTerapeuticasPaciente.resx">
+      <DependentUpon>AtitudesTerapeuticasPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cirurgias.resx">
       <DependentUpon>Cirurgias.cs</DependentUpon>
@@ -986,6 +1049,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-apagar-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-adicionar-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-adicionar-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-guardar-todos-501.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

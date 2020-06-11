@@ -40,7 +40,6 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.txtObservacoes = new System.Windows.Forms.TextBox();
             this.lblObservacoes = new System.Windows.Forms.Label();
-            this.lblTerapeutica = new System.Windows.Forms.Label();
             this.upDownINR = new System.Windows.Forms.NumericUpDown();
             this.lblINR = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
@@ -65,7 +64,6 @@
             this.UpDownFC = new System.Windows.Forms.NumericUpDown();
             this.UpDownPressaoArterial = new System.Windows.Forms.NumericUpDown();
             this.UpDownTemperatura = new System.Windows.Forms.NumericUpDown();
-            this.button4 = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.cbTipoParto = new System.Windows.Forms.ComboBox();
             this.groupBoxPartoDistocico = new System.Windows.Forms.GroupBox();
@@ -257,17 +255,6 @@
             this.lblObservacoes.Size = new System.Drawing.Size(106, 20);
             this.lblObservacoes.TabIndex = 90;
             this.lblObservacoes.Text = "Observações:";
-            // 
-            // lblTerapeutica
-            // 
-            this.lblTerapeutica.AutoSize = true;
-            this.lblTerapeutica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTerapeutica.ForeColor = System.Drawing.Color.Black;
-            this.lblTerapeutica.Location = new System.Drawing.Point(25, 387);
-            this.lblTerapeutica.Name = "lblTerapeutica";
-            this.lblTerapeutica.Size = new System.Drawing.Size(97, 20);
-            this.lblTerapeutica.TabIndex = 88;
-            this.lblTerapeutica.Text = "Terapêutica:";
             // 
             // upDownINR
             // 
@@ -527,7 +514,6 @@
             this.groupBox1.Controls.Add(this.UpDownFC);
             this.groupBox1.Controls.Add(this.UpDownPressaoArterial);
             this.groupBox1.Controls.Add(this.UpDownTemperatura);
-            this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.groupBox9);
             this.groupBox1.Controls.Add(this.groupBoxPartoDistocico);
             this.groupBox1.Controls.Add(this.groupBox7);
@@ -539,7 +525,6 @@
             this.groupBox1.Controls.Add(this.lblCMPC);
             this.groupBox1.Controls.Add(this.txtObservacoes);
             this.groupBox1.Controls.Add(this.lblObservacoes);
-            this.groupBox1.Controls.Add(this.lblTerapeutica);
             this.groupBox1.Controls.Add(this.upDownINR);
             this.groupBox1.Controls.Add(this.lblINR);
             this.groupBox1.Controls.Add(this.txtAleitamento);
@@ -586,7 +571,7 @@
             // UpDownPerimetro
             // 
             this.UpDownPerimetro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpDownPerimetro.Location = new System.Drawing.Point(338, 426);
+            this.UpDownPerimetro.Location = new System.Drawing.Point(338, 400);
             this.UpDownPerimetro.Maximum = new decimal(new int[] {
             999,
             0,
@@ -635,23 +620,6 @@
             this.UpDownTemperatura.Name = "UpDownTemperatura";
             this.UpDownTemperatura.Size = new System.Drawing.Size(216, 26);
             this.UpDownTemperatura.TabIndex = 129;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button4.Location = new System.Drawing.Point(314, 378);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button4.Size = new System.Drawing.Size(280, 28);
-            this.button4.TabIndex = 128;
-            this.button4.Text = "Botao Ver Terapeuticas todas";
-            this.button4.UseVisualStyleBackColor = false;
             // 
             // groupBox9
             // 
@@ -936,7 +904,7 @@
             this.lblCMPC.AutoSize = true;
             this.lblCMPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCMPC.ForeColor = System.Drawing.Color.Black;
-            this.lblCMPC.Location = new System.Drawing.Point(571, 427);
+            this.lblCMPC.Location = new System.Drawing.Point(571, 401);
             this.lblCMPC.Name = "lblCMPC";
             this.lblCMPC.Size = new System.Drawing.Size(30, 20);
             this.lblCMPC.TabIndex = 106;
@@ -947,7 +915,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(25, 432);
+            this.label6.Location = new System.Drawing.Point(25, 406);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 20);
             this.label6.TabIndex = 67;
@@ -1195,7 +1163,6 @@
         private System.Windows.Forms.PictureBox btnMinimizar;
         private System.Windows.Forms.TextBox txtObservacoes;
         private System.Windows.Forms.Label lblObservacoes;
-        private System.Windows.Forms.Label lblTerapeutica;
         private System.Windows.Forms.NumericUpDown upDownINR;
         private System.Windows.Forms.Label lblINR;
         private System.Windows.Forms.Panel panelMenu;
@@ -1246,7 +1213,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnTipoParto;
         private System.Windows.Forms.Button btnTipoAleitamento;
         private System.Windows.Forms.RadioButton radioButton1M;

@@ -39,9 +39,7 @@
             this.UpDownAC = new System.Windows.Forms.NumericUpDown();
             this.UpDownSPO2 = new System.Windows.Forms.NumericUpDown();
             this.UpDownFC = new System.Windows.Forms.NumericUpDown();
-            this.lblTerapeutica = new System.Windows.Forms.Label();
             this.comboBoxMetodoContracetivo = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.UpDownPressaoArterial = new System.Windows.Forms.NumericUpDown();
             this.lblMetodoContracetivo = new System.Windows.Forms.Label();
             this.UpDownTemperatura = new System.Windows.Forms.NumericUpDown();
@@ -185,9 +183,7 @@
             this.groupBox1.Controls.Add(this.UpDownAC);
             this.groupBox1.Controls.Add(this.UpDownSPO2);
             this.groupBox1.Controls.Add(this.UpDownFC);
-            this.groupBox1.Controls.Add(this.lblTerapeutica);
             this.groupBox1.Controls.Add(this.comboBoxMetodoContracetivo);
-            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.UpDownPressaoArterial);
             this.groupBox1.Controls.Add(this.lblMetodoContracetivo);
             this.groupBox1.Controls.Add(this.UpDownTemperatura);
@@ -309,17 +305,6 @@
             this.UpDownFC.Size = new System.Drawing.Size(245, 26);
             this.UpDownFC.TabIndex = 132;
             // 
-            // lblTerapeutica
-            // 
-            this.lblTerapeutica.AutoSize = true;
-            this.lblTerapeutica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTerapeutica.ForeColor = System.Drawing.Color.Black;
-            this.lblTerapeutica.Location = new System.Drawing.Point(653, 24);
-            this.lblTerapeutica.Name = "lblTerapeutica";
-            this.lblTerapeutica.Size = new System.Drawing.Size(97, 20);
-            this.lblTerapeutica.TabIndex = 88;
-            this.lblTerapeutica.Text = "Terapêutica:";
-            // 
             // comboBoxMetodoContracetivo
             // 
             this.comboBoxMetodoContracetivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -329,24 +314,6 @@
             this.comboBoxMetodoContracetivo.Size = new System.Drawing.Size(371, 28);
             this.comboBoxMetodoContracetivo.TabIndex = 74;
             this.comboBoxMetodoContracetivo.Visible = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(782, 24);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(238, 28);
-            this.button2.TabIndex = 56;
-            this.button2.Text = "Botao Ver Terapeuticas todas";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // UpDownPressaoArterial
             // 
@@ -1190,7 +1157,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblFC;
         private System.Windows.Forms.Label lblMMHG;
-        private System.Windows.Forms.Label lblTerapeutica;
         private System.Windows.Forms.NumericUpDown upDownINR;
         private System.Windows.Forms.Label lblINR;
         private System.Windows.Forms.Label lblAP;
@@ -1220,7 +1186,6 @@
         private System.Windows.Forms.RadioButton radioButtonNao;
         private System.Windows.Forms.RadioButton radioButtonSim;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.NumericUpDown UpDownTemperatura;
         private System.Windows.Forms.NumericUpDown UpDownPressaoArterial;

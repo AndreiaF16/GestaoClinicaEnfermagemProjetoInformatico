@@ -243,6 +243,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_adicionar_20 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-adicionar-20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_adicionar_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-adicionar-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_adicionar_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-adicionar-50", resourceCulture);
@@ -446,6 +466,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         internal static System.Drawing.Bitmap icons8_guardar_todos_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-guardar-todos-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_guardar_todos_501 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-guardar-todos-501", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
