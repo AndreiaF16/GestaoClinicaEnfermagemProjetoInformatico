@@ -11,37 +11,23 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class AdicionarCateterismoPaciente : Form
+    public partial class AdicionarColocacaoDIUPaciente : Form
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
         private ErrorProvider errorProvider = new ErrorProvider();
         private int id = -1;
-        public AdicionarCateterismoPaciente(Paciente pac)
+        public AdicionarColocacaoDIUPaciente(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            dataRegistoMed.Value = DateTime.Today;
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-
-        }
-
-        private void AdicionarCateterismoPaciente_Load(object sender, EventArgs e)
-        {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Cateterismo'", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                id = (int)reader["IdAtitude"];
-            }
-
-            conn.Close();
+            dataRegistoMed.Value = DateTime.Today;
+            dataColocacaoDIU.Value = DateTime.Today;
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -77,8 +63,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DateTime dataRegisto = dataRegistoMed.Value;
-            string cateterismo = txtCateterismo.Text;
+            DateTime dataR = dataRegistoMed.Value;
+            DateTime colocacao = dataColocacaoDIU.Value;
             string obs = txtObservacoes.Text;
 
             if (VerificarDadosInseridos())
@@ -88,21 +74,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Cateterismo(IdAtitude,IdPaciente,data,cateterismo,observacoes) VALUES(@id,@IdPaciente,@dataR,@cateterismo,@obs);";
+                    string queryInsertData = "INSERT INTO ColocacaoDIU(IdAtitude,IdPaciente,data,dataColocacaoDIU,observacoes) VALUES(@id,@IdPaciente,@dataR,@dataCol,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                    sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
+                    sqlCommand.Parameters.AddWithValue("@dataR", dataR.ToString("MM/dd/yyyy"));
+                    sqlCommand.Parameters.AddWithValue("@dataCol", colocacao.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@id", id);
 
-                    if (cateterismo != string.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@cateterismo", Convert.ToString(cateterismo));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@cateterismo", DBNull.Value);
-                    }
-
+                    //observacoes
                     if (obs != string.Empty)
                     {
                         sqlCommand.Parameters.AddWithValue("@obs", Convert.ToString(obs));
@@ -114,46 +93,71 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Cataterismo registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Colpocitologia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     connection.Close();
-                    //limparCampos();
-
                 }
                 catch (SqlException excep)
                 {
 
-                    MessageBox.Show("Por erro interno é impossível registar o cataterismo!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a Colpocitologia!", excep.Message);
                 }
 
             }
+
+            
+
         }
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
         {
             dataRegistoMed.Value = DateTime.Today;
+            dataColocacaoDIU.Value = DateTime.Today;
             txtObservacoes.Text = "";
-            txtCateterismo.Text = "";
             errorProvider.Clear();
+        }
+
+        private void AdicionarColocacaoDIUPaciente_Load(object sender, EventArgs e)
+        {
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colocação DIU'", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                id = (int)reader["IdAtitude"];
+            }
+
+            conn.Close();
         }
 
         private Boolean VerificarDadosInseridos()
         {
-            DateTime data = dataRegistoMed.Value;
 
-            int var = (int)((data - DateTime.Today).TotalDays);
+            DateTime dataR = dataRegistoMed.Value;
+            DateTime dataD = dataColocacaoDIU.Value;
+
+            int var = (int)((dataR - DateTime.Today).TotalDays);
+            int var2 = (int)((dataD - DateTime.Today).TotalDays);
 
             if (var > 0)
             {
-                MessageBox.Show("A data tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataRegistoMed, "A data tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data de registo da colcitologia tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRegistoMed, "A data tem de ser inferior à data de hoje!");
                 return false;
             }
+
+            if (var2 > 0)
+            {
+                MessageBox.Show("A data de colocação do DIU tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataColocacaoDIU, "A data de colocação do DIU tem de ser superior à data de hoje!");
+                return false;
+            }         
 
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Cateterismo WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+            SqlCommand cmd = new SqlCommand("select * from ColocacaoDIU WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             cmd.Parameters.AddWithValue("@id", id);
 

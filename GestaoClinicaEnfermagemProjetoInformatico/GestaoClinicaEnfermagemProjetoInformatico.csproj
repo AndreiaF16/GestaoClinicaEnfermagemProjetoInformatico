@@ -60,6 +60,12 @@
     <Compile Include="AdicionarAspiracaoSecrecaoPaciente.Designer.cs">
       <DependentUpon>AdicionarAspiracaoSecrecaoPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdicionarAvaliacaoAcuidadeVisual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarAvaliacaoAcuidadeVisual.Designer.cs">
+      <DependentUpon>AdicionarAvaliacaoAcuidadeVisual.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdicionarCateterismoPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,11 +78,101 @@
     <Compile Include="AdicionarColheitaUrinaPaciente.Designer.cs">
       <DependentUpon>AdicionarColheitaUrinaPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdicionarColocacaoDIUPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarColocacaoDIUPaciente.Designer.cs">
+      <DependentUpon>AdicionarColocacaoDIUPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarColpocitologiaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarColpocitologiaPaciente.Designer.cs">
+      <DependentUpon>AdicionarColpocitologiaPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarDesbridamentoPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarDesbridamentoPaciente.Designer.cs">
+      <DependentUpon>AdicionarDesbridamentoPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarDrenagemLocasPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarDrenagemLocasPaciente.Designer.cs">
+      <DependentUpon>AdicionarDrenagemLocasPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarENGPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarENGPaciente.Designer.cs">
+      <DependentUpon>AdicionarENGPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarFlebografiaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarFlebografiaPaciente.Designer.cs">
+      <DependentUpon>AdicionarFlebografiaPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarImplanteContracetivoPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarImplanteContracetivoPaciente.Designer.cs">
+      <DependentUpon>AdicionarImplanteContracetivoPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarInalacaoPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarInalacaoPaciente.Designer.cs">
+      <DependentUpon>AdicionarInalacaoPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarLavagemAuricular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarLavagemAuricular.Designer.cs">
+      <DependentUpon>AdicionarLavagemAuricular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarLavagemOcular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarLavagemOcular.Designer.cs">
+      <DependentUpon>AdicionarLavagemOcular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarLavagemVesicalPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarLavagemVesicalPaciente.Designer.cs">
+      <DependentUpon>AdicionarLavagemVesicalPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarMonitorizacaoECGPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarMonitorizacaoECGPaciente.Designer.cs">
+      <DependentUpon>AdicionarMonitorizacaoECGPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarOutrosTratamentosPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarOutrosTratamentosPaciente.Designer.cs">
+      <DependentUpon>AdicionarOutrosTratamentosPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarPressoterapiaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarPressoterapiaPaciente.Designer.cs">
+      <DependentUpon>AdicionarPressoterapiaPaciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdicionarProfissao.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdicionarProfissao.Designer.cs">
       <DependentUpon>AdicionarProfissao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarSuturasPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarSuturasPaciente.Designer.cs">
+      <DependentUpon>AdicionarSuturasPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="AdicionarTipoAleitamento.cs">
       <SubType>Form</SubType>
@@ -101,6 +197,18 @@
     </Compile>
     <Compile Include="AdicionarTratamento.Designer.cs">
       <DependentUpon>AdicionarTratamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarTratamentoVacinacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarTratamentoVacinacao.Designer.cs">
+      <DependentUpon>AdicionarTratamentoVacinacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarTricotomiaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarTricotomiaPaciente.Designer.cs">
+      <DependentUpon>AdicionarTricotomiaPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="AdicionarVerTipoAtitudeTerapeutica.cs">
       <SubType>Form</SubType>
@@ -161,6 +269,12 @@
     </Compile>
     <Compile Include="AdicionarVisualizarProdutosStockConsulta.Designer.cs">
       <DependentUpon>AdicionarVisualizarProdutosStockConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarZaragatoaOnofaringePaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarZaragatoaOnofaringePaciente.Designer.cs">
+      <DependentUpon>AdicionarZaragatoaOnofaringePaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="AdministrarMedicacaoPaciente.cs">
       <SubType>Form</SubType>
@@ -258,6 +372,7 @@
     <Compile Include="TratamentosAnteriores.cs" />
     <Compile Include="TratamentoExcisoes.cs" />
     <Compile Include="Ulcera.cs" />
+    <Compile Include="Vacinacao.cs" />
     <Compile Include="VerDespesasTodas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -608,14 +723,62 @@
     <EmbeddedResource Include="AdicionarAspiracaoSecrecaoPaciente.resx">
       <DependentUpon>AdicionarAspiracaoSecrecaoPaciente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarAvaliacaoAcuidadeVisual.resx">
+      <DependentUpon>AdicionarAvaliacaoAcuidadeVisual.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdicionarCateterismoPaciente.resx">
       <DependentUpon>AdicionarCateterismoPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarColheitaUrinaPaciente.resx">
       <DependentUpon>AdicionarColheitaUrinaPaciente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarColocacaoDIUPaciente.resx">
+      <DependentUpon>AdicionarColocacaoDIUPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarColpocitologiaPaciente.resx">
+      <DependentUpon>AdicionarColpocitologiaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarDesbridamentoPaciente.resx">
+      <DependentUpon>AdicionarDesbridamentoPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarDrenagemLocasPaciente.resx">
+      <DependentUpon>AdicionarDrenagemLocasPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarENGPaciente.resx">
+      <DependentUpon>AdicionarENGPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarFlebografiaPaciente.resx">
+      <DependentUpon>AdicionarFlebografiaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarImplanteContracetivoPaciente.resx">
+      <DependentUpon>AdicionarImplanteContracetivoPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarInalacaoPaciente.resx">
+      <DependentUpon>AdicionarInalacaoPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarLavagemAuricular.resx">
+      <DependentUpon>AdicionarLavagemAuricular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarLavagemOcular.resx">
+      <DependentUpon>AdicionarLavagemOcular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarLavagemVesicalPaciente.resx">
+      <DependentUpon>AdicionarLavagemVesicalPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarMonitorizacaoECGPaciente.resx">
+      <DependentUpon>AdicionarMonitorizacaoECGPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarOutrosTratamentosPaciente.resx">
+      <DependentUpon>AdicionarOutrosTratamentosPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarPressoterapiaPaciente.resx">
+      <DependentUpon>AdicionarPressoterapiaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdicionarProfissao.resx">
       <DependentUpon>AdicionarProfissao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarSuturasPaciente.resx">
+      <DependentUpon>AdicionarSuturasPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarTipoAleitamento.resx">
       <DependentUpon>AdicionarTipoAleitamento.cs</DependentUpon>
@@ -628,6 +791,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarTratamento.resx">
       <DependentUpon>AdicionarTratamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarTratamentoVacinacao.resx">
+      <DependentUpon>AdicionarTratamentoVacinacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarTricotomiaPaciente.resx">
+      <DependentUpon>AdicionarTricotomiaPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarVerTipoAtitudeTerapeutica.resx">
       <DependentUpon>AdicionarVerTipoAtitudeTerapeutica.cs</DependentUpon>
@@ -658,6 +827,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarVisualizarProdutosStockConsulta.resx">
       <DependentUpon>AdicionarVisualizarProdutosStockConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarZaragatoaOnofaringePaciente.resx">
+      <DependentUpon>AdicionarZaragatoaOnofaringePaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdministrarMedicacaoPaciente.resx">
       <DependentUpon>AdministrarMedicacaoPaciente.cs</DependentUpon>

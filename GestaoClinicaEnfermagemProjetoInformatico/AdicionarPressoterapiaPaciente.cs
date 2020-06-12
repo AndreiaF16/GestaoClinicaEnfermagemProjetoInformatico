@@ -11,14 +11,15 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class AdicionarCateterismoPaciente : Form
+    public partial class AdicionarPressoterapiaPaciente : Form
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
         private ErrorProvider errorProvider = new ErrorProvider();
         private int id = -1;
-        public AdicionarCateterismoPaciente(Paciente pac)
+
+        public AdicionarPressoterapiaPaciente(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
@@ -30,11 +31,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         }
 
-        private void AdicionarCateterismoPaciente_Load(object sender, EventArgs e)
+        private void AdicionarPressoterapiaPaciente_Load(object sender, EventArgs e)
         {
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Cateterismo'", conn);
+            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Pressoterapia'", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -78,7 +79,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             DateTime dataRegisto = dataRegistoMed.Value;
-            string cateterismo = txtCateterismo.Text;
+            string membrosInferiores = txtMembrosInferiores.Text;
+            string membrosSuperiores = txtMembrosInferiores.Text;
             string obs = txtObservacoes.Text;
 
             if (VerificarDadosInseridos())
@@ -88,19 +90,31 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Cateterismo(IdAtitude,IdPaciente,data,cateterismo,observacoes) VALUES(@id,@IdPaciente,@dataR,@cateterismo,@obs);";
+                    string queryInsertData = "INSERT INTO Pressoterapia(IdAtitude,IdPaciente,data,membrosInferiores,membrosSuperiores,observacoes) VALUES(@id,@IdPaciente,@dataR,@membrosInferiores,@membrosSuperiores,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
+
                     sqlCommand.Parameters.AddWithValue("@id", id);
 
-                    if (cateterismo != string.Empty)
+                    //membros Inferiores  
+                    if (membrosInferiores != string.Empty)
                     {
-                        sqlCommand.Parameters.AddWithValue("@cateterismo", Convert.ToString(cateterismo));
+                        sqlCommand.Parameters.AddWithValue("@membrosInferiores", Convert.ToString(membrosInferiores));
                     }
                     else
                     {
-                        sqlCommand.Parameters.AddWithValue("@cateterismo", DBNull.Value);
+                        sqlCommand.Parameters.AddWithValue("@membrosInferiores", DBNull.Value);
+                    }
+
+                    // membros superiores
+                    if (membrosSuperiores != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@membrosSuperiores", Convert.ToString(membrosSuperiores));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@membrosSuperiores", DBNull.Value);
                     }
 
                     if (obs != string.Empty)
@@ -114,16 +128,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Cataterismo registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Pressoterapia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     connection.Close();
-                    //limparCampos();
-
                 }
                 catch (SqlException excep)
                 {
 
-                    MessageBox.Show("Por erro interno é impossível registar o cataterismo!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a Pressoterapia!", excep.Message);
                 }
 
             }
@@ -131,10 +143,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
         {
-            dataRegistoMed.Value = DateTime.Today;
+            txtMembrosInferiores.Text = "";
+            txtMembrosSuperiores.Text = "";
             txtObservacoes.Text = "";
-            txtCateterismo.Text = "";
             errorProvider.Clear();
+            dataRegistoMed.Value = DateTime.Today;
         }
 
         private Boolean VerificarDadosInseridos()
@@ -150,10 +163,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
+
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Cateterismo WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+            SqlCommand cmd = new SqlCommand("select * from Pressoterapia WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             cmd.Parameters.AddWithValue("@id", id);
 

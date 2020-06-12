@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class AdicionarCateterismoPaciente : Form
+    public partial class AdicionarLavagemAuricular : Form
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
         private ErrorProvider errorProvider = new ErrorProvider();
         private int id = -1;
-        public AdicionarCateterismoPaciente(Paciente pac)
+        public AdicionarLavagemAuricular(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
@@ -27,14 +27,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataRegistoMed.Value = DateTime.Today;
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-
         }
 
-        private void AdicionarCateterismoPaciente_Load(object sender, EventArgs e)
+        private void AdicionarLavagemAuricular_Load(object sender, EventArgs e)
         {
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Cateterismo'", conn);
+            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Lavagem Auricular'", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -78,8 +77,40 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             DateTime dataRegisto = dataRegistoMed.Value;
-            string cateterismo = txtCateterismo.Text;
+            string ouvidoDireito = "";
+            string ouvidoEsquerdo = "";
+            string ambos = "";
             string obs = txtObservacoes.Text;
+
+            //ouvido direito
+            if (rbOD.Checked == true)
+            {
+                ouvidoDireito = "Sim";
+            }
+            if (rbOD.Checked == false)
+            {
+                ouvidoDireito = "Não";
+            }
+
+            //ouvido esquerdo
+            if (rbOE.Checked == true)
+            {
+                ouvidoEsquerdo = "Sim";
+            }
+            if (rbOE.Checked == false)
+            {
+                ouvidoEsquerdo = "Não";
+            }
+
+            //ambos
+            if (rbAmbos.Checked == true)
+            {
+                ambos = "Sim";
+            }
+            if (rbOE.Checked == false)
+            {
+                ambos = "Não";
+            }
 
             if (VerificarDadosInseridos())
             {
@@ -88,19 +119,41 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Cateterismo(IdAtitude,IdPaciente,data,cateterismo,observacoes) VALUES(@id,@IdPaciente,@dataR,@cateterismo,@obs);";
+                    string queryInsertData = "INSERT INTO LavagemAuricular(IdAtitude,IdPaciente,data,ouvidoDireito,ouvidoEsquerdo,ambos,observacoes) VALUES(@id,@IdPaciente,@dataR,@ouvidoDireito,@ouvidoEsquerdo,@ambos,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
+
                     sqlCommand.Parameters.AddWithValue("@id", id);
 
-                    if (cateterismo != string.Empty)
+                    //ouvido direito
+                    if (ouvidoDireito != string.Empty)
                     {
-                        sqlCommand.Parameters.AddWithValue("@cateterismo", Convert.ToString(cateterismo));
+                        sqlCommand.Parameters.AddWithValue("@ouvidoDireito", Convert.ToString(ouvidoDireito));
                     }
                     else
                     {
-                        sqlCommand.Parameters.AddWithValue("@cateterismo", DBNull.Value);
+                        sqlCommand.Parameters.AddWithValue("@ouvidoDireito", DBNull.Value);
+                    }
+
+                    //ouvido esquerdo
+                    if (ouvidoEsquerdo != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@ouvidoEsquerdo", Convert.ToString(ouvidoEsquerdo));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@ouvidoEsquerdo", DBNull.Value);
+                    }
+
+                    //ambos
+                    if (ambos != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@ambos", Convert.ToString(ambos));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@ambos", DBNull.Value);
                     }
 
                     if (obs != string.Empty)
@@ -114,16 +167,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Cataterismo registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Lavagem Auricular registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     connection.Close();
-                    //limparCampos();
-
                 }
                 catch (SqlException excep)
                 {
 
-                    MessageBox.Show("Por erro interno é impossível registar o cataterismo!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a Lavagem Auricular!", excep.Message);
                 }
 
             }
@@ -131,9 +182,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
         {
-            dataRegistoMed.Value = DateTime.Today;
+            rbAmbos.Checked = false;
+            rbAmbos.Checked = false;
+            rbAmbos.Checked = false;
             txtObservacoes.Text = "";
-            txtCateterismo.Text = "";
+            dataRegistoMed.Value = DateTime.Today;
             errorProvider.Clear();
         }
 
@@ -150,10 +203,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
+
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Cateterismo WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+            SqlCommand cmd = new SqlCommand("select * from LavagemAuricular WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             cmd.Parameters.AddWithValue("@id", id);
 

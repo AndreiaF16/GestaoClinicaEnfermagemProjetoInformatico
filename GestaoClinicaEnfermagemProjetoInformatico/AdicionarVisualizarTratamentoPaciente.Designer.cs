@@ -47,6 +47,7 @@
             this.txtObservacoes = new System.Windows.Forms.TextBox();
             this.lblObservacoes = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -270,7 +271,7 @@
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.Black;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(3, 297);
+            this.button4.Location = new System.Drawing.Point(2, 382);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -333,6 +334,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.panelMenu.Controls.Add(this.button6);
             this.panelMenu.Controls.Add(this.button5);
             this.panelMenu.Controls.Add(this.button2);
             this.panelMenu.Controls.Add(this.button4);
@@ -345,6 +347,24 @@
             this.panelMenu.Size = new System.Drawing.Size(232, 707);
             this.panelMenu.TabIndex = 1;
             // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.Color.Black;
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.Location = new System.Drawing.Point(2, 227);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
+            this.button6.Name = "button6";
+            this.button6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button6.Size = new System.Drawing.Size(225, 67);
+            this.button6.TabIndex = 63;
+            this.button6.Text = "Adicionar Outros Tratamentos";
+            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -352,7 +372,7 @@
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.Black;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(3, 429);
+            this.button5.Location = new System.Drawing.Point(2, 514);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -370,7 +390,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(3, 363);
+            this.button2.Location = new System.Drawing.Point(2, 448);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -1371,5 +1391,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label lblGrauUlceraPressao;
         private System.Windows.Forms.TextBox txtGrauUlceraPressao;
+        private System.Windows.Forms.Button button6;
     }
 }

@@ -26,15 +26,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
         
 
-        private void btnFechar_Click(object sender, EventArgs e)
-        {
-            var resposta = MessageBox.Show("Tem a certeza que deseja sair do programa?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resposta == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
-
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -56,11 +47,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if(!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar)){
                 e.Handled = true;
             }
-        }
-
-        private void txtContacto_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void txtNome_Validating(object sender, CancelEventArgs e)

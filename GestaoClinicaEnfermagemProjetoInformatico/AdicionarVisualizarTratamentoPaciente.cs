@@ -1112,5 +1112,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             VerTratamentosAnteriores verTratamentosAnteriores = new VerTratamentosAnteriores(paciente);
             verTratamentosAnteriores.Show();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AdicionarOutrosTratamentosPaciente adicionarOutrosTratamentosPaciente = new AdicionarOutrosTratamentosPaciente(paciente);
+            adicionarOutrosTratamentosPaciente.Show();
+        }
     }
 }

@@ -235,7 +235,7 @@
             this.txtContacto.Name = "txtContacto";
             this.txtContacto.Size = new System.Drawing.Size(493, 29);
             this.txtContacto.TabIndex = 7;
-            this.txtContacto.TextChanged += new System.EventHandler(this.txtContacto_TextChanged);
+            this.txtContacto.TextChanged += new System.EventHandler(this.btnGuardar_Click);
             this.txtContacto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContacto_KeyPress);
             // 
             // dataNascimento

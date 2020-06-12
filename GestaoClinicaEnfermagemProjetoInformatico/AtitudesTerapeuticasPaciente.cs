@@ -33,6 +33,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            if(paciente.Sexo == "Feminino")
+            {
+                btnColpocitologia.Visible = true;
+                btnDIU.Visible = true;
+                btnImplanteContracetivo.Visible = true;
+            }
+            if (paciente.Sexo != "Feminino")
+            {
+                btnColpocitologia.Visible = false;
+                btnDIU.Visible = false;
+                btnImplanteContracetivo.Visible = false;
+            }
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -100,6 +112,143 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             AdicionarColheitaUrinaPaciente adicionarColheitaUrinaPaciente = new AdicionarColheitaUrinaPaciente(paciente);
             adicionarColheitaUrinaPaciente.Show();
+        }
+
+        private void btnColpocitologia_Click(object sender, EventArgs e)
+        {
+            AdicionarColpocitologiaPaciente adicionarColpocitologiaPaciente = new AdicionarColpocitologiaPaciente(paciente);
+            adicionarColpocitologiaPaciente.Show();
+        }
+
+        private void btnDIU_Click(object sender, EventArgs e)
+        {
+            AdicionarColocacaoDIUPaciente adicionarColocacaoDIUPaciente = new AdicionarColocacaoDIUPaciente(paciente);
+            adicionarColocacaoDIUPaciente.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            AdicionarDrenagemLocasPaciente adicionarDrenagemLocasPaciente = new AdicionarDrenagemLocasPaciente(paciente);
+            adicionarDrenagemLocasPaciente.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AdicionarDesbridamentoPaciente adicionarDesbridamentoPaciente = new AdicionarDesbridamentoPaciente(paciente);
+            adicionarDesbridamentoPaciente.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AdicionarENGPaciente adicionarENGPaciente = new AdicionarENGPaciente(paciente);
+            adicionarENGPaciente.Show();
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            AdicionarFlebografiaPaciente adicionarFlebografiaPaciente = new AdicionarFlebografiaPaciente(paciente);
+            adicionarFlebografiaPaciente.Show();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            AdicionarInalacaoPaciente adicionarInalacaoPaciente = new AdicionarInalacaoPaciente(paciente);
+            adicionarInalacaoPaciente.Show();
+        }
+
+        private void btnImplanteContracetivo_Click(object sender, EventArgs e)
+        {
+            AdicionarImplanteContracetivoPaciente adicionarImplanteContracetivoPaciente = new AdicionarImplanteContracetivoPaciente(paciente);
+            adicionarImplanteContracetivoPaciente.Show();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            AdicionarLavagemAuricular adicionarLavagemAuricular = new AdicionarLavagemAuricular(paciente);
+            adicionarLavagemAuricular.Show();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            AdicionarLavagemOcular adicionarLavagemOcular = new AdicionarLavagemOcular(paciente);
+            adicionarLavagemOcular.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Falta Implementar!!!");
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Falta Implementar!!!");
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Falta Implementar!!!");
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Falta Implementar!!!");
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Falta Implementar!!!");
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Falta Implementar!!!");
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Falta Implementar!!!");
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            AdicionarLavagemVesicalPaciente adicionarLavagemVesicalPaciente = new AdicionarLavagemVesicalPaciente(paciente);
+            adicionarLavagemVesicalPaciente.Show();
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            AdicionarMonitorizacaoECGPaciente adicionarMonitorizacaoECGPaciente = new AdicionarMonitorizacaoECGPaciente(paciente);
+            adicionarMonitorizacaoECGPaciente.Show();
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            AdicionarPressoterapiaPaciente adicionarPressoterapiaPaciente = new AdicionarPressoterapiaPaciente(paciente);
+            adicionarPressoterapiaPaciente.Show();
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            AdicionarSuturasPaciente adicionarSuturasPaciente = new AdicionarSuturasPaciente(paciente);
+            adicionarSuturasPaciente.Show();
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            AdicionarAvaliacaoAcuidadeVisual adicionarAvaliacaoAcuidadeVisual = new AdicionarAvaliacaoAcuidadeVisual(paciente);
+            adicionarAvaliacaoAcuidadeVisual.Show();
+        }
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+            AdicionarTricotomiaPaciente adicionarTricotomiaPaciente = new AdicionarTricotomiaPaciente(paciente);
+            adicionarTricotomiaPaciente.Show();
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            AdicionarZaragatoaOnofaringePaciente adicionarZaragatoaOnofaringePaciente = new AdicionarZaragatoaOnofaringePaciente(paciente);
+            adicionarZaragatoaOnofaringePaciente.Show();
         }
     }
 }

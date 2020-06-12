@@ -11,37 +11,34 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class AdicionarCateterismoPaciente : Form
+    public partial class AdicionarENGPaciente : Form
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
         private ErrorProvider errorProvider = new ErrorProvider();
         private int id = -1;
-        public AdicionarCateterismoPaciente(Paciente pac)
+
+        public AdicionarENGPaciente(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             dataRegistoMed.Value = DateTime.Today;
+            dataENG.Value = DateTime.Today;
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
 
         }
 
-        private void AdicionarCateterismoPaciente_Load(object sender, EventArgs e)
+        private void txtSilastic_KeyPress(object sender, KeyPressEventArgs e)
         {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Cateterismo'", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                id = (int)reader["IdAtitude"];
+                e.Handled = true;
             }
-
-            conn.Close();
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -70,15 +67,25 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void btnVoltar_Click(object sender, EventArgs e)
+        private void AdicionarENGPaciente_Load(object sender, EventArgs e)
         {
-            this.Close();
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'ENG'", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                id = (int)reader["IdAtitude"];
+            }
+
+            conn.Close();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             DateTime dataRegisto = dataRegistoMed.Value;
-            string cateterismo = txtCateterismo.Text;
+            DateTime dataEN = dataENG.Value;
+            string numero = txtNumero.Text;
             string obs = txtObservacoes.Text;
 
             if (VerificarDadosInseridos())
@@ -88,19 +95,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Cateterismo(IdAtitude,IdPaciente,data,cateterismo,observacoes) VALUES(@id,@IdPaciente,@dataR,@cateterismo,@obs);";
+                    string queryInsertData = "INSERT INTO ENG(IdAtitude,IdPaciente,data,numeroENG,dataENG,observacoes) VALUES(@id,@IdPaciente,@dataR,@numero,@dataENG,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
-                    sqlCommand.Parameters.AddWithValue("@id", id);
+                    sqlCommand.Parameters.AddWithValue("@dataENG", dataEN.ToString("MM/dd/yyyy"));
 
-                    if (cateterismo != string.Empty)
+                    sqlCommand.Parameters.AddWithValue("@id", id);
+                 
+
+                    if (numero != string.Empty)
                     {
-                        sqlCommand.Parameters.AddWithValue("@cateterismo", Convert.ToString(cateterismo));
+                        sqlCommand.Parameters.AddWithValue("@numero", Convert.ToString(numero));
                     }
                     else
                     {
-                        sqlCommand.Parameters.AddWithValue("@cateterismo", DBNull.Value);
+                        sqlCommand.Parameters.AddWithValue("@numero", DBNull.Value);
                     }
 
                     if (obs != string.Empty)
@@ -114,16 +124,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Cataterismo registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("ENG registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     connection.Close();
-                    //limparCampos();
-
                 }
                 catch (SqlException excep)
                 {
 
-                    MessageBox.Show("Por erro interno é impossível registar o cataterismo!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o ENG!", excep.Message);
                 }
 
             }
@@ -132,16 +140,24 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnLimparCampos_Click(object sender, EventArgs e)
         {
             dataRegistoMed.Value = DateTime.Today;
+            dataENG.Value = DateTime.Today;
+            txtNumero.Text = "";
             txtObservacoes.Text = "";
-            txtCateterismo.Text = "";
             errorProvider.Clear();
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private Boolean VerificarDadosInseridos()
         {
             DateTime data = dataRegistoMed.Value;
+            DateTime dataP = dataENG.Value;
 
             int var = (int)((data - DateTime.Today).TotalDays);
+            int var2 = (int)((dataP - DateTime.Today).TotalDays);
 
             if (var > 0)
             {
@@ -150,10 +166,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
+            if (var2 > 0)
+            {
+                MessageBox.Show("A data tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRegistoMed, "A data tem de ser inferior a data de hoje!");
+                return false;
+            }
+
+
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Cateterismo WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+            SqlCommand cmd = new SqlCommand("select * from ENG WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             cmd.Parameters.AddWithValue("@id", id);
 

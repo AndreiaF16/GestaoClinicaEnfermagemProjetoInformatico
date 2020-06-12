@@ -11,14 +11,15 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class AdicionarCateterismoPaciente : Form
+    public partial class AdicionarAvaliacaoAcuidadeVisual : Form
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
         private ErrorProvider errorProvider = new ErrorProvider();
         private int id = -1;
-        public AdicionarCateterismoPaciente(Paciente pac)
+
+        public AdicionarAvaliacaoAcuidadeVisual(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
@@ -28,20 +29,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
 
-        }
-
-        private void AdicionarCateterismoPaciente_Load(object sender, EventArgs e)
-        {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Cateterismo'", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                id = (int)reader["IdAtitude"];
-            }
-
-            conn.Close();
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -70,6 +57,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.WindowState = FormWindowState.Minimized;
         }
 
+        private void AdicionarAvaliacaoAcuidadeVisual_Load(object sender, EventArgs e)
+        {
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Teste Avaliação Acuidade Visual'", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                id = (int)reader["IdAtitude"];
+            }
+
+            conn.Close();
+        }
+
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -78,7 +79,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             DateTime dataRegisto = dataRegistoMed.Value;
-            string cateterismo = txtCateterismo.Text;
+            string teste = txtTesteAcuidadeVisual.Text;
             string obs = txtObservacoes.Text;
 
             if (VerificarDadosInseridos())
@@ -88,19 +89,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Cateterismo(IdAtitude,IdPaciente,data,cateterismo,observacoes) VALUES(@id,@IdPaciente,@dataR,@cateterismo,@obs);";
+                    string queryInsertData = "INSERT INTO TesteAcuidadeVisual(IdAtitude,IdPaciente,data,testeAcuidadeVisual,observacoes) VALUES(@id,@IdPaciente,@dataR,@teste,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
+
                     sqlCommand.Parameters.AddWithValue("@id", id);
 
-                    if (cateterismo != string.Empty)
+                    //lavagem Vesical
+                    if (teste != string.Empty)
                     {
-                        sqlCommand.Parameters.AddWithValue("@cateterismo", Convert.ToString(cateterismo));
+                        sqlCommand.Parameters.AddWithValue("@teste", Convert.ToString(teste));
                     }
                     else
                     {
-                        sqlCommand.Parameters.AddWithValue("@cateterismo", DBNull.Value);
+                        sqlCommand.Parameters.AddWithValue("@teste", DBNull.Value);
                     }
 
                     if (obs != string.Empty)
@@ -114,16 +117,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Cataterismo registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Teste de Acuidade Visual registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     connection.Close();
-                    //limparCampos();
-
                 }
                 catch (SqlException excep)
                 {
 
-                    MessageBox.Show("Por erro interno é impossível registar o cataterismo!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o Teste de Acuidade Visual!", excep.Message);
                 }
 
             }
@@ -131,9 +132,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
         {
-            dataRegistoMed.Value = DateTime.Today;
             txtObservacoes.Text = "";
-            txtCateterismo.Text = "";
+            txtTesteAcuidadeVisual.Text = "";
+            dataRegistoMed.Value = DateTime.Today;
             errorProvider.Clear();
         }
 
@@ -150,10 +151,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
+
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Cateterismo WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+            SqlCommand cmd = new SqlCommand("select * from TesteAcuidadeVisual WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             cmd.Parameters.AddWithValue("@id", id);
 
