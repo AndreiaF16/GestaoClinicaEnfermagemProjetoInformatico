@@ -92,7 +92,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (cbFolley.Checked == false)
             {
-                folley = "Não";
+                folley = "";
             }
 
             //tresVias
@@ -102,7 +102,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (cbTresVias.Checked == false)
             {
-                tresVias = "Não";
+                tresVias = "";
             }
 
             if (VerificarDadosInseridos())
@@ -163,8 +163,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Algariação registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                     connection.Close();
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
@@ -177,6 +177,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
         {
             dataRegistoMed.Value = DateTime.Today;
             dataProximaRealgariacao.Value = DateTime.Today;
@@ -241,6 +246,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 e.Handled = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerAlgariacaoPaciente verAlgariacaoPaciente = new VerAlgariacaoPaciente(paciente);
+            verAlgariacaoPaciente.Show();
         }
     }
 }

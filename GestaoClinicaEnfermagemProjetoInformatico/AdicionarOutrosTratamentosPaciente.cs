@@ -69,5 +69,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             AdicionarTratamentoVacinacao adicionarTratamentoVacinacao = new AdicionarTratamentoVacinacao(paciente);
             adicionarTratamentoVacinacao.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AdicionarEspirometriaPaciente adicionarEspirometriaPaciente = new AdicionarEspirometriaPaciente(paciente);
+            adicionarEspirometriaPaciente.Show();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            AdicionarDoplerFetalPaciente adicionarDoplerFetalPaciente = new AdicionarDoplerFetalPaciente(paciente);
+            adicionarDoplerFetalPaciente.Show();
+        }
     }
 }

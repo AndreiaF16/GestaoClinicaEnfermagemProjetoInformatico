@@ -27,7 +27,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataRegistoMed.Value = DateTime.Today;
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-
         }
 
         private void AdicionarColheitaUrinaPaciente_Load(object sender, EventArgs e)
@@ -90,7 +89,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (cbExameSumario.Checked == false)
             {
-                exameSumario = "Não";
+                exameSumario = "";
             }
 
             //urocultura
@@ -100,7 +99,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (cbUrocultura.Checked == false)
             {
-                urocultura = "Não";
+                urocultura = "";
             }
 
             //vinteQuatroHoras
@@ -110,7 +109,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (cbVintaQuatroHoras.Checked == false)
             {
-                vinteQuatroHoras = "Não";
+                vinteQuatroHoras = "";
             }
 
             if (VerificarDadosInseridos())
@@ -165,7 +164,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("A colheita de urina foi registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                     connection.Close();
                     //limparCampos();
 
@@ -225,6 +223,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
 
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerColheitaUrina verColheitaUrina = new VerColheitaUrina(paciente);
+            verColheitaUrina.Show();
         }
     }
 }

@@ -116,9 +116,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Flebografia registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                     connection.Close();
-                    //limparCampos();
+                    limparCampos();
 
                 }
                 catch (SqlException excep)
@@ -131,6 +130,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
         {
             dataRegistoMed.Value = DateTime.Today;
             txtObservacoes.Text = "";
@@ -173,6 +177,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
 
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerFlebografia verFlebografia = new VerFlebografia(paciente);
+            verFlebografia.Show();
         }
     }
 }

@@ -60,8 +60,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void AdministrarMedicacaoPaciente_Load(object sender, EventArgs e)
         {
-
-
             conn.Open();
             com.Connection = conn;
             SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Administrar Medicação'", conn);
@@ -99,7 +97,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (cbPO.Checked == false)
             {
-                po = "Não";
+                po = "";
             }
 
             //retal
@@ -109,7 +107,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (cbRetal.Checked == false)
             {
-                retal = "Não";
+                retal = "";
             }
 
             //intradermica
@@ -119,7 +117,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (cbIntradermica.Checked == false)
             {
-                intradermica = "Não";
+                intradermica = "";
             }
 
             //subcutanea
@@ -129,7 +127,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (cbSubcutanea.Checked == false)
             {
-                subcutanea = "Não";
+                subcutanea = "";
             }
 
             //viaCutanea
@@ -139,7 +137,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (cbViaCutanea.Checked == false)
             {
-                viaCutanea = "Não";
+                viaCutanea = "";
             }
 
             //efeitoLocal
@@ -149,7 +147,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (cbEfeitoLocal.Checked == false)
             {
-                efeitoLocal = "Não";
+                efeitoLocal = "";
             }
 
             if (VerificarDadosInseridos())
@@ -249,9 +247,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Administração da Medicação efetuada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                     connection.Close();                  
-                    //limparCampos();
+                    limparCampos();
 
                 }
                 catch (SqlException excep)
@@ -303,7 +300,29 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
         {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            dataRegistoMed.Value = DateTime.Today;
+            cbPO.Checked = false;
+            cbRetal.Checked = false;
+            cbIntradermica.Checked = false;
+            cbSubcutanea.Checked = false;
+            cbViaCutanea.Checked = false;
+            cbEfeitoLocal.Checked = false;
+            txtEndovenosa.Text = "";
+            txtIntramuscular.Text = "";
+            txtObservacoes.Text = "";
             errorProvider.Clear();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerMedicacaoPaciente verMedicacaoPaciente = new VerMedicacaoPaciente(paciente);
+            verMedicacaoPaciente.Show();
         }
     }
 }

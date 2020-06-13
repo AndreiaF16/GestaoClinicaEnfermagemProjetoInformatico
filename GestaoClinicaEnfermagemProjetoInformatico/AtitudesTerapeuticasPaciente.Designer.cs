@@ -37,15 +37,14 @@
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.cbLavagemGastrica = new System.Windows.Forms.CheckBox();
+            this.cbEnemaLimpeza = new System.Windows.Forms.CheckBox();
+            this.cbColheitaSangue = new System.Windows.Forms.CheckBox();
+            this.cbFezesSangueOculto = new System.Windows.Forms.CheckBox();
+            this.cbFezesParasitologico = new System.Windows.Forms.CheckBox();
+            this.cbZaragatoa = new System.Windows.Forms.CheckBox();
+            this.cbColheitaExpetoracao = new System.Windows.Forms.CheckBox();
             this.button19 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnImplanteContracetivo = new System.Windows.Forms.Button();
@@ -76,9 +75,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panelTitulo = new System.Windows.Forms.Panel();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panelTitulo = new System.Windows.Forms.Panel();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.PictureBox();
@@ -88,8 +87,8 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelMenu.SuspendLayout();
-            this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
@@ -162,15 +161,14 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
-            this.groupBox2.Controls.Add(this.checkBox7);
-            this.groupBox2.Controls.Add(this.checkBox6);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.checkBox5);
-            this.groupBox2.Controls.Add(this.checkBox4);
-            this.groupBox2.Controls.Add(this.checkBox3);
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Controls.Add(this.button10);
+            this.groupBox2.Controls.Add(this.cbLavagemGastrica);
+            this.groupBox2.Controls.Add(this.cbEnemaLimpeza);
+            this.groupBox2.Controls.Add(this.cbColheitaSangue);
+            this.groupBox2.Controls.Add(this.cbFezesSangueOculto);
+            this.groupBox2.Controls.Add(this.cbFezesParasitologico);
+            this.groupBox2.Controls.Add(this.cbZaragatoa);
+            this.groupBox2.Controls.Add(this.cbColheitaExpetoracao);
             this.groupBox2.Controls.Add(this.button19);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -181,100 +179,101 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Selecione a(s) Atitude(s) Terapêutica(s) que pretende:";
             // 
-            // checkBox7
+            // button10
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox7.Location = new System.Drawing.Point(100, 213);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(161, 24);
-            this.checkBox7.TabIndex = 65;
-            this.checkBox7.Text = "Lavagem Gástrica ";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.button10.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.ForeColor = System.Drawing.Color.Black;
+            this.button10.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button10.Location = new System.Drawing.Point(488, 72);
+            this.button10.Margin = new System.Windows.Forms.Padding(2);
+            this.button10.Name = "button10";
+            this.button10.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button10.Size = new System.Drawing.Size(210, 51);
+            this.button10.TabIndex = 66;
+            this.button10.Text = "Ver Atitudes Terapêuticas Registadas";
+            this.button10.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click_1);
             // 
-            // checkBox6
+            // cbLavagemGastrica
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox6.Location = new System.Drawing.Point(100, 186);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(141, 24);
-            this.checkBox6.TabIndex = 64;
-            this.checkBox6.Text = "Enema limpeza ";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.cbLavagemGastrica.AutoSize = true;
+            this.cbLavagemGastrica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLavagemGastrica.Location = new System.Drawing.Point(100, 213);
+            this.cbLavagemGastrica.Name = "cbLavagemGastrica";
+            this.cbLavagemGastrica.Size = new System.Drawing.Size(161, 24);
+            this.cbLavagemGastrica.TabIndex = 65;
+            this.cbLavagemGastrica.Text = "Lavagem Gástrica ";
+            this.cbLavagemGastrica.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // cbEnemaLimpeza
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(515, 244);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(183, 20);
-            this.label4.TabIndex = 63;
-            this.label4.Text = "botão não tem código";
+            this.cbEnemaLimpeza.AutoSize = true;
+            this.cbEnemaLimpeza.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEnemaLimpeza.Location = new System.Drawing.Point(100, 186);
+            this.cbEnemaLimpeza.Name = "cbEnemaLimpeza";
+            this.cbEnemaLimpeza.Size = new System.Drawing.Size(147, 24);
+            this.cbEnemaLimpeza.TabIndex = 64;
+            this.cbEnemaLimpeza.Text = "Enema Limpeza ";
+            this.cbEnemaLimpeza.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // cbColheitaSangue
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(421, 211);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(277, 20);
-            this.label3.TabIndex = 62;
-            this.label3.Text = "esta group box não está acabada";
+            this.cbColheitaSangue.AutoSize = true;
+            this.cbColheitaSangue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbColheitaSangue.Location = new System.Drawing.Point(100, 156);
+            this.cbColheitaSangue.Name = "cbColheitaSangue";
+            this.cbColheitaSangue.Size = new System.Drawing.Size(150, 24);
+            this.cbColheitaSangue.TabIndex = 61;
+            this.cbColheitaSangue.Text = "Colheita Sangue ";
+            this.cbColheitaSangue.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // cbFezesSangueOculto
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox5.Location = new System.Drawing.Point(100, 156);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(150, 24);
-            this.checkBox5.TabIndex = 61;
-            this.checkBox5.Text = "Colheita Sangue ";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.cbFezesSangueOculto.AutoSize = true;
+            this.cbFezesSangueOculto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFezesSangueOculto.Location = new System.Drawing.Point(100, 126);
+            this.cbFezesSangueOculto.Name = "cbFezesSangueOculto";
+            this.cbFezesSangueOculto.Size = new System.Drawing.Size(248, 24);
+            this.cbFezesSangueOculto.TabIndex = 60;
+            this.cbFezesSangueOculto.Text = "Colheita Fezes Sangue Oculto ";
+            this.cbFezesSangueOculto.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // cbFezesParasitologico
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox4.Location = new System.Drawing.Point(100, 126);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(248, 24);
-            this.checkBox4.TabIndex = 60;
-            this.checkBox4.Text = "Colheita Fezes Sangue Oculto ";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.cbFezesParasitologico.AutoSize = true;
+            this.cbFezesParasitologico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFezesParasitologico.Location = new System.Drawing.Point(100, 99);
+            this.cbFezesParasitologico.Name = "cbFezesParasitologico";
+            this.cbFezesParasitologico.Size = new System.Drawing.Size(237, 24);
+            this.cbFezesParasitologico.TabIndex = 59;
+            this.cbFezesParasitologico.Text = "Colheita Fezes Parasitológico";
+            this.cbFezesParasitologico.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // cbZaragatoa
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.Location = new System.Drawing.Point(100, 99);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(237, 24);
-            this.checkBox3.TabIndex = 59;
-            this.checkBox3.Text = "Colheita Fezes Parasitológico";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.cbZaragatoa.AutoSize = true;
+            this.cbZaragatoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbZaragatoa.Location = new System.Drawing.Point(100, 72);
+            this.cbZaragatoa.Name = "cbZaragatoa";
+            this.cbZaragatoa.Size = new System.Drawing.Size(243, 24);
+            this.cbZaragatoa.TabIndex = 58;
+            this.cbZaragatoa.Text = "Colheita Exsudado Zaragatoa ";
+            this.cbZaragatoa.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // cbColheitaExpetoracao
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(100, 72);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(243, 24);
-            this.checkBox2.TabIndex = 58;
-            this.checkBox2.Text = "Colheita Exsudado Zaragatoa ";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(100, 45);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(188, 24);
-            this.checkBox1.TabIndex = 57;
-            this.checkBox1.Text = "Colheita Expectoração";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbColheitaExpetoracao.AutoSize = true;
+            this.cbColheitaExpetoracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbColheitaExpetoracao.Location = new System.Drawing.Point(100, 45);
+            this.cbColheitaExpetoracao.Name = "cbColheitaExpetoracao";
+            this.cbColheitaExpetoracao.Size = new System.Drawing.Size(188, 24);
+            this.cbColheitaExpetoracao.TabIndex = 57;
+            this.cbColheitaExpetoracao.Text = "Colheita Expectoração";
+            this.cbColheitaExpetoracao.UseVisualStyleBackColor = true;
             // 
             // button19
             // 
@@ -284,11 +283,11 @@
             this.button19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button19.ForeColor = System.Drawing.Color.Black;
             this.button19.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button19.Location = new System.Drawing.Point(449, 99);
+            this.button19.Location = new System.Drawing.Point(488, 123);
             this.button19.Margin = new System.Windows.Forms.Padding(2);
             this.button19.Name = "button19";
             this.button19.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button19.Size = new System.Drawing.Size(185, 51);
+            this.button19.Size = new System.Drawing.Size(210, 51);
             this.button19.TabIndex = 56;
             this.button19.Text = "Registar";
             this.button19.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -451,7 +450,7 @@
             this.button21.BackColor = System.Drawing.Color.LightSteelBlue;
             this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button21.ForeColor = System.Drawing.Color.Black;
             this.button21.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button21.Location = new System.Drawing.Point(190, 175);
@@ -460,9 +459,10 @@
             this.button21.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button21.Size = new System.Drawing.Size(185, 51);
             this.button21.TabIndex = 61;
-            this.button21.Text = "Teste Combur  (FALTA)";
+            this.button21.Text = "Teste Combur";
             this.button21.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button21.UseVisualStyleBackColor = false;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // button22
             // 
@@ -838,22 +838,6 @@
             this.panelMenu.Size = new System.Drawing.Size(232, 748);
             this.panelMenu.TabIndex = 1;
             // 
-            // panelTitulo
-            // 
-            this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
-            this.panelTitulo.Controls.Add(this.lblDia);
-            this.panelTitulo.Controls.Add(this.lblHora);
-            this.panelTitulo.Controls.Add(this.btnMaximizar);
-            this.panelTitulo.Controls.Add(this.pictureBox1);
-            this.panelTitulo.Controls.Add(this.btnFechar);
-            this.panelTitulo.Controls.Add(this.lblTitulo);
-            this.panelTitulo.Controls.Add(this.btnMinimizar);
-            this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitulo.Location = new System.Drawing.Point(0, 0);
-            this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new System.Drawing.Size(1366, 40);
-            this.panelTitulo.TabIndex = 0;
-            // 
             // btnVoltar
             // 
             this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -883,6 +867,22 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
+            // 
+            // panelTitulo
+            // 
+            this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
+            this.panelTitulo.Controls.Add(this.lblDia);
+            this.panelTitulo.Controls.Add(this.lblHora);
+            this.panelTitulo.Controls.Add(this.btnMaximizar);
+            this.panelTitulo.Controls.Add(this.pictureBox1);
+            this.panelTitulo.Controls.Add(this.btnFechar);
+            this.panelTitulo.Controls.Add(this.lblTitulo);
+            this.panelTitulo.Controls.Add(this.btnMinimizar);
+            this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitulo.Location = new System.Drawing.Point(0, 0);
+            this.panelTitulo.Name = "panelTitulo";
+            this.panelTitulo.Size = new System.Drawing.Size(1366, 40);
+            this.panelTitulo.TabIndex = 0;
             // 
             // btnMaximizar
             // 
@@ -959,9 +959,9 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.panelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
@@ -1008,14 +1008,12 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox cbColheitaSangue;
+        private System.Windows.Forms.CheckBox cbFezesSangueOculto;
+        private System.Windows.Forms.CheckBox cbFezesParasitologico;
+        private System.Windows.Forms.CheckBox cbZaragatoa;
+        private System.Windows.Forms.CheckBox cbColheitaExpetoracao;
+        private System.Windows.Forms.CheckBox cbEnemaLimpeza;
         private System.Windows.Forms.Button button30;
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.Button button20;
@@ -1024,6 +1022,7 @@
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button25;
-        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.CheckBox cbLavagemGastrica;
+        private System.Windows.Forms.Button button10;
     }
 }

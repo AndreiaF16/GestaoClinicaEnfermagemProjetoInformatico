@@ -49,9 +49,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 id = (int)reader["IdAtitude"];
             }
 
-            conn.Close();
-
-           
+            conn.Close();        
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -396,42 +394,42 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (var2 > 0)
             {
                 MessageBox.Show("A data de colocação do DIU tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataDIU, "A data de colocação do DIU tem de ser superior à data de hoje!");
+                errorProvider.SetError(dataDIU, "A data de colocação do DIU tem de ser inferior à data de hoje!");
                 return false;
             }
 
             if (var3 > 0)
             {
                 MessageBox.Show("A data do implante tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataImplante, "A data do implante tem de ser superior à data de hoje!");
+                errorProvider.SetError(dataImplante, "A data do implante tem de ser inferior à data de hoje!");
                 return false;
             }
 
             if (var4 > 0)
             {
                 MessageBox.Show("A data de colocação do anel vaginal tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataAnelVaginal, "A data de colocação do anel vaginal tem de ser superior à data de hoje!");
+                errorProvider.SetError(dataAnelVaginal, "A data de colocação do anel vaginal tem de ser inferior à data de hoje!");
                 return false;
             }
 
             if (var5 > 0)
             {
                 MessageBox.Show("A data intramuscular tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataIntramuscular, "A data intramuscular tem de ser superior à data de hoje!");
+                errorProvider.SetError(dataIntramuscular, "A data intramuscular tem de ser inferior à data de hoje!");
                 return false;
             }
 
             if (var6 > 0)
             {
                 MessageBox.Show("A data da laqueação das trompas tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataLaqTrompas, "A data da laqueação das trompas tem de ser superior à data de hoje!");
+                errorProvider.SetError(dataLaqTrompas, "A data da laqueação das trompas tem de ser inferior à data de hoje!");
                 return false;
             }
 
             if (var7 > 0)
             {
                 MessageBox.Show("A data do pessário tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataPessario, "A data do pessário tem de ser superior à data de hoje!");
+                errorProvider.SetError(dataPessario, "A data do pessário tem de ser inferior à data de hoje!");
                 return false;
             }
 

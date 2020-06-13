@@ -17,8 +17,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
         private ErrorProvider errorProvider = new ErrorProvider();
-        private List<Vacinacao> auxiliar = new List<Vacinacao>();
         private List<Vacinacao> vacinacao = new List<Vacinacao>();
+        private Enfermeiro enfermeiro = null;
+
 
         public AdicionarTratamentoVacinacao(Paciente pac)
         {
@@ -33,8 +34,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void AdicionarTratamentoVacinacao_Load(object sender, EventArgs e)
         {
-            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = vacinacao };
-            dataGridViewVacinacao.DataSource = bindingSource2;
             UpdateDataGridView();
         }
 
@@ -86,6 +85,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 string local = txtLocal.Text;
                 string obs = txtObservacoes.Text;
                 DateTime dataRegisto = dataVacinacao.Value;
+                string escalaDor = lblEscala.Text;
 
 
                 try
@@ -93,7 +93,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Vacinacao(IdPaciente,data,nomeVacina,marcaComercial,numeroInoculacao,lote,local,observacoes) VALUES(@IdPaciente,@dataR,@nomeVacina,@marcaComercial,@nrInoculacao,@lote,@local,@obs);";
+                    string queryInsertData = "INSERT INTO Vacinacao(IdPaciente,data,nomeVacina,marcaComercial,numeroInoculacao,lote,local,escalaDor,observacoes) VALUES(@IdPaciente,@dataR,@nomeVacina,@marcaComercial,@nrInoculacao,@lote,@local,@escalaDor,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
 
@@ -149,6 +149,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@local", DBNull.Value);
                     }
 
+                    //escala dor
+                    if (escalaDor != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@escalaDor", Convert.ToString(escalaDor));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@escalaDor", DBNull.Value);
+                    }
+
                     //observacoes
                     if (obs != string.Empty)
                     {
@@ -185,6 +195,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             txtNomeVacina.Text = "";
             txtNrInoculacao.Text = "";
             txtObservacoes.Text = "";
+            lblEscala.Text = "";
             errorProvider.Clear();
         }
 
@@ -216,18 +227,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 vacinacao.Add(queima);
             }
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = vacinacao };
-            dataGridViewVacinacao.DataSource = bindingSource1;
-            dataGridViewVacinacao.Columns[0].HeaderText = "Data da Vacinação";
-            dataGridViewVacinacao.Columns[1].HeaderText = "Nome da Vacina";
-            dataGridViewVacinacao.Columns[2].HeaderText = "Marca Comercial";
-            dataGridViewVacinacao.Columns[3].HeaderText = "Número da Inoculação";
-            dataGridViewVacinacao.Columns[4].HeaderText = "Lote";
-            dataGridViewVacinacao.Columns[5].HeaderText = "Local";
-            dataGridViewVacinacao.Columns[6].HeaderText = "Observações";
-
             conn.Close();
-            dataGridViewVacinacao.Update();
-            dataGridViewVacinacao.Refresh();
         }
 
         private Boolean VerificarDadosInseridos()
@@ -253,6 +253,54 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnLocalizacaoDor_Click(object sender, EventArgs e)
+        {
+            FormLocalizacaoDorCorpo formLocalizacaoDorCorpo = new FormLocalizacaoDorCorpo(enfermeiro, paciente);
+            formLocalizacaoDorCorpo.Show();
+        }
+
+        private void btnSemDor_Click(object sender, EventArgs e)
+        {
+            lblEscala.Text = lblSemDor.Text;
+        }
+
+        private void btnDorLigeira_Click(object sender, EventArgs e)
+        {
+            lblEscala.Text = lblDorLigeira.Text;
+        }
+
+        private void btnDorModerada_Click(object sender, EventArgs e)
+        {
+            lblEscala.Text = lblDorModerada.Text;
+        }
+
+        private void btnDorForte_Click(object sender, EventArgs e)
+        {
+            lblEscala.Text = lblDorForte.Text;
+        }
+
+        private void btnDorMuitoForte_Click(object sender, EventArgs e)
+        {
+            lblEscala.Text = lblDorMuitoForte.Text;
+        }
+
+        private void btnDorMaxima_Click(object sender, EventArgs e)
+        {
+            lblEscala.Text = lblDorMaxima.Text;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            VerVacinacaoRegistada verVacinacaoRegistada = new VerVacinacaoRegistada(paciente);
+            verVacinacaoRegistada.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            VerImagem verImagem = new VerImagem();
+            verImagem.Show();
         }
     }
 }

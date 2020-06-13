@@ -40,16 +40,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panelTitulo = new System.Windows.Forms.Panel();
-            this.btnLimparCampos = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnFechar = new System.Windows.Forms.PictureBox();
-            this.btnMaximizar = new System.Windows.Forms.PictureBox();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.txtAnatolico = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtEnzimatico = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.panelTitulo = new System.Windows.Forms.Panel();
+            this.btnFechar = new System.Windows.Forms.PictureBox();
+            this.btnMaximizar = new System.Windows.Forms.PictureBox();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.btnLimparCampos = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             btnVoltar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panelTitulo.SuspendLayout();
@@ -57,6 +58,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnVoltar
+            // 
+            btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnVoltar.ForeColor = System.Drawing.Color.Black;
+            btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            btnVoltar.Location = new System.Drawing.Point(10, 447);
+            btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnVoltar.Size = new System.Drawing.Size(72, 66);
+            btnVoltar.TabIndex = 89;
+            btnVoltar.Text = "     Voltar";
+            btnVoltar.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            btnVoltar.UseVisualStyleBackColor = false;
+            btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // txtCirurgico
             // 
@@ -106,9 +127,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.label2.Location = new System.Drawing.Point(7, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(243, 31);
+            this.label2.Size = new System.Drawing.Size(211, 31);
             this.label2.TabIndex = 91;
-            this.label2.Text = "Drenagem Locas:";
+            this.label2.Text = "Desbridamento";
             // 
             // label6
             // 
@@ -161,6 +182,40 @@
             this.groupBox1.TabIndex = 90;
             this.groupBox1.TabStop = false;
             // 
+            // txtAnatolico
+            // 
+            this.txtAnatolico.Location = new System.Drawing.Point(17, 96);
+            this.txtAnatolico.Multiline = true;
+            this.txtAnatolico.Name = "txtAnatolico";
+            this.txtAnatolico.Size = new System.Drawing.Size(490, 102);
+            this.txtAnatolico.TabIndex = 19;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 73);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 20);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Anatolico:";
+            // 
+            // txtEnzimatico
+            // 
+            this.txtEnzimatico.Location = new System.Drawing.Point(533, 96);
+            this.txtEnzimatico.Multiline = true;
+            this.txtEnzimatico.Name = "txtEnzimatico";
+            this.txtEnzimatico.Size = new System.Drawing.Size(490, 102);
+            this.txtEnzimatico.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(529, 73);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(91, 20);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Enzimático:";
+            // 
             // panelTitulo
             // 
             this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
@@ -173,68 +228,6 @@
             this.panelTitulo.Name = "panelTitulo";
             this.panelTitulo.Size = new System.Drawing.Size(1048, 40);
             this.panelTitulo.TabIndex = 87;
-            // 
-            // btnVoltar
-            // 
-            btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnVoltar.ForeColor = System.Drawing.Color.Black;
-            btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnVoltar.Location = new System.Drawing.Point(10, 447);
-            btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            btnVoltar.Name = "btnVoltar";
-            btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            btnVoltar.Size = new System.Drawing.Size(72, 66);
-            btnVoltar.TabIndex = 89;
-            btnVoltar.Text = "     Voltar";
-            btnVoltar.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            btnVoltar.UseVisualStyleBackColor = false;
-            btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
-            // 
-            // btnLimparCampos
-            // 
-            this.btnLimparCampos.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnLimparCampos.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
-            this.btnLimparCampos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnLimparCampos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimparCampos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimparCampos.ForeColor = System.Drawing.Color.Black;
-            this.btnLimparCampos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnLimparCampos.Location = new System.Drawing.Point(532, 465);
-            this.btnLimparCampos.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLimparCampos.Name = "btnLimparCampos";
-            this.btnLimparCampos.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnLimparCampos.Size = new System.Drawing.Size(174, 48);
-            this.btnLimparCampos.TabIndex = 93;
-            this.btnLimparCampos.Text = "Limpar Campos";
-            this.btnLimparCampos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLimparCampos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLimparCampos.UseVisualStyleBackColor = false;
-            this.btnLimparCampos.Click += new System.EventHandler(this.btnLimparCampos_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_guardar_todos_50;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(358, 465);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGuardar.Size = new System.Drawing.Size(174, 48);
-            this.btnGuardar.TabIndex = 92;
-            this.btnGuardar.Text = "Registar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnFechar
             // 
@@ -279,39 +272,66 @@
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
-            // txtAnatolico
+            // btnLimparCampos
             // 
-            this.txtAnatolico.Location = new System.Drawing.Point(17, 96);
-            this.txtAnatolico.Multiline = true;
-            this.txtAnatolico.Name = "txtAnatolico";
-            this.txtAnatolico.Size = new System.Drawing.Size(490, 102);
-            this.txtAnatolico.TabIndex = 19;
+            this.btnLimparCampos.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnLimparCampos.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
+            this.btnLimparCampos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnLimparCampos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimparCampos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimparCampos.ForeColor = System.Drawing.Color.Black;
+            this.btnLimparCampos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnLimparCampos.Location = new System.Drawing.Point(714, 465);
+            this.btnLimparCampos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLimparCampos.Name = "btnLimparCampos";
+            this.btnLimparCampos.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnLimparCampos.Size = new System.Drawing.Size(174, 48);
+            this.btnLimparCampos.TabIndex = 93;
+            this.btnLimparCampos.Text = "Limpar Campos";
+            this.btnLimparCampos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLimparCampos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLimparCampos.UseVisualStyleBackColor = false;
+            this.btnLimparCampos.Click += new System.EventHandler(this.btnLimparCampos_Click);
             // 
-            // label5
+            // btnGuardar
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 73);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 20);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Anatolico:";
+            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_guardar_todos_50;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(540, 465);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGuardar.Size = new System.Drawing.Size(174, 48);
+            this.btnGuardar.TabIndex = 92;
+            this.btnGuardar.Text = "Registar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // txtEnzimatico
+            // button1
             // 
-            this.txtEnzimatico.Location = new System.Drawing.Point(533, 96);
-            this.txtEnzimatico.Multiline = true;
-            this.txtEnzimatico.Name = "txtEnzimatico";
-            this.txtEnzimatico.Size = new System.Drawing.Size(490, 102);
-            this.txtEnzimatico.TabIndex = 17;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(529, 73);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 20);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Enzimático:";
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(161, 451);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(174, 62);
+            this.button1.TabIndex = 94;
+            this.button1.Text = "Ver Desbridamentos Registados";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // AdicionarDesbridamentoPaciente
             // 
@@ -319,6 +339,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(1048, 518);
+            this.Controls.Add(this.button1);
             this.Controls.Add(btnVoltar);
             this.Controls.Add(this.btnLimparCampos);
             this.Controls.Add(this.label2);
@@ -366,5 +387,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtEnzimatico;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button1;
     }
 }

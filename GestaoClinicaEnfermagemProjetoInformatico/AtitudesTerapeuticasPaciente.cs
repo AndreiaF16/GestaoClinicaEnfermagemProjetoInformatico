@@ -20,6 +20,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
       //  private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
        // private List<AnaliseLaboratorialPaciente> analisePaciente = new List<AnaliseLaboratorialPaciente>();
         private ErrorProvider errorProvider = new ErrorProvider();
+        private int id = -1;
+        private int idZaragatoa = -1;
+        private int idFezesParasitologico = -1;
+        private int idFezesSangueOculto = -1;
+        private int idColheitaSangue = -1;
+        private int idEnemaLimpeza = -1;
+        private int idLavagemGastrica = -1;
+
         public AtitudesTerapeuticasPaciente(Paciente pac)
         {
             InitializeComponent();
@@ -45,6 +53,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 btnDIU.Visible = false;
                 btnImplanteContracetivo.Visible = false;
             }
+            variasAtitudes();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -206,7 +215,134 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button19_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Falta Implementar!!!");
+            DateTime dataRegisto = DateTime.Today;
+
+            bool msg = false;       
+
+            if (VerificarDadosInseridos())
+            {
+                try
+                {
+                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    if (cbColheitaExpetoracao.Checked == true)
+                    {
+                        msg = true;
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO VariasAtitudes(IdAtitude,IdPaciente,data) VALUES(@id,@IdPaciente,@dataR);";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                        sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
+                        sqlCommand.Parameters.AddWithValue("@id", id);
+                    
+                        sqlCommand.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    if (cbZaragatoa.Checked == true)
+                    {
+                        msg = true;
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO VariasAtitudes(IdAtitude,IdPaciente,data) VALUES(@idZaragatoa,@IdPaciente,@dataR);";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                        sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
+                        sqlCommand.Parameters.AddWithValue("@idZaragatoa", idZaragatoa);
+                      
+                        sqlCommand.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    if (cbFezesParasitologico.Checked == true)
+                    {
+                        msg = true;
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO VariasAtitudes(IdAtitude,IdPaciente,data) VALUES(@idFezesParasitologico,@IdPaciente,@dataR);";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                        sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
+                        sqlCommand.Parameters.AddWithValue("@idFezesParasitologico", idFezesParasitologico);
+
+                        sqlCommand.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    if (cbFezesSangueOculto.Checked == true)
+                    {
+                        msg = true;
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO VariasAtitudes(IdAtitude,IdPaciente,data) VALUES(@idFezesSangueOculto,@IdPaciente,@dataR);";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                        sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
+                        sqlCommand.Parameters.AddWithValue("@idFezesSangueOculto", idFezesSangueOculto);
+
+                        sqlCommand.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    if (cbColheitaSangue.Checked == true)
+                    {
+                        msg = true;
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO VariasAtitudes(IdAtitude,IdPaciente,data) VALUES(@idColheitaSangue,@IdPaciente,@dataR);";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                        sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
+                        sqlCommand.Parameters.AddWithValue("@idColheitaSangue", idColheitaSangue);
+
+                        sqlCommand.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    if (cbEnemaLimpeza.Checked == true)
+                    {
+                        msg = true;
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO VariasAtitudes(IdAtitude,IdPaciente,data) VALUES(@idEnemaLimpeza,@IdPaciente,@dataR);";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                        sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
+                        sqlCommand.Parameters.AddWithValue("@idEnemaLimpeza", idEnemaLimpeza);
+
+                        sqlCommand.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    if (cbLavagemGastrica.Checked == true)
+                    {
+                        msg = true;
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO VariasAtitudes(IdAtitude,IdPaciente,data) VALUES(@idLavagemGastrica,@IdPaciente,@dataR);";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                        sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
+                        sqlCommand.Parameters.AddWithValue("@idLavagemGastrica", idLavagemGastrica);
+
+                        sqlCommand.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    if (msg== true)
+                    {
+                        MessageBox.Show("Atitude(s) Terapêutica(s) registada(s) com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                }
+                catch (SqlException excep)
+                {
+
+                    MessageBox.Show("Por erro interno é impossível registar a(s) atitude(s) Terapêutica(s)!", excep.Message);
+                }
+
+            }
+
         }
 
         private void button25_Click(object sender, EventArgs e)
@@ -249,6 +385,288 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             AdicionarZaragatoaOnofaringePaciente adicionarZaragatoaOnofaringePaciente = new AdicionarZaragatoaOnofaringePaciente(paciente);
             adicionarZaragatoaOnofaringePaciente.Show();
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            AdicionarTesteComburPaciente adicionarTesteComburPaciente = new AdicionarTesteComburPaciente(paciente);
+            adicionarTesteComburPaciente.Show();
+        }
+
+        private void variasAtitudes()
+        {
+            //colheita expectoracao
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita expectoração'", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                id = (int)reader["IdAtitude"];
+            }
+            conn.Close();
+
+            //exsudado zaragatoa
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd1 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita exsudado zaragatoa'", conn);
+            SqlDataReader reader1 = cmd1.ExecuteReader();
+            while (reader1.Read())
+            {
+                idZaragatoa = (int)reader1["IdAtitude"];
+            }
+            conn.Close();
+
+       
+
+        //Fezes Paratológico
+        conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd2 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita fezes parasitológico'", conn);
+            SqlDataReader reader2 = cmd2.ExecuteReader();
+            while (reader2.Read())
+            {
+                idFezesParasitologico = (int) reader2["IdAtitude"];
+            }
+            conn.Close();
+
+            //Fezes sangue Oculto
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd3 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita fezes sangue oculto'", conn);
+                SqlDataReader reader3 = cmd3.ExecuteReader();
+            while (reader3.Read())
+            {
+                idFezesSangueOculto = (int) reader3["IdAtitude"];
+            }
+            conn.Close();
+
+            //Colheita Sangue
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd4 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita sangue'", conn);
+            SqlDataReader reader4 = cmd4.ExecuteReader();
+            while (reader4.Read())
+            {
+                idColheitaSangue = (int)reader4["IdAtitude"];
+            }
+            conn.Close();
+
+            //Enema Limpeza
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd5 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Enema limpeza'", conn);
+            SqlDataReader reader5 = cmd5.ExecuteReader();
+            while (reader5.Read())
+            {
+                idEnemaLimpeza = (int)reader5["IdAtitude"];
+            }
+            conn.Close();
+
+            //Lavagem Gastrica
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd6 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Lavagem Gástrica'", conn);
+            SqlDataReader reader6 = cmd6.ExecuteReader();
+            while (reader6.Read())
+            {
+                idLavagemGastrica = (int)reader6["IdAtitude"];
+            }
+            conn.Close();
+
+
+    }
+
+        private Boolean VerificarDadosInseridos()
+        {
+
+            if (cbColheitaExpetoracao.Checked == true)
+            {
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    DateTime dataRegistoHoje = DateTime.Today;
+
+                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                    if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && id == (int)reader["IdAtitude"])
+                    {
+                        MessageBox.Show("Não é possível registar a Colheita Expectoração, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return false;
+                    }
+                }
+                conn.Close();
+            }
+
+            if (cbZaragatoa.Checked == true)
+            {
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                cmd.Parameters.AddWithValue("@id", idZaragatoa);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    DateTime dataRegistoHoje = DateTime.Today;
+
+                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                    if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idZaragatoa == (int)reader["IdAtitude"])
+                    {
+                        MessageBox.Show("Não é possível registar a Colheita Exsudado Zaragatoa, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return false;
+                    }
+                }
+                conn.Close();
+            }
+
+            if (cbFezesParasitologico.Checked == true)
+            {
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                cmd.Parameters.AddWithValue("@id", idFezesParasitologico);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    DateTime dataRegistoHoje = DateTime.Today;
+
+                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                    if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idFezesParasitologico == (int)reader["IdAtitude"])
+                    {
+                        MessageBox.Show("Não é possível registar a Colheita Fezes Parasitológico, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return false;
+                    }
+                }
+                conn.Close();
+            }
+
+            if (cbFezesSangueOculto.Checked == true)
+            {
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                cmd.Parameters.AddWithValue("@id", idFezesSangueOculto);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    DateTime dataRegistoHoje = DateTime.Today;
+
+                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                    if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idFezesSangueOculto == (int)reader["IdAtitude"])
+                    {
+                        MessageBox.Show("Não é possível registar a Colheita Fezes Sangue Oculto, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return false;
+                    }
+                }
+                conn.Close();
+            }
+
+            if (cbColheitaSangue.Checked == true)
+            {
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                cmd.Parameters.AddWithValue("@id", idColheitaSangue);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    DateTime dataRegistoHoje = DateTime.Today;
+
+                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                    if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idColheitaSangue == (int)reader["IdAtitude"])
+                    {
+                        MessageBox.Show("Não é possível registar a Colheita Sangue, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return false;
+                    }
+                }
+                conn.Close();
+            }
+
+            if (cbEnemaLimpeza.Checked == true)
+            {
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                cmd.Parameters.AddWithValue("@id", idEnemaLimpeza);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    DateTime dataRegistoHoje = DateTime.Today;
+
+                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                    if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idEnemaLimpeza == (int)reader["IdAtitude"])
+                    {
+                        MessageBox.Show("Não é possível registar a Enema Limpeza, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return false;
+                    }
+                }
+                conn.Close();
+            }
+
+            if (cbLavagemGastrica.Checked == true)
+            {
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                cmd.Parameters.AddWithValue("@id", idLavagemGastrica);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    DateTime dataRegistoHoje = DateTime.Today;
+
+                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                    if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idLavagemGastrica == (int)reader["IdAtitude"])
+                    {
+                        MessageBox.Show("Não é possível registar a Lavagem Gástrica, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return false;
+                    }
+                }
+                conn.Close();
+            }                     
+                return true;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            VerVariasAtitudes verVariasAtitudes = new VerVariasAtitudes(paciente);
+            verVariasAtitudes.Show();
+        }
+
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+            VerVariasAtitudes verVariasAtitudes = new VerVariasAtitudes(paciente);
+            verVariasAtitudes.Show();
         }
     }
 }

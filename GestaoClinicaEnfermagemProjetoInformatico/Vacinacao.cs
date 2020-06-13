@@ -14,6 +14,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public string numeroInoculacao { get; set; }
         public string lote { get; set; }
         public string local { get; set; }
+        public string escalaDor { get; set; }
         public string observacoes { get; set; }
 
     }

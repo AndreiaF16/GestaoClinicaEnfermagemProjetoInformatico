@@ -1118,5 +1118,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             AdicionarOutrosTratamentosPaciente adicionarOutrosTratamentosPaciente = new AdicionarOutrosTratamentosPaciente(paciente);
             adicionarOutrosTratamentosPaciente.Show();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            VerImagem verImagem = new VerImagem();
+            verImagem.Show();
+        }
     }
 }
