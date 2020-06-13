@@ -606,6 +606,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProdutosEmStock";
+            this.ShowInTaskbar = false;
             this.Text = "ProdutosEmStock";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ProdutosEmStock_Load);

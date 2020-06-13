@@ -49,35 +49,36 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.cbPessario = new System.Windows.Forms.CheckBox();
             this.dataPessario = new System.Windows.Forms.DateTimePicker();
             this.lblPessario = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.cbLQ = new System.Windows.Forms.CheckBox();
             this.dataLaqTrompas = new System.Windows.Forms.DateTimePicker();
             this.lblLQ = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cbIntramuscular = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtIntramuscular = new System.Windows.Forms.TextBox();
             this.dataIntramuscular = new System.Windows.Forms.DateTimePicker();
             this.lblDataIntramuscular = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cbAnelVaginal = new System.Windows.Forms.CheckBox();
             this.dataAnelVaginal = new System.Windows.Forms.DateTimePicker();
             this.lblAnelVaginal = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbImplante = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtImplante = new System.Windows.Forms.TextBox();
             this.dataImplante = new System.Windows.Forms.DateTimePicker();
             this.lblImplante = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cbDIU = new System.Windows.Forms.CheckBox();
             this.txtOral = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnLimparCampos = new System.Windows.Forms.Button();
             this.btnRegistar = new System.Windows.Forms.Button();
-            this.cbIntramuscular = new System.Windows.Forms.CheckBox();
-            this.cbLQ = new System.Windows.Forms.CheckBox();
-            this.cbPessario = new System.Windows.Forms.CheckBox();
-            this.cbAnelVaginal = new System.Windows.Forms.CheckBox();
-            this.cbImplante = new System.Windows.Forms.CheckBox();
-            this.cbDIU = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             btnVoltar = new System.Windows.Forms.Button();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
@@ -330,6 +331,17 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Pessário";
             // 
+            // cbPessario
+            // 
+            this.cbPessario.AutoSize = true;
+            this.cbPessario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPessario.Location = new System.Drawing.Point(14, 30);
+            this.cbPessario.Name = "cbPessario";
+            this.cbPessario.Size = new System.Drawing.Size(15, 14);
+            this.cbPessario.TabIndex = 25;
+            this.cbPessario.UseVisualStyleBackColor = true;
+            this.cbPessario.CheckedChanged += new System.EventHandler(this.cbPessario_CheckedChanged);
+            // 
             // dataPessario
             // 
             this.dataPessario.Enabled = false;
@@ -362,6 +374,17 @@
             this.groupBox7.TabIndex = 22;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Laqueação Trompas";
+            // 
+            // cbLQ
+            // 
+            this.cbLQ.AutoSize = true;
+            this.cbLQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLQ.Location = new System.Drawing.Point(16, 33);
+            this.cbLQ.Name = "cbLQ";
+            this.cbLQ.Size = new System.Drawing.Size(15, 14);
+            this.cbLQ.TabIndex = 24;
+            this.cbLQ.UseVisualStyleBackColor = true;
+            this.cbLQ.CheckedChanged += new System.EventHandler(this.cbLQ_CheckedChanged);
             // 
             // dataLaqTrompas
             // 
@@ -397,6 +420,17 @@
             this.groupBox5.TabIndex = 24;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Intramuscular (IM)";
+            // 
+            // cbIntramuscular
+            // 
+            this.cbIntramuscular.AutoSize = true;
+            this.cbIntramuscular.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbIntramuscular.Location = new System.Drawing.Point(16, 91);
+            this.cbIntramuscular.Name = "cbIntramuscular";
+            this.cbIntramuscular.Size = new System.Drawing.Size(15, 14);
+            this.cbIntramuscular.TabIndex = 23;
+            this.cbIntramuscular.UseVisualStyleBackColor = true;
+            this.cbIntramuscular.CheckedChanged += new System.EventHandler(this.cbIntramuscular_CheckedChanged);
             // 
             // label11
             // 
@@ -449,6 +483,17 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Anel Vaginal";
             // 
+            // cbAnelVaginal
+            // 
+            this.cbAnelVaginal.AutoSize = true;
+            this.cbAnelVaginal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAnelVaginal.Location = new System.Drawing.Point(14, 31);
+            this.cbAnelVaginal.Name = "cbAnelVaginal";
+            this.cbAnelVaginal.Size = new System.Drawing.Size(15, 14);
+            this.cbAnelVaginal.TabIndex = 26;
+            this.cbAnelVaginal.UseVisualStyleBackColor = true;
+            this.cbAnelVaginal.CheckedChanged += new System.EventHandler(this.cbAnelVaginal_CheckedChanged);
+            // 
             // dataAnelVaginal
             // 
             this.dataAnelVaginal.Enabled = false;
@@ -483,6 +528,17 @@
             this.groupBox4.TabIndex = 22;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Implante";
+            // 
+            // cbImplante
+            // 
+            this.cbImplante.AutoSize = true;
+            this.cbImplante.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbImplante.Location = new System.Drawing.Point(15, 86);
+            this.cbImplante.Name = "cbImplante";
+            this.cbImplante.Size = new System.Drawing.Size(15, 14);
+            this.cbImplante.TabIndex = 27;
+            this.cbImplante.UseVisualStyleBackColor = true;
+            this.cbImplante.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label10
             // 
@@ -535,6 +591,17 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "DIU";
             // 
+            // cbDIU
+            // 
+            this.cbDIU.AutoSize = true;
+            this.cbDIU.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDIU.Location = new System.Drawing.Point(15, 31);
+            this.cbDIU.Name = "cbDIU";
+            this.cbDIU.Size = new System.Drawing.Size(15, 14);
+            this.cbDIU.TabIndex = 28;
+            this.cbDIU.UseVisualStyleBackColor = true;
+            this.cbDIU.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
             // txtOral
             // 
             this.txtOral.Location = new System.Drawing.Point(130, 22);
@@ -561,7 +628,7 @@
             this.btnLimparCampos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimparCampos.ForeColor = System.Drawing.Color.Black;
             this.btnLimparCampos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnLimparCampos.Location = new System.Drawing.Point(689, 705);
+            this.btnLimparCampos.Location = new System.Drawing.Point(1143, 705);
             this.btnLimparCampos.Margin = new System.Windows.Forms.Padding(2);
             this.btnLimparCampos.Name = "btnLimparCampos";
             this.btnLimparCampos.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -582,7 +649,7 @@
             this.btnRegistar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistar.ForeColor = System.Drawing.Color.Black;
             this.btnRegistar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnRegistar.Location = new System.Drawing.Point(515, 705);
+            this.btnRegistar.Location = new System.Drawing.Point(969, 705);
             this.btnRegistar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistar.Name = "btnRegistar";
             this.btnRegistar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -594,71 +661,24 @@
             this.btnRegistar.UseVisualStyleBackColor = false;
             this.btnRegistar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // cbIntramuscular
+            // button1
             // 
-            this.cbIntramuscular.AutoSize = true;
-            this.cbIntramuscular.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbIntramuscular.Location = new System.Drawing.Point(16, 91);
-            this.cbIntramuscular.Name = "cbIntramuscular";
-            this.cbIntramuscular.Size = new System.Drawing.Size(15, 14);
-            this.cbIntramuscular.TabIndex = 23;
-            this.cbIntramuscular.UseVisualStyleBackColor = true;
-            this.cbIntramuscular.CheckedChanged += new System.EventHandler(this.cbIntramuscular_CheckedChanged);
-            // 
-            // cbLQ
-            // 
-            this.cbLQ.AutoSize = true;
-            this.cbLQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbLQ.Location = new System.Drawing.Point(16, 33);
-            this.cbLQ.Name = "cbLQ";
-            this.cbLQ.Size = new System.Drawing.Size(15, 14);
-            this.cbLQ.TabIndex = 24;
-            this.cbLQ.UseVisualStyleBackColor = true;
-            this.cbLQ.CheckedChanged += new System.EventHandler(this.cbLQ_CheckedChanged);
-            // 
-            // cbPessario
-            // 
-            this.cbPessario.AutoSize = true;
-            this.cbPessario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPessario.Location = new System.Drawing.Point(14, 30);
-            this.cbPessario.Name = "cbPessario";
-            this.cbPessario.Size = new System.Drawing.Size(15, 14);
-            this.cbPessario.TabIndex = 25;
-            this.cbPessario.UseVisualStyleBackColor = true;
-            this.cbPessario.CheckedChanged += new System.EventHandler(this.cbPessario_CheckedChanged);
-            // 
-            // cbAnelVaginal
-            // 
-            this.cbAnelVaginal.AutoSize = true;
-            this.cbAnelVaginal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbAnelVaginal.Location = new System.Drawing.Point(14, 31);
-            this.cbAnelVaginal.Name = "cbAnelVaginal";
-            this.cbAnelVaginal.Size = new System.Drawing.Size(15, 14);
-            this.cbAnelVaginal.TabIndex = 26;
-            this.cbAnelVaginal.UseVisualStyleBackColor = true;
-            this.cbAnelVaginal.CheckedChanged += new System.EventHandler(this.cbAnelVaginal_CheckedChanged);
-            // 
-            // cbImplante
-            // 
-            this.cbImplante.AutoSize = true;
-            this.cbImplante.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbImplante.Location = new System.Drawing.Point(15, 86);
-            this.cbImplante.Name = "cbImplante";
-            this.cbImplante.Size = new System.Drawing.Size(15, 14);
-            this.cbImplante.TabIndex = 27;
-            this.cbImplante.UseVisualStyleBackColor = true;
-            this.cbImplante.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // cbDIU
-            // 
-            this.cbDIU.AutoSize = true;
-            this.cbDIU.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDIU.Location = new System.Drawing.Point(15, 31);
-            this.cbDIU.Name = "cbDIU";
-            this.cbDIU.Size = new System.Drawing.Size(15, 14);
-            this.cbDIU.TabIndex = 28;
-            this.cbDIU.UseVisualStyleBackColor = true;
-            this.cbDIU.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(564, 690);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(174, 63);
+            this.button1.TabIndex = 73;
+            this.button1.Text = "Ver Colpocitologias Registadas";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // AdicionarColpocitologiaPaciente
             // 
@@ -666,6 +686,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(1337, 764);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnLimparCampos);
             this.Controls.Add(this.panelTitulo);
             this.Controls.Add(this.btnRegistar);
@@ -676,6 +697,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarColpocitologiaPaciente";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdicionarColpocitologiaPaciente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -756,5 +778,6 @@
         private System.Windows.Forms.CheckBox cbAnelVaginal;
         private System.Windows.Forms.CheckBox cbImplante;
         private System.Windows.Forms.CheckBox cbDIU;
+        private System.Windows.Forms.Button button1;
     }
 }

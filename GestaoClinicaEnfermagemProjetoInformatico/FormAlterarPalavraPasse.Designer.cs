@@ -186,9 +186,6 @@
             this.lblPassword.TabIndex = 12;
             this.lblPassword.Text = "Confirmar Nova Password:";
             // 
-            // data
-            // 
-            // 
             // btnAlterarPassword
             // 
             this.btnAlterarPassword.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -215,6 +212,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAlterarPalavraPasse";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAlterarPalavraPasse";
             this.Load += new System.EventHandler(this.FormAlterarPalavraPasse_Load);

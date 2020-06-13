@@ -285,7 +285,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     if (temperatura > 0)
                     {
-                        sqlCommand.Parameters.AddWithValue("@temperatura", Convert.ToString(temperatura));
+                        sqlCommand.Parameters.AddWithValue("@temperatura", temperatura);
                     }
                     else
                     {
@@ -625,6 +625,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             radioButtonFotoSim.Checked = false;
             radioButtonFotoNao.Checked = false;
             txtObservacoes.Text = "";
+            txtAleitamento.Visible = false;
+            groupBoxPartoDistocico.Visible = false;
+            radioButtonForceps.Visible = false;
+            radioButtonVentosa.Visible = false;
+            lblAleitamentoArtificial.Visible = false;
             reiniciar();
         }
     }

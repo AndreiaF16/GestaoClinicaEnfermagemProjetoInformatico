@@ -35,7 +35,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataSuperior.MaxDate = DateTime.Today;
             dataSuperior.Enabled = false;
             comboBoxDespesa.Enabled = false;
-            comboBoxEncomenda.Enabled = false;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         }
@@ -142,7 +141,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private List<ComboBoxItem> filtrosDePesquisaEncomenda()
+     /*   private List<ComboBoxItem> filtrosDePesquisaEncomenda()
         {
             auxiliar = new List<ComboBoxItem>();
 
@@ -159,7 +158,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             auxiliar = encomenda;
             return auxiliar;
-        }
+        }*/
 
         private List<ComboBoxItem> filtrosDePesquisaDespesa()
         {
@@ -185,7 +184,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             despesa.Clear();
             encomenda.Clear();
             comboBoxDespesa.Items.Clear();
-            comboBoxEncomenda.Items.Clear();
+            //comboBoxEncomenda.Items.Clear();
             auxiliar.Clear();
             conn.Open();
             com.Connection = conn;
@@ -211,58 +210,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 ComboBoxItem item = new ComboBoxItem();
                 item.Text = (string)reader1["Nfatura"];
                 item.Value = (int)reader1["IdEncomenda"];
-                comboBoxEncomenda.Items.Add(item);
+                //comboBoxEncomenda.Items.Add(item);
                 encomenda.Add(item);
             }
 
             conn.Close();
         }
+    
 
-        private void txtProcurarEncomenda_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-
-                comboBoxEncomenda.Items.Clear();
-                foreach (var pesquisa in filtrosDePesquisaEncomenda())
-                {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Text = pesquisa.Text;
-                    item.Value = pesquisa.Value;
-                    comboBoxEncomenda.Items.Add(item);
-                }
-
-            }
-        }
-
-        private void comboBoxDespesa_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            if (comboBoxDespesa.SelectedItem.ToString() == "Encomendas")
-            {
-                comboBoxEncomenda.Visible = true;
-                lblEncomenda.Visible = true;
-            }
-            else
-            {
-                comboBoxEncomenda.Visible = false;
-                lblEncomenda.Visible = false;
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
-            dataGridViewDespesas.DataSource = bindingSource1;
-        }
-
-        private void dataInferior_ValueChanged(object sender, EventArgs e)
-        {
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
-            dataGridViewDespesas.DataSource = bindingSource1;
-        }
-
-        private void dataSuperior_ValueChanged(object sender, EventArgs e)
-        {
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
-            dataGridViewDespesas.DataSource = bindingSource1;
-        }
+       
 
         private List<Despesa> filtrosDePesquisa()
         {
@@ -272,7 +228,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             auxiliarDespesas = new List<Despesa>();
             //só para uma data
-            if (comboBoxEncomenda.Text == "" && checkBox1.Checked == true && checkBox2.Checked == false && checkBox3.Checked == false && checkBox4.Checked == false)
+            if (cbUmaData.Checked == true && cbDuasDatas.Checked == false && cbDespesas.Checked == false)
             {            
                 foreach (Despesa despesas in listaDespesas)
                 {
@@ -287,7 +243,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
             //só para a despesa
-            if (comboBoxDespesa.Text != "" && comboBoxEncomenda.Text == "" && checkBox1.Checked == false && checkBox2.Checked == false && checkBox4.Checked == false)
+            if (cbDespesas.Checked == true && cbUmaData.Checked == false && cbDuasDatas.Checked == false)
             {
                 foreach (Despesa despesas in listaDespesas)
                 {
@@ -299,22 +255,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return auxiliarDespesas;
             }
 
-            //para a despesa e encomenda
-            if (comboBoxDespesa.Text != "" && comboBoxEncomenda.Text != "" && checkBox1.Checked == false && checkBox2.Checked == false && checkBox4.Checked == false)
-            {
-                foreach (Despesa despesas in listaDespesas)
-                {
-
-                    if (despesas.tipoDespesa.ToLower().Contains(comboBoxDespesa.Text.ToLower()) && despesas.encomenda.ToLower().Contains(comboBoxEncomenda.Text.ToLower()))
-                    {
-                        auxiliarDespesas.Add(despesas);
-                    }
-                }
-                return auxiliarDespesas;
-            }
-
             //para a despesa e uma data
-            if (comboBoxDespesa.Text != "" && comboBoxEncomenda.Text == "" && checkBox1.Checked == true && checkBox2.Checked == false && checkBox4.Checked == false)
+            if (cbDespesas.Checked == true && cbUmaData.Checked == true && cbDuasDatas.Checked == false)
             {
                 foreach (Despesa despesas in listaDespesas)
                 {
@@ -331,11 +273,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
             //para a despesa e entre duas datas
-            if (comboBoxDespesa.Text != "" && comboBoxEncomenda.Text == "" && checkBox1.Checked == false && checkBox2.Checked == true && checkBox4.Checked == false)
+            if (cbDespesas.Checked == true && cbUmaData.Checked == false && cbDuasDatas.Checked == true )
             {
                 foreach (Despesa despesas in listaDespesas)
                 {
-                    if (despesas.tipoDespesa.ToLower().Contains(comboBoxDespesa.Text.ToLower()) &&   ((Convert.ToDateTime(despesas.dataRegisto).Date - inicio.Date).TotalDays >= 0 && (fim.Date - Convert.ToDateTime(despesas.dataRegisto).Date).TotalDays >= 0))
+                    DateTime dataInf = dataInferior.Value;
+                    DateTime dataSup = dataSuperior.Value;
+                    DateTime datas = DateTime.ParseExact(despesas.dataRegisto, "dd/MM/yyyy", null);
+                    if (((datas.Date - dataInf.Date).TotalDays >= 0 && (datas.Date - dataSup.Date).TotalDays <= 0 ) && despesas.tipoDespesa.ToLower().Contains(comboBoxDespesa.Text.ToLower()))
                     {
                         auxiliarDespesas.Add(despesas);
                     }
@@ -343,94 +288,32 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return auxiliarDespesas;
             }
 
-            //despesa, encomenda e uma data
-            if (/*comboBoxDespesa.Text != "" &&*/ /*comboBoxEncomenda.Text != "" */ checkBox1.Checked == true && checkBox3.Checked == true && checkBox4.Checked == false)
-            {
-
-                foreach (Despesa despesas in listaDespesas)
-                {
-                    foreach (Encomendas encomendas in listaEncomendas)
-                    {
-
-
-                        DateTime data = DateTime.ParseExact(despesas.dataRegisto, "dd/MM/yyyy", null);
-
-                        if (despesas.tipoDespesa.ToLower().Contains(comboBoxDespesa.Text.ToLower()) &&  encomendas.NFatura.ToLower().Contains(comboBoxEncomenda.Text.ToLower()) && (data.ToShortDateString().Equals(dataSoUma.Value.ToString("dd/MM/yyyy"))))
-                        {
-                            auxiliarEncomendas.Add(encomendas);
-                            auxiliarDespesas.Add(despesas);
-
-                        }
-                    }
-                }
-                return auxiliarDespesas;
-            }
-
-
-            if (comboBoxDespesa.Text != "" && comboBoxEncomenda.Text != "" && checkBox1.Checked == false && checkBox2.Checked == true && checkBox4.Checked == false)
+            // duas datas
+            if (cbDespesas.Checked == false && cbUmaData.Checked == false && cbDuasDatas.Checked == true)
             {
                 foreach (Despesa despesas in listaDespesas)
                 {
-                    if (despesas.tipoDespesa.ToLower().Contains(comboBoxDespesa.Text.ToLower()))
+                    DateTime dataInf = dataInferior.Value; 
+                    DateTime dataSup = dataSuperior.Value;
+                    DateTime datas = DateTime.ParseExact(despesas.dataRegisto, "dd/MM/yyyy", null);
+                    if ((datas.Date - dataInf.Date).TotalDays >= 0 && (datas.Date - dataSup.Date).TotalDays <= 0)
                     {
                         auxiliarDespesas.Add(despesas);
                     }
                 }
                 return auxiliarDespesas;
             }
-
-
-            if (comboBoxDespesa.Text != "" && comboBoxEncomenda.Text == "" && checkBox1.Checked == false && checkBox2.Checked == true && checkBox4.Checked == false)
-            {
-                foreach (Despesa despesas in listaDespesas)
-                {
-                    if (despesas.tipoDespesa.ToLower().Contains(comboBoxDespesa.Text.ToLower()))
-                    {
-                        auxiliarDespesas.Add(despesas);
-                    }
-                }
-                return auxiliarDespesas;
-            }
-
-
-            if (comboBoxDespesa.Text != "" && comboBoxEncomenda.Text == "" && checkBox1.Checked == false && checkBox2.Checked == true && checkBox4.Checked == false)
-            {
-                foreach (Despesa despesas in listaDespesas)
-                {
-                    if (despesas.tipoDespesa.ToLower().Contains(comboBoxDespesa.Text.ToLower()))
-                    {
-                        auxiliarDespesas.Add(despesas);
-                    }
-                }
-                return auxiliarDespesas;
-            }
-
-
-            if (comboBoxDespesa.Text != "" && comboBoxEncomenda.Text == "" && checkBox1.Checked == false && checkBox2.Checked == true && checkBox4.Checked == false)
-            {
-                foreach (Despesa despesas in listaDespesas)
-                {
-                    if (despesas.tipoDespesa.ToLower().Contains(comboBoxDespesa.Text.ToLower()))
-                    {
-                        auxiliarDespesas.Add(despesas);
-                    }
-                }
-                return auxiliarDespesas;
-            }
-
-
-
             auxiliarDespesas = listaDespesas;
             return auxiliarDespesas;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked == true)
+            if (cbUmaData.Checked == true)
             {
                 dataSoUma.Enabled = true;
-                checkBox2.Checked = false;
-                checkBox2.Enabled = false;
+                cbDuasDatas.Checked = false;
+                cbDuasDatas.Enabled = false;
 
                 dataInferior.Checked = false;
                 dataSuperior.Checked = false;
@@ -438,7 +321,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             else
             {
                 dataSoUma.Enabled = false;
-                checkBox2.Enabled = true;
+                cbDuasDatas.Enabled = true;
 
             }
 
@@ -450,12 +333,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
 
-            if (checkBox2.Checked == true)
+            if (cbDuasDatas.Checked == true)
             {
                 dataInferior.Enabled = true;
                 dataSuperior.Enabled = true;
-                checkBox1.Checked = false;
-                checkBox1.Enabled = false;
+                cbUmaData.Checked = false;
+                cbUmaData.Enabled = false;
                 dataSoUma.Checked = false;
 
             }
@@ -463,7 +346,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 dataInferior.Enabled = false;
                 dataSuperior.Enabled = false;
-                checkBox1.Enabled = true;
+                cbUmaData.Enabled = true;
 
             }
 
@@ -473,7 +356,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox3.Checked == true)
+            if (cbDespesas.Checked == true)
             {
                 comboBoxDespesa.Enabled = true;            
             }
@@ -485,20 +368,34 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewDespesas.DataSource = bindingSource1;
         }
 
-        private void checkBox4_CheckedChanged_1(object sender, EventArgs e)
+        private void dataSoUma_ValueChanged(object sender, EventArgs e)
         {
-
-            if (checkBox3.Checked == true)
-            {
-                comboBoxEncomenda.Enabled = true;
-            }
-            else
-            {
-                comboBoxEncomenda.Enabled = false;
-            }
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
             dataGridViewDespesas.DataSource = bindingSource1;
         }
-    
+
+        private void dataInferior_ValueChanged(object sender, EventArgs e)
+        {
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
+            dataGridViewDespesas.DataSource = bindingSource1;
+        }
+
+        private void dataSuperior_ValueChanged(object sender, EventArgs e)
+        {
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
+            dataGridViewDespesas.DataSource = bindingSource1;
+        }
+
+        private void comboBoxDespesa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
+            dataGridViewDespesas.DataSource = bindingSource1;
+        }
+
+        private void comboBoxDespesa_SelectedValueChanged(object sender, EventArgs e)
+        {
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
+            dataGridViewDespesas.DataSource = bindingSource1;
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             dataAvaliacaoObjetivo.Value = DateTime.Today;
-
+            dataUltimaMenstruacao.Value = DateTime.Today;
         }
 
         public void reiniciar()
@@ -209,7 +209,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     if (temperatura > 0)
                     {
-                        sqlCommand.Parameters.AddWithValue("@temperatura", Convert.ToString(temperatura));
+                        sqlCommand.Parameters.AddWithValue("@temperatura", temperatura);
                     }
                     else
                     {

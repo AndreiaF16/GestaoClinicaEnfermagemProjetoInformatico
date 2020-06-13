@@ -281,7 +281,7 @@
             this.btnLimparCampos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimparCampos.ForeColor = System.Drawing.Color.Black;
             this.btnLimparCampos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnLimparCampos.Location = new System.Drawing.Point(714, 465);
+            this.btnLimparCampos.Location = new System.Drawing.Point(863, 459);
             this.btnLimparCampos.Margin = new System.Windows.Forms.Padding(2);
             this.btnLimparCampos.Name = "btnLimparCampos";
             this.btnLimparCampos.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -302,7 +302,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(540, 465);
+            this.btnGuardar.Location = new System.Drawing.Point(689, 459);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -322,7 +322,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.Location = new System.Drawing.Point(161, 451);
+            this.button1.Location = new System.Drawing.Point(298, 452);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -350,6 +350,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarDesbridamentoPaciente";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdicionarDesbridamentoPaciente";
             this.Load += new System.EventHandler(this.AdicionarDesbridamentoPaciente_Load);

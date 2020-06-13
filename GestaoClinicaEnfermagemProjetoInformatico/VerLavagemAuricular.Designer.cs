@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Button btnVoltar;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.Button btnVoltar;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerLavagemAuricular));
             this.dataGridViewLavAuricular = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,6 +49,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnVoltar
+            // 
+            btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnVoltar.ForeColor = System.Drawing.Color.Black;
+            btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            btnVoltar.Location = new System.Drawing.Point(11, 529);
+            btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnVoltar.Size = new System.Drawing.Size(72, 66);
+            btnVoltar.TabIndex = 93;
+            btnVoltar.Text = "     Voltar";
+            btnVoltar.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            btnVoltar.UseVisualStyleBackColor = false;
+            btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // dataGridViewLavAuricular
             // 
@@ -96,26 +116,6 @@
             this.dataGridViewLavAuricular.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewLavAuricular.Size = new System.Drawing.Size(1029, 359);
             this.dataGridViewLavAuricular.TabIndex = 95;
-            // 
-            // btnVoltar
-            // 
-            btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnVoltar.ForeColor = System.Drawing.Color.Black;
-            btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnVoltar.Location = new System.Drawing.Point(11, 529);
-            btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            btnVoltar.Name = "btnVoltar";
-            btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            btnVoltar.Size = new System.Drawing.Size(72, 66);
-            btnVoltar.TabIndex = 93;
-            btnVoltar.Text = "     Voltar";
-            btnVoltar.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            btnVoltar.UseVisualStyleBackColor = false;
-            btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // label2
             // 
@@ -220,6 +220,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerLavagemAuricular";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VerLavagemAuricular";
             this.Load += new System.EventHandler(this.VerLavagemAuricular_Load);

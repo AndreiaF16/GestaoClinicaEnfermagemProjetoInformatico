@@ -472,5 +472,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             AdicionarVerTipoAtitudeTerapeutica adicionarVerTipoAtitudeTerapeutica = new AdicionarVerTipoAtitudeTerapeutica();
             adicionarVerTipoAtitudeTerapeutica.Show();
         }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            AdicionarTipoQueimadura adicionarTipoQueimadura = new AdicionarTipoQueimadura(null);
+            adicionarTipoQueimadura.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            AdicionarTipoUlcera adicionarTipoUlcera = new AdicionarTipoUlcera(null);
+            adicionarTipoUlcera.Show();
+        }
     }
 }

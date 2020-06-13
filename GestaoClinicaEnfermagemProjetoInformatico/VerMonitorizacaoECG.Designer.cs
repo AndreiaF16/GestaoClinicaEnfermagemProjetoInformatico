@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Button btnVoltar;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerMonitorizacaoECG));
-            System.Windows.Forms.Button btnVoltar;
             this.dataGridViewMonitorizacaoECG = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelTitulo = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             btnVoltar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMonitorizacaoECG)).BeginInit();
             this.panelTitulo.SuspendLayout();
@@ -49,6 +49,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnVoltar
+            // 
+            btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnVoltar.ForeColor = System.Drawing.Color.Black;
+            btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            btnVoltar.Location = new System.Drawing.Point(12, 528);
+            btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnVoltar.Size = new System.Drawing.Size(72, 66);
+            btnVoltar.TabIndex = 93;
+            btnVoltar.Text = "     Voltar";
+            btnVoltar.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            btnVoltar.UseVisualStyleBackColor = false;
+            btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // dataGridViewMonitorizacaoECG
             // 
@@ -132,17 +152,6 @@
             this.panelTitulo.Size = new System.Drawing.Size(1047, 40);
             this.panelTitulo.TabIndex = 91;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(3, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(312, 20);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Siltes Saúde - Clinica de Enfermagem";
-            // 
             // btnFechar
             // 
             this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -186,25 +195,16 @@
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
-            // btnVoltar
+            // label4
             // 
-            btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnVoltar.ForeColor = System.Drawing.Color.Black;
-            btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnVoltar.Location = new System.Drawing.Point(12, 528);
-            btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            btnVoltar.Name = "btnVoltar";
-            btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            btnVoltar.Size = new System.Drawing.Size(72, 66);
-            btnVoltar.TabIndex = 93;
-            btnVoltar.Text = "     Voltar";
-            btnVoltar.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            btnVoltar.UseVisualStyleBackColor = false;
-            btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(3, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(312, 20);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Siltes Saúde - Clinica de Enfermagem";
             // 
             // VerMonitorizacaoECG
             // 
@@ -220,6 +220,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerMonitorizacaoECG";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VerMonitorizacaoECG";
             this.Load += new System.EventHandler(this.VerMonitorizacaoECG_Load);

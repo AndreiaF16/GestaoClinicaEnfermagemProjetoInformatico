@@ -103,13 +103,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            AlterarPacienteDeEnfermeiro alterarPacienteDeEnfermeiro = new AlterarPacienteDeEnfermeiro();
-            alterarPacienteDeEnfermeiro.Show();
-            //MessageBox.Show("ATENÇÃO, FALTA IMPLEMENTAR!!!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             ProdutosEmStock produtosEmStock = new ProdutosEmStock(null);

@@ -1108,6 +1108,7 @@
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdicionarVisualizarAvaliacaoObjetivoBebe";
+            this.ShowInTaskbar = false;
             this.Text = "AdicionarVisualizarAvaliacaoObjetivoBebe";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdicionarVisualizarAvaliacaoObjetivoBebe_Load);

@@ -73,7 +73,7 @@
             btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnVoltar.ForeColor = System.Drawing.Color.Black;
             btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnVoltar.Location = new System.Drawing.Point(7, 450);
+            btnVoltar.Location = new System.Drawing.Point(7, 444);
             btnVoltar.Margin = new System.Windows.Forms.Padding(2);
             btnVoltar.Name = "btnVoltar";
             btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -344,7 +344,7 @@
             this.btnLimparCampos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimparCampos.ForeColor = System.Drawing.Color.Black;
             this.btnLimparCampos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnLimparCampos.Location = new System.Drawing.Point(839, 346);
+            this.btnLimparCampos.Location = new System.Drawing.Point(655, 462);
             this.btnLimparCampos.Margin = new System.Windows.Forms.Padding(2);
             this.btnLimparCampos.Name = "btnLimparCampos";
             this.btnLimparCampos.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -365,7 +365,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(839, 298);
+            this.btnGuardar.Location = new System.Drawing.Point(481, 462);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -385,7 +385,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.Location = new System.Drawing.Point(839, 97);
+            this.button1.Location = new System.Drawing.Point(249, 448);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -413,6 +413,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdministrarMedicacaoPaciente";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdministrarMedicacaoPaciente";
             this.Load += new System.EventHandler(this.AdministrarMedicacaoPaciente_Load);

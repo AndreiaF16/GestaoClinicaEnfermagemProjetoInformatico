@@ -440,9 +440,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.Parameters.AddWithValue("@dataNascimento", dtNascimento.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@contacto", Convert.ToInt32(telemovel));
                     sqlCommand.Parameters.AddWithValue("@nif", Convert.ToInt32(nif));
-                    // sqlCommand.Parameters.AddWithValue("@profissao", );
                     sqlCommand.Parameters.AddWithValue("@rua", rua);
-                    //sqlCommand.Parameters.AddWithValue("@numeroCasa", Convert.ToInt32(numeroCasa));
                     sqlCommand.Parameters.AddWithValue("@localidade", localidade);
                     sqlCommand.Parameters.AddWithValue("@codPrefixo", codPrefixo);
                     sqlCommand.Parameters.AddWithValue("@codSufixo", codSufixo);
@@ -561,21 +559,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void txtCodPostalPre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void txtCodPostalSuf_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCodPostalSuf_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
         private void txtContacto_KeyPress(object sender, KeyPressEventArgs e)
         {
             //garantir que são inseridos apenas numeros
@@ -594,11 +577,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void btnFechar_LoadCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-
-        }
-
         private void FormRegistarUtente_Load(object sender, EventArgs e)
         {
             reiniciar();
@@ -607,28 +585,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.txtNome.Focus();
             dataNascimento.Value = DateTime.Now;
         }
-        public void LimpaCampos(Control.ControlCollection textBoxs)
-        {
-            foreach (Control txt in textBoxs)
-            {
-                if (txt.GetType() == typeof(TextBox))
-                {
-                    txt.Text = string.Empty;
-                    this.Close();
-                }
-            }
-        }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             //FormMenu formMenu = new FormMenu(null);
           //  formMenu.Show();
             this.Close();
-        }
-
-        private void panelFormulario_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void btnFechar_Click_1(object sender, EventArgs e)

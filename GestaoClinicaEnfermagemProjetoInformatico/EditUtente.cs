@@ -88,8 +88,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Boolean VerificarDadosInseridos()
         {
             string nome = txtNome.Text;
-            var dtNascimento = dataNascimento.Value;
-            string rua = txtMorada.Text;
+            string rua = txtRua.Text;
             string numeroCasa = txtNumeroCasa.Text;
             string codPostalPrefixo = txtCodPostalPre.Text;
             string codPostalSufixo = txtCodPostalSuf.Text;
@@ -97,8 +96,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string email = txtEmail.Text;
             string telemovel = txtContacto.Text;
             string nif = txtNif.Text;
-         //   string profissao = (String)cbProfissoes.SelectedItem;
-            string acordo = (String)cbAcordos.SelectedItem;
+            string acordo = cbAcordos.Text;
             string nomeSeguradora = txtNomeSeguradora.Text;
             string numeroApolice = txtNApolice.Text;
             string numeroSNS = txtSNS.Text;
@@ -108,134 +106,304 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome == string.Empty || rua == string.Empty || codPostalPrefixo == string.Empty || codPostalSufixo == string.Empty
                 || localidade == string.Empty || telemovel == string.Empty || nif == string.Empty || acordo == String.Empty)
             {
-                MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campos Obrigatórios, por favor preencha os campos vazios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtNome.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNome, "O nome é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtNome, String.Empty);
+                }
+
+                if (txtRua.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtRua, "A morada é obrigatória!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtRua, String.Empty);
+                }
+
+                if (codPostalPrefixo == string.Empty)
+                {
+                    errorProvider.SetError(txtCodPostalPre, "O prefixo do código portal é é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtCodPostalPre, String.Empty);
+                }
+
+                if (codPostalSufixo == string.Empty)
+                {
+                    errorProvider.SetError(txtCodPostalSuf, "O sufixo do código postal é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtCodPostalSuf, String.Empty);
+                }
+
+                if (localidade == string.Empty)
+                {
+                    errorProvider.SetError(txtLocalidade, "A localidade é obrigatória!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtLocalidade, String.Empty);
+                }
+
+                if (telemovel == string.Empty)
+                {
+                    errorProvider.SetError(txtContacto, "O telemóvel é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtContacto, String.Empty);
+                }
+
+                if (nif == string.Empty)
+                {
+                    errorProvider.SetError(txtNif, "O nif é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtNif, String.Empty);
+                }
+
+                if (cbAcordos.Text == string.Empty)
+                {
+                    errorProvider.SetError(this.cbAcordos, "O acordo é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(cbAcordos, String.Empty);
+                }
                 return false;
             }
+
 
             Regex regexEmail = new Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
-            if (!regexEmail.IsMatch(email))
+            if (txtEmail.Text != String.Empty && !regexEmail.IsMatch(email))
             {
                 MessageBox.Show("Por favor, introduza um email válido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtEmail, "Por favor, introduza um email válido!");
                 return false;
-
+            }
+            else
+            {
+                errorProvider.SetError(txtEmail, String.Empty);
             }
 
-            if (Convert.ToInt32(numeroCasa) < 0)
+            if (!numeroCasa.Equals("") && numeroCasa.Length != 9 && Convert.ToInt32(numeroCasa) < 0)
             {
                 MessageBox.Show("O Número da Casa não pode ser um valor negativo!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtNumeroCasa, "O Número da Casa não pode ser um valor negativo!");
                 return false;
-
+            }
+            else
+            {
+                errorProvider.SetError(txtNumeroCasa, String.Empty);
             }
 
             if (codPostalPrefixo.Length != 4)
             {
                 MessageBox.Show("O prefixo do código postal tem de ter exatamente 4 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtCodPostalPre, "O prefixo do código postal tem de ter exatamente 4 algarismos!");
+
                 return false;
+            }
+            else
+            {
+                errorProvider.SetError(txtCodPostalPre, String.Empty);
             }
 
             if (codPostalSufixo.Length != 3)
             {
                 MessageBox.Show("O sufixo do código postal tem de ter exatamente 3 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtCodPostalSuf, "O sufixo do código postal tem de ter exatamente 3 algarismos!");
+
                 return false;
             }
+            else
+            {
+                errorProvider.SetError(txtCodPostalSuf, String.Empty);
+            }
 
-            if (telemovel.Length != 9 )
+            if (telemovel.Length != 9)
             {
                 MessageBox.Show("O telemóvel tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtContacto, "O telemóvel tem de ter exatamente 9 algarismos!");
                 return false;
             }
+            else
+            {
+                errorProvider.SetError(txtContacto, String.Empty);
+            }
 
-            if (nif.Length != 9 )
+            if (nif.Length != 9)
             {
                 MessageBox.Show("O nif tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtNif, "O nif tem de ter exatamente 9 algarismos!");
                 return false;
             }
+            else
+            {
+                errorProvider.SetError(txtNif, String.Empty);
+            }
 
-            if (cbAcordos.SelectedItem.ToString() == "Seguradora" && numeroApolice.Length != 9 )
+            if (cbAcordos.SelectedItem.ToString() == "Seguradora" && numeroApolice != null && numeroApolice.Length != 9)
             {
                 MessageBox.Show("O número da apólice tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtNApolice, "O número da apólice tem de ter exatamente 9 algarismos!");
                 return false;
             }
+            else
+            {
+                errorProvider.SetError(txtNApolice, String.Empty);
+            }
 
-            if (cbAcordos.SelectedItem.ToString() == "SNS" && numeroSNS.Length != 9)
+            if (cbAcordos.SelectedItem.ToString() == "SNS" && numeroSNS != null && numeroSNS.Length != 9)
             {
                 MessageBox.Show("O número do SNS tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtSNS, "O número do SNS tem de ter exatamente 9 algarismos!");
                 return false;
             }
+            else
+            {
+                errorProvider.SetError(txtSNS, String.Empty);
+            }
 
-            if (cbAcordos.SelectedItem.ToString() == "Subsistema de Saúde" && numeroSubsistema.Length != 9) 
+            if (cbAcordos.SelectedItem.ToString() == "Subsistema de Saúde" && numeroSubsistema != null && numeroSubsistema.Length != 9)
             {
                 MessageBox.Show("O número do subsistema tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtNSubsistema, "O número do subsistema tem de ter exatamente 9 algarismos!");
+
                 return false;
             }
-
+            else
+            {
+                errorProvider.SetError(txtNSubsistema, String.Empty);
+            }
 
             DateTime data = dataNascimento.Value;
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
                 MessageBox.Show("A data de nascimento tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataNascimento, "A data de nascimento tem de ser inferior a data de hoje!");
+
                 return false;
             }
+            else
+            {
+                errorProvider.SetError(dataNascimento, String.Empty);
+            }
+
 
             if (cbAcordos.SelectedItem.Equals("SNS"))
             {
                 if (numeroSNS == string.Empty)
                 {
                     MessageBox.Show("Campo Obrigatório, por favor preencha o campo do número do SNS!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProvider.SetError(txtNif, "Selecionou 'SNS', por isso o número de SNS é obrigatório!");
+
                     return false;
+                }
+                else
+                {
+                    errorProvider.SetError(txtNif, String.Empty);
                 }
             }
 
             if (cbAcordos.SelectedItem.Equals("Subsistema de Saúde"))
             {
-                if (nomeSubsistema == string.Empty || numeroSubsistema == string.Empty)
+                if (nomeSubsistema == string.Empty)
                 {
-                    MessageBox.Show("Campo(s) Obrigatório(s), por favor preencha o(s) campo(s) do nome do Subsistema e/ou  do número do Subsistema!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Campo Obrigatório, por favor preencha o campo do nome do Subsistema!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProvider.SetError(txtNomeSubsistema, "Selecionou 'Subsistema de Saúde', por isso o nome do subsistema é obrigatório!");
                     return false;
                 }
+                else if (numeroSubsistema == string.Empty)
+                {
+                    MessageBox.Show("Campo Obrigatório, por favor preencha o campo do número do Subsistema!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProvider.SetError(txtNSubsistema, "Selecionou 'Subsistema de Saúde', por isso o número do subsistema é obrigatório");
+                    return false;
+                }
+                else
+                {
+                    errorProvider.SetError(txtNomeSubsistema, String.Empty);
+                    errorProvider.SetError(txtNSubsistema, String.Empty);
+
+                }
             }
-       
+
             if (cbAcordos.SelectedItem.Equals("Seguradora"))
             {
-                if (nomeSeguradora == string.Empty || numeroApolice == string.Empty)
+                if (nomeSeguradora == string.Empty)
                 {
-                    MessageBox.Show("Campo(s) Obrigatório(s), por favor preencha o(s) campo(s) do nome da seguradora e/ou do número da apolice da seguradora!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Campo Obrigatório, por favor preencha o campo do nome da seguradora!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProvider.SetError(txtNomeSeguradora, "Campo Obrigatório, por favor preencha o nome da seguradora!");
+
                     return false;
+                }
+                else if (numeroApolice == string.Empty)
+                {
+                    MessageBox.Show("Campo Obrigatório, por favor preencha o campo do número da apolice da seguradora!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProvider.SetError(txtNApolice, "Campo Obrigatório, por favor preencha o número da apolice da seguradora!");
+                }
+                else
+                {
+
+                    errorProvider.SetError(txtNApolice, String.Empty);
+                    errorProvider.SetError(txtNomeSeguradora, String.Empty);
                 }
             }
 
-           /* conn.Open();
+            conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Paciente WHERE IdEnfermeiro =  " + enfermeiro.IdEnfermeiro, conn);
+            SqlCommand cmd = new SqlCommand("select * from Paciente", conn);
 
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                int Nif = (int)(reader["Nif"]);
-                string Email = (string)reader["Email"];
+                // double Nif = (double)(reader["nif"]);
+                //string Email = (string)reader["Email"];
                 //string hora = (string)reader["horaProximaConsulta"];
                 //  DateTime dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
 
+                // NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
 
-                if (Email.Equals(pacientee.Email))
+                if (!(reader["Email"] == DBNull.Value))
                 {
-                    MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.");
-                    conn.Close();
-                    return false;
+                    if (txtEmail.Text.Equals((string)reader["Email"]))
+                    {
+                        MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.");
+                        conn.Close();
+                        return false;
+                    }
+
                 }
 
-                if (pacientee.Nif == Convert.ToInt32(Nif))
+                if (Convert.ToInt32(txtNif.Text) == Convert.ToInt32(reader["Nif"]))
                 {
                     MessageBox.Show("O NIF que colocou já se encontra registado, coloque outro.");
                     conn.Close();
                     return false;
                 }
 
-            }
-            conn.Close();*/
+                if (!(reader["NumeroSNS"] == DBNull.Value))
+                {
 
+                    if (Convert.ToInt32(txtSNS.Text) == Convert.ToInt32(reader["NumeroSNS"]))
+                    {
+                        MessageBox.Show("O número do SNS que colocou já se encontra registado, coloque outro.");
+                        conn.Close();
+                        return false;
+                    }
+                }
+            }
+            conn.Close();
             return true;
         }
 
@@ -244,11 +412,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             string nome = txtNome.Text;
             var dtNascimento = dataNascimento.Value;
-            string rua = txtMorada.Text;
-            string numeroCasa = txtNumeroCasa.Text;
-            string andarCasa = txtAndar.Text;
-            string codPostalPrefixo = txtCodPostalPre.Text;
-            string codPostalSufixo = txtCodPostalSuf.Text;
+            string rua = txtRua.Text;
+            string nrMorada = txtNumeroCasa.Text;
+            string andarPiso = txtAndarPiso.Text;
+            string codPrefixo = txtCodPostalPre.Text;
+            string codSufixo = txtCodPostalSuf.Text;
             string localidade = txtLocalidade.Text;
             string email = txtEmail.Text;
             string telemovel = txtContacto.Text;
@@ -261,6 +429,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string nomeSubsistema = txtNomeSubsistema.Text;
             string numeroSubsistema = txtNSubsistema.Text;
             string numeroSNS = txtSNS.Text;
+            string bairroLocal = txtBairroLocal.Text;
+            string designacao = txtDesignacao.Text;
             string sexo = "";
 
 
@@ -280,12 +450,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 sexo = "Indefinido";
             }
+
             string planoVacinacao = "";
             if (radioButtonAtualizado.Checked == true)
             {
                 planoVacinacao = "Atualizado";
             }
-            if (radioButtonNaoAtualziado.Checked == true)
+            if (radioButtonNaoAtualizado.Checked == true)
             {
                 planoVacinacao = "Não Atualizado";
             }
@@ -300,31 +471,47 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     connection.Open();
 
-                    string queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Email = @email, Contacto = @contacto,Nif = @nif,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,localidade = @localidade,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE Nif = @NifPaciente";
+                    string queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Email = @email, Contacto = @contacto,Nif = @nif,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE Nif = @NifPaciente";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
-                    sqlCommand.Parameters.AddWithValue("@nome", txtNome.Text);
-                    sqlCommand.Parameters.AddWithValue("@email", txtEmail.Text);
-                    sqlCommand.Parameters.AddWithValue("@contacto", txtContacto.Text);
-                    sqlCommand.Parameters.AddWithValue("@nif", txtNif.Text);
+                    sqlCommand.Parameters.AddWithValue("@nome", nome);
                     sqlCommand.Parameters.AddWithValue("@dataNascimento", dtNascimento.ToString("MM/dd/yyyy"));
-                    sqlCommand.Parameters.AddWithValue("@rua", txtMorada.Text);
-                    sqlCommand.Parameters.AddWithValue("@numeroCasa", txtNumeroCasa.Text);
-                    sqlCommand.Parameters.AddWithValue("@andar", txtAndar.Text);
-                    sqlCommand.Parameters.AddWithValue("@codPostalPrefixo", txtCodPostalPre.Text);
-                    sqlCommand.Parameters.AddWithValue("@codPostalSufixo", txtCodPostalSuf.Text);
-                    sqlCommand.Parameters.AddWithValue("@localidade", txtLocalidade.Text);
-                    sqlCommand.Parameters.AddWithValue("@NifPaciente", pacientee.Nif);
+                    sqlCommand.Parameters.AddWithValue("@contacto", Convert.ToInt32(telemovel));
+                    sqlCommand.Parameters.AddWithValue("@nif", Convert.ToInt32(nif));
+                    sqlCommand.Parameters.AddWithValue("@rua", rua);
+                    sqlCommand.Parameters.AddWithValue("@localidade", localidade);
+                    sqlCommand.Parameters.AddWithValue("@codPrefixo", codPrefixo);
+                    sqlCommand.Parameters.AddWithValue("@codSufixo", codSufixo);
+                    sqlCommand.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
                     sqlCommand.Parameters.AddWithValue("@acordo", acordo);
                     sqlCommand.Parameters.AddWithValue("@nomeSeguradora", nomeSeguradora);
 
-                    if (nomeProfissao != -1)
+                    if (nrMorada != string.Empty)
                     {
-                        sqlCommand.Parameters.AddWithValue("@nomeProfissao", Convert.ToInt32(nomeProfissao));
+                        sqlCommand.Parameters.AddWithValue("@numeroMorada", Convert.ToInt32(nrMorada));
                     }
                     else
                     {
-                        sqlCommand.Parameters.AddWithValue("@nomeProfissao", DBNull.Value);
+                        sqlCommand.Parameters.AddWithValue("@numeroMorada", DBNull.Value);
                     }
+
+                    if (andarPiso != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@andarPiso", Convert.ToString(andarPiso));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@andarPiso", DBNull.Value);
+                    }
+
+                    if (bairroLocal != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@bairroLocal", Convert.ToString(bairroLocal));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@bairroLocal", DBNull.Value);
+                    }
+
                     if (numeroApolice != string.Empty)
                     {
                         sqlCommand.Parameters.AddWithValue("@numeroApoliceSeguradora", Convert.ToInt32(numeroApolice));
@@ -333,6 +520,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         sqlCommand.Parameters.AddWithValue("@numeroApoliceSeguradora", DBNull.Value);
                     }
+
+                    if (email != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@email", Convert.ToString(email));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@email", DBNull.Value);
+                    }
+
+
+                    if (designacao != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@designacao", Convert.ToString(designacao.ToUpper()));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@designacao", DBNull.Value);
+                    }
+
 
                     sqlCommand.Parameters.AddWithValue("@nomeSubsistema", nomeSubsistema);
 
@@ -353,18 +560,28 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         sqlCommand.Parameters.AddWithValue("@numeroSNS", DBNull.Value);
                     }
-
+                    if (nomeProfissao != -1)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@nomeProfissao", Convert.ToInt32(nomeProfissao));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@nomeProfissao", DBNull.Value);
+                    }
                     sqlCommand.Parameters.AddWithValue("@sexo", sexo);
                     sqlCommand.Parameters.AddWithValue("@planoVacinacao", planoVacinacao);
+
+
+
                     sqlCommand.ExecuteNonQuery();
                     foreach (var utente in utentes)
                     {
                         if (Convert.ToString(utente.Nif).Equals(txtNif.Text))
                         {
                             utente.Nome=  txtNome.Text ;
-                            utente.Rua = txtMorada.Text ;
+                            utente.Rua = txtRua.Text ;
                             utente.NumeroCasa = Convert.ToInt16(txtNumeroCasa.Text);
-                            utente.Andar = txtAndar.Text;
+                            utente.Andar = txtAndarPiso.Text;
                             utente.codigoPostal = txtCodPostalPre.Text + "-" + txtCodPostalSuf.Text;
                           //  utente.codPostalPrefixo = Convert.ToDouble(txtCodPostalPre.Text);
                            // utente.codPostalSufixo = Convert.ToDouble(txtCodPostalSuf.Text);
@@ -482,65 +699,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }*/
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
 
-        }
 
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {
+    
 
-           /* if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
-            {
-                e.Handled = true;
-                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }*/
-        }
-
-        private void txtMorada_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
-            {
-                e.Handled = true;
-                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void txtNumeroCasa_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //garantir que são inseridos apenas numeros
-            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtCodPostalPre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //garantir que são inseridos apenas numeros
-            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtCodPostalSuf_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //garantir que são inseridos apenas numeros
-            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtLocalidade_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
-            {
-                e.Handled = true;
-                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -566,46 +728,52 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
        private void preencherDados()
-        {
-            
+        {           
             if (pacientee != null)
             {
                string[] cp;
                 txtNome.Text = pacientee.Nome;
                 dataNascimento.Value = pacientee.DataNascimento;
-                txtMorada.Text = pacientee.Rua;
+                txtRua.Text = pacientee.Rua;
                 txtNumeroCasa.Text = Convert.ToString(pacientee.NumeroCasa);
-                txtAndar.Text = pacientee.Andar;
-               cp = pacientee.codigoPostal.Split('-');
+                txtAndarPiso.Text = pacientee.Andar;
+                cp = pacientee.codigoPostal.Split('-');
                 txtCodPostalPre.Text = Convert.ToString(cp[0]);
                 txtCodPostalSuf.Text = Convert.ToString(cp[1]);
                 txtLocalidade.Text = pacientee.localidade;
                 txtEmail.Text = pacientee.Email;
                 txtContacto.Text = Convert.ToString(pacientee.Contacto);
                 txtNif.Text = Convert.ToString(pacientee.Nif);
+                txtBairroLocal.Text = pacientee.bairroLocal;
+                txtDesignacao.Text = pacientee.designacao;
 
-               // cbProfissoes.Text = pacientee.Profissao;
+                /*
                 int a = 0;
-                foreach (var CmbItem in cbProfissoes.Items)
+                foreach (var item in cbProfissoes.Items)
                 {
-
-                    var tempMeasured = CmbItem.ToString();
-                    //MessageBox.Show(tempMeasured);
+                    var tempMeasured = item.ToString();
                     if (tempMeasured.Equals(pacientee.Profissao))
                     {
                         cbProfissoes.SelectedIndex = a;
                     }
                     a++;
+                }*/
+
+                int prof = 0;
+                foreach (var cbItem in cbProfissoes.Items)
+                {
+                    var temp = cbItem.ToString();
+                    if (temp.Equals(pacientee.Profissao))
+                    {
+                        cbProfissoes.SelectedIndex = prof;
+                    }
+                    prof++;
                 }
-                
-                //(String)cbProfissoes.SelectedItem = utente.Profissao;
 
                 int b = 0;
                 foreach (var CmbItem in cbAcordos.Items)
                 {
-
                     var tempMeasured = CmbItem.ToString();
-                    //MessageBox.Show(tempMeasured);
                     if (tempMeasured.Equals(pacientee.Acordo))
                     {
                         cbAcordos.SelectedIndex = b;
@@ -619,25 +787,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 txtNomeSubsistema.Text = pacientee.NomeSubsistema;
                 txtNSubsistema.Text = Convert.ToString(pacientee.NumeroSubsistema);
                 txtSNS.Text = Convert.ToString(pacientee.NumeroSNS);
-                //                groupBoxSexo.Text = pacientee.Sexo;
 
                 if (pacientee.Sexo.Equals("Masculino"))
                 {
                     radioButtonMasculino.Checked = true;
                 }
 
-
                 if (pacientee.Sexo.Equals("Feminino"))
                 {
                     radioButtonFeminino.Checked = true;
                 }
 
-
                 if (pacientee.Sexo.Equals("Indefinido"))
                 {
                     radioButtonIndefinido.Checked = true;
                 }
-
 
                 if (pacientee.PlanoVacinacao.Equals("Atualizado"))
                 {
@@ -645,7 +809,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 if (pacientee.PlanoVacinacao.Equals("Não Atualizado"))
                 {
-                    radioButtonNaoAtualziado.Checked = true;
+                    radioButtonNaoAtualizado.Checked = true;
                 }           
             }
         }
@@ -719,6 +883,47 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             AdicionarProfissao adicionarProfissao = new AdicionarProfissao(null, this);
             adicionarProfissao.Show();
+        }
+
+        private void txtLocalidade_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas Letras!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void txtNumeroCasa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCodPostalPre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCodPostalSuf_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtRua_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }

@@ -40,26 +40,21 @@
             this.dataGridViewDespesas = new System.Windows.Forms.DataGridView();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lblAte = new System.Windows.Forms.Label();
             this.lblDe = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.cbDuasDatas = new System.Windows.Forms.CheckBox();
             this.dataInferior = new System.Windows.Forms.DateTimePicker();
             this.dataSuperior = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.cbDespesas = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtProcurarDespesa = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtProcurarEncomenda = new System.Windows.Forms.TextBox();
-            this.comboBoxEncomenda = new System.Windows.Forms.ComboBox();
             this.comboBoxDespesa = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbUmaData = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dataSoUma = new System.Windows.Forms.DateTimePicker();
-            this.lblEncomenda = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelTitulo = new System.Windows.Forms.Panel();
@@ -72,7 +67,6 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.hora = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.label1 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDespesas)).BeginInit();
@@ -81,7 +75,6 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.painelPrincipal.SuspendLayout();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
@@ -180,7 +173,6 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
-            this.panelFormulario.Controls.Add(this.label1);
             this.panelFormulario.Controls.Add(this.groupBox1);
             this.panelFormulario.Controls.Add(this.dataGridViewDespesas);
             this.panelFormulario.Controls.Add(this.label2);
@@ -193,17 +185,14 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox1.Controls.Add(this.checkBox4);
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.checkBox3);
+            this.groupBox1.Controls.Add(this.cbDespesas);
             this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Controls.Add(this.comboBoxEncomenda);
             this.groupBox1.Controls.Add(this.comboBoxDespesa);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.cbUmaData);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dataSoUma);
-            this.groupBox1.Controls.Add(this.lblEncomenda);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(19, 45);
             this.groupBox1.Name = "groupBox1";
@@ -213,26 +202,14 @@
             this.groupBox1.Text = "Pesquisar Despesa Por:";
             this.groupBox1.UseCompatibleTextRendering = true;
             // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox4.Location = new System.Drawing.Point(243, 186);
-            this.checkBox4.Margin = new System.Windows.Forms.Padding(5);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(15, 14);
-            this.checkBox4.TabIndex = 82;
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged_1);
-            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.lblAte);
             this.groupBox5.Controls.Add(this.lblDe);
-            this.groupBox5.Controls.Add(this.checkBox2);
+            this.groupBox5.Controls.Add(this.cbDuasDatas);
             this.groupBox5.Controls.Add(this.dataInferior);
             this.groupBox5.Controls.Add(this.dataSuperior);
-            this.groupBox5.Location = new System.Drawing.Point(26, 66);
+            this.groupBox5.Location = new System.Drawing.Point(25, 91);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(674, 60);
             this.groupBox5.TabIndex = 81;
@@ -257,17 +234,17 @@
             this.lblDe.TabIndex = 80;
             this.lblDe.Text = "De:";
             // 
-            // checkBox2
+            // cbDuasDatas
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(8, 30);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(5);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(15, 14);
-            this.checkBox2.TabIndex = 79;
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            this.cbDuasDatas.AutoSize = true;
+            this.cbDuasDatas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDuasDatas.Location = new System.Drawing.Point(8, 30);
+            this.cbDuasDatas.Margin = new System.Windows.Forms.Padding(5);
+            this.cbDuasDatas.Name = "cbDuasDatas";
+            this.cbDuasDatas.Size = new System.Drawing.Size(15, 14);
+            this.cbDuasDatas.TabIndex = 79;
+            this.cbDuasDatas.UseVisualStyleBackColor = true;
+            this.cbDuasDatas.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // dataInferior
             // 
@@ -276,6 +253,7 @@
             this.dataInferior.Name = "dataInferior";
             this.dataInferior.Size = new System.Drawing.Size(206, 26);
             this.dataInferior.TabIndex = 78;
+            this.dataInferior.ValueChanged += new System.EventHandler(this.dataInferior_ValueChanged);
             // 
             // dataSuperior
             // 
@@ -290,33 +268,32 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(22, 30);
+            this.label4.Location = new System.Drawing.Point(110, 51);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(139, 20);
             this.label4.TabIndex = 80;
             this.label4.Text = "Apenas uma data:";
             // 
-            // checkBox3
+            // cbDespesas
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.Location = new System.Drawing.Point(243, 142);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(5);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(15, 14);
-            this.checkBox3.TabIndex = 77;
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.cbDespesas.AutoSize = true;
+            this.cbDespesas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDespesas.Location = new System.Drawing.Point(234, 178);
+            this.cbDespesas.Margin = new System.Windows.Forms.Padding(5);
+            this.cbDespesas.Name = "cbDespesas";
+            this.cbDespesas.Size = new System.Drawing.Size(15, 14);
+            this.cbDespesas.TabIndex = 77;
+            this.cbDespesas.UseVisualStyleBackColor = true;
+            this.cbDespesas.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.groupBox2);
-            this.groupBox4.Controls.Add(this.groupBox3);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.Black;
-            this.groupBox4.Location = new System.Drawing.Point(752, 42);
+            this.groupBox4.Location = new System.Drawing.Point(732, 65);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(260, 175);
+            this.groupBox4.Size = new System.Drawing.Size(260, 109);
             this.groupBox4.TabIndex = 76;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Pesquisar";
@@ -342,69 +319,37 @@
             this.txtProcurarDespesa.TabIndex = 54;
             this.txtProcurarDespesa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProcurarDespesa_KeyDown);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.txtProcurarEncomenda);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.ForeColor = System.Drawing.Color.Black;
-            this.groupBox3.Location = new System.Drawing.Point(6, 94);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(248, 60);
-            this.groupBox3.TabIndex = 56;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Encomenda";
-            // 
-            // txtProcurarEncomenda
-            // 
-            this.txtProcurarEncomenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProcurarEncomenda.Location = new System.Drawing.Point(6, 24);
-            this.txtProcurarEncomenda.Name = "txtProcurarEncomenda";
-            this.txtProcurarEncomenda.Size = new System.Drawing.Size(204, 26);
-            this.txtProcurarEncomenda.TabIndex = 54;
-            this.txtProcurarEncomenda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProcurarEncomenda_KeyDown);
-            // 
-            // comboBoxEncomenda
-            // 
-            this.comboBoxEncomenda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEncomenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEncomenda.FormattingEnabled = true;
-            this.comboBoxEncomenda.ItemHeight = 20;
-            this.comboBoxEncomenda.Location = new System.Drawing.Point(284, 178);
-            this.comboBoxEncomenda.Name = "comboBoxEncomenda";
-            this.comboBoxEncomenda.Size = new System.Drawing.Size(260, 28);
-            this.comboBoxEncomenda.TabIndex = 74;
-            this.comboBoxEncomenda.Visible = false;
-            // 
             // comboBoxDespesa
             // 
             this.comboBoxDespesa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDespesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDespesa.FormattingEnabled = true;
             this.comboBoxDespesa.ItemHeight = 20;
-            this.comboBoxDespesa.Location = new System.Drawing.Point(284, 132);
+            this.comboBoxDespesa.Location = new System.Drawing.Point(270, 168);
             this.comboBoxDespesa.Name = "comboBoxDespesa";
             this.comboBoxDespesa.Size = new System.Drawing.Size(260, 28);
             this.comboBoxDespesa.TabIndex = 73;
             this.comboBoxDespesa.SelectedIndexChanged += new System.EventHandler(this.comboBoxDespesa_SelectedIndexChanged);
+            this.comboBoxDespesa.SelectedValueChanged += new System.EventHandler(this.comboBoxDespesa_SelectedValueChanged);
             // 
-            // checkBox1
+            // cbUmaData
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(234, 32);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(5);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 70;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.cbUmaData.AutoSize = true;
+            this.cbUmaData.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbUmaData.Location = new System.Drawing.Point(322, 53);
+            this.cbUmaData.Margin = new System.Windows.Forms.Padding(5);
+            this.cbUmaData.Name = "cbUmaData";
+            this.cbUmaData.Size = new System.Drawing.Size(15, 14);
+            this.cbUmaData.TabIndex = 70;
+            this.cbUmaData.UseVisualStyleBackColor = true;
+            this.cbUmaData.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label3.Location = new System.Drawing.Point(22, 140);
+            this.label3.Location = new System.Drawing.Point(91, 176);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 20);
             this.label3.TabIndex = 59;
@@ -413,22 +358,11 @@
             // dataSoUma
             // 
             this.dataSoUma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataSoUma.Location = new System.Drawing.Point(270, 25);
+            this.dataSoUma.Location = new System.Drawing.Point(358, 46);
             this.dataSoUma.Name = "dataSoUma";
             this.dataSoUma.Size = new System.Drawing.Size(206, 26);
             this.dataSoUma.TabIndex = 8;
-            this.dataSoUma.ValueChanged += new System.EventHandler(this.dataInferior_ValueChanged);
-            // 
-            // lblEncomenda
-            // 
-            this.lblEncomenda.AutoSize = true;
-            this.lblEncomenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEncomenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.lblEncomenda.Location = new System.Drawing.Point(22, 186);
-            this.lblEncomenda.Name = "lblEncomenda";
-            this.lblEncomenda.Size = new System.Drawing.Size(95, 20);
-            this.lblEncomenda.TabIndex = 57;
-            this.lblEncomenda.Text = "Encomenda";
+            this.dataSoUma.ValueChanged += new System.EventHandler(this.dataSoUma_ValueChanged);
             // 
             // label2
             // 
@@ -563,17 +497,6 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(304, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(623, 55);
-            this.label1.TabIndex = 56;
-            this.label1.Text = "FILTROS NÃO ACABADOS";
-            // 
             // VerDespesasTodas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -583,6 +506,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerDespesasTodas";
+            this.ShowInTaskbar = false;
             this.Text = "VerDespesasTodas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VerDespesasTodas_Load);
@@ -598,8 +522,6 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.painelPrincipal.ResumeLayout(false);
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
@@ -630,27 +552,21 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Timer hora;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbUmaData;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dataSoUma;
-        private System.Windows.Forms.Label lblEncomenda;
         private System.Windows.Forms.DateTimePicker dataSuperior;
-        private System.Windows.Forms.ComboBox comboBoxEncomenda;
         private System.Windows.Forms.ComboBox comboBoxDespesa;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtProcurarDespesa;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtProcurarEncomenda;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox cbDespesas;
+        private System.Windows.Forms.CheckBox cbDuasDatas;
         private System.Windows.Forms.DateTimePicker dataInferior;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label lblAte;
         private System.Windows.Forms.Label lblDe;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.Label label1;
     }
 }

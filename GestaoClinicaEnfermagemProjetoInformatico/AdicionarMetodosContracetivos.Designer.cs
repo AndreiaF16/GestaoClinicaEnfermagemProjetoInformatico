@@ -256,7 +256,7 @@
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnGuardar.Size = new System.Drawing.Size(206, 78);
             this.btnGuardar.TabIndex = 25;
-            this.btnGuardar.Text = "Registar Metodo Contracetivo";
+            this.btnGuardar.Text = "Registar Método Contracetivo";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -381,6 +381,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarMetodosContracetivos";
+            this.ShowInTaskbar = false;
             this.Text = "MetodosContracetivos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MetodosContracetivos_Load);

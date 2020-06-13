@@ -299,6 +299,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerEnfermeirosRegistados";
+            this.ShowInTaskbar = false;
             this.Text = "VerEnfermeirosRegistos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VerEnfermeirosRegistos_Load);

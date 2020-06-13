@@ -153,7 +153,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(528, 467);
+            this.btnGuardar.Location = new System.Drawing.Point(684, 470);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -281,7 +281,7 @@
             this.btnLimparCampos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimparCampos.ForeColor = System.Drawing.Color.Black;
             this.btnLimparCampos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnLimparCampos.Location = new System.Drawing.Point(702, 467);
+            this.btnLimparCampos.Location = new System.Drawing.Point(858, 470);
             this.btnLimparCampos.Margin = new System.Windows.Forms.Padding(2);
             this.btnLimparCampos.Name = "btnLimparCampos";
             this.btnLimparCampos.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -329,6 +329,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarPressoterapiaPaciente";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdicionarPressoterapiaPaciente";
             this.Load += new System.EventHandler(this.AdicionarPressoterapiaPaciente_Load);

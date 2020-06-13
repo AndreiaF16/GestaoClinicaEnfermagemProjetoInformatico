@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdicionarTricotomiaPaciente));
             System.Windows.Forms.Button btnVoltar;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdicionarTricotomiaPaciente));
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTricotomia = new System.Windows.Forms.TextBox();
@@ -41,10 +41,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panelTitulo = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnLimparCampos = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             btnVoltar = new System.Windows.Forms.Button();
@@ -54,6 +54,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnVoltar
+            // 
+            btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnVoltar.ForeColor = System.Drawing.Color.Black;
+            btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            btnVoltar.Location = new System.Drawing.Point(10, 452);
+            btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnVoltar.Size = new System.Drawing.Size(72, 66);
+            btnVoltar.TabIndex = 89;
+            btnVoltar.Text = "     Voltar";
+            btnVoltar.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            btnVoltar.UseVisualStyleBackColor = false;
+            btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // label2
             // 
@@ -167,25 +187,6 @@
             this.panelTitulo.Size = new System.Drawing.Size(854, 40);
             this.panelTitulo.TabIndex = 87;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.Location = new System.Drawing.Point(212, 455);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(174, 63);
-            this.button1.TabIndex = 94;
-            this.button1.Text = "Ver Tricotomias Registadas";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // btnFechar
             // 
             this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -229,6 +230,25 @@
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(212, 455);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(174, 63);
+            this.button1.TabIndex = 94;
+            this.button1.Text = "Ver Tricotomias Registadas";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnLimparCampos
             // 
             this.btnLimparCampos.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -271,26 +291,6 @@
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // btnVoltar
-            // 
-            btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnVoltar.ForeColor = System.Drawing.Color.Black;
-            btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnVoltar.Location = new System.Drawing.Point(10, 452);
-            btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            btnVoltar.Name = "btnVoltar";
-            btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            btnVoltar.Size = new System.Drawing.Size(72, 66);
-            btnVoltar.TabIndex = 89;
-            btnVoltar.Text = "     Voltar";
-            btnVoltar.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            btnVoltar.UseVisualStyleBackColor = false;
-            btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
-            // 
             // AdicionarTricotomiaPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,6 +308,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarTricotomiaPaciente";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdicionarTricotomiaPaciente";
             this.Load += new System.EventHandler(this.AdicionarTricotomiaPaciente_Load);

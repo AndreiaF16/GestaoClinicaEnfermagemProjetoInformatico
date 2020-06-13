@@ -152,12 +152,14 @@
       <DependentUpon>AdicionarLavagemOcular.cs</DependentUpon>
     </Compile>
     <Compile Include="ColocacaoDIUPaciente.cs" />
+    <Compile Include="ColpocitologiaPaciente.cs" />
     <Compile Include="ImplanteContracetivoPaciente.cs" />
     <Compile Include="LavagemAuricularPac.cs" />
     <Compile Include="LavagemOcularPaciente.cs" />
     <Compile Include="MonitorizacaoECGPaciente.cs" />
     <Compile Include="PressoterapiaPaciente.cs" />
     <Compile Include="SuturasPaciente.cs" />
+    <Compile Include="TesteComburPaciente.cs" />
     <Compile Include="TricotomiaPaciente.cs" />
     <Compile Include="VerAcuidadeVisual.cs">
       <SubType>Form</SubType>
@@ -170,6 +172,12 @@
     </Compile>
     <Compile Include="VerColocacaoDIU.Designer.cs">
       <DependentUpon>VerColocacaoDIU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerColpocitologia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerColpocitologia.Designer.cs">
+      <DependentUpon>VerColpocitologia.cs</DependentUpon>
     </Compile>
     <Compile Include="VerImplanteContracetivoPaciente.cs">
       <SubType>Form</SubType>
@@ -348,12 +356,6 @@
       <DependentUpon>Alergias.cs</DependentUpon>
     </Compile>
     <Compile Include="AlgariacaoPaciente.cs" />
-    <Compile Include="AlterarPacienteDeEnfermeiro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AlterarPacienteDeEnfermeiro.Designer.cs">
-      <DependentUpon>AlterarPacienteDeEnfermeiro.cs</DependentUpon>
-    </Compile>
     <Compile Include="AnaliseLaboratorial.cs" />
     <Compile Include="AnaliseLaboratorialPaciente.cs" />
     <Compile Include="AnalisesLaboratoriais.cs">
@@ -407,12 +409,6 @@
     <Compile Include="ENGPaciente.cs" />
     <Compile Include="Espirometria.cs" />
     <Compile Include="FlebografiaPaciente.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="InalacoesPaciente.cs" />
     <Compile Include="InserirMedicacao.cs">
       <SubType>Form</SubType>
@@ -537,12 +533,6 @@
       <DependentUpon>AdicionarMetodosContracetivos.cs</DependentUpon>
     </Compile>
     <Compile Include="Parto.cs" />
-    <Compile Include="PopupForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PopupForm.Designer.cs">
-      <DependentUpon>PopupForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProdutosEmStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -884,6 +874,12 @@
     <Compile Include="VerSuturas.Designer.cs">
       <DependentUpon>VerSuturas.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerTesteCombur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerTesteCombur.Designer.cs">
+      <DependentUpon>VerTesteCombur.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerTratamentosAnteriores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -910,9 +906,11 @@
     </Compile>
     <Compile Include="VerZaragatoaOnofaringe.cs">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="VerZaragatoaOnofaringe.Designer.cs">
       <DependentUpon>VerZaragatoaOnofaringe.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="ZaragatoaOnofaringePaciente.cs" />
     <EmbeddedResource Include="AdicionarAlgariacaoPaciente.resx">
@@ -1044,9 +1042,6 @@
     <EmbeddedResource Include="Alergias.resx">
       <DependentUpon>Alergias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AlterarPacienteDeEnfermeiro.resx">
-      <DependentUpon>AlterarPacienteDeEnfermeiro.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AnalisesLaboratoriais.resx">
       <DependentUpon>AnalisesLaboratoriais.cs</DependentUpon>
     </EmbeddedResource>
@@ -1065,9 +1060,6 @@
     <EmbeddedResource Include="FinalizarEncomenda.resx">
       <DependentUpon>FinalizarEncomenda.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Fornecedor.resx">
       <DependentUpon>Fornecedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -1079,9 +1071,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarMetodosContracetivos.resx">
       <DependentUpon>AdicionarMetodosContracetivos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PopupForm.resx">
-      <DependentUpon>PopupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProdutosEmStock.resx">
       <DependentUpon>ProdutosEmStock.cs</DependentUpon>
@@ -1127,6 +1116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerColocacaoDIU.resx">
       <DependentUpon>VerColocacaoDIU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerColpocitologia.resx">
+      <DependentUpon>VerColpocitologia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerConsultasPaciente.resx">
       <DependentUpon>VerConsultasPaciente.cs</DependentUpon>
@@ -1304,6 +1296,9 @@
     <EmbeddedResource Include="VerSuturas.resx">
       <DependentUpon>VerSuturas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VerTesteCombur.resx">
+      <DependentUpon>VerTesteCombur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VerTratamentosAnteriores.resx">
       <DependentUpon>VerTratamentosAnteriores.cs</DependentUpon>
     </EmbeddedResource>
@@ -1318,6 +1313,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerZaragatoaOnofaringe.resx">
       <DependentUpon>VerZaragatoaOnofaringe.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\DataSources\Enfermeiro.datasource" />

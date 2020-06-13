@@ -36,6 +36,10 @@
             this.lblDorModerada = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblDorForte = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtObservacoes = new System.Windows.Forms.TextBox();
@@ -44,28 +48,6 @@
             this.lblDorMaxima = new System.Windows.Forms.Label();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.hora = new System.Windows.Forms.Timer(this.components);
-            this.lblDia = new System.Windows.Forms.Label();
-            this.lblHora = new System.Windows.Forms.Label();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.panelTitulo = new System.Windows.Forms.Panel();
-            this.painelPrincipal = new System.Windows.Forms.Panel();
-            this.txtNrIG = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.cbDPP = new System.Windows.Forms.CheckBox();
-            this.dataDPP = new System.Windows.Forms.DateTimePicker();
-            this.lblDPP = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cbDPPC = new System.Windows.Forms.CheckBox();
-            this.dataDPPC = new System.Windows.Forms.DateTimePicker();
-            this.lblDPPC = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.cbEcografia = new System.Windows.Forms.CheckBox();
-            this.dataEcografia = new System.Windows.Forms.DateTimePicker();
-            this.lblEco = new System.Windows.Forms.Label();
             this.btnSemDor = new System.Windows.Forms.Button();
             this.btnDorLigeira = new System.Windows.Forms.Button();
             this.btnDorModerada = new System.Windows.Forms.Button();
@@ -73,30 +55,48 @@
             this.btnDorForte = new System.Windows.Forms.Button();
             this.btnLocalizacaoDor = new System.Windows.Forms.Button();
             this.btnDorMaxima = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbEcografia = new System.Windows.Forms.CheckBox();
+            this.dataEcografia = new System.Windows.Forms.DateTimePicker();
+            this.lblEco = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cbDPPC = new System.Windows.Forms.CheckBox();
+            this.dataDPPC = new System.Windows.Forms.DateTimePicker();
+            this.lblDPPC = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.cbDPP = new System.Windows.Forms.CheckBox();
+            this.dataDPP = new System.Windows.Forms.DateTimePicker();
+            this.lblDPP = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtNrIG = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.hora = new System.Windows.Forms.Timer(this.components);
+            this.lblDia = new System.Windows.Forms.Label();
+            this.lblHora = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.panelTitulo = new System.Windows.Forms.Panel();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelFormulario.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panelTitulo.SuspendLayout();
-            this.painelPrincipal.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            this.painelPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblEscala
@@ -174,6 +174,78 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(232, 745);
             this.panelMenu.TabIndex = 1;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button4.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_ver_detalhes_50;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.Black;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button4.Location = new System.Drawing.Point(28, 229);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Name = "button4";
+            this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button4.Size = new System.Drawing.Size(176, 54);
+            this.button4.TabIndex = 34;
+            this.button4.Text = "           Ver Avaliação Objetivo";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button3.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_ver_detalhes_50;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button3.Location = new System.Drawing.Point(28, 171);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button3.Size = new System.Drawing.Size(176, 54);
+            this.button3.TabIndex = 33;
+            this.button3.Text = "           Ver Dopler Fetal Registada";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
+            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnVoltar.Location = new System.Drawing.Point(0, 651);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
+            this.btnVoltar.TabIndex = 6;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnVoltar.UseVisualStyleBackColor = false;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
             // 
             // lblDorForte
             // 
@@ -280,253 +352,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Escala da Dor:";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label2.Location = new System.Drawing.Point(6, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(217, 39);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Dopler Fetal";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox2.Controls.Add(this.groupBox4);
-            this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.groupBox7);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txtObservacoes);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.txtNrIG);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(13, 57);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(944, 441);
-            this.groupBox2.TabIndex = 28;
-            this.groupBox2.TabStop = false;
-            // 
-            // hora
-            // 
-            this.hora.Enabled = true;
-            // 
-            // lblDia
-            // 
-            this.lblDia.AutoSize = true;
-            this.lblDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblDia.Location = new System.Drawing.Point(441, 11);
-            this.lblDia.Name = "lblDia";
-            this.lblDia.Size = new System.Drawing.Size(57, 20);
-            this.lblDia.TabIndex = 12;
-            this.lblDia.Text = "label1";
-            // 
-            // lblHora
-            // 
-            this.lblHora.AutoSize = true;
-            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHora.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblHora.Location = new System.Drawing.Point(713, 11);
-            this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(57, 20);
-            this.lblHora.TabIndex = 11;
-            this.lblHora.Text = "label1";
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTitulo.Location = new System.Drawing.Point(3, 14);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(312, 20);
-            this.lblTitulo.TabIndex = 6;
-            this.lblTitulo.Text = "Siltes Saúde - Clinica de Enfermagem";
-            // 
-            // panelTitulo
-            // 
-            this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
-            this.panelTitulo.Controls.Add(this.lblDia);
-            this.panelTitulo.Controls.Add(this.lblHora);
-            this.panelTitulo.Controls.Add(this.btnMaximizar);
-            this.panelTitulo.Controls.Add(this.pictureBox1);
-            this.panelTitulo.Controls.Add(this.btnFechar);
-            this.panelTitulo.Controls.Add(this.lblTitulo);
-            this.panelTitulo.Controls.Add(this.btnMinimizar);
-            this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitulo.Location = new System.Drawing.Point(0, 0);
-            this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new System.Drawing.Size(1227, 40);
-            this.panelTitulo.TabIndex = 0;
-            // 
-            // painelPrincipal
-            // 
-            this.painelPrincipal.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.painelPrincipal.Controls.Add(this.panelFormulario);
-            this.painelPrincipal.Controls.Add(this.panelMenu);
-            this.painelPrincipal.Controls.Add(this.panelTitulo);
-            this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.painelPrincipal.Name = "painelPrincipal";
-            this.painelPrincipal.Size = new System.Drawing.Size(1227, 785);
-            this.painelPrincipal.TabIndex = 11;
-            // 
-            // txtNrIG
-            // 
-            this.txtNrIG.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNrIG.Location = new System.Drawing.Point(267, 31);
-            this.txtNrIG.Multiline = true;
-            this.txtNrIG.Name = "txtNrIG";
-            this.txtNrIG.Size = new System.Drawing.Size(438, 29);
-            this.txtNrIG.TabIndex = 36;
-            this.txtNrIG.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNrInoculacao_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(198, 39);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 20);
-            this.label3.TabIndex = 37;
-            this.label3.Text = "IG";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.cbDPP);
-            this.groupBox7.Controls.Add(this.dataDPP);
-            this.groupBox7.Controls.Add(this.lblDPP);
-            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(265, 87);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(416, 56);
-            this.groupBox7.TabIndex = 50;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "DPP";
-            // 
-            // cbDPP
-            // 
-            this.cbDPP.AutoSize = true;
-            this.cbDPP.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDPP.Location = new System.Drawing.Point(16, 33);
-            this.cbDPP.Name = "cbDPP";
-            this.cbDPP.Size = new System.Drawing.Size(15, 14);
-            this.cbDPP.TabIndex = 24;
-            this.cbDPP.UseVisualStyleBackColor = true;
-            this.cbDPP.CheckedChanged += new System.EventHandler(this.cbDPP_CheckedChanged);
-            // 
-            // dataDPP
-            // 
-            this.dataDPP.Enabled = false;
-            this.dataDPP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataDPP.Location = new System.Drawing.Point(189, 22);
-            this.dataDPP.Name = "dataDPP";
-            this.dataDPP.Size = new System.Drawing.Size(200, 26);
-            this.dataDPP.TabIndex = 16;
-            // 
-            // lblDPP
-            // 
-            this.lblDPP.AutoSize = true;
-            this.lblDPP.Enabled = false;
-            this.lblDPP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDPP.Location = new System.Drawing.Point(102, 27);
-            this.lblDPP.Name = "lblDPP";
-            this.lblDPP.Size = new System.Drawing.Size(48, 20);
-            this.lblDPP.TabIndex = 15;
-            this.lblDPP.Text = "Data:";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.cbDPPC);
-            this.groupBox3.Controls.Add(this.dataDPPC);
-            this.groupBox3.Controls.Add(this.lblDPPC);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(267, 170);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(416, 56);
-            this.groupBox3.TabIndex = 51;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "DPPC";
-            // 
-            // cbDPPC
-            // 
-            this.cbDPPC.AutoSize = true;
-            this.cbDPPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDPPC.Location = new System.Drawing.Point(16, 33);
-            this.cbDPPC.Name = "cbDPPC";
-            this.cbDPPC.Size = new System.Drawing.Size(15, 14);
-            this.cbDPPC.TabIndex = 24;
-            this.cbDPPC.UseVisualStyleBackColor = true;
-            this.cbDPPC.CheckedChanged += new System.EventHandler(this.cbDPPC_CheckedChanged);
-            // 
-            // dataDPPC
-            // 
-            this.dataDPPC.Enabled = false;
-            this.dataDPPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataDPPC.Location = new System.Drawing.Point(189, 22);
-            this.dataDPPC.Name = "dataDPPC";
-            this.dataDPPC.Size = new System.Drawing.Size(200, 26);
-            this.dataDPPC.TabIndex = 16;
-            // 
-            // lblDPPC
-            // 
-            this.lblDPPC.AutoSize = true;
-            this.lblDPPC.Enabled = false;
-            this.lblDPPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDPPC.Location = new System.Drawing.Point(102, 27);
-            this.lblDPPC.Name = "lblDPPC";
-            this.lblDPPC.Size = new System.Drawing.Size(48, 20);
-            this.lblDPPC.TabIndex = 15;
-            this.lblDPPC.Text = "Data:";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.cbEcografia);
-            this.groupBox4.Controls.Add(this.dataEcografia);
-            this.groupBox4.Controls.Add(this.lblEco);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(267, 251);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(416, 56);
-            this.groupBox4.TabIndex = 52;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "1ª Ecografia";
-            // 
-            // cbEcografia
-            // 
-            this.cbEcografia.AutoSize = true;
-            this.cbEcografia.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbEcografia.Location = new System.Drawing.Point(16, 33);
-            this.cbEcografia.Name = "cbEcografia";
-            this.cbEcografia.Size = new System.Drawing.Size(15, 14);
-            this.cbEcografia.TabIndex = 24;
-            this.cbEcografia.UseVisualStyleBackColor = true;
-            this.cbEcografia.CheckedChanged += new System.EventHandler(this.cbEcografia_CheckedChanged);
-            // 
-            // dataEcografia
-            // 
-            this.dataEcografia.Enabled = false;
-            this.dataEcografia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataEcografia.Location = new System.Drawing.Point(189, 22);
-            this.dataEcografia.Name = "dataEcografia";
-            this.dataEcografia.Size = new System.Drawing.Size(200, 26);
-            this.dataEcografia.TabIndex = 16;
-            // 
-            // lblEco
-            // 
-            this.lblEco.AutoSize = true;
-            this.lblEco.Enabled = false;
-            this.lblEco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEco.Location = new System.Drawing.Point(102, 27);
-            this.lblEco.Name = "lblEco";
-            this.lblEco.Size = new System.Drawing.Size(48, 20);
-            this.lblEco.TabIndex = 15;
-            this.lblEco.Text = "Data:";
-            // 
             // btnSemDor
             // 
             this.btnSemDor.BackColor = System.Drawing.Color.Lime;
@@ -610,6 +435,188 @@
             this.btnDorMaxima.UseVisualStyleBackColor = false;
             this.btnDorMaxima.Click += new System.EventHandler(this.btnDorMaxima_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.label2.Location = new System.Drawing.Point(6, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(217, 39);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "Dopler Fetal";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox2.Controls.Add(this.groupBox4);
+            this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.groupBox7);
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.txtObservacoes);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.txtNrIG);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(13, 57);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(944, 441);
+            this.groupBox2.TabIndex = 28;
+            this.groupBox2.TabStop = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.cbEcografia);
+            this.groupBox4.Controls.Add(this.dataEcografia);
+            this.groupBox4.Controls.Add(this.lblEco);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(267, 251);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(416, 56);
+            this.groupBox4.TabIndex = 52;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "1ª Ecografia";
+            // 
+            // cbEcografia
+            // 
+            this.cbEcografia.AutoSize = true;
+            this.cbEcografia.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEcografia.Location = new System.Drawing.Point(16, 33);
+            this.cbEcografia.Name = "cbEcografia";
+            this.cbEcografia.Size = new System.Drawing.Size(15, 14);
+            this.cbEcografia.TabIndex = 24;
+            this.cbEcografia.UseVisualStyleBackColor = true;
+            this.cbEcografia.CheckedChanged += new System.EventHandler(this.cbEcografia_CheckedChanged);
+            // 
+            // dataEcografia
+            // 
+            this.dataEcografia.Enabled = false;
+            this.dataEcografia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataEcografia.Location = new System.Drawing.Point(189, 22);
+            this.dataEcografia.Name = "dataEcografia";
+            this.dataEcografia.Size = new System.Drawing.Size(200, 26);
+            this.dataEcografia.TabIndex = 16;
+            // 
+            // lblEco
+            // 
+            this.lblEco.AutoSize = true;
+            this.lblEco.Enabled = false;
+            this.lblEco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEco.Location = new System.Drawing.Point(102, 27);
+            this.lblEco.Name = "lblEco";
+            this.lblEco.Size = new System.Drawing.Size(48, 20);
+            this.lblEco.TabIndex = 15;
+            this.lblEco.Text = "Data:";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cbDPPC);
+            this.groupBox3.Controls.Add(this.dataDPPC);
+            this.groupBox3.Controls.Add(this.lblDPPC);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(267, 170);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(416, 56);
+            this.groupBox3.TabIndex = 51;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "DPPC";
+            // 
+            // cbDPPC
+            // 
+            this.cbDPPC.AutoSize = true;
+            this.cbDPPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDPPC.Location = new System.Drawing.Point(16, 33);
+            this.cbDPPC.Name = "cbDPPC";
+            this.cbDPPC.Size = new System.Drawing.Size(15, 14);
+            this.cbDPPC.TabIndex = 24;
+            this.cbDPPC.UseVisualStyleBackColor = true;
+            this.cbDPPC.CheckedChanged += new System.EventHandler(this.cbDPPC_CheckedChanged);
+            // 
+            // dataDPPC
+            // 
+            this.dataDPPC.Enabled = false;
+            this.dataDPPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataDPPC.Location = new System.Drawing.Point(189, 22);
+            this.dataDPPC.Name = "dataDPPC";
+            this.dataDPPC.Size = new System.Drawing.Size(200, 26);
+            this.dataDPPC.TabIndex = 16;
+            // 
+            // lblDPPC
+            // 
+            this.lblDPPC.AutoSize = true;
+            this.lblDPPC.Enabled = false;
+            this.lblDPPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDPPC.Location = new System.Drawing.Point(102, 27);
+            this.lblDPPC.Name = "lblDPPC";
+            this.lblDPPC.Size = new System.Drawing.Size(48, 20);
+            this.lblDPPC.TabIndex = 15;
+            this.lblDPPC.Text = "Data:";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.cbDPP);
+            this.groupBox7.Controls.Add(this.dataDPP);
+            this.groupBox7.Controls.Add(this.lblDPP);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(265, 87);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(416, 56);
+            this.groupBox7.TabIndex = 50;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "DPP";
+            // 
+            // cbDPP
+            // 
+            this.cbDPP.AutoSize = true;
+            this.cbDPP.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDPP.Location = new System.Drawing.Point(16, 33);
+            this.cbDPP.Name = "cbDPP";
+            this.cbDPP.Size = new System.Drawing.Size(15, 14);
+            this.cbDPP.TabIndex = 24;
+            this.cbDPP.UseVisualStyleBackColor = true;
+            this.cbDPP.CheckedChanged += new System.EventHandler(this.cbDPP_CheckedChanged);
+            // 
+            // dataDPP
+            // 
+            this.dataDPP.Enabled = false;
+            this.dataDPP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataDPP.Location = new System.Drawing.Point(189, 22);
+            this.dataDPP.Name = "dataDPP";
+            this.dataDPP.Size = new System.Drawing.Size(200, 26);
+            this.dataDPP.TabIndex = 16;
+            // 
+            // lblDPP
+            // 
+            this.lblDPP.AutoSize = true;
+            this.lblDPP.Enabled = false;
+            this.lblDPP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDPP.Location = new System.Drawing.Point(102, 27);
+            this.lblDPP.Name = "lblDPP";
+            this.lblDPP.Size = new System.Drawing.Size(48, 20);
+            this.lblDPP.TabIndex = 15;
+            this.lblDPP.Text = "Data:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(198, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 20);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "IG";
+            // 
+            // txtNrIG
+            // 
+            this.txtNrIG.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNrIG.Location = new System.Drawing.Point(267, 31);
+            this.txtNrIG.Multiline = true;
+            this.txtNrIG.Name = "txtNrIG";
+            this.txtNrIG.Size = new System.Drawing.Size(438, 29);
+            this.txtNrIG.TabIndex = 36;
+            this.txtNrIG.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNrInoculacao_KeyPress);
+            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -619,7 +626,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(748, 539);
+            this.btnGuardar.Location = new System.Drawing.Point(743, 566);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -640,7 +647,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.Location = new System.Drawing.Point(748, 594);
+            this.button1.Location = new System.Drawing.Point(743, 621);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -652,56 +659,58 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button3
+            // hora
             // 
-            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button3.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_ver_detalhes_50;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button3.Location = new System.Drawing.Point(28, 171);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button3.Size = new System.Drawing.Size(176, 54);
-            this.button3.TabIndex = 33;
-            this.button3.Text = "           Ver Dopler Fetal Registada";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.hora.Enabled = true;
             // 
-            // btnVoltar
+            // lblDia
             // 
-            this.btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
-            this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVoltar.Location = new System.Drawing.Point(0, 651);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnVoltar.Size = new System.Drawing.Size(232, 65);
-            this.btnVoltar.TabIndex = 6;
-            this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnVoltar.UseVisualStyleBackColor = false;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            this.lblDia.AutoSize = true;
+            this.lblDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblDia.Location = new System.Drawing.Point(441, 11);
+            this.lblDia.Name = "lblDia";
+            this.lblDia.Size = new System.Drawing.Size(57, 20);
+            this.lblDia.TabIndex = 12;
+            this.lblDia.Text = "label1";
             // 
-            // pictureBox2
+            // lblHora
             // 
-            this.pictureBox2.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._42592211_261855271335712_7696443792269770752_o;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(232, 115);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
+            this.lblHora.AutoSize = true;
+            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHora.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblHora.Location = new System.Drawing.Point(713, 11);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(57, 20);
+            this.lblHora.TabIndex = 11;
+            this.lblHora.Text = "label1";
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblTitulo.Location = new System.Drawing.Point(3, 14);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(312, 20);
+            this.lblTitulo.TabIndex = 6;
+            this.lblTitulo.Text = "Siltes Saúde - Clinica de Enfermagem";
+            // 
+            // panelTitulo
+            // 
+            this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
+            this.panelTitulo.Controls.Add(this.lblDia);
+            this.panelTitulo.Controls.Add(this.lblHora);
+            this.panelTitulo.Controls.Add(this.btnMaximizar);
+            this.panelTitulo.Controls.Add(this.pictureBox1);
+            this.panelTitulo.Controls.Add(this.btnFechar);
+            this.panelTitulo.Controls.Add(this.lblTitulo);
+            this.panelTitulo.Controls.Add(this.btnMinimizar);
+            this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitulo.Location = new System.Drawing.Point(0, 0);
+            this.panelTitulo.Name = "panelTitulo";
+            this.panelTitulo.Size = new System.Drawing.Size(1227, 40);
+            this.panelTitulo.TabIndex = 0;
             // 
             // btnMaximizar
             // 
@@ -759,26 +768,17 @@
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
-            // button4
+            // painelPrincipal
             // 
-            this.button4.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button4.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_ver_detalhes_50;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button4.Location = new System.Drawing.Point(28, 229);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button4.Size = new System.Drawing.Size(176, 54);
-            this.button4.TabIndex = 34;
-            this.button4.Text = "           Ver Avaliação Objetivo";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.painelPrincipal.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.painelPrincipal.Controls.Add(this.panelFormulario);
+            this.painelPrincipal.Controls.Add(this.panelMenu);
+            this.painelPrincipal.Controls.Add(this.panelTitulo);
+            this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.painelPrincipal.Name = "painelPrincipal";
+            this.painelPrincipal.Size = new System.Drawing.Size(1227, 785);
+            this.painelPrincipal.TabIndex = 11;
             // 
             // AdicionarDoplerFetalPaciente
             // 
@@ -789,30 +789,31 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarDoplerFetalPaciente";
+            this.ShowInTaskbar = false;
             this.Text = "AdicionarDoplerFetalPaciente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdicionarDoplerFetalPaciente_Load);
             this.panelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panelTitulo.ResumeLayout(false);
-            this.panelTitulo.PerformLayout();
-            this.painelPrincipal.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.panelTitulo.ResumeLayout(false);
+            this.panelTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            this.painelPrincipal.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

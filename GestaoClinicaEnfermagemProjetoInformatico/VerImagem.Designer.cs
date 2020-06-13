@@ -28,21 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerImagem));
             System.Windows.Forms.Button btnVoltar;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerImagem));
             this.label4 = new System.Windows.Forms.Label();
             this.panelTitulo = new System.Windows.Forms.Panel();
-            this.pictureBoxCorpo = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCorpo = new System.Windows.Forms.PictureBox();
             btnVoltar = new System.Windows.Forms.Button();
             this.panelTitulo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpo)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnVoltar
+            // 
+            btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnVoltar.ForeColor = System.Drawing.Color.Black;
+            btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            btnVoltar.Location = new System.Drawing.Point(7, 657);
+            btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnVoltar.Size = new System.Drawing.Size(72, 66);
+            btnVoltar.TabIndex = 82;
+            btnVoltar.Text = "     Voltar";
+            btnVoltar.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            btnVoltar.UseVisualStyleBackColor = false;
+            btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // label4
             // 
@@ -67,16 +87,6 @@
             this.panelTitulo.Name = "panelTitulo";
             this.panelTitulo.Size = new System.Drawing.Size(1193, 40);
             this.panelTitulo.TabIndex = 80;
-            // 
-            // pictureBoxCorpo
-            // 
-            this.pictureBoxCorpo.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg;
-            this.pictureBoxCorpo.Location = new System.Drawing.Point(225, 52);
-            this.pictureBoxCorpo.Name = "pictureBoxCorpo";
-            this.pictureBoxCorpo.Size = new System.Drawing.Size(737, 677);
-            this.pictureBoxCorpo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCorpo.TabIndex = 83;
-            this.pictureBoxCorpo.TabStop = false;
             // 
             // btnFechar
             // 
@@ -121,25 +131,15 @@
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
-            // btnVoltar
+            // pictureBoxCorpo
             // 
-            btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnVoltar.ForeColor = System.Drawing.Color.Black;
-            btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnVoltar.Location = new System.Drawing.Point(7, 657);
-            btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            btnVoltar.Name = "btnVoltar";
-            btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            btnVoltar.Size = new System.Drawing.Size(72, 66);
-            btnVoltar.TabIndex = 82;
-            btnVoltar.Text = "     Voltar";
-            btnVoltar.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            btnVoltar.UseVisualStyleBackColor = false;
-            btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            this.pictureBoxCorpo.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg;
+            this.pictureBoxCorpo.Location = new System.Drawing.Point(225, 52);
+            this.pictureBoxCorpo.Name = "pictureBoxCorpo";
+            this.pictureBoxCorpo.Size = new System.Drawing.Size(737, 677);
+            this.pictureBoxCorpo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCorpo.TabIndex = 83;
+            this.pictureBoxCorpo.TabStop = false;
             // 
             // VerImagem
             // 
@@ -152,15 +152,16 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerImagem";
+            this.ShowInTaskbar = false;
             this.Text = "VerImagem";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VerImagem_Load);
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpo)).EndInit();
             this.ResumeLayout(false);
 
         }

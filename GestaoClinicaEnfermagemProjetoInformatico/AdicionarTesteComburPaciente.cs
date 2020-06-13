@@ -171,69 +171,43 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 leucocitos = "Neg";
             }
-            else
-            {
-                leucocitos = "";
-            }
 
             //leucocitos 1 +
             if (rbL1.Checked == true)
             {
                 leucocitos = "1 +";
             }
-            else
-            {
-                leucocitos = "";
-            }
-
+            
             //leucocitos 2 +
             if (rbL2.Checked == true)
             {
                 leucocitos = "2 +";
-            }
-            else
-            {
-                leucocitos = "";
-            }
+            }          
 
             //leucocitos 3 +
             if (rbL3.Checked == true)
             {
                 leucocitos = "3 +";
-            }
-            else
-            {
-                leucocitos = "";
-            }
+            }        
 
             //nitritos negativo
             if (rbLNeg.Checked == true)
             {
-                leucocitos = "Neg";
-            }
-            else
-            {
-                leucocitos = "";
+                nitritos = "Neg";
             }
 
+
             //nitritos positivo
-            if (rbLNeg.Checked == true)
+            if (rbNPos.Checked == true)
             {
-                leucocitos = "Neg";
+                nitritos = "Pos";
             }
-            else
-            {
-                leucocitos = "";
-            }
+
 
             //proteinas negativa        
             if (rbPNeg.Checked == true)
             {
                 proteinas = "Neg";
-            }
-            else
-            {
-                proteinas = "";
             }
 
             //proteinas 1 +        
@@ -241,19 +215,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 proteinas = "1 +";
             }
-            else
-            {
-                proteinas = "";
-            }
 
             //proteinas 2 +        
             if (rbP2.Checked == true)
             {
                 proteinas = "2 +";
-            }
-            else
-            {
-                proteinas = "";
             }
 
             //proteinas 1 +        
@@ -261,19 +227,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 proteinas = "3 +";
             }
-            else
-            {
-                proteinas = "";
-            }
 
             //glucose negativo           
             if (rbGNeg.Checked == true)
             {
                 glucose = "Neg";
-            }
-            else
-            {
-                glucose = "";
             }
 
             //glucose 1 +           
@@ -281,19 +239,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 glucose = "1 +";
             }
-            else
-            {
-                glucose = "";
-            }
 
             //glucose 2 +           
             if (rbG2.Checked == true)
             {
                 glucose = "2 +";
-            }
-            else
-            {
-                glucose = "";
             }
 
             //glucose 3 +           
@@ -301,19 +251,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 glucose = "3 +";
             }
-            else
-            {
-                glucose = "";
-            }
 
             //glucose 4 +           
             if (rbG4.Checked == true)
             {
                 glucose = "4 +";
-            }
-            else
-            {
-                glucose = "";
             }
 
             //Cocetónicos negativo           
@@ -321,19 +263,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 cocetonicos = "Neg";
             }
-            else
-            {
-                cocetonicos = "";
-            }
 
             //Cocetónicos 1 +           
             if (rbC1.Checked == true)
             {
                 cocetonicos = "1 +";
-            }
-            else
-            {
-                cocetonicos = "";
             }
 
             //Cocetónicos 2 +           
@@ -341,19 +275,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 cocetonicos = "2 +";
             }
-            else
-            {
-                cocetonicos = "";
-            }
 
             //Cocetónicos 3 +           
             if (rbC3.Checked == true)
             {
                 cocetonicos = "3 +";
-            }
-            else
-            {
-                cocetonicos = "";
             }
 
             //Sangue/Homoglobina negativo           
@@ -361,19 +287,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 sangue = "Neg";
             }
-            else
-            {
-                sangue = "";
-            }
 
             //Sangue/Homoglobina 1 +           
             if (tbSH1.Checked == true)
             {
                 sangue = "1 +";
-            }
-            else
-            {
-                sangue = "";
             }
 
             //Sangue/Homoglobina 2 +           
@@ -381,29 +299,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 sangue = "2 +";
             }
-            else
-            {
-                sangue = "";
-            }
 
             //Sangue/Homoglobina 3 +           
             if (tbSH3.Checked == true)
             {
                 sangue = "3 +";
             }
-            else
-            {
-                sangue = "";
-            }
 
             //Sangue/Homoglobina 4 +           
             if (tbSH4.Checked == true)
             {
                 sangue = "4 +";
-            }
-            else
-            {
-                sangue = "";
             }
 
             if (VerificarDadosInseridos())
@@ -413,7 +319,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO TesteCombur(IdAtitude,IdPaciente,data,densidadeV1,densidadeV2,densidadeV3,densidadeV4,densidadeV5,densidadeV6,densidadeV7,ph,leucocitos,nitritos,proteinas,glucose,cocetonicos,sangeHemoglobina,observacoes) VALUES(@id,@IdPaciente,@dataR,@densidade1,@densidade2,@densidade3,@densidade4,@densidade5,@densidade6,@densidade7,@ph,@leucocitos,@nitritos,@proteinas,@glucose,@cocetonicos,@sangue,@obs);";
+                    string queryInsertData = "INSERT INTO TesteCombur(IdAtitude,IdPaciente,data,densidadeV1,densidadeV2,densidadeV3,densidadeV4,densidadeV5,densidadeV6,densidadeV7,ph,leucocitos,nitritos,proteinas,glucose,cocetonicos,sangeHemoglobina,observacoes) " +
+                                                                    "VALUES(@id,@IdPaciente,@dataR,@densidade1,@densidade2,@densidade3,@densidade4,@densidade5,@densidade6,@densidade7,@ph,@leucocitos,@nitritos,@proteinas,@glucose,@cocetonicos,@sangue,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
@@ -502,7 +409,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@leucocitos", DBNull.Value);
                     }
 
-                    //nitritos
+                    //nitritos               
                     if (nitritos != string.Empty)
                     {
                         sqlCommand.Parameters.AddWithValue("@nitritos", Convert.ToString(nitritos));
@@ -562,17 +469,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@obs", DBNull.Value);
                     }
 
-
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("O teste de combur foi registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                     connection.Close();
-                    //limparCampos();
-
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
-
                     MessageBox.Show("Por erro interno é impossível registar o teste de combur!", excep.Message);
                 }
 
@@ -662,6 +565,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
 
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerTesteCombur verTesteCombur = new VerTesteCombur(paciente);
+            verTesteCombur.Show();
+        }
+
+        private void groupBox6_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

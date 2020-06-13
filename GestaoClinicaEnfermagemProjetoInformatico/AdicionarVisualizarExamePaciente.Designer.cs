@@ -517,6 +517,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarVisualizarExamePaciente";
+            this.ShowInTaskbar = false;
             this.Text = "AdicionarVisualizarExamePaciente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdicionarVisualizarExamePaciente_Load);

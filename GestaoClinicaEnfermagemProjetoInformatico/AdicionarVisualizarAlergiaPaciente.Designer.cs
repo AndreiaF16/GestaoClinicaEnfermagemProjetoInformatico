@@ -494,6 +494,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarVisualizarAlergiaPaciente";
+            this.ShowInTaskbar = false;
             this.Text = "AdicionarVisualizarAlergiaPaciente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdicionarVisualizarAlergiaPaciente_Load);
