@@ -89,7 +89,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO ZaragatoaOnofaringe(IdAtitude,IdPaciente,data,zaragatoaOnofaringe,observacoes) VALUES(@id,@IdPaciente,@dataR,@lavagemVesical,@obs);";
+                    string queryInsertData = "INSERT INTO ZaragatoaOnofaringe(IdAtitude,IdPaciente,data,zaragatoaOnofaringe,observacoes) VALUES(@id,@IdPaciente,@dataR,@zaragatoaOnofaringe,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
@@ -118,19 +118,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Zaragatoa Onofaringe registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                     connection.Close();
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
-
                     MessageBox.Show("Por erro interno é impossível registar a  Zaragatoa Onofaringe!", excep.Message);
                 }
-
             }
         }
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
         {
             txtZaragatoaOnofaringe.Text = "";
             txtObservacoes.Text = "";
@@ -174,6 +177,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
 
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerZaragatoaOnofaringe verZaragatoaOnofaringe = new VerZaragatoaOnofaringe(paciente);
+            verZaragatoaOnofaringe.Show();
         }
     }
 }

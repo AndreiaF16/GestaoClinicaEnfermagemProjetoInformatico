@@ -102,9 +102,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     sqlCommand.Parameters.AddWithValue("@id", id);
 
-
-                  
-
                     if (obs != string.Empty)
                     {
                         sqlCommand.Parameters.AddWithValue("@obs", Convert.ToString(obs));
@@ -117,19 +114,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Implante Contracetivo SubDérmico registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                     connection.Close();
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
 
                     MessageBox.Show("Por erro interno é impossível registar o Implante Contracetivo SubDérmico!", excep.Message);
                 }
-
             }
         }
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
         {
             dataRegistoMed.Value = DateTime.Today;
             dataRetirada.Value = DateTime.Today;
@@ -199,6 +200,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
 
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerImplanteContracetivoPaciente verImplanteContracetivoPaciente = new VerImplanteContracetivoPaciente(paciente);
+            verImplanteContracetivoPaciente.Show();
         }
     }
 }

@@ -9,7 +9,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public class AlgariacaoPaciente
     {
         public string data { get; set; }
-        public string PO { get; set; }
         public int? silastic { get; set; }
         public string folley { get; set; }
         public string tresVias { get; set; }

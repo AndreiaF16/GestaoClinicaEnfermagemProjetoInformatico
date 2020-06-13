@@ -71,7 +71,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select data, silastic, folley, tresVias, dataProximaRealgariacao, observacoes, observacoes from Algariacao ORDER BY data asc", conn);
+            SqlCommand cmd = new SqlCommand("select data, silastic, folley, tresVias, dataProximaRealgariacao, observacoes from Algariacao ORDER BY data asc", conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())

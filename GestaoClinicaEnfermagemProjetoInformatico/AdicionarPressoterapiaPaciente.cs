@@ -80,7 +80,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             DateTime dataRegisto = dataRegistoMed.Value;
             string membrosInferiores = txtMembrosInferiores.Text;
-            string membrosSuperiores = txtMembrosInferiores.Text;
+            string membrosSuperiores = txtMembrosSuperiores.Text;
             string obs = txtObservacoes.Text;
 
             if (VerificarDadosInseridos())
@@ -129,8 +129,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Pressoterapia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                     connection.Close();
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
@@ -142,6 +142,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
         {
             txtMembrosInferiores.Text = "";
             txtMembrosSuperiores.Text = "";
@@ -186,6 +191,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
 
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerPressoterapiaPaciente verPressoterapiaPaciente = new VerPressoterapiaPaciente(paciente);
+            verPressoterapiaPaciente.Show();
         }
     }
 }

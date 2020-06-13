@@ -91,7 +91,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (rbOD.Checked == false)
             {
-                olhoDireito = "Não";
+                olhoDireito = "";
             }
 
             //olho esquerdo
@@ -101,7 +101,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (rbOE.Checked == false)
             {
-                olhoEsquerdo = "Não";
+                olhoEsquerdo = "";
             }
 
             //ambos
@@ -111,7 +111,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (rbOE.Checked == false)
             {
-                ambos = "Não";
+                ambos = "";
             }
 
             if (VerificarDadosInseridos())
@@ -170,8 +170,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Lavagem Ocular registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                     connection.Close();
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
@@ -183,6 +183,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
         {
             rbAmbos.Checked = false;
             rbAmbos.Checked = false;
@@ -228,6 +233,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
 
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerLavagemOcular verLavagemOcular = new VerLavagemOcular(paciente);
+            verLavagemOcular.Show();
         }
     }
 }

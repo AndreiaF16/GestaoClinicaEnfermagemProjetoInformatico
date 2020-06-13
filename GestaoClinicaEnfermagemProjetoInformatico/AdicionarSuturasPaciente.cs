@@ -80,8 +80,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             DateTime dataRegisto = dataRegistoMed.Value;
             string idSutura = txtID.Text;
-            string natural = txtID.Text;
-            string donatti = txtID.Text;
+            string natural = txtNatural.Text;
+            string donatti = txtDonatti.Text;
 
             string obs = txtObservacoes.Text;
 
@@ -140,8 +140,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Sutura registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                     connection.Close();
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
@@ -153,9 +153,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
         {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
             txtDonatti.Text = "";
             txtID.Text = "";
             txtNatural.Text = "";
+            txtObservacoes.Text = "";
             dataRegistoMed.Value = DateTime.Today;
             errorProvider.Clear();
         }
@@ -222,6 +228,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
 
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerSuturas verSuturas = new VerSuturas(paciente);
+            verSuturas.Show();
         }
     }
 }

@@ -94,22 +94,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Colpocitologia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                     connection.Close();
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
 
                     MessageBox.Show("Por erro interno é impossível registar a Colpocitologia!", excep.Message);
                 }
-
             }
-
-            
-
         }
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
         {
             dataRegistoMed.Value = DateTime.Today;
             dataColocacaoDIU.Value = DateTime.Today;
@@ -176,6 +177,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
 
             return true;
+        }
+
+        private void dataRegistoMed_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerColocacaoDIU verColocacaoDIU = new VerColocacaoDIU(paciente);
+            verColocacaoDIU.Show();
         }
     }
 }

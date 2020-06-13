@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcuidadeVisualPaciente.cs" />
     <Compile Include="AdicionarAlgariacaoPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +150,44 @@
     </Compile>
     <Compile Include="AdicionarLavagemOcular.Designer.cs">
       <DependentUpon>AdicionarLavagemOcular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColocacaoDIUPaciente.cs" />
+    <Compile Include="ImplanteContracetivoPaciente.cs" />
+    <Compile Include="LavagemAuricularPac.cs" />
+    <Compile Include="LavagemOcularPaciente.cs" />
+    <Compile Include="MonitorizacaoECGPaciente.cs" />
+    <Compile Include="PressoterapiaPaciente.cs" />
+    <Compile Include="SuturasPaciente.cs" />
+    <Compile Include="TricotomiaPaciente.cs" />
+    <Compile Include="VerAcuidadeVisual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerAcuidadeVisual.Designer.cs">
+      <DependentUpon>VerAcuidadeVisual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerColocacaoDIU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerColocacaoDIU.Designer.cs">
+      <DependentUpon>VerColocacaoDIU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerImplanteContracetivoPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerImplanteContracetivoPaciente.Designer.cs">
+      <DependentUpon>VerImplanteContracetivoPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerPressoterapiaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerPressoterapiaPaciente.Designer.cs">
+      <DependentUpon>VerPressoterapiaPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerLavagemAuricular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerLavagemAuricular.Designer.cs">
+      <DependentUpon>VerLavagemAuricular.cs</DependentUpon>
     </Compile>
     <Compile Include="AdicionarLavagemVesicalPaciente.cs">
       <SubType>Form</SubType>
@@ -801,6 +840,19 @@
     <Compile Include="VerInalacoes.Designer.cs">
       <DependentUpon>VerInalacoes.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerLavagemOcular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerLavagemOcular.Designer.cs">
+      <DependentUpon>VerLavagemOcular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LavagemVesicalPaciente.cs" />
+    <Compile Include="VerLavagemVesical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerLavagemVesical.Designer.cs">
+      <DependentUpon>VerLavagemVesical.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerMaisDetalhesPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -819,12 +871,30 @@
     <Compile Include="VerMedicacaoPaciente.Designer.cs">
       <DependentUpon>VerMedicacaoPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerMonitorizacaoECG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerMonitorizacaoECG.Designer.cs">
+      <DependentUpon>VerMonitorizacaoECG.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerProdutosConsulta.cs" />
+    <Compile Include="VerSuturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerSuturas.Designer.cs">
+      <DependentUpon>VerSuturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerTratamentosAnteriores.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VerTratamentosAnteriores.Designer.cs">
       <DependentUpon>VerTratamentosAnteriores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerTricotomia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerTricotomia.Designer.cs">
+      <DependentUpon>VerTricotomia.cs</DependentUpon>
     </Compile>
     <Compile Include="VerVacinacaoRegistada.cs">
       <SubType>Form</SubType>
@@ -838,6 +908,13 @@
     <Compile Include="VerVariasAtitudes.Designer.cs">
       <DependentUpon>VerVariasAtitudes.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerZaragatoaOnofaringe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerZaragatoaOnofaringe.Designer.cs">
+      <DependentUpon>VerZaragatoaOnofaringe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZaragatoaOnofaringePaciente.cs" />
     <EmbeddedResource Include="AdicionarAlgariacaoPaciente.resx">
       <DependentUpon>AdicionarAlgariacaoPaciente.cs</DependentUpon>
     </EmbeddedResource>
@@ -1021,6 +1098,9 @@
     <EmbeddedResource Include="AdicionarTipoUlcera.resx">
       <DependentUpon>AdicionarTipoUlcera.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VerAcuidadeVisual.resx">
+      <DependentUpon>VerAcuidadeVisual.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VerAlergiasRegistadas.resx">
       <DependentUpon>VerAlergiasRegistadas.cs</DependentUpon>
     </EmbeddedResource>
@@ -1044,6 +1124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerColheitaUrina.resx">
       <DependentUpon>VerColheitaUrina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerColocacaoDIU.resx">
+      <DependentUpon>VerColocacaoDIU.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerConsultasPaciente.resx">
       <DependentUpon>VerConsultasPaciente.cs</DependentUpon>
@@ -1191,8 +1274,20 @@
     <EmbeddedResource Include="VerImagem.resx">
       <DependentUpon>VerImagem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VerImplanteContracetivoPaciente.resx">
+      <DependentUpon>VerImplanteContracetivoPaciente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VerInalacoes.resx">
       <DependentUpon>VerInalacoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerLavagemAuricular.resx">
+      <DependentUpon>VerLavagemAuricular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerLavagemOcular.resx">
+      <DependentUpon>VerLavagemOcular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerLavagemVesical.resx">
+      <DependentUpon>VerLavagemVesical.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerMaisDetalhesPaciente.resx">
       <DependentUpon>VerMaisDetalhesPaciente.cs</DependentUpon>
@@ -1200,14 +1295,29 @@
     <EmbeddedResource Include="VerMedicacaoPaciente.resx">
       <DependentUpon>VerMedicacaoPaciente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VerMonitorizacaoECG.resx">
+      <DependentUpon>VerMonitorizacaoECG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerPressoterapiaPaciente.resx">
+      <DependentUpon>VerPressoterapiaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerSuturas.resx">
+      <DependentUpon>VerSuturas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VerTratamentosAnteriores.resx">
       <DependentUpon>VerTratamentosAnteriores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerTricotomia.resx">
+      <DependentUpon>VerTricotomia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerVacinacaoRegistada.resx">
       <DependentUpon>VerVacinacaoRegistada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerVariasAtitudes.resx">
       <DependentUpon>VerVariasAtitudes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerZaragatoaOnofaringe.resx">
+      <DependentUpon>VerZaragatoaOnofaringe.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\DataSources\Enfermeiro.datasource" />
