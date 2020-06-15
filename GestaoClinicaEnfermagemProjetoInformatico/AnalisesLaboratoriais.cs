@@ -92,7 +92,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@Observacoes", DBNull.Value);
                     }
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Tipo de Aleitamento registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Análise laboratorial registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                    // adicionar.UpdateDataGridView();
                     txtAnalise.Text = "";
@@ -112,7 +112,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 if (tipo == string.Empty)
                 {
-                    MessageBox.Show("Campo Obrigatório, por favor preencha o tipo de aleitamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Campo Obrigatório, por favor preencha o nome da análise laboratorial!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     if (txtAnalise.Text == string.Empty)
                     {

@@ -259,7 +259,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dataGridViewUtentes.Rows.Count > 1)
+            if (dataGridViewUtentes.Rows.Count >= 1)
             {
                 int i = dataGridViewUtentes.CurrentCell.RowIndex;
                 UtenteGridView utente = null; ;
@@ -337,7 +337,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             private void button2_Click(object sender, EventArgs e)
         {
-            if (dataGridViewUtentes.Rows.Count > 1 )
+            if (dataGridViewUtentes.Rows.Count >= 1 )
             {
                 int i = dataGridViewUtentes.CurrentCell.RowIndex;
                 UtenteGridView utente = null; ;
@@ -418,7 +418,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (dataGridViewUtentes.Rows.Count > 1)
+            if (dataGridViewUtentes.Rows.Count >= 1)
             {
                 int i = dataGridViewUtentes.CurrentCell.RowIndex;
                 UtenteGridView utente = null; ;
@@ -587,7 +587,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void button5_Click(object sender, EventArgs e)
         {
 
-            if (dataGridViewUtentes.Rows.Count > 1)
+            if (dataGridViewUtentes.Rows.Count >= 1)
             {
                 // HistoricoPaciente historicoPaciente = new HistoricoPaciente();
 

@@ -284,13 +284,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 Medicacao medicacao = new Medicacao
                 {
-                    medicamentos = (string)reader["medicamentos"],
-                    jejum = (string)reader["jejum"],
-                    peqAlmoco = (string)reader["pequenoAlmoco"],
-                    almoco = (string)reader["almoco"],
-                    lanche = (string)reader["lanche"],
-                    jantar = (string)reader["jantar"],
-                    deitar = (string)reader["deitar"],
+                    medicamentos = ((reader["medicamentos"] == DBNull.Value) ? "" : (string)reader["medicamentos"]),
+                    jejum = ((reader["jejum"] == DBNull.Value) ? "" : (string)reader["jejum"]),
+                    peqAlmoco = ((reader["pequenoAlmoco"] == DBNull.Value) ? "" : (string)reader["pequenoAlmoco"]),
+                    almoco = ((reader["almoco"] == DBNull.Value) ? "" : (string)reader["almoco"]),
+                    lanche = ((reader["lanche"] == DBNull.Value) ? "" : (string)reader["lanche"]),
+                    jantar = ((reader["jantar"] == DBNull.Value) ? "" : (string)reader["jantar"]),
+                    deitar = ((reader["deitar"] == DBNull.Value) ? "" : (string)reader["deitar"]),
+
                     data = dataMed,
 
 
@@ -300,6 +301,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaMedicacao };
             dataGridViewUlceras.DataSource = bindingSource1;
             dataGridViewUlceras.Columns[0].HeaderText = "Medicação";
+            dataGridViewUlceras.Columns[1].HeaderText = "Jeum";
+            dataGridViewUlceras.Columns[2].HeaderText = "Pequeno Almoço";
+            dataGridViewUlceras.Columns[3].HeaderText = "Almoço";
+            dataGridViewUlceras.Columns[4].HeaderText = "Lanchje";
+            dataGridViewUlceras.Columns[5].HeaderText = "Jantar";
+            dataGridViewUlceras.Columns[6].HeaderText = "Deitar";
+            dataGridViewUlceras.Columns[7].HeaderText = "Data Prescrição";
 
             conn.Close();
             dataGridViewUlceras.Update();
