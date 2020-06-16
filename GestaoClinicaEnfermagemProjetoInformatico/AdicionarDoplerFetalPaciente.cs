@@ -11,10 +11,6 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-
-
-
-
     public partial class AdicionarDoplerFetalPaciente : Form
     {
         SqlConnection conn = new SqlConnection();
