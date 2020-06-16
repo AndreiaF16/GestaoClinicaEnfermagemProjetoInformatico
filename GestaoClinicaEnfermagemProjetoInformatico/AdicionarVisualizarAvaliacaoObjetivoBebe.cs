@@ -582,8 +582,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnTipoAleitamento_Click(object sender, EventArgs e)
         {
-          /*  AdicionarTipoAleitamento aleitamento = new AdicionarTipoAleitamento(this);
-            aleitamento.Show();*/
+            AdicionarTipoAleitamento aleitamento = new AdicionarTipoAleitamento(this);
+            aleitamento.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -631,6 +631,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             radioButtonVentosa.Visible = false;
             lblAleitamentoArtificial.Visible = false;
             reiniciar();
+        }
+
+        private void btnTipoParto_Click(object sender, EventArgs e)
+        {
+            AdicionarTipoParto adicionarTipoParto = new AdicionarTipoParto(this);
+            adicionarTipoParto.Show();
         }
     }
 }

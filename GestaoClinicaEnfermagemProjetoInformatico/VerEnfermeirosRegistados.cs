@@ -13,15 +13,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class VerEnfermeirosRegistados : Form
     {
+        private Enfermeiro enfermeiro = new Enfermeiro();
 
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         List<EnfermeiroGridView> enfermeiros = new List<EnfermeiroGridView>();
-        public VerEnfermeirosRegistados()
+        public VerEnfermeirosRegistados(Enfermeiro enf)
         {
             InitializeComponent();
-            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            if (enf != null)
+            {
+                enfermeiro = enf;
+                label1.Text = "Enfermeiro: " + enfermeiro.nome;
 
+               
+            }
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+           
         }
 
         private void VerEnfermeirosRegistos_Load(object sender, EventArgs e)
@@ -122,7 +130,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            VerEnfermeirosRegistados verEnfermeirosRegistos = new VerEnfermeirosRegistados();
+            VerEnfermeirosRegistados verEnfermeirosRegistos = new VerEnfermeirosRegistados(enfermeiro);
             verEnfermeirosRegistos.Show();
         }
     }

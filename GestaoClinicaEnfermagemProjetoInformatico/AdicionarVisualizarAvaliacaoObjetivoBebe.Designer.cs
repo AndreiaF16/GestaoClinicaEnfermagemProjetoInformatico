@@ -310,6 +310,7 @@
             this.btnTipoParto.Text = "Adicionar Tipo Parto";
             this.btnTipoParto.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnTipoParto.UseVisualStyleBackColor = false;
+            this.btnTipoParto.Click += new System.EventHandler(this.btnTipoParto_Click);
             // 
             // btnTipoAleitamento
             // 

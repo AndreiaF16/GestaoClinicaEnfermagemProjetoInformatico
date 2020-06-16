@@ -199,6 +199,7 @@
             // txtNome
             // 
             this.txtNome.BackColor = System.Drawing.Color.White;
+            this.txtNome.Enabled = false;
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNome.ForeColor = System.Drawing.Color.Black;
             this.txtNome.Location = new System.Drawing.Point(239, 24);

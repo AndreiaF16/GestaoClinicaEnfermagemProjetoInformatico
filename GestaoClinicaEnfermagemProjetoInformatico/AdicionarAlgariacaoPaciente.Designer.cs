@@ -43,7 +43,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtSilastic = new System.Windows.Forms.TextBox();
             this.dataProximaRealgariacao = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
             this.panelTitulo = new System.Windows.Forms.Panel();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
@@ -51,12 +50,15 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnLimparCampos = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.cbDataProximaAlgariacao = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             btnVoltar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnVoltar
@@ -177,9 +179,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.txtSilastic);
-            this.groupBox1.Controls.Add(this.dataProximaRealgariacao);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dataRegistoMed);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtObservacoes);
@@ -204,19 +205,11 @@
             // 
             // dataProximaRealgariacao
             // 
-            this.dataProximaRealgariacao.Location = new System.Drawing.Point(602, 66);
+            this.dataProximaRealgariacao.Enabled = false;
+            this.dataProximaRealgariacao.Location = new System.Drawing.Point(91, 31);
             this.dataProximaRealgariacao.Name = "dataProximaRealgariacao";
             this.dataProximaRealgariacao.Size = new System.Drawing.Size(200, 26);
             this.dataProximaRealgariacao.TabIndex = 16;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(385, 71);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(206, 20);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Data Proxima Realgariação:";
             // 
             // panelTitulo
             // 
@@ -335,6 +328,27 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // cbDataProximaAlgariacao
+            // 
+            this.cbDataProximaAlgariacao.AutoSize = true;
+            this.cbDataProximaAlgariacao.Location = new System.Drawing.Point(53, 43);
+            this.cbDataProximaAlgariacao.Name = "cbDataProximaAlgariacao";
+            this.cbDataProximaAlgariacao.Size = new System.Drawing.Size(15, 14);
+            this.cbDataProximaAlgariacao.TabIndex = 18;
+            this.cbDataProximaAlgariacao.UseVisualStyleBackColor = true;
+            this.cbDataProximaAlgariacao.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataProximaRealgariacao);
+            this.groupBox2.Controls.Add(this.cbDataProximaAlgariacao);
+            this.groupBox2.Location = new System.Drawing.Point(486, 29);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(307, 84);
+            this.groupBox2.TabIndex = 19;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Data Proxima Realgariação:";
+            // 
             // AdicionarAlgariacaoPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,6 +377,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,8 +404,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panelTitulo;
         private System.Windows.Forms.DateTimePicker dataProximaRealgariacao;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSilastic;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox cbDataProximaAlgariacao;
     }
 }

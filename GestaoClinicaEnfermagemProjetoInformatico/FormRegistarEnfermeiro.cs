@@ -192,7 +192,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            FormAdmin formInicial = new FormAdmin();
+            FormAdmin formInicial = new FormAdmin(enfermeiro);
             formInicial.Show();
             this.Close();
         }

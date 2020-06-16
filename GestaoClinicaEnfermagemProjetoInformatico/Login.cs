@@ -134,7 +134,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            FormAdmin form = new FormAdmin();
+            FormAdmin form = new FormAdmin(enfermeiro);
             form.Show();
             this.Close();
         }

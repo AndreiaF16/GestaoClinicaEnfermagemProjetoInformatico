@@ -116,9 +116,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
-                    sqlCommand.Parameters.AddWithValue("@dataP", dataProx.ToString("MM/dd/yyyy"));
 
                     sqlCommand.Parameters.AddWithValue("@id", id);
+
+                    if (cbDataProximaAlgariacao.Checked == true)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@dataP", dataProx.ToString("MM/dd/yyyy"));
+                    }
+                    else 
+                    {
+                        sqlCommand.Parameters.AddWithValue("@dataP", DBNull.Value);
+                    }
 
                     if (folley != string.Empty)
                     {
@@ -252,6 +260,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             VerAlgariacaoPaciente verAlgariacaoPaciente = new VerAlgariacaoPaciente(paciente);
             verAlgariacaoPaciente.Show();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbDataProximaAlgariacao.Checked == true)
+            {
+                dataProximaRealgariacao.Enabled = true;
+            }
+            else
+            {
+                dataProximaRealgariacao.Enabled = false;
+            }
         }
     }
 }

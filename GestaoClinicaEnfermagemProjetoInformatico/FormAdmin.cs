@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,11 +14,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class FormAdmin : Form
     {
         
-
-        public FormAdmin()
+        private Enfermeiro enfermeiro = new Enfermeiro();
+        public FormAdmin(Enfermeiro enf)
         {
             InitializeComponent();
-           lblHora.Text= DateTime.Now.ToString("dd/MM/yyyy");
+            if (enf != null)
+            {
+                enfermeiro = enf;
+                label5.Text = "Enfermeiro: " + enfermeiro.nome;
+
+            }
+            lblHora.Text= DateTime.Now.ToString("dd/MM/yyyy");
             this.WindowState = FormWindowState.Maximized;
         }
 
@@ -93,7 +100,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            VerEnfermeirosRegistados verEnfermeirosRegistos = new VerEnfermeirosRegistados();
+            VerEnfermeirosRegistados verEnfermeirosRegistos = new VerEnfermeirosRegistados(enfermeiro);
             verEnfermeirosRegistos.Show();
         }
 
@@ -130,6 +137,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             RegistarEncomendas registarEncomendas = new RegistarEncomendas();
             registarEncomendas.Show();
+        }
+
+        private void FormAdmin_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
