@@ -13,14 +13,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class AdicionarTipoAleitamento : Form
     {
-        AdicionarVisualizarAvaliacaoObjetivoPaciente adicionar = null;
+        AdicionarVisualizarAvaliacaoObjetivoBebe adicionar = null;
         private ErrorProvider errorProvider = new ErrorProvider();
-        public AdicionarTipoAleitamento(AdicionarVisualizarAvaliacaoObjetivoPaciente avaliacaoPaciente)
+        public AdicionarTipoAleitamento(AdicionarVisualizarAvaliacaoObjetivoBebe avaliacaoBebe)
         {
             InitializeComponent();
-            adicionar = avaliacaoPaciente;
+            adicionar = avaliacaoBebe;
         }
 
+       
         private void AdicionarTipoAleitamento_Load(object sender, EventArgs e)
         {
             errorProvider.ContainerControl = this;

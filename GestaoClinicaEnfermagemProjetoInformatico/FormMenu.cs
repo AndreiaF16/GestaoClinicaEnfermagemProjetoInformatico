@@ -36,12 +36,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
             }
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            FormAdmin form = new FormAdmin();
+            FormAdmin form = new FormAdmin(enfermeiro);
             form.Show();
         }
 
@@ -91,7 +90,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-            FormAdmin formAdmin = new FormAdmin();
+            FormAdmin formAdmin = new FormAdmin(enfermeiro);
             formAdmin.Show();
         }
 

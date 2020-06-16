@@ -163,10 +163,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
-            if (var3 > 0)
+            if (var3 < 0)
             {
-                MessageBox.Show("A data de retirada tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataRetirada, "A data tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data de retirada tem de ser superior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRetirada, "A data tem de ser superior a data de hoje!");
                 return false;
             }
 
