@@ -185,7 +185,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button4_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Falta Implementar!!!");
+            Audiograma audiograma = new Audiograma(paciente);
+            audiograma.Show();
         }
 
         private void button9_Click(object sender, EventArgs e)

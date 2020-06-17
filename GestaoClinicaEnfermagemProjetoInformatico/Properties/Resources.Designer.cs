@@ -193,6 +193,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap audiograma {
+            get {
+                object obj = ResourceManager.GetObject("audiograma", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ConsultaRegistar {
             get {
                 object obj = ResourceManager.GetObject("ConsultaRegistar", resourceCulture);
@@ -493,6 +503,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_impressão_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-impressão-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_impressora_de_porta_aberta_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-impressora-de-porta-aberta-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_marcador_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-marcador-50", resourceCulture);
@@ -633,9 +663,29 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_visualizar_arquivo_26 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-visualizar-arquivo-26", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_visualizar_arquivo_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-visualizar-arquivo-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_visualizar_arquivo_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-visualizar-arquivo-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
