@@ -162,6 +162,7 @@
     <Compile Include="ImplanteContracetivoPaciente.cs" />
     <Compile Include="LavagemAuricularPac.cs" />
     <Compile Include="LavagemOcularPaciente.cs" />
+    <Compile Include="LocalizacaoDorPaciente.cs" />
     <Compile Include="MonitorizacaoECGPaciente.cs" />
     <Compile Include="PressoterapiaPaciente.cs" />
     <Compile Include="SuturasPaciente.cs" />
@@ -190,6 +191,12 @@
     </Compile>
     <Compile Include="VerImplanteContracetivoPaciente.Designer.cs">
       <DependentUpon>VerImplanteContracetivoPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerLocalizacaoDor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerLocalizacaoDor.Designer.cs">
+      <DependentUpon>VerLocalizacaoDor.cs</DependentUpon>
     </Compile>
     <Compile Include="VerPressoterapiaPaciente.cs">
       <SubType>Form</SubType>
@@ -1289,6 +1296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerLavagemVesical.resx">
       <DependentUpon>VerLavagemVesical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerLocalizacaoDor.resx">
+      <DependentUpon>VerLocalizacaoDor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerMaisDetalhesPaciente.resx">
       <DependentUpon>VerMaisDetalhesPaciente.cs</DependentUpon>

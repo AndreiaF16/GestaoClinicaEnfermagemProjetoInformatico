@@ -113,6 +113,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             this.Close();
         }
+
+        private void dataGridViewUtentes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
 

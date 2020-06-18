@@ -13,19 +13,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class FormLocalizacaoDorCorpo : Form
     {
-        Paciente utente = null;
+        Paciente paciente = null;
         private Enfermeiro enfermeiro = null;
-        //Graphics g;
+       
 
         Point point;
         public FormLocalizacaoDorCorpo(Enfermeiro enf, Paciente ut)
         {
             InitializeComponent();
             enfermeiro = enf;
-            utente = ut;
+            paciente = ut;
 
-            label1.Text = "Nome do Utente: " + utente.Nome;
-            //  g = this.CreateGraphics();
+            label1.Text = "Nome do Utente: " + paciente.Nome;
+            
         }
 
         private void panelFormulario_Paint(object sender, PaintEventArgs e)
@@ -40,30 +40,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void pictureBoxCorpo_MouseUp(object sender, MouseEventArgs e)
         {
-            /*TextBox textBox = new TextBox();
-             Point localizacaoClick = pictureBoxCorpo.PointToScreen(e.Location);
-             PopupForm form = new PopupForm(textBox, localizacaoClick, () => this.Text = textBox.Text);
-
-            form.Show();
-
-            for (int i = 0; i < this.pictureBoxCorpo.Controls.Count; i++)
-            {
-                if (this.pictureBoxCorpo.Controls[i] is TextBox)
-                {
-                    TextBox txtserial = (TextBox)this.pictureBoxCorpo.Controls[i];
-                    string value = txtserial.Text;
-
-                    listBox1.Items.Add(value.ToString());
-                }
-            }
-            //listBox1.Items.Add( "Localizacao:" +textBox.Text.ToString());*/
-
-
-
-
-
-
-
+            
 
 
 
@@ -76,25 +53,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void pictureBoxCorpo_Click(object sender, EventArgs e)
         {
-            /* TextBox textBox = new TextBox();
-
-
-             textBox.Location = PointToScreen(Cursor.Position);
-
-             pictureBoxCorpo.Controls.Add(textBox);
-
-             // string dor = textBox.Text;
-             for (int i = 0; i < this.pictureBoxCorpo.Controls.Count; i++)
-             {
-
-                 if (this.pictureBoxCorpo.Controls[i] is TextBox)
-                 {
-                     TextBox txtserial = (TextBox)this.pictureBoxCorpo.Controls[i];
-                     string value = txtserial.Text;
-
-                     listBox1.Items.Add(value.ToString());
-                 }
-             }*/
+            
 
 
         }
@@ -127,7 +86,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             textBox.Location = PointToScreen(e.Location);
 
             pictureBoxCorpo.Controls.Add(textBox);
-            listBox1.Items.Clear();
+            textBox1.Clear();
 
             // string dor = textBox.Text;
             for (int i = 0; i < this.pictureBoxCorpo.Controls.Count; i++)
@@ -137,10 +96,58 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     TextBox txtserial = (TextBox)this.pictureBoxCorpo.Controls[i];
                     string value = txtserial.Text;
-                    listBox1.Items.Add(value.ToString());
+                    textBox1.Text += value.ToString();
+                    textBox1.AppendText("\r\n");
 
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);
+            pictureBoxCorpo.Image = bmp;
+            pictureBoxCorpo.Controls.Clear();
+            textBox1.Clear();
+            pictureBoxCorpo.Refresh();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string localizacaoDor = textBox1.Text;
+           
+
+            try
+            {
+                SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                connection.Open();
+
+                string queryInsertData = "INSERT INTO LocalizacaoDor(idPaciente,idEnfermeiro,localizacao) VALUES(@idPaciente,@idEnfermeiro,@localizacao);";
+                SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+
+                sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
+                sqlCommand.Parameters.AddWithValue("@idEnfermeiro", enfermeiro.IdEnfermeiro);
+                sqlCommand.Parameters.AddWithValue("@localizacao", localizacaoDor);
+              
+
+                sqlCommand.ExecuteNonQuery();
+                MessageBox.Show("Dados Localizacao dor registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                connection.Close();
+                connection.Open();
+            }
+            catch (SqlException excep)
+            {
+
+                MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", excep.Message);
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            VerLocalizacaoDor verLocalizacaoDor = new VerLocalizacaoDor(paciente);
+            verLocalizacaoDor.Show();
         }
     }
 }
