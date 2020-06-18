@@ -217,7 +217,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnLocalizacaoDor_Click_1(object sender, EventArgs e)
         {
-            FormLocalizacaoDorCorpo formLocalizacaoDorCorpo = new FormLocalizacaoDorCorpo(enfermeiro, paciente);
+            FormLocalizacaoDorCorpo formLocalizacaoDorCorpo = new FormLocalizacaoDorCorpo( paciente);
             formLocalizacaoDorCorpo.Show();
         }
 

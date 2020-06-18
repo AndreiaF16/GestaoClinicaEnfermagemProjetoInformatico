@@ -14,14 +14,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class FormLocalizacaoDorCorpo : Form
     {
         Paciente paciente = null;
-        private Enfermeiro enfermeiro = null;
+       
        
 
         Point point;
-        public FormLocalizacaoDorCorpo(Enfermeiro enf, Paciente ut)
+        public FormLocalizacaoDorCorpo( Paciente ut)
         {
             InitializeComponent();
-            enfermeiro = enf;
+           
             paciente = ut;
 
             label1.Text = "Nome do Utente: " + paciente.Nome;
@@ -122,11 +122,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                 connection.Open();
 
-                string queryInsertData = "INSERT INTO LocalizacaoDor(idPaciente,idEnfermeiro,localizacao) VALUES(@idPaciente,@idEnfermeiro,@localizacao);";
+                string queryInsertData = "INSERT INTO LocalizacaoDor(idPaciente,localizacao) VALUES(@idPaciente,@localizacao);";
                 SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
 
                 sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
-                sqlCommand.Parameters.AddWithValue("@idEnfermeiro", enfermeiro.IdEnfermeiro);
+               
                 sqlCommand.Parameters.AddWithValue("@localizacao", localizacaoDor);
               
 

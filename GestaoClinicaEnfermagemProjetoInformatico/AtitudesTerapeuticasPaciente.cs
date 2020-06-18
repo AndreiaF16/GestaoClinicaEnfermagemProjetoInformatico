@@ -16,9 +16,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
-       // private List<ComboBoxItem> analises = new List<ComboBoxItem>();
-      //  private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
-       // private List<AnaliseLaboratorialPaciente> analisePaciente = new List<AnaliseLaboratorialPaciente>();
+        private Enfermeiro enfermeiro = null;
+        // private List<ComboBoxItem> analises = new List<ComboBoxItem>();
+        //  private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
+        // private List<AnaliseLaboratorialPaciente> analisePaciente = new List<AnaliseLaboratorialPaciente>();
         private ErrorProvider errorProvider = new ErrorProvider();
         private int id = -1;
         private int idZaragatoa = -1;
@@ -191,7 +192,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button9_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Falta Implementar!!!");
+            FormLocalizacaoDorCorpo formLocalizacaoDorCorpo = new FormLocalizacaoDorCorpo( paciente);
+            formLocalizacaoDorCorpo.Show();
         }
 
         private void button29_Click(object sender, EventArgs e)
