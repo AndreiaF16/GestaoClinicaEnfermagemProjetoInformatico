@@ -151,6 +151,12 @@
     <Compile Include="AdicionarLavagemOcular.Designer.cs">
       <DependentUpon>AdicionarLavagemOcular.cs</DependentUpon>
     </Compile>
+    <Compile Include="Audiograma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Audiograma.Designer.cs">
+      <DependentUpon>Audiograma.cs</DependentUpon>
+    </Compile>
     <Compile Include="ColocacaoDIUPaciente.cs" />
     <Compile Include="ColpocitologiaPaciente.cs" />
     <Compile Include="ImplanteContracetivoPaciente.cs" />
@@ -1048,6 +1054,9 @@
     <EmbeddedResource Include="AtitudesTerapeuticasPaciente.resx">
       <DependentUpon>AtitudesTerapeuticasPaciente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Audiograma.resx">
+      <DependentUpon>Audiograma.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cirurgias.resx">
       <DependentUpon>Cirurgias.cs</DependentUpon>
     </EmbeddedResource>
@@ -1511,6 +1520,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-guardar-todos-501.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\audiograma.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-impressão-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-visualizar-arquivo-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-visualizar-arquivo-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-impressora-de-porta-aberta-24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
