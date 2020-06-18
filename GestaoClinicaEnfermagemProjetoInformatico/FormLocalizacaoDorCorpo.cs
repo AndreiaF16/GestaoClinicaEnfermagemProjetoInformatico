@@ -97,7 +97,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     TextBox txtserial = (TextBox)this.pictureBoxCorpo.Controls[i];
                     string value = txtserial.Text;
                     textBox1.Text += value.ToString();
-                    textBox1.AppendText("\r\n");
+                    textBox1.AppendText("\r\n\t");
 
                 }
             }
@@ -148,6 +148,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             VerLocalizacaoDor verLocalizacaoDor = new VerLocalizacaoDor(paciente);
             verLocalizacaoDor.Show();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
