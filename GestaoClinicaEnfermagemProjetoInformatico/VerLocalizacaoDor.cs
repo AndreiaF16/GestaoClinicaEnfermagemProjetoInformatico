@@ -70,15 +70,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
 
                     
-                    localizacao = (string)reader["localizacao"],
+                    localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),
                     
                     
                 };
                 localizacaoDorPacientes.Add(localizacaoDorPaciente);
+               
             }
             conn.Close();
             UpdateDataGridView();
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = localizacaoDorPaciente };
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = localizacaoDorPacientes };
             dataGridViewLocalizacaoDor.DataSource = bindingSource1;
         }
         private void UpdateDataGridView()

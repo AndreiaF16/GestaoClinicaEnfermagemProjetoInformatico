@@ -191,5 +191,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewTratamentoExcisoes.Columns[4].HeaderText = "Observações";
             dataGridViewTratamentoExcisoes.Columns[5].HeaderText = "Próximo Tratamento";
         }
+
+        private void dataGridViewTratamentos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
