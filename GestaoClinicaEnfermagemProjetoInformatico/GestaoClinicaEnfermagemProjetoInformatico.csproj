@@ -1558,5 +1558,8 @@
   <ItemGroup>
     <None Include="Resources\maosEpes.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iamge.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
