@@ -101,5 +101,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             this.Close();
         }
+
+        private void dataGridViewLocalizacaoDor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

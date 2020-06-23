@@ -293,6 +293,7 @@
             this.dataGridViewLocalizacaoDor.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewLocalizacaoDor.Size = new System.Drawing.Size(1093, 412);
             this.dataGridViewLocalizacaoDor.TabIndex = 50;
+            this.dataGridViewLocalizacaoDor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLocalizacaoDor_CellContentClick);
             // 
             // panelTitulo
             // 

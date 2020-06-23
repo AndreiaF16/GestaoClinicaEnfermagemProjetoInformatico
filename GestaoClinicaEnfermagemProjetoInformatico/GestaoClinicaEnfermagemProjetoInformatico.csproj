@@ -159,6 +159,12 @@
     </Compile>
     <Compile Include="ColocacaoDIUPaciente.cs" />
     <Compile Include="ColpocitologiaPaciente.cs" />
+    <Compile Include="FormMaosEPes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMaosEPes.Designer.cs">
+      <DependentUpon>FormMaosEPes.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImplanteContracetivoPaciente.cs" />
     <Compile Include="LavagemAuricularPac.cs" />
     <Compile Include="LavagemOcularPaciente.cs" />
@@ -1076,6 +1082,9 @@
     <EmbeddedResource Include="FinalizarEncomenda.resx">
       <DependentUpon>FinalizarEncomenda.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormMaosEPes.resx">
+      <DependentUpon>FormMaosEPes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fornecedor.resx">
       <DependentUpon>Fornecedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -1545,6 +1554,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-impressora-de-porta-aberta-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maosEpes.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

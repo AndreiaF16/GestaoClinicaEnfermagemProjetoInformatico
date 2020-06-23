@@ -2,47 +2,32 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class FormLocalizacaoDorCorpo : Form
+    public partial class FormMaosEPes : Form
     {
         Paciente paciente = null;
-       
-       
+
+
 
         Point point;
-        public FormLocalizacaoDorCorpo( Paciente ut)
+        public FormMaosEPes(Paciente ut)
         {
             InitializeComponent();
-           
             paciente = ut;
 
             label1.Text = "Nome do Utente: " + paciente.Nome;
-            
         }
 
         private void panelFormulario_Paint(object sender, PaintEventArgs e)
         {
-
-        }
-
-        private void panelFormulario_MouseUp(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void pictureBoxCorpo_MouseUp(object sender, MouseEventArgs e)
-        {
-            
-
-
 
         }
 
@@ -51,22 +36,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.Close();
         }
 
-        private void pictureBoxCorpo_Click(object sender, EventArgs e)
-        {
-            
-
-
-        }
-
-        private void pictureBoxCorpo_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
-
         private void hora_Tick(object sender, EventArgs e)
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+        }
+
+        private void FormMaosEPes_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -99,7 +77,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
             var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);
             pictureBoxCorpo.Image = bmp;
@@ -108,10 +86,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             pictureBoxCorpo.Refresh();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             string localizacaoDor = textBox1.Text;
-           
+
 
             try
             {
@@ -122,9 +100,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
 
                 sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
-               
+
                 sqlCommand.Parameters.AddWithValue("@localizacao", localizacaoDor);
-              
+
 
                 sqlCommand.ExecuteNonQuery();
                 MessageBox.Show("Dados Localizacao dor registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -137,7 +115,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", excep.Message);
             }
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -145,66 +122,5 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             VerLocalizacaoDor verLocalizacaoDor = new VerLocalizacaoDor(paciente);
             verLocalizacaoDor.Show();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void painelPrincipal_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelMenu_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelTitulo_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblDia_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblHora_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTitulo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnMaximizar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnFechar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnMinimizar_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
-    
