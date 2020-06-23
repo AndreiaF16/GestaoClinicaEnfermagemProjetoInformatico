@@ -87,5 +87,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             FormLocalizacaoDorCorpo formLocalizacaoDorCorpo = new FormLocalizacaoDorCorpo(paciente);
             formLocalizacaoDorCorpo.Show();
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            FormMaosEPes formMaosEPes = new FormMaosEPes(paciente);
+            formMaosEPes.Show();
+        }
     }
 }

@@ -343,7 +343,7 @@
             this.button9.BackColor = System.Drawing.Color.LightSteelBlue;
             this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.Black;
             this.button9.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button9.Location = new System.Drawing.Point(71, 228);
@@ -352,9 +352,10 @@
             this.button9.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button9.Size = new System.Drawing.Size(185, 51);
             this.button9.TabIndex = 72;
-            this.button9.Text = "Onicocriptoses (IMAGEM - FALTA)";
+            this.button9.Text = "Onicocriptoses";
             this.button9.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
