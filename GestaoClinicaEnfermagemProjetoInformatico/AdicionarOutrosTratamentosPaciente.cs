@@ -81,5 +81,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             AdicionarDoplerFetalPaciente adicionarDoplerFetalPaciente = new AdicionarDoplerFetalPaciente(paciente);
             adicionarDoplerFetalPaciente.Show();
         }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            FormLocalizacaoDorCorpo formLocalizacaoDorCorpo = new FormLocalizacaoDorCorpo(paciente);
+            formLocalizacaoDorCorpo.Show();
+        }
     }
 }

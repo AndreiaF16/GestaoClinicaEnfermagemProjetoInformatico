@@ -398,7 +398,7 @@
             this.button12.BackColor = System.Drawing.Color.LightSteelBlue;
             this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.Black;
             this.button12.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button12.Location = new System.Drawing.Point(71, 53);
@@ -407,9 +407,10 @@
             this.button12.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button12.Size = new System.Drawing.Size(185, 73);
             this.button12.TabIndex = 75;
-            this.button12.Text = "Doppler arterial/venoso (IMAGEM - FALTA)";
+            this.button12.Text = "Doppler arterial/venoso ";
             this.button12.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // AdicionarOutrosTratamentosPaciente
             // 
