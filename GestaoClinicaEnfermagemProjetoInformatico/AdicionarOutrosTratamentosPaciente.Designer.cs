@@ -325,7 +325,7 @@
             this.button8.BackColor = System.Drawing.Color.LightSteelBlue;
             this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.Black;
             this.button8.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button8.Location = new System.Drawing.Point(71, 279);
@@ -334,9 +334,10 @@
             this.button8.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button8.Size = new System.Drawing.Size(185, 51);
             this.button8.TabIndex = 73;
-            this.button8.Text = "Onicomicoses (IMAGEM - FALTA)";
+            this.button8.Text = "Onicomicoses ";
             this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
@@ -381,7 +382,7 @@
             this.button11.BackColor = System.Drawing.Color.LightSteelBlue;
             this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.Black;
             this.button11.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button11.Location = new System.Drawing.Point(71, 330);
@@ -390,9 +391,10 @@
             this.button11.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button11.Size = new System.Drawing.Size(185, 51);
             this.button11.TabIndex = 74;
-            this.button11.Text = "Pé Diabético (IMAGENS - FALTA)";
+            this.button11.Text = "Pé Diabético";
             this.button11.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
             // 

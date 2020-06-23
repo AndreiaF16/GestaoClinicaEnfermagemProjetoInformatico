@@ -93,5 +93,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             FormMaosEPes formMaosEPes = new FormMaosEPes(paciente);
             formMaosEPes.Show();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FormMaosEPes formMaosEPes = new FormMaosEPes(paciente);
+            formMaosEPes.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            FormMaosEPes formMaosEPes = new FormMaosEPes(paciente);
+            formMaosEPes.Show();
+        }
     }
 }
