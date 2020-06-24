@@ -60,7 +60,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDor WHERE IdPaciente = @IdPaciente", conn);
+            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorConsulta WHERE IdPaciente = @IdPaciente", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 

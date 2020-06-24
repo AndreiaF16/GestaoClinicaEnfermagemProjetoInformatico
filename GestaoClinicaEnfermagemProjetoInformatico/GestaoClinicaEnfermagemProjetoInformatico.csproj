@@ -159,6 +159,12 @@
     </Compile>
     <Compile Include="ColocacaoDIUPaciente.cs" />
     <Compile Include="ColpocitologiaPaciente.cs" />
+    <Compile Include="FormLocalizacaoDorCorpoConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLocalizacaoDorCorpoConsulta.Designer.cs">
+      <DependentUpon>FormLocalizacaoDorCorpoConsulta.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMaosEPes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -649,12 +655,6 @@
       <DependentUpon>FormInicial1.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="FormLocalizacaoDorCorpo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLocalizacaoDorCorpo.Designer.cs">
-      <DependentUpon>FormLocalizacaoDorCorpo.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormRegistarUtente.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1082,6 +1082,9 @@
     <EmbeddedResource Include="FinalizarEncomenda.resx">
       <DependentUpon>FinalizarEncomenda.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLocalizacaoDorCorpoConsulta.resx">
+      <DependentUpon>FormLocalizacaoDorCorpoConsulta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMaosEPes.resx">
       <DependentUpon>FormMaosEPes.cs</DependentUpon>
     </EmbeddedResource>
@@ -1168,9 +1171,6 @@
     <EmbeddedResource Include="FormInicial1.resx">
       <DependentUpon>FormInicial1.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLocalizacaoDorCorpo.resx">
-      <DependentUpon>FormLocalizacaoDorCorpo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
