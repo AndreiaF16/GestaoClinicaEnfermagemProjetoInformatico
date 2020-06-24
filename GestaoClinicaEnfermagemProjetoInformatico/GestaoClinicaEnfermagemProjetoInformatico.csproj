@@ -165,6 +165,12 @@
     <Compile Include="FormLocalizacaoDorCorpoConsulta.Designer.cs">
       <DependentUpon>FormLocalizacaoDorCorpoConsulta.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLocalizacaoDorDopplerArterialVenoso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLocalizacaoDorDopplerArterialVenoso.Designer.cs">
+      <DependentUpon>FormLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMaosEPes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1084,6 +1090,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLocalizacaoDorCorpoConsulta.resx">
       <DependentUpon>FormLocalizacaoDorCorpoConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLocalizacaoDorDopplerArterialVenoso.resx">
+      <DependentUpon>FormLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMaosEPes.resx">
       <DependentUpon>FormMaosEPes.cs</DependentUpon>
