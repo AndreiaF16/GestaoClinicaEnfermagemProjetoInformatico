@@ -119,7 +119,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            VerLocalizacaoDor verLocalizacaoDor = new VerLocalizacaoDor(paciente);
+            VerLocalizacaoDorConsulta verLocalizacaoDor = new VerLocalizacaoDorConsulta(paciente);
             verLocalizacaoDor.Show();
         }
     }

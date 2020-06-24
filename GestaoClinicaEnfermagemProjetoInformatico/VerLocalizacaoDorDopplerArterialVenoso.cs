@@ -11,13 +11,13 @@ using System.Data.SqlClient;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class VerLocalizacaoDor : Form
+    public partial class VerLocalizacaoDorDopplerArterialVenoso : Form
     {
         private Paciente paciente = new Paciente();
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private List<LocalizacaoDorPaciente> localizacaoDorPacientes = new List<LocalizacaoDorPaciente>();
-        public VerLocalizacaoDor(Paciente pac)
+        public VerLocalizacaoDorDopplerArterialVenoso(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
@@ -60,7 +60,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorConsulta WHERE IdPaciente = @IdPaciente", conn);
+            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorDopplerArterialVenoso WHERE IdPaciente = @IdPaciente", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -69,13 +69,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 localizacaoDorPaciente = new LocalizacaoDorPaciente
                 {
 
-                    
+
                     localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),
-                    
-                    
+
+
                 };
                 localizacaoDorPacientes.Add(localizacaoDorPaciente);
-               
+
             }
             conn.Close();
             UpdateDataGridView();
@@ -90,7 +90,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
             dataGridViewLocalizacaoDor.Columns[0].HeaderText = "Localização Dor";
-            
+
         }
 
         private void panelFormulario_Paint(object sender, PaintEventArgs e)
