@@ -122,5 +122,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             VerLocalizacaoDorConsulta verLocalizacaoDor = new VerLocalizacaoDorConsulta(paciente);
             verLocalizacaoDor.Show();
         }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

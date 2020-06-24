@@ -26,58 +26,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             label1.Text = "Nome do Utente: " + paciente.Nome;
         }
 
-        private void panelFormulario_Paint(object sender, PaintEventArgs e)
-        {
+       
+    
 
-        }
+        
+        
 
-        private void btnVoltar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+     
 
-        private void hora_Tick(object sender, EventArgs e)
-        {
-            lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
-            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
-        }
+       
 
-        private void FormMaosEPes_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void pictureBoxCorpo_MouseClick(object sender, MouseEventArgs e)
+        private void btnMaximizar_Click(object sender, EventArgs e)
         {
-            TextBox textBox = new TextBox();
 
-
-            textBox.Location = PointToScreen(e.Location);
-
-            pictureBoxCorpo.Controls.Add(textBox);
-            textBox1.Clear();
-
-            // string dor = textBox.Text;
-            for (int i = 0; i < this.pictureBoxCorpo.Controls.Count; i++)
-            {
-
-                if (this.pictureBoxCorpo.Controls[i] is TextBox)
-                {
-                    TextBox txtserial = (TextBox)this.pictureBoxCorpo.Controls[i];
-                    string value = txtserial.Text;
-                    textBox1.Text += value.ToString();
-                    textBox1.AppendText("\r\n\t");
-
-                }
-            }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);
             pictureBoxCorpo.Image = bmp;
@@ -86,7 +55,24 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             pictureBoxCorpo.Refresh();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void hora_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
+            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            VerLocalizacaoDorDopplerArterialVenoso verLocalizacaoDorDopplerArterialVenoso = new VerLocalizacaoDorDopplerArterialVenoso(paciente);
+            verLocalizacaoDorDopplerArterialVenoso.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
             string localizacaoDor = textBox1.Text;
 
@@ -117,10 +103,34 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnVoltar_Click_1(object sender, EventArgs e)
         {
-            VerLocalizacaoDorConsulta verLocalizacaoDor = new VerLocalizacaoDorConsulta(paciente);
-            verLocalizacaoDor.Show();
+            this.Close();
+        }
+
+        private void pictureBoxCorpo_MouseClick(object sender, MouseEventArgs e)
+        {
+            TextBox textBox = new TextBox();
+
+
+            textBox.Location = PointToScreen(e.Location);
+
+            pictureBoxCorpo.Controls.Add(textBox);
+            textBox1.Clear();
+
+            // string dor = textBox.Text;
+            for (int i = 0; i < this.pictureBoxCorpo.Controls.Count; i++)
+            {
+
+                if (this.pictureBoxCorpo.Controls[i] is TextBox)
+                {
+                    TextBox txtserial = (TextBox)this.pictureBoxCorpo.Controls[i];
+                    string value = txtserial.Text;
+                    textBox1.Text += value.ToString();
+                    textBox1.AppendText("\r\n\t");
+
+                }
+            }
         }
     }
 }

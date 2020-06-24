@@ -84,8 +84,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button12_Click(object sender, EventArgs e)
         {
-            FormLocalizacaoDorCorpoConsulta formLocalizacaoDorCorpo = new FormLocalizacaoDorCorpoConsulta(paciente);
-            formLocalizacaoDorCorpo.Show();
+            FormLocalizacaoDorDopplerArterialVenoso formLocalizacaoDorDopplerArterialVenoso = new FormLocalizacaoDorDopplerArterialVenoso(paciente);
+            formLocalizacaoDorDopplerArterialVenoso.Show();
         }
 
         private void button9_Click(object sender, EventArgs e)

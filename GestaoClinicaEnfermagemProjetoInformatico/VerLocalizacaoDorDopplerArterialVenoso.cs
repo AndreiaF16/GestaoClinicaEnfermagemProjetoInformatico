@@ -47,13 +47,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void hora_Tick(object sender, EventArgs e)
+        private void dataGridViewLocalizacaoDor_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
-            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+
         }
 
-        private void VerLocalizacaoDor_Load(object sender, EventArgs e)
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void VerLocalizacaoDorDopplerArterialVenoso_Load(object sender, EventArgs e)
         {
             LocalizacaoDorPaciente localizacaoDorPaciente = new LocalizacaoDorPaciente();
 
@@ -92,20 +96,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewLocalizacaoDor.Columns[0].HeaderText = "Localização Dor";
 
         }
-
-        private void panelFormulario_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnVoltar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void dataGridViewLocalizacaoDor_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
+
+
 }
