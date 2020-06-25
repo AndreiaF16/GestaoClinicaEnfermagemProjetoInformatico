@@ -171,6 +171,12 @@
     <Compile Include="FormLocalizacaoDorDopplerArterialVenoso.Designer.cs">
       <DependentUpon>FormLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLocalizacaoDorOnicocriptoses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLocalizacaoDorOnicocriptoses.Designer.cs">
+      <DependentUpon>FormLocalizacaoDorOnicocriptoses.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMaosEPes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +227,12 @@
     </Compile>
     <Compile Include="VerLocalizacaoDorDopplerArterialVenoso.Designer.cs">
       <DependentUpon>VerLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerLocalizacaoDorOnicocriptoses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerLocalizacaoDorOnicocriptoses.Designer.cs">
+      <DependentUpon>VerLocalizacaoDorOnicocriptoses.cs</DependentUpon>
     </Compile>
     <Compile Include="VerPressoterapiaPaciente.cs">
       <SubType>Form</SubType>
@@ -1100,6 +1112,9 @@
     <EmbeddedResource Include="FormLocalizacaoDorDopplerArterialVenoso.resx">
       <DependentUpon>FormLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLocalizacaoDorOnicocriptoses.resx">
+      <DependentUpon>FormLocalizacaoDorOnicocriptoses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMaosEPes.resx">
       <DependentUpon>FormMaosEPes.cs</DependentUpon>
     </EmbeddedResource>
@@ -1326,6 +1341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerLocalizacaoDorDopplerArterialVenoso.resx">
       <DependentUpon>VerLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerLocalizacaoDorOnicocriptoses.resx">
+      <DependentUpon>VerLocalizacaoDorOnicocriptoses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerMaisDetalhesPaciente.resx">
       <DependentUpon>VerMaisDetalhesPaciente.cs</DependentUpon>
