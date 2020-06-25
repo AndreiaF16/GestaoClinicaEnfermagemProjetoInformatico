@@ -52,7 +52,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            VerLocalizacaoDorOnicocriptoses verLocalizacaoDorOnicocriptoses = new VerLocalizacaoDorOnicocriptoses();
+            VerLocalizacaoDorOnicocriptoses verLocalizacaoDorOnicocriptoses = new VerLocalizacaoDorOnicocriptoses(paciente);
             verLocalizacaoDorOnicocriptoses.Show();
         }
 

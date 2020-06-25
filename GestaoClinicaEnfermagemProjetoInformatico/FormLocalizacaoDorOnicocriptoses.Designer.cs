@@ -306,7 +306,7 @@
             // 
             // pictureBoxCorpo
             // 
-            this.pictureBoxCorpo.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg;
+            this.pictureBoxCorpo.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.iamge;
             this.pictureBoxCorpo.Location = new System.Drawing.Point(20, 40);
             this.pictureBoxCorpo.Name = "pictureBoxCorpo";
             this.pictureBoxCorpo.Size = new System.Drawing.Size(737, 677);
