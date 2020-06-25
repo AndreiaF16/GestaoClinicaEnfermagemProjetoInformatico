@@ -53,5 +53,46 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
+
+        private void VerLocalizacaoDorOnicocriptoses_Load(object sender, EventArgs e)
+        {
+            LocalizacaoDorPaciente localizacaoDorPaciente = new LocalizacaoDorPaciente();
+
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorOnicocriptoses WHERE IdPaciente = @IdPaciente", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                localizacaoDorPaciente = new LocalizacaoDorPaciente
+                {
+
+
+                    localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),
+
+
+                };
+                localizacaoDorPacientes.Add(localizacaoDorPaciente);
+
+            }
+            conn.Close();
+            UpdateDataGridView();
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = localizacaoDorPacientes };
+            dataGridViewLocalizacaoDor.DataSource = bindingSource1;
+        }
+        private void UpdateDataGridView()
+        {
+
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = localizacaoDorPacientes };
+            dataGridViewLocalizacaoDor.DataSource = bindingSource1;
+
+
+            dataGridViewLocalizacaoDor.Columns[0].HeaderText = "Localização Dor";
+
+        }
+    }
     }
 }
