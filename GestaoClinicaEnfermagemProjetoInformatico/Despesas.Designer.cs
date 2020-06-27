@@ -189,6 +189,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtProcurarEncomenda);
+            this.groupBox3.Enabled = false;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.Black;
             this.groupBox3.Location = new System.Drawing.Point(6, 94);
@@ -229,6 +230,7 @@
             this.comboBoxEncomenda.Size = new System.Drawing.Size(260, 28);
             this.comboBoxEncomenda.TabIndex = 72;
             this.comboBoxEncomenda.Visible = false;
+            this.comboBoxEncomenda.VisibleChanged += new System.EventHandler(this.comboBoxEncomenda_VisibleChanged);
             // 
             // lblEncomenda
             // 
@@ -356,7 +358,7 @@
             this.lblDia.AutoSize = true;
             this.lblDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblDia.Location = new System.Drawing.Point(621, 17);
+            this.lblDia.Location = new System.Drawing.Point(471, 17);
             this.lblDia.Name = "lblDia";
             this.lblDia.Size = new System.Drawing.Size(57, 20);
             this.lblDia.TabIndex = 10;

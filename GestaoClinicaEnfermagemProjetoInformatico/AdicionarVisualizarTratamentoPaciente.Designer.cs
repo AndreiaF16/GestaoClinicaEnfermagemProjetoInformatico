@@ -247,6 +247,7 @@
             // comboBoxTratamento
             // 
             this.comboBoxTratamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTratamento.FormattingEnabled = true;
             this.comboBoxTratamento.Location = new System.Drawing.Point(262, 25);
             this.comboBoxTratamento.Name = "comboBoxTratamento";
@@ -381,7 +382,7 @@
             this.button6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.button6.Size = new System.Drawing.Size(225, 67);
             this.button6.TabIndex = 63;
-            this.button6.Text = "Adicionar Outros Tratamentos";
+            this.button6.Text = "Registar Outros Tratamentos do Paciente";
             this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
@@ -538,7 +539,7 @@
             this.groupBox1.Controls.Add(this.lblNrTratamento);
             this.groupBox1.Controls.Add(this.lblDataTratamento);
             this.groupBox1.Controls.Add(this.dataTratamento);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
             this.groupBox1.Location = new System.Drawing.Point(10, 45);
             this.groupBox1.Name = "groupBox1";
@@ -561,6 +562,7 @@
             // 
             // txtGrauUlceraPressao
             // 
+            this.txtGrauUlceraPressao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGrauUlceraPressao.Location = new System.Drawing.Point(262, 158);
             this.txtGrauUlceraPressao.Name = "txtGrauUlceraPressao";
             this.txtGrauUlceraPressao.Size = new System.Drawing.Size(245, 26);
@@ -570,6 +572,7 @@
             // comboBoxTipoUlcera
             // 
             this.comboBoxTipoUlcera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTipoUlcera.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTipoUlcera.FormattingEnabled = true;
             this.comboBoxTipoUlcera.Location = new System.Drawing.Point(262, 93);
             this.comboBoxTipoUlcera.Name = "comboBoxTipoUlcera";
@@ -593,6 +596,7 @@
             // comboBoxTipoQueimadura
             // 
             this.comboBoxTipoQueimadura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTipoQueimadura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTipoQueimadura.FormattingEnabled = true;
             this.comboBoxTipoQueimadura.Location = new System.Drawing.Point(262, 59);
             this.comboBoxTipoQueimadura.Name = "comboBoxTipoQueimadura";
@@ -603,6 +607,7 @@
             // 
             // txtDermica
             // 
+            this.txtDermica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDermica.Location = new System.Drawing.Point(262, 255);
             this.txtDermica.Name = "txtDermica";
             this.txtDermica.Size = new System.Drawing.Size(245, 26);
@@ -623,6 +628,7 @@
             // 
             // txtCorpoEstranho
             // 
+            this.txtCorpoEstranho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCorpoEstranho.Location = new System.Drawing.Point(262, 223);
             this.txtCorpoEstranho.Name = "txtCorpoEstranho";
             this.txtCorpoEstranho.Size = new System.Drawing.Size(245, 26);
@@ -631,6 +637,7 @@
             // 
             // txtIPTB
             // 
+            this.txtIPTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIPTB.Location = new System.Drawing.Point(262, 190);
             this.txtIPTB.Name = "txtIPTB";
             this.txtIPTB.Size = new System.Drawing.Size(245, 26);
@@ -950,6 +957,7 @@
             // 
             // txtTipoPenso
             // 
+            this.txtTipoPenso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTipoPenso.Location = new System.Drawing.Point(223, 25);
             this.txtTipoPenso.Name = "txtTipoPenso";
             this.txtTipoPenso.Size = new System.Drawing.Size(245, 26);
@@ -990,6 +998,7 @@
             // 
             // txtAreaCircundanteAplicacao
             // 
+            this.txtAreaCircundanteAplicacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAreaCircundanteAplicacao.Location = new System.Drawing.Point(248, 54);
             this.txtAreaCircundanteAplicacao.Name = "txtAreaCircundanteAplicacao";
             this.txtAreaCircundanteAplicacao.Size = new System.Drawing.Size(245, 26);
@@ -997,6 +1006,7 @@
             // 
             // txtFerida
             // 
+            this.txtFerida.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFerida.Location = new System.Drawing.Point(247, 17);
             this.txtFerida.Name = "txtFerida";
             this.txtFerida.Size = new System.Drawing.Size(245, 26);
@@ -1004,6 +1014,7 @@
             // 
             // txtSuportePenso
             // 
+            this.txtSuportePenso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSuportePenso.Location = new System.Drawing.Point(229, 184);
             this.txtSuportePenso.Name = "txtSuportePenso";
             this.txtSuportePenso.Size = new System.Drawing.Size(245, 26);
@@ -1131,6 +1142,7 @@
             // 
             // txtExsudadoCheiro
             // 
+            this.txtExsudadoCheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtExsudadoCheiro.Location = new System.Drawing.Point(231, 86);
             this.txtExsudadoCheiro.Name = "txtExsudadoCheiro";
             this.txtExsudadoCheiro.Size = new System.Drawing.Size(245, 26);
@@ -1175,6 +1187,7 @@
             // 
             // txtExsudadoTipo
             // 
+            this.txtExsudadoTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtExsudadoTipo.Location = new System.Drawing.Point(230, 22);
             this.txtExsudadoTipo.Name = "txtExsudadoTipo";
             this.txtExsudadoTipo.Size = new System.Drawing.Size(245, 26);
@@ -1194,6 +1207,7 @@
             // 
             // txtUlcera
             // 
+            this.txtUlcera.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUlcera.Location = new System.Drawing.Point(262, 327);
             this.txtUlcera.Name = "txtUlcera";
             this.txtUlcera.Size = new System.Drawing.Size(245, 26);
@@ -1202,6 +1216,7 @@
             // 
             // txtDimensoes
             // 
+            this.txtDimensoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDimensoes.Location = new System.Drawing.Point(262, 291);
             this.txtDimensoes.Name = "txtDimensoes";
             this.txtDimensoes.Size = new System.Drawing.Size(245, 26);

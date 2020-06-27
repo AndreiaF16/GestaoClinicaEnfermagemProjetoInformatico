@@ -78,7 +78,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select tratamentoPac.data, tratamentoPac.numeroTratamento, tratamentoPac.dimensoes, tratamentoPac.grauUlceraPressao, tratamentoPac.exsudadoTipo, tratamentoPac.exsudadoQuantidade, tratamentoPac.exsudadoCheiro, tratamentoPac.tecidoPredominante, tratamentoPac.areaCircundante, tratamentoPac.agenteLimpeza, tratamentoPac.aplicacaoFerida, tratamentoPac.aplicacaoAreaCircundante, tratamentoPac.aplicacaoPenso, tratamentoPac.aplicacaoTamanho, tratamentoPac.aplicacaoSuportePenso, tratamentoPac.ProximoTratamento, tratamentoPac.Observacoes, tratamentoPac.EscalaDor, queimadura.tipoQueimadura, tratamentoPac.IPTB, ulcera.tipoUlcera from TratamentoPaciente tratamentoPac LEFT JOIN Paciente pac ON tratamentoPac.IdTratamento = pac.IdPaciente LEFT JOIN tipoQueimadura queimadura ON tratamentoPac.tipoQueimadura = queimadura.IdTipoQueimadura LEFT JOIN tipoUlcera ulcera ON tratamentoPac.tipoUlcera = ulcera.IdTipoUlcera where tratamentoPac.IdPaciente = @IdPaciente", conn);
+            SqlCommand cmd = new SqlCommand("select tratamentoPac.data, tratamento.nomeTratamento, tratamentoPac.numeroTratamento, tratamentoPac.dimensoes, tratamentoPac.grauUlceraPressao, tratamentoPac.exsudadoTipo, tratamentoPac.exsudadoQuantidade, tratamentoPac.exsudadoCheiro, tratamentoPac.tecidoPredominante, tratamentoPac.areaCircundante, tratamentoPac.agenteLimpeza, tratamentoPac.aplicacaoFerida, tratamentoPac.aplicacaoAreaCircundante, tratamentoPac.aplicacaoPenso, tratamentoPac.aplicacaoTamanho, tratamentoPac.aplicacaoSuportePenso, tratamentoPac.ProximoTratamento, tratamentoPac.Observacoes, tratamentoPac.EscalaDor, queimadura.tipoQueimadura, tratamentoPac.IPTB, ulcera.tipoUlcera from Tratamento tratamento LEFT JOIN TratamentoPaciente tratamentoPac ON tratamento.IdTratamento = tratamentoPac.IdTratamento LEFT JOIN Paciente pac ON tratamentoPac.IdTratamento = pac.IdPaciente LEFT JOIN tipoQueimadura queimadura ON tratamentoPac.tipoQueimadura = queimadura.IdTipoQueimadura LEFT JOIN tipoUlcera ulcera ON tratamentoPac.tipoUlcera = ulcera.IdTipoUlcera where tratamentoPac.IdPaciente = @IdPaciente", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
             // Paciente paciente = null;
@@ -87,9 +87,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 tratamentos = new TratamentosAnteriores
                 {
-                    // IdHistorico = (int)reader["IdHistorico"],
-
                     dataTratamento = Convert.ToDateTime(reader["data"]),
+                    tipoTratamento = ((reader["nomeTratamento"] == DBNull.Value) ? "" : (string)reader["nomeTratamento"]),
                     nrTratamento = ((reader["numeroTratamento"] == DBNull.Value) ? null : (int?)reader["numeroTratamento"]),
                     dimensoes = ((reader["dimensoes"] == DBNull.Value) ? "" : (string)reader["dimensoes"]),
                     grauUlceraPressao = ((reader["grauUlceraPressao"] == DBNull.Value) ? "" : (string)reader["grauUlceraPressao"]),
@@ -156,26 +155,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaTratamentosAnteriores };
             dataGridViewTratamentos.DataSource = bindingSource1;
             dataGridViewTratamentos.Columns[0].HeaderText = "Data do Tratamento";
-            dataGridViewTratamentos.Columns[1].HeaderText = "Número do Tratamento";
-            dataGridViewTratamentos.Columns[2].HeaderText = "Dimensões";
-            dataGridViewTratamentos.Columns[3].HeaderText = "Grau Úlcera Pressao";
-            dataGridViewTratamentos.Columns[4].HeaderText = "Tipo Exsudado";
-            dataGridViewTratamentos.Columns[5].HeaderText = "Quantidade Exsudado";
-            dataGridViewTratamentos.Columns[6].HeaderText = "Cheiro Exsudado";
-            dataGridViewTratamentos.Columns[7].HeaderText = "Tecido Predominante";
-            dataGridViewTratamentos.Columns[8].HeaderText = "Área Circundante";
-            dataGridViewTratamentos.Columns[9].HeaderText = "Agente de Limpeza";
-            dataGridViewTratamentos.Columns[10].HeaderText = "Ferida";
-            dataGridViewTratamentos.Columns[11].HeaderText = "Área Circundante";
-            dataGridViewTratamentos.Columns[12].HeaderText = "Penso";
-            dataGridViewTratamentos.Columns[13].HeaderText = "Tamanho Penso";
-            dataGridViewTratamentos.Columns[14].HeaderText = "Suporte Penso";
-            dataGridViewTratamentos.Columns[15].HeaderText = "Observações";
-            dataGridViewTratamentos.Columns[16].HeaderText = "Próximo Tratamento";
-            dataGridViewTratamentos.Columns[17].HeaderText = "Escala da Dor";
-            dataGridViewTratamentos.Columns[18].HeaderText = "Tipo de Queimadura";
-            dataGridViewTratamentos.Columns[19].HeaderText = "IPTB";
-            dataGridViewTratamentos.Columns[20].HeaderText = "Tipo de Úlcera";
+            dataGridViewTratamentos.Columns[1].HeaderText = "Nome do Tratamento";
+            dataGridViewTratamentos.Columns[2].HeaderText = "Número do Tratamento";
+            dataGridViewTratamentos.Columns[3].HeaderText = "Dimensões";
+            dataGridViewTratamentos.Columns[4].HeaderText = "Grau Úlcera Pressao";
+            dataGridViewTratamentos.Columns[5].HeaderText = "Tipo Exsudado";
+            dataGridViewTratamentos.Columns[6].HeaderText = "Quantidade Exsudado";
+            dataGridViewTratamentos.Columns[7].HeaderText = "Cheiro Exsudado";
+            dataGridViewTratamentos.Columns[8].HeaderText = "Tecido Predominante";
+            dataGridViewTratamentos.Columns[9].HeaderText = "Área Circundante";
+            dataGridViewTratamentos.Columns[10].HeaderText = "Agente de Limpeza";
+            dataGridViewTratamentos.Columns[11].HeaderText = "Ferida";
+            dataGridViewTratamentos.Columns[12].HeaderText = "Área Circundante";
+            dataGridViewTratamentos.Columns[13].HeaderText = "Penso";
+            dataGridViewTratamentos.Columns[14].HeaderText = "Tamanho Penso";
+            dataGridViewTratamentos.Columns[15].HeaderText = "Suporte Penso";
+            dataGridViewTratamentos.Columns[16].HeaderText = "Observações";
+            dataGridViewTratamentos.Columns[17].HeaderText = "Próximo Tratamento";
+            dataGridViewTratamentos.Columns[18].HeaderText = "Escala da Dor";
+            dataGridViewTratamentos.Columns[19].HeaderText = "Tipo de Queimadura";
+            dataGridViewTratamentos.Columns[20].HeaderText = "IPTB";
+            dataGridViewTratamentos.Columns[21].HeaderText = "Tipo de Úlcera";
 
         }
 

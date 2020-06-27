@@ -17,7 +17,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlCommand com = new SqlCommand();
         private ErrorProvider errorProvider = new ErrorProvider();
         AdicionarVisualizarTratamentoPaciente adicionar = null;
-        private List<Queimadura> tipoUlcera = new List<Queimadura>();
+        private List<Ulcera> tipoUlcera = new List<Ulcera>();
         public AdicionarTipoUlcera(AdicionarVisualizarTratamentoPaciente adicionarVisualizarTratamentoPaciente)
         {
             InitializeComponent();
@@ -143,11 +143,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             while (reader.Read())
             {
-                Queimadura queima = new Queimadura
+                Ulcera ulc = new Ulcera
                 {
-                    tipoQueimadura = (string)reader["tipoUlcera"]
+                    tipoUlcera = (string)reader["tipoUlcera"]
                 };
-                tipoUlcera.Add(queima);
+                tipoUlcera.Add(ulc);
             }
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = tipoUlcera };
             dataGridViewUlceras.DataSource = bindingSource1;

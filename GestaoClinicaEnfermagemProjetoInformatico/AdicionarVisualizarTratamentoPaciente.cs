@@ -17,6 +17,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlCommand com = new SqlCommand();
         private List<ComboBoxItem> tratamentos = new List<ComboBoxItem>();
         private List<ComboBoxItem> queimaduras = new List<ComboBoxItem>();
+        private List<ComboBoxItem> ulceras = new List<ComboBoxItem>();
+
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
         private Paciente paciente = new Paciente();
         private ErrorProvider errorProvider = new ErrorProvider();
@@ -86,7 +88,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 DateTime dataPTratamento = dataProximoTratamento.Value;
                 // string tratamento = comboBoxTratamento.Text;
                 //int tratamento = -1;
-                float nrTratamento = Convert.ToSingle(UpDownNumeroTratamento.Text);
+                int nrTratamento = Convert.ToInt32(UpDownNumeroTratamento.Text); //Convert.ToSingle(UpDownNumeroTratamento.Text);
                 string dimensoes = txtDimensoes.Text;
                 string ulcera = txtGrauUlceraPressao.Text;
                 string tipoExsudado = txtExsudadoTipo.Text;
@@ -131,7 +133,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                         if (nrTratamento > 0)
                         {
-                            sqlCommand1.Parameters.AddWithValue("@numeroTratamento", Convert.ToString(nrTratamento));
+                            sqlCommand1.Parameters.AddWithValue("@numeroTratamento", Convert.ToInt32(nrTratamento));
                         }
                         else
                         {
@@ -203,7 +205,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                         if (nrTratamento > 0)
                         {
-                            sqlCommand.Parameters.AddWithValue("@numeroTratamento", Convert.ToString(nrTratamento));
+                            sqlCommand.Parameters.AddWithValue("@numeroTratamento", Convert.ToInt32(nrTratamento));
                         }
                         else
                         {
@@ -404,29 +406,32 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }       
 
-             if (Convert.ToDecimal(nrTratamento) < 0 || Convert.ToInt32(quantidade) < 0 || Convert.ToInt32(tamanhoPenso) < 0)
+             if (Convert.ToInt32(nrTratamento) < 0 || Convert.ToInt32(quantidade) < 0 || Convert.ToInt32(tamanhoPenso) < 0)
              {
-                 if (Convert.ToInt32(nrTratamento) < 0)
+                 if (Convert.ToInt32(UpDownNumeroTratamento.Text) < 0)
                  {
-                     errorProvider.SetError(UpDownNumeroTratamento, "O número do tratamento não pode ser inferior a 0!");
+                    MessageBox.Show("O número do tratamento não pode ser inferior a 0!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProvider.SetError(UpDownNumeroTratamento, "O número do tratamento não pode ser inferior a 0!");
                  }
                  else
                  {
                      errorProvider.SetError(UpDownNumeroTratamento, String.Empty);
                  }
 
-                 if (Convert.ToDecimal(quantidade) < 0)
+                 if (Convert.ToInt32(numericUpDownTamanhoPenso.Text) < 0)
                  {
-                     errorProvider.SetError(numericUpDownExcudado, "A quantidade não pode ser inferior a 0!");
+                    MessageBox.Show("A quantidade não pode ser inferior a 0!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProvider.SetError(numericUpDownExcudado, "A quantidade não pode ser inferior a 0!");
                  }
                  else
                  {
                      errorProvider.SetError(numericUpDownExcudado, String.Empty);
                  }
 
-                 if (Convert.ToDecimal(tamanhoPenso) < 0)
+                 if (Convert.ToInt32(numericUpDownTamanhoPenso.Text) < 0)
                  {
-                     errorProvider.SetError(numericUpDownTamanhoPenso, "O tamanho do penso não pode ser inferior a 0!");
+                    MessageBox.Show("O tamanho do penso não pode ser inferior a 0!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProvider.SetError(numericUpDownTamanhoPenso, "O tamanho do penso não pode ser inferior a 0!");
                  }
                  else
                  {
@@ -472,9 +477,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             tratamentos.Clear();
             queimaduras.Clear();
+            ulceras.Clear();
 
             comboBoxTratamento.Items.Clear();
             comboBoxTipoQueimadura.Items.Clear();
+            comboBoxTipoUlcera.Items.Clear();
 
             auxiliar.Clear();
             conn.Open();
@@ -518,7 +525,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 item.Text = (string)reader2["tipoUlcera"];
                 item.Value = (int)reader2["IdTipoUlcera"];
                 comboBoxTipoUlcera.Items.Add(item);
-                queimaduras.Add(item);
+                ulceras.Add(item);
             }
 
             conn.Close();
@@ -1104,6 +1111,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 lblEscala.Visible = false;
                 btnLocalizacaoDor.Visible = true;
             }
+          
 
         }
 

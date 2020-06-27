@@ -8,8 +8,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public class TratamentosAnteriores
     {
-
         public DateTime dataTratamento { get; set; }
+        public string tipoTratamento { get; set; }
 
         public int? nrTratamento { get; set; }
 

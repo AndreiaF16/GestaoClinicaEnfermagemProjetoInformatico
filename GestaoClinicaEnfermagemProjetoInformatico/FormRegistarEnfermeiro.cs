@@ -16,15 +16,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class FormRegistarEnfermeiro : Form
     {
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
         private Enfermeiro enfermeiro = new Enfermeiro();
+        private ErrorProvider errorProvider = new ErrorProvider();
 
         public FormRegistarEnfermeiro(Enfermeiro login)
         {
             InitializeComponent();
             enfermeiro = login;
-            this.WindowState = FormWindowState.Maximized;
+           // this.WindowState = FormWindowState.Maximized;
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            dataNascimento.Value = DateTime.Today;
         }
-        
+
 
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
@@ -57,6 +62,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void FormRegistarEnfermeiro_Load(object sender, EventArgs e)
         {
             this.txtNome.Focus();
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
@@ -104,6 +112,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             return true;
         }*/
+
         private Boolean VerificarDadosInseridos()
         {
             string nome = txtNome.Text;
@@ -111,13 +120,37 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string dtNascimento = dataNascimento.Value.Date.ToString();
             string email = txtEmail.Text;
             string username = txtUsername.Text;
-           // string password = txtPassword.Text;
-          //  string confirmaPassword = txtConfirmaPassword.Text;
-          //  string passCript = CalculaHash(password);
+
 
             if (nome == string.Empty || email == string.Empty || username == string.Empty )
             {
-                MessageBox.Show("Campos Obrigatórios, por favor preencha todos os campos (nome, email, username)!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtNome.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtNome, "O nome é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtNome, String.Empty);
+                }
+
+                if (txtEmail.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtEmail, "O email é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtEmail, String.Empty);
+                }
+
+                if (txtUsername.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtUsername, "O Username é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtUsername, String.Empty);
+                }
                 return false;
             }
 
@@ -125,11 +158,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (!regexEmail.IsMatch(email))
             {
                 MessageBox.Show("Por favor, introduza um email válido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtEmail, "Por favor, introduza um email válido!");
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(txtEmail, String.Empty);
             }
 
             if (telemovel.Length != 9)
             {
                 MessageBox.Show("O telemóvel tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtContacto, "O telemóvel tem de ter exatamente 9 algarismos!");
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(txtContacto, String.Empty);
             }
 
             DateTime data = dataNascimento.Value;
@@ -137,9 +182,44 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if ((data - DateTime.Today).TotalDays > 0)
             {
                 MessageBox.Show("A data de nascimento tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataNascimento, "A data de nascimento tem de ser inferior a data de hoje!");
                 return false;
             }
+            else
+            {
+                errorProvider.SetError(dataNascimento, String.Empty);
+            }
 
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select * from Enfermeiro", conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (!(reader["Email"] == DBNull.Value))
+                {
+                    if (txtEmail.Text.Equals((string)reader["Email"]))
+                    {
+                        MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.");
+                        conn.Close();
+                        return false;
+                    }
+
+                }
+
+                if (!(reader["username"] == DBNull.Value))
+                {
+                    if (txtUsername.Text.Equals((string)reader["username"]))
+                    {
+                        MessageBox.Show("O username que colocou já se encontra registado, coloque outro.");
+                        conn.Close();
+                        return false;
+                    }
+                }
+            }
+            conn.Close();
 
             return true;
         }
@@ -153,19 +233,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string username = txtUsername.Text;
             string passCript = CalculaHash("User1234*");
 
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
+            if (VerificarDadosInseridos())
             {
                 try
                 {
-                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                    connection.Open();
+                    conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    conn.Open(); ;
                     
                     string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES(@nome,@funcao,@contacto,@dataNascimento,@username,@password,@email);";
-                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.Parameters.AddWithValue("@nome", nome);
                     sqlCommand.Parameters.AddWithValue("@funcao", funcao);
                     sqlCommand.Parameters.AddWithValue("@contacto", telemovel);
@@ -178,12 +254,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                         MessageBox.Show("Enfermeiro registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
-                    connection.Close();
+                    conn.Close();
                 }
                 catch (SqlException excep)
                 {
 
-                    MessageBox.Show("Por erro interno é impossível registar a avaliação objetivo", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a o enfermeiro", excep.Message);
                 }
                
                 }
@@ -271,6 +347,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void lblDia_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            txtNome.Text = "";
+            txtFuncao.Text = "";
+            txtContacto.Text = "";
+            dataNascimento.Value = DateTime.Today;
+            txtEmail.Text = "";
+            txtUsername.Text = "";
+
 
         }
     }

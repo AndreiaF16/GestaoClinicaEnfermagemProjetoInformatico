@@ -14,16 +14,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class FormMaosEPes : Form
     {
         Paciente paciente = null;
-
-
-
         Point point;
+        private ErrorProvider errorProvider = new ErrorProvider();
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
+        private List<ComboBoxItem> tratamentos = new List<ComboBoxItem>();
+        private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
+
         public FormMaosEPes(Paciente ut)
         {
             InitializeComponent();
             paciente = ut;
-
             label1.Text = "Nome do Utente: " + paciente.Nome;
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            dataRegisto.Value = DateTime.Today;
+
         }
 
         private void panelFormulario_Paint(object sender, PaintEventArgs e)
@@ -44,12 +51,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void FormMaosEPes_Load(object sender, EventArgs e)
         {
-
+            reiniciar();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+
         }
 
         private void pictureBoxCorpo_MouseClick(object sender, MouseEventArgs e)
@@ -77,8 +89,89 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
+            if (VerificarDadosInseridos())
+            {
+
+                string localizacaoDor = textBox1.Text;
+                DateTime dataReg = dataRegisto.Value;
+                int tratamento = (comboBoxTratamento.SelectedItem as ComboBoxItem).Value;
+
+
+                try
+                {
+                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    connection.Open();
+
+                    string queryInsertData = "INSERT INTO LocalizacaoDor(IdTratamentoMaosPes, IdPaciente,data,localizacao) VALUES(@idTratamento,@idPaciente,@dataR,@localizacao);";
+                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+
+                    sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
+                    sqlCommand.Parameters.AddWithValue("@dataR", dataReg.ToString("MM/dd/yyyy"));
+                    sqlCommand.Parameters.AddWithValue("@localizacao", localizacaoDor);
+                    sqlCommand.Parameters.AddWithValue("@idTratamento", Convert.ToInt32(tratamento));
+
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Dados Localizacao dor registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    connection.Close();
+                }
+                catch (SqlException excep)
+                {
+                    MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", excep.Message);
+                }
+            }
+        }
+
+        private Boolean VerificarDadosInseridos()
+        {
+            DateTime data = dataRegisto.Value;
+
+            int var = (int)((data - DateTime.Today).TotalDays);
+
+            if (var > 0)
+            {
+                MessageBox.Show("A data de registo tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRegisto, "A data tem de ser inferior a data de hoje!");
+                return false;
+            }
+
+            return true;
+        }
+
+        public void reiniciar()
+        {
+            tratamentos.Clear();
+            comboBoxTratamento.Items.Clear();
+
+            auxiliar.Clear();
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select * from TratamentoMaosPes order by tratamento asc", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Text = (string)reader["tratamento"];
+                item.Value = (int)reader["IdTratamentoMaosPes"];
+                comboBoxTratamento.Items.Add(item);
+                tratamentos.Add(item);
+            }
+            conn.Close();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            VerLocalizacaoDor verLocalizacaoDor = new VerLocalizacaoDor(paciente);
+            verLocalizacaoDor.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dataRegisto.Value = DateTime.Today;
+            reiniciar();
             var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);
             pictureBoxCorpo.Image = bmp;
             pictureBoxCorpo.Controls.Clear();
@@ -86,41 +179,28 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             pictureBoxCorpo.Refresh();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-            string localizacaoDor = textBox1.Text;
-
-
-            try
-            {
-                SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                connection.Open();
-
-                string queryInsertData = "INSERT INTO LocalizacaoDor(idPaciente,localizacao) VALUES(@idPaciente,@localizacao);";
-                SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-
-                sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
-
-                sqlCommand.Parameters.AddWithValue("@localizacao", localizacaoDor);
-
-
-                sqlCommand.ExecuteNonQuery();
-                MessageBox.Show("Dados Localizacao dor registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-                connection.Close();
-                connection.Open();
-            }
-            catch (SqlException excep)
-            {
-
-                MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", excep.Message);
-            }
+            AdicionarTratamentoMaosPes tratamento = new AdicionarTratamentoMaosPes(this);
+            tratamento.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnMaximizar_Click(object sender, EventArgs e)
         {
-            VerLocalizacaoDor verLocalizacaoDor = new VerLocalizacaoDor(paciente);
-            verLocalizacaoDor.Show();
+            this.WindowState = FormWindowState.Minimized;
+
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
         }
     }
 }

@@ -78,7 +78,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button4_Click(object sender, EventArgs e)
         {
-            AdicionarVerTipoDespesa adicionarVerTipoDespesa = new AdicionarVerTipoDespesa();
+            AdicionarVerTipoDespesa adicionarVerTipoDespesa = new AdicionarVerTipoDespesa(this);
             adicionarVerTipoDespesa.Show();
         }
 
@@ -283,11 +283,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string preco = UpDownPreco.Text;
             DateTime data = dataDespesa.Value;
 
-            if ((data - DateTime.Today).TotalDays > 0)
-            {
-                MessageBox.Show("A data da despesa tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
 
             if (despesa == string.Empty)
             {
@@ -312,26 +307,34 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 return false;
             }
-            /*
-            conn.Open();
-            com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from AlergiaPaciente WHERE IdPaciente = @IdPaciente order by data", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            if ((data - DateTime.Today).TotalDays > 0)
             {
-                DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                int alergia = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
-                if (dataDiagnostico.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && alergia == (int)reader["IdAlergia"])
-                {
-                    MessageBox.Show("Não é possível registar essa alergia, porque já esta registada na data que selecionou. Escolha outra data ou outra alergia!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    conn.Close();
-                    return false;
-                }
-
+                MessageBox.Show("A data da despesa tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(this.dataDespesa, "A data da despesa tem de ser inferior a data de hoje!");
+                
+                
+                return false;
             }
-            conn.Close();*/
+            else
+            {
+                errorProvider.SetError(dataDespesa, String.Empty);
+            }
+
+
+            if (Convert.ToDecimal(preco) <= 0)
+            {
+                MessageBox.Show("O preço não pode ser igual ou inferior a 0!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Convert.ToDecimal(UpDownPreco.Text) <= 0)
+                {
+                    errorProvider.SetError(this.UpDownPreco, "O preço tem de ser superior a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownPreco, String.Empty);
+                }
+                return false;
+            }
             return true;
         }
 
@@ -395,6 +398,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             VerDespesasTodas verDespesasTodas = new VerDespesasTodas();
             verDespesasTodas.Show();
+        }
+
+        private void comboBoxEncomenda_VisibleChanged(object sender, EventArgs e)
+        {
+            if (comboBoxEncomenda.Visible == true)
+            {
+                groupBox3.Enabled = true;
+                txtProcurarEncomenda.Enabled = true;
+            }
+            else
+            {
+                groupBox3.Enabled = false;
+                txtProcurarEncomenda.Enabled = false;
+            }
         }
     }
 }

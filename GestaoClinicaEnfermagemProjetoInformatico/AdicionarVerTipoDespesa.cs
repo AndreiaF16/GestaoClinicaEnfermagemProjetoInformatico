@@ -15,16 +15,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
+        private Despesas adicionar = null;
         private List<TipoDespesa> tipoDespesas = new List<TipoDespesa>();
         private ErrorProvider errorProvider = new ErrorProvider();
-        public AdicionarVerTipoDespesa()
+        public AdicionarVerTipoDespesa(Despesas despesas)
         {
             InitializeComponent();
+            adicionar = despesas;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
+            if (adicionar != null)
+            {
+                adicionar.reiniciar();
+            }
             this.Close();
         }
 

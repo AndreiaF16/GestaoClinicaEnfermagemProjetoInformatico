@@ -27,7 +27,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnMaximizar_Click(object sender, EventArgs e)
@@ -60,7 +64,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDor WHERE IdPaciente = @IdPaciente", conn);
+            SqlCommand cmd = new SqlCommand("select data,localizacao from LocalizacaoDor WHERE IdPaciente = @IdPaciente", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -69,7 +73,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 localizacaoDorPaciente = new LocalizacaoDorPaciente
                 {
 
-                    
+                    data = Convert.ToDateTime(reader["data"]),
                     localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),
                     
                     
@@ -89,8 +93,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewLocalizacaoDor.DataSource = bindingSource1;
 
 
+            dataGridViewLocalizacaoDor.Columns[1].HeaderText = "Data de Registo";
             dataGridViewLocalizacaoDor.Columns[0].HeaderText = "Localização Dor";
-            
+
         }
 
         private void panelFormulario_Paint(object sender, PaintEventArgs e)

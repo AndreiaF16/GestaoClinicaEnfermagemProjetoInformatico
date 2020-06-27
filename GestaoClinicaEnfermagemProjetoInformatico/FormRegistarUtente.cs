@@ -21,7 +21,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
         private List<ProfissaoPaciente> profissaoPacientes = new List<ProfissaoPaciente>();
         private ErrorProvider errorProvider = new ErrorProvider();
-        private ErrorProvider errorProviderCerto = new ErrorProvider();
         private Paciente paciente = null;
 
         public FormRegistarUtente(Enfermeiro enf)
@@ -54,7 +53,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string email = txtEmail.Text;
             string telemovel = txtContacto.Text;
             string nif = txtNif.Text;
-           string acordo = cbAcordos.Text;
+            string acordo = cbAcordos.Text;
             string nomeSeguradora = txtNomeSeguradora.Text;
             string numeroApolice = txtNApolice.Text;
             string numeroSNS = txtSNS.Text;

@@ -151,6 +151,12 @@
     <Compile Include="AdicionarLavagemOcular.Designer.cs">
       <DependentUpon>AdicionarLavagemOcular.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdicionarTratamentoMaosPes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarTratamentoMaosPes.Designer.cs">
+      <DependentUpon>AdicionarTratamentoMaosPes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Audiograma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,7 @@
     <Compile Include="PressoterapiaPaciente.cs" />
     <Compile Include="SuturasPaciente.cs" />
     <Compile Include="TesteComburPaciente.cs" />
+    <Compile Include="TratamentoMaosPes.cs" />
     <Compile Include="TricotomiaPaciente.cs" />
     <Compile Include="VerAcuidadeVisual.cs">
       <SubType>Form</SubType>
@@ -1015,6 +1022,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarTratamento.resx">
       <DependentUpon>AdicionarTratamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarTratamentoMaosPes.resx">
+      <DependentUpon>AdicionarTratamentoMaosPes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarTratamentoVacinacao.resx">
       <DependentUpon>AdicionarTratamentoVacinacao.cs</DependentUpon>
