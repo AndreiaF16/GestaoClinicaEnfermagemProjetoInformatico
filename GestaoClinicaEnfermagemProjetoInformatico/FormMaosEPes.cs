@@ -164,43 +164,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            VerLocalizacaoDor verLocalizacaoDor = new VerLocalizacaoDor(paciente);
+            VerLocalizacaoDorConsulta verLocalizacaoDor = new VerLocalizacaoDorConsulta(paciente);
             verLocalizacaoDor.Show();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            dataRegisto.Value = DateTime.Today;
-            reiniciar();
-            var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);
-            pictureBoxCorpo.Image = bmp;
-            pictureBoxCorpo.Controls.Clear();
-            textBox1.Clear();
-            pictureBoxCorpo.Refresh();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            AdicionarTratamentoMaosPes tratamento = new AdicionarTratamentoMaosPes(this);
-            tratamento.Show();
-        }
-
-        private void btnMaximizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-
-        }
-
-        private void btnMinimizar_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
         }
     }
 }

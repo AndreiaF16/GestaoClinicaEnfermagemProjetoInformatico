@@ -84,26 +84,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button12_Click(object sender, EventArgs e)
         {
-            FormLocalizacaoDorCorpo formLocalizacaoDorCorpo = new FormLocalizacaoDorCorpo(paciente);
-            formLocalizacaoDorCorpo.Show();
+            FormLocalizacaoDorDopplerArterialVenoso formLocalizacaoDorDopplerArterialVenoso = new FormLocalizacaoDorDopplerArterialVenoso(paciente);
+            formLocalizacaoDorDopplerArterialVenoso.Show();
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            FormMaosEPes formMaosEPes = new FormMaosEPes(paciente);
-            formMaosEPes.Show();
+            FormLocalizacaoDorOnicocriptoses formLocalizacaoDorOnicocriptoses = new FormLocalizacaoDorOnicocriptoses(paciente);
+            formLocalizacaoDorOnicocriptoses.Show();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            FormMaosEPes formMaosEPes = new FormMaosEPes(paciente);
-            formMaosEPes.Show();
+            FormLocalizacaoDorOnicocriptoses formLocalizacaoDorOnicocriptoses = new FormLocalizacaoDorOnicocriptoses(paciente);
+            formLocalizacaoDorOnicocriptoses.Show();
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            FormMaosEPes formMaosEPes = new FormMaosEPes(paciente);
-            formMaosEPes.Show();
+            FormLocalizacaoDorOnicocriptoses formLocalizacaoDorOnicocriptoses = new FormLocalizacaoDorOnicocriptoses(paciente);
+            formLocalizacaoDorOnicocriptoses.Show();
         }
     }
 }

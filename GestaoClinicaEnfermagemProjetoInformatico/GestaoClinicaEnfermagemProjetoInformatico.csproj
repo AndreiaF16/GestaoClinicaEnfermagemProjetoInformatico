@@ -165,6 +165,24 @@
     </Compile>
     <Compile Include="ColocacaoDIUPaciente.cs" />
     <Compile Include="ColpocitologiaPaciente.cs" />
+    <Compile Include="FormLocalizacaoDorCorpoConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLocalizacaoDorCorpoConsulta.Designer.cs">
+      <DependentUpon>FormLocalizacaoDorCorpoConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLocalizacaoDorDopplerArterialVenoso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLocalizacaoDorDopplerArterialVenoso.Designer.cs">
+      <DependentUpon>FormLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLocalizacaoDorOnicocriptoses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLocalizacaoDorOnicocriptoses.Designer.cs">
+      <DependentUpon>FormLocalizacaoDorOnicocriptoses.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMaosEPes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,11 +223,23 @@
     <Compile Include="VerImplanteContracetivoPaciente.Designer.cs">
       <DependentUpon>VerImplanteContracetivoPaciente.cs</DependentUpon>
     </Compile>
-    <Compile Include="VerLocalizacaoDor.cs">
+    <Compile Include="VerLocalizacaoDorConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerLocalizacaoDor.Designer.cs">
-      <DependentUpon>VerLocalizacaoDor.cs</DependentUpon>
+    <Compile Include="VerLocalizacaoDorConsulta.Designer.cs">
+      <DependentUpon>VerLocalizacaoDorConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerLocalizacaoDorDopplerArterialVenoso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerLocalizacaoDorDopplerArterialVenoso.Designer.cs">
+      <DependentUpon>VerLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerLocalizacaoDorOnicocriptoses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerLocalizacaoDorOnicocriptoses.Designer.cs">
+      <DependentUpon>VerLocalizacaoDorOnicocriptoses.cs</DependentUpon>
     </Compile>
     <Compile Include="VerPressoterapiaPaciente.cs">
       <SubType>Form</SubType>
@@ -656,12 +686,6 @@
       <DependentUpon>FormInicial1.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="FormLocalizacaoDorCorpo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLocalizacaoDorCorpo.Designer.cs">
-      <DependentUpon>FormLocalizacaoDorCorpo.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormRegistarUtente.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1092,6 +1116,15 @@
     <EmbeddedResource Include="FinalizarEncomenda.resx">
       <DependentUpon>FinalizarEncomenda.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLocalizacaoDorCorpoConsulta.resx">
+      <DependentUpon>FormLocalizacaoDorCorpoConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLocalizacaoDorDopplerArterialVenoso.resx">
+      <DependentUpon>FormLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLocalizacaoDorOnicocriptoses.resx">
+      <DependentUpon>FormLocalizacaoDorOnicocriptoses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMaosEPes.resx">
       <DependentUpon>FormMaosEPes.cs</DependentUpon>
     </EmbeddedResource>
@@ -1178,9 +1211,6 @@
     <EmbeddedResource Include="FormInicial1.resx">
       <DependentUpon>FormInicial1.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLocalizacaoDorCorpo.resx">
-      <DependentUpon>FormLocalizacaoDorCorpo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
@@ -1316,8 +1346,14 @@
     <EmbeddedResource Include="VerLavagemVesical.resx">
       <DependentUpon>VerLavagemVesical.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerLocalizacaoDor.resx">
-      <DependentUpon>VerLocalizacaoDor.cs</DependentUpon>
+    <EmbeddedResource Include="VerLocalizacaoDorConsulta.resx">
+      <DependentUpon>VerLocalizacaoDorConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerLocalizacaoDorDopplerArterialVenoso.resx">
+      <DependentUpon>VerLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerLocalizacaoDorOnicocriptoses.resx">
+      <DependentUpon>VerLocalizacaoDorOnicocriptoses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerMaisDetalhesPaciente.resx">
       <DependentUpon>VerMaisDetalhesPaciente.cs</DependentUpon>

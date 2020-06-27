@@ -11,13 +11,13 @@ using System.Data.SqlClient;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class VerLocalizacaoDor : Form
+    public partial class VerLocalizacaoDorConsulta : Form
     {
         private Paciente paciente = new Paciente();
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private List<LocalizacaoDorPaciente> localizacaoDorPacientes = new List<LocalizacaoDorPaciente>();
-        public VerLocalizacaoDor(Paciente pac)
+        public VerLocalizacaoDorConsulta(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
@@ -64,7 +64,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select data,localizacao from LocalizacaoDor WHERE IdPaciente = @IdPaciente", conn);
+            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDor WHERE IdPaciente = @IdPaciente", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 
