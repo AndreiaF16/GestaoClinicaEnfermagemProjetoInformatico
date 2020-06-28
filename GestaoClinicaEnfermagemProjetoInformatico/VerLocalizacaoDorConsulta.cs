@@ -25,32 +25,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resposta == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
-
-        private void btnMaximizar_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-        }
-
-        private void btnMinimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
         private void hora_Tick(object sender, EventArgs e)
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
@@ -64,7 +38,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDor WHERE IdPaciente = @IdPaciente", conn);
+            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorConsulta WHERE IdPaciente = @IdPaciente", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -72,11 +46,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 localizacaoDorPaciente = new LocalizacaoDorPaciente
                 {
-
                     data = Convert.ToDateTime(reader["data"]),
-                    localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),
-                    
-                    
+                    localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),                           
                 };
                 localizacaoDorPacientes.Add(localizacaoDorPaciente);
                
@@ -93,8 +64,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewLocalizacaoDor.DataSource = bindingSource1;
 
 
-            dataGridViewLocalizacaoDor.Columns[1].HeaderText = "Data de Registo";
-            dataGridViewLocalizacaoDor.Columns[0].HeaderText = "Localização Dor";
+            dataGridViewLocalizacaoDor.Columns[0].HeaderText = "Data de Registo";
+            dataGridViewLocalizacaoDor.Columns[1].HeaderText = "Localização Dor";
 
         }
 
@@ -110,6 +81,33 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void dataGridViewLocalizacaoDor_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
 
         }
     }

@@ -192,7 +192,9 @@
     <Compile Include="ImplanteContracetivoPaciente.cs" />
     <Compile Include="LavagemAuricularPac.cs" />
     <Compile Include="LavagemOcularPaciente.cs" />
+    <Compile Include="LocalizacaoDorMaosPes.cs" />
     <Compile Include="LocalizacaoDorPaciente.cs" />
+    <Compile Include="LocalizazaoDorDopplerArterialVenoso.cs" />
     <Compile Include="MonitorizacaoECGPaciente.cs" />
     <Compile Include="PressoterapiaPaciente.cs" />
     <Compile Include="SuturasPaciente.cs" />
@@ -234,6 +236,12 @@
     </Compile>
     <Compile Include="VerLocalizacaoDorDopplerArterialVenoso.Designer.cs">
       <DependentUpon>VerLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerLocalizacaoDorMaosPes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerLocalizacaoDorMaosPes.Designer.cs">
+      <DependentUpon>VerLocalizacaoDorMaosPes.cs</DependentUpon>
     </Compile>
     <Compile Include="VerLocalizacaoDorOnicocriptoses.cs">
       <SubType>Form</SubType>
@@ -1351,6 +1359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerLocalizacaoDorDopplerArterialVenoso.resx">
       <DependentUpon>VerLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerLocalizacaoDorMaosPes.resx">
+      <DependentUpon>VerLocalizacaoDorMaosPes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerLocalizacaoDorOnicocriptoses.resx">
       <DependentUpon>VerLocalizacaoDorOnicocriptoses.cs</DependentUpon>

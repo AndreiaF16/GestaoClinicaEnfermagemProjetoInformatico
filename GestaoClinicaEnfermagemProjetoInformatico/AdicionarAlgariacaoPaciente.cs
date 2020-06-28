@@ -33,6 +33,33 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void AdicionarAlgariacaoPaciente_Load(object sender, EventArgs e)
         {
+
+            idAtitude();
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Atitude não encontrada! Deseja inserir a atitude na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    connection.Open();
+
+                    string queryInsertData = "INSERT INTO Atitude(nomeAtitude) VALUES('Algariação');";
+                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Atitude Terapeutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    connection.Close();
+                }
+                if (resposta == DialogResult.No)
+                {
+                    this.Close();
+                }
+            }
+            idAtitude();
+        }
+
+
+        private void idAtitude()
+        {
             conn.Open();
             com.Connection = conn;
             SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Algariação'", conn);
@@ -177,11 +204,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 catch (SqlException excep)
                 {
 
-                    MessageBox.Show("Por erro interno é impossível registar a algariaçãoo!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a algariação!", excep.Message);
                 }
-
             }
-
         }
 
         private void btnLimparCampos_Click(object sender, EventArgs e)

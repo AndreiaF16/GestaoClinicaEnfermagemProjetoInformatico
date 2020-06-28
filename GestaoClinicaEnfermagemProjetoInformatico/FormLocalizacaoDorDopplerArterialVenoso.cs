@@ -13,32 +13,31 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class FormLocalizacaoDorDopplerArterialVenoso : Form
     {
-        Paciente paciente = null;
-
-
-
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
+        private Paciente paciente = new Paciente();
         Point point;
+        private ErrorProvider errorProvider = new ErrorProvider();
+        private int id = -1;
         public FormLocalizacaoDorDopplerArterialVenoso(Paciente ut)
         {
             InitializeComponent();
             paciente = ut;
-
             label1.Text = "Nome do Utente: " + paciente.Nome;
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            dataRegisto.Value = DateTime.Today;
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+
         }
-
-       
-    
-
-        
-        
-
-     
-
-       
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnMaximizar_Click(object sender, EventArgs e)
@@ -51,15 +50,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 this.WindowState = FormWindowState.Normal;
             }
-        }
-
-        private void btnCancelar_Click_1(object sender, EventArgs e)
-        {
-            var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);
-            pictureBoxCorpo.Image = bmp;
-            pictureBoxCorpo.Controls.Clear();
-            textBox1.Clear();
-            pictureBoxCorpo.Refresh();
         }
 
         private void hora_Tick(object sender, EventArgs e)
@@ -77,37 +67,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             VerLocalizacaoDorDopplerArterialVenoso verLocalizacaoDorDopplerArterialVenoso = new VerLocalizacaoDorDopplerArterialVenoso(paciente);
             verLocalizacaoDorDopplerArterialVenoso.Show();
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            string localizacaoDor = textBox1.Text;
-
-
-            try
-            {
-                SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                connection.Open();
-
-                string queryInsertData = "INSERT INTO LocalizacaoDorDopplerArterialVenoso(idPaciente,localizacao) VALUES(@idPaciente,@localizacao);";
-                SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-
-                sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
-
-                sqlCommand.Parameters.AddWithValue("@localizacao", localizacaoDor);
-
-
-                sqlCommand.ExecuteNonQuery();
-                MessageBox.Show("Dados Localizacao dor registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-                connection.Close();
-                connection.Open();
-            }
-            catch (SqlException excep)
-            {
-
-                MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", excep.Message);
-            }
         }
 
         private void btnVoltar_Click_1(object sender, EventArgs e)
@@ -138,6 +97,84 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 }
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos() 
+        {
+            dataRegisto.Value = DateTime.Today;
+            var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);
+            pictureBoxCorpo.Image = bmp;
+            pictureBoxCorpo.Controls.Clear();
+            textBox1.Clear();
+            pictureBoxCorpo.Refresh();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string localizacaoDor = textBox1.Text;
+            DateTime dataR = dataRegisto.Value;
+
+            if (VerificarDadosInseridos())
+            {
+
+                try
+                {
+                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    connection.Open();
+
+                    string queryInsertData = "INSERT INTO LocalizacaoDorDopplerArterialVenoso(IdPaciente,data,localizacao) VALUES(@idPaciente,@dataR,@localizacao);";
+                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+
+                    sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
+                    sqlCommand.Parameters.AddWithValue("@dataR", dataR.ToString("MM/dd/yyyy"));
+                    sqlCommand.Parameters.AddWithValue("@localizacao", localizacaoDor);
+
+
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Dados Localização dor registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    connection.Close();
+                    limparCampos();
+                }
+                catch (SqlException excep)
+                {
+
+                    MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", excep.Message);
+                }
+            }
+        }
+
+        private Boolean VerificarDadosInseridos()
+        {
+
+            DateTime data = dataRegisto.Value;
+
+
+            int var = (int)((data - DateTime.Today).TotalDays);
+
+            if (var > 0)
+            {
+                MessageBox.Show("A data de registo tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRegisto, "A data tem de ser inferior à data de hoje!");
+                return false;
+            }
+
+         
+            return true;
+        }
+
+        private void FormLocalizacaoDorDopplerArterialVenoso_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

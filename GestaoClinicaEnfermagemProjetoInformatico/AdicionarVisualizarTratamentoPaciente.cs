@@ -392,7 +392,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             DateTime dataPTratamento = dataProximoTratamento.Value;
             float nrTratamento = Convert.ToSingle(UpDownNumeroTratamento.Text);           
             int quantidade = Convert.ToInt32(numericUpDownExcudado.Text);       
-            string tamanhoPenso = numericUpDownTamanhoPenso.Text;         
+            string tamanhoPenso = numericUpDownTamanhoPenso.Text;
+            string tratamento = comboBoxTratamento.Text;
+
+
+            if (tratamento == string.Empty)
+            {
+                MessageBox.Show("Campo Obrigatório, por favor preencha-o!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (comboBoxTratamento.Text == string.Empty)
+                {
+                    errorProvider.SetError(comboBoxTratamento, "O tratamento é obrigatório!");
+                }
+                return false;
+            }
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
@@ -460,9 +472,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             }
             conn.Close();
-
-
-
 
             return true;
         }

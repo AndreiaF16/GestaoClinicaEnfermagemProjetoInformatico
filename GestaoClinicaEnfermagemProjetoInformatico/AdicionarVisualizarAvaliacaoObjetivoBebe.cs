@@ -428,7 +428,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha os campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-
                 if (UpDownPeso.Text == string.Empty)
                 {
                     errorProvider.SetError(UpDownPeso, "O peso é obrigatório!");

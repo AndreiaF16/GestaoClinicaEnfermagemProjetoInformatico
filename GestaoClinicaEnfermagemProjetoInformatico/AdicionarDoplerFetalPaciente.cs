@@ -35,16 +35,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void AdicionarDoplerFetalPaciente_Load(object sender, EventArgs e)
         {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colpocitologia'", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                id = (int)reader["IdAtitude"];
-            }
-
-            conn.Close();
+           
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -97,7 +88,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     string queryInsertData = "INSERT INTO DopletFetal(IdPaciente,ig,dppData,dppcData,primeiraEcografia,escalaDor,observacoes) VALUES(@IdPaciente,@ig,@vdataDPP,@vdataDPPC,@dataPEcografia,@escalaDor,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-
                     //ig
                     if (ig != string.Empty)
                     {
@@ -186,7 +176,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (var > 0)
             {
-                MessageBox.Show("A data de registto da colcitologia tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data de registo da colcitologia tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(dataDPP, "A data tem de ser inferior à data de hoje!");
                 return false;
             }

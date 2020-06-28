@@ -13,22 +13,31 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class FormLocalizacaoDorCorpoConsulta : Form
     {
-        Paciente paciente = null;
-
-
-
         Point point;
-        public FormLocalizacaoDorCorpoConsulta(Paciente ut)
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
+        private Paciente paciente = new Paciente();
+        private ErrorProvider errorProvider = new ErrorProvider();
+
+        public FormLocalizacaoDorCorpoConsulta(Paciente pac)
         {
             InitializeComponent();
-            paciente = ut;
-
+            paciente = pac;
             label1.Text = "Nome do Utente: " + paciente.Nome;
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            dataRegisto.Value = DateTime.Today;
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnMaximizar_Click(object sender, EventArgs e)
@@ -73,46 +82,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string localizacaoDor = textBox1.Text;
-
-
-            try
-            {
-                SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                connection.Open();
-
-                string queryInsertData = "INSERT INTO LocalizacaoDorConsulta(idPaciente,localizacao) VALUES(@idPaciente,@localizacao);";
-                SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-
-                sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
-
-                sqlCommand.Parameters.AddWithValue("@localizacao", localizacaoDor);
-
-
-                sqlCommand.ExecuteNonQuery();
-                MessageBox.Show("Dados Localizacao dor registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-                connection.Close();
-                connection.Open();
-            }
-            catch (SqlException excep)
-            {
-
-                MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", excep.Message);
-            }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);
-            pictureBoxCorpo.Image = bmp;
-            pictureBoxCorpo.Controls.Clear();
-            textBox1.Clear();
-            pictureBoxCorpo.Refresh();
-        }
-
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -130,64 +99,85 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void btnLimparCampos_Click(object sender, EventArgs e)
         {
-
+            limparCampos();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void limparCampos()
         {
-
+            dataRegisto.Value = DateTime.Today;
+            var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);
+            pictureBoxCorpo.Image = bmp;
+            pictureBoxCorpo.Controls.Clear();
+            textBox1.Clear();
+            pictureBoxCorpo.Refresh();
         }
 
-        private void panelFormulario_Paint(object sender, PaintEventArgs e)
-        {
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {       
+            if (VerificarDadosInseridos())
+            {
+                string localizacaoDor = textBox1.Text;
+                DateTime data = dataRegisto.Value;
 
+                try
+                {
+                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    connection.Open();
+
+                    string queryInsertData = "INSERT INTO LocalizacaoDorConsulta(IdPaciente,data,localizacao) VALUES(@idPaciente,@dataR,@localizacao);";
+                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+
+                    sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
+                    sqlCommand.Parameters.AddWithValue("@localizacao", localizacaoDor);
+                    sqlCommand.Parameters.AddWithValue("@dataR", data.ToString("MM/dd/yyyy"));
+
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Dados Localizacao dor na consulta registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    connection.Close();
+                    limparCampos();
+                }
+                catch (SqlException excep)
+                {
+                    MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", excep.Message);
+                }
+            }
         }
 
-        private void painelPrincipal_Paint(object sender, PaintEventArgs e)
+        private Boolean VerificarDadosInseridos()
         {
+            DateTime data = dataRegisto.Value;
 
-        }
+            int var = (int)((data - DateTime.Today).TotalDays);
 
-        private void panelMenu_Paint(object sender, PaintEventArgs e)
-        {
+            if (var > 0)
+            {
+                MessageBox.Show("A data tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRegisto, "A data tem de ser inferior a data de hoje!");
+                return false;
+            }
 
-        }
+            conn.Open();
+            com.Connection = conn;
 
-        private void panelTitulo_Paint(object sender, PaintEventArgs e)
-        {
+            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorConsulta WHERE IdPaciente = @IdPaciente", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
 
-        }
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                DateTime dataR = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                if (dataRegisto.Value.ToShortDateString().Equals(dataR.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"])
+                {
+                    MessageBox.Show("Não é possível registar, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    conn.Close();
+                    return false;
+                }
+            }
+            conn.Close();
 
-        private void lblDia_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblHora_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTitulo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBoxCorpo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnFechar_Click(object sender, EventArgs e)
-        {
-
+            return true;
         }
     }
 

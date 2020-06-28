@@ -13,7 +13,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class FormMaosEPes : Form
     {
-        Paciente paciente = null;
+        private Paciente paciente = null;
         Point point;
         private ErrorProvider errorProvider = new ErrorProvider();
         SqlConnection conn = new SqlConnection();
@@ -74,28 +74,65 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             pictureBoxCorpo.Controls.Add(textBox);
             textBox1.Clear();
 
-            // string dor = textBox.Text;
-            for (int i = 0; i < this.pictureBoxCorpo.Controls.Count; i++)
-            {
+          //  TextBox tb = new TextBox();
+            textBox.KeyDown += new KeyEventHandler(tb_KeyDown);
 
-                if (this.pictureBoxCorpo.Controls[i] is TextBox)
-                {
-                    TextBox txtserial = (TextBox)this.pictureBoxCorpo.Controls[i];
-                    string value = txtserial.Text;
-                    textBox1.Text += value.ToString();
-                    textBox1.AppendText("\r\n\t");
+            //textBox1.Text = tb;
 
-                }
-            }
+             string dor = textBox.Text;
+              for (int i = 0; i < this.pictureBoxCorpo.Controls.Count; i++)
+              {
+
+                  if (this.pictureBoxCorpo.Controls[i] is TextBox)
+                  {
+                      TextBox txtserial = (TextBox)this.pictureBoxCorpo.Controls[i];
+                      string value = txtserial.Text;
+                    if (value != string.Empty)
+                    {
+                        textBox1.Text += value.ToString();
+                        textBox1.AppendText(", ");
+                    }                  
+                  }
+              }
         }
 
+        private void tb_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                textBox1.Clear();
+
+                //enter key is down
+                for (int i = 0; i < pictureBoxCorpo.Controls.Count; i++)
+                {
+
+                    if (pictureBoxCorpo.Controls[i] is TextBox)
+                    {
+                        TextBox txtserial = (TextBox)pictureBoxCorpo.Controls[i];
+                        string value = txtserial.Text;
+                        if (value != string.Empty)
+                        {
+                            textBox1.Text += value.ToString();
+                            textBox1.AppendText(", ");
+                        }
+                    }
+                }       
+            }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (VerificarDadosInseridos())
             {
 
+
                 string localizacaoDor = textBox1.Text;
+
+                //remove o ultimo caracter
+                localizacaoDor = localizacaoDor.Remove(localizacaoDor.Length -1);
+                localizacaoDor = localizacaoDor.Remove(localizacaoDor.Length - 1);
+
                 DateTime dataReg = dataRegisto.Value;
                 int tratamento = (comboBoxTratamento.SelectedItem as ComboBoxItem).Value;
 
@@ -116,6 +153,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Dados Localizacao dor registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
+                    limparCampos();
                 }
                 catch (SqlException excep)
                 {
@@ -127,15 +165,54 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Boolean VerificarDadosInseridos()
         {
             DateTime data = dataRegisto.Value;
+            string tratamento = comboBoxTratamento.Text;
+            string local = textBox1.Text;
 
             int var = (int)((data - DateTime.Today).TotalDays);
 
-            if (var > 0)
+            if (tratamento == string.Empty || local == string.Empty)
+            {
+                MessageBox.Show("Campos Obrigatórios, por favor preencha-os!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (comboBoxTratamento.Text == string.Empty)
+                {
+                    errorProvider.SetError(comboBoxTratamento, "O tratamento é obrigatório!");
+                }
+
+                if (textBox1.Text == string.Empty)
+                {
+                    MessageBox.Show("Localização é obrigatória. \n Se por ventura inseriu, selecione o texto das caixas (uma de cada vez), carregue ENTER e volte a tentar guardar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProvider.SetError(textBox1, "A localização é obrigatória!");
+                }
+                return false;
+            }
+
+                if (var > 0)
             {
                 MessageBox.Show("A data de registo tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(dataRegisto, "A data tem de ser inferior a data de hoje!");
                 return false;
             }
+
+            conn.Open();
+            com.Connection = conn;
+
+            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDor WHERE IdPaciente = @IdPaciente", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+            int localizacao = (comboBoxTratamento.SelectedItem as ComboBoxItem).Value;
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                DateTime dataR = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                if (dataRegisto.Value.ToShortDateString().Equals(dataR.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && localizacao == (int)reader["IdTratamentoMaosPes"])
+                {
+                    MessageBox.Show("Não é possível registar, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    conn.Close();
+                    return false;
+                }
+
+            }
+            conn.Close();
 
             return true;
         }
@@ -164,8 +241,31 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            VerLocalizacaoDorConsulta verLocalizacaoDor = new VerLocalizacaoDorConsulta(paciente);
+            VerLocalizacaoDorMaosPes verLocalizacaoDor = new VerLocalizacaoDorMaosPes(paciente);
             verLocalizacaoDor.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            dataRegisto.Value = DateTime.Today;
+            reiniciar();
+            errorProvider.Clear();
+            var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);
+            pictureBoxCorpo.Image = bmp;
+            pictureBoxCorpo.Controls.Clear();
+            textBox1.Clear();
+            pictureBoxCorpo.Refresh();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AdicionarTratamentoMaosPes adicionarTratamentoMaosPes = new AdicionarTratamentoMaosPes(this);
+            adicionarTratamentoMaosPes.Show();
         }
     }
 }

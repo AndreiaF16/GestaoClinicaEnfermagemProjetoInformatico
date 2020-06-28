@@ -16,7 +16,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Paciente paciente = new Paciente();
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
-        private List<LocalizacaoDorPaciente> localizacaoDorPacientes = new List<LocalizacaoDorPaciente>();
+        private List<LocalizazaoDorDopplerArterialVenoso> localizacaoDorPacientes = new List<LocalizazaoDorDopplerArterialVenoso>();
         public VerLocalizacaoDorDopplerArterialVenoso(Paciente pac)
         {
             InitializeComponent();
@@ -27,7 +27,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnMaximizar_Click(object sender, EventArgs e)
@@ -59,42 +63,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void VerLocalizacaoDorDopplerArterialVenoso_Load(object sender, EventArgs e)
         {
-            LocalizacaoDorPaciente localizacaoDorPaciente = new LocalizacaoDorPaciente();
-
+            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = localizacaoDorPacientes };
+            dataGridViewLocalizacaoDor.DataSource = bindingSource2;
+            UpdateDataGridView();       
+        }
+        
+        private void UpdateDataGridView()
+        {
+            localizacaoDorPacientes.Clear();
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorDopplerArterialVenoso WHERE IdPaciente = @IdPaciente", conn);
+            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorDopplerArterialVenoso WHERE IdPaciente = @IdPaciente ORDER BY data", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                localizacaoDorPaciente = new LocalizacaoDorPaciente
+                string dataR = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+ 
+                LocalizazaoDorDopplerArterialVenoso localizacao= new LocalizazaoDorDopplerArterialVenoso
                 {
 
-
+                    data = dataR,
                     localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),
 
 
                 };
-                localizacaoDorPacientes.Add(localizacaoDorPaciente);
+                localizacaoDorPacientes.Add(localizacao);
 
             }
+            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = localizacaoDorPacientes };
+            dataGridViewLocalizacaoDor.DataSource = bindingSource1;
+           
+            dataGridViewLocalizacaoDor.Columns[0].HeaderText = "Data";
+            dataGridViewLocalizacaoDor.Columns[1].HeaderText = "Localização Dor";
+           
             conn.Close();
-            UpdateDataGridView();
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = localizacaoDorPacientes };
-            dataGridViewLocalizacaoDor.DataSource = bindingSource1;
-        }
-        private void UpdateDataGridView()
-        {
-
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = localizacaoDorPacientes };
-            dataGridViewLocalizacaoDor.DataSource = bindingSource1;
-
-
-            dataGridViewLocalizacaoDor.Columns[0].HeaderText = "Localização Dor";
-
+            dataGridViewLocalizacaoDor.Update();
+            dataGridViewLocalizacaoDor.Refresh();
         }
 
         private void hora_Tick(object sender, EventArgs e)
