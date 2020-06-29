@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class VerCirurgiasRegistadas : Form
+    public partial class VerEditarCirurgiasRegistadas : Form
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
@@ -20,7 +20,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<Cirurgia> auxiliar = new List<Cirurgia>();
         private ErrorProvider errorProvider = new ErrorProvider();
 
-        public VerCirurgiasRegistadas()
+        public VerEditarCirurgiasRegistadas()
         {
             InitializeComponent();
             conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");

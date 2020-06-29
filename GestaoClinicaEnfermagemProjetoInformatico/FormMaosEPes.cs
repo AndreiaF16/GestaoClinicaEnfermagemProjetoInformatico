@@ -135,6 +135,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 DateTime dataReg = dataRegisto.Value;
                 int tratamento = (comboBoxTratamento.SelectedItem as ComboBoxItem).Value;
+                string obs = txtObservacoes.Text;
 
 
                 try
@@ -142,7 +143,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO LocalizacaoDor(IdTratamentoMaosPes, IdPaciente,data,localizacao) VALUES(@idTratamento,@idPaciente,@dataR,@localizacao);";
+                    string queryInsertData = "INSERT INTO LocalizacaoDor(IdTratamentoMaosPes, IdPaciente,data,localizacao, observacoes) VALUES(@idTratamento,@idPaciente,@dataR,@localizacao,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
 
                     sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
@@ -150,8 +151,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.Parameters.AddWithValue("@localizacao", localizacaoDor);
                     sqlCommand.Parameters.AddWithValue("@idTratamento", Convert.ToInt32(tratamento));
 
+                    if (obs != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@obs", Convert.ToString(obs));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@obs", DBNull.Value);
+                    }
+
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Dados Localizacao dor registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Dados Localização da dor registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                     limparCampos();
                 }
@@ -253,6 +263,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void limparCampos()
         {
             dataRegisto.Value = DateTime.Today;
+            txtObservacoes.Text = "";
             reiniciar();
             errorProvider.Clear();
             var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);

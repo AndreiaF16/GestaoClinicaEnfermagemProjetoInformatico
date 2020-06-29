@@ -87,6 +87,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     data = dataR,
                     localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),
+                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
 
 
                 };
@@ -98,7 +99,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
            
             dataGridViewLocalizacaoDor.Columns[0].HeaderText = "Data";
             dataGridViewLocalizacaoDor.Columns[1].HeaderText = "Localização Dor";
-           
+            dataGridViewLocalizacaoDor.Columns[2].HeaderText = "Observações";
+
             conn.Close();
             dataGridViewLocalizacaoDor.Update();
             dataGridViewLocalizacaoDor.Refresh();

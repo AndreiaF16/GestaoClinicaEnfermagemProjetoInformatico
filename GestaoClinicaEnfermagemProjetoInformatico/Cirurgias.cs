@@ -104,7 +104,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void button2_Click(object sender, EventArgs e)
         {
             limparCampos();
-            VerCirurgiasRegistadas verCirurgiasRegistadas = new VerCirurgiasRegistadas();
+            VerEditarCirurgiasRegistadas verCirurgiasRegistadas = new VerEditarCirurgiasRegistadas();
             verCirurgiasRegistadas.Show();
         }
 

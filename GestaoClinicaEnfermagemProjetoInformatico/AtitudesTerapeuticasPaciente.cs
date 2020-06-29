@@ -47,12 +47,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 btnColpocitologia.Visible = true;
                 btnDIU.Visible = true;
                 btnImplanteContracetivo.Visible = true;
+                groupBoxMulheres.Visible = true;
             }
             if (paciente.Sexo != "Feminino")
             {
                 btnColpocitologia.Visible = false;
                 btnDIU.Visible = false;
                 btnImplanteContracetivo.Visible = false;
+                groupBoxMulheres.Visible = false;
+
             }
             variasAtitudes();
         }
@@ -196,28 +199,305 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             formLocalizacaoDorCorpo.Show();
         }
 
-        private void button29_Click(object sender, EventArgs e)
+        private void confirmar()
         {
-            MessageBox.Show("Falta Implementar!!!");
+            idAtitude();
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Atitude 'Colheita expectoração' não encontrada! Deseja inserir a atitude na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Atitude(nomeAtitude) VALUES('Colheita expectoração');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException excep)
+                    {
+                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita expectoração'!", excep.Message);
+                    }
+                }
+                if (resposta == DialogResult.No)
+                {
+                    this.Close();
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idAtitude();
+
+            if (idZaragatoa == -1)
+            {
+                var resposta = MessageBox.Show("Atitude 'Colheita exsudado zaragatoa' não encontrada! Deseja inserir a atitude na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Atitude(nomeAtitude) VALUES('Colheita exsudado zaragatoa');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException excep)
+                    {
+                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita exsudado zaragatoa'!", excep.Message);
+                    }
+                }
+                if (resposta == DialogResult.No)
+                {
+                    this.Close();
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idAtitude();
+
+            if (idFezesParasitologico == -1)
+            {
+                var resposta = MessageBox.Show("Atitude 'Colheita fezes parasitológico' não encontrada! Deseja inserir a atitude na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Atitude(nomeAtitude) VALUES('Colheita fezes parasitológico');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException excep)
+                    {
+                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita fezes parasitológico'!", excep.Message);
+                    }
+                }
+                if (resposta == DialogResult.No)
+                {
+                    this.Close();
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idAtitude();
+
+            if (idFezesSangueOculto == -1)
+            {
+                var resposta = MessageBox.Show("Atitude 'Colheita fezes sangue oculto' não encontrada! Deseja inserir a atitude na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Atitude(nomeAtitude) VALUES('Colheita fezes sangue oculto');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException excep)
+                    {
+                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita fezes sangue oculto'!", excep.Message);
+                    }
+                }
+                if (resposta == DialogResult.No)
+                {
+                    this.Close();
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idAtitude();
+
+            if (idColheitaSangue == -1)
+            {
+                var resposta = MessageBox.Show("Atitude 'Colheita sangue' não encontrada! Deseja inserir a atitude na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Atitude(nomeAtitude) VALUES('Colheita sangue');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException excep)
+                    {
+                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita sangue'!", excep.Message);
+                    }
+                }
+                if (resposta == DialogResult.No)
+                {
+                    this.Close();
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idAtitude();
+
+            if (idEnemaLimpeza == -1)
+            {
+                var resposta = MessageBox.Show("Atitude 'Enema limpeza' não encontrada! Deseja inserir a atitude na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Atitude(nomeAtitude) VALUES('Enema limpeza');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException excep)
+                    {
+                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Enema limpeza'!", excep.Message);
+                    }
+                }
+                if (resposta == DialogResult.No)
+                {
+                    this.Close();
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idAtitude();
+
+            if (idLavagemGastrica == -1)
+            {
+                var resposta = MessageBox.Show("Atitude 'Lavagem Gástrica' não encontrada! Deseja inserir a atitude na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Atitude(nomeAtitude) VALUES('Lavagem Gástrica');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException excep)
+                    {
+                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Lavagem Gástrica'!", excep.Message);
+                    }
+                }
+                if (resposta == DialogResult.No)
+                {
+                    this.Close();
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idAtitude();
         }
 
-        private void button28_Click(object sender, EventArgs e)
+       
+        private void idAtitude()
         {
-            MessageBox.Show("Falta Implementar!!!");
-        }
+            //Colheita expectoração
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita expectoração'", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                id = (int)reader["IdAtitude"];
+            }
 
-        private void button26_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Falta Implementar!!!");
-        }
+            conn.Close();
 
-        private void button27_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Falta Implementar!!!");
+            //Colheita exsudado zaragatoa
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd1 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita exsudado zaragatoa'", conn);
+            SqlDataReader reader1 = cmd1.ExecuteReader();
+            while (reader1.Read())
+            {
+                idZaragatoa = (int)reader1["IdAtitude"];
+            }
+
+            conn.Close();
+
+            //Colheita fezes parasitológicoa
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd2 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita fezes parasitológico'", conn);
+            SqlDataReader reader2 = cmd2.ExecuteReader();
+            while (reader2.Read())
+            {
+                idFezesParasitologico = (int)reader2["IdAtitude"];
+            }
+
+            conn.Close();
+
+            //Colheita fezes sangue oculto
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd3 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita fezes sangue oculto'", conn);
+            SqlDataReader reader3 = cmd3.ExecuteReader();
+            while (reader3.Read())
+            {
+                idFezesSangueOculto = (int)reader3["IdAtitude"];
+            }
+
+            conn.Close();
+
+            //Colheita sangue
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd4 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita sangue'", conn);
+            SqlDataReader reader4 = cmd4.ExecuteReader();
+            while (reader4.Read())
+            {
+                idColheitaSangue = (int)reader4["IdAtitude"];
+            }
+            conn.Close();
+
+            conn.Close();
+
+            //Enema limpeza
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd5 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Enema limpeza'", conn);
+            SqlDataReader reader5 = cmd5.ExecuteReader();
+            while (reader5.Read())
+            {
+                idEnemaLimpeza = (int) reader5["IdAtitude"];
+            }
+            conn.Close();
+
+            conn.Close();
+
+            //Lavagem Gástrica
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd6 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Lavagem Gástrica'", conn);
+            SqlDataReader reader6 = cmd6.ExecuteReader();
+            while (reader6.Read())
+            {
+                idLavagemGastrica = (int) reader6["IdAtitude"];
+            }
+            conn.Close();
         }
 
         private void button19_Click(object sender, EventArgs e)
         {
+            confirmar();
             DateTime dataRegisto = DateTime.Today;
 
             bool msg = false;       
@@ -500,7 +780,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
                     if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && id == (int)reader["IdAtitude"])
                     {
-                        MessageBox.Show("Não é possível registar a Colheita Expectoração, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Não é possível registar a Colheita Expectoração, porque já esta registado na data de hoje!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         conn.Close();
                         return false;
                     }

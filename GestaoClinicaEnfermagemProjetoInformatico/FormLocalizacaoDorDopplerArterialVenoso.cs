@@ -84,7 +84,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             pictureBoxCorpo.Controls.Add(textBox);
             textBox1.Clear();
 
-            // string dor = textBox.Text;
+            //  TextBox tb = new TextBox();
+            textBox.KeyDown += new KeyEventHandler(tb_KeyDown);
+
+            //textBox1.Text = tb;
+
+            string dor = textBox.Text;
             for (int i = 0; i < this.pictureBoxCorpo.Controls.Count; i++)
             {
 
@@ -92,9 +97,36 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     TextBox txtserial = (TextBox)this.pictureBoxCorpo.Controls[i];
                     string value = txtserial.Text;
-                    textBox1.Text += value.ToString();
-                    textBox1.AppendText("\r\n\t");
+                    if (value != string.Empty)
+                    {
+                        textBox1.Text += value.ToString();
+                        textBox1.AppendText(", ");
+                    }
+                }
+            }
+        }
 
+        private void tb_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                textBox1.Clear();
+
+                //enter key is down
+                for (int i = 0; i < pictureBoxCorpo.Controls.Count; i++)
+                {
+
+                    if (pictureBoxCorpo.Controls[i] is TextBox)
+                    {
+                        TextBox txtserial = (TextBox)pictureBoxCorpo.Controls[i];
+                        string value = txtserial.Text;
+                        if (value != string.Empty)
+                        {
+                            textBox1.Text += value.ToString();
+                            textBox1.AppendText(", ");
+                        }
+                    }
                 }
             }
         }
@@ -107,6 +139,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void limparCampos() 
         {
             dataRegisto.Value = DateTime.Today;
+            txtObservacoes.Text = "";
             var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);
             pictureBoxCorpo.Image = bmp;
             pictureBoxCorpo.Controls.Clear();
@@ -116,8 +149,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button4_Click(object sender, EventArgs e)
         {
+
             string localizacaoDor = textBox1.Text;
+
+            //remove o ultimo caracter
+            localizacaoDor = localizacaoDor.Remove(localizacaoDor.Length - 1);
+            localizacaoDor = localizacaoDor.Remove(localizacaoDor.Length - 1);
+
             DateTime dataR = dataRegisto.Value;
+            string obs = txtObservacoes.Text;
 
             if (VerificarDadosInseridos())
             {
@@ -127,13 +167,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO LocalizacaoDorDopplerArterialVenoso(IdPaciente,data,localizacao) VALUES(@idPaciente,@dataR,@localizacao);";
+                    string queryInsertData = "INSERT INTO LocalizacaoDorDopplerArterialVenoso(IdPaciente,data,localizacao,observacoes) VALUES(@idPaciente,@dataR,@localizacao,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
 
                     sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@dataR", dataR.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@localizacao", localizacaoDor);
-
+                    
+                    if (obs != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@obs", Convert.ToString(obs));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@obs", DBNull.Value);
+                    }
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Dados Localização dor registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -152,9 +200,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
 
             DateTime data = dataRegisto.Value;
+            string local = textBox1.Text;
 
 
             int var = (int)((data - DateTime.Today).TotalDays);
+
+            if (local == string.Empty)
+            {
+                MessageBox.Show("Campos Obrigatórios, por favor preencha-os!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (textBox1.Text == string.Empty)
+                {
+                    MessageBox.Show("Localização é obrigatória. \n Se por ventura inseriu, selecione o texto das caixas (uma de cada vez), carregue ENTER e volte a tentar guardar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProvider.SetError(textBox1, "A localização é obrigatória!");
+                }
+                return false;
+            }
 
             if (var > 0)
             {

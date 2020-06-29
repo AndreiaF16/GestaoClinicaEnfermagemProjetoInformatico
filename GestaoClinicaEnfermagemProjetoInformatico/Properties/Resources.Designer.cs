@@ -203,6 +203,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap audiograma2 {
+            get {
+                object obj = ResourceManager.GetObject("audiograma2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ConsultaRegistar {
             get {
                 object obj = ResourceManager.GetObject("ConsultaRegistar", resourceCulture);
@@ -703,9 +713,59 @@ namespace GestaoClinicaEnfermagemProjetoInformatico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap identificacao {
+            get {
+                object obj = ResourceManager.GetObject("identificacao", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap identificacaoAnatomica1_jpg {
             get {
                 object obj = ResourceManager.GetObject("identificacaoAnatomica1.jpg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap identificacaoCorpo {
+            get {
+                object obj = ResourceManager.GetObject("identificacaoCorpo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap identificacaoCorpo1 {
+            get {
+                object obj = ResourceManager.GetObject("identificacaoCorpo1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap identificacaoCorpo2 {
+            get {
+                object obj = ResourceManager.GetObject("identificacaoCorpo2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imagemAnatomica {
+            get {
+                object obj = ResourceManager.GetObject("imagemAnatomica", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

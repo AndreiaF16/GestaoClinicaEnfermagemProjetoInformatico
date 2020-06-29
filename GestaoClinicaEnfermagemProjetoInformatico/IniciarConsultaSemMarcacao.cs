@@ -22,7 +22,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private DateTime inicio;
         private ErrorProvider errorProvider = new ErrorProvider();
         private Consulta consulta = new Consulta();
-
+        private int id = -1;
+        private int idDoenca = -1;
+        private int idCirurgia = -1;
+        private int idExames = -1;
 
         public IniciarConsultaSemMarcacao(Enfermeiro enf, Paciente pac)
         {
@@ -260,53 +263,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            AdicionarVisualizarDoencaPaciente adicionarVisualizarDoencaPaciente = new AdicionarVisualizarDoencaPaciente(paciente);
-            adicionarVisualizarDoencaPaciente.Show();
-        }
-
         private void button10_Click(object sender, EventArgs e)
         {
             ConsultasPaciente consultasPaciente = new ConsultasPaciente();
 
             VerConsultasPaciente verConsultasPaciente = new VerConsultasPaciente(paciente);
             verConsultasPaciente.Show();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            AdicionarVisualizarAlergiaPaciente adicionar = new AdicionarVisualizarAlergiaPaciente(paciente);
-            adicionar.Show();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            AdicionarVisualizarCirurgiaPaciente adicionar = new AdicionarVisualizarCirurgiaPaciente(paciente);
-            adicionar.Show();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            AdicionarVisualizarExamePaciente adicionar = new AdicionarVisualizarExamePaciente(paciente);
-            adicionar.Show();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            AdicionarVisualizarAvaliacaoObjetivoPaciente adicionarVisualizarAvaliacaoObjetivoPaciente = new AdicionarVisualizarAvaliacaoObjetivoPaciente(paciente);
-            adicionarVisualizarAvaliacaoObjetivoPaciente.Show();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            AdicionarVisualizarProdutosStockConsulta adicionarVisualizarProdutosStockConsulta = new AdicionarVisualizarProdutosStockConsulta(paciente, consulta);
-            adicionarVisualizarProdutosStockConsulta.Show();
         }
 
         private void limparCampos()
@@ -325,10 +287,124 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             limparCampos();
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void button14_Click(object sender, EventArgs e)
         {
-            AdicionarVisualizarTratamentoPaciente adicionarVisualizarTratamentoPaciente = new AdicionarVisualizarTratamentoPaciente(paciente);
-            adicionarVisualizarTratamentoPaciente.Show();
+            idVarios();
+
+            if (idDoenca == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de Doenças não encontradas! Deseja inserir uma doença na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    Doencas doencas = new Doencas(null);
+                    doencas.Show();
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+
+            if (idDoenca != -1)
+            {
+                AdicionarVisualizarDoencaPaciente adicionarVisualizarDoencaPaciente = new AdicionarVisualizarDoencaPaciente(paciente);
+                adicionarVisualizarDoencaPaciente.Show();
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            idVarios();
+
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de Alergias não encontradas! Deseja inserir uma alergia na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    Alergias alergias = new Alergias(null);
+                    alergias.Show();
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+
+            if (id != -1)
+            {
+                AdicionarVisualizarAlergiaPaciente adicionar = new AdicionarVisualizarAlergiaPaciente(paciente);
+                adicionar.Show();
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            idVarios();
+            if (idCirurgia == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de Cirurgias não encontradas! Deseja inserir uma cirurgia na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    Cirurgias cirurgias = new Cirurgias(null);
+                    cirurgias.Show();
+
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+
+            if (idCirurgia != -1)
+            {
+                AdicionarVisualizarCirurgiaPaciente adicionar = new AdicionarVisualizarCirurgiaPaciente(paciente);
+                adicionar.Show();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            idVarios();
+            if (idExames == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de Exames não encontradas! Deseja inserir um exame na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    RegistarExames registarExames = new RegistarExames(null);
+                    registarExames.Show();
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+
+            if (idExames != -1)
+            {
+                AdicionarVisualizarExamePaciente adicionar = new AdicionarVisualizarExamePaciente(paciente);
+                adicionar.Show();
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            DateTime data = paciente.DataNascimento;
+            var calculoDatas = DateTime.Today - data;
+            var meses = Math.Round(DateTime.Today.Subtract(data).Days / (365.25 / 12));
+            if (meses > 36)
+            {
+                AdicionarVisualizarAvaliacaoObjetivoPaciente adicionarVisualizarAvaliacaoObjetivoPaciente = new AdicionarVisualizarAvaliacaoObjetivoPaciente(paciente);
+                adicionarVisualizarAvaliacaoObjetivoPaciente.Show();
+            }
+            else
+            {
+                AdicionarVisualizarAvaliacaoObjetivoBebe adicionarVisualizarAvaliacaoObjetivoBebe = new AdicionarVisualizarAvaliacaoObjetivoBebe(paciente/*, this, null*/);
+                adicionarVisualizarAvaliacaoObjetivoBebe.Show();
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -337,10 +413,73 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             adicionar.Show();
         }
 
-        private void button12_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AdicionarVisualizarTratamentoPaciente adicionarVisualizarTratamentoPaciente = new AdicionarVisualizarTratamentoPaciente(paciente);
+            adicionarVisualizarTratamentoPaciente.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
         {
             InserirMedicacao inserirMedicacao = new InserirMedicacao(paciente);
             inserirMedicacao.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AtitudesTerapeuticasPaciente atitudesTerapeuticasPaciente = new AtitudesTerapeuticasPaciente(paciente);
+            atitudesTerapeuticasPaciente.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AdicionarVisualizarProdutosStockConsulta adicionarVisualizarProdutosStockConsulta = new AdicionarVisualizarProdutosStockConsulta(paciente, consulta);
+            adicionarVisualizarProdutosStockConsulta.Show();
+        }
+
+        private void idVarios()
+        {
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select * from Alergia", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                id = (int)reader["IdAlergia"];
+            }
+            conn.Close();
+
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd1 = new SqlCommand("select * from Doenca", conn);
+            SqlDataReader reader1 = cmd1.ExecuteReader();
+            while (reader1.Read())
+            {
+                idDoenca = (int)reader1["IdDoenca"];
+            }
+            conn.Close();
+
+
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd2 = new SqlCommand("select * from Cirurgia", conn);
+            SqlDataReader reader2 = cmd2.ExecuteReader();
+            while (reader2.Read())
+            {
+                idCirurgia = (int)reader2["IdCirurgia"];
+            }
+            conn.Close();
+
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd3 = new SqlCommand("select * from Exame", conn);
+            SqlDataReader reader3 = cmd3.ExecuteReader();
+            while (reader3.Read())
+            {
+                idExames = (int)reader3["idTipoExame"];
+            }
+            conn.Close();
+        }
+
     } 
 }

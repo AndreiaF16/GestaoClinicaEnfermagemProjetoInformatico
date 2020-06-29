@@ -112,6 +112,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             pictureBoxCorpo.Controls.Clear();
             textBox1.Clear();
             pictureBoxCorpo.Refresh();
+           // txtObservacoes.Text = "";
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

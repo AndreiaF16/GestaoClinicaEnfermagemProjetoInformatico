@@ -116,7 +116,7 @@
             this.groupBox1.Size = new System.Drawing.Size(955, 330);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Registar Doença";
+            this.groupBox1.Text = "Registar Análises Laboratoriais";
             // 
             // label4
             // 

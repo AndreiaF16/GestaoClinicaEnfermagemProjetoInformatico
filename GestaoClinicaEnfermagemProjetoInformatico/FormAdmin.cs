@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         
         private Enfermeiro enfermeiro = new Enfermeiro();
+        private int id = -1;
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
+
         public FormAdmin(Enfermeiro enf)
         {
             InitializeComponent();
@@ -22,6 +27,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 enfermeiro = enf;
                 label5.Text = "Enfermeiro: " + enfermeiro.nome;
+                conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
 
             }
             lblHora.Text= DateTime.Now.ToString("dd/MM/yyyy");
@@ -112,8 +119,43 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ProdutosEmStock produtosEmStock = new ProdutosEmStock(null);
-            produtosEmStock.Show();
+            idAtitude();
+
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Fornecedores não encontrados, não é possível registar produtos! Deseja inserir um fornecedor na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    Fornecedor fornecedor = new Fornecedor();
+                    fornecedor.Show();
+
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idAtitude();
+
+            if (id != -1)
+            {
+                ProdutosEmStock produtosEmStock = new ProdutosEmStock(null);
+                produtosEmStock.Show();
+            }
+            
+        }
+
+        private void idAtitude()
+        {
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select * from Fornecedor", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                id = (int)reader["IdFornecedor"];
+            }
+            conn.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)

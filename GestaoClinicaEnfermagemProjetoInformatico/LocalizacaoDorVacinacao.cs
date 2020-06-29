@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public class LocalizazaoDorDopplerArterialVenoso
+    class LocalizacaoDorVacinacao
     {
-        public string data { get; set; }
+        public DateTime data { get; set; }
         public string localizacao { get; set; }
         public string observacoes { get; set; }
 

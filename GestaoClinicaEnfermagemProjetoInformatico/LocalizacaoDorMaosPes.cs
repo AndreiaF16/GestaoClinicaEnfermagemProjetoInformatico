@@ -13,5 +13,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public DateTime data { get; set; }
         public string tratamento { get; set; }
         public string localizacao { get; set; }
+        public string observacoes { get; set; }
+
     }
 }

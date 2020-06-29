@@ -37,11 +37,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void AdicionarVisualizarAlergiaPaciente_Load(object sender, EventArgs e)
         {
-            UpdateDataGridView();
+            
+
+            
+           UpdateDataGridView();
             reiniciar();
-            errorProvider.ContainerControl = this;
+           errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
+
+     
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {

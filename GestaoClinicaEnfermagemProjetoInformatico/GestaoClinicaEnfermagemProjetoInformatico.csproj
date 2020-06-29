@@ -177,11 +177,11 @@
     <Compile Include="FormLocalizacaoDorDopplerArterialVenoso.Designer.cs">
       <DependentUpon>FormLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLocalizacaoDorOnicocriptoses.cs">
+    <Compile Include="FormLocalizacaoDorVacinacao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLocalizacaoDorOnicocriptoses.Designer.cs">
-      <DependentUpon>FormLocalizacaoDorOnicocriptoses.cs</DependentUpon>
+    <Compile Include="FormLocalizacaoDorVacinacao.Designer.cs">
+      <DependentUpon>FormLocalizacaoDorVacinacao.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMaosEPes.cs">
       <SubType>Form</SubType>
@@ -193,10 +193,16 @@
     <Compile Include="LavagemAuricularPac.cs" />
     <Compile Include="LavagemOcularPaciente.cs" />
     <Compile Include="LocalizacaoDorMaosPes.cs" />
+    <Compile Include="LocalizacaoDorVacinacao.cs" />
     <Compile Include="LocalizacaoDorPaciente.cs" />
     <Compile Include="LocalizazaoDorDopplerArterialVenoso.cs" />
     <Compile Include="MonitorizacaoECGPaciente.cs" />
     <Compile Include="PressoterapiaPaciente.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SuturasPaciente.cs" />
     <Compile Include="TesteComburPaciente.cs" />
     <Compile Include="TratamentoMaosPes.cs" />
@@ -243,11 +249,11 @@
     <Compile Include="VerLocalizacaoDorMaosPes.Designer.cs">
       <DependentUpon>VerLocalizacaoDorMaosPes.cs</DependentUpon>
     </Compile>
-    <Compile Include="VerLocalizacaoDorOnicocriptoses.cs">
+    <Compile Include="VerLocalizacaoDorVacinacao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerLocalizacaoDorOnicocriptoses.Designer.cs">
-      <DependentUpon>VerLocalizacaoDorOnicocriptoses.cs</DependentUpon>
+    <Compile Include="VerLocalizacaoDorVacinacao.Designer.cs">
+      <DependentUpon>VerLocalizacaoDorVacinacao.cs</DependentUpon>
     </Compile>
     <Compile Include="VerPressoterapiaPaciente.cs">
       <SubType>Form</SubType>
@@ -636,11 +642,11 @@
     <Compile Include="VerAvaliacaoObjetivoBebe.Designer.cs">
       <DependentUpon>VerAvaliacaoObjetivoBebe.cs</DependentUpon>
     </Compile>
-    <Compile Include="VerCirurgiasRegistadas.cs">
+    <Compile Include="VerEditarCirurgiasRegistadas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerCirurgiasRegistadas.Designer.cs">
-      <DependentUpon>VerCirurgiasRegistadas.cs</DependentUpon>
+    <Compile Include="VerEditarCirurgiasRegistadas.Designer.cs">
+      <DependentUpon>VerEditarCirurgiasRegistadas.cs</DependentUpon>
     </Compile>
     <Compile Include="VerConsultasPaciente.cs">
       <SubType>Form</SubType>
@@ -1130,8 +1136,8 @@
     <EmbeddedResource Include="FormLocalizacaoDorDopplerArterialVenoso.resx">
       <DependentUpon>FormLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLocalizacaoDorOnicocriptoses.resx">
-      <DependentUpon>FormLocalizacaoDorOnicocriptoses.cs</DependentUpon>
+    <EmbeddedResource Include="FormLocalizacaoDorVacinacao.resx">
+      <DependentUpon>FormLocalizacaoDorVacinacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMaosEPes.resx">
       <DependentUpon>FormMaosEPes.cs</DependentUpon>
@@ -1184,8 +1190,8 @@
     <EmbeddedResource Include="VerCateterismo.resx">
       <DependentUpon>VerCateterismo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerCirurgiasRegistadas.resx">
-      <DependentUpon>VerCirurgiasRegistadas.cs</DependentUpon>
+    <EmbeddedResource Include="VerEditarCirurgiasRegistadas.resx">
+      <DependentUpon>VerEditarCirurgiasRegistadas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerColheitaUrina.resx">
       <DependentUpon>VerColheitaUrina.cs</DependentUpon>
@@ -1259,14 +1265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="RedefenirPrimeiroAcesso.resx">
       <DependentUpon>RedefenirPrimeiroAcesso.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1363,8 +1364,8 @@
     <EmbeddedResource Include="VerLocalizacaoDorMaosPes.resx">
       <DependentUpon>VerLocalizacaoDorMaosPes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerLocalizacaoDorOnicocriptoses.resx">
-      <DependentUpon>VerLocalizacaoDorOnicocriptoses.cs</DependentUpon>
+    <EmbeddedResource Include="VerLocalizacaoDorVacinacao.resx">
+      <DependentUpon>VerLocalizacaoDorVacinacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerMaisDetalhesPaciente.resx">
       <DependentUpon>VerMaisDetalhesPaciente.cs</DependentUpon>
@@ -1617,6 +1618,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iamge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\audiograma2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imagemAnatomica.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\identificacao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\identificacaoCorpo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\identificacaoCorpo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\identificacaoCorpo2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

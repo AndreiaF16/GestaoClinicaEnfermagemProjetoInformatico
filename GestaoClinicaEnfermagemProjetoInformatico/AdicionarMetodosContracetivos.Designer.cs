@@ -92,7 +92,7 @@
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button2.Size = new System.Drawing.Size(170, 113);
             this.button2.TabIndex = 32;
-            this.button2.Text = "Ver e Editar Metodos Contracetivos Registados";
+            this.button2.Text = "Ver e Editar Métodos Contracetivos Registados";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button2.UseVisualStyleBackColor = false;

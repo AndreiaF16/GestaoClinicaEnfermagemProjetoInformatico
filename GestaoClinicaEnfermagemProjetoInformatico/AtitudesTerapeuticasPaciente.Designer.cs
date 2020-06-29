@@ -82,6 +82,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.groupBoxMulheres = new System.Windows.Forms.GroupBox();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -93,6 +95,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            this.groupBoxMulheres.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblDia
@@ -148,6 +151,7 @@
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.groupBoxMulheres);
             this.panelFormulario.Controls.Add(this.groupBox2);
             this.panelFormulario.Controls.Add(this.groupBox1);
             this.panelFormulario.Controls.Add(this.label1);
@@ -172,9 +176,9 @@
             this.groupBox2.Controls.Add(this.button19);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(233, 413);
+            this.groupBox2.Location = new System.Drawing.Point(649, 117);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(704, 276);
+            this.groupBox2.Size = new System.Drawing.Size(473, 356);
             this.groupBox2.TabIndex = 57;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Selecione a(s) Atitude(s) Terapêutica(s) que pretende:";
@@ -187,11 +191,11 @@
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.Black;
             this.button10.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button10.Location = new System.Drawing.Point(488, 72);
+            this.button10.Location = new System.Drawing.Point(91, 299);
             this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
             this.button10.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button10.Size = new System.Drawing.Size(210, 51);
+            this.button10.Size = new System.Drawing.Size(300, 34);
             this.button10.TabIndex = 66;
             this.button10.Text = "Ver Atitudes Terapêuticas Registadas";
             this.button10.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -283,11 +287,11 @@
             this.button19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button19.ForeColor = System.Drawing.Color.Black;
             this.button19.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button19.Location = new System.Drawing.Point(488, 123);
+            this.button19.Location = new System.Drawing.Point(91, 265);
             this.button19.Margin = new System.Windows.Forms.Padding(2);
             this.button19.Name = "button19";
             this.button19.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button19.Size = new System.Drawing.Size(210, 51);
+            this.button19.Size = new System.Drawing.Size(300, 34);
             this.button19.TabIndex = 56;
             this.button19.Text = "Registar";
             this.button19.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -297,9 +301,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.btnImplanteContracetivo);
-            this.groupBox1.Controls.Add(this.btnDIU);
-            this.groupBox1.Controls.Add(this.btnColpocitologia);
+            this.groupBox1.Controls.Add(this.button11);
             this.groupBox1.Controls.Add(this.button30);
             this.groupBox1.Controls.Add(this.button31);
             this.groupBox1.Controls.Add(this.button20);
@@ -324,9 +326,9 @@
             this.groupBox1.Controls.Add(this.button12);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(7, 70);
+            this.groupBox1.Location = new System.Drawing.Point(10, 117);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1124, 296);
+            this.groupBox1.Size = new System.Drawing.Size(633, 574);
             this.groupBox1.TabIndex = 53;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selecione a Atitude Terapêutica que pretende:";
@@ -339,11 +341,11 @@
             this.btnImplanteContracetivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImplanteContracetivo.ForeColor = System.Drawing.Color.Black;
             this.btnImplanteContracetivo.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnImplanteContracetivo.Location = new System.Drawing.Point(636, 226);
+            this.btnImplanteContracetivo.Location = new System.Drawing.Point(100, 126);
             this.btnImplanteContracetivo.Margin = new System.Windows.Forms.Padding(2);
             this.btnImplanteContracetivo.Name = "btnImplanteContracetivo";
             this.btnImplanteContracetivo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImplanteContracetivo.Size = new System.Drawing.Size(185, 51);
+            this.btnImplanteContracetivo.Size = new System.Drawing.Size(300, 32);
             this.btnImplanteContracetivo.TabIndex = 53;
             this.btnImplanteContracetivo.Text = "Implante Contracetivo SubDérmico";
             this.btnImplanteContracetivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -358,11 +360,11 @@
             this.btnDIU.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDIU.ForeColor = System.Drawing.Color.Black;
             this.btnDIU.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDIU.Location = new System.Drawing.Point(451, 226);
+            this.btnDIU.Location = new System.Drawing.Point(100, 94);
             this.btnDIU.Margin = new System.Windows.Forms.Padding(2);
             this.btnDIU.Name = "btnDIU";
             this.btnDIU.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnDIU.Size = new System.Drawing.Size(185, 51);
+            this.btnDIU.Size = new System.Drawing.Size(300, 32);
             this.btnDIU.TabIndex = 46;
             this.btnDIU.Text = "Colocação DIU";
             this.btnDIU.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -377,11 +379,11 @@
             this.btnColpocitologia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnColpocitologia.ForeColor = System.Drawing.Color.Black;
             this.btnColpocitologia.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnColpocitologia.Location = new System.Drawing.Point(266, 226);
+            this.btnColpocitologia.Location = new System.Drawing.Point(100, 62);
             this.btnColpocitologia.Margin = new System.Windows.Forms.Padding(2);
             this.btnColpocitologia.Name = "btnColpocitologia";
             this.btnColpocitologia.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnColpocitologia.Size = new System.Drawing.Size(185, 51);
+            this.btnColpocitologia.Size = new System.Drawing.Size(300, 32);
             this.btnColpocitologia.TabIndex = 45;
             this.btnColpocitologia.Text = "Colpocitologia";
             this.btnColpocitologia.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -396,11 +398,11 @@
             this.button30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button30.ForeColor = System.Drawing.Color.Black;
             this.button30.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button30.Location = new System.Drawing.Point(745, 175);
+            this.button30.Location = new System.Drawing.Point(177, 439);
             this.button30.Margin = new System.Windows.Forms.Padding(2);
             this.button30.Name = "button30";
             this.button30.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button30.Size = new System.Drawing.Size(185, 51);
+            this.button30.Size = new System.Drawing.Size(300, 32);
             this.button30.TabIndex = 64;
             this.button30.Text = "Zaragatoa Onofaringe";
             this.button30.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -415,11 +417,11 @@
             this.button31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button31.ForeColor = System.Drawing.Color.Black;
             this.button31.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button31.Location = new System.Drawing.Point(560, 175);
+            this.button31.Location = new System.Drawing.Point(313, 407);
             this.button31.Margin = new System.Windows.Forms.Padding(2);
             this.button31.Name = "button31";
             this.button31.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button31.Size = new System.Drawing.Size(185, 51);
+            this.button31.Size = new System.Drawing.Size(300, 32);
             this.button31.TabIndex = 63;
             this.button31.Text = "Tricotomia";
             this.button31.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -434,11 +436,11 @@
             this.button20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button20.ForeColor = System.Drawing.Color.Black;
             this.button20.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button20.Location = new System.Drawing.Point(375, 175);
+            this.button20.Location = new System.Drawing.Point(313, 375);
             this.button20.Margin = new System.Windows.Forms.Padding(2);
             this.button20.Name = "button20";
             this.button20.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button20.Size = new System.Drawing.Size(185, 51);
+            this.button20.Size = new System.Drawing.Size(300, 32);
             this.button20.TabIndex = 62;
             this.button20.Text = "Teste Avaliação Acuidade Visual";
             this.button20.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -453,11 +455,11 @@
             this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button21.ForeColor = System.Drawing.Color.Black;
             this.button21.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button21.Location = new System.Drawing.Point(190, 175);
+            this.button21.Location = new System.Drawing.Point(313, 343);
             this.button21.Margin = new System.Windows.Forms.Padding(2);
             this.button21.Name = "button21";
             this.button21.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button21.Size = new System.Drawing.Size(185, 51);
+            this.button21.Size = new System.Drawing.Size(300, 32);
             this.button21.TabIndex = 61;
             this.button21.Text = "Teste Combur";
             this.button21.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -472,11 +474,11 @@
             this.button22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button22.ForeColor = System.Drawing.Color.Black;
             this.button22.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button22.Location = new System.Drawing.Point(930, 124);
+            this.button22.Location = new System.Drawing.Point(313, 311);
             this.button22.Margin = new System.Windows.Forms.Padding(2);
             this.button22.Name = "button22";
             this.button22.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button22.Size = new System.Drawing.Size(185, 51);
+            this.button22.Size = new System.Drawing.Size(300, 32);
             this.button22.TabIndex = 60;
             this.button22.Text = "Suturas";
             this.button22.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -491,11 +493,11 @@
             this.button23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button23.ForeColor = System.Drawing.Color.Black;
             this.button23.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button23.Location = new System.Drawing.Point(745, 124);
+            this.button23.Location = new System.Drawing.Point(313, 279);
             this.button23.Margin = new System.Windows.Forms.Padding(2);
             this.button23.Name = "button23";
             this.button23.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button23.Size = new System.Drawing.Size(185, 51);
+            this.button23.Size = new System.Drawing.Size(300, 32);
             this.button23.TabIndex = 59;
             this.button23.Text = "Pressoterapia";
             this.button23.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -510,11 +512,11 @@
             this.button24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button24.ForeColor = System.Drawing.Color.Black;
             this.button24.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button24.Location = new System.Drawing.Point(560, 124);
+            this.button24.Location = new System.Drawing.Point(313, 247);
             this.button24.Margin = new System.Windows.Forms.Padding(2);
             this.button24.Name = "button24";
             this.button24.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button24.Size = new System.Drawing.Size(185, 51);
+            this.button24.Size = new System.Drawing.Size(300, 32);
             this.button24.TabIndex = 58;
             this.button24.Text = "Monitorização ECG";
             this.button24.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -529,11 +531,11 @@
             this.button25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button25.ForeColor = System.Drawing.Color.Black;
             this.button25.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button25.Location = new System.Drawing.Point(375, 124);
+            this.button25.Location = new System.Drawing.Point(313, 215);
             this.button25.Margin = new System.Windows.Forms.Padding(2);
             this.button25.Name = "button25";
             this.button25.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button25.Size = new System.Drawing.Size(185, 51);
+            this.button25.Size = new System.Drawing.Size(300, 32);
             this.button25.TabIndex = 57;
             this.button25.Text = "Lavagem Vesical";
             this.button25.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -548,11 +550,11 @@
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.ForeColor = System.Drawing.Color.Black;
             this.button13.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button13.Location = new System.Drawing.Point(190, 124);
+            this.button13.Location = new System.Drawing.Point(313, 183);
             this.button13.Margin = new System.Windows.Forms.Padding(2);
             this.button13.Name = "button13";
             this.button13.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button13.Size = new System.Drawing.Size(185, 51);
+            this.button13.Size = new System.Drawing.Size(300, 32);
             this.button13.TabIndex = 56;
             this.button13.Text = "Lavagem Ocular";
             this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -567,11 +569,11 @@
             this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button15.ForeColor = System.Drawing.Color.Black;
             this.button15.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button15.Location = new System.Drawing.Point(5, 124);
+            this.button15.Location = new System.Drawing.Point(313, 151);
             this.button15.Margin = new System.Windows.Forms.Padding(2);
             this.button15.Name = "button15";
             this.button15.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button15.Size = new System.Drawing.Size(185, 51);
+            this.button15.Size = new System.Drawing.Size(300, 32);
             this.button15.TabIndex = 54;
             this.button15.Text = "Lavagem Auricular";
             this.button15.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -586,11 +588,11 @@
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Black;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.Location = new System.Drawing.Point(745, 22);
+            this.button3.Location = new System.Drawing.Point(13, 215);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button3.Size = new System.Drawing.Size(185, 51);
+            this.button3.Size = new System.Drawing.Size(300, 32);
             this.button3.TabIndex = 42;
             this.button3.Text = "Cateterismo";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -605,11 +607,11 @@
             this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button17.ForeColor = System.Drawing.Color.Black;
             this.button17.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button17.Location = new System.Drawing.Point(930, 73);
+            this.button17.Location = new System.Drawing.Point(313, 119);
             this.button17.Margin = new System.Windows.Forms.Padding(2);
             this.button17.Name = "button17";
             this.button17.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button17.Size = new System.Drawing.Size(185, 51);
+            this.button17.Size = new System.Drawing.Size(300, 32);
             this.button17.TabIndex = 52;
             this.button17.Text = "Inalações";
             this.button17.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -624,11 +626,11 @@
             this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button18.ForeColor = System.Drawing.Color.Black;
             this.button18.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button18.Location = new System.Drawing.Point(745, 73);
+            this.button18.Location = new System.Drawing.Point(313, 87);
             this.button18.Margin = new System.Windows.Forms.Padding(2);
             this.button18.Name = "button18";
             this.button18.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button18.Size = new System.Drawing.Size(185, 51);
+            this.button18.Size = new System.Drawing.Size(300, 32);
             this.button18.TabIndex = 51;
             this.button18.Text = "Flebografia";
             this.button18.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -643,11 +645,11 @@
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.Black;
             this.button6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button6.Location = new System.Drawing.Point(560, 73);
+            this.button6.Location = new System.Drawing.Point(13, 407);
             this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button6.Size = new System.Drawing.Size(185, 51);
+            this.button6.Size = new System.Drawing.Size(300, 32);
             this.button6.TabIndex = 50;
             this.button6.Text = "ENG";
             this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -662,11 +664,11 @@
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.Black;
             this.button7.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button7.Location = new System.Drawing.Point(375, 73);
+            this.button7.Location = new System.Drawing.Point(13, 375);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button7.Size = new System.Drawing.Size(185, 51);
+            this.button7.Size = new System.Drawing.Size(300, 32);
             this.button7.TabIndex = 49;
             this.button7.Text = "Desbridamento";
             this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -681,11 +683,11 @@
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.Black;
             this.button8.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button8.Location = new System.Drawing.Point(190, 73);
+            this.button8.Location = new System.Drawing.Point(13, 343);
             this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button8.Size = new System.Drawing.Size(185, 51);
+            this.button8.Size = new System.Drawing.Size(300, 32);
             this.button8.TabIndex = 48;
             this.button8.Text = "Drenagem Locas";
             this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -700,11 +702,11 @@
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.Black;
             this.button9.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button9.Location = new System.Drawing.Point(5, 73);
+            this.button9.Location = new System.Drawing.Point(13, 311);
             this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
             this.button9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button9.Size = new System.Drawing.Size(185, 51);
+            this.button9.Size = new System.Drawing.Size(300, 32);
             this.button9.TabIndex = 47;
             this.button9.Text = "Crioterapia ";
             this.button9.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -719,11 +721,11 @@
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.Black;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.Location = new System.Drawing.Point(930, 22);
+            this.button5.Location = new System.Drawing.Point(13, 279);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button5.Size = new System.Drawing.Size(185, 51);
+            this.button5.Size = new System.Drawing.Size(300, 32);
             this.button5.TabIndex = 44;
             this.button5.Text = "Colheita de Urina";
             this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -738,11 +740,11 @@
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.Black;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.Location = new System.Drawing.Point(560, 22);
+            this.button4.Location = new System.Drawing.Point(13, 183);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button4.Size = new System.Drawing.Size(185, 51);
+            this.button4.Size = new System.Drawing.Size(300, 32);
             this.button4.TabIndex = 43;
             this.button4.Text = "Audiograma";
             this.button4.UseVisualStyleBackColor = false;
@@ -756,11 +758,11 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.Location = new System.Drawing.Point(375, 22);
+            this.button2.Location = new System.Drawing.Point(13, 151);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(185, 51);
+            this.button2.Size = new System.Drawing.Size(300, 32);
             this.button2.TabIndex = 41;
             this.button2.Text = "Aspiração Secreções ";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -775,11 +777,11 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.Location = new System.Drawing.Point(190, 22);
+            this.button1.Location = new System.Drawing.Point(13, 119);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(185, 51);
+            this.button1.Size = new System.Drawing.Size(300, 32);
             this.button1.TabIndex = 40;
             this.button1.Text = "Algariação";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -794,11 +796,11 @@
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.Black;
             this.button12.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button12.Location = new System.Drawing.Point(5, 22);
+            this.button12.Location = new System.Drawing.Point(13, 87);
             this.button12.Margin = new System.Windows.Forms.Padding(2);
             this.button12.Name = "button12";
             this.button12.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button12.Size = new System.Drawing.Size(185, 51);
+            this.button12.Size = new System.Drawing.Size(300, 32);
             this.button12.TabIndex = 39;
             this.button12.Text = "Administrar Medicação";
             this.button12.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -810,7 +812,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(111, 42);
+            this.label1.Location = new System.Drawing.Point(131, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 25);
             this.label1.TabIndex = 52;
@@ -846,7 +848,7 @@
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.ForeColor = System.Drawing.Color.Black;
             this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVoltar.Location = new System.Drawing.Point(0, 624);
+            this.btnVoltar.Location = new System.Drawing.Point(-2, 641);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -940,6 +942,39 @@
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.ForeColor = System.Drawing.Color.Black;
+            this.button11.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button11.Location = new System.Drawing.Point(13, 247);
+            this.button11.Margin = new System.Windows.Forms.Padding(2);
+            this.button11.Name = "button11";
+            this.button11.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button11.Size = new System.Drawing.Size(300, 32);
+            this.button11.TabIndex = 65;
+            this.button11.Text = "Colheita de Sangue Diagnóstico Precose";
+            this.button11.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button11.UseVisualStyleBackColor = false;
+            // 
+            // groupBoxMulheres
+            // 
+            this.groupBoxMulheres.BackColor = System.Drawing.Color.White;
+            this.groupBoxMulheres.Controls.Add(this.btnColpocitologia);
+            this.groupBoxMulheres.Controls.Add(this.btnImplanteContracetivo);
+            this.groupBoxMulheres.Controls.Add(this.btnDIU);
+            this.groupBoxMulheres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBoxMulheres.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxMulheres.Location = new System.Drawing.Point(649, 480);
+            this.groupBoxMulheres.Name = "groupBoxMulheres";
+            this.groupBoxMulheres.Size = new System.Drawing.Size(473, 211);
+            this.groupBoxMulheres.TabIndex = 67;
+            this.groupBoxMulheres.TabStop = false;
+            this.groupBoxMulheres.Text = "(Mulheres) Selecione a Atitude Terapêutica que pretende:";
+            // 
             // AtitudesTerapeuticasPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -968,6 +1003,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            this.groupBoxMulheres.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1026,5 +1062,7 @@
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.CheckBox cbLavagemGastrica;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.GroupBox groupBoxMulheres;
     }
 }

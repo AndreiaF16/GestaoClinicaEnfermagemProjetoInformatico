@@ -13,6 +13,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class AdicionarVisualizarProdutosStockConsulta : Form
     {
+        private RegistarEncomendas registarEncomendas = null;
+
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
        // private List<ListarProdutos> listaProdutos = new List<ListarProdutos>();
@@ -26,6 +28,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private VerProdutosConsulta prods = new VerProdutosConsulta();
         private List<VerProdutosConsulta> listaProdutos = new List<VerProdutosConsulta>();
         private List<VerProdutosConsulta> listaProdutosConsulta = new List<VerProdutosConsulta>();
+        private List<AtualizarQuantidade> listaAtualizarQuantidades = new List<AtualizarQuantidade>();
+        private Encomendas encomendas = null;
 
         // private List<ListarProdutos> listaProdutosConsulta = new List<ListarProdutos>();
 
@@ -202,6 +206,43 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                         MessageBox.Show("Registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         conn.Close();
+
+                        listaAtualizarQuantidades.Clear();
+                        conn.Open();
+                        //select produtoStock.IdProdutoStock, produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, linha.quantidade from ProdutoStock produtoStock JOIN LinhaEncomenda linha ON produtoStock.IdProdutoStock = linha.idProdutoStock WHERE linha.idEncomenda = 3009;
+
+                        SqlCommand cmd = new SqlCommand("select produtoStock.IdProdutoStock, produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, linha.quantidade from ProdutoStock produtoStock JOIN LinhaEncomenda linha ON produtoStock.IdProdutoStock = linha.idProdutoStock WHERE linha.idEncomenda = @IdEncomenda", conn);
+                        cmd.Parameters.AddWithValue("@IdEncomenda", encomendas.IdEncomenda);
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            AtualizarQuantidade quantidade = new AtualizarQuantidade
+                            {
+                                IdProdutoStock = (int)reader["IdProdutoStock"],
+                                NomeProduto = (string)reader["NomeProduto"],
+                                quantidadeArmazenada = (int)reader["quantidadeArmazenada"],
+                                quantidade = (int)reader["quantidade"],
+
+                            };
+                            listaAtualizarQuantidades.Add(quantidade);
+                        }
+                        conn.Close();
+
+                        conn.Open();
+                        foreach (var item in listaAtualizarQuantidades)
+                        {
+                            string queryUpdateData2 = "UPDATE ProdutoStock SET quantidadeArmazenada = @quantidadeArmazenada WHERE IdProdutoStock = " + item.IdProdutoStock;
+                            SqlCommand sqlCommand2 = new SqlCommand(queryUpdateData2, conn);
+                            sqlCommand2.Parameters.AddWithValue("@quantidadeArmazenada", item.quantidadeArmazenada - item.quantidade);
+                            sqlCommand2.ExecuteNonQuery();
+                        }
+                        conn.Close();
+
+                        if (registarEncomendas != null)
+                        {
+                            registarEncomendas.UpdateDataGridView();
+                        }                 
                     }
                     catch (SqlException excep)
                     {
@@ -213,6 +254,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("A lista de produtos usados na consulta não contem produtos. Para poder registar, tem de ter pelo menos um!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+
+
         }
 
         public void reiniciar()

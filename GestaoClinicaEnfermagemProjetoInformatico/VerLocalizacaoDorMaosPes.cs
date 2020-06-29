@@ -76,7 +76,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select tratamentoMaosPes.tratamento, localizacao.data, localizacao.localizacao from TratamentoMaosPes tratamentoMaosPes LEFT JOIN LocalizacaoDor localizacao ON tratamentoMaosPes.IdTratamentoMaosPes = localizacao.IdTratamentoMaosPes WHERE IdPaciente = @IdPaciente ORDER BY localizacao.data asc, tratamentoMaosPes.tratamento asc", conn);
+            SqlCommand cmd = new SqlCommand("select tratamentoMaosPes.tratamento, localizacao.data, localizacao.localizacao, localizacao.observacoes from TratamentoMaosPes tratamentoMaosPes LEFT JOIN LocalizacaoDor localizacao ON tratamentoMaosPes.IdTratamentoMaosPes = localizacao.IdTratamentoMaosPes WHERE IdPaciente = @IdPaciente ORDER BY localizacao.data asc, tratamentoMaosPes.tratamento asc", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -87,6 +87,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     data = Convert.ToDateTime(reader["data"]),
                     tratamento = ((reader["tratamento"] == DBNull.Value) ? "" : (string)reader["tratamento"]),
                     localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),
+                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+
                 };
                 localizacaoDorMaosPes.Add(localizacao);
 
@@ -107,6 +109,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewLocalizacaoDor.Columns[1].HeaderText = "Data de Registo";
             dataGridViewLocalizacaoDor.Columns[2].HeaderText = "Tratamento";
             dataGridViewLocalizacaoDor.Columns[3].HeaderText = "Localização Dor";
-    }
+            dataGridViewLocalizacaoDor.Columns[4].HeaderText = "Observações";
+
+        }
     }
 }
