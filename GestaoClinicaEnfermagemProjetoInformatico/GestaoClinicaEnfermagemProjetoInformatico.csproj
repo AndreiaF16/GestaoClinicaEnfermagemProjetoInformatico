@@ -177,6 +177,18 @@
     <Compile Include="FormLocalizacaoDorDopplerArterialVenoso.Designer.cs">
       <DependentUpon>FormLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLocalizacaoDorDopplerFetal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLocalizacaoDorDopplerFetal.Designer.cs">
+      <DependentUpon>FormLocalizacaoDorDopplerFetal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLocalizacaoDorEspirometria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLocalizacaoDorEspirometria.Designer.cs">
+      <DependentUpon>FormLocalizacaoDorEspirometria.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLocalizacaoDorVacinacao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +255,18 @@
     <Compile Include="VerLocalizacaoDorDopplerArterialVenoso.Designer.cs">
       <DependentUpon>VerLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerLocalizacaoDorDopplerFetal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerLocalizacaoDorDopplerFetal.Designer.cs">
+      <DependentUpon>VerLocalizacaoDorDopplerFetal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerLocalizacaoDorEspirometria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerLocalizacaoDorEspirometria.Designer.cs">
+      <DependentUpon>VerLocalizacaoDorEspirometria.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerLocalizacaoDorMaosPes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +278,12 @@
     </Compile>
     <Compile Include="VerLocalizacaoDorVacinacao.Designer.cs">
       <DependentUpon>VerLocalizacaoDorVacinacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerMedicacaoAnterior.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerMedicacaoAnterior.Designer.cs">
+      <DependentUpon>VerMedicacaoAnterior.cs</DependentUpon>
     </Compile>
     <Compile Include="VerPressoterapiaPaciente.cs">
       <SubType>Form</SubType>
@@ -1136,6 +1166,12 @@
     <EmbeddedResource Include="FormLocalizacaoDorDopplerArterialVenoso.resx">
       <DependentUpon>FormLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLocalizacaoDorDopplerFetal.resx">
+      <DependentUpon>FormLocalizacaoDorDopplerFetal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLocalizacaoDorEspirometria.resx">
+      <DependentUpon>FormLocalizacaoDorEspirometria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLocalizacaoDorVacinacao.resx">
       <DependentUpon>FormLocalizacaoDorVacinacao.cs</DependentUpon>
     </EmbeddedResource>
@@ -1361,6 +1397,12 @@
     <EmbeddedResource Include="VerLocalizacaoDorDopplerArterialVenoso.resx">
       <DependentUpon>VerLocalizacaoDorDopplerArterialVenoso.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VerLocalizacaoDorDopplerFetal.resx">
+      <DependentUpon>VerLocalizacaoDorDopplerFetal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerLocalizacaoDorEspirometria.resx">
+      <DependentUpon>VerLocalizacaoDorEspirometria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VerLocalizacaoDorMaosPes.resx">
       <DependentUpon>VerLocalizacaoDorMaosPes.cs</DependentUpon>
     </EmbeddedResource>
@@ -1369,6 +1411,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerMaisDetalhesPaciente.resx">
       <DependentUpon>VerMaisDetalhesPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerMedicacaoAnterior.resx">
+      <DependentUpon>VerMedicacaoAnterior.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerMedicacaoPaciente.resx">
       <DependentUpon>VerMedicacaoPaciente.cs</DependentUpon>

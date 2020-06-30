@@ -2,31 +2,37 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class FormLocalizacaoDorVacinacao : Form
+    public partial class FormLocalizacaoDorEspirometria : Form
     {
         Paciente paciente = null;
         private ErrorProvider errorProvider = new ErrorProvider();
         Point point;
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
-        public FormLocalizacaoDorVacinacao(Paciente ut)
+
+        public FormLocalizacaoDorEspirometria(Paciente pac)
         {
             InitializeComponent();
-            paciente = ut;
+            paciente = pac;
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             dataRegisto.Value = DateTime.Today;
+        }
+
+        private void FormLocalizacaoDorEspirometria_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -61,10 +67,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnVoltar_Click(object sender, EventArgs e)
         {
-            VerLocalizacaoDorVacinacao verLocalizacaoDorOnicocriptoses = new VerLocalizacaoDorVacinacao(paciente);
-            verLocalizacaoDorOnicocriptoses.Show();
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            dataRegisto.Value = DateTime.Today;
+            txtObservacoes.Text = "";
+            errorProvider.Clear();
+            var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);
+            pictureBoxCorpo.Image = bmp;
+            pictureBoxCorpo.Controls.Clear();
+            textBox1.Clear();
+            pictureBoxCorpo.Refresh();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -84,7 +106,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO LocalizacaoDorVacinacao(idPaciente,data,localizacao,observacoes) VALUES(@idPaciente,@dataR,@localizacao,@obs);";
+                    string queryInsertData = "INSERT INTO LocalizacaoDorEspirometria(idPaciente,data,localizacao,observacoes) VALUES(@idPaciente,@dataR,@localizacao,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
 
                     sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
@@ -110,8 +132,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", excep.Message);
                 }
             }
-        }
 
+        }
         private Boolean VerificarDadosInseridos()
         {
             DateTime data = dataRegisto.Value;
@@ -119,7 +141,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             int var = (int)((data - DateTime.Today).TotalDays);
 
-            if ( local == string.Empty)
+            if (local == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha-os!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -141,34 +163,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             return true;
         }
 
-        private void btnVoltar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            limparCampos();
-        }
-
-        private void limparCampos()
-        {
-            dataRegisto.Value = DateTime.Today;
-            txtObservacoes.Text = "";
-            errorProvider.Clear();
-            var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);
-            pictureBoxCorpo.Image = bmp;
-            pictureBoxCorpo.Controls.Clear();
-            textBox1.Clear();
-            pictureBoxCorpo.Refresh();
-        }
-
-        private void FormLocalizacaoDorVacinacao_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBoxCorpo_MouseClick_1(object sender, MouseEventArgs e)
+        private void pictureBoxCorpo_MouseClick(object sender, MouseEventArgs e)
         {
             TextBox textBox = new TextBox();
 
@@ -223,9 +218,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void panelFormulario_Paint(object sender, PaintEventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            VerLocalizacaoDorEspirometria verLocalizacaoDorOnicocriptoses = new VerLocalizacaoDorEspirometria(paciente);
+            verLocalizacaoDorOnicocriptoses.Show();
         }
     }
 }

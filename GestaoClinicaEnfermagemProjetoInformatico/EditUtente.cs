@@ -26,6 +26,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<ComboBoxItem> profissoes = new List<ComboBoxItem>();
         private FormVerUtentesRegistados formulario = null;
         private ErrorProvider errorProvider = new ErrorProvider();
+        private bool nifIgual = true;
+        private bool emailIgual = true;
+        private bool SNSIgual = true;
         public EditUtente(Enfermeiro enf, Paciente pac, FormVerUtentesRegistados form)
         {
             InitializeComponent();
@@ -374,30 +377,30 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 // NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
 
-                if (!(reader["Email"] == DBNull.Value))
+                if (!(reader["Email"] == DBNull.Value) && emailIgual == false)
                 {
                     if (txtEmail.Text.Equals((string)reader["Email"]))
                     {
-                        MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.");
+                        MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         conn.Close();
                         return false;
                     }
 
                 }
 
-                if (Convert.ToInt32(txtNif.Text) == Convert.ToInt32(reader["Nif"]))
+                if (Convert.ToInt32(txtNif.Text) == Convert.ToInt32(reader["Nif"]) && nifIgual == false)
                 {
-                    MessageBox.Show("O NIF que colocou já se encontra registado, coloque outro.");
+                    MessageBox.Show("O NIF que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     conn.Close();
                     return false;
                 }
 
-                if (!(reader["NumeroSNS"] == DBNull.Value))
+                if (!(reader["NumeroSNS"] == DBNull.Value) && SNSIgual == false)
                 {
 
-                    if (Convert.ToInt32(txtSNS.Text) == Convert.ToInt32(reader["NumeroSNS"]))
+                    if (Convert.ToInt32(txtSNS.Text) == Convert.ToInt32(reader["NumeroSNS"]) && SNSIgual == false)
                     {
-                        MessageBox.Show("O número do SNS que colocou já se encontra registado, coloque outro.");
+                        MessageBox.Show("O número do SNS que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         conn.Close();
                         return false;
                     }
@@ -468,39 +471,81 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 try
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-
+                    string queryUpdateData = null;
                     connection.Open();
+                    if (nifIgual == true && emailIgual == true && SNSIgual == true)
+                    {
+                         queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Contacto = @contacto,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
 
-                    string queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Email = @email, Contacto = @contacto,Nif = @nif,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE Nif = @NifPaciente";
+                    }
+                    else if(nifIgual == true && emailIgual == false && SNSIgual == false)
+                    {
+                         queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Email = @email, Contacto = @contacto,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
+
+                    }
+                    else if (nifIgual == false && emailIgual == true && SNSIgual == false)
+                    {
+                         queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Contacto = @contacto,Nif = @nif,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
+
+                    }
+                    else if (nifIgual == false && emailIgual == false && SNSIgual == true)
+                    {
+                        queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Email = @email, Contacto = @contacto,Nif = @nif,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
+
+                    }
+                    else if (nifIgual == true && emailIgual == true && SNSIgual == false)
+                    {
+                        queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Contacto = @contacto,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
+
+                    }
+                    else if (nifIgual == false && emailIgual == true && SNSIgual == true)
+                    {
+                        queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Contacto = @contacto,Nif = @nif,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
+
+                    }
+                    else if (nifIgual == true && emailIgual == false && SNSIgual == true)
+                    {
+                        queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Email = @email, Contacto = @contacto,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
+
+                    }
+                    else
+                    {
+                         queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Email = @email, Contacto = @contacto,Nif = @nif,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
+                    }
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
                     sqlCommand.Parameters.AddWithValue("@nome", nome);
+                    sqlCommand.Parameters.AddWithValue("@IdPaciente", pacientee.IdPaciente);
+
                     sqlCommand.Parameters.AddWithValue("@dataNascimento", dtNascimento.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@contacto", Convert.ToInt32(telemovel));
-                    sqlCommand.Parameters.AddWithValue("@nif", Convert.ToInt32(nif));
+                    if (nifIgual == false)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@nif", Convert.ToInt32(nif));
+                    }
                     sqlCommand.Parameters.AddWithValue("@rua", rua);
                     sqlCommand.Parameters.AddWithValue("@localidade", localidade);
-                    sqlCommand.Parameters.AddWithValue("@codPrefixo", codPrefixo);
-                    sqlCommand.Parameters.AddWithValue("@codSufixo", codSufixo);
+                    sqlCommand.Parameters.AddWithValue("@codPostalPrefixo", codPrefixo);
+                    sqlCommand.Parameters.AddWithValue("@codPostalSufixo", codSufixo);
                     sqlCommand.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
                     sqlCommand.Parameters.AddWithValue("@acordo", acordo);
                     sqlCommand.Parameters.AddWithValue("@nomeSeguradora", nomeSeguradora);
 
                     if (nrMorada != string.Empty)
                     {
-                        sqlCommand.Parameters.AddWithValue("@numeroMorada", Convert.ToInt32(nrMorada));
+                        sqlCommand.Parameters.AddWithValue("@numeroCasa", Convert.ToInt32(nrMorada));
                     }
                     else
                     {
-                        sqlCommand.Parameters.AddWithValue("@numeroMorada", DBNull.Value);
+                        sqlCommand.Parameters.AddWithValue("@numeroCasa", DBNull.Value);
                     }
 
                     if (andarPiso != string.Empty)
                     {
-                        sqlCommand.Parameters.AddWithValue("@andarPiso", Convert.ToString(andarPiso));
+                        sqlCommand.Parameters.AddWithValue("@andar", Convert.ToString(andarPiso));
                     }
                     else
                     {
-                        sqlCommand.Parameters.AddWithValue("@andarPiso", DBNull.Value);
+                        sqlCommand.Parameters.AddWithValue("@andar", DBNull.Value);
                     }
 
                     if (bairroLocal != string.Empty)
@@ -521,11 +566,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@numeroApoliceSeguradora", DBNull.Value);
                     }
 
-                    if (email != string.Empty)
+                    if (email != string.Empty && emailIgual == false)
                     {
                         sqlCommand.Parameters.AddWithValue("@email", Convert.ToString(email));
                     }
-                    else
+                    else if(emailIgual == false)
                     {
                         sqlCommand.Parameters.AddWithValue("@email", DBNull.Value);
                     }
@@ -552,14 +597,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@numeroSubsistema", DBNull.Value);
                     }
 
-                    if (numeroSNS != string.Empty)
+                    if (numeroSNS != string.Empty && SNSIgual == false)
                     {
                         sqlCommand.Parameters.AddWithValue("@numeroSNS", Convert.ToInt32(numeroSNS));
                     }
-                    else
+                    else if (SNSIgual == false)
                     {
                         sqlCommand.Parameters.AddWithValue("@numeroSNS", DBNull.Value);
                     }
+
                     if (nomeProfissao != -1)
                     {
                         sqlCommand.Parameters.AddWithValue("@nomeProfissao", Convert.ToInt32(nomeProfissao));
@@ -924,6 +970,44 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void txtRua_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+        }
+
+        private void txtNif_TextChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(txtNif.Text) == pacientee.Nif)
+            {
+                nifIgual = true;
+            }
+            else
+            {
+                nifIgual = false;
+            }
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            if (txtEmail.Text.Equals(pacientee.Email))
+            {
+                emailIgual = true;
+                //se email igual não faz update
+            }
+            else
+            {
+                emailIgual = false;
+            }
+        }
+
+        private void txtSNS_TextChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(txtSNS.Text) == pacientee.NumeroSNS)
+            {
+                SNSIgual = true;
+                //se SNS igual não faz update
+            }
+            else
+            {
+                SNSIgual = false;
+            }
         }
     }
 }

@@ -85,14 +85,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 string jantar = "";
                 string deitar = "";
 
+                string quantidadeJejum = txtQuantidadeJejum.Text;
+                string quantidadePeqAlmoco= txtQuantidadePeqAlmoco.Text;
+                string quantidadeAlmoco = txtQuantidadeAlmoco.Text;
+                string quantidadeLanche = txtQuantidadeLanche.Text;
+                string quantidadeJantar = txtQuantidadeJantar.Text;
+                string quantidadeDeitar = txtQuantidadeDeitar.Text;
+                string obs = txtObs.Text;
+
                 //Jejum
                 if (rbSimJejum.Checked == true)
                 {
                     jejum = "Sim";
-                }
-                if (rbNaoJejum.Checked == true)
-                {
-                    jejum = "Não";
                 }
 
                 //Pequeno Almoço
@@ -100,19 +104,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     peqAlm = "Sim";
                 }
-                if (rbNaoPeqAlm.Checked == true)
-                {
-                    peqAlm = "Não";
-                }
+
 
                 //Almoço
                 if (rbSimAlm.Checked == true)
                 {
                     almoco = "Sim";
-                }
-                if (rbNaoAlm.Checked == true)
-                {
-                    almoco = "Não";
                 }
 
                 //Lanche
@@ -120,29 +117,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     lanche = "Sim";
                 }
-                if (rbNaoLanche.Checked == true)
-                {
-                    lanche = "Não";
-                }
 
                 //Jantar
                 if (rbSimJantar.Checked == true)
                 {
                     jantar = "Sim";
-                }
-                if (rbNaoJantar.Checked == true)
-                {
-                    jantar = "Não";
-                }
+                }        
 
                 //Deitar
                 if (rbSimDeitar.Checked == true)
                 {
                     deitar = "Sim";
-                }
-                if (rbNaoDeitar.Checked == true)
-                {
-                    deitar = "Não";
                 }
              
                 try
@@ -150,7 +135,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Medicacao(medicamentos,jejum,pequenoAlmoco,almoco,lanche,jantar,deitar,IdPaciente,data) VALUES(@medicacao,@jejum,@peqAlm,@almoco,@lanche,@jantar,@deitar,@IdPaciente,@dataRegisto);";
+                    string queryInsertData = "INSERT INTO Medicacao(medicamentos,jejum,pequenoAlmoco,almoco,lanche,jantar,deitar,IdPaciente,data,quantidadeJejum,quantidadePequenoAlmoco,quantidadeAlmoco,quantidadeLanche,quantidadeJantar,quantidadeDeitar,observacoes) VALUES(@medicacao,@jejum,@peqAlm,@almoco,@lanche,@jantar,@deitar,@IdPaciente,@dataRegisto,@quantJejum,@quantPeqAlmoco,@quantAlmoco,@quantLanche,@quantJantar,@quantDeitar,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@dataRegisto", data.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
@@ -212,6 +197,69 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@deitar", DBNull.Value);
                     }
 
+                    if (quantidadeJejum != String.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@quantJejum", Convert.ToString(quantidadeJejum));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@quantJejum", DBNull.Value);
+                    }
+
+                    if (quantidadePeqAlmoco != String.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@quantPeqAlmoco", Convert.ToString(quantidadePeqAlmoco));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@quantPeqAlmoco", DBNull.Value);
+                    }
+
+                    if (quantidadeAlmoco != String.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@quantAlmoco", Convert.ToString(quantidadeAlmoco));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@quantAlmoco", DBNull.Value);
+                    }
+
+                    if (quantidadeLanche != String.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@quantLanche", Convert.ToString(quantidadeLanche));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@quantLanche", DBNull.Value);
+                    }
+
+                    if (quantidadeJantar != String.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@quantJantar", Convert.ToString(quantidadeJantar));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@quantJantar", DBNull.Value);
+                    }
+
+                    if (quantidadeDeitar != String.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@quantDeitar", Convert.ToString(quantidadeDeitar));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@quantDeitar", DBNull.Value);
+                    }
+
+                    if (obs != String.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@obs", Convert.ToString(obs));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@obs", DBNull.Value);
+                    }
+
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Medicação registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
@@ -255,17 +303,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataMedicacao.Value = DateTime.Today;
             txtMedicacao.Text = "";
             rbSimJejum.Checked = false;
-            rbNaoJejum.Checked = false;
             rbSimPeqAlm.Checked = false;
-            rbNaoPeqAlm.Checked = false;
             rbSimAlm.Checked = false;
-            rbNaoAlm.Checked = false;
             rbSimLanche.Checked = false;
-            rbNaoLanche.Checked = false;
             rbSimJantar.Checked = false;
-            rbNaoJantar.Checked = false;
             rbSimDeitar.Checked = false;
-            rbNaoDeitar.Checked = false;
             errorProvider.Clear();
         }
 
@@ -275,7 +317,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Medicacao ORDER BY medicamentos asc", conn);
+            SqlCommand cmd = new SqlCommand("select * from Medicacao WHERE data = '" + DateTime.Now.ToString("MM/dd/yyyy") + "' ORDER BY data asc, medicamentos asc", conn);
+
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -284,35 +327,86 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 Medicacao medicacao = new Medicacao
                 {
-                    medicamentos = ((reader["medicamentos"] == DBNull.Value) ? "" : (string)reader["medicamentos"]),
-                    jejum = ((reader["jejum"] == DBNull.Value) ? "" : (string)reader["jejum"]),
-                    peqAlmoco = ((reader["pequenoAlmoco"] == DBNull.Value) ? "" : (string)reader["pequenoAlmoco"]),
-                    almoco = ((reader["almoco"] == DBNull.Value) ? "" : (string)reader["almoco"]),
-                    lanche = ((reader["lanche"] == DBNull.Value) ? "" : (string)reader["lanche"]),
-                    jantar = ((reader["jantar"] == DBNull.Value) ? "" : (string)reader["jantar"]),
-                    deitar = ((reader["deitar"] == DBNull.Value) ? "" : (string)reader["deitar"]),
-
                     data = dataMed,
 
+                    medicamentos = ((reader["medicamentos"] == DBNull.Value) ? "" : (string)reader["medicamentos"]),
+                    jejum = ((reader["jejum"] == DBNull.Value) ? "" : (string)reader["jejum"]),
+                    quantJejum = ((reader["quantidadeJejum"] == DBNull.Value) ? "" : (string)reader["quantidadeJejum"]),
+                    peqAlmoco = ((reader["pequenoAlmoco"] == DBNull.Value) ? "" : (string)reader["pequenoAlmoco"]),
+                    quantPeqAlmoco = ((reader["quantidadePequenoAlmoco"] == DBNull.Value) ? "" : (string)reader["quantidadePequenoAlmoco"]),
+                    almoco = ((reader["almoco"] == DBNull.Value) ? "" : (string)reader["almoco"]),
+                    quantAlmoco = ((reader["quantidadeAlmoco"] == DBNull.Value) ? "" : (string)reader["quantidadeAlmoco"]),
+                    lanche = ((reader["lanche"] == DBNull.Value) ? "" : (string)reader["lanche"]),
+                    quantLanche = ((reader["quantidadeLanche"] == DBNull.Value) ? "" : (string)reader["quantidadeLanche"]),
+                    jantar = ((reader["jantar"] == DBNull.Value) ? "" : (string)reader["jantar"]),
+                    quantJantar = ((reader["quantidadeJantar"] == DBNull.Value) ? "" : (string)reader["quantidadeJantar"]),
+                    deitar = ((reader["deitar"] == DBNull.Value) ? "" : (string)reader["deitar"]),
+                    quantDeitar = ((reader["quantidadeDeitar"] == DBNull.Value) ? "" : (string)reader["quantidadeDeitar"]),
+                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
 
                 };
                 listaMedicacao.Add(medicacao);
             }
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaMedicacao };
-            dataGridViewUlceras.DataSource = bindingSource1;
-            dataGridViewUlceras.Columns[0].HeaderText = "Medicação";
-            dataGridViewUlceras.Columns[1].HeaderText = "Jeum";
-            dataGridViewUlceras.Columns[2].HeaderText = "Pequeno Almoço";
-            dataGridViewUlceras.Columns[3].HeaderText = "Almoço";
-            dataGridViewUlceras.Columns[4].HeaderText = "Lanchje";
-            dataGridViewUlceras.Columns[5].HeaderText = "Jantar";
-            dataGridViewUlceras.Columns[6].HeaderText = "Deitar";
-            dataGridViewUlceras.Columns[7].HeaderText = "Data Prescrição";
+            dataGridViewMedicacao.DataSource = bindingSource1;
+            dataGridViewMedicacao.Columns[0].Visible = false;
+            dataGridViewMedicacao.Columns[1].HeaderText = "Medicação";
+            dataGridViewMedicacao.Columns[2].HeaderText = "Jejum";
+            dataGridViewMedicacao.Columns[3].HeaderText = "Quant. Jejum";
+            dataGridViewMedicacao.Columns[4].HeaderText = "Pequeno Almoço";
+            dataGridViewMedicacao.Columns[5].HeaderText = "Quant. Pequeno Almoço";
+            dataGridViewMedicacao.Columns[6].HeaderText = "Almoço";
+            dataGridViewMedicacao.Columns[7].HeaderText = "Quant. Almoço";
+            dataGridViewMedicacao.Columns[8].HeaderText = "Lanche";
+            dataGridViewMedicacao.Columns[9].HeaderText = "Quant. Lanche";
+            dataGridViewMedicacao.Columns[10].HeaderText = "Jantar";
+            dataGridViewMedicacao.Columns[11].HeaderText = "Quant. Jantar";
+            dataGridViewMedicacao.Columns[12].HeaderText = "Deitar";
+            dataGridViewMedicacao.Columns[13].HeaderText = "Quant. Deitar";
+            dataGridViewMedicacao.Columns[14].HeaderText = "Observações";
+
+            dataGridViewMedicacao.Columns[3].Width = dataGridViewMedicacao.Columns[3].Width + 80;
+            dataGridViewMedicacao.Columns[5].Width = dataGridViewMedicacao.Columns[5].Width + 80;
+            dataGridViewMedicacao.Columns[7].Width = dataGridViewMedicacao.Columns[7].Width + 80;
+            dataGridViewMedicacao.Columns[9].Width = dataGridViewMedicacao.Columns[9].Width + 80;
+            dataGridViewMedicacao.Columns[11].Width = dataGridViewMedicacao.Columns[11].Width + 80;
+            dataGridViewMedicacao.Columns[13].Width = dataGridViewMedicacao.Columns[13].Width + 80;
 
             conn.Close();
-            dataGridViewUlceras.Update();
-            dataGridViewUlceras.Refresh();
+            dataGridViewMedicacao.Update();
+            dataGridViewMedicacao.Refresh();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            VerMedicacaoAnterior verMedicacaoAnterior = new VerMedicacaoAnterior(paciente);
+            verMedicacaoAnterior.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            printPreviewDialog1.Document = this.printDocument1;
+            this.printDocument1.DefaultPageSettings.Landscape = true;
+            printDocument1.OriginAtMargins = false;
+            printDialog1.Document = this.printDocument1;
+
+            printPreviewDialog1.ShowDialog();
+
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                this.printDocument1.Print();
+            }
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
+        }
+
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

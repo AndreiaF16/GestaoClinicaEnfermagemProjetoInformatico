@@ -96,26 +96,34 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string sinais = txtSinais.Text;
             //string tensaoArterial = txtTensaoArterial.Text;
             string escalaDor = lblEscala.Text;
-            string valorConsulta = txtValorConsulta.Text;
+            string preco = UpDownPrecoConsulta.Text;
             string diagnostico = txtDiagnostico.Text;
 
-            if (valorConsulta == string.Empty)
+            if (preco == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios, por favor preencha os campos obrigatórios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (valorConsulta == string.Empty)
+                if (preco == string.Empty)
                 {
-                    errorProvider.SetError(txtValorConsulta, "O valor da consulta é obrigatório!");
+                    errorProvider.SetError(UpDownPrecoConsulta, "O valor da consulta é obrigatório!");
                 }
                 else
                 {
-                    errorProvider.SetError(txtValorConsulta, String.Empty);
+                    errorProvider.SetError(UpDownPrecoConsulta, String.Empty);
                 }
                 return false;
             }
-      
-            if (Convert.ToDecimal(valorConsulta) <= 0)
+
+            if (Convert.ToDecimal(preco) <= 0)
             {
-                MessageBox.Show("O valor da consulta tem que ser superior a zero", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Não podem ser registados valores inferiores ou igual a 0, por valor corriga os valores!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Convert.ToDecimal(preco) <= 0)
+                {
+                    errorProvider.SetError(UpDownPrecoConsulta, "O peso não pode ser inferior ou igual a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownPrecoConsulta, String.Empty);
+                }
                 return false;
             }
 
@@ -125,17 +133,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click_1(object sender, EventArgs e)
         {          
+                
+
+            if (VerificarDadosInseridos())
+            {
                 string historiaAtual = txtHistoriaAtual.Text;
                 string sintomatologia = txtSintomatologia.Text;
                 string sinais = txtSinais.Text;
                 //string tensaoArterial = txtTensaoArterial.Text;
                 string escalaDor = lblEscala.Text;
-                double valor = Convert.ToDouble(txtValorConsulta.Text);
+                decimal preco = Convert.ToDecimal(UpDownPrecoConsulta.Text);
                 string diag = txtDiagnostico.Text;
                 DateTime horaFim = DateTime.Now;
-
-            if (VerificarDadosInseridos())
-            {
 
                 try
                 {
@@ -146,10 +155,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@dataConsulta", inicio);
                     sqlCommand.Parameters.AddWithValue("@horaInicioConsulta", string.Format("{0:00}", inicio.Hour) + ":" + string.Format("{0:00}", inicio.Minute));
-                    // sqlCommand.Parameters.AddWithValue("@tensaoArterial", tensaoArterial);
                     sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@idEnfermeiro", enfermeiro.IdEnfermeiro);
-                    sqlCommand.Parameters.AddWithValue("@valorConsulta", valor);
+                    sqlCommand.Parameters.AddWithValue("@valorConsulta", preco);
                     sqlCommand.Parameters.AddWithValue("@horaFimConsulta", string.Format("{0:00}", horaFim.Hour) + ":" + string.Format("{0:00}", horaFim.Minute));
 
                     if (historiaAtual != string.Empty)
@@ -277,7 +285,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             txtHistoriaAtual.Text = "";
             txtSinais.Text = "";
             txtSintomatologia.Text = "";
-            txtValorConsulta.Text = "";
+            UpDownPrecoConsulta.Value = 0;
             lblEscala.Text = "";
             errorProvider.Clear();
         }

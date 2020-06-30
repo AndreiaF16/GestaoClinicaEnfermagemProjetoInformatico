@@ -62,9 +62,8 @@
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
-            this.UpDownPeso = new System.Windows.Forms.NumericUpDown();
+            this.UpDownPrecoConsulta = new System.Windows.Forms.NumericUpDown();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.txtValorConsulta = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button12 = new System.Windows.Forms.Button();
@@ -99,7 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelFormulario.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDownPeso)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownPrecoConsulta)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -113,9 +112,8 @@
             this.lblEscala.ForeColor = System.Drawing.Color.Black;
             this.lblEscala.Location = new System.Drawing.Point(65, 147);
             this.lblEscala.Name = "lblEscala";
-            this.lblEscala.Size = new System.Drawing.Size(51, 20);
+            this.lblEscala.Size = new System.Drawing.Size(0, 20);
             this.lblEscala.TabIndex = 27;
-            this.lblEscala.Text = "label2";
             this.lblEscala.Visible = false;
             // 
             // lblCustoConsulta
@@ -471,9 +469,8 @@
             // 
             this.groupBox4.BackColor = System.Drawing.Color.White;
             this.groupBox4.Controls.Add(this.button9);
-            this.groupBox4.Controls.Add(this.UpDownPeso);
+            this.groupBox4.Controls.Add(this.UpDownPrecoConsulta);
             this.groupBox4.Controls.Add(this.btnGuardar);
-            this.groupBox4.Controls.Add(this.txtValorConsulta);
             this.groupBox4.Controls.Add(this.lblCustoConsulta);
             this.groupBox4.Location = new System.Drawing.Point(781, 505);
             this.groupBox4.Name = "groupBox4";
@@ -490,7 +487,7 @@
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.Black;
             this.button9.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button9.Location = new System.Drawing.Point(72, 146);
+            this.button9.Location = new System.Drawing.Point(72, 119);
             this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
             this.button9.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -502,19 +499,20 @@
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // UpDownPeso
+            // UpDownPrecoConsulta
             // 
-            this.UpDownPeso.DecimalPlaces = 2;
-            this.UpDownPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpDownPeso.Location = new System.Drawing.Point(188, 57);
-            this.UpDownPeso.Maximum = new decimal(new int[] {
+            this.UpDownPrecoConsulta.DecimalPlaces = 2;
+            this.UpDownPrecoConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownPrecoConsulta.Location = new System.Drawing.Point(166, 19);
+            this.UpDownPrecoConsulta.Maximum = new decimal(new int[] {
             99999,
             0,
             0,
             131072});
-            this.UpDownPeso.Name = "UpDownPeso";
-            this.UpDownPeso.Size = new System.Drawing.Size(114, 26);
-            this.UpDownPeso.TabIndex = 52;
+            this.UpDownPrecoConsulta.Name = "UpDownPrecoConsulta";
+            this.UpDownPrecoConsulta.Size = new System.Drawing.Size(114, 26);
+            this.UpDownPrecoConsulta.TabIndex = 52;
+            this.UpDownPrecoConsulta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownPrecoConsulta_KeyPress);
             // 
             // btnGuardar
             // 
@@ -525,7 +523,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(72, 98);
+            this.btnGuardar.Location = new System.Drawing.Point(72, 71);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -536,15 +534,6 @@
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // txtValorConsulta
-            // 
-            this.txtValorConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorConsulta.Location = new System.Drawing.Point(188, 25);
-            this.txtValorConsulta.Name = "txtValorConsulta";
-            this.txtValorConsulta.Size = new System.Drawing.Size(114, 26);
-            this.txtValorConsulta.TabIndex = 24;
-            this.txtValorConsulta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorConsulta_KeyPress);
             // 
             // label3
             // 
@@ -983,7 +972,7 @@
             this.panelFormulario.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDownPeso)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownPrecoConsulta)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -1050,8 +1039,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.NumericUpDown UpDownPeso;
-        private System.Windows.Forms.TextBox txtValorConsulta;
+        private System.Windows.Forms.NumericUpDown UpDownPrecoConsulta;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;

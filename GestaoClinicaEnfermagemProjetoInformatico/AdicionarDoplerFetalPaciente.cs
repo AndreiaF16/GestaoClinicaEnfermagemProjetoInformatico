@@ -216,7 +216,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
         private void btnLocalizacaoDor_Click(object sender, EventArgs e)
         {
-            FormLocalizacaoDorCorpoConsulta formLocalizacaoDorCorpo = new FormLocalizacaoDorCorpoConsulta(paciente);
+            FormLocalizacaoDorDopplerFetal formLocalizacaoDorCorpo = new FormLocalizacaoDorDopplerFetal(paciente);
             formLocalizacaoDorCorpo.Show();
         }
 
@@ -317,6 +317,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             VerDetalhesAvaliacaoObjetivo verAvaliacaoObjetivo = new VerDetalhesAvaliacaoObjetivo(paciente);
             verAvaliacaoObjetivo.Show();
+        }
+
+        private void hora_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
+            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
     }
 }

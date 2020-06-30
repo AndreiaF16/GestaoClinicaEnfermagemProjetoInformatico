@@ -13,11 +13,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class AdicionarVisualizarProdutosStockConsulta : Form
     {
-        private RegistarEncomendas registarEncomendas = null;
 
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
-       // private List<ListarProdutos> listaProdutos = new List<ListarProdutos>();
+        private AtualizarQuantidade produtos = new AtualizarQuantidade();
       //  private List<ListarProdutos> listaProdutosConsulta = new List<ListarProdutos>();
         private ErrorProvider errorProvider = new ErrorProvider();
         private Paciente paciente = new Paciente();
@@ -211,8 +210,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         conn.Open();
                         //select produtoStock.IdProdutoStock, produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, linha.quantidade from ProdutoStock produtoStock JOIN LinhaEncomenda linha ON produtoStock.IdProdutoStock = linha.idProdutoStock WHERE linha.idEncomenda = 3009;
 
-                        SqlCommand cmd = new SqlCommand("select produtoStock.IdProdutoStock, produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, linha.quantidade from ProdutoStock produtoStock JOIN LinhaEncomenda linha ON produtoStock.IdProdutoStock = linha.idProdutoStock WHERE linha.idEncomenda = @IdEncomenda", conn);
-                        cmd.Parameters.AddWithValue("@IdEncomenda", encomendas.IdEncomenda);
+                        SqlCommand cmd = new SqlCommand(" select produtoStock.IdProdutoStock, produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, linha.quantidadeUsada from ProdutoStock produtoStock JOIN ConsultaProdutoStock linha ON produtoStock.IdProdutoStock = linha.idProdutoStock WHERE linha.IdProdutoStock = @IdProduto", conn);
+                        cmd.Parameters.AddWithValue("@IdProduto", produtos.IdProdutoStock);
                         SqlDataReader reader = cmd.ExecuteReader();
 
                         while (reader.Read())
@@ -239,10 +238,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         }
                         conn.Close();
 
-                        if (registarEncomendas != null)
+                       /* if (registarEncomendas != null)
                         {
                             registarEncomendas.UpdateDataGridView();
-                        }                 
+                        } */                
                     }
                     catch (SqlException excep)
                     {

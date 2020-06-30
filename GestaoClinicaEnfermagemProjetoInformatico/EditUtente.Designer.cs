@@ -676,6 +676,7 @@
             this.txtSNS.Size = new System.Drawing.Size(280, 26);
             this.txtSNS.TabIndex = 62;
             this.txtSNS.Visible = false;
+            this.txtSNS.TextChanged += new System.EventHandler(this.txtSNS_TextChanged);
             // 
             // lblSNS
             // 
@@ -794,6 +795,7 @@
             this.txtNif.Name = "txtNif";
             this.txtNif.Size = new System.Drawing.Size(199, 26);
             this.txtNif.TabIndex = 51;
+            this.txtNif.TextChanged += new System.EventHandler(this.txtNif_TextChanged);
             this.txtNif.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // txtNome
@@ -845,6 +847,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(513, 26);
             this.txtEmail.TabIndex = 30;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // lblNif

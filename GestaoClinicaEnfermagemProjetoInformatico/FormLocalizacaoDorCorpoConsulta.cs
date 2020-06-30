@@ -61,23 +61,53 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             TextBox textBox = new TextBox();
 
-
             textBox.Location = PointToScreen(e.Location);
 
             pictureBoxCorpo.Controls.Add(textBox);
             textBox1.Clear();
 
-            // string dor = textBox.Text;
+            //  TextBox tb = new TextBox();
+            textBox.KeyDown += new KeyEventHandler(tb_KeyDown);
+
+            //textBox1.Text = tb;
+
+            string dor = textBox.Text;
             for (int i = 0; i < this.pictureBoxCorpo.Controls.Count; i++)
             {
-
                 if (this.pictureBoxCorpo.Controls[i] is TextBox)
                 {
                     TextBox txtserial = (TextBox)this.pictureBoxCorpo.Controls[i];
                     string value = txtserial.Text;
-                    textBox1.Text += value.ToString();
-                    textBox1.AppendText("\r\n\t");
+                    if (value != string.Empty)
+                    {
+                        textBox1.Text += value.ToString();
+                        textBox1.AppendText(", ");
+                    }
+                }
+            }
+        }
 
+        private void tb_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                textBox1.Clear();
+
+                //enter key is down
+                for (int i = 0; i < pictureBoxCorpo.Controls.Count; i++)
+                {
+
+                    if (pictureBoxCorpo.Controls[i] is TextBox)
+                    {
+                        TextBox txtserial = (TextBox)pictureBoxCorpo.Controls[i];
+                        string value = txtserial.Text;
+                        if (value != string.Empty)
+                        {
+                            textBox1.Text += value.ToString();
+                            textBox1.AppendText(", ");
+                        }
+                    }
                 }
             }
         }
@@ -121,19 +151,33 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (VerificarDadosInseridos())
             {
                 string localizacaoDor = textBox1.Text;
+                //remove o ultimo caracter
+                localizacaoDor = localizacaoDor.Remove(localizacaoDor.Length - 1);
+                localizacaoDor = localizacaoDor.Remove(localizacaoDor.Length - 1);
+
                 DateTime data = dataRegisto.Value;
+                string obs = txtObservacoes.Text;
+
 
                 try
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO LocalizacaoDorConsulta(IdPaciente,data,localizacao) VALUES(@idPaciente,@dataR,@localizacao);";
+                    string queryInsertData = "INSERT INTO LocalizacaoDorConsulta(IdPaciente,data,localizacao,observacoes) VALUES(@idPaciente,@dataR,@localizacao,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
 
                     sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@localizacao", localizacaoDor);
                     sqlCommand.Parameters.AddWithValue("@dataR", data.ToString("MM/dd/yyyy"));
+                    if (obs != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@obs", Convert.ToString(obs));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@obs", DBNull.Value);
+                    }
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Dados Localizacao dor na consulta registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -152,6 +196,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             DateTime data = dataRegisto.Value;
 
             int var = (int)((data - DateTime.Today).TotalDays);
+            string local = textBox1.Text;
+
+            if (local == string.Empty)
+            {
+                MessageBox.Show("Campos Obrigatórios, por favor preencha-os!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (textBox1.Text == string.Empty)
+                {
+                    MessageBox.Show("Localização é obrigatória. \n Se por ventura inseriu, selecione o texto das caixas (uma de cada vez), carregue ENTER e volte a tentar guardar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProvider.SetError(textBox1, "A localização é obrigatória!");
+                }
+                return false;
+            }
 
             if (var > 0)
             {
@@ -159,6 +216,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 errorProvider.SetError(dataRegisto, "A data tem de ser inferior a data de hoje!");
                 return false;
             }
+
+           
 
             conn.Open();
             com.Connection = conn;

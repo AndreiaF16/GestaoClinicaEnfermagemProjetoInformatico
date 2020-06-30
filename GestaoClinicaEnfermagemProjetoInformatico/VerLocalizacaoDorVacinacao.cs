@@ -100,6 +100,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewLocalizacaoDor.Columns[2].HeaderText = "Observações";
 
         }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
     
 

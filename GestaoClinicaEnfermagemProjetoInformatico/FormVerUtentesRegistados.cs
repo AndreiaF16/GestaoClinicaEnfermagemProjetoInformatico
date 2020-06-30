@@ -22,6 +22,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public FormMenu formMenu = null;
         private Enfermeiro enfermeiro = null;
         private Paciente paciente = new Paciente();
+
         public FormVerUtentesRegistados(Enfermeiro enf, FormMenu formM)
         {
             InitializeComponent();
@@ -104,7 +105,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     Nif = Convert.ToInt32(reader["nif"]),
                     Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
 
-                    // Profissao = (string)reader["Profissao"],
                     Rua = (string)reader["Rua"],
                     NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
                     Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
@@ -132,6 +132,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     Sexo = (string)reader["Sexo"],
                     PlanoVacinacao = (string)reader["PlanoVacinacao"],
+                    IdPaciente = (int)reader["IdPaciente"]
                 };
                 utentes.Add(utente);
             }
@@ -237,7 +238,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewUtentes.Columns[18].HeaderText = "Número do SNS";
             dataGridViewUtentes.Columns[19].HeaderText = "Sexo";
             dataGridViewUtentes.Columns[20].HeaderText = "Plano de Vacinacao";
-
+            dataGridViewUtentes.Columns[21].Visible = false;
 
             auxiliar = utentes;
 
@@ -319,7 +320,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         //NumeroSNS = (int)reader["NumeroSNS"],
 
                         Sexo = (string)reader["Sexo"],
-                        PlanoVacinacao = (string)reader["PlanoVacinacao"]
+                        PlanoVacinacao = (string)reader["PlanoVacinacao"],
+
 
                     };
                 }
@@ -396,7 +398,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         //NumeroSNS = (int)reader["NumeroSNS"],
 
                         Sexo = (string)reader["Sexo"],
-                        PlanoVacinacao = (string)reader["PlanoVacinacao"]
+                        PlanoVacinacao = (string)reader["PlanoVacinacao"],
+
                     };
                 }
 
@@ -478,7 +481,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         //NumeroSNS = (int)reader["NumeroSNS"],
 
                         Sexo = (string)reader["Sexo"],
-                        PlanoVacinacao = (string)reader["PlanoVacinacao"]
+                        PlanoVacinacao = (string)reader["PlanoVacinacao"],
+
                     };
                 }
 
@@ -540,7 +544,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     //NumeroSNS = (int)reader["NumeroSNS"],
 
                     Sexo = (string)reader["Sexo"],
-                    PlanoVacinacao = (string)reader["PlanoVacinacao"]
+                    PlanoVacinacao = (string)reader["PlanoVacinacao"],
+                    IdPaciente = (int)reader["IdPaciente"]
 
                 };
                 utentes.Add(utente);
@@ -552,7 +557,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             auxiliar = utentes;
 
             conn.Close();
-
+            formMenu.UpdateGridViewConsultas();
 
         }
 

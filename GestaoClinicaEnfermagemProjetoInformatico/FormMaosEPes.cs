@@ -68,7 +68,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             TextBox textBox = new TextBox();
 
-
             textBox.Location = PointToScreen(e.Location);
 
             pictureBoxCorpo.Controls.Add(textBox);

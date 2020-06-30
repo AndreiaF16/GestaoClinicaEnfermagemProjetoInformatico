@@ -662,6 +662,7 @@
             // hora
             // 
             this.hora.Enabled = true;
+            this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
             // lblDia
             // 

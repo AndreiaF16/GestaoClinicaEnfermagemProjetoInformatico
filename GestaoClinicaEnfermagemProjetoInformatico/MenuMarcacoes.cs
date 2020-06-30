@@ -284,6 +284,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<AgendamentoConsultaGridView> filtrosDePesquisa()
         {
             auxiliar = new List<AgendamentoConsultaGridView>();
+            //so para o nome
             if ( txtNIF.Text != "" && txtNome.Text == "" && checkBox1.Checked == false)
             {
                 foreach (AgendamentoConsultaGridView agendamentoConsulta in agendamentos)

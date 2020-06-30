@@ -24,7 +24,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             InitializeComponent();
             paciente = pac;
-            //label1.Text = "Nome do Utente: " + paciente.Nome;
+            label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         }
@@ -85,12 +85,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
-            Bitmap image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            pictureBox1.DrawToBitmap(image, new Rectangle(e.PageBounds.Left, e.PageBounds.Top, image.Width, image.Height));
-            
+            float width = 1100;
+            float height = 768;
+            var image = new Bitmap(pictureBox1.Image);
 
-            e.Graphics.DrawImage(image, 0, 0);
-            this.printDocument1.DefaultPageSettings.Landscape = true;
+            float scale = Math.Min(width / image.Width, height / image.Height);
+            var bmp = new Bitmap((int)width, (int)height);
+            var graph = Graphics.FromImage(bmp);        
+
+            var scaleWidth = (int)(image.Width * scale);
+            var scaleHeight = (int)(image.Height * scale);
+
+            graph.DrawImage(image, ((int)width - scaleWidth) / 2, ((int)height - scaleHeight) / 2, scaleWidth, scaleHeight);
+    
+            e.Graphics.DrawImage(bmp, 0, 0);
             printDocument1.OriginAtMargins = false;
 
             image.Dispose();
@@ -98,12 +106,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnPreVisualizar_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
             printPreviewDialog1.Document = this.printDocument1;
             this.printDocument1.DefaultPageSettings.Landscape = true;
             printDocument1.OriginAtMargins = false;
             printDialog1.Document = this.printDocument1;
-            
+
             printPreviewDialog1.ShowDialog();
         }
 
@@ -128,8 +135,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void printPreviewDialog1_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
-          //  printPreviewDialog1.Document = this.printDocument1;
+          //  printPreviewDialog1.DesktopLocation = Location.
+          //  this.WindowState = FormWindowState.Maximized;
+            printPreviewDialog1.Document = this.printDocument1;
             this.printDocument1.DefaultPageSettings.Landscape = true;
             printDocument1.OriginAtMargins = false;
             printDialog1.Document = this.printDocument1;

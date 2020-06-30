@@ -9,7 +9,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
    public class UtenteGridView
     {
-       // public int IdPaciente { get; set; }
         public string Nome { get; set; }
         public DateTime DataNascimento { get; set; }
         public string Email { get; set; }
@@ -36,6 +35,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public string Sexo { get; set; }
         public string PlanoVacinacao { get; set; }
 
+         public int IdPaciente { get; set; }
 
     }
 }
