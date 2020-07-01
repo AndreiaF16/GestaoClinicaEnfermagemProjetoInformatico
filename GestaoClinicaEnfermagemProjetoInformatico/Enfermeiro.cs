@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,5 +16,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         public string email { get; set; }
         public double contacto { get; set; }
         public int permissao { get; set; }
+        public string DataNascimento { get; set; }
     }
 }

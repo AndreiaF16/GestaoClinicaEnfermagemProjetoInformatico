@@ -73,6 +73,12 @@
     <Compile Include="AdicionarCateterismoPaciente.Designer.cs">
       <DependentUpon>AdicionarCateterismoPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdicionarColheitaSangueDiagPrecoce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarColheitaSangueDiagPrecoce.Designer.cs">
+      <DependentUpon>AdicionarColheitaSangueDiagPrecoce.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdicionarColheitaUrinaPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,12 @@
     </Compile>
     <Compile Include="AdicionarColpocitologiaPaciente.Designer.cs">
       <DependentUpon>AdicionarColpocitologiaPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdicionarCrioterapiaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarCrioterapiaPaciente.Designer.cs">
+      <DependentUpon>AdicionarCrioterapiaPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="AdicionarDesbridamentoPaciente.cs">
       <SubType>Form</SubType>
@@ -163,6 +175,7 @@
     <Compile Include="Audiograma.Designer.cs">
       <DependentUpon>Audiograma.cs</DependentUpon>
     </Compile>
+    <Compile Include="ColheitaSanguePrecoce.cs" />
     <Compile Include="ColocacaoDIUPaciente.cs" />
     <Compile Include="ColpocitologiaPaciente.cs" />
     <Compile Include="FormLocalizacaoDorCorpoConsulta.cs">
@@ -225,6 +238,12 @@
     <Compile Include="VerAcuidadeVisual.Designer.cs">
       <DependentUpon>VerAcuidadeVisual.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerColheitaSangueDiagPrecoce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerColheitaSangueDiagPrecoce.Designer.cs">
+      <DependentUpon>VerColheitaSangueDiagPrecoce.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerColocacaoDIU.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +255,12 @@
     </Compile>
     <Compile Include="VerColpocitologia.Designer.cs">
       <DependentUpon>VerColpocitologia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerCrioterapia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerCrioterapia.Designer.cs">
+      <DependentUpon>VerCrioterapia.cs</DependentUpon>
     </Compile>
     <Compile Include="VerImplanteContracetivoPaciente.cs">
       <SubType>Form</SubType>
@@ -1019,6 +1044,9 @@
     <EmbeddedResource Include="AdicionarCateterismoPaciente.resx">
       <DependentUpon>AdicionarCateterismoPaciente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarColheitaSangueDiagPrecoce.resx">
+      <DependentUpon>AdicionarColheitaSangueDiagPrecoce.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdicionarColheitaUrinaPaciente.resx">
       <DependentUpon>AdicionarColheitaUrinaPaciente.cs</DependentUpon>
     </EmbeddedResource>
@@ -1027,6 +1055,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarColpocitologiaPaciente.resx">
       <DependentUpon>AdicionarColpocitologiaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarCrioterapiaPaciente.resx">
+      <DependentUpon>AdicionarCrioterapiaPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarDesbridamentoPaciente.resx">
       <DependentUpon>AdicionarDesbridamentoPaciente.cs</DependentUpon>
@@ -1225,6 +1256,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerCateterismo.resx">
       <DependentUpon>VerCateterismo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerColheitaSangueDiagPrecoce.resx">
+      <DependentUpon>VerColheitaSangueDiagPrecoce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerCrioterapia.resx">
+      <DependentUpon>VerCrioterapia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerEditarCirurgiasRegistadas.resx">
       <DependentUpon>VerEditarCirurgiasRegistadas.cs</DependentUpon>

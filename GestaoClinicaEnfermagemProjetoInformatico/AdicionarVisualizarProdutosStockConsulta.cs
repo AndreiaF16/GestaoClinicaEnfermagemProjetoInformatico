@@ -94,42 +94,57 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnAdicionarProdutoLista_Click(object sender, EventArgs e)
         {
-            int i = dataGridViewListaProdutos.CurrentCell.RowIndex;
-            foreach (var produto in listaProdutos)
+            if (listaProdutos.Count > 0)
             {
-                if (produto.id == Convert.ToInt32(dataGridViewListaProdutos.Rows[i].Cells[2].Value.ToString()))
+
+                int i = dataGridViewListaProdutos.CurrentCell.RowIndex;
+
+                foreach (var produto in listaProdutos)
                 {
-                    VerProdutosConsulta listar = produto;
-                    listar.quantidade = 0;
-                    //listaEncomenda.Add(listar);
-                    int existe = 0;
-                    foreach (var item in listaProdutosConsulta)
+                    if (produto.id == Convert.ToInt32(dataGridViewListaProdutos.Rows[i].Cells[2].Value.ToString()))
                     {
-                        if (listar.id == item.id)
+                        VerProdutosConsulta listar = produto;
+                        //listar.quantidade = 0;
+                        //listaEncomenda.Add(listar);
+                        int existe = 0;
+
+                        foreach (var item in listaProdutosConsulta)
                         {
-                            existe = 1;
+                            if (listar.id == item.id)
+                            {
+                                existe = 1;
+                            }
+                        }
+
+                        if (existe == 0)
+                        {
+                            VerProdutosConsulta adicionar = new VerProdutosConsulta 
+                            { 
+                                nomeProduto = listar.nomeProduto,
+                                quantidade = 0, 
+                                id = listar.id
+                            };
+                            listaProdutosConsulta.Add(adicionar);
                         }
                     }
-                    if (existe == 0)
-                    {
-                        listaProdutosConsulta.Add(listar);
-                    }
                 }
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaProdutosConsulta };
-            dataGridViewProdutosConsulta.DataSource = bindingSource1;
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaProdutosConsulta };
+                dataGridViewProdutosConsulta.DataSource = bindingSource1;
 
-            dataGridViewProdutosConsulta.Columns[0].ReadOnly = true;
-            dataGridViewProdutosConsulta.Columns[2].Visible = false;
-            dataGridViewProdutosConsulta.Columns[0].HeaderText = "Produto";
-            dataGridViewProdutosConsulta.Columns[1].HeaderText = "Quantidade Usada na Consulta";
+                dataGridViewProdutosConsulta.Columns[0].ReadOnly = true;
+                dataGridViewProdutosConsulta.Columns[2].Visible = false;
+                dataGridViewProdutosConsulta.Columns[0].HeaderText = "Produto";
+                dataGridViewProdutosConsulta.Columns[1].HeaderText = "Quantidade Usada na Consulta";
+            }
         }
 
         private void btnRetirarProdutoLista_Click(object sender, EventArgs e)
         {
-            
+            if (listaProdutosConsulta.Count > 0)
+            {
+
                 int i = dataGridViewProdutosConsulta.CurrentCell.RowIndex;
-            VerProdutosConsulta listar = null;
+                VerProdutosConsulta listar = null;
                 foreach (var produto in listaProdutos)
                 {
                     // var sad = dataGridViewEncomenda.Rows[i].Cells[4];
@@ -149,7 +164,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaProdutosConsulta };
                 dataGridViewProdutosConsulta.DataSource = bindingSource1;
-            
+            }
         }
 
         private Boolean VerificarDadosInseridos()

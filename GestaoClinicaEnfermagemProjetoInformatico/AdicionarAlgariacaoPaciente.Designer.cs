@@ -41,45 +41,25 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cbFolley = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtSilastic = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataProximaRealgariacao = new System.Windows.Forms.DateTimePicker();
+            this.cbDataProximaAlgariacao = new System.Windows.Forms.CheckBox();
+            this.txtSilastic = new System.Windows.Forms.TextBox();
             this.panelTitulo = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnLimparCampos = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnLimparCampos = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.cbDataProximaAlgariacao = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             btnVoltar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnVoltar
-            // 
-            btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnVoltar.ForeColor = System.Drawing.Color.Black;
-            btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnVoltar.Location = new System.Drawing.Point(10, 450);
-            btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            btnVoltar.Name = "btnVoltar";
-            btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            btnVoltar.Size = new System.Drawing.Size(72, 66);
-            btnVoltar.TabIndex = 61;
-            btnVoltar.Text = "     Voltar";
-            btnVoltar.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            btnVoltar.UseVisualStyleBackColor = false;
-            btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // label2
             // 
@@ -195,13 +175,16 @@
             this.groupBox1.TabIndex = 62;
             this.groupBox1.TabStop = false;
             // 
-            // txtSilastic
+            // groupBox2
             // 
-            this.txtSilastic.Location = new System.Drawing.Point(150, 105);
-            this.txtSilastic.Name = "txtSilastic";
-            this.txtSilastic.Size = new System.Drawing.Size(200, 26);
-            this.txtSilastic.TabIndex = 17;
-            this.txtSilastic.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSilastic_KeyPress);
+            this.groupBox2.Controls.Add(this.dataProximaRealgariacao);
+            this.groupBox2.Controls.Add(this.cbDataProximaAlgariacao);
+            this.groupBox2.Location = new System.Drawing.Point(486, 29);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(307, 84);
+            this.groupBox2.TabIndex = 19;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Data Proxima Realgariação:";
             // 
             // dataProximaRealgariacao
             // 
@@ -210,6 +193,24 @@
             this.dataProximaRealgariacao.Name = "dataProximaRealgariacao";
             this.dataProximaRealgariacao.Size = new System.Drawing.Size(200, 26);
             this.dataProximaRealgariacao.TabIndex = 16;
+            // 
+            // cbDataProximaAlgariacao
+            // 
+            this.cbDataProximaAlgariacao.AutoSize = true;
+            this.cbDataProximaAlgariacao.Location = new System.Drawing.Point(58, 36);
+            this.cbDataProximaAlgariacao.Name = "cbDataProximaAlgariacao";
+            this.cbDataProximaAlgariacao.Size = new System.Drawing.Size(15, 14);
+            this.cbDataProximaAlgariacao.TabIndex = 18;
+            this.cbDataProximaAlgariacao.UseVisualStyleBackColor = true;
+            this.cbDataProximaAlgariacao.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // txtSilastic
+            // 
+            this.txtSilastic.Location = new System.Drawing.Point(150, 105);
+            this.txtSilastic.Name = "txtSilastic";
+            this.txtSilastic.Size = new System.Drawing.Size(200, 26);
+            this.txtSilastic.TabIndex = 17;
+            this.txtSilastic.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSilastic_KeyPress);
             // 
             // panelTitulo
             // 
@@ -223,6 +224,87 @@
             this.panelTitulo.Name = "panelTitulo";
             this.panelTitulo.Size = new System.Drawing.Size(847, 40);
             this.panelTitulo.TabIndex = 59;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(279, 453);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(174, 63);
+            this.button1.TabIndex = 66;
+            this.button1.Text = "Ver Algariações Registadas";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_guardar_todos_50;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(484, 468);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnGuardar.Size = new System.Drawing.Size(174, 48);
+            this.btnGuardar.TabIndex = 64;
+            this.btnGuardar.Text = "Registar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnLimparCampos
+            // 
+            this.btnLimparCampos.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnLimparCampos.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
+            this.btnLimparCampos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnLimparCampos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimparCampos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimparCampos.ForeColor = System.Drawing.Color.Black;
+            this.btnLimparCampos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnLimparCampos.Location = new System.Drawing.Point(658, 468);
+            this.btnLimparCampos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLimparCampos.Name = "btnLimparCampos";
+            this.btnLimparCampos.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnLimparCampos.Size = new System.Drawing.Size(174, 48);
+            this.btnLimparCampos.TabIndex = 65;
+            this.btnLimparCampos.Text = "Limpar Campos";
+            this.btnLimparCampos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLimparCampos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLimparCampos.UseVisualStyleBackColor = false;
+            this.btnLimparCampos.Click += new System.EventHandler(this.btnLimparCampos_Click);
+            // 
+            // btnVoltar
+            // 
+            btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnVoltar.ForeColor = System.Drawing.Color.Black;
+            btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            btnVoltar.Location = new System.Drawing.Point(10, 450);
+            btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnVoltar.Size = new System.Drawing.Size(72, 66);
+            btnVoltar.TabIndex = 61;
+            btnVoltar.Text = "     Voltar";
+            btnVoltar.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            btnVoltar.UseVisualStyleBackColor = false;
+            btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // btnFechar
             // 
@@ -267,88 +349,6 @@
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnGuardar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_guardar_todos_50;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(484, 468);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnGuardar.Size = new System.Drawing.Size(174, 48);
-            this.btnGuardar.TabIndex = 64;
-            this.btnGuardar.Text = "Registar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnLimparCampos
-            // 
-            this.btnLimparCampos.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnLimparCampos.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.icons8_apagar_50;
-            this.btnLimparCampos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnLimparCampos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimparCampos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimparCampos.ForeColor = System.Drawing.Color.Black;
-            this.btnLimparCampos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnLimparCampos.Location = new System.Drawing.Point(658, 468);
-            this.btnLimparCampos.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLimparCampos.Name = "btnLimparCampos";
-            this.btnLimparCampos.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnLimparCampos.Size = new System.Drawing.Size(174, 48);
-            this.btnLimparCampos.TabIndex = 65;
-            this.btnLimparCampos.Text = "Limpar Campos";
-            this.btnLimparCampos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLimparCampos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLimparCampos.UseVisualStyleBackColor = false;
-            this.btnLimparCampos.Click += new System.EventHandler(this.btnLimparCampos_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.Location = new System.Drawing.Point(279, 453);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(174, 63);
-            this.button1.TabIndex = 66;
-            this.button1.Text = "Ver Algariações Registadas";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // cbDataProximaAlgariacao
-            // 
-            this.cbDataProximaAlgariacao.AutoSize = true;
-            this.cbDataProximaAlgariacao.Location = new System.Drawing.Point(53, 43);
-            this.cbDataProximaAlgariacao.Name = "cbDataProximaAlgariacao";
-            this.cbDataProximaAlgariacao.Size = new System.Drawing.Size(15, 14);
-            this.cbDataProximaAlgariacao.TabIndex = 18;
-            this.cbDataProximaAlgariacao.UseVisualStyleBackColor = true;
-            this.cbDataProximaAlgariacao.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dataProximaRealgariacao);
-            this.groupBox2.Controls.Add(this.cbDataProximaAlgariacao);
-            this.groupBox2.Location = new System.Drawing.Point(486, 29);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(307, 84);
-            this.groupBox2.TabIndex = 19;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Data Proxima Realgariação:";
-            // 
             // AdicionarAlgariacaoPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,13 +372,13 @@
             this.Load += new System.EventHandler(this.AdicionarAlgariacaoPaciente_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

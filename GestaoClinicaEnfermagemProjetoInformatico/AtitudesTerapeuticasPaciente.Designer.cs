@@ -36,6 +36,10 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.groupBoxMulheres = new System.Windows.Forms.GroupBox();
+            this.btnColpocitologia = new System.Windows.Forms.Button();
+            this.btnImplanteContracetivo = new System.Windows.Forms.Button();
+            this.btnDIU = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button10 = new System.Windows.Forms.Button();
             this.cbLavagemGastrica = new System.Windows.Forms.CheckBox();
@@ -47,9 +51,7 @@
             this.cbColheitaExpetoracao = new System.Windows.Forms.CheckBox();
             this.button19 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnImplanteContracetivo = new System.Windows.Forms.Button();
-            this.btnDIU = new System.Windows.Forms.Button();
-            this.btnColpocitologia = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.button30 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
@@ -82,10 +84,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.groupBoxMulheres = new System.Windows.Forms.GroupBox();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
+            this.groupBoxMulheres.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -95,7 +96,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
-            this.groupBoxMulheres.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblDia
@@ -161,6 +161,78 @@
             this.panelFormulario.Name = "panelFormulario";
             this.panelFormulario.Size = new System.Drawing.Size(1134, 748);
             this.panelFormulario.TabIndex = 2;
+            // 
+            // groupBoxMulheres
+            // 
+            this.groupBoxMulheres.BackColor = System.Drawing.Color.White;
+            this.groupBoxMulheres.Controls.Add(this.btnColpocitologia);
+            this.groupBoxMulheres.Controls.Add(this.btnImplanteContracetivo);
+            this.groupBoxMulheres.Controls.Add(this.btnDIU);
+            this.groupBoxMulheres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBoxMulheres.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxMulheres.Location = new System.Drawing.Point(649, 480);
+            this.groupBoxMulheres.Name = "groupBoxMulheres";
+            this.groupBoxMulheres.Size = new System.Drawing.Size(473, 211);
+            this.groupBoxMulheres.TabIndex = 67;
+            this.groupBoxMulheres.TabStop = false;
+            this.groupBoxMulheres.Text = "(Mulheres) Selecione a Atitude Terapêutica que pretende:";
+            // 
+            // btnColpocitologia
+            // 
+            this.btnColpocitologia.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnColpocitologia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnColpocitologia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnColpocitologia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnColpocitologia.ForeColor = System.Drawing.Color.Black;
+            this.btnColpocitologia.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnColpocitologia.Location = new System.Drawing.Point(100, 62);
+            this.btnColpocitologia.Margin = new System.Windows.Forms.Padding(2);
+            this.btnColpocitologia.Name = "btnColpocitologia";
+            this.btnColpocitologia.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnColpocitologia.Size = new System.Drawing.Size(300, 32);
+            this.btnColpocitologia.TabIndex = 45;
+            this.btnColpocitologia.Text = "Colpocitologia";
+            this.btnColpocitologia.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnColpocitologia.UseVisualStyleBackColor = false;
+            this.btnColpocitologia.Click += new System.EventHandler(this.btnColpocitologia_Click);
+            // 
+            // btnImplanteContracetivo
+            // 
+            this.btnImplanteContracetivo.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnImplanteContracetivo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnImplanteContracetivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImplanteContracetivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImplanteContracetivo.ForeColor = System.Drawing.Color.Black;
+            this.btnImplanteContracetivo.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnImplanteContracetivo.Location = new System.Drawing.Point(100, 126);
+            this.btnImplanteContracetivo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnImplanteContracetivo.Name = "btnImplanteContracetivo";
+            this.btnImplanteContracetivo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnImplanteContracetivo.Size = new System.Drawing.Size(300, 32);
+            this.btnImplanteContracetivo.TabIndex = 53;
+            this.btnImplanteContracetivo.Text = "Implante Contracetivo SubDérmico";
+            this.btnImplanteContracetivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnImplanteContracetivo.UseVisualStyleBackColor = false;
+            this.btnImplanteContracetivo.Click += new System.EventHandler(this.btnImplanteContracetivo_Click);
+            // 
+            // btnDIU
+            // 
+            this.btnDIU.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnDIU.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnDIU.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDIU.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDIU.ForeColor = System.Drawing.Color.Black;
+            this.btnDIU.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDIU.Location = new System.Drawing.Point(100, 94);
+            this.btnDIU.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDIU.Name = "btnDIU";
+            this.btnDIU.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnDIU.Size = new System.Drawing.Size(300, 32);
+            this.btnDIU.TabIndex = 46;
+            this.btnDIU.Text = "Colocação DIU";
+            this.btnDIU.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnDIU.UseVisualStyleBackColor = false;
+            this.btnDIU.Click += new System.EventHandler(this.btnDIU_Click);
             // 
             // groupBox2
             // 
@@ -333,62 +405,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selecione a Atitude Terapêutica que pretende:";
             // 
-            // btnImplanteContracetivo
+            // button11
             // 
-            this.btnImplanteContracetivo.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnImplanteContracetivo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnImplanteContracetivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImplanteContracetivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImplanteContracetivo.ForeColor = System.Drawing.Color.Black;
-            this.btnImplanteContracetivo.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnImplanteContracetivo.Location = new System.Drawing.Point(100, 126);
-            this.btnImplanteContracetivo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnImplanteContracetivo.Name = "btnImplanteContracetivo";
-            this.btnImplanteContracetivo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImplanteContracetivo.Size = new System.Drawing.Size(300, 32);
-            this.btnImplanteContracetivo.TabIndex = 53;
-            this.btnImplanteContracetivo.Text = "Implante Contracetivo SubDérmico";
-            this.btnImplanteContracetivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnImplanteContracetivo.UseVisualStyleBackColor = false;
-            this.btnImplanteContracetivo.Click += new System.EventHandler(this.btnImplanteContracetivo_Click);
-            // 
-            // btnDIU
-            // 
-            this.btnDIU.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnDIU.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnDIU.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDIU.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDIU.ForeColor = System.Drawing.Color.Black;
-            this.btnDIU.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDIU.Location = new System.Drawing.Point(100, 94);
-            this.btnDIU.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDIU.Name = "btnDIU";
-            this.btnDIU.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnDIU.Size = new System.Drawing.Size(300, 32);
-            this.btnDIU.TabIndex = 46;
-            this.btnDIU.Text = "Colocação DIU";
-            this.btnDIU.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnDIU.UseVisualStyleBackColor = false;
-            this.btnDIU.Click += new System.EventHandler(this.btnDIU_Click);
-            // 
-            // btnColpocitologia
-            // 
-            this.btnColpocitologia.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnColpocitologia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnColpocitologia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnColpocitologia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnColpocitologia.ForeColor = System.Drawing.Color.Black;
-            this.btnColpocitologia.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnColpocitologia.Location = new System.Drawing.Point(100, 62);
-            this.btnColpocitologia.Margin = new System.Windows.Forms.Padding(2);
-            this.btnColpocitologia.Name = "btnColpocitologia";
-            this.btnColpocitologia.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnColpocitologia.Size = new System.Drawing.Size(300, 32);
-            this.btnColpocitologia.TabIndex = 45;
-            this.btnColpocitologia.Text = "Colpocitologia";
-            this.btnColpocitologia.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnColpocitologia.UseVisualStyleBackColor = false;
-            this.btnColpocitologia.Click += new System.EventHandler(this.btnColpocitologia_Click);
+            this.button11.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.ForeColor = System.Drawing.Color.Black;
+            this.button11.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button11.Location = new System.Drawing.Point(13, 247);
+            this.button11.Margin = new System.Windows.Forms.Padding(2);
+            this.button11.Name = "button11";
+            this.button11.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button11.Size = new System.Drawing.Size(300, 32);
+            this.button11.TabIndex = 65;
+            this.button11.Text = "Colheita de Sangue Diagnóstico Precose";
+            this.button11.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button30
             // 
@@ -942,39 +976,6 @@
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.Color.Black;
-            this.button11.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button11.Location = new System.Drawing.Point(13, 247);
-            this.button11.Margin = new System.Windows.Forms.Padding(2);
-            this.button11.Name = "button11";
-            this.button11.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button11.Size = new System.Drawing.Size(300, 32);
-            this.button11.TabIndex = 65;
-            this.button11.Text = "Colheita de Sangue Diagnóstico Precose";
-            this.button11.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button11.UseVisualStyleBackColor = false;
-            // 
-            // groupBoxMulheres
-            // 
-            this.groupBoxMulheres.BackColor = System.Drawing.Color.White;
-            this.groupBoxMulheres.Controls.Add(this.btnColpocitologia);
-            this.groupBoxMulheres.Controls.Add(this.btnImplanteContracetivo);
-            this.groupBoxMulheres.Controls.Add(this.btnDIU);
-            this.groupBoxMulheres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBoxMulheres.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxMulheres.Location = new System.Drawing.Point(649, 480);
-            this.groupBoxMulheres.Name = "groupBoxMulheres";
-            this.groupBoxMulheres.Size = new System.Drawing.Size(473, 211);
-            this.groupBoxMulheres.TabIndex = 67;
-            this.groupBoxMulheres.TabStop = false;
-            this.groupBoxMulheres.Text = "(Mulheres) Selecione a Atitude Terapêutica que pretende:";
-            // 
             // AtitudesTerapeuticasPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -992,6 +993,7 @@
             this.painelPrincipal.ResumeLayout(false);
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
+            this.groupBoxMulheres.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -1003,7 +1005,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
-            this.groupBoxMulheres.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

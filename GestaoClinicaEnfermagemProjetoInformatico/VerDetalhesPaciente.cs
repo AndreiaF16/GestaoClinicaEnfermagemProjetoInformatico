@@ -51,22 +51,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 consultasPaciente = new ConsultasPaciente
                 {
-                    // IdHistorico = (int)reader["IdHistorico"],
+
                     dataConsulta = Convert.ToDateTime(reader["dataConsulta"]),
                     horaInicioConsulta = (string)reader["horaInicioConsulta"],
-                    historiaAtual = (string)reader["historiaAtual"],
-                    sintomatologia = (string)reader["sintomatologia"],
-                    sinais = (string)reader["sinais"],
-                    escalaDor = (string)reader["escalaDor"],
-                    valorConsulta = Convert.ToDouble(reader["valorConsulta"]),
+                    historiaAtual = ((reader["historiaAtual"] == DBNull.Value) ? "" : (string)reader["historiaAtual"]),
+                    sintomatologia = ((reader["sintomatologia"] == DBNull.Value) ? "" : (string)reader["sintomatologia"]),
+                    sinais = ((reader["sinais"] == DBNull.Value) ? "" : (string)reader["sinais"]),
+                    escalaDor = ((reader["escalaDor"] == DBNull.Value) ? "" : (string)reader["escalaDor"]),
                     diagnostico = ((reader["diagnostico"] == DBNull.Value) ? "" : (string)reader["diagnostico"]),
+                    valorConsulta = Convert.ToDouble(reader["valorConsulta"]),
                 };
                 listaConsultasPaciente.Add(consultasPaciente);
             }
             conn.Close();
             UpdateDataGridView();
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaConsultasPaciente };
-            dataGridViewUtentes.DataSource = bindingSource1;
+            dataGridViewConsultas.DataSource = bindingSource1;
         }
         private void btnVoltar_Click(object sender, EventArgs e)
         {
@@ -110,19 +110,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
 
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaConsultasPaciente };
-            dataGridViewUtentes.DataSource = bindingSource1;
-            dataGridViewUtentes.Columns[0].HeaderText = "Data Consulta";
-            dataGridViewUtentes.Columns[1].HeaderText = "Hora Inicio Consulta";
-            dataGridViewUtentes.Columns[2].HeaderText = "História Atual";
-            dataGridViewUtentes.Columns[3].HeaderText = "Sintomatologia";
-            dataGridViewUtentes.Columns[4].HeaderText = "Sinais";
-            dataGridViewUtentes.Columns[5].HeaderText = "Dor";
-            dataGridViewUtentes.Columns[6].HeaderText = "Valor Consulta (€)";
-            dataGridViewUtentes.Columns[7].HeaderText = "Diagnóstico";
+            dataGridViewConsultas.DataSource = bindingSource1;
+            dataGridViewConsultas.Columns[0].HeaderText = "Data da Consulta";
+            dataGridViewConsultas.Columns[1].HeaderText = "Hora Inicio Consulta";
+            dataGridViewConsultas.Columns[2].HeaderText = "História Atual";
+            dataGridViewConsultas.Columns[3].HeaderText = "Sintomatologia";
+            dataGridViewConsultas.Columns[4].HeaderText = "Sinais";
+            dataGridViewConsultas.Columns[5].HeaderText = "Dor";
+            dataGridViewConsultas.Columns[6].HeaderText = "Diagnóstico";
+            dataGridViewConsultas.Columns[7].HeaderText = "Valor Consulta (€)";
+
+            dataGridViewConsultas.Columns[2].Width = dataGridViewConsultas.Columns[2].Width + 200;
+            dataGridViewConsultas.Columns[3].Width = dataGridViewConsultas.Columns[3].Width + 200;
+            dataGridViewConsultas.Columns[4].Width = dataGridViewConsultas.Columns[4].Width + 200;
+            dataGridViewConsultas.Columns[6].Width = dataGridViewConsultas.Columns[6].Width + 200;
+
+
 
         }
 
-           
+
         private void button5_Click(object sender, EventArgs e)
         {
             VerMaisDetalhesPaciente ver = new VerMaisDetalhesPaciente(paciente);

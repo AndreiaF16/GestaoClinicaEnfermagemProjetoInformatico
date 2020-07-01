@@ -124,7 +124,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewMedicacao.Columns[11].HeaderText = "Quant. Jantar";
             dataGridViewMedicacao.Columns[12].HeaderText = "Deitar";
             dataGridViewMedicacao.Columns[13].HeaderText = "Quant. Deitar";
-            dataGridViewMedicacao.Columns[14].HeaderText = "Observações";
+            dataGridViewMedicacao.Columns[14].HeaderText = "Outras Indicações";
 
             dataGridViewMedicacao.Columns[3].Width = dataGridViewMedicacao.Columns[3].Width + 80;
             dataGridViewMedicacao.Columns[5].Width = dataGridViewMedicacao.Columns[5].Width + 80;
@@ -132,6 +132,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewMedicacao.Columns[9].Width = dataGridViewMedicacao.Columns[9].Width + 80;
             dataGridViewMedicacao.Columns[11].Width = dataGridViewMedicacao.Columns[11].Width + 80;
             dataGridViewMedicacao.Columns[13].Width = dataGridViewMedicacao.Columns[13].Width + 80;
+            dataGridViewMedicacao.Columns[14].Width = dataGridViewMedicacao.Columns[13].Width + 150;
+
             conn.Close();
             dataGridViewMedicacao.Update();
             dataGridViewMedicacao.Refresh();

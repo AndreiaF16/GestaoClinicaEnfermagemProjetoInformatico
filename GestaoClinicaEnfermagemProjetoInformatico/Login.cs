@@ -76,6 +76,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (reader.Read())
             {
+                //string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                string data = DateTime.ParseExact(reader["dataNascimento"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+
                 Enfermeiro enfermeiro = new Enfermeiro
                 {
                     IdEnfermeiro = (int)reader["IdEnfermeiro"],
@@ -84,7 +87,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     username = (string)reader["username"],
                     contacto = Convert.ToDouble(reader["contacto"]),
                     email = (string)reader["email"],
-                    permissao = (int)reader["permissao"]
+                    permissao = (int)reader["permissao"],
+                    DataNascimento = data
                 };
 
                 if ((bool)reader["passwordDefault"] == true)

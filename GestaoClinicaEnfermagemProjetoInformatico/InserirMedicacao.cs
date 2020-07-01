@@ -363,7 +363,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewMedicacao.Columns[11].HeaderText = "Quant. Jantar";
             dataGridViewMedicacao.Columns[12].HeaderText = "Deitar";
             dataGridViewMedicacao.Columns[13].HeaderText = "Quant. Deitar";
-            dataGridViewMedicacao.Columns[14].HeaderText = "Observações";
+            dataGridViewMedicacao.Columns[14].HeaderText = "Outras Indicações";
 
             dataGridViewMedicacao.Columns[3].Width = dataGridViewMedicacao.Columns[3].Width + 80;
             dataGridViewMedicacao.Columns[5].Width = dataGridViewMedicacao.Columns[5].Width + 80;
@@ -371,6 +371,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewMedicacao.Columns[9].Width = dataGridViewMedicacao.Columns[9].Width + 80;
             dataGridViewMedicacao.Columns[11].Width = dataGridViewMedicacao.Columns[11].Width + 80;
             dataGridViewMedicacao.Columns[13].Width = dataGridViewMedicacao.Columns[13].Width + 80;
+            dataGridViewMedicacao.Columns[14].Width = dataGridViewMedicacao.Columns[13].Width + 150;
 
             conn.Close();
             dataGridViewMedicacao.Update();
@@ -383,9 +384,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             verMedicacaoAnterior.Show();
         }
 
+        Bitmap bitmap;
         private void button3_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
             printPreviewDialog1.Document = this.printDocument1;
             this.printDocument1.DefaultPageSettings.Landscape = true;
             printDocument1.OriginAtMargins = false;
@@ -393,20 +394,133 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             printPreviewDialog1.ShowDialog();
 
-            if (printDialog1.ShowDialog() == DialogResult.OK)
-            {
-                this.printDocument1.Print();
-            }
+            /* this.printDocument1.DefaultPageSettings.Landscape = true;
+
+             printPreviewDialog1.Document = printDocument1;
+             printPreviewDialog1.ShowDialog();*/
+            /* this.WindowState = FormWindowState.Maximized;
+             printPreviewDialog1.Document = this.printDocument1;
+             this.printDocument1.DefaultPageSettings.Landscape = true;
+             printDocument1.OriginAtMargins = false;
+             printDialog1.Document = this.printDocument1;
+
+             printPreviewDialog1.ShowDialog();
+
+             if (printDialog1.ShowDialog() == DialogResult.OK)
+             {
+                 this.printDocument1.Print();
+             }*/
+
+
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            // e.Graphics.DrawImage(bitmap, 0, 0);
+            /* int width = 1100;
+             int height = 768;
+           //  var image = new Bitmap(dataGridViewMedicacao);
+
+
+             Bitmap objetoBMP = new Bitmap(this.dataGridViewMedicacao.Width, this.dataGridViewMedicacao.Height);
+             dataGridViewMedicacao.DrawToBitmap(objetoBMP, new Rectangle(0,0, width, height));
+             //    e.Graphics.DrawImage(objetoBMP, 250, 90);
+                 e.Graphics.DrawImage(objetoBMP, 0, 0);
+             e.Graphics.DrawString(label2.Text, new Font("Verdana", 18, FontStyle.Regular), Brushes.Black, new Point(700, 768));
+             */
+
+            int height = dataGridViewMedicacao.Height;
+            dataGridViewMedicacao.Height = dataGridViewMedicacao.RowCount * dataGridViewMedicacao.RowTemplate.Height * 2;
+            bitmap = new Bitmap(dataGridViewMedicacao.Width, dataGridViewMedicacao.Height);
+            dataGridViewMedicacao.DrawToBitmap(bitmap, new Rectangle(0, 0, dataGridViewMedicacao.Width, dataGridViewMedicacao.Height));
+             //printPreviewDialog1.PrintPreviewControl.Zoom = 1;
+            // printPreviewDialog1.ShowDialog();
+            dataGridViewMedicacao.Height = height;
+            e.Graphics.DrawImage(bitmap, 10, 10);
+
 
         }
 
         private void printPreviewDialog1_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        private void printPreviewDialog2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbSimJejum_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbSimJejum.Checked == true)
+            {
+                txtQuantidadeJejum.Enabled = true;
+            }
+            else
+            {
+                txtQuantidadeJejum.Enabled = false;
+            }
+        }
+
+        private void rbSimPeqAlm_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbSimPeqAlm.Checked == true)
+            {
+                txtQuantidadePeqAlmoco.Enabled = true;
+            }
+            else
+            {
+                txtQuantidadePeqAlmoco.Enabled = false;
+            }
+        }
+
+        private void rbSimAlm_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbSimAlm.Checked == true)
+            {
+                txtQuantidadeAlmoco.Enabled = true;
+            }
+            else
+            {
+                txtQuantidadeAlmoco.Enabled = false;
+            }
+        }
+
+        private void rbSimLanche_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbSimLanche.Checked == true)
+            {
+                txtQuantidadeLanche.Enabled = true;
+            }
+            else
+            {
+                txtQuantidadeLanche.Enabled = false;
+            }
+        }
+
+        private void rbSimJantar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbSimJantar.Checked == true)
+            {
+                txtQuantidadeJantar.Enabled = true;
+            }
+            else
+            {
+                txtQuantidadeJantar.Enabled = false;
+            }
+        }
+
+        private void rbSimDeitar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbSimDeitar.Checked == true)
+            {
+                txtQuantidadeDeitar.Enabled = true;
+            }
+            else
+            {
+                txtQuantidadeDeitar.Enabled = false;
+            }
         }
     }
 }

@@ -195,7 +195,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button9_Click(object sender, EventArgs e)
         {
-            FormLocalizacaoDorCorpoConsulta formLocalizacaoDorCorpo = new FormLocalizacaoDorCorpoConsulta( paciente);
+            AdicionarCrioterapiaPaciente formLocalizacaoDorCorpo = new AdicionarCrioterapiaPaciente( paciente);
             formLocalizacaoDorCorpo.Show();
         }
 
@@ -950,6 +950,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             VerVariasAtitudes verVariasAtitudes = new VerVariasAtitudes(paciente);
             verVariasAtitudes.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            AdicionarColheitaSangueDiagPrecoce adicionarColheitaSangueDiagPrecoce = new AdicionarColheitaSangueDiagPrecoce(paciente);
+            adicionarColheitaSangueDiagPrecoce.Show();
         }
     }
 }

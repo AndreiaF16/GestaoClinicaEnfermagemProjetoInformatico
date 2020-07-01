@@ -370,13 +370,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                // double Nif = (double)(reader["nif"]);
-                //string Email = (string)reader["Email"];
-                //string hora = (string)reader["horaProximaConsulta"];
-                //  DateTime dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-
-                // NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
-
                 if (!(reader["Email"] == DBNull.Value) && emailIgual == false)
                 {
                     if (txtEmail.Text.Equals((string)reader["Email"]))
@@ -413,61 +406,62 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
-            string nome = txtNome.Text;
-            var dtNascimento = dataNascimento.Value;
-            string rua = txtRua.Text;
-            string nrMorada = txtNumeroCasa.Text;
-            string andarPiso = txtAndarPiso.Text;
-            string codPrefixo = txtCodPostalPre.Text;
-            string codSufixo = txtCodPostalSuf.Text;
-            string localidade = txtLocalidade.Text;
-            string email = txtEmail.Text;
-            string telemovel = txtContacto.Text;
-            string nif = txtNif.Text;
-            int nomeProfissao = -1;
-            //string profissao = (String)cbProfissoes.SelectedItem;
-            string acordo = (String)cbAcordos.SelectedItem;
-            string nomeSeguradora = txtNomeSeguradora.Text;
-            string numeroApolice = txtNApolice.Text;
-            string nomeSubsistema = txtNomeSubsistema.Text;
-            string numeroSubsistema = txtNSubsistema.Text;
-            string numeroSNS = txtSNS.Text;
-            string bairroLocal = txtBairroLocal.Text;
-            string designacao = txtDesignacao.Text;
-            string sexo = "";
-
-
-            if (cbProfissoes.SelectedItem != null)
-            {
-                nomeProfissao = (cbProfissoes.SelectedItem as ComboBoxItem).Value;
-            }
-            if (radioButtonMasculino.Checked == true)
-            {
-                sexo = "Masculino";
-            }
-            if (radioButtonFeminino.Checked == true)
-            {
-                sexo = "Feminino";
-            }
-            if (radioButtonIndefinido.Checked == true)
-            {
-                sexo = "Indefinido";
-            }
-
-            string planoVacinacao = "";
-            if (radioButtonAtualizado.Checked == true)
-            {
-                planoVacinacao = "Atualizado";
-            }
-            if (radioButtonNaoAtualizado.Checked == true)
-            {
-                planoVacinacao = "Não Atualizado";
-            }
-
 
 
             if (VerificarDadosInseridos())
             {
+
+                string nome = txtNome.Text;
+                var dtNascimento = dataNascimento.Value;
+                string rua = txtRua.Text;
+                string nrMorada = txtNumeroCasa.Text;
+                string andarPiso = txtAndarPiso.Text;
+                string codPrefixo = txtCodPostalPre.Text;
+                string codSufixo = txtCodPostalSuf.Text;
+                string localidade = txtLocalidade.Text;
+                string email = txtEmail.Text;
+                string telemovel = txtContacto.Text;
+                string nif = txtNif.Text;
+                int nomeProfissao = -1;
+                //string profissao = (String)cbProfissoes.SelectedItem;
+                string acordo = (String)cbAcordos.SelectedItem;
+                string nomeSeguradora = txtNomeSeguradora.Text;
+                string numeroApolice = txtNApolice.Text;
+                string nomeSubsistema = txtNomeSubsistema.Text;
+                string numeroSubsistema = txtNSubsistema.Text;
+                string numeroSNS = txtSNS.Text;
+                string bairroLocal = txtBairroLocal.Text;
+                string designacao = txtDesignacao.Text;
+                string sexo = "";
+
+
+                if (cbProfissoes.SelectedItem != null)
+                {
+                    nomeProfissao = (cbProfissoes.SelectedItem as ComboBoxItem).Value;
+                }
+                if (radioButtonMasculino.Checked == true)
+                {
+                    sexo = "Masculino";
+                }
+                if (radioButtonFeminino.Checked == true)
+                {
+                    sexo = "Feminino";
+                }
+                if (radioButtonIndefinido.Checked == true)
+                {
+                    sexo = "Indefinido";
+                }
+
+                string planoVacinacao = "";
+                if (radioButtonAtualizado.Checked == true)
+                {
+                    planoVacinacao = "Atualizado";
+                }
+                if (radioButtonNaoAtualizado.Checked == true)
+                {
+                    planoVacinacao = "Não Atualizado";
+                }
+
                 try
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
@@ -1008,6 +1002,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 SNSIgual = false;
             }
+        }
+
+        private void panelFormulario_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

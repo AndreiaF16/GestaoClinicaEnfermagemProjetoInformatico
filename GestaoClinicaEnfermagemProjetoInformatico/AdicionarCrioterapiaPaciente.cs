@@ -2,24 +2,25 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class FormLocalizacaoDorCorpoConsulta : Form
+    public partial class AdicionarCrioterapiaPaciente : Form
     {
         Point point;
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
         private ErrorProvider errorProvider = new ErrorProvider();
+        private int id = -1;
 
-        public FormLocalizacaoDorCorpoConsulta(Paciente pac)
+        public AdicionarCrioterapiaPaciente(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
@@ -28,7 +29,53 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataRegisto.Value = DateTime.Today;
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+        }
 
+        private void AdicionarCrioterapiaPaciente_Load(object sender, EventArgs e)
+        {
+            idAtitude();
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Atitude não encontrada! Deseja inserir a atitude na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Atitude(nomeAtitude) VALUES('Crioterapia');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException excep)
+                    {
+
+                        MessageBox.Show("Por erro interno é impossível registar a atitude terapêutica!", excep.Message);
+                    }
+                }
+                if (resposta == DialogResult.No)
+                {
+                    this.Close();
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idAtitude();
+        }
+
+        private void idAtitude()
+        {
+            conn.Open();
+            com.Connection = conn;
+            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Crioterapia'", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                id = (int)reader["IdAtitude"];
+            }
+            conn.Close();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -59,6 +106,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void pictureBoxCorpo_MouseClick(object sender, MouseEventArgs e)
         {
+
             TextBox textBox = new TextBox();
 
             textBox.Location = PointToScreen(e.Location);
@@ -117,12 +165,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            VerLocalizacaoDorConsulta verLocalizacaoDorConsulta = new VerLocalizacaoDorConsulta(paciente);
-            verLocalizacaoDorConsulta.Show();
-        }
-
         private void hora_Tick(object sender, EventArgs e)
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
@@ -132,6 +174,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnLimparCampos_Click(object sender, EventArgs e)
         {
             limparCampos();
+
         }
 
         private void limparCampos()
@@ -147,7 +190,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
-        {       
+        {
             if (VerificarDadosInseridos())
             {
                 string localizacaoDor = textBox1.Text;
@@ -164,12 +207,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO LocalizacaoDorConsulta(IdPaciente,data,localizacao,observacoes) VALUES(@idPaciente,@dataR,@localizacao,@obs);";
+                    string queryInsertData = "INSERT INTO Crioterapia(IdAtitude,IdPaciente,data,localizacao,observacoes) VALUES(@id,@idPaciente,@dataR,@localizacao,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
 
                     sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@localizacao", localizacaoDor);
                     sqlCommand.Parameters.AddWithValue("@dataR", data.ToString("MM/dd/yyyy"));
+                    sqlCommand.Parameters.AddWithValue("@id", id);
+
                     if (obs != string.Empty)
                     {
                         sqlCommand.Parameters.AddWithValue("@obs", Convert.ToString(obs));
@@ -180,14 +225,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
 
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Dados Localizacao dor na consulta registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Crioterapia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                     limparCampos();
                 }
                 catch (SqlException excep)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar os dados da crioterapia", excep.Message);
                 }
+
             }
         }
 
@@ -217,12 +263,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
-           
-
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorConsulta WHERE IdPaciente = @IdPaciente", conn);
+            SqlCommand cmd = new SqlCommand("select * from Crioterapia WHERE IdPaciente = @IdPaciente", conn);
             cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -241,11 +285,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             return true;
         }
 
-        private void FormLocalizacaoDorCorpoConsulta_Load(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            VerCrioterapia verCrioterapia = new VerCrioterapia(paciente);
+            verCrioterapia.Show();
         }
     }
-
 }
-

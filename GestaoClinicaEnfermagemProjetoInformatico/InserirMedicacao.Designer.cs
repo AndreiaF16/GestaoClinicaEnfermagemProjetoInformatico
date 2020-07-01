@@ -89,6 +89,7 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printPreviewDialog2 = new System.Windows.Forms.PrintPreviewDialog();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -225,9 +226,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.label2.Location = new System.Drawing.Point(6, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(308, 39);
+            this.label2.Size = new System.Drawing.Size(384, 39);
             this.label2.TabIndex = 29;
-            this.label2.Text = "Inserir Medicação";
+            this.label2.Text = "Prescrever Medicação";
             // 
             // groupBox2
             // 
@@ -258,7 +259,7 @@
             this.txtObs.Location = new System.Drawing.Point(201, 110);
             this.txtObs.Multiline = true;
             this.txtObs.Name = "txtObs";
-            this.txtObs.Size = new System.Drawing.Size(781, 48);
+            this.txtObs.Size = new System.Drawing.Size(781, 58);
             this.txtObs.TabIndex = 46;
             // 
             // label10
@@ -266,9 +267,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(19, 113);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(106, 20);
+            this.label10.Size = new System.Drawing.Size(142, 20);
             this.label10.TabIndex = 45;
-            this.label10.Text = "Observações:";
+            this.label10.Text = "Outras Indicações:";
             // 
             // dataMedicacao
             // 
@@ -301,6 +302,7 @@
             // 
             // txtQuantidadeDeitar
             // 
+            this.txtQuantidadeDeitar.Enabled = false;
             this.txtQuantidadeDeitar.Location = new System.Drawing.Point(104, 40);
             this.txtQuantidadeDeitar.Name = "txtQuantidadeDeitar";
             this.txtQuantidadeDeitar.Size = new System.Drawing.Size(100, 26);
@@ -325,6 +327,7 @@
             this.rbSimDeitar.TabStop = true;
             this.rbSimDeitar.Text = "Sim";
             this.rbSimDeitar.UseVisualStyleBackColor = true;
+            this.rbSimDeitar.CheckedChanged += new System.EventHandler(this.rbSimDeitar_CheckedChanged);
             // 
             // groupBox6
             // 
@@ -340,6 +343,7 @@
             // 
             // txtQuantidadeJantar
             // 
+            this.txtQuantidadeJantar.Enabled = false;
             this.txtQuantidadeJantar.Location = new System.Drawing.Point(104, 42);
             this.txtQuantidadeJantar.Name = "txtQuantidadeJantar";
             this.txtQuantidadeJantar.Size = new System.Drawing.Size(100, 26);
@@ -364,6 +368,7 @@
             this.rbSimJantar.TabStop = true;
             this.rbSimJantar.Text = "Sim";
             this.rbSimJantar.UseVisualStyleBackColor = true;
+            this.rbSimJantar.CheckedChanged += new System.EventHandler(this.rbSimJantar_CheckedChanged);
             // 
             // groupBox4
             // 
@@ -379,6 +384,7 @@
             // 
             // txtQuantidadeLanche
             // 
+            this.txtQuantidadeLanche.Enabled = false;
             this.txtQuantidadeLanche.Location = new System.Drawing.Point(119, 42);
             this.txtQuantidadeLanche.Name = "txtQuantidadeLanche";
             this.txtQuantidadeLanche.Size = new System.Drawing.Size(100, 26);
@@ -403,6 +409,7 @@
             this.rbSimLanche.TabStop = true;
             this.rbSimLanche.Text = "Sim";
             this.rbSimLanche.UseVisualStyleBackColor = true;
+            this.rbSimLanche.CheckedChanged += new System.EventHandler(this.rbSimLanche_CheckedChanged);
             // 
             // groupBox5
             // 
@@ -418,6 +425,7 @@
             // 
             // txtQuantidadeAlmoco
             // 
+            this.txtQuantidadeAlmoco.Enabled = false;
             this.txtQuantidadeAlmoco.Location = new System.Drawing.Point(104, 41);
             this.txtQuantidadeAlmoco.Name = "txtQuantidadeAlmoco";
             this.txtQuantidadeAlmoco.Size = new System.Drawing.Size(100, 26);
@@ -442,6 +450,7 @@
             this.rbSimAlm.TabStop = true;
             this.rbSimAlm.Text = "Sim";
             this.rbSimAlm.UseVisualStyleBackColor = true;
+            this.rbSimAlm.CheckedChanged += new System.EventHandler(this.rbSimAlm_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -457,6 +466,7 @@
             // 
             // txtQuantidadePeqAlmoco
             // 
+            this.txtQuantidadePeqAlmoco.Enabled = false;
             this.txtQuantidadePeqAlmoco.Location = new System.Drawing.Point(104, 47);
             this.txtQuantidadePeqAlmoco.Name = "txtQuantidadePeqAlmoco";
             this.txtQuantidadePeqAlmoco.Size = new System.Drawing.Size(100, 26);
@@ -481,6 +491,7 @@
             this.rbSimPeqAlm.TabStop = true;
             this.rbSimPeqAlm.Text = "Sim";
             this.rbSimPeqAlm.UseVisualStyleBackColor = true;
+            this.rbSimPeqAlm.CheckedChanged += new System.EventHandler(this.rbSimPeqAlm_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -496,6 +507,7 @@
             // 
             // txtQuantidadeJejum
             // 
+            this.txtQuantidadeJejum.Enabled = false;
             this.txtQuantidadeJejum.Location = new System.Drawing.Point(119, 44);
             this.txtQuantidadeJejum.Name = "txtQuantidadeJejum";
             this.txtQuantidadeJejum.Size = new System.Drawing.Size(100, 26);
@@ -520,6 +532,7 @@
             this.rbSimJejum.TabStop = true;
             this.rbSimJejum.Text = "Sim";
             this.rbSimJejum.UseVisualStyleBackColor = true;
+            this.rbSimJejum.CheckedChanged += new System.EventHandler(this.rbSimJejum_CheckedChanged);
             // 
             // txtMedicacao
             // 
@@ -656,7 +669,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label1.Location = new System.Drawing.Point(320, 31);
+            this.label1.Location = new System.Drawing.Point(380, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 25);
             this.label1.TabIndex = 54;
@@ -764,6 +777,17 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // printPreviewDialog2
+            // 
+            this.printPreviewDialog2.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog2.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog2.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog2.Enabled = true;
+            this.printPreviewDialog2.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog2.Icon")));
+            this.printPreviewDialog2.Name = "printPreviewDialog2";
+            this.printPreviewDialog2.Visible = false;
+            this.printPreviewDialog2.Load += new System.EventHandler(this.printPreviewDialog2_Load);
+            // 
             // InserirMedicacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -864,5 +888,6 @@
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog2;
     }
 }
