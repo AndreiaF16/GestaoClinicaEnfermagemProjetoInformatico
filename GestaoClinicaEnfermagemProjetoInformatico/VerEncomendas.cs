@@ -31,37 +31,48 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void reiniciar()
         {
-            listaEnc.Clear();
-            cbEncomendas.Items.Clear();
-            auxiliar.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Encomenda WHERE dataEntregaReal IS NULL order by Nfatura asc", conn);
-           // cmd.Parameters.AddWithValue("@Null", DBNull.Value);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["dataRegistoEncomenda"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-                string dataPrevista = DateTime.ParseExact(reader["dataEntregaPrevista"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                listaEnc.Clear();
+                cbEncomendas.Items.Clear();
+                auxiliar.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Encomenda WHERE dataEntregaReal IS NULL order by Nfatura asc", conn);
+                // cmd.Parameters.AddWithValue("@Null", DBNull.Value);
 
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader["Nfatura"];
-                item.Value = (int)reader["IdEncomenda"];
-                cbEncomendas.Items.Add(item);
-                Encomendas enc = new Encomendas
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    NFatura = (string)reader["Nfatura"],
-                    //nome = (string)reader["idFornecedor"],
-                    dataRegisto = data,
-                    dataEntregaPrevista = dataPrevista,
-                    IdEncomenda = (int)reader["IdEncomenda"],            
-                };
-                listaEnc.Add(enc);
-            }
+                    string data = DateTime.ParseExact(reader["dataRegistoEncomenda"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                    string dataPrevista = DateTime.ParseExact(reader["dataEntregaPrevista"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-            conn.Close();
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = (string)reader["Nfatura"];
+                    item.Value = (int)reader["IdEncomenda"];
+                    cbEncomendas.Items.Add(item);
+                    Encomendas enc = new Encomendas
+                    {
+                        NFatura = (string)reader["Nfatura"],
+                        //nome = (string)reader["idFornecedor"],
+                        dataRegisto = data,
+                        dataEntregaPrevista = dataPrevista,
+                        IdEncomenda = (int)reader["IdEncomenda"],
+                    };
+                    listaEnc.Add(enc);
+                }
+
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
             private void VerEncomendas_Load(object sender, EventArgs e)
@@ -155,79 +166,101 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void cbEncomendas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listaEncomenda.Clear();
-
-            int idEncomenda = (cbEncomendas.SelectedItem as ComboBoxItem).Value;
-            conn.Open();
-            com.Connection = conn;
-            
-            SqlCommand cmd1 = new SqlCommand("select fornecedor.nome, fornecedor.nif, fornecedor.email, encomenda.dataRegistoEncomenda, encomenda.dataEntregaPrevista from Encomenda encomenda JOIN Fornecedor fornecedor ON encomenda.idFornecedor = fornecedor.IdFornecedor WHERE IdEncomenda = @IdEncomenda", conn);
-            cmd1.Parameters.AddWithValue("@IdEncomenda", idEncomenda);
-            SqlDataReader reader1 = cmd1.ExecuteReader();
-
-            while (reader1.Read())
+            try
             {
-                string dataRegisto = DateTime.ParseExact(reader1["dataRegistoEncomenda"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-                string dataPrevista = DateTime.ParseExact(reader1["dataEntregaPrevista"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                listaEncomenda.Clear();
 
-                lblFornecedor.Text = (string)reader1["nome"];
-                lblNif.Text = Convert.ToString((int)reader1["nif"]);
-                lblEmail.Text = (string)reader1["email"];
-                lblDataRegisto.Text = Convert.ToString(dataRegisto);
-                lblEntregaPrevista.Text = Convert.ToString(dataPrevista);
-            }
-            lblFornecedor.Visible = true;
-            lblNif.Visible = true;
-            lblEmail.Visible = true;
-            lblDataRegisto.Visible = true;
-            lblEntregaPrevista.Visible = true;
+                int idEncomenda = (cbEncomendas.SelectedItem as ComboBoxItem).Value;
+                conn.Open();
+                com.Connection = conn;
 
-            conn.Close();
-            conn.Open();
+                SqlCommand cmd1 = new SqlCommand("select fornecedor.nome, fornecedor.nif, fornecedor.email, encomenda.dataRegistoEncomenda, encomenda.dataEntregaPrevista from Encomenda encomenda JOIN Fornecedor fornecedor ON encomenda.idFornecedor = fornecedor.IdFornecedor WHERE IdEncomenda = @IdEncomenda", conn);
+                cmd1.Parameters.AddWithValue("@IdEncomenda", idEncomenda);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
 
-          
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select produto.NomeProduto, produto.precoUnitario, produto.taxaIVA, encomenda.quantidade from ProdutoStock produto JOIN LinhaEncomenda encomenda ON produto.IdProdutoStock = encomenda.idProdutoStock WHERE encomenda.IdEncomenda = @IdEncomenda", conn);
-            cmd.Parameters.AddWithValue("@IdEncomenda", idEncomenda);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            decimal totalFaturaSIVA = 0;
-            decimal totalFaturaCIVA = 0;
-
-            while (reader.Read())
-            {
-                ListarEncomendas produtos = new ListarEncomendas
+                while (reader1.Read())
                 {
-                    //  IdEnfermeiro = (int)reader["IdEnfermeiro"],
-                    nome = (string)reader["NomeProduto"],
-                    preco = (decimal)reader["precoUnitario"],
-                    iva = (int)reader["taxaIVA"],
-                    quant = (int)reader["quantidade"],
+                    string dataRegisto = DateTime.ParseExact(reader1["dataRegistoEncomenda"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                    string dataPrevista = DateTime.ParseExact(reader1["dataEntregaPrevista"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-                };
-                decimal precoSIva = Convert.ToDecimal(produtos.quant * produtos.preco);
-                produtos.totalProdutoSIVA = Math.Round(precoSIva, 2);
-                decimal precoCIVA = precoSIva * ((Convert.ToDecimal(produtos.iva)) /100 );
-                
-                produtos.totalProdutCIVA = Math.Round(precoSIva + precoCIVA, 2);
+                    lblFornecedor.Text = (string)reader1["nome"];
+                    lblNif.Text = Convert.ToString((int)reader1["nif"]);
+                    lblEmail.Text = (string)reader1["email"];
+                    lblDataRegisto.Text = Convert.ToString(dataRegisto);
+                    lblEntregaPrevista.Text = Convert.ToString(dataPrevista);
+                }
+                lblFornecedor.Visible = true;
+                lblNif.Visible = true;
+                lblEmail.Visible = true;
+                lblDataRegisto.Visible = true;
+                lblEntregaPrevista.Visible = true;
 
-                totalFaturaSIVA += precoSIva;
-                totalFaturaCIVA += Math.Round(precoSIva + precoCIVA, 2);
-                listaEncomenda.Add(produtos);
+                conn.Close();
+                conn.Open();
 
             }
-            lblTSIVA.Visible = true;
-            lblTCIVA.Visible = true;
-            lblTSIVA.Text = Convert.ToString(totalFaturaSIVA); 
-            lblTCIVA.Text = Convert.ToString(totalFaturaCIVA);
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaEncomenda };
-            dataGridViewEncomendas.DataSource = bindingSource1;
+            try
+            {
+                int idEncomenda = (cbEncomendas.SelectedItem as ComboBoxItem).Value;
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select produto.NomeProduto, produto.precoUnitario, produto.taxaIVA, encomenda.quantidade from ProdutoStock produto JOIN LinhaEncomenda encomenda ON produto.IdProdutoStock = encomenda.idProdutoStock WHERE encomenda.IdEncomenda = @IdEncomenda", conn);
+                cmd.Parameters.AddWithValue("@IdEncomenda", idEncomenda);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                decimal totalFaturaSIVA = 0;
+                decimal totalFaturaCIVA = 0;
+
+                while (reader.Read())
+                {
+                    ListarEncomendas produtos = new ListarEncomendas
+                    {
+                        //  IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                        nome = (string)reader["NomeProduto"],
+                        preco = (decimal)reader["precoUnitario"],
+                        iva = (int)reader["taxaIVA"],
+                        quant = (int)reader["quantidade"],
+
+                    };
+                    decimal precoSIva = Convert.ToDecimal(produtos.quant * produtos.preco);
+                    produtos.totalProdutoSIVA = Math.Round(precoSIva, 2);
+                    decimal precoCIVA = precoSIva * ((Convert.ToDecimal(produtos.iva)) / 100);
+
+                    produtos.totalProdutCIVA = Math.Round(precoSIva + precoCIVA, 2);
+
+                    totalFaturaSIVA += precoSIva;
+                    totalFaturaCIVA += Math.Round(precoSIva + precoCIVA, 2);
+                    listaEncomenda.Add(produtos);
+
+                }
+                lblTSIVA.Visible = true;
+                lblTCIVA.Visible = true;
+                lblTSIVA.Text = Convert.ToString(totalFaturaSIVA);
+                lblTCIVA.Text = Convert.ToString(totalFaturaCIVA);
+
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaEncomenda };
+                dataGridViewEncomendas.DataSource = bindingSource1;
 
 
 
-            conn.Close();
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void hora_Tick(object sender, EventArgs e)

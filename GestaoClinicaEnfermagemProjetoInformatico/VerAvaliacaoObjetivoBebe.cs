@@ -71,57 +71,56 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void verAvaliacaoObjetivoBebe()
         {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select avaliacaoBebe.dataRegisto, avaliacaoBebe.Peso, avaliacaoBebe.Altura, avaliacaoBebe.pressaoArterial, avaliacaoBebe.temperatura, avaliacaoBebe.saturacaoOxigenio, avaliacaoBebe.INR, avaliacaoBebe.Perimetro, aleitamento.tipoAleitamento, avaliacaoBebe.nomeLeiteArtificial, parto.tipoParto, avaliacaoBebe.partoDistocico, avaliacaoBebe.epidoral, avaliacaoBebe.episotomia, avaliacaoBebe.reanimacaoFetal, avaliacaoBebe.indiceAPGAR, avaliacaoBebe.Fototerapia, avaliacaoBebe.observacoes from AvaliacaoObjetivoBebe avaliacaoBebe LEFT JOIN Aleitamento aleitamento ON avaliacaoBebe.IdTipoAleitamento = aleitamento.IdAleitamento LEFT JOIN Parto parto ON avaliacaoBebe.IdTipoParto = parto.IdParto WHERE IdPaciente = @IdPaciente ORDER BY avaliacaoBebe.dataRegisto, aleitamento.tipoAleitamento, parto.tipoParto", conn);
-
-           // SqlCommand cmd = new SqlCommand("select avaliacao.data, avaliacao.peso, avaliacao.altura, avaliacao.pressaoArterial, avaliacao.frequenciaCardiaca, avaliacao.temperatura, avaliacao.saturacaoOxigenio, avaliacao.dataUltimaMestruacao, avaliacao.menopausa, metodo.nomeMetodoContracetivo, avaliacao.DIU, avaliacao.concentracaoGlicoseSangue, avaliacao.AC, avaliacao.AP, avaliacao.INR, avaliacao.Menarca, avaliacao.gravidez, avaliacao.filhosVivos, avaliacao.abortos, avaliacao.observacoes from AvaliacaoObjetivo avaliacao JOIN MetodoContracetivo metodo ON avaliacao.IdMetodoContracetivo = metodo.IdMetodoContracetivo WHERE IdPaciente = @IdPaciente ORDER BY avaliacao.data, metodo.nomeMetodoContracetivo", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["dataRegisto"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select avaliacaoBebe.dataRegisto, avaliacaoBebe.Peso, avaliacaoBebe.Altura, avaliacaoBebe.pressaoArterial, avaliacaoBebe.temperatura, avaliacaoBebe.saturacaoOxigenio, avaliacaoBebe.INR, avaliacaoBebe.Perimetro, aleitamento.tipoAleitamento, avaliacaoBebe.nomeLeiteArtificial, parto.tipoParto, avaliacaoBebe.partoDistocico, avaliacaoBebe.epidoral, avaliacaoBebe.episotomia, avaliacaoBebe.reanimacaoFetal, avaliacaoBebe.indiceAPGAR, avaliacaoBebe.Fototerapia, avaliacaoBebe.observacoes from AvaliacaoObjetivoBebe avaliacaoBebe LEFT JOIN Aleitamento aleitamento ON avaliacaoBebe.IdTipoAleitamento = aleitamento.IdAleitamento LEFT JOIN Parto parto ON avaliacaoBebe.IdTipoParto = parto.IdParto WHERE IdPaciente = @IdPaciente ORDER BY avaliacaoBebe.dataRegisto, aleitamento.tipoAleitamento, parto.tipoParto", conn);
 
-                // string dataMestruacao = "";
-                // string var = reader["dataUltimaMestruacao"].ToString();
-                /* if (!reader["dataUltimaMestruacao"].ToString().Equals(String.Empty))
-                 {
-                     dataMestruacao = DateTime.ParseExact(reader["dataUltimaMestruacao"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-                 }*/
-                //  string data = data,
-
-               // int mostar = '';
-
-                AvaliacaoObjetivoBebe avaliacaoBebe = new AvaliacaoObjetivoBebe
+                // SqlCommand cmd = new SqlCommand("select avaliacao.data, avaliacao.peso, avaliacao.altura, avaliacao.pressaoArterial, avaliacao.frequenciaCardiaca, avaliacao.temperatura, avaliacao.saturacaoOxigenio, avaliacao.dataUltimaMestruacao, avaliacao.menopausa, metodo.nomeMetodoContracetivo, avaliacao.DIU, avaliacao.concentracaoGlicoseSangue, avaliacao.AC, avaliacao.AP, avaliacao.INR, avaliacao.Menarca, avaliacao.gravidez, avaliacao.filhosVivos, avaliacao.abortos, avaliacao.observacoes from AvaliacaoObjetivo avaliacao JOIN MetodoContracetivo metodo ON avaliacao.IdMetodoContracetivo = metodo.IdMetodoContracetivo WHERE IdPaciente = @IdPaciente ORDER BY avaliacao.data, metodo.nomeMetodoContracetivo", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    dataRegisto = data,
-                    Peso = Convert.ToDecimal(reader["peso"]),
-                    Altura = (int)reader["altura"],
-                    pressaoArterial = (int)reader["pressaoArterial"],
-                    temperatura = ((reader["temperatura"] == DBNull.Value) ? null : (decimal?)reader["temperatura"]),
-                    saturacaoOxigenio = ((reader["saturacaoOxigenio"] == DBNull.Value) ? null : (int?)reader["saturacaoOxigenio"]),
+                    string data = DateTime.ParseExact(reader["dataRegisto"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-                    INR = ((reader["INR"] == DBNull.Value) ? null : (int?)reader["INR"]),
-                    Perimetro = ((reader["Perimetro"] == DBNull.Value) ? null : (int?)reader["Perimetro"]),
-                    tipoAleitamento = ((reader["tipoAleitamento"] == DBNull.Value) ? "" : (string)reader["tipoAleitamento"]),
-                    nomeLeiteArtificial = ((reader["nomeLeiteArtificial"] == DBNull.Value) ? "" : (string)reader["nomeLeiteArtificial"]),
-                    tipoParto = ((reader["tipoParto"] == DBNull.Value) ? "" : (string)reader["tipoParto"]),
-                    partoDistocico = ((reader["partoDistocico"] == DBNull.Value) ? "" : (string)reader["partoDistocico"]),
-                    epidoral = ((reader["epidoral"] == DBNull.Value) ? "" : (string)reader["epidoral"]),
-                    episotomia = ((reader["episotomia"] == DBNull.Value) ? "" : (string)reader["episotomia"]),
-                    reanimacaoFetal = ((reader["reanimacaoFetal"] == DBNull.Value) ? "" : (string)reader["reanimacaoFetal"]),
-                    indiceAPGAR = ((reader["indiceAPGAR"] == DBNull.Value) ? "" : (string)reader["indiceAPGAR"]),
-                    Fototerapia = ((reader["Fototerapia"] == DBNull.Value) ? "" : (string)reader["Fototerapia"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                avaliacaoBebe.IMC = Math.Round(avaliacaoBebe.Peso / (Convert.ToDecimal(avaliacaoBebe.Altura * avaliacaoBebe.Altura) / 10000), 2);
-                listaAvaliacaoObjetivoBebe.Add(avaliacaoBebe);
+                    AvaliacaoObjetivoBebe avaliacaoBebe = new AvaliacaoObjetivoBebe
+                    {
+                        dataRegisto = data,
+                        Peso = Convert.ToDecimal(reader["peso"]),
+                        Altura = (int)reader["altura"],
+                        pressaoArterial = (int)reader["pressaoArterial"],
+                        temperatura = ((reader["temperatura"] == DBNull.Value) ? null : (decimal?)reader["temperatura"]),
+                        saturacaoOxigenio = ((reader["saturacaoOxigenio"] == DBNull.Value) ? null : (int?)reader["saturacaoOxigenio"]),
+
+                        INR = ((reader["INR"] == DBNull.Value) ? null : (int?)reader["INR"]),
+                        Perimetro = ((reader["Perimetro"] == DBNull.Value) ? null : (int?)reader["Perimetro"]),
+                        tipoAleitamento = ((reader["tipoAleitamento"] == DBNull.Value) ? "" : (string)reader["tipoAleitamento"]),
+                        nomeLeiteArtificial = ((reader["nomeLeiteArtificial"] == DBNull.Value) ? "" : (string)reader["nomeLeiteArtificial"]),
+                        tipoParto = ((reader["tipoParto"] == DBNull.Value) ? "" : (string)reader["tipoParto"]),
+                        partoDistocico = ((reader["partoDistocico"] == DBNull.Value) ? "" : (string)reader["partoDistocico"]),
+                        epidoral = ((reader["epidoral"] == DBNull.Value) ? "" : (string)reader["epidoral"]),
+                        episotomia = ((reader["episotomia"] == DBNull.Value) ? "" : (string)reader["episotomia"]),
+                        reanimacaoFetal = ((reader["reanimacaoFetal"] == DBNull.Value) ? "" : (string)reader["reanimacaoFetal"]),
+                        indiceAPGAR = ((reader["indiceAPGAR"] == DBNull.Value) ? "" : (string)reader["indiceAPGAR"]),
+                        Fototerapia = ((reader["Fototerapia"] == DBNull.Value) ? "" : (string)reader["Fototerapia"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    avaliacaoBebe.IMC = Math.Round(avaliacaoBebe.Peso / (Convert.ToDecimal(avaliacaoBebe.Altura * avaliacaoBebe.Altura) / 10000), 2);
+                    listaAvaliacaoObjetivoBebe.Add(avaliacaoBebe);
+                }
+                UpdateDataGridViewAvaliacao();
+                conn.Close();
+                UpdateDataGridViewAvaliacao();
             }
-            UpdateDataGridViewAvaliacao();
-          //  dataGridViewAvaliacaoObjetivoBebe.Columns[10].Width = dataGridViewAvaliacaoObjetivoBebe.Columns[10].Width + 100;
-           // dataGridViewAvaliacaoObjetivoBebe.Columns[20].Width = dataGridViewAvaliacaoObjetivoBebe.Columns[20].Width + 200;
-            conn.Close();
-            UpdateDataGridViewAvaliacao();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void UpdateDataGridViewAvaliacao()

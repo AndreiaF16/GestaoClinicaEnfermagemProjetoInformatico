@@ -67,35 +67,46 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            engPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select numeroENG, dataENG, observacoes from ENG ORDER BY data asc, dataENG asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string dataeng = ((reader["dataENG"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dataENG"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                engPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                ENGPaciente eng = new ENGPaciente
+                SqlCommand cmd = new SqlCommand("select numeroENG, dataENG, observacoes from ENG ORDER BY data asc, dataENG asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    numeroENG = ((reader["numeroENG"] == DBNull.Value) ? null : (int?)reader["numeroENG"]),
-                    dataENG = dataeng,
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    string dataeng = ((reader["dataENG"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dataENG"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-                };
-                engPaciente.Add(eng);
+                    ENGPaciente eng = new ENGPaciente
+                    {
+                        numeroENG = ((reader["numeroENG"] == DBNull.Value) ? null : (int?)reader["numeroENG"]),
+                        dataENG = dataeng,
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+
+                    };
+                    engPaciente.Add(eng);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = engPaciente };
+                dataGridViewENG.DataSource = bindingSource1;
+                dataGridViewENG.Columns[0].HeaderText = "Número ENG";
+                dataGridViewENG.Columns[1].HeaderText = "Data de Realização do ENG";
+                dataGridViewENG.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewENG.Update();
+                dataGridViewENG.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = engPaciente };
-            dataGridViewENG.DataSource = bindingSource1;
-            dataGridViewENG.Columns[0].HeaderText = "Número ENG";
-            dataGridViewENG.Columns[1].HeaderText = "Data de Realização do ENG";
-            dataGridViewENG.Columns[2].HeaderText = "Observações";
-
-            conn.Close();
-            dataGridViewENG.Update();
-            dataGridViewENG.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

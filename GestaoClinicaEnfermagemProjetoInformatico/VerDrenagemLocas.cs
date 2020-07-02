@@ -67,34 +67,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            drenagemLocas.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, drenagemLocas, observacoes from DrenagemLocas ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                DrenagemLocas drenagem = new DrenagemLocas
+                drenagemLocas.Clear();
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select data, drenagemLocas, observacoes from DrenagemLocas ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    drenagemLocas = ((reader["drenagemLocas"] == DBNull.Value) ? "" : (string)reader["drenagemLocas"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    DrenagemLocas drenagem = new DrenagemLocas
+                    {
+                        data = data,
+                        drenagemLocas = ((reader["drenagemLocas"] == DBNull.Value) ? "" : (string)reader["drenagemLocas"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
 
-                };
-                drenagemLocas.Add(drenagem);
+                    };
+                    drenagemLocas.Add(drenagem);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = drenagemLocas };
+                dataGridViewDrenagemLocas.DataSource = bindingSource1;
+                dataGridViewDrenagemLocas.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewDrenagemLocas.Columns[1].HeaderText = "Drenagem das Locas";
+                dataGridViewDrenagemLocas.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewDrenagemLocas.Update();
+                dataGridViewDrenagemLocas.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = drenagemLocas };
-            dataGridViewDrenagemLocas.DataSource = bindingSource1;
-            dataGridViewDrenagemLocas.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewDrenagemLocas.Columns[1].HeaderText = "Drenagem das Locas";
-            dataGridViewDrenagemLocas.Columns[2].HeaderText = "Observações";
-
-            conn.Close();
-            dataGridViewDrenagemLocas.Update();
-            dataGridViewDrenagemLocas.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

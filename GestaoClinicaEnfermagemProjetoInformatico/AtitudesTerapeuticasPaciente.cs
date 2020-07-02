@@ -218,9 +218,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         connection.Close();
                     }
-                    catch (SqlException excep)
+                    catch (SqlException)
                     {
-                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita expectoração'!", excep.Message);
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita expectoração'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 if (resposta == DialogResult.No)
@@ -247,9 +251,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         connection.Close();
                     }
-                    catch (SqlException excep)
+                    catch (SqlException)
                     {
-                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita exsudado zaragatoa'!", excep.Message);
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita exsudado zaragatoa'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 if (resposta == DialogResult.No)
@@ -276,9 +284,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         connection.Close();
                     }
-                    catch (SqlException excep)
+                    catch (SqlException)
                     {
-                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita fezes parasitológico'!", excep.Message);
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita fezes parasitológico'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 if (resposta == DialogResult.No)
@@ -305,9 +317,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         connection.Close();
                     }
-                    catch (SqlException excep)
+                    catch (SqlException)
                     {
-                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita fezes sangue oculto'!", excep.Message);
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita fezes sangue oculto'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 if (resposta == DialogResult.No)
@@ -334,9 +350,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         connection.Close();
                     }
-                    catch (SqlException excep)
+                    catch (SqlException)
                     {
-                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita sangue'!", excep.Message);
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Colheita sangue'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 if (resposta == DialogResult.No)
@@ -363,9 +383,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         connection.Close();
                     }
-                    catch (SqlException excep)
+                    catch (SqlException)
                     {
-                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Enema limpeza'!", excep.Message);
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Enema limpeza'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 if (resposta == DialogResult.No)
@@ -392,9 +416,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         connection.Close();
                     }
-                    catch (SqlException excep)
+                    catch (SqlException)
                     {
-                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Lavagem Gástrica'!", excep.Message);
+                        MessageBox.Show("Por erro interno é impossível registar a atitude 'Lavagem Gástrica'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 if (resposta == DialogResult.No)
@@ -409,90 +433,163 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
        
         private void idAtitude()
         {
-            //Colheita expectoração
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita expectoração'", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                id = (int)reader["IdAtitude"];
+                //Colheita expectoração
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita expectoração'", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = (int)reader["IdAtitude"];
+                }
+
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar se o tipo de atitude terapêutica existe!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            conn.Close();
-
-            //Colheita exsudado zaragatoa
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd1 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita exsudado zaragatoa'", conn);
-            SqlDataReader reader1 = cmd1.ExecuteReader();
-            while (reader1.Read())
+            try
             {
-                idZaragatoa = (int)reader1["IdAtitude"];
+                //Colheita exsudado zaragatoa
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd1 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita exsudado zaragatoa'", conn);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    idZaragatoa = (int)reader1["IdAtitude"];
+                }
+
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar se o tipo de atitude terapêutica existe!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            conn.Close();
-
-            //Colheita fezes parasitológicoa
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd2 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita fezes parasitológico'", conn);
-            SqlDataReader reader2 = cmd2.ExecuteReader();
-            while (reader2.Read())
+            try
             {
-                idFezesParasitologico = (int)reader2["IdAtitude"];
+                //Colheita fezes parasitológicoa
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd2 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita fezes parasitológico'", conn);
+                SqlDataReader reader2 = cmd2.ExecuteReader();
+                while (reader2.Read())
+                {
+                    idFezesParasitologico = (int)reader2["IdAtitude"];
+                }
+
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar se o tipo de atitude terapêutica existe!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            conn.Close();
-
-            //Colheita fezes sangue oculto
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd3 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita fezes sangue oculto'", conn);
-            SqlDataReader reader3 = cmd3.ExecuteReader();
-            while (reader3.Read())
+            try
             {
-                idFezesSangueOculto = (int)reader3["IdAtitude"];
+                //Colheita fezes sangue oculto
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd3 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita fezes sangue oculto'", conn);
+                SqlDataReader reader3 = cmd3.ExecuteReader();
+                while (reader3.Read())
+                {
+                    idFezesSangueOculto = (int)reader3["IdAtitude"];
+                }
+
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar se o tipo de atitude terapêutica existe!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            conn.Close();
-
-            //Colheita sangue
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd4 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita sangue'", conn);
-            SqlDataReader reader4 = cmd4.ExecuteReader();
-            while (reader4.Read())
+            try
             {
-                idColheitaSangue = (int)reader4["IdAtitude"];
+                //Colheita sangue
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd4 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita sangue'", conn);
+                SqlDataReader reader4 = cmd4.ExecuteReader();
+                while (reader4.Read())
+                {
+                    idColheitaSangue = (int)reader4["IdAtitude"];
+                }
+                conn.Close();
             }
-            conn.Close();
-
-            conn.Close();
-
-            //Enema limpeza
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd5 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Enema limpeza'", conn);
-            SqlDataReader reader5 = cmd5.ExecuteReader();
-            while (reader5.Read())
+            catch (Exception)
             {
-                idEnemaLimpeza = (int) reader5["IdAtitude"];
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar se o tipo de atitude terapêutica existe!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            conn.Close();
 
-            conn.Close();
-
-            //Lavagem Gástrica
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd6 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Lavagem Gástrica'", conn);
-            SqlDataReader reader6 = cmd6.ExecuteReader();
-            while (reader6.Read())
+            try
             {
-                idLavagemGastrica = (int) reader6["IdAtitude"];
+                //Enema limpeza
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd5 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Enema limpeza'", conn);
+                SqlDataReader reader5 = cmd5.ExecuteReader();
+                while (reader5.Read())
+                {
+                    idEnemaLimpeza = (int)reader5["IdAtitude"];
+                }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar se o tipo de atitude terapêutica existe!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try
+            {
+                //Lavagem Gástrica
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd6 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Lavagem Gástrica'", conn);
+                SqlDataReader reader6 = cmd6.ExecuteReader();
+                while (reader6.Read())
+                {
+                    idLavagemGastrica = (int)reader6["IdAtitude"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar se o tipo de atitude terapêutica existe!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -620,7 +717,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
-
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar a(s) atitude(s) Terapêutica(s)!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
@@ -678,266 +778,419 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void variasAtitudes()
         {
-            //colheita expectoracao
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita expectoração'", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                id = (int)reader["IdAtitude"];
+                //colheita expectoracao
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita expectoração'", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = (int)reader["IdAtitude"];
+                }
+                conn.Close();
             }
-            conn.Close();
-
-            //exsudado zaragatoa
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd1 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita exsudado zaragatoa'", conn);
-            SqlDataReader reader1 = cmd1.ExecuteReader();
-            while (reader1.Read())
+            catch (Exception)
             {
-                idZaragatoa = (int)reader1["IdAtitude"];
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            conn.Close();
 
-       
-
-        //Fezes Paratológico
-        conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd2 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita fezes parasitológico'", conn);
-            SqlDataReader reader2 = cmd2.ExecuteReader();
-            while (reader2.Read())
+            try
             {
-                idFezesParasitologico = (int) reader2["IdAtitude"];
+                //exsudado zaragatoa
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd1 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita exsudado zaragatoa'", conn);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    idZaragatoa = (int)reader1["IdAtitude"];
+                }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-            //Fezes sangue Oculto
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd3 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita fezes sangue oculto'", conn);
+            try
+            {
+                //Fezes Paratológico
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd2 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita fezes parasitológico'", conn);
+                SqlDataReader reader2 = cmd2.ExecuteReader();
+                while (reader2.Read())
+                {
+                    idFezesParasitologico = (int)reader2["IdAtitude"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try
+            {
+
+                //Fezes sangue Oculto
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd3 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita fezes sangue oculto'", conn);
                 SqlDataReader reader3 = cmd3.ExecuteReader();
-            while (reader3.Read())
-            {
-                idFezesSangueOculto = (int) reader3["IdAtitude"];
+                while (reader3.Read())
+                {
+                    idFezesSangueOculto = (int)reader3["IdAtitude"];
+                }
+                conn.Close();
             }
-            conn.Close();
-
-            //Colheita Sangue
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd4 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita sangue'", conn);
-            SqlDataReader reader4 = cmd4.ExecuteReader();
-            while (reader4.Read())
+            catch (Exception)
             {
-                idColheitaSangue = (int)reader4["IdAtitude"];
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            conn.Close();
 
-            //Enema Limpeza
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd5 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Enema limpeza'", conn);
-            SqlDataReader reader5 = cmd5.ExecuteReader();
-            while (reader5.Read())
+            try
             {
-                idEnemaLimpeza = (int)reader5["IdAtitude"];
+                //Colheita Sangue
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd4 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colheita sangue'", conn);
+                SqlDataReader reader4 = cmd4.ExecuteReader();
+                while (reader4.Read())
+                {
+                    idColheitaSangue = (int)reader4["IdAtitude"];
+                }
+                conn.Close();
             }
-            conn.Close();
-
-            //Lavagem Gastrica
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd6 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Lavagem Gástrica'", conn);
-            SqlDataReader reader6 = cmd6.ExecuteReader();
-            while (reader6.Read())
+            catch (Exception)
             {
-                idLavagemGastrica = (int)reader6["IdAtitude"];
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            conn.Close();
 
+            try
+            {
+                //Enema Limpeza
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd5 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Enema limpeza'", conn);
+                SqlDataReader reader5 = cmd5.ExecuteReader();
+                while (reader5.Read())
+                {
+                    idEnemaLimpeza = (int)reader5["IdAtitude"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            try
+            {
+                //Lavagem Gastrica
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd6 = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Lavagem Gástrica'", conn);
+                SqlDataReader reader6 = cmd6.ExecuteReader();
+                while (reader6.Read())
+                {
+                    idLavagemGastrica = (int)reader6["IdAtitude"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-    }
+        }
 
         private Boolean VerificarDadosInseridos()
         {
-
-            if (cbColheitaExpetoracao.Checked == true)
+            try
             {
-                conn.Open();
-                com.Connection = conn;
-
-                SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
-                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                cmd.Parameters.AddWithValue("@id", id);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                if (cbColheitaExpetoracao.Checked == true)
                 {
-                    DateTime dataRegistoHoje = DateTime.Today;
+                    conn.Open();
+                    com.Connection = conn;
 
-                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                    if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && id == (int)reader["IdAtitude"])
+                    SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                    cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        MessageBox.Show("Não é possível registar a Colheita Expectoração, porque já esta registado na data de hoje!\n Seleciona outra data!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        conn.Close();
-                        return false;
+                        DateTime dataRegistoHoje = DateTime.Today;
+
+                        DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                        if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && id == (int)reader["IdAtitude"])
+                        {
+                            MessageBox.Show("Não é possível registar a Colheita Expectoração, porque já esta registado na data de hoje!\n Seleciona outra data!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            conn.Close();
+                            return false;
+                        }
                     }
+                    conn.Close();
                 }
-                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (cbZaragatoa.Checked == true)
+
+            try
             {
-                conn.Open();
-                com.Connection = conn;
-
-                SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
-                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                cmd.Parameters.AddWithValue("@id", idZaragatoa);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                if (cbZaragatoa.Checked == true)
                 {
-                    DateTime dataRegistoHoje = DateTime.Today;
+                    conn.Open();
+                    com.Connection = conn;
 
-                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                    if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idZaragatoa == (int)reader["IdAtitude"])
+                    SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                    cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                    cmd.Parameters.AddWithValue("@id", idZaragatoa);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        MessageBox.Show("Não é possível registar a Colheita Exsudado Zaragatoa, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        conn.Close();
-                        return false;
+                        DateTime dataRegistoHoje = DateTime.Today;
+
+                        DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                        if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idZaragatoa == (int)reader["IdAtitude"])
+                        {
+                            MessageBox.Show("Não é possível registar a Colheita Exsudado Zaragatoa, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            conn.Close();
+                            return false;
+                        }
                     }
+                    conn.Close();
                 }
-                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (cbFezesParasitologico.Checked == true)
+            try
             {
-                conn.Open();
-                com.Connection = conn;
-
-                SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
-                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                cmd.Parameters.AddWithValue("@id", idFezesParasitologico);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                if (cbFezesParasitologico.Checked == true)
                 {
-                    DateTime dataRegistoHoje = DateTime.Today;
+                    conn.Open();
+                    com.Connection = conn;
 
-                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                    if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idFezesParasitologico == (int)reader["IdAtitude"])
+                    SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                    cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                    cmd.Parameters.AddWithValue("@id", idFezesParasitologico);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        MessageBox.Show("Não é possível registar a Colheita Fezes Parasitológico, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        conn.Close();
-                        return false;
+                        DateTime dataRegistoHoje = DateTime.Today;
+
+                        DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                        if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idFezesParasitologico == (int)reader["IdAtitude"])
+                        {
+                            MessageBox.Show("Não é possível registar a Colheita Fezes Parasitológico, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            conn.Close();
+                            return false;
+                        }
                     }
+                    conn.Close();
                 }
-                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (cbFezesSangueOculto.Checked == true)
+            try
             {
-                conn.Open();
-                com.Connection = conn;
-
-                SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
-                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                cmd.Parameters.AddWithValue("@id", idFezesSangueOculto);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                if (cbFezesSangueOculto.Checked == true)
                 {
-                    DateTime dataRegistoHoje = DateTime.Today;
+                    conn.Open();
+                    com.Connection = conn;
 
-                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                    if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idFezesSangueOculto == (int)reader["IdAtitude"])
+                    SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                    cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                    cmd.Parameters.AddWithValue("@id", idFezesSangueOculto);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        MessageBox.Show("Não é possível registar a Colheita Fezes Sangue Oculto, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        conn.Close();
-                        return false;
+                        DateTime dataRegistoHoje = DateTime.Today;
+
+                        DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                        if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idFezesSangueOculto == (int)reader["IdAtitude"])
+                        {
+                            MessageBox.Show("Não é possível registar a Colheita Fezes Sangue Oculto, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            conn.Close();
+                            return false;
+                        }
                     }
+                    conn.Close();
                 }
-                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (cbColheitaSangue.Checked == true)
+            try
             {
-                conn.Open();
-                com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
-                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                cmd.Parameters.AddWithValue("@id", idColheitaSangue);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                if (cbColheitaSangue.Checked == true)
                 {
-                    DateTime dataRegistoHoje = DateTime.Today;
+                    conn.Open();
+                    com.Connection = conn;
 
-                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                    if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idColheitaSangue == (int)reader["IdAtitude"])
+                    SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                    cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                    cmd.Parameters.AddWithValue("@id", idColheitaSangue);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        MessageBox.Show("Não é possível registar a Colheita Sangue, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        conn.Close();
-                        return false;
+                        DateTime dataRegistoHoje = DateTime.Today;
+
+                        DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                        if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idColheitaSangue == (int)reader["IdAtitude"])
+                        {
+                            MessageBox.Show("Não é possível registar a Colheita Sangue, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            conn.Close();
+                            return false;
+                        }
                     }
+                    conn.Close();
                 }
-                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (cbEnemaLimpeza.Checked == true)
+            try
             {
-                conn.Open();
-                com.Connection = conn;
-
-                SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
-                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                cmd.Parameters.AddWithValue("@id", idEnemaLimpeza);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                if (cbEnemaLimpeza.Checked == true)
                 {
-                    DateTime dataRegistoHoje = DateTime.Today;
+                    conn.Open();
+                    com.Connection = conn;
 
-                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                    if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idEnemaLimpeza == (int)reader["IdAtitude"])
+                    SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                    cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                    cmd.Parameters.AddWithValue("@id", idEnemaLimpeza);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        MessageBox.Show("Não é possível registar a Enema Limpeza, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        conn.Close();
-                        return false;
+                        DateTime dataRegistoHoje = DateTime.Today;
+
+                        DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                        if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idEnemaLimpeza == (int)reader["IdAtitude"])
+                        {
+                            MessageBox.Show("Não é possível registar a Enema Limpeza, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            conn.Close();
+                            return false;
+                        }
                     }
+                    conn.Close();
                 }
-                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (cbLavagemGastrica.Checked == true)
+            try
             {
-                conn.Open();
-                com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
-                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                cmd.Parameters.AddWithValue("@id", idLavagemGastrica);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                if (cbLavagemGastrica.Checked == true)
                 {
-                    DateTime dataRegistoHoje = DateTime.Today;
+                    conn.Open();
+                    com.Connection = conn;
 
-                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                    if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idLavagemGastrica == (int)reader["IdAtitude"])
+                    SqlCommand cmd = new SqlCommand("select * from VariasAtitudes WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                    cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                    cmd.Parameters.AddWithValue("@id", idLavagemGastrica);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        MessageBox.Show("Não é possível registar a Lavagem Gástrica, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        conn.Close();
-                        return false;
+                        DateTime dataRegistoHoje = DateTime.Today;
+
+                        DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                        if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && idLavagemGastrica == (int)reader["IdAtitude"])
+                        {
+                            MessageBox.Show("Não é possível registar a Lavagem Gástrica, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            conn.Close();
+                            return false;
+                        }
                     }
+                    conn.Close();
                 }
-                conn.Close();
-            }                     
-                return true;
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return true;
         }
 
         private void button10_Click(object sender, EventArgs e)

@@ -44,55 +44,65 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnAlteraPassword_Click(object sender, EventArgs e)
         {
-            if (dataGridViewMarcacoes.Rows.Count >= 1 && dataGridViewMarcacoes.CurrentCell != null)
+            try
             {
-               
-                int i = dataGridViewMarcacoes.CurrentCell.RowIndex;
-                //dataGridViewMarcacoes.CurrentRow.
-                if (i != auxiliar.Count + 1)
+                if (dataGridViewMarcacoes.Rows.Count >= 1 && dataGridViewMarcacoes.CurrentCell != null)
                 {
-                   // if (dataGridViewMarcacoes.Rows[i].Cells[1].Value != null)
-               // {
-                    agenda = new AgendamentoConsultaGridView
-                    {
-                        horaProximaConsulta = dataGridViewMarcacoes.Rows[i].Cells[0].Value.ToString(),
-                        dataProximaConsulta = dataGridViewMarcacoes.Rows[i].Cells[1].Value.ToString(),
-                        NomePaciente = dataGridViewMarcacoes.Rows[i].Cells[2].Value.ToString(),
-                        NifPaciente = Convert.ToInt32(dataGridViewMarcacoes.Rows[i].Cells[3].Value.ToString())
-                    };
 
-                    if (agenda != null)
+                    int i = dataGridViewMarcacoes.CurrentCell.RowIndex;
+                    //dataGridViewMarcacoes.CurrentRow.
+                    if (i != auxiliar.Count + 1)
                     {
-                        string data = DateTime.ParseExact(agenda.dataProximaConsulta, "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
-                        Paciente paciente1 = ClasseAuxiliarBD.getPacienteByNif(agenda.NifPaciente);
-
-                        var resposta = MessageBox.Show("Tem a certeza que deseja eliminar esta consulta?", "Eliminar Consulta!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (resposta == DialogResult.Yes)
+                        // if (dataGridViewMarcacoes.Rows[i].Cells[1].Value != null)
+                        // {
+                        agenda = new AgendamentoConsultaGridView
                         {
-                            conn.Open();
-                            string queryInsertData = "DELETE from AgendamentoConsulta WHERE IdEnfermeiro =@IdEnfermeiro AND IdPaciente = @IdPaciente AND dataProximaConsulta = @dataProximaConsulta AND horaProximaConsulta = @horaProximaConsulta ";
-                            SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
-                            sqlCommand.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
-                            sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente1.IdPaciente);
-                            sqlCommand.Parameters.AddWithValue("@dataProximaConsulta", data);
-                            sqlCommand.Parameters.AddWithValue("@horaProximaConsulta", agenda.horaProximaConsulta);
+                            horaProximaConsulta = dataGridViewMarcacoes.Rows[i].Cells[0].Value.ToString(),
+                            dataProximaConsulta = dataGridViewMarcacoes.Rows[i].Cells[1].Value.ToString(),
+                            NomePaciente = dataGridViewMarcacoes.Rows[i].Cells[2].Value.ToString(),
+                            NifPaciente = Convert.ToInt32(dataGridViewMarcacoes.Rows[i].Cells[3].Value.ToString())
+                        };
+
+                        if (agenda != null)
+                        {
+                            string data = DateTime.ParseExact(agenda.dataProximaConsulta, "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
+                            Paciente paciente1 = ClasseAuxiliarBD.getPacienteByNif(agenda.NifPaciente);
+
+                            var resposta = MessageBox.Show("Tem a certeza que deseja eliminar esta consulta?", "Eliminar Consulta!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (resposta == DialogResult.Yes)
+                            {
+                                conn.Open();
+                                string queryInsertData = "DELETE from AgendamentoConsulta WHERE IdEnfermeiro =@IdEnfermeiro AND IdPaciente = @IdPaciente AND dataProximaConsulta = @dataProximaConsulta AND horaProximaConsulta = @horaProximaConsulta ";
+                                SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
+                                sqlCommand.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
+                                sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente1.IdPaciente);
+                                sqlCommand.Parameters.AddWithValue("@dataProximaConsulta", data);
+                                sqlCommand.Parameters.AddWithValue("@horaProximaConsulta", agenda.horaProximaConsulta);
 
 
-                            sqlCommand.ExecuteNonQuery();
-                            MessageBox.Show("Consulta desmarcada com Sucesso!", "Consulta Desmarcada Consulta!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            conn.Close();
-                            UpdateGridViewConsultas();
-                            formMenu.UpdateGridViewConsultas();
+                                sqlCommand.ExecuteNonQuery();
+                                MessageBox.Show("Consulta desmarcada com Sucesso!", "Consulta Desmarcada Consulta!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                conn.Close();
+                                UpdateGridViewConsultas();
+                                formMenu.UpdateGridViewConsultas();
+                            }
                         }
                     }
+                    var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
+                    dataGridViewMarcacoes.DataSource = bindingSource1;
+                    agenda = null;
+
                 }
-                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
-                dataGridViewMarcacoes.DataSource = bindingSource1;
                 agenda = null;
-
             }
-            agenda = null;
-
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível eliminar a consulta!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -122,6 +132,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException )
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Não foi possível adiar a consulta devido a erro interno" , "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -169,26 +183,36 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
 
-
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from AgendamentoConsulta WHERE IdEnfermeiro =  " + enfermeiro.IdEnfermeiro, conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                string hora = (string)reader["horaProximaConsulta"];
-                DateTime dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                conn.Open();
+                com.Connection = conn;
 
-                if (data.ToShortDateString().Equals(dataConsulta.ToShortDateString()) && hora.Equals(string.Format("{0:00}", horaSup.Hour) + ":" + string.Format("{0:00}", horaSup.Minute)))
+                SqlCommand cmd = new SqlCommand("select * from AgendamentoConsulta WHERE IdEnfermeiro =  " + enfermeiro.IdEnfermeiro, conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    MessageBox.Show("O horário que pretende marcar a consulta está indisponível, já existe consulta nesse momento. Tende outra data e/ou outra hora.");
-                    conn.Close();
-                    return false;
+                    string hora = (string)reader["horaProximaConsulta"];
+                    DateTime dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+
+                    if (data.ToShortDateString().Equals(dataConsulta.ToShortDateString()) && hora.Equals(string.Format("{0:00}", horaSup.Hour) + ":" + string.Format("{0:00}", horaSup.Minute)))
+                    {
+                        MessageBox.Show("O horário que pretende marcar a consulta está indisponível, já existe consulta nesse momento. Tende outra data e/ou outra hora.");
+                        conn.Close();
+                        return false;
+                    }
                 }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar as consultas agendadas!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return true;
         }
 
@@ -236,6 +260,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateGridViewConsultas()
         {
+            try
+            {
             agendamentos.Clear();
          
             conn.Open();
@@ -277,8 +303,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dataGridViewMarcacoes.DataSource];
 
             currencyManager1.SuspendBinding();
-            //   dataGridViewMarcacoes.CurrentCell = null;
-            //   dataGridViewMarcacoes.Rows[dataGridViewMarcacoes.Rows.Count -1].Disable = false;
+                //   dataGridViewMarcacoes.CurrentCell = null;
+                //   dataGridViewMarcacoes.Rows[dataGridViewMarcacoes.Rows.Count -1].Disable = false;
+
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private List<AgendamentoConsultaGridView> filtrosDePesquisa()

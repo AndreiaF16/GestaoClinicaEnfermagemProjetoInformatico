@@ -100,6 +100,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 else
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("A lista de encomenda não contem items. Para poder registar a encomenda, tem de ter pelo menos um item", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }

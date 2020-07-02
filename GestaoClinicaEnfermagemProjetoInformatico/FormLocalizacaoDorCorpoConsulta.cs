@@ -187,6 +187,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -218,27 +222,36 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
-           
 
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorConsulta WHERE IdPaciente = @IdPaciente", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                DateTime dataR = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                if (dataRegisto.Value.ToShortDateString().Equals(dataR.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"])
-                {
-                    MessageBox.Show("Não é possível registar, porque já esta registado na data que selecionou!\n Selecione outra data!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    conn.Close();
-                    return false;
-                }
-            }
-            conn.Close();
+                conn.Open();
+                com.Connection = conn;
 
+                SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorConsulta WHERE IdPaciente = @IdPaciente", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    DateTime dataR = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                    if (dataRegisto.Value.ToShortDateString().Equals(dataR.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"])
+                    {
+                        MessageBox.Show("Não é possível registar, porque já esta registado na data que selecionou!\n Selecione outra data!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return false;
+                    }
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return true;
         }
 

@@ -234,6 +234,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar a Espirometria!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -241,37 +245,49 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            espirometria.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, fev, fvc, fr, caracteristicaSuperficial, caracteristicaProfunda, caracteristicaAdbominal, caracteristicaToracica, caracteristicaMista, escalaDor, observacoes  from Espirometria ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                espirometria.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                Espirometria esp = new Espirometria
+                SqlCommand cmd = new SqlCommand("select data, fev, fvc, fr, caracteristicaSuperficial, caracteristicaProfunda, caracteristicaAdbominal, caracteristicaToracica, caracteristicaMista, escalaDor, observacoes  from Espirometria ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-                    dataEspirometria = data,
-                    fev = ((reader["fev"] == DBNull.Value) ? "" : (string)reader["fev"]),
-                    fvc = ((reader["fvc"] == DBNull.Value) ? "" : (string)reader["fvc"]),
-                    numerofr = ((reader["fr"] == DBNull.Value) ? null : (int?)reader["fr"]),
-                    superficial = ((reader["caracteristicaSuperficial"] == DBNull.Value) ? "" : (string)reader["caracteristicaSuperficial"]),
-                    profunda = ((reader["caracteristicaProfunda"] == DBNull.Value) ? "" : (string)reader["caracteristicaProfunda"]),
-                    abdominal = ((reader["caracteristicaAdbominal"] == DBNull.Value) ? "" : (string)reader["caracteristicaAdbominal"]),
-                    toracica = ((reader["caracteristicaToracica"] == DBNull.Value) ? "" : (string)reader["caracteristicaToracica"]),
-                    mista = ((reader["caracteristicaMista"] == DBNull.Value) ? "" : (string)reader["caracteristicaMista"]),
-                    escalaDor = ((reader["escalaDor"] == DBNull.Value) ? "" : (string)reader["escalaDor"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    Espirometria esp = new Espirometria
+                    {
 
-                };
-                espirometria.Add(esp);
+                        dataEspirometria = data,
+                        fev = ((reader["fev"] == DBNull.Value) ? "" : (string)reader["fev"]),
+                        fvc = ((reader["fvc"] == DBNull.Value) ? "" : (string)reader["fvc"]),
+                        numerofr = ((reader["fr"] == DBNull.Value) ? null : (int?)reader["fr"]),
+                        superficial = ((reader["caracteristicaSuperficial"] == DBNull.Value) ? "" : (string)reader["caracteristicaSuperficial"]),
+                        profunda = ((reader["caracteristicaProfunda"] == DBNull.Value) ? "" : (string)reader["caracteristicaProfunda"]),
+                        abdominal = ((reader["caracteristicaAdbominal"] == DBNull.Value) ? "" : (string)reader["caracteristicaAdbominal"]),
+                        toracica = ((reader["caracteristicaToracica"] == DBNull.Value) ? "" : (string)reader["caracteristicaToracica"]),
+                        mista = ((reader["caracteristicaMista"] == DBNull.Value) ? "" : (string)reader["caracteristicaMista"]),
+                        escalaDor = ((reader["escalaDor"] == DBNull.Value) ? "" : (string)reader["escalaDor"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+
+                    };
+                    espirometria.Add(esp);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = espirometria };
+                conn.Close();
+            
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = espirometria };
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private Boolean VerificarDadosInseridos()

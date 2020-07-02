@@ -35,16 +35,29 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void AdicionarImplanteContracetivoPaciente_Load(object sender, EventArgs e)
         {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Implante Contracetivo SubDermico'", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                id = (int)reader["IdAtitude"];
-            }
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Implante Contracetivo SubDermico'", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = (int)reader["IdAtitude"];
+                }
 
-            conn.Close();
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+            }
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -119,7 +132,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
-
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar o Implante Contracetivo SubDérmico!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -178,14 +194,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 return false;
             }
-
-            /* if (var2 > var3)
-             {
-                 MessageBox.Show("A data de retirada do DIU tem de ser superior à data de colocação do mesmo! \n Corrija as datas!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                 errorProvider.SetError(dataColocacao, "A data tem de ser superior à data de retirada!");
-                 return false;
-             }*/
-
             if (var3 < var2)
             {
                 MessageBox.Show("A data de colocação do DIU tem de ser inferior à data de retirada do mesmo! \n Corrija as datas!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -193,27 +201,39 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from ImplanteContracetivo WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            cmd.Parameters.AddWithValue("@id", id);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                if (dataRegistoMed.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && id == (int)reader["IdAtitude"])
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from ImplanteContracetivo WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    MessageBox.Show("Não é possível registar, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    conn.Close();
-                    return false;
+                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                    if (dataRegistoMed.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && id == (int)reader["IdAtitude"])
+                    {
+                        MessageBox.Show("Não é possível registar, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return false;
+                    }
+
                 }
+                conn.Close();
 
             }
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
             return true;
         }
 

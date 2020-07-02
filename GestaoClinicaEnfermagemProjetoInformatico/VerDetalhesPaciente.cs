@@ -37,36 +37,47 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void consultasRealizadas()
         {
-            ConsultasPaciente consultasPaciente = new ConsultasPaciente();
-
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Consulta WHERE IdPaciente =  @IdPaciente", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-            // Paciente paciente = null;
-
-            while (reader.Read())
+            try
             {
-                consultasPaciente = new ConsultasPaciente
-                {
+                ConsultasPaciente consultasPaciente = new ConsultasPaciente();
 
-                    dataConsulta = Convert.ToDateTime(reader["dataConsulta"]),
-                    horaInicioConsulta = (string)reader["horaInicioConsulta"],
-                    historiaAtual = ((reader["historiaAtual"] == DBNull.Value) ? "" : (string)reader["historiaAtual"]),
-                    sintomatologia = ((reader["sintomatologia"] == DBNull.Value) ? "" : (string)reader["sintomatologia"]),
-                    sinais = ((reader["sinais"] == DBNull.Value) ? "" : (string)reader["sinais"]),
-                    escalaDor = ((reader["escalaDor"] == DBNull.Value) ? "" : (string)reader["escalaDor"]),
-                    diagnostico = ((reader["diagnostico"] == DBNull.Value) ? "" : (string)reader["diagnostico"]),
-                    valorConsulta = Convert.ToDouble(reader["valorConsulta"]),
-                };
-                listaConsultasPaciente.Add(consultasPaciente);
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from Consulta WHERE IdPaciente =  @IdPaciente", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
+                // Paciente paciente = null;
+
+                while (reader.Read())
+                {
+                    consultasPaciente = new ConsultasPaciente
+                    {
+
+                        dataConsulta = Convert.ToDateTime(reader["dataConsulta"]),
+                        horaInicioConsulta = (string)reader["horaInicioConsulta"],
+                        historiaAtual = ((reader["historiaAtual"] == DBNull.Value) ? "" : (string)reader["historiaAtual"]),
+                        sintomatologia = ((reader["sintomatologia"] == DBNull.Value) ? "" : (string)reader["sintomatologia"]),
+                        sinais = ((reader["sinais"] == DBNull.Value) ? "" : (string)reader["sinais"]),
+                        escalaDor = ((reader["escalaDor"] == DBNull.Value) ? "" : (string)reader["escalaDor"]),
+                        diagnostico = ((reader["diagnostico"] == DBNull.Value) ? "" : (string)reader["diagnostico"]),
+                        valorConsulta = Convert.ToDouble(reader["valorConsulta"]),
+                    };
+                    listaConsultasPaciente.Add(consultasPaciente);
+                }
+                conn.Close();
+                UpdateDataGridView();
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaConsultasPaciente };
+                dataGridViewConsultas.DataSource = bindingSource1;
             }
-            conn.Close();
-            UpdateDataGridView();
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaConsultasPaciente };
-            dataGridViewConsultas.DataSource = bindingSource1;
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados das consultas!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void btnVoltar_Click(object sender, EventArgs e)
         {
@@ -144,37 +155,48 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void gridViewAnalises()
         {
-            analisePaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select analise.NomeAnalise, analisesP.data, analisesP.resultados, analisesP.observacoes from analisesLaboratoriaisPaciente analisesP JOIN analisesLaboratoriais analise ON analisesP.IdAnalisesLaboratoriais = analise.IdAnalisesLaboratoriais WHERE IdPaciente = @IdPaciente ORDER BY analisesP.data, analise.NomeAnalise", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                analisePaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select analise.NomeAnalise, analisesP.data, analisesP.resultados, analisesP.observacoes from analisesLaboratoriaisPaciente analisesP JOIN analisesLaboratoriais analise ON analisesP.IdAnalisesLaboratoriais = analise.IdAnalisesLaboratoriais WHERE IdPaciente = @IdPaciente ORDER BY analisesP.data, analise.NomeAnalise", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                AnaliseLaboratorialPaciente an = new AnaliseLaboratorialPaciente
+                while (reader.Read())
                 {
-                    nome = (string)reader["NomeAnalise"],
-                    data = data,
-                    resultados = ((reader["resultados"] == DBNull.Value) ? "" : (string)reader["resultados"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-                };
-                analisePaciente.Add(an);
+                    AnaliseLaboratorialPaciente an = new AnaliseLaboratorialPaciente
+                    {
+                        nome = (string)reader["NomeAnalise"],
+                        data = data,
+                        resultados = ((reader["resultados"] == DBNull.Value) ? "" : (string)reader["resultados"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+
+                    };
+                    analisePaciente.Add(an);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = analisePaciente };
+                dataGridViewAnalises.DataSource = bindingSource1;
+                dataGridViewAnalises.Columns[0].HeaderText = "Análise";
+                dataGridViewAnalises.Columns[1].HeaderText = "Data de Diagnóstico";
+                dataGridViewAnalises.Columns[2].HeaderText = "Resultados";
+                dataGridViewAnalises.Columns[3].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewAnalises.Update();
+                dataGridViewAnalises.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = analisePaciente };
-            dataGridViewAnalises.DataSource = bindingSource1;
-            dataGridViewAnalises.Columns[0].HeaderText = "Análise";
-            dataGridViewAnalises.Columns[1].HeaderText = "Data de Diagnóstico";
-            dataGridViewAnalises.Columns[2].HeaderText = "Resultados";
-            dataGridViewAnalises.Columns[3].HeaderText = "Observações";
-
-            conn.Close();
-            dataGridViewAnalises.Update();
-            dataGridViewAnalises.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados das análises!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

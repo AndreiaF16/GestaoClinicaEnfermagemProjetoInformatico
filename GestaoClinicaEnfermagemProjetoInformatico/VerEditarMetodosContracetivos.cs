@@ -92,25 +92,35 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private List<MetodoContracetivo> getMetodosContracetivos()
         {
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from MetodoContracetivo order by nomeMetodoContracetivo", conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                metodo = new MetodoContracetivo
-                {
-                    nomeMetodoContracetivo = (string)reader["nomeMetodoContracetivo"],
-                    observacao = (string)reader["observacoes"],
-                    IdMetodoContracetivo = (int)reader["IdMetodoContracetivo"],
-                };
-                listaMetodosContracetivos.Add(metodo);
-            }
-            conn.Close();
+                conn.Open();
+                com.Connection = conn;
 
+                SqlCommand cmd = new SqlCommand("select * from MetodoContracetivo order by nomeMetodoContracetivo", conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    metodo = new MetodoContracetivo
+                    {
+                        nomeMetodoContracetivo = (string)reader["nomeMetodoContracetivo"],
+                        observacao = (string)reader["observacoes"],
+                        IdMetodoContracetivo = (int)reader["IdMetodoContracetivo"],
+                    };
+                    listaMetodosContracetivos.Add(metodo);
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return listaMetodosContracetivos;
         }
 
@@ -148,9 +158,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Erro interno, não foi possível alterar o método contracetivo!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível alterar o método contracetivo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

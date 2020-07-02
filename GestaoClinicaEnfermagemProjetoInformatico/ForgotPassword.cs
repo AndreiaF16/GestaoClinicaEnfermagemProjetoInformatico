@@ -15,11 +15,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class ForgotPassword : Form
     {
        private Enfermeiro enfermeiro = null;
-
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
         public ForgotPassword(Enfermeiro enf)
         {
             InitializeComponent();
             enfermeiro = enf;
+                        conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         }
 
@@ -44,8 +46,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (Exception)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível alterar a palavra passe", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
             }
             else

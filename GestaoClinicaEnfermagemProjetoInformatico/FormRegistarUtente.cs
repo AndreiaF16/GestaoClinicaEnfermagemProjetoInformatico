@@ -316,56 +316,62 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
             }
 
-
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Paciente", conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                // double Nif = (double)(reader["nif"]);
-                //string Email = (string)reader["Email"];
-                //string hora = (string)reader["horaProximaConsulta"];
-                //  DateTime dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                conn.Open();
+                com.Connection = conn;
 
-               // NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
+                SqlCommand cmd = new SqlCommand("select * from Paciente", conn);
 
-                if (!(reader["Email"] == DBNull.Value)) {
-                    if (txtEmail.Text.Equals((string)reader["Email"]))
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    // double Nif = (double)(reader["nif"]);
+                    //string Email = (string)reader["Email"];
+                    //string hora = (string)reader["horaProximaConsulta"];
+                    //  DateTime dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+
+                    // NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
+
+                    if (!(reader["Email"] == DBNull.Value))
                     {
-                        MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.");
+                        if (txtEmail.Text.Equals((string)reader["Email"]))
+                        {
+                            MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.");
+                            conn.Close();
+                            return false;
+                        }
+
+                    }
+
+                    if (Convert.ToInt32(txtNif.Text) == Convert.ToInt32(reader["Nif"]))
+                    {
+                        MessageBox.Show("O NIF que colocou já se encontra registado, coloque outro.");
                         conn.Close();
                         return false;
                     }
 
-                }
-                
-                if (Convert.ToInt32(txtNif.Text) == Convert.ToInt32(reader["Nif"]))
-                {
-                    MessageBox.Show("O NIF que colocou já se encontra registado, coloque outro.");
-                    conn.Close();
-                    return false;
-                }
-
-                if (!(reader["NumeroSNS"] == DBNull.Value))
-                {
-
-                    if (Convert.ToInt32(txtSNS.Text) == Convert.ToInt32(reader["NumeroSNS"]))
+                    if (!(reader["NumeroSNS"] == DBNull.Value))
                     {
-                        MessageBox.Show("O número do SNS que colocou já se encontra registado, coloque outro.");
-                        conn.Close();
-                        return false;
+
+                        if (Convert.ToInt32(txtSNS.Text) == Convert.ToInt32(reader["NumeroSNS"]))
+                        {
+                            MessageBox.Show("O número do SNS que colocou já se encontra registado, coloque outro.");
+                            conn.Close();
+                            return false;
+                        }
                     }
-
-
                 }
-
-
-
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return true;
         }
 

@@ -53,68 +53,82 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            com.Connection = conn;
-
-            byte[] hash;
-
-            hash = new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.ASCII.GetBytes(txtPassword.Text));
-
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            for (int i = 0; i < hash.Length; i++)
+            try
             {
-                sb.Append(hash[i].ToString("X2"));
-            }
+                conn.Open();
+                com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Enfermeiro where username = @username  AND password = @password", conn);
-            cmd.Parameters.AddWithValue("@username", txtUsername.Text);
+                byte[] hash;
 
-            cmd.Parameters.AddWithValue("@password", sb.ToString());
-            
-            SqlDataReader reader = cmd.ExecuteReader();
+                hash = new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.ASCII.GetBytes(txtPassword.Text));
 
-
-            if (reader.Read())
-            {
-                //string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                string data = DateTime.ParseExact(reader["dataNascimento"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-
-                Enfermeiro enfermeiro = new Enfermeiro
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                for (int i = 0; i < hash.Length; i++)
                 {
-                    IdEnfermeiro = (int)reader["IdEnfermeiro"],
-                    nome = (string)reader["nome"],
-                    funcao = (string)reader["funcao"],
-                    username = (string)reader["username"],
-                    contacto = Convert.ToDouble(reader["contacto"]),
-                    email = (string)reader["email"],
-                    permissao = (int)reader["permissao"],
-                    DataNascimento = data
-                };
+                    sb.Append(hash[i].ToString("X2"));
+                }
 
-                if ((bool)reader["passwordDefault"] == true)
+                SqlCommand cmd = new SqlCommand("select * from Enfermeiro where username = @username  AND password = @password", conn);
+                cmd.Parameters.AddWithValue("@username", txtUsername.Text);
+
+                cmd.Parameters.AddWithValue("@password", sb.ToString());
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+
+                if (reader.Read())
                 {
+                    //string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                    string data = DateTime.ParseExact(reader["dataNascimento"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-                    PrimeiroAcesso redefenirPrimeiroAcesso = new PrimeiroAcesso(enfermeiro);
-                    redefenirPrimeiroAcesso.Show();
-                    txtUsername.Text = "";
-                    txtPassword.Text = "";
+                    Enfermeiro enfermeiro = new Enfermeiro
+                    {
+                        IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                        nome = (string)reader["nome"],
+                        funcao = (string)reader["funcao"],
+                        username = (string)reader["username"],
+                        contacto = Convert.ToDouble(reader["contacto"]),
+                        email = (string)reader["email"],
+                        permissao = (int)reader["permissao"],
+                        DataNascimento = data
+                    };
 
+                    if ((bool)reader["passwordDefault"] == true)
+                    {
+
+                        PrimeiroAcesso redefenirPrimeiroAcesso = new PrimeiroAcesso(enfermeiro);
+                        redefenirPrimeiroAcesso.Show();
+                        txtUsername.Text = "";
+                        txtPassword.Text = "";
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Login Efetuado com Sucesso", "Parabéns", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        FormMenu formMenu = new FormMenu(enfermeiro);
+                        formMenu.Show();
+                        this.Close();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Login Efetuado com Sucesso", "Parabéns", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    FormMenu formMenu = new FormMenu(enfermeiro);
-                    formMenu.Show();
-                    this.Close();
+                    MessageBox.Show("Nome de utilizador ou palavra passe errados. Volte a tentar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+                conn.Close();
+
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Nome de utilizador ou palavra passe errados. Volte a tentar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível iniciar sessão!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
-            
-            conn.Close();
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
@@ -227,68 +241,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             SendCodeUsername forgotUsername = new SendCodeUsername();
             forgotUsername.Show();
-        }
-
-        private void Login_Enter(object sender, EventArgs e)
-        {
-            conn.Open();
-            com.Connection = conn;
-
-            byte[] hash;
-
-            hash = new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.ASCII.GetBytes(txtPassword.Text));
-
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            for (int i = 0; i < hash.Length; i++)
-            {
-                sb.Append(hash[i].ToString("X2"));
-            }
-
-            SqlCommand cmd = new SqlCommand("select * from Enfermeiro where username = @username  AND password = @password", conn);
-            cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-
-            cmd.Parameters.AddWithValue("@password", sb.ToString());
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-
-            if (reader.Read())
-            {
-                Enfermeiro enfermeiro = new Enfermeiro
-                {
-                    IdEnfermeiro = (int)reader["IdEnfermeiro"],
-                    nome = (string)reader["nome"],
-                    funcao = (string)reader["funcao"],
-                    username = (string)reader["username"],
-                    contacto = Convert.ToDouble(reader["contacto"]),
-                    email = (string)reader["email"],
-                    permissao = (int)reader["permissao"]
-                };
-
-                if ((bool)reader["passwordDefault"] == true)
-                {
-
-                    PrimeiroAcesso redefenirPrimeiroAcesso = new PrimeiroAcesso(enfermeiro);
-                    redefenirPrimeiroAcesso.Show();
-                    txtUsername.Text = "";
-                    txtPassword.Text = "";
-
-                }
-                else
-                {
-                    MessageBox.Show("Login Efetuado com Sucesso", "Parabéns", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    FormMenu formMenu = new FormMenu(enfermeiro);
-                    formMenu.Show();
-                    this.Close();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Nome de utilizador ou palavra passe errados. Volte a tentar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            conn.Close();
-        }
+        }   
     }
 }

@@ -15,10 +15,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         AdicionarVisualizarAvaliacaoObjetivoPaciente adicionar = null;
         private ErrorProvider errorProvider = new ErrorProvider();
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
         public AdicionarMetodosContracetivos(AdicionarVisualizarAvaliacaoObjetivoPaciente avaliacaoPaciente)
         {
             InitializeComponent();
             adicionar = avaliacaoPaciente;
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         }
 
@@ -87,11 +90,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Método Contracetivo registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
-                    txtNomeMetodo.Text = "";
-                    txtObservacoes.Text = "";
+                    limparCampos();
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar o método contracetivo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -131,6 +137,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
         {
             txtNomeMetodo.Text = "";
             txtObservacoes.Text = "";

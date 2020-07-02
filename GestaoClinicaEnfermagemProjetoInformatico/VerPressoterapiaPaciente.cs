@@ -66,36 +66,47 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            pressoterapiaPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, membrosInferiores, membrosSuperiores, observacoes from Pressoterapia ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                pressoterapiaPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                PressoterapiaPaciente pressoterapia = new PressoterapiaPaciente
+                SqlCommand cmd = new SqlCommand("select data, membrosInferiores, membrosSuperiores, observacoes from Pressoterapia ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    membrosInferiores = ((reader["membrosInferiores"] == DBNull.Value) ? "" : (string)reader["membrosInferiores"]),
-                    membrosSuperiores = ((reader["membrosSuperiores"] == DBNull.Value) ? "" : (string)reader["membrosSuperiores"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                pressoterapiaPaciente.Add(pressoterapia);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = pressoterapiaPaciente };
-            dataGridViewAlgPaciente.DataSource = bindingSource1;
-            dataGridViewAlgPaciente.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewAlgPaciente.Columns[1].HeaderText = "Membros Inferiores";
-            dataGridViewAlgPaciente.Columns[2].HeaderText = "Membros Superiores";
-            dataGridViewAlgPaciente.Columns[3].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewAlgPaciente.Update();
-            dataGridViewAlgPaciente.Refresh();
+                    PressoterapiaPaciente pressoterapia = new PressoterapiaPaciente
+                    {
+                        data = data,
+                        membrosInferiores = ((reader["membrosInferiores"] == DBNull.Value) ? "" : (string)reader["membrosInferiores"]),
+                        membrosSuperiores = ((reader["membrosSuperiores"] == DBNull.Value) ? "" : (string)reader["membrosSuperiores"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    pressoterapiaPaciente.Add(pressoterapia);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = pressoterapiaPaciente };
+                dataGridViewAlgPaciente.DataSource = bindingSource1;
+                dataGridViewAlgPaciente.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewAlgPaciente.Columns[1].HeaderText = "Membros Inferiores";
+                dataGridViewAlgPaciente.Columns[2].HeaderText = "Membros Superiores";
+                dataGridViewAlgPaciente.Columns[3].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewAlgPaciente.Update();
+                dataGridViewAlgPaciente.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

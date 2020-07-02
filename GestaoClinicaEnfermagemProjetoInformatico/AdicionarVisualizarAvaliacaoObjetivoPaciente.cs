@@ -35,23 +35,34 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void reiniciar()
         {
-            metodosContracetivos.Clear();
-            comboBoxMetodoContracetivo.Items.Clear();
-            auxiliar.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from MetodoContracetivo order by nomeMetodoContracetivo asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader["nomeMetodoContracetivo"];
-                item.Value = (int)reader["IdMetodoContracetivo"];
-                comboBoxMetodoContracetivo.Items.Add(item);
-                metodosContracetivos.Add(item);
-            }
+                metodosContracetivos.Clear();
+                comboBoxMetodoContracetivo.Items.Clear();
+                auxiliar.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from MetodoContracetivo order by nomeMetodoContracetivo asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = (string)reader["nomeMetodoContracetivo"];
+                    item.Value = (int)reader["IdMetodoContracetivo"];
+                    comboBoxMetodoContracetivo.Items.Add(item);
+                    metodosContracetivos.Add(item);
+                }
 
-            conn.Close();
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os métodos contracetivos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void AdicionarVisualizarAvaliacaoObjetivoPaciente_Load(object sender, EventArgs e)
         {
@@ -345,6 +356,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar a avaliação objetivo", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

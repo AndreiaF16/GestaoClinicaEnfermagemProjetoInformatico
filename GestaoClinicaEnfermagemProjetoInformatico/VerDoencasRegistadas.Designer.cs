@@ -459,7 +459,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerDoencasRegistadas";
-            this.ShowInTaskbar = false;
             this.Text = "VerDoencasRegistadas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VerDoencasRegistadas_Load);

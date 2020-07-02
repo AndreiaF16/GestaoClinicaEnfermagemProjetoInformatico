@@ -75,46 +75,58 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            vacinacao.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, nomeVacina, marcaComercial, numeroInoculacao, lote, local, escalaDor, observacoes from Vacinacao ORDER BY data, nomeVacina asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                vacinacao.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                Vacinacao queima = new Vacinacao
+                SqlCommand cmd = new SqlCommand("select data, nomeVacina, marcaComercial, numeroInoculacao, lote, local, escalaDor, observacoes from Vacinacao ORDER BY data, nomeVacina asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-                    dataVacinacao = data,
-                    nomeVacina = ((reader["nomeVacina"] == DBNull.Value) ? "" : (string)reader["nomeVacina"]),
-                    marcaComercial = ((reader["marcaComercial"] == DBNull.Value) ? "" : (string)reader["marcaComercial"]),
-                    numeroInoculacao = ((reader["numeroInoculacao"] == DBNull.Value) ? "" : (string)reader["numeroInoculacao"]),
-                    lote = ((reader["lote"] == DBNull.Value) ? "" : (string)reader["lote"]),
-                    local = ((reader["local"] == DBNull.Value) ? "" : (string)reader["local"]),
-                    escalaDor = ((reader["escalaDor"] == DBNull.Value) ? "" : (string)reader["escalaDor"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    Vacinacao queima = new Vacinacao
+                    {
 
-                };
-                vacinacao.Add(queima);
+                        dataVacinacao = data,
+                        nomeVacina = ((reader["nomeVacina"] == DBNull.Value) ? "" : (string)reader["nomeVacina"]),
+                        marcaComercial = ((reader["marcaComercial"] == DBNull.Value) ? "" : (string)reader["marcaComercial"]),
+                        numeroInoculacao = ((reader["numeroInoculacao"] == DBNull.Value) ? "" : (string)reader["numeroInoculacao"]),
+                        lote = ((reader["lote"] == DBNull.Value) ? "" : (string)reader["lote"]),
+                        local = ((reader["local"] == DBNull.Value) ? "" : (string)reader["local"]),
+                        escalaDor = ((reader["escalaDor"] == DBNull.Value) ? "" : (string)reader["escalaDor"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+
+                    };
+                    vacinacao.Add(queima);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = vacinacao };
+                dataGridViewVacinacao.DataSource = bindingSource1;
+                dataGridViewVacinacao.Columns[0].HeaderText = "Data da Vacinação";
+                dataGridViewVacinacao.Columns[1].HeaderText = "Nome da Vacina";
+                dataGridViewVacinacao.Columns[2].HeaderText = "Marca Comercial";
+                dataGridViewVacinacao.Columns[3].HeaderText = "Número da Inoculação";
+                dataGridViewVacinacao.Columns[4].HeaderText = "Lote";
+                dataGridViewVacinacao.Columns[5].HeaderText = "Local";
+                dataGridViewVacinacao.Columns[6].HeaderText = "Dor";
+                dataGridViewVacinacao.Columns[7].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewVacinacao.Update();
+                dataGridViewVacinacao.Refresh();
+
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = vacinacao };
-            dataGridViewVacinacao.DataSource = bindingSource1;
-            dataGridViewVacinacao.Columns[0].HeaderText = "Data da Vacinação";
-            dataGridViewVacinacao.Columns[1].HeaderText = "Nome da Vacina";
-            dataGridViewVacinacao.Columns[2].HeaderText = "Marca Comercial";
-            dataGridViewVacinacao.Columns[3].HeaderText = "Número da Inoculação";
-            dataGridViewVacinacao.Columns[4].HeaderText = "Lote";
-            dataGridViewVacinacao.Columns[5].HeaderText = "Local";
-            dataGridViewVacinacao.Columns[6].HeaderText = "Dor";
-            dataGridViewVacinacao.Columns[7].HeaderText = "Observações";
-
-            conn.Close();
-            dataGridViewVacinacao.Update();
-            dataGridViewVacinacao.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -175,6 +175,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar a vacinação!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -199,33 +203,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            vacinacao.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, nomeVacina, marcaComercial, numeroInoculacao, lote, local, observacoes  from Vacinacao ORDER BY data, nomeVacina asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                vacinacao.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                Vacinacao queima = new Vacinacao
+                SqlCommand cmd = new SqlCommand("select data, nomeVacina, marcaComercial, numeroInoculacao, lote, local, observacoes  from Vacinacao ORDER BY data, nomeVacina asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-                    dataVacinacao = data,
-                    nomeVacina = ((reader["nomeVacina"] == DBNull.Value) ? "" : (string)reader["nomeVacina"]),
-                    marcaComercial = ((reader["marcaComercial"] == DBNull.Value) ? "" : (string)reader["marcaComercial"]),
-                    numeroInoculacao = ((reader["numeroInoculacao"] == DBNull.Value) ? "" : (string)reader["numeroInoculacao"]),
-                    lote = ((reader["lote"] == DBNull.Value) ? "" : (string)reader["lote"]),
-                    local = ((reader["local"] == DBNull.Value) ? "" : (string)reader["local"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    Vacinacao queima = new Vacinacao
+                    {
 
-                };
-                vacinacao.Add(queima);
+                        dataVacinacao = data,
+                        nomeVacina = ((reader["nomeVacina"] == DBNull.Value) ? "" : (string)reader["nomeVacina"]),
+                        marcaComercial = ((reader["marcaComercial"] == DBNull.Value) ? "" : (string)reader["marcaComercial"]),
+                        numeroInoculacao = ((reader["numeroInoculacao"] == DBNull.Value) ? "" : (string)reader["numeroInoculacao"]),
+                        lote = ((reader["lote"] == DBNull.Value) ? "" : (string)reader["lote"]),
+                        local = ((reader["local"] == DBNull.Value) ? "" : (string)reader["local"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+
+                    };
+                    vacinacao.Add(queima);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = vacinacao };
+                conn.Close();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = vacinacao };
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar a vacinação do paciente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private Boolean VerificarDadosInseridos()

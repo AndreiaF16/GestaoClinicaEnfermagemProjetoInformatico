@@ -105,42 +105,57 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar a doença", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
             }
         }
 
       private void UpdateDataGridView()
         {
-            doencaPacientes.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select doenca.Nome, doencaP.data, doencaP.observacoes from DoencaPaciente doencaP JOIN Doenca doenca ON doencaP.IdDoenca = doenca.IdDoenca WHERE IdPaciente = @IdPaciente ORDER BY doencaP.data, doenca.Nome", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                doencaPacientes.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select doenca.Nome, doencaP.data, doencaP.observacoes from DoencaPaciente doencaP JOIN Doenca doenca ON doencaP.IdDoenca = doenca.IdDoenca WHERE IdPaciente = @IdPaciente ORDER BY doencaP.data, doenca.Nome", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                DoencaPaciente doencaPaciente = new DoencaPaciente
+                while (reader.Read())
                 {
-                    nome = (string)reader["Nome"],
-                    data = data,
-                    observacoes = (string)reader["observacoes"],
-                };
-                doencaPacientes.Add(doencaPaciente);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = doencaPacientes };         
-            dataGridViewDoencas.DataSource = bindingSource1;
-            dataGridViewDoencas.Columns[0].HeaderText = "Doença";
-            dataGridViewDoencas.Columns[1].HeaderText = "Data de Diagnóstico";
-            dataGridViewDoencas.Columns[2].HeaderText = "Observações";
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-            conn.Close();
-            dataGridViewDoencas.Update();
-            dataGridViewDoencas.Refresh();
+                    DoencaPaciente doencaPaciente = new DoencaPaciente
+                    {
+                        nome = (string)reader["Nome"],
+                        data = data,
+                        observacoes = (string)reader["observacoes"],
+                    };
+                    doencaPacientes.Add(doencaPaciente);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = doencaPacientes };
+                dataGridViewDoencas.DataSource = bindingSource1;
+                dataGridViewDoencas.Columns[0].HeaderText = "Doença";
+                dataGridViewDoencas.Columns[1].HeaderText = "Data de Diagnóstico";
+                dataGridViewDoencas.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewDoencas.Update();
+                dataGridViewDoencas.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as doenças do paciente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private void enfermeiroBindingSource_CurrentChanged(object sender, EventArgs e)
@@ -156,23 +171,35 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
         public void reiniciar()
         {
-            doencas.Clear();
-            comboBoxDoenca.Items.Clear();
-            auxiliar.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Doenca ", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader["Nome"];
-                item.Value = (int)reader["IdDoenca"];
-                comboBoxDoenca.Items.Add(item);
-                doencas.Add(item);
-            }
+                doencas.Clear();
+                comboBoxDoenca.Items.Clear();
+                auxiliar.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Doenca ", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = (string)reader["Nome"];
+                    item.Value = (int)reader["IdDoenca"];
+                    comboBoxDoenca.Items.Add(item);
+                    doencas.Add(item);
+                }
 
-            conn.Close();
+                conn.Close();
+
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar o tipo de doença!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtProcurar_KeyDown(object sender, KeyEventArgs e)
@@ -236,26 +263,37 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from DoencaPaciente WHERE IdPaciente = @IdPaciente", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                int doenca = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
-                if (dataDiagnostico.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && doenca == (int)reader["IdDoenca"])
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from DoencaPaciente WHERE IdPaciente = @IdPaciente", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    MessageBox.Show("Não é possível registar essa doença, porque já esta registada na data que selecionou.\n Escolha outra doenca ou outra cirurgia!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    conn.Close();
-                    return false;
+                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                    int doenca = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
+                    if (dataDiagnostico.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && doenca == (int)reader["IdDoenca"])
+                    {
+                        MessageBox.Show("Não é possível registar essa doença, porque já esta registada na data que selecionou.\n Escolha outra doenca ou outra cirurgia!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return false;
+                    }
+
                 }
-
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception)
+            {
 
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as doenças do paciente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return true;
         }
 

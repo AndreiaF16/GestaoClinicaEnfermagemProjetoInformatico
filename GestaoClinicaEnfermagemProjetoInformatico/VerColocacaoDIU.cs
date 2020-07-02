@@ -66,35 +66,46 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            colocacaoDIUPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, dataColocacaoDIU, observacoes from ColocacaoDIU ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                string dataColocacao = ((reader["dataColocacaoDIU"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dataColocacaoDIU"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                colocacaoDIUPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                ColocacaoDIUPaciente colocacaoDIU = new ColocacaoDIUPaciente
+                SqlCommand cmd = new SqlCommand("select data, dataColocacaoDIU, observacoes from ColocacaoDIU ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    dataColocacaoDIU = dataColocacao,
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                colocacaoDIUPaciente.Add(colocacaoDIU);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = colocacaoDIUPaciente };
-            dataGridViewColocacaoDIU.DataSource = bindingSource1;
-            dataGridViewColocacaoDIU.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewColocacaoDIU.Columns[1].HeaderText = "Data de Colocação DIU";
-            dataGridViewColocacaoDIU.Columns[2].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    string dataColocacao = ((reader["dataColocacaoDIU"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dataColocacaoDIU"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewColocacaoDIU.Update();
-            dataGridViewColocacaoDIU.Refresh();
+                    ColocacaoDIUPaciente colocacaoDIU = new ColocacaoDIUPaciente
+                    {
+                        data = data,
+                        dataColocacaoDIU = dataColocacao,
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    colocacaoDIUPaciente.Add(colocacaoDIU);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = colocacaoDIUPaciente };
+                dataGridViewColocacaoDIU.DataSource = bindingSource1;
+                dataGridViewColocacaoDIU.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewColocacaoDIU.Columns[1].HeaderText = "Data de Colocação DIU";
+                dataGridViewColocacaoDIU.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewColocacaoDIU.Update();
+                dataGridViewColocacaoDIU.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

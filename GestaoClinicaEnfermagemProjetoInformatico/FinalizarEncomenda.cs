@@ -63,48 +63,60 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void UpdateDataGridView()
         {
-            listaEncomendas.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select enc.IdEncomenda, enc.Nfatura, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista, enc.dataEntregaReal from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor WHERE enc.dataEntregaReal IS NULL ORDER BY enc.IdEncomenda", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string dataRegistoEnc = DateTime.ParseExact(reader["dataRegistoEncomenda"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-                string dataEntregaPrev = DateTime.ParseExact(reader["dataEntregaPrevista"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                listaEncomendas.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select enc.IdEncomenda, enc.Nfatura, fornecedor.nome, enc.dataRegistoEncomenda, enc.dataEntregaPrevista, enc.dataEntregaReal from Fornecedor fornecedor JOIN Encomenda enc ON fornecedor.IdFornecedor = enc.idFornecedor WHERE enc.dataEntregaReal IS NULL ORDER BY enc.IdEncomenda", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                string dataEntregaR = "";
-
-                if (reader["dataEntregaReal"].ToString() != "")
-                {                
-                    dataEntregaR = DateTime.ParseExact(reader["dataEntregaReal"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-                }
-               
-                Encomendas encomendas = new Encomendas
+                while (reader.Read())
                 {
-                    IdEncomenda = (int)reader["IdEncomenda"],
-                    NFatura = (string)reader["Nfatura"],
-                    nome = (string)reader["nome"],
-                    dataRegisto = dataRegistoEnc,
-                    dataEntregaPrevista = dataEntregaPrev,
-                    dataEntregaReal = dataEntregaR,
-                };
-                listaEncomendas.Add(encomendas);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaEncomendas };
-            dataGridViewEncomendas.DataSource = bindingSource1;
-            dataGridViewEncomendas.Columns[0].HeaderText = "Número da Encomenda";
-            dataGridViewEncomendas.Columns[1].HeaderText = "Nome Fornecedor";
-            dataGridViewEncomendas.Columns[2].HeaderText = "Data de Registo da Encomanda";
-            dataGridViewEncomendas.Columns[3].HeaderText = "Data de Entrega Prevista";
-            dataGridViewEncomendas.Columns[4].HeaderText = "Data de Entrega Real";
-            dataGridViewEncomendas.Columns[5].Visible = false;
+                    string dataRegistoEnc = DateTime.ParseExact(reader["dataRegistoEncomenda"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                    string dataEntregaPrev = DateTime.ParseExact(reader["dataEntregaPrevista"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-            conn.Close();
-            auxiliar = listaEncomendas;
-            dataGridViewEncomendas.Update();
-            dataGridViewEncomendas.Refresh();
+                    string dataEntregaR = "";
+
+                    if (reader["dataEntregaReal"].ToString() != "")
+                    {
+                        dataEntregaR = DateTime.ParseExact(reader["dataEntregaReal"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                    }
+
+                    Encomendas encomendas = new Encomendas
+                    {
+                        IdEncomenda = (int)reader["IdEncomenda"],
+                        NFatura = (string)reader["Nfatura"],
+                        nome = (string)reader["nome"],
+                        dataRegisto = dataRegistoEnc,
+                        dataEntregaPrevista = dataEntregaPrev,
+                        dataEntregaReal = dataEntregaR,
+                    };
+                    listaEncomendas.Add(encomendas);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaEncomendas };
+                dataGridViewEncomendas.DataSource = bindingSource1;
+                dataGridViewEncomendas.Columns[0].HeaderText = "Número da Encomenda";
+                dataGridViewEncomendas.Columns[1].HeaderText = "Nome Fornecedor";
+                dataGridViewEncomendas.Columns[2].HeaderText = "Data de Registo da Encomanda";
+                dataGridViewEncomendas.Columns[3].HeaderText = "Data de Entrega Prevista";
+                dataGridViewEncomendas.Columns[4].HeaderText = "Data de Entrega Real";
+                dataGridViewEncomendas.Columns[5].Visible = false;
+
+                conn.Close();
+                auxiliar = listaEncomendas;
+                dataGridViewEncomendas.Update();
+                dataGridViewEncomendas.Refresh();
+
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -201,6 +213,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
                     catch (SqlException)
                     {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
                         MessageBox.Show("Erro interno, não foi possível alterar a encomenda!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
             }

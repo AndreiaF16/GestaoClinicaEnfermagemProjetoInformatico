@@ -75,46 +75,55 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            doplerFetal.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select ig, dppData, dppcData, primeiraEcografia, escalaDor, observacoes from DopletFetal ORDER BY IdDoplerFetal asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string datadpp = ((reader["dppData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dppData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                string datadppc = ((reader["dppcData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dppcData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                string dataEcografia = ((reader["primeiraEcografia"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["primeiraEcografia"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                doplerFetal.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-              //  string dataEcografia = DateTime.ParseExact(reader["primeiraEcografia"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                SqlCommand cmd = new SqlCommand("select ig, dppData, dppcData, primeiraEcografia, escalaDor, observacoes from DopletFetal ORDER BY IdDoplerFetal asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                DoplerFetal dp = new DoplerFetal
+                while (reader.Read())
                 {
+                    string datadpp = ((reader["dppData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dppData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    string datadppc = ((reader["dppcData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dppcData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    string dataEcografia = ((reader["primeiraEcografia"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["primeiraEcografia"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-                    ig = ((reader["ig"] == DBNull.Value) ? null : (int?)reader["ig"]),
-                    ddp = datadpp,
-                    dppc = datadppc,
-                    ecografia = dataEcografia,
-                    escalaDor = ((reader["escalaDor"] == DBNull.Value) ? "" : (string)reader["escalaDor"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    DoplerFetal dp = new DoplerFetal
+                    {
 
-                };
-                doplerFetal.Add(dp);
+                        ig = ((reader["ig"] == DBNull.Value) ? null : (int?)reader["ig"]),
+                        ddp = datadpp,
+                        dppc = datadppc,
+                        ecografia = dataEcografia,
+                        escalaDor = ((reader["escalaDor"] == DBNull.Value) ? "" : (string)reader["escalaDor"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+
+                    };
+                    doplerFetal.Add(dp);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = doplerFetal };
+                dataGridViewDopler.DataSource = bindingSource1;
+                dataGridViewDopler.Columns[0].HeaderText = "IG";
+                dataGridViewDopler.Columns[1].HeaderText = "Data DPP";
+                dataGridViewDopler.Columns[2].HeaderText = "Data DPPC";
+                dataGridViewDopler.Columns[3].HeaderText = "Data 1ª Ecografia";
+                dataGridViewDopler.Columns[4].HeaderText = "Dor";
+                dataGridViewDopler.Columns[5].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewDopler.Update();
+                dataGridViewDopler.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = doplerFetal };
-            dataGridViewDopler.DataSource = bindingSource1;
-            dataGridViewDopler.Columns[0].HeaderText = "IG";
-            dataGridViewDopler.Columns[1].HeaderText = "Data DPP";
-            dataGridViewDopler.Columns[2].HeaderText = "Data DPPC";
-            dataGridViewDopler.Columns[3].HeaderText = "Data 1ª Ecografia";
-            dataGridViewDopler.Columns[4].HeaderText = "Dor";
-            dataGridViewDopler.Columns[5].HeaderText = "Observações";
-
-            conn.Close();
-            dataGridViewDopler.Update();
-            dataGridViewDopler.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

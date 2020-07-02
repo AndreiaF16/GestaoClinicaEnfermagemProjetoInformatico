@@ -65,39 +65,50 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            implanteContracetivoPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, dataColocacao, dataRetirada, observacoes from ImplanteContracetivo WHERE IdPaciente = @IdPaciente ORDER BY data asc, dataColocacao asc,dataRetirada asc ", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                string dataColocacao = ((reader["dataColocacao"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dataColocacao"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                string dataRetirada = ((reader["dataRetirada"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dataRetirada"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                implanteContracetivoPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                ImplanteContracetivoPaciente implanteContracetivo = new ImplanteContracetivoPaciente
+                SqlCommand cmd = new SqlCommand("select data, dataColocacao, dataRetirada, observacoes from ImplanteContracetivo WHERE IdPaciente = @IdPaciente ORDER BY data asc, dataColocacao asc,dataRetirada asc ", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    dataColocacao = dataColocacao,
-                    dataRetirada = dataRetirada,
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                implanteContracetivoPaciente.Add(implanteContracetivo);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = implanteContracetivoPaciente };
-            dataGridViewImplanteContracetivoDermico.DataSource = bindingSource1;
-            dataGridViewImplanteContracetivoDermico.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewImplanteContracetivoDermico.Columns[1].HeaderText = "Data de Colocação";
-            dataGridViewImplanteContracetivoDermico.Columns[2].HeaderText = "Data de Remoção";
-            dataGridViewImplanteContracetivoDermico.Columns[3].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    string dataColocacao = ((reader["dataColocacao"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dataColocacao"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    string dataRetirada = ((reader["dataRetirada"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dataRetirada"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewImplanteContracetivoDermico.Update();
-            dataGridViewImplanteContracetivoDermico.Refresh();
+                    ImplanteContracetivoPaciente implanteContracetivo = new ImplanteContracetivoPaciente
+                    {
+                        data = data,
+                        dataColocacao = dataColocacao,
+                        dataRetirada = dataRetirada,
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    implanteContracetivoPaciente.Add(implanteContracetivo);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = implanteContracetivoPaciente };
+                dataGridViewImplanteContracetivoDermico.DataSource = bindingSource1;
+                dataGridViewImplanteContracetivoDermico.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewImplanteContracetivoDermico.Columns[1].HeaderText = "Data de Colocação";
+                dataGridViewImplanteContracetivoDermico.Columns[2].HeaderText = "Data de Remoção";
+                dataGridViewImplanteContracetivoDermico.Columns[3].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewImplanteContracetivoDermico.Update();
+                dataGridViewImplanteContracetivoDermico.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -66,34 +66,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            lavagemVesicalPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, lavagemVesical, observacoes from LavagemVesical ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                lavagemVesicalPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                LavagemVesicalPaciente lavagemVesical = new LavagemVesicalPaciente
+                SqlCommand cmd = new SqlCommand("select data, lavagemVesical, observacoes from LavagemVesical ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    lavagemVesical = ((reader["lavagemVesical"] == DBNull.Value) ? "" : (string)reader["lavagemVesical"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                lavagemVesicalPaciente.Add(lavagemVesical);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = lavagemVesicalPaciente };
-            dataGridViewLavagemVesical.DataSource = bindingSource1;
-            dataGridViewLavagemVesical.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewLavagemVesical.Columns[1].HeaderText = "Lavagem Vesical";
-            dataGridViewLavagemVesical.Columns[2].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewLavagemVesical.Update();
-            dataGridViewLavagemVesical.Refresh();
+                    LavagemVesicalPaciente lavagemVesical = new LavagemVesicalPaciente
+                    {
+                        data = data,
+                        lavagemVesical = ((reader["lavagemVesical"] == DBNull.Value) ? "" : (string)reader["lavagemVesical"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    lavagemVesicalPaciente.Add(lavagemVesical);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = lavagemVesicalPaciente };
+                dataGridViewLavagemVesical.DataSource = bindingSource1;
+                dataGridViewLavagemVesical.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewLavagemVesical.Columns[1].HeaderText = "Lavagem Vesical";
+                dataGridViewLavagemVesical.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewLavagemVesical.Update();
+                dataGridViewLavagemVesical.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -67,34 +67,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            cateterismoPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, cateterismo, observacoes from Cateterismo ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                CateterismoPaciente md = new CateterismoPaciente
+                cateterismoPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select data, cateterismo, observacoes from Cateterismo ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    cateterismo = ((reader["cateterismo"] == DBNull.Value) ? "" : (string)reader["cateterismo"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    CateterismoPaciente md = new CateterismoPaciente
+                    {
+                        data = data,
+                        cateterismo = ((reader["cateterismo"] == DBNull.Value) ? "" : (string)reader["cateterismo"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
 
-                };
-                cateterismoPaciente.Add(md);
+                    };
+                    cateterismoPaciente.Add(md);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = cateterismoPaciente };
+                dataGridViewCateterismo.DataSource = bindingSource1;
+                dataGridViewCateterismo.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewCateterismo.Columns[1].HeaderText = "Cateterismo";
+                dataGridViewCateterismo.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewCateterismo.Update();
+                dataGridViewCateterismo.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = cateterismoPaciente };
-            dataGridViewCateterismo.DataSource = bindingSource1;
-            dataGridViewCateterismo.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewCateterismo.Columns[1].HeaderText = "Cateterismo";
-            dataGridViewCateterismo.Columns[2].HeaderText = "Observações";
-
-            conn.Close();
-            dataGridViewCateterismo.Update();
-            dataGridViewCateterismo.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

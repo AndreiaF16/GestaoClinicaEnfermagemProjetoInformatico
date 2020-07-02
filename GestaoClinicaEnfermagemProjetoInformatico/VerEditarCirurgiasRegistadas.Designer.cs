@@ -450,7 +450,7 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
-            // VerCirurgiasRegistadas
+            // VerEditarCirurgiasRegistadas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -458,8 +458,7 @@
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "VerCirurgiasRegistadas";
-            this.ShowInTaskbar = false;
+            this.Name = "VerEditarCirurgiasRegistadas";
             this.Text = "VerCirurgiasRegistadas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VerCirurgiasRegistadas_Load);

@@ -70,40 +70,52 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         
         private void UpdateDataGridView()
         {
-            localizacaoDorPacientes.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorDopplerArterialVenoso WHERE IdPaciente = @IdPaciente ORDER BY data", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string dataR = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
- 
-                LocalizazaoDorDopplerArterialVenoso localizacao= new LocalizazaoDorDopplerArterialVenoso
+
+                localizacaoDorPacientes.Clear();
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorDopplerArterialVenoso WHERE IdPaciente = @IdPaciente ORDER BY data", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
+                    string dataR = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-                    data = dataR,
-                    localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    LocalizazaoDorDopplerArterialVenoso localizacao = new LocalizazaoDorDopplerArterialVenoso
+                    {
+
+                        data = dataR,
+                        localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
 
 
-                };
-                localizacaoDorPacientes.Add(localizacao);
+                    };
+                    localizacaoDorPacientes.Add(localizacao);
 
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = localizacaoDorPacientes };
+                dataGridViewLocalizacaoDor.DataSource = bindingSource1;
+
+                dataGridViewLocalizacaoDor.Columns[0].HeaderText = "Data";
+                dataGridViewLocalizacaoDor.Columns[1].HeaderText = "Localização Dor";
+                dataGridViewLocalizacaoDor.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewLocalizacaoDor.Update();
+                dataGridViewLocalizacaoDor.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = localizacaoDorPacientes };
-            dataGridViewLocalizacaoDor.DataSource = bindingSource1;
-           
-            dataGridViewLocalizacaoDor.Columns[0].HeaderText = "Data";
-            dataGridViewLocalizacaoDor.Columns[1].HeaderText = "Localização Dor";
-            dataGridViewLocalizacaoDor.Columns[2].HeaderText = "Observações";
-
-            conn.Close();
-            dataGridViewLocalizacaoDor.Update();
-            dataGridViewLocalizacaoDor.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void hora_Tick(object sender, EventArgs e)

@@ -66,47 +66,58 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            medPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, PO, retal, intradermica, intramuscular, endovenosa, subcutanea, topicoViaCutanea, topicoEfeitoLocal, observacoes from AdministrarMedicacao ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                MedicacaoPaciente md = new MedicacaoPaciente
+                medPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select data, PO, retal, intradermica, intramuscular, endovenosa, subcutanea, topicoViaCutanea, topicoEfeitoLocal, observacoes from AdministrarMedicacao ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    PO = ((reader["PO"] == DBNull.Value) ? "" : (string)reader["PO"]),
-                    retal = ((reader["retal"] == DBNull.Value) ? "" : (string)reader["retal"]),
-                    intradermica = ((reader["intradermica"] == DBNull.Value) ? "" : (string)reader["intradermica"]),
-                    intramuscular = ((reader["intramuscular"] == DBNull.Value) ? "" : (string)reader["intramuscular"]),
-                    endovenosa = ((reader["endovenosa"] == DBNull.Value) ? "" : (string)reader["endovenosa"]),
-                    subcutanea = ((reader["subcutanea"] == DBNull.Value) ? "" : (string)reader["subcutanea"]),
-                    topicoViaCutanea = ((reader["topicoViaCutanea"] == DBNull.Value) ? "" : (string)reader["topicoViaCutanea"]),
-                    topicoEfeitoLocal = ((reader["topicoEfeitoLocal"] == DBNull.Value) ? "" : (string)reader["topicoEfeitoLocal"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    MedicacaoPaciente md = new MedicacaoPaciente
+                    {
+                        data = data,
+                        PO = ((reader["PO"] == DBNull.Value) ? "" : (string)reader["PO"]),
+                        retal = ((reader["retal"] == DBNull.Value) ? "" : (string)reader["retal"]),
+                        intradermica = ((reader["intradermica"] == DBNull.Value) ? "" : (string)reader["intradermica"]),
+                        intramuscular = ((reader["intramuscular"] == DBNull.Value) ? "" : (string)reader["intramuscular"]),
+                        endovenosa = ((reader["endovenosa"] == DBNull.Value) ? "" : (string)reader["endovenosa"]),
+                        subcutanea = ((reader["subcutanea"] == DBNull.Value) ? "" : (string)reader["subcutanea"]),
+                        topicoViaCutanea = ((reader["topicoViaCutanea"] == DBNull.Value) ? "" : (string)reader["topicoViaCutanea"]),
+                        topicoEfeitoLocal = ((reader["topicoEfeitoLocal"] == DBNull.Value) ? "" : (string)reader["topicoEfeitoLocal"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
 
-                };
-                medPaciente.Add(md);
+                    };
+                    medPaciente.Add(md);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = medPaciente };
+                dataGridViewMedPaciente.DataSource = bindingSource1;
+                dataGridViewMedPaciente.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewMedPaciente.Columns[1].HeaderText = "PO";
+                dataGridViewMedPaciente.Columns[2].HeaderText = "Retal";
+                dataGridViewMedPaciente.Columns[3].HeaderText = "ID";
+                dataGridViewMedPaciente.Columns[4].HeaderText = "IM";
+                dataGridViewMedPaciente.Columns[5].HeaderText = "EV";
+                dataGridViewMedPaciente.Columns[6].HeaderText = "SC";
+                dataGridViewMedPaciente.Columns[7].HeaderText = "Tópico Via Cutanêa";
+                dataGridViewMedPaciente.Columns[8].HeaderText = "Tópico Efeito Local";
+
+                conn.Close();
+                dataGridViewMedPaciente.Update();
+                dataGridViewMedPaciente.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = medPaciente };
-            dataGridViewMedPaciente.DataSource = bindingSource1;
-            dataGridViewMedPaciente.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewMedPaciente.Columns[1].HeaderText = "PO";
-            dataGridViewMedPaciente.Columns[2].HeaderText = "Retal";
-            dataGridViewMedPaciente.Columns[3].HeaderText = "ID";
-            dataGridViewMedPaciente.Columns[4].HeaderText = "IM";
-            dataGridViewMedPaciente.Columns[5].HeaderText = "EV";
-            dataGridViewMedPaciente.Columns[6].HeaderText = "SC";
-            dataGridViewMedPaciente.Columns[7].HeaderText = "Tópico Via Cutanêa";
-            dataGridViewMedPaciente.Columns[8].HeaderText = "Tópico Efeito Local";
-
-            conn.Close();
-            dataGridViewMedPaciente.Update();
-            dataGridViewMedPaciente.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

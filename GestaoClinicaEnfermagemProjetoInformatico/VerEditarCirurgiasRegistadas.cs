@@ -92,27 +92,38 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
         private List<Cirurgia> getCirurgias()
         {
-            Cirurgia cirurgia = new Cirurgia();
-
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Cirurgia order by nome", conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                cirurgia = new Cirurgia
-                {
-                    nome = (string)reader["nome"],
-                    caracterizacao = (string)reader["caracterizacao"],
-                    IdCirurgia = (int)reader["IdCirurgia"],
+                Cirurgia cirurgia = new Cirurgia();
 
-                };
-                listaCirurgias.Add(cirurgia);
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from Cirurgia order by nome", conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    cirurgia = new Cirurgia
+                    {
+                        nome = (string)reader["nome"],
+                        caracterizacao = (string)reader["caracterizacao"],
+                        IdCirurgia = (int)reader["IdCirurgia"],
+
+                    };
+                    listaCirurgias.Add(cirurgia);
+                }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return listaCirurgias;
         }
 
@@ -147,9 +158,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Erro interno, não foi possível alterar a cirurgia!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível alterar a cirurgia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
                 }
 
             }

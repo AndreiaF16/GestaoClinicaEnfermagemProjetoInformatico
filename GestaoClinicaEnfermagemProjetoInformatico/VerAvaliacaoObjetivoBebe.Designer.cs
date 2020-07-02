@@ -314,7 +314,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerAvaliacaoObjetivoBebe";
-            this.ShowInTaskbar = false;
             this.Text = "VerAvaliacaoObjetivoBebe";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VerAvaliacaoObjetivoBebe_Load);

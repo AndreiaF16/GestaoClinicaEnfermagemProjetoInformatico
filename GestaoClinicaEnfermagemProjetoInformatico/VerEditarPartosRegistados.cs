@@ -81,25 +81,35 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
         private List<Parto> getParto()
         {
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Parto order by tipoParto", conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                parto = new Parto
-                {
-                    nomeParto = (string)reader["tipoParto"],
-                    observacao = (string)reader["Observacoes"],
-                    IdTipoParto = (int)reader["IdParto"],
-                };
-                listaPartos.Add(parto);
-            }
-            conn.Close();
+                conn.Open();
+                com.Connection = conn;
 
+                SqlCommand cmd = new SqlCommand("select * from Parto order by tipoParto", conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    parto = new Parto
+                    {
+                        nomeParto = (string)reader["tipoParto"],
+                        observacao = (string)reader["Observacoes"],
+                        IdTipoParto = (int)reader["IdParto"],
+                    };
+                    listaPartos.Add(parto);
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return listaPartos;
         }
 
@@ -135,9 +145,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Erro interno, não foi possível alterar o tipo de parto!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível alterar o tipo de parto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

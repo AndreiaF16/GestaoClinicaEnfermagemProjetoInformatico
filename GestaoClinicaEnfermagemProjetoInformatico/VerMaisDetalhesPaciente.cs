@@ -107,6 +107,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void cirurgiasPaciente()
         {
+            try
+            {
             conn.Open();
             com.Connection = conn;
             SqlCommand cmd = new SqlCommand("select cirurgia.Nome, cirurgiaP.data, cirurgiaP.observacoes from CirurgiaPaciente cirurgiaP JOIN Cirurgia cirurgia ON cirurgia.IdCirurgia = cirurgiaP.IdCirurgia WHERE IdPaciente = @IdPaciente", conn);
@@ -127,6 +129,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             conn.Close();
             UpdateDataGridViewCirurgias();
+
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados das cirurgias!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void UpdateDataGridViewExames()
@@ -141,77 +153,109 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void doencasPaciente()
         {
-
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select doenca.Nome, doencaP.data, doencaP.observacoes from DoencaPaciente doencaP JOIN Doenca doenca ON doencaP.IdDoenca = doenca.IdDoenca WHERE IdPaciente = @IdPaciente", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select doenca.Nome, doencaP.data, doencaP.observacoes from DoencaPaciente doencaP JOIN Doenca doenca ON doencaP.IdDoenca = doenca.IdDoenca WHERE IdPaciente = @IdPaciente", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                DoencaPaciente doencaPaciente = new DoencaPaciente
+                while (reader.Read())
                 {
-                    nome = (string)reader["Nome"],
-                    data = data,
-                    observacoes = (string)reader["observacoes"],
-                };
-                listaDoencaPacientes.Add(doencaPaciente);
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+
+                    DoencaPaciente doencaPaciente = new DoencaPaciente
+                    {
+                        nome = (string)reader["Nome"],
+                        data = data,
+                        observacoes = (string)reader["observacoes"],
+                    };
+                    listaDoencaPacientes.Add(doencaPaciente);
+                }
+                conn.Close();
+                UpdateDataGridViewDoencas();
             }
-            conn.Close();
-            UpdateDataGridViewDoencas();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados das doenças!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void alergiasPaciente()
         {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select alergia.Nome, alergiaP.data, alergiaP.observacoes from AlergiaPaciente alergiaP JOIN Alergia alergia ON alergia.IdAlergia = AlergiaP.IdAlergia WHERE IdPaciente = @IdPaciente ", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select alergia.Nome, alergiaP.data, alergiaP.observacoes from AlergiaPaciente alergiaP JOIN Alergia alergia ON alergia.IdAlergia = AlergiaP.IdAlergia WHERE IdPaciente = @IdPaciente ", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                DoencaPaciente doencaPaciente = new DoencaPaciente
+                while (reader.Read())
                 {
-                    nome = (string)reader["Nome"],
-                    data = data,
-                    observacoes = (string)reader["observacoes"],
-                };
-                listaAlergiaPacientes.Add(doencaPaciente);
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+
+                    DoencaPaciente doencaPaciente = new DoencaPaciente
+                    {
+                        nome = (string)reader["Nome"],
+                        data = data,
+                        observacoes = (string)reader["observacoes"],
+                    };
+                    listaAlergiaPacientes.Add(doencaPaciente);
+                }
+                conn.Close();
+                UpdateDataGridViewAlergias();
             }
-            conn.Close();
-            UpdateDataGridViewAlergias();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados das alergias!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
         private void examesPaciente()
         {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select tipo.nome, exame.data, exame.designacao, exame.observacoes from tipoExame tipo JOIN Exame exame ON tipo.IdTipoExame = exame.idTipoExame WHERE idPaciente = @IdPaciente", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select tipo.nome, exame.data, exame.designacao, exame.observacoes from tipoExame tipo JOIN Exame exame ON tipo.IdTipoExame = exame.idTipoExame WHERE idPaciente = @IdPaciente", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                ExamePaciente examePaciente = new ExamePaciente
+                while (reader.Read())
                 {
-                    nome = (string)reader["Nome"],
-                    data = data,
-                    designacao = (string)reader["designacao"],
-                    observacoes = (string)reader["observacoes"],
-                };
-                listaExamePacientes.Add(examePaciente);
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+
+                    ExamePaciente examePaciente = new ExamePaciente
+                    {
+                        nome = (string)reader["Nome"],
+                        data = data,
+                        designacao = (string)reader["designacao"],
+                        observacoes = (string)reader["observacoes"],
+                    };
+                    listaExamePacientes.Add(examePaciente);
+                }
+                conn.Close();
+                UpdateDataGridViewExames();
             }
-            conn.Close();
-            UpdateDataGridViewExames();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados dos exames!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -16,11 +16,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         FormRegistarUtente utente = null;
         EditUtente ut = null;
         private ErrorProvider errorProvider = new ErrorProvider();
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
         public AdicionarProfissao(FormRegistarUtente adicionarUtente, EditUtente editUtente)
         {
             InitializeComponent();
             utente = adicionarUtente;
-            ut = editUtente;
+            ut = editUtente; 
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
         }
 
         private void AdicionarProfissao_Load(object sender, EventArgs e)
@@ -104,6 +108,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Erro interno, não foi possível registar a profissão!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }

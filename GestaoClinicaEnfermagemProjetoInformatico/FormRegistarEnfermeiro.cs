@@ -99,19 +99,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return null; // Caso encontre erro retorna nulo
             }
         }
-        /*
-        public Boolean ValidarForcaSenha ()
-        {
-            if(string.IsNullOrEmpty(txtPassword.Text) || txtPassword.Text.Length < 6)
-            {
-                return false;
-            }
-            if(!Regex.IsMatch(txtPassword.Text, @"\d") || !Regex.IsMatch(txtPassword.Text, "[a-zA-Z]"))
-            {
-                return false;
-            }
-            return true;
-        }*/
 
         private Boolean VerificarDadosInseridos()
         {
@@ -189,38 +176,48 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 errorProvider.SetError(dataNascimento, String.Empty);
             }
-
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Enfermeiro", conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                if (!(reader["Email"] == DBNull.Value))
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from Enfermeiro", conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    if (txtEmail.Text.Equals((string)reader["Email"]))
+                    if (!(reader["Email"] == DBNull.Value))
                     {
-                        MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.");
-                        conn.Close();
-                        return false;
+                        if (txtEmail.Text.Equals((string)reader["Email"]))
+                        {
+                            MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.");
+                            conn.Close();
+                            return false;
+                        }
+
                     }
 
-                }
-
-                if (!(reader["username"] == DBNull.Value))
-                {
-                    if (txtUsername.Text.Equals((string)reader["username"]))
+                    if (!(reader["username"] == DBNull.Value))
                     {
-                        MessageBox.Show("O username que colocou já se encontra registado, coloque outro.");
-                        conn.Close();
-                        return false;
+                        if (txtUsername.Text.Equals((string)reader["username"]))
+                        {
+                            MessageBox.Show("O username que colocou já se encontra registado, coloque outro.");
+                            conn.Close();
+                            return false;
+                        }
                     }
                 }
+                conn.Close();
+
             }
-            conn.Close();
-
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return true;
         }
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -239,7 +236,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     conn.Open(); ;
-                    
+
                     string queryInsertData = "INSERT INTO Enfermeiro(nome,funcao,contacto,dataNascimento,username,password,email)VALUES(@nome,@funcao,@contacto,@dataNascimento,@username,@password,@email);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
                     sqlCommand.Parameters.AddWithValue("@nome", nome);
@@ -252,18 +249,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
                     sqlCommand.ExecuteNonQuery();
-                        MessageBox.Show("Enfermeiro registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+                    MessageBox.Show("Enfermeiro registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                     conn.Close();
                 }
                 catch (SqlException)
                 {
-
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar a o enfermeiro", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-               
-                }
+
             }
+        }
         
 
         private void btnVoltar_Click(object sender, EventArgs e)

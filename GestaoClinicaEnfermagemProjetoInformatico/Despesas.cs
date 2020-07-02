@@ -160,6 +160,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             comboBoxDespesa.Items.Clear();
             comboBoxEncomenda.Items.Clear();
             auxiliar.Clear();
+            try
+            {
             conn.Open();
             com.Connection = conn;
             SqlCommand cmd = new SqlCommand("select * from tipoDespesa order by designacao asc", conn);
@@ -174,7 +176,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
             conn.Close();
-            
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as despesas!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try
+            {
             conn.Open();
             com.Connection = conn;
             SqlCommand cmd1 = new SqlCommand("select * from Encomenda WHERE pago = 0 order by Nfatura asc", conn);
@@ -189,6 +202,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
             conn.Close();
+
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as Encomendas!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void comboBoxDespesa_SelectedIndexChanged(object sender, EventArgs e)

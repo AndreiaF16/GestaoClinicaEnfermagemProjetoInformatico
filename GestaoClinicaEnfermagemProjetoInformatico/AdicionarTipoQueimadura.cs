@@ -88,6 +88,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar o tipo de queimadura", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -135,28 +139,41 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            tipoQueimadura.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select tipoQueimadura from tipoQueimadura ORDER BY tipoQueimadura asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                Queimadura queima = new Queimadura
-                {
-                    tipoQueimadura = (string)reader["tipoQueimadura"]
-                };
-                tipoQueimadura.Add(queima);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = tipoQueimadura };
-            dataGridViewQueimaduras.DataSource = bindingSource1;
-            dataGridViewQueimaduras.Columns[0].HeaderText = "Tipo de Queimadura";
+                tipoQueimadura.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-            conn.Close();
-            dataGridViewQueimaduras.Update();
-            dataGridViewQueimaduras.Refresh();
+                SqlCommand cmd = new SqlCommand("select tipoQueimadura from tipoQueimadura ORDER BY tipoQueimadura asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Queimadura queima = new Queimadura
+                    {
+                        tipoQueimadura = (string)reader["tipoQueimadura"]
+                    };
+                    tipoQueimadura.Add(queima);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = tipoQueimadura };
+                dataGridViewQueimaduras.DataSource = bindingSource1;
+                dataGridViewQueimaduras.Columns[0].HeaderText = "Tipo de Queimadura";
+
+                conn.Close();
+                dataGridViewQueimaduras.Update();
+                dataGridViewQueimaduras.Refresh();
+
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
     }
 }

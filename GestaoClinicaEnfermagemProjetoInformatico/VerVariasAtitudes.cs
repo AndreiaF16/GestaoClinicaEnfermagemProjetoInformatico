@@ -66,34 +66,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            variasAtitudes.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select atitude.nomeAtitude, variasAtitudes.data from VariasAtitudes variasAtitudes LEFT JOIN Atitude atitude ON variasAtitudes.IdAtitude = atitude.IdAtitude WHERE variasAtitudes.IdPaciente = @IdPaciente ORDER by variasAtitudes.data asc", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                VariasAtitudes variasAt = new VariasAtitudes
+                variasAtitudes.Clear();
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select atitude.nomeAtitude, variasAtitudes.data from VariasAtitudes variasAtitudes LEFT JOIN Atitude atitude ON variasAtitudes.IdAtitude = atitude.IdAtitude WHERE variasAtitudes.IdPaciente = @IdPaciente ORDER by variasAtitudes.data asc", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    atitude = ((reader["nomeAtitude"] == DBNull.Value) ? "" : (string)reader["nomeAtitude"]),
-                    data = data,
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    VariasAtitudes variasAt = new VariasAtitudes
+                    {
+                        atitude = ((reader["nomeAtitude"] == DBNull.Value) ? "" : (string)reader["nomeAtitude"]),
+                        data = data,
 
-                };
-                variasAtitudes.Add(variasAt);
+                    };
+                    variasAtitudes.Add(variasAt);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = variasAtitudes };
+                dataGridViewVariasAtitudes.DataSource = bindingSource1;
+                dataGridViewVariasAtitudes.Columns[0].HeaderText = "Atitude Realizada";
+                dataGridViewVariasAtitudes.Columns[1].HeaderText = "Data de Registo";
+
+                conn.Close();
+                dataGridViewVariasAtitudes.Update();
+                dataGridViewVariasAtitudes.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = variasAtitudes };
-            dataGridViewVariasAtitudes.DataSource = bindingSource1;
-            dataGridViewVariasAtitudes.Columns[0].HeaderText = "Atitude Realizada";
-            dataGridViewVariasAtitudes.Columns[1].HeaderText = "Data de Registo";
-
-            conn.Close();
-            dataGridViewVariasAtitudes.Update();
-            dataGridViewVariasAtitudes.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

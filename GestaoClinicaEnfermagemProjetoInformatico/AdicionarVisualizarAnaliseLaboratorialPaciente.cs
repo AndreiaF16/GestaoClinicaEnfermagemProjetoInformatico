@@ -127,6 +127,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar a análise laboratorial!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
@@ -135,58 +139,80 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            analisePaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select analise.NomeAnalise, analisesP.data, analisesP.resultados, analisesP.observacoes from analisesLaboratoriaisPaciente analisesP JOIN analisesLaboratoriais analise ON analisesP.IdAnalisesLaboratoriais = analise.IdAnalisesLaboratoriais WHERE IdPaciente = @IdPaciente ORDER BY analisesP.data, analise.NomeAnalise", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                analisePaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select analise.NomeAnalise, analisesP.data, analisesP.resultados, analisesP.observacoes from analisesLaboratoriaisPaciente analisesP JOIN analisesLaboratoriais analise ON analisesP.IdAnalisesLaboratoriais = analise.IdAnalisesLaboratoriais WHERE IdPaciente = @IdPaciente ORDER BY analisesP.data, analise.NomeAnalise", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                AnaliseLaboratorialPaciente an = new AnaliseLaboratorialPaciente
+                while (reader.Read())
                 {
-                    nome = (string)reader["NomeAnalise"],
-                    data = data,
-                    resultados = ((reader["resultados"] == DBNull.Value) ? "" : (string)reader["resultados"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-                };
-                analisePaciente.Add(an);
+                    AnaliseLaboratorialPaciente an = new AnaliseLaboratorialPaciente
+                    {
+                        nome = (string)reader["NomeAnalise"],
+                        data = data,
+                        resultados = ((reader["resultados"] == DBNull.Value) ? "" : (string)reader["resultados"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+
+                    };
+                    analisePaciente.Add(an);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = analisePaciente };
+                dataGridViewAnalises.DataSource = bindingSource1;
+                dataGridViewAnalises.Columns[0].HeaderText = "Análise";
+                dataGridViewAnalises.Columns[1].HeaderText = "Data de Diagnóstico";
+                dataGridViewAnalises.Columns[2].HeaderText = "Resultados";
+                dataGridViewAnalises.Columns[3].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewAnalises.Update();
+                dataGridViewAnalises.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = analisePaciente };
-            dataGridViewAnalises.DataSource = bindingSource1;
-            dataGridViewAnalises.Columns[0].HeaderText = "Análise";
-            dataGridViewAnalises.Columns[1].HeaderText = "Data de Diagnóstico";
-            dataGridViewAnalises.Columns[2].HeaderText = "Resultados";
-            dataGridViewAnalises.Columns[3].HeaderText = "Observações";
-
-            conn.Close();
-            dataGridViewAnalises.Update();
-            dataGridViewAnalises.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as análises do paciente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void reiniciar()
         {
-            analises.Clear();
-            comboBoxAnalise.Items.Clear();
-            auxiliar.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from analisesLaboratoriais ", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader["NomeAnalise"];
-                item.Value = (int)reader["IdAnalisesLaboratoriais"];
-                comboBoxAnalise.Items.Add(item);
-                analises.Add(item);
-            }
+                analises.Clear();
+                comboBoxAnalise.Items.Clear();
+                auxiliar.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from analisesLaboratoriais ", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = (string)reader["NomeAnalise"];
+                    item.Value = (int)reader["IdAnalisesLaboratoriais"];
+                    comboBoxAnalise.Items.Add(item);
+                    analises.Add(item);
+                }
 
-            conn.Close();
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as análises laboratoriais!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtProcurar_KeyDown(object sender, KeyEventArgs e)

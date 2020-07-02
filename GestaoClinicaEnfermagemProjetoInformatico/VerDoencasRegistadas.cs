@@ -92,26 +92,39 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private List<Doenca> getDoencas()
         {
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Doenca order by nome", conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                doenca = new Doenca
-                {
-                    nome = (string)reader["nome"],
-                    sintomas = (string)reader["sintomas"],
-                    IdDoenca = (int)reader["IdDoenca"],
-                };
-                listaDoencas.Add(doenca);
-            }
-            conn.Close();
+                conn.Open();
+                com.Connection = conn;
 
+                SqlCommand cmd = new SqlCommand("select * from Doenca order by nome", conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    doenca = new Doenca
+                    {
+                        nome = (string)reader["nome"],
+                        sintomas = (string)reader["sintomas"],
+                        IdDoenca = (int)reader["IdDoenca"],
+                    };
+                    listaDoencas.Add(doenca);
+                }
+                conn.Close();
+
+                return listaDoencas;
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível obter a lista de doenças!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return listaDoencas;
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -121,10 +134,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string sintomas = txtSintomas.Text;
 
             if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
             {
                 try
                 {
@@ -149,9 +158,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Erro interno, não foi possível alterar a doença!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível alterar a doença!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

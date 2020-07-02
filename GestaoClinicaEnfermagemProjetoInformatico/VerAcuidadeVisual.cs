@@ -67,34 +67,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            acuidadeVisualPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, testeAcuidadeVisual, observacoes from TesteAcuidadeVisual ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                acuidadeVisualPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                AcuidadeVisualPaciente acuidadeVisual = new AcuidadeVisualPaciente
+                SqlCommand cmd = new SqlCommand("select data, testeAcuidadeVisual, observacoes from TesteAcuidadeVisual ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    testeAcuidadeVisual = ((reader["testeAcuidadeVisual"] == DBNull.Value) ? "" : (string)reader["testeAcuidadeVisual"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                acuidadeVisualPaciente.Add(acuidadeVisual);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = acuidadeVisualPaciente };
-            dataGridViewAcuidadeVisual.DataSource = bindingSource1;
-            dataGridViewAcuidadeVisual.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewAcuidadeVisual.Columns[1].HeaderText = "Teste Acuidade Visual";
-            dataGridViewAcuidadeVisual.Columns[2].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewAcuidadeVisual.Update();
-            dataGridViewAcuidadeVisual.Refresh();
+                    AcuidadeVisualPaciente acuidadeVisual = new AcuidadeVisualPaciente
+                    {
+                        data = data,
+                        testeAcuidadeVisual = ((reader["testeAcuidadeVisual"] == DBNull.Value) ? "" : (string)reader["testeAcuidadeVisual"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    acuidadeVisualPaciente.Add(acuidadeVisual);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = acuidadeVisualPaciente };
+                dataGridViewAcuidadeVisual.DataSource = bindingSource1;
+                dataGridViewAcuidadeVisual.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewAcuidadeVisual.Columns[1].HeaderText = "Teste Acuidade Visual";
+                dataGridViewAcuidadeVisual.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewAcuidadeVisual.Update();
+                dataGridViewAcuidadeVisual.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

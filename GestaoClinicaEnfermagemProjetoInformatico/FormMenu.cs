@@ -178,118 +178,140 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateGridViewConsultas() 
         {
-           // dataGridViewConsultasHoje.DataSource = new List<AgendamentoConsultaGridView>();
-            consultaAgendada.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select agendamento.horaProximaConsulta, agendamento.dataProximaConsulta, p.Nome, p.Nif from AgendamentoConsulta agendamento INNER JOIN Paciente p ON agendamento.IdPaciente = p.IdPaciente WHERE agendamento.IdEnfermeiro =  @IdEnfermeiro AND agendamento.dataProximaConsulta = '" + DateTime.Now.ToString("MM/dd/yyyy") + "' AND ConsultaRealizada= 0 ORDER BY agendamento.horaProximaConsulta", conn);
-            cmd.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                // dataGridViewConsultasHoje.DataSource = new List<AgendamentoConsultaGridView>();
+                consultaAgendada.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                AgendamentoConsultaGridView agendamento = new AgendamentoConsultaGridView
+                SqlCommand cmd = new SqlCommand("select agendamento.horaProximaConsulta, agendamento.dataProximaConsulta, p.Nome, p.Nif from AgendamentoConsulta agendamento INNER JOIN Paciente p ON agendamento.IdPaciente = p.IdPaciente WHERE agendamento.IdEnfermeiro =  @IdEnfermeiro AND agendamento.dataProximaConsulta = '" + DateTime.Now.ToString("MM/dd/yyyy") + "' AND ConsultaRealizada= 0 ORDER BY agendamento.horaProximaConsulta", conn);
+                cmd.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    horaProximaConsulta = (string)reader["horaProximaConsulta"],
-                    dataProximaConsulta = dataConsulta,
-                    NomePaciente = (string)reader["Nome"],
-                    NifPaciente = Convert.ToInt32(reader["Nif"]),
-                };
+                    string dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-                consultaAgendada.Add(agendamento);
+                    AgendamentoConsultaGridView agendamento = new AgendamentoConsultaGridView
+                    {
+                        horaProximaConsulta = (string)reader["horaProximaConsulta"],
+                        dataProximaConsulta = dataConsulta,
+                        NomePaciente = (string)reader["Nome"],
+                        NifPaciente = Convert.ToInt32(reader["Nif"]),
+                    };
 
+                    consultaAgendada.Add(agendamento);
+
+                }
+                auxiliar = consultaAgendada;
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = consultaAgendada };
+                dataGridViewConsultasHoje.DataSource = bindingSource1;
+                dataGridViewConsultasHoje.Columns[0].HeaderText = "Hora Consulta";
+                dataGridViewConsultasHoje.Columns[1].HeaderText = "Data Consulta";
+                dataGridViewConsultasHoje.Columns[2].HeaderText = "Nome Utente";
+                dataGridViewConsultasHoje.Columns[3].HeaderText = "Nif";
+
+                conn.Close();
             }
-            auxiliar = consultaAgendada;
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = consultaAgendada };
-            dataGridViewConsultasHoje.DataSource = bindingSource1;
-            dataGridViewConsultasHoje.Columns[0].HeaderText = "Hora Consulta";
-            dataGridViewConsultasHoje.Columns[1].HeaderText = "Data Consulta";
-            dataGridViewConsultasHoje.Columns[2].HeaderText = "Nome Utente";
-            dataGridViewConsultasHoje.Columns[3].HeaderText = "Nif";
-       
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dataGridViewConsultasHoje.Rows.Count > 0 )
+            try
             {
-                int i = dataGridViewConsultasHoje.CurrentCell.RowIndex;
-                AgendamentoConsultaGridView consultaAgendada = null; ;
-
-                foreach (var ut in auxiliar)
+                if (dataGridViewConsultasHoje.Rows.Count > 0)
                 {
-                    if (ut.NifPaciente == Double.Parse(dataGridViewConsultasHoje.Rows[i].Cells[3].Value.ToString()))
+                    int i = dataGridViewConsultasHoje.CurrentCell.RowIndex;
+                    AgendamentoConsultaGridView consultaAgendada = null; ;
+
+                    foreach (var ut in auxiliar)
                     {
-                        consultaAgendada = ut;
+                        if (ut.NifPaciente == Double.Parse(dataGridViewConsultasHoje.Rows[i].Cells[3].Value.ToString()))
+                        {
+                            consultaAgendada = ut;
+                        }
+
+                    }
+                    conn.Open();
+                    com.Connection = conn;
+
+                    SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif =  " + consultaAgendada.NifPaciente, conn);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    Paciente paciente = null;
+
+                    if (reader.Read())
+                    {
+                        paciente = new Paciente
+                        {
+                            IdPaciente = (int)reader["IdPaciente"],
+                            Nome = (string)reader["nome"],
+                            DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                            Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
+                            Contacto = Convert.ToDouble(reader["contacto"]),
+                            Nif = Convert.ToInt32(reader["nif"]),
+                            Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
+                            Rua = (string)reader["Rua"],
+                            NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
+                            Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
+                            bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
+                            designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
+
+                            //Andar = (string)reader["Andar"],
+                            codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
+
+                            // codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
+                            //codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
+                            localidade = (string)reader["localidade"],
+                            IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                            Acordo = (string)reader["Acordo"],
+
+                            NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
+                            //NomeSeguradora = (string)reader["NomeSeguradora"] |,
+
+                            NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? 0 : (int)reader["NumeroApoliceSeguradora"]),
+                            // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
+
+                            NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
+                            // NomeSubsistema = (string)reader["NomeSubsistema"],
+
+                            NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? 0 : (int)reader["NumeroSubsistema"]),
+                            // NumeroSubsistema = (int)reader["NumeroSubsistema"],
+
+                            NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? 0 : (int)reader["NumeroSNS"]),
+                            //NumeroSNS = (int)reader["NumeroSNS"],
+
+                            Sexo = (string)reader["Sexo"],
+                            PlanoVacinacao = (string)reader["PlanoVacinacao"]
+
+                        };
                     }
 
+                    conn.Close();
+                    IniciarConsultaMarcada iniciarConsultaMarcada = new IniciarConsultaMarcada(enfermeiro, paciente, this, consultaAgendada);
+                    iniciarConsultaMarcada.Show();
                 }
-                conn.Open();
-                com.Connection = conn;
-
-                SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif =  " + consultaAgendada.NifPaciente, conn);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                Paciente paciente = null;
-
-                if (reader.Read())
+                else
                 {
-                    paciente = new Paciente
-                    {
-                        IdPaciente = (int)reader["IdPaciente"],
-                        Nome = (string)reader["nome"],
-                        DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                        Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
-                        Contacto = Convert.ToDouble(reader["contacto"]),
-                        Nif = Convert.ToInt32(reader["nif"]),
-                        Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
-                        Rua = (string)reader["Rua"],
-                        NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
-                        Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
-                        bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
-                        designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
-
-                        //Andar = (string)reader["Andar"],
-                        codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
-
-                        // codPostalPrefixo = Convert.ToDouble(reader["codPostalPrefixo"]),
-                        //codPostalSufixo = Convert.ToDouble(reader["codPostalSufixo"]),
-                        localidade = (string)reader["localidade"],
-                        IdEnfermeiro = (int)reader["IdEnfermeiro"],
-                        Acordo = (string)reader["Acordo"],
-
-                        NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
-                        //NomeSeguradora = (string)reader["NomeSeguradora"] |,
-
-                        NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? 0 : (int)reader["NumeroApoliceSeguradora"]),
-                        // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
-
-                        NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
-                        // NomeSubsistema = (string)reader["NomeSubsistema"],
-
-                        NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? 0 : (int)reader["NumeroSubsistema"]),
-                        // NumeroSubsistema = (int)reader["NumeroSubsistema"],
-
-                        NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? 0 : (int)reader["NumeroSNS"]),
-                        //NumeroSNS = (int)reader["NumeroSNS"],
-
-                        Sexo = (string)reader["Sexo"],
-                        PlanoVacinacao = (string)reader["PlanoVacinacao"]
-
-                    };
+                    MessageBox.Show("Não é possivel iniciar uma consulta porque não tem consultas agendadas para hoje!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
-                conn.Close();
-                IniciarConsultaMarcada iniciarConsultaMarcada = new IniciarConsultaMarcada(enfermeiro, paciente, this, consultaAgendada);
-                iniciarConsultaMarcada.Show();
             }
-            else 
+            catch (Exception)
             {
-                MessageBox.Show("Não é possivel iniciar uma consulta porque não tem consultas agendadas para hoje!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -351,58 +373,69 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (dataGridViewConsultasHoje.Rows.Count > 0)
+            try
             {
-                int i = dataGridViewConsultasHoje.CurrentCell.RowIndex;
-                AgendamentoConsultaGridView consultaAgendada = null; ;
-
-                foreach (var ut in auxiliar)
+                if (dataGridViewConsultasHoje.Rows.Count > 0)
                 {
-                    if (ut.NifPaciente == Double.Parse(dataGridViewConsultasHoje.Rows[i].Cells[3].Value.ToString()))
+                    int i = dataGridViewConsultasHoje.CurrentCell.RowIndex;
+                    AgendamentoConsultaGridView consultaAgendada = null; ;
+
+                    foreach (var ut in auxiliar)
                     {
-                        consultaAgendada = ut;
+                        if (ut.NifPaciente == Double.Parse(dataGridViewConsultasHoje.Rows[i].Cells[3].Value.ToString()))
+                        {
+                            consultaAgendada = ut;
+                        }
+
+                    }
+                    conn.Open();
+                    com.Connection = conn;
+
+                    SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif =  " + consultaAgendada.NifPaciente, conn);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    Paciente paciente = null;
+
+                    if (reader.Read())
+                    {
+                        paciente = new Paciente
+                        {
+                            IdPaciente = (int)reader["IdPaciente"],
+                            Nome = (string)reader["nome"],
+                            DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                            Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
+                            Contacto = Convert.ToDouble(reader["contacto"]),
+                            Nif = Convert.ToInt32(reader["nif"]),
+                            Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
+                            Rua = (string)reader["Rua"],
+                            NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
+                            Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
+                            codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
+                            bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
+                            designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
+                            localidade = (string)reader["localidade"],
+                            IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                        };
                     }
 
+                    conn.Close();
+
+                    MenuMarcacoes menu = new MenuMarcacoes(enfermeiro, this);
+                    menu.Show();
                 }
-                conn.Open();
-                com.Connection = conn;
-
-                SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif =  " + consultaAgendada.NifPaciente, conn);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                Paciente paciente = null;
-
-                if (reader.Read())
+                else
                 {
-                    paciente = new Paciente
-                    {
-                        IdPaciente = (int)reader["IdPaciente"],
-                        Nome = (string)reader["nome"],
-                        DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                        Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
-                        Contacto = Convert.ToDouble(reader["contacto"]),
-                        Nif = Convert.ToInt32(reader["nif"]),
-                        Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
-                        Rua = (string)reader["Rua"],
-                        NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
-                        Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
-                        codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
-                        bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
-                        designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
-                        localidade = (string)reader["localidade"],
-                        IdEnfermeiro = (int)reader["IdEnfermeiro"],
-                    };
+                    MenuMarcacoes menu = new MenuMarcacoes(enfermeiro, this);
+                    menu.Show();
                 }
-
-                conn.Close();
-
-                MenuMarcacoes menu = new MenuMarcacoes(enfermeiro, this);
-                menu.Show();
             }
-            else
+            catch (Exception)
             {
-                MenuMarcacoes menu = new MenuMarcacoes(enfermeiro, this);
-                menu.Show();
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

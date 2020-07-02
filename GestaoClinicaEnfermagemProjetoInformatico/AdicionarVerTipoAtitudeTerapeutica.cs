@@ -115,29 +115,42 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void UpdateDataGridView()
         {
-            tipoDespesas.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Atitude ORDER BY nomeAtitude", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                TipoDespesa despesa = new TipoDespesa
-                {
-                    nome = (string)reader["nomeAtitude"],
-                    observacoes = (string)reader["observacoes"],
-                };
-                tipoDespesas.Add(despesa);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = tipoDespesas };
-            dataGridViewTipoDespesa.DataSource = bindingSource1;
-            dataGridViewTipoDespesa.Columns[0].HeaderText = "Tipo de Atitude Terapêutica";
-            dataGridViewTipoDespesa.Columns[1].HeaderText = "Observações";
+                tipoDespesas.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Atitude ORDER BY nomeAtitude", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-            conn.Close();
-            dataGridViewTipoDespesa.Update();
-            dataGridViewTipoDespesa.Refresh();
+                while (reader.Read())
+                {
+                    TipoDespesa despesa = new TipoDespesa
+                    {
+                        nome = (string)reader["nomeAtitude"],
+                        observacoes = (string)reader["observacoes"],
+                    };
+                    tipoDespesas.Add(despesa);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = tipoDespesas };
+                dataGridViewTipoDespesa.DataSource = bindingSource1;
+                dataGridViewTipoDespesa.Columns[0].HeaderText = "Tipo de Atitude Terapêutica";
+                dataGridViewTipoDespesa.Columns[1].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewTipoDespesa.Update();
+                dataGridViewTipoDespesa.Refresh();
+
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as atitudes terapêuticas!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private Boolean VerificarDadosInseridos()

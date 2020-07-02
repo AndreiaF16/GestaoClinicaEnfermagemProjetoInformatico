@@ -67,34 +67,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            flebografiaPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, flebografia, observacoes from Flebografia ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                FlebografiaPaciente flebografia = new FlebografiaPaciente
+                flebografiaPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select data, flebografia, observacoes from Flebografia ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    flebografia = ((reader["flebografia"] == DBNull.Value) ? "" : (string)reader["flebografia"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    FlebografiaPaciente flebografia = new FlebografiaPaciente
+                    {
+                        data = data,
+                        flebografia = ((reader["flebografia"] == DBNull.Value) ? "" : (string)reader["flebografia"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
 
-                };
-                flebografiaPaciente.Add(flebografia);
+                    };
+                    flebografiaPaciente.Add(flebografia);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = flebografiaPaciente };
+                dataGridViewFlebografia.DataSource = bindingSource1;
+                dataGridViewFlebografia.Columns[0].HeaderText = "Data de Realização";
+                dataGridViewFlebografia.Columns[1].HeaderText = "Flebografia";
+                dataGridViewFlebografia.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewFlebografia.Update();
+                dataGridViewFlebografia.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = flebografiaPaciente };
-            dataGridViewFlebografia.DataSource = bindingSource1;
-            dataGridViewFlebografia.Columns[0].HeaderText = "Data de Realização";
-            dataGridViewFlebografia.Columns[1].HeaderText = "Flebografia";
-            dataGridViewFlebografia.Columns[2].HeaderText = "Observações";
-
-            conn.Close();
-            dataGridViewFlebografia.Update();
-            dataGridViewFlebografia.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

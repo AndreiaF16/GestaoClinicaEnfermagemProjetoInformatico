@@ -220,7 +220,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerZaragatoaOnofaringe";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VerZaragatoaOnofaringe";
             this.Load += new System.EventHandler(this.VerZaragatoaOnofaringe_Load);

@@ -17,10 +17,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         AdicionarVisualizarAvaliacaoObjetivoBebe adicionar = null;
         private ErrorProvider errorProvider = new ErrorProvider();
 
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
         public AdicionarTipoParto(AdicionarVisualizarAvaliacaoObjetivoBebe avaliacaoBebe)
         {
             InitializeComponent();
-            adicionar = avaliacaoBebe;
+            adicionar = avaliacaoBebe; 
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
         }
 
         private void AdicionarTipoParto_Load(object sender, EventArgs e)
@@ -101,6 +105,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Erro interno, não foi possível registar o tipo de parto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

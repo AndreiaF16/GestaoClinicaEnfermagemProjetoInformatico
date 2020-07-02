@@ -119,19 +119,32 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         }
 
-        private void idAtitude()
+      /*  private void idAtitude()
         {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Audiograma'", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                id = (int)reader["IdAtitude"];
-            }
 
-            conn.Close();
-        }
+            //ignorar, clinte n quer ficar com os dados guardados
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Audiograma'", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = (int)reader["IdAtitude"];
+                }
+
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar se o tipo de atitude terapêutica 'Audiograma' existe!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }*/
 
         private void printPreviewDialog1_Load(object sender, EventArgs e)
         {

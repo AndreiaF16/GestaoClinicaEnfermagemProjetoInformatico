@@ -67,60 +67,71 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            colpocitologiaPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, dvm, metodoContracetivoOral, metodoContracetivoDIUData, metodoContracetivoImplante, metodoContracetivoImplanteData, metodoContracetivoAnelVaginalData, metodoContracetivoPreservativos, metodoContracetivoIntramuscular, metodoContracetivoInstramuscularData, metodoContracetivoLaqTrompasData, metodoCOntracetivoPessarioData, observacoes from Colpocitologia ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                string dataDIU = ((reader["metodoContracetivoDIUData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoContracetivoDIUData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                string dataImplante = ((reader["metodoContracetivoImplanteData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoContracetivoImplanteData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                string dataAnelVaginal = ((reader["metodoContracetivoAnelVaginalData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoContracetivoAnelVaginalData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                string dataIntramuscular = ((reader["metodoContracetivoInstramuscularData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoContracetivoInstramuscularData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                string dataLaqTrompas = ((reader["metodoContracetivoLaqTrompasData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoContracetivoLaqTrompasData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                string dataPessario = ((reader["metodoCOntracetivoPessarioData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoCOntracetivoPessarioData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                colpocitologiaPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                ColpocitologiaPaciente colpocitologia = new ColpocitologiaPaciente
+                SqlCommand cmd = new SqlCommand("select data, dvm, metodoContracetivoOral, metodoContracetivoDIUData, metodoContracetivoImplante, metodoContracetivoImplanteData, metodoContracetivoAnelVaginalData, metodoContracetivoPreservativos, metodoContracetivoIntramuscular, metodoContracetivoInstramuscularData, metodoContracetivoLaqTrompasData, metodoCOntracetivoPessarioData, observacoes from Colpocitologia ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    dvm = ((reader["dvm"] == DBNull.Value) ? "" : (string)reader["dvm"]),
-                    metodoContracetivoOral = ((reader["metodoContracetivoOral"] == DBNull.Value) ? "" : (string)reader["metodoContracetivoOral"]),
-                    metodoContracetivoDIUData = dataDIU,
-                    metodoContracetivoImplante = ((reader["metodoContracetivoImplante"] == DBNull.Value) ? "" : (string)reader["metodoContracetivoImplante"]),
-                    metodoContracetivoImplanteData = dataImplante,
-                    metodoContracetivoAnelVaginalData = dataAnelVaginal,
-                    metodoContracetivoPreservativos = ((reader["metodoContracetivoPreservativos"] == DBNull.Value) ? "" : (string)reader["metodoContracetivoPreservativos"]),
-                    metodoContracetivoIntramuscular = ((reader["metodoContracetivoIntramuscular"] == DBNull.Value) ? "" : (string)reader["metodoContracetivoIntramuscular"]),
-                    metodoContracetivoInstramuscularData = dataIntramuscular,
-                    metodoContracetivoLaqTrompasData = dataLaqTrompas,
-                    metodoCOntracetivoPessarioData = dataPessario,
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                colpocitologiaPaciente.Add(colpocitologia);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = colpocitologiaPaciente };
-            dataGridViewColpocitologia.DataSource = bindingSource1;
-            dataGridViewColpocitologia.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewColpocitologia.Columns[1].HeaderText = "DVM";
-            dataGridViewColpocitologia.Columns[2].HeaderText = "Método Contracetivo Oral";
-            dataGridViewColpocitologia.Columns[3].HeaderText = "Método Contracetivo DIU - Data";
-            dataGridViewColpocitologia.Columns[4].HeaderText = "Implante";
-            dataGridViewColpocitologia.Columns[5].HeaderText = "Data Colocação Implante";
-            dataGridViewColpocitologia.Columns[6].HeaderText = "Data Colocação Anel Vaginal";
-            dataGridViewColpocitologia.Columns[7].HeaderText = "Preservativos";
-            dataGridViewColpocitologia.Columns[8].HeaderText = "Instramuscular";
-            dataGridViewColpocitologia.Columns[9].HeaderText = "Data Colocação Intramuscular";
-            dataGridViewColpocitologia.Columns[10].HeaderText = "Data de Laqueação das Trompas";
-            dataGridViewColpocitologia.Columns[11].HeaderText = "Data Pessario";
-            dataGridViewColpocitologia.Columns[12].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    string dataDIU = ((reader["metodoContracetivoDIUData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoContracetivoDIUData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    string dataImplante = ((reader["metodoContracetivoImplanteData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoContracetivoImplanteData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    string dataAnelVaginal = ((reader["metodoContracetivoAnelVaginalData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoContracetivoAnelVaginalData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    string dataIntramuscular = ((reader["metodoContracetivoInstramuscularData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoContracetivoInstramuscularData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    string dataLaqTrompas = ((reader["metodoContracetivoLaqTrompasData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoContracetivoLaqTrompasData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    string dataPessario = ((reader["metodoCOntracetivoPessarioData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoCOntracetivoPessarioData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewColpocitologia.Update();
-            dataGridViewColpocitologia.Refresh();
+                    ColpocitologiaPaciente colpocitologia = new ColpocitologiaPaciente
+                    {
+                        data = data,
+                        dvm = ((reader["dvm"] == DBNull.Value) ? "" : (string)reader["dvm"]),
+                        metodoContracetivoOral = ((reader["metodoContracetivoOral"] == DBNull.Value) ? "" : (string)reader["metodoContracetivoOral"]),
+                        metodoContracetivoDIUData = dataDIU,
+                        metodoContracetivoImplante = ((reader["metodoContracetivoImplante"] == DBNull.Value) ? "" : (string)reader["metodoContracetivoImplante"]),
+                        metodoContracetivoImplanteData = dataImplante,
+                        metodoContracetivoAnelVaginalData = dataAnelVaginal,
+                        metodoContracetivoPreservativos = ((reader["metodoContracetivoPreservativos"] == DBNull.Value) ? "" : (string)reader["metodoContracetivoPreservativos"]),
+                        metodoContracetivoIntramuscular = ((reader["metodoContracetivoIntramuscular"] == DBNull.Value) ? "" : (string)reader["metodoContracetivoIntramuscular"]),
+                        metodoContracetivoInstramuscularData = dataIntramuscular,
+                        metodoContracetivoLaqTrompasData = dataLaqTrompas,
+                        metodoCOntracetivoPessarioData = dataPessario,
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    colpocitologiaPaciente.Add(colpocitologia);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = colpocitologiaPaciente };
+                dataGridViewColpocitologia.DataSource = bindingSource1;
+                dataGridViewColpocitologia.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewColpocitologia.Columns[1].HeaderText = "DVM";
+                dataGridViewColpocitologia.Columns[2].HeaderText = "Método Contracetivo Oral";
+                dataGridViewColpocitologia.Columns[3].HeaderText = "Método Contracetivo DIU - Data";
+                dataGridViewColpocitologia.Columns[4].HeaderText = "Implante";
+                dataGridViewColpocitologia.Columns[5].HeaderText = "Data Colocação Implante";
+                dataGridViewColpocitologia.Columns[6].HeaderText = "Data Colocação Anel Vaginal";
+                dataGridViewColpocitologia.Columns[7].HeaderText = "Preservativos";
+                dataGridViewColpocitologia.Columns[8].HeaderText = "Instramuscular";
+                dataGridViewColpocitologia.Columns[9].HeaderText = "Data Colocação Intramuscular";
+                dataGridViewColpocitologia.Columns[10].HeaderText = "Data de Laqueação das Trompas";
+                dataGridViewColpocitologia.Columns[11].HeaderText = "Data Pessario";
+                dataGridViewColpocitologia.Columns[12].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewColpocitologia.Update();
+                dataGridViewColpocitologia.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

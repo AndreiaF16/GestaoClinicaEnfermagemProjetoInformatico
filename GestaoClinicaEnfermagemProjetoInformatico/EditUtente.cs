@@ -361,45 +361,56 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     errorProvider.SetError(txtNomeSeguradora, String.Empty);
                 }
             }
-
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Paciente", conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                if (!(reader["Email"] == DBNull.Value) && emailIgual == false)
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from Paciente", conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    if (txtEmail.Text.Equals((string)reader["Email"]))
+                    if (!(reader["Email"] == DBNull.Value) && emailIgual == false)
                     {
-                        MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (txtEmail.Text.Equals((string)reader["Email"]))
+                        {
+                            MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            conn.Close();
+                            return false;
+                        }
+
+                    }
+
+                    if (Convert.ToInt32(txtNif.Text) == Convert.ToInt32(reader["Nif"]) && nifIgual == false)
+                    {
+                        MessageBox.Show("O NIF que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         conn.Close();
                         return false;
                     }
 
-                }
-
-                if (Convert.ToInt32(txtNif.Text) == Convert.ToInt32(reader["Nif"]) && nifIgual == false)
-                {
-                    MessageBox.Show("O NIF que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    conn.Close();
-                    return false;
-                }
-
-                if (!(reader["NumeroSNS"] == DBNull.Value) && SNSIgual == false)
-                {
-
-                    if (Convert.ToInt32(txtSNS.Text) == Convert.ToInt32(reader["NumeroSNS"]) && SNSIgual == false)
+                    if (!(reader["NumeroSNS"] == DBNull.Value) && SNSIgual == false)
                     {
-                        MessageBox.Show("O número do SNS que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        conn.Close();
-                        return false;
+
+                        if (Convert.ToInt32(txtSNS.Text) == Convert.ToInt32(reader["NumeroSNS"]) && SNSIgual == false)
+                        {
+                            MessageBox.Show("O número do SNS que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            conn.Close();
+                            return false;
+                        }
                     }
                 }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
             return true;
         }
 
@@ -634,6 +645,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível alterar os dados do utente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 

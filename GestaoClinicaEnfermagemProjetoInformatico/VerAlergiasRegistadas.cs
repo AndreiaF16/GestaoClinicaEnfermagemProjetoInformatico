@@ -104,9 +104,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Erro interno, não foi possível alterar a alergia!", excep.Message);
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                    MessageBox.Show("Erro interno, não foi possível alterar a alergia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -235,7 +239,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             txtNome.Text = "";
             txtSintomas.Text = "";
-            //reiniciar();
             errorProvider.Clear();
         }
     }

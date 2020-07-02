@@ -67,38 +67,49 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            suturasPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, id, natural, donatti, observacoes from Suturas ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                suturasPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                SuturasPaciente sututras = new SuturasPaciente
+                SqlCommand cmd = new SqlCommand("select data, id, natural, donatti, observacoes from Suturas ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    id = ((reader["id"] == DBNull.Value) ? null : (int?)reader["id"]),
-                    natural = ((reader["natural"] == DBNull.Value) ? null : (int?)reader["natural"]),
-                    donatti = ((reader["donatti"] == DBNull.Value) ? null : (int?)reader["donatti"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                suturasPaciente.Add(sututras);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = suturasPaciente };
-            dataGridViewSuturas.DataSource = bindingSource1;
-            dataGridViewSuturas.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewSuturas.Columns[1].HeaderText = "ID";
-            dataGridViewSuturas.Columns[2].HeaderText = "Natural";
-            dataGridViewSuturas.Columns[3].HeaderText = "Donatti";
-            dataGridViewSuturas.Columns[4].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewSuturas.Update();
-            dataGridViewSuturas.Refresh();
+                    SuturasPaciente sututras = new SuturasPaciente
+                    {
+                        data = data,
+                        id = ((reader["id"] == DBNull.Value) ? null : (int?)reader["id"]),
+                        natural = ((reader["natural"] == DBNull.Value) ? null : (int?)reader["natural"]),
+                        donatti = ((reader["donatti"] == DBNull.Value) ? null : (int?)reader["donatti"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    suturasPaciente.Add(sututras);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = suturasPaciente };
+                dataGridViewSuturas.DataSource = bindingSource1;
+                dataGridViewSuturas.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewSuturas.Columns[1].HeaderText = "ID";
+                dataGridViewSuturas.Columns[2].HeaderText = "Natural";
+                dataGridViewSuturas.Columns[3].HeaderText = "Donatti";
+                dataGridViewSuturas.Columns[4].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewSuturas.Update();
+                dataGridViewSuturas.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -100,6 +100,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Erro interno, impossível inserir o exame", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -107,36 +111,47 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void UpdateDataGridView()
         {
-            examePacientes.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select tipo.nome, exame.data, exame.designacao, exame.observacoes from tipoExame tipo JOIN Exame exame ON tipo.IdTipoExame = exame.idTipoExame WHERE idPaciente = @IdPaciente ORDER BY exame.data, tipo.nome", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                examePacientes.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select tipo.nome, exame.data, exame.designacao, exame.observacoes from tipoExame tipo JOIN Exame exame ON tipo.IdTipoExame = exame.idTipoExame WHERE idPaciente = @IdPaciente ORDER BY exame.data, tipo.nome", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                ExamePaciente examePaciente = new ExamePaciente
+                while (reader.Read())
                 {
-                    nome = (string)reader["Nome"],
-                    data = data,
-                    designacao = (string)reader["designacao"],
-                    observacoes = (string)reader["observacoes"],
-                };
-                examePacientes.Add(examePaciente);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = examePacientes };
-            dataGridViewExames.DataSource = bindingSource1;
-            dataGridViewExames.Columns[0].HeaderText = "Exame";
-            dataGridViewExames.Columns[1].HeaderText = "Data do Exame";
-            dataGridViewExames.Columns[2].HeaderText = "Designação";
-            dataGridViewExames.Columns[3].HeaderText = "Observações";
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-            conn.Close();
-            dataGridViewExames.Update();
-            dataGridViewExames.Refresh();
+                    ExamePaciente examePaciente = new ExamePaciente
+                    {
+                        nome = (string)reader["Nome"],
+                        data = data,
+                        designacao = (string)reader["designacao"],
+                        observacoes = (string)reader["observacoes"],
+                    };
+                    examePacientes.Add(examePaciente);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = examePacientes };
+                dataGridViewExames.DataSource = bindingSource1;
+                dataGridViewExames.Columns[0].HeaderText = "Exame";
+                dataGridViewExames.Columns[1].HeaderText = "Data do Exame";
+                dataGridViewExames.Columns[2].HeaderText = "Designação";
+                dataGridViewExames.Columns[3].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewExames.Update();
+                dataGridViewExames.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar a os exames do paciente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -148,23 +163,35 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void reiniciar()
         {
-            exames.Clear();
-            comboBoxDoenca.Items.Clear();
-            auxiliar.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from tipoExame", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader["nome"];
-                item.Value = (int)reader["IdTipoExame"];
-                comboBoxDoenca.Items.Add(item);
-                exames.Add(item);
-            }
+                exames.Clear();
+                comboBoxDoenca.Items.Clear();
+                auxiliar.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from tipoExame", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = (string)reader["nome"];
+                    item.Value = (int)reader["IdTipoExame"];
+                    comboBoxDoenca.Items.Add(item);
+                    exames.Add(item);
+                }
 
-            conn.Close();
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar o tipo de exame!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private void txtProcurar_KeyDown(object sender, KeyEventArgs e)

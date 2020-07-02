@@ -381,6 +381,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException )
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar o tratamento", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -461,27 +465,36 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                  return false;
              }
 
-
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from TratamentoPaciente WHERE IdPaciente = @IdPaciente", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                int exame = (comboBoxTratamento.SelectedItem as ComboBoxItem).Value;
-                if (dataTratamento.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && exame == (int)reader["IdTratamento"])
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from TratamentoPaciente WHERE IdPaciente = @IdPaciente", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    MessageBox.Show("Não é possível registar esse tratamento, porque já esta registado na data que selecionou. Escolha outra data ou outro tratamento!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    conn.Close();
-                    return false;
+                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                    int exame = (comboBoxTratamento.SelectedItem as ComboBoxItem).Value;
+                    if (dataTratamento.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && exame == (int)reader["IdTratamento"])
+                    {
+                        MessageBox.Show("Não é possível registar esse tratamento, porque já esta registado na data que selecionou. Escolha outra data ou outro tratamento!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return false;
+                    }
+
                 }
-
+                conn.Close();
             }
-            conn.Close();
-
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return true;
         }
 
@@ -502,51 +515,84 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             comboBoxTipoUlcera.Items.Clear();
 
             auxiliar.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Tratamento order by nomeTratamento asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader["nomeTratamento"];
-                item.Value = (int)reader["IdTratamento"];
-                comboBoxTratamento.Items.Add(item);
-                tratamentos.Add(item);
+
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Tratamento order by nomeTratamento asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = (string)reader["nomeTratamento"];
+                    item.Value = (int)reader["IdTratamento"];
+                    comboBoxTratamento.Items.Add(item);
+                    tratamentos.Add(item);
+                }
+                conn.Close();
             }
-            conn.Close();
-
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd1 = new SqlCommand("select * from tipoQueimadura order by tipoQueimadura asc", conn);
-            SqlDataReader reader1 = cmd1.ExecuteReader();
-            while (reader1.Read())
+            catch (Exception)
             {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader1["tipoQueimadura"];
-                item.Value = (int)reader1["IdTipoQueimadura"];
-                comboBoxTipoQueimadura.Items.Add(item);
-                queimaduras.Add(item);
-            }
-
-            conn.Close();
-
-            conn.Close();
-
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd2 = new SqlCommand("select * from tipoUlcera order by tipoUlcera asc", conn);
-            SqlDataReader reader2 = cmd2.ExecuteReader();
-            while (reader2.Read())
-            {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader2["tipoUlcera"];
-                item.Value = (int)reader2["IdTipoUlcera"];
-                comboBoxTipoUlcera.Items.Add(item);
-                ulceras.Add(item);
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar o tipo de tratamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            conn.Close();
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd1 = new SqlCommand("select * from tipoQueimadura order by tipoQueimadura asc", conn);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = (string)reader1["tipoQueimadura"];
+                    item.Value = (int)reader1["IdTipoQueimadura"];
+                    comboBoxTipoQueimadura.Items.Add(item);
+                    queimaduras.Add(item);
+                }
+
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar o tipo de queimadura!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd2 = new SqlCommand("select * from tipoUlcera order by tipoUlcera asc", conn);
+                SqlDataReader reader2 = cmd2.ExecuteReader();
+                while (reader2.Read())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = (string)reader2["tipoUlcera"];
+                    item.Value = (int)reader2["IdTipoUlcera"];
+                    comboBoxTipoUlcera.Items.Add(item);
+                    ulceras.Add(item);
+                }
+
+                conn.Close();
+
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar o tipo de úlcera!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void hora_Tick(object sender, EventArgs e)

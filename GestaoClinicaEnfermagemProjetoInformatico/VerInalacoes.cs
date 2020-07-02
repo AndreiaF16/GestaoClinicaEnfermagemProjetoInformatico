@@ -66,37 +66,48 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            inalacoesPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, O2, aerossol, inaladores, observacoes from Inalacoes ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                InalacoesPaciente inalacoes = new InalacoesPaciente
+                inalacoesPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select data, O2, aerossol, inaladores, observacoes from Inalacoes ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    O2 = ((reader["O2"] == DBNull.Value) ? "" : (string)reader["O2"]),
-                    aerossol = ((reader["aerossol"] == DBNull.Value) ? "" : (string)reader["aerossol"]),
-                    inaladores = ((reader["inaladores"] == DBNull.Value) ? "" : (string)reader["inaladores"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    InalacoesPaciente inalacoes = new InalacoesPaciente
+                    {
+                        data = data,
+                        O2 = ((reader["O2"] == DBNull.Value) ? "" : (string)reader["O2"]),
+                        aerossol = ((reader["aerossol"] == DBNull.Value) ? "" : (string)reader["aerossol"]),
+                        inaladores = ((reader["inaladores"] == DBNull.Value) ? "" : (string)reader["inaladores"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
 
-                };
-                inalacoesPaciente.Add(inalacoes);
+                    };
+                    inalacoesPaciente.Add(inalacoes);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = inalacoesPaciente };
+                dataGridViewInalacoes.DataSource = bindingSource1;
+                dataGridViewInalacoes.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewInalacoes.Columns[1].HeaderText = "Aerossol";
+                dataGridViewInalacoes.Columns[2].HeaderText = "Inaladores";
+                dataGridViewInalacoes.Columns[3].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewInalacoes.Update();
+                dataGridViewInalacoes.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = inalacoesPaciente };
-            dataGridViewInalacoes.DataSource = bindingSource1;
-            dataGridViewInalacoes.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewInalacoes.Columns[1].HeaderText = "Aerossol";
-            dataGridViewInalacoes.Columns[2].HeaderText = "Inaladores";
-            dataGridViewInalacoes.Columns[3].HeaderText = "Observações";
-
-            conn.Close();
-            dataGridViewInalacoes.Update();
-            dataGridViewInalacoes.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

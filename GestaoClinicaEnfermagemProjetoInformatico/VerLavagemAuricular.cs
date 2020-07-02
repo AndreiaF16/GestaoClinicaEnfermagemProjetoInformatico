@@ -66,38 +66,49 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            lavagemAuricularPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, ouvidoDireito, ouvidoEsquerdo, ambos, observacoes from LavagemAuricular ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                lavagemAuricularPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                LavagemAuricularPac lavagemAuricular = new LavagemAuricularPac
+                SqlCommand cmd = new SqlCommand("select data, ouvidoDireito, ouvidoEsquerdo, ambos, observacoes from LavagemAuricular ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    ouvidoDireito = ((reader["ouvidoDireito"] == DBNull.Value) ? "" : (string)reader["ouvidoDireito"]),
-                    ouvidoEsquerdo = ((reader["ouvidoEsquerdo"] == DBNull.Value) ? "" : (string)reader["ouvidoEsquerdo"]),
-                    ambos = ((reader["ambos"] == DBNull.Value) ? "" : (string)reader["ambos"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                lavagemAuricularPaciente.Add(lavagemAuricular);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = lavagemAuricularPaciente };
-            dataGridViewLavAuricular.DataSource = bindingSource1;
-            dataGridViewLavAuricular.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewLavAuricular.Columns[1].HeaderText = "Ouvido Direito";
-            dataGridViewLavAuricular.Columns[2].HeaderText = "Ouvido Esquerdo";
-            dataGridViewLavAuricular.Columns[3].HeaderText = "Ambos";
-            dataGridViewLavAuricular.Columns[4].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewLavAuricular.Update();
-            dataGridViewLavAuricular.Refresh();
+                    LavagemAuricularPac lavagemAuricular = new LavagemAuricularPac
+                    {
+                        data = data,
+                        ouvidoDireito = ((reader["ouvidoDireito"] == DBNull.Value) ? "" : (string)reader["ouvidoDireito"]),
+                        ouvidoEsquerdo = ((reader["ouvidoEsquerdo"] == DBNull.Value) ? "" : (string)reader["ouvidoEsquerdo"]),
+                        ambos = ((reader["ambos"] == DBNull.Value) ? "" : (string)reader["ambos"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    lavagemAuricularPaciente.Add(lavagemAuricular);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = lavagemAuricularPaciente };
+                dataGridViewLavAuricular.DataSource = bindingSource1;
+                dataGridViewLavAuricular.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewLavAuricular.Columns[1].HeaderText = "Ouvido Direito";
+                dataGridViewLavAuricular.Columns[2].HeaderText = "Ouvido Esquerdo";
+                dataGridViewLavAuricular.Columns[3].HeaderText = "Ambos";
+                dataGridViewLavAuricular.Columns[4].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewLavAuricular.Update();
+                dataGridViewLavAuricular.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

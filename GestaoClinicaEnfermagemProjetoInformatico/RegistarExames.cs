@@ -14,11 +14,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class RegistarExames : Form
     {
         private ErrorProvider errorProvider = new ErrorProvider();
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
         public RegistarExames(AdicionarVisualizarExamePaciente adicionarVisualizarExamePaciente)
         {
             InitializeComponent();
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
         }
 
         private void RegistarExames_Load(object sender, EventArgs e)
@@ -93,6 +97,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException )
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Erro interno, não foi possível registar o exame!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

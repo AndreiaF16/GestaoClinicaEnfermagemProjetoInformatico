@@ -74,49 +74,60 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void verTratamentos()
         {
-            TratamentosAnteriores tratamentos = new TratamentosAnteriores();
-
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select tratamentoPac.data, tratamento.nomeTratamento, tratamentoPac.numeroTratamento, tratamentoPac.dimensoes, tratamentoPac.grauUlceraPressao, tratamentoPac.exsudadoTipo, tratamentoPac.exsudadoQuantidade, tratamentoPac.exsudadoCheiro, tratamentoPac.tecidoPredominante, tratamentoPac.areaCircundante, tratamentoPac.agenteLimpeza, tratamentoPac.aplicacaoFerida, tratamentoPac.aplicacaoAreaCircundante, tratamentoPac.aplicacaoPenso, tratamentoPac.aplicacaoTamanho, tratamentoPac.aplicacaoSuportePenso, tratamentoPac.ProximoTratamento, tratamentoPac.Observacoes, tratamentoPac.EscalaDor, queimadura.tipoQueimadura, tratamentoPac.IPTB, ulcera.tipoUlcera from Tratamento tratamento LEFT JOIN TratamentoPaciente tratamentoPac ON tratamento.IdTratamento = tratamentoPac.IdTratamento LEFT JOIN Paciente pac ON tratamentoPac.IdTratamento = pac.IdPaciente LEFT JOIN tipoQueimadura queimadura ON tratamentoPac.tipoQueimadura = queimadura.IdTipoQueimadura LEFT JOIN tipoUlcera ulcera ON tratamentoPac.tipoUlcera = ulcera.IdTipoUlcera where tratamentoPac.IdPaciente = @IdPaciente", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-            // Paciente paciente = null;
-
-            while (reader.Read())
+            try
             {
-                tratamentos = new TratamentosAnteriores
-                {
-                    dataTratamento = Convert.ToDateTime(reader["data"]),
-                    tipoTratamento = ((reader["nomeTratamento"] == DBNull.Value) ? "" : (string)reader["nomeTratamento"]),
-                    nrTratamento = ((reader["numeroTratamento"] == DBNull.Value) ? null : (int?)reader["numeroTratamento"]),
-                    dimensoes = ((reader["dimensoes"] == DBNull.Value) ? "" : (string)reader["dimensoes"]),
-                    grauUlceraPressao = ((reader["grauUlceraPressao"] == DBNull.Value) ? "" : (string)reader["grauUlceraPressao"]),
-                    exsudadoTipo = ((reader["exsudadoTipo"] == DBNull.Value) ? "" : (string)reader["exsudadoTipo"]),
-                    exsudadoQuantidade = ((reader["exsudadoQuantidade"] == DBNull.Value) ? null : (int?)reader["exsudadoQuantidade"]),
-                    exsudadoCheiro = ((reader["exsudadoCheiro"] == DBNull.Value) ? "" : (string)reader["exsudadoCheiro"]),
-                    tecidoPredominante = ((reader["tecidoPredominante"] == DBNull.Value) ? "" : (string)reader["tecidoPredominante"]),
-                    areaCircundante = ((reader["areaCircundante"] == DBNull.Value) ? "" : (string)reader["areaCircundante"]),
-                    agenteLimpeza = ((reader["agenteLimpeza"] == DBNull.Value) ? "" : (string)reader["agenteLimpeza"]),
-                    aplicacaoFerida = ((reader["aplicacaoFerida"] == DBNull.Value) ? "" : (string)reader["aplicacaoFerida"]),
-                    aplicacaoAreaCircundante = ((reader["aplicacaoAreaCircundante"] == DBNull.Value) ? "" : (string)reader["aplicacaoAreaCircundante"]),
-                    aplicacaoPenso = ((reader["aplicacaoPenso"] == DBNull.Value) ? "" : (string)reader["aplicacaoPenso"]),                   
-                    aplicacaoTamanho = ((reader["aplicacaoTamanho"] == DBNull.Value) ? null : (int?)reader["aplicacaoTamanho"]),
-                    aplicacaoSuportePenso = ((reader["aplicacaoSuportePenso"] == DBNull.Value) ? "" : (string)reader["aplicacaoSuportePenso"]),
-                    Observacoes = ((reader["Observacoes"] == DBNull.Value) ? "" : (string)reader["Observacoes"]),
-                    ProximoTratamento = (reader["ProximoTratamento"].ToString() == "" ? "" : DateTime.ParseExact(reader["ProximoTratamento"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy")),
-                    EscalaDor = ((reader["EscalaDor"] == DBNull.Value) ? "" : (string)reader["EscalaDor"]),
-                    tipoQueimadura = ((reader["tipoQueimadura"] == DBNull.Value) ? "" : (string)reader["tipoQueimadura"]),
-                    IPTB = ((reader["IPTB"] == DBNull.Value) ? "" : (string)reader["IPTB"]),
-                    tipoUlcera = ((reader["tipoUlcera"] == DBNull.Value) ? "" : (string)reader["tipoUlcera"]),
+                TratamentosAnteriores tratamentos = new TratamentosAnteriores();
 
-                };
-                listaTratamentosAnteriores.Add(tratamentos);
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select tratamentoPac.data, tratamento.nomeTratamento, tratamentoPac.numeroTratamento, tratamentoPac.dimensoes, tratamentoPac.grauUlceraPressao, tratamentoPac.exsudadoTipo, tratamentoPac.exsudadoQuantidade, tratamentoPac.exsudadoCheiro, tratamentoPac.tecidoPredominante, tratamentoPac.areaCircundante, tratamentoPac.agenteLimpeza, tratamentoPac.aplicacaoFerida, tratamentoPac.aplicacaoAreaCircundante, tratamentoPac.aplicacaoPenso, tratamentoPac.aplicacaoTamanho, tratamentoPac.aplicacaoSuportePenso, tratamentoPac.ProximoTratamento, tratamentoPac.Observacoes, tratamentoPac.EscalaDor, queimadura.tipoQueimadura, tratamentoPac.IPTB, ulcera.tipoUlcera from Tratamento tratamento LEFT JOIN TratamentoPaciente tratamentoPac ON tratamento.IdTratamento = tratamentoPac.IdTratamento LEFT JOIN Paciente pac ON tratamentoPac.IdTratamento = pac.IdPaciente LEFT JOIN tipoQueimadura queimadura ON tratamentoPac.tipoQueimadura = queimadura.IdTipoQueimadura LEFT JOIN tipoUlcera ulcera ON tratamentoPac.tipoUlcera = ulcera.IdTipoUlcera where tratamentoPac.IdPaciente = @IdPaciente", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
+                // Paciente paciente = null;
+
+                while (reader.Read())
+                {
+                    tratamentos = new TratamentosAnteriores
+                    {
+                        dataTratamento = Convert.ToDateTime(reader["data"]),
+                        tipoTratamento = ((reader["nomeTratamento"] == DBNull.Value) ? "" : (string)reader["nomeTratamento"]),
+                        nrTratamento = ((reader["numeroTratamento"] == DBNull.Value) ? null : (int?)reader["numeroTratamento"]),
+                        dimensoes = ((reader["dimensoes"] == DBNull.Value) ? "" : (string)reader["dimensoes"]),
+                        grauUlceraPressao = ((reader["grauUlceraPressao"] == DBNull.Value) ? "" : (string)reader["grauUlceraPressao"]),
+                        exsudadoTipo = ((reader["exsudadoTipo"] == DBNull.Value) ? "" : (string)reader["exsudadoTipo"]),
+                        exsudadoQuantidade = ((reader["exsudadoQuantidade"] == DBNull.Value) ? null : (int?)reader["exsudadoQuantidade"]),
+                        exsudadoCheiro = ((reader["exsudadoCheiro"] == DBNull.Value) ? "" : (string)reader["exsudadoCheiro"]),
+                        tecidoPredominante = ((reader["tecidoPredominante"] == DBNull.Value) ? "" : (string)reader["tecidoPredominante"]),
+                        areaCircundante = ((reader["areaCircundante"] == DBNull.Value) ? "" : (string)reader["areaCircundante"]),
+                        agenteLimpeza = ((reader["agenteLimpeza"] == DBNull.Value) ? "" : (string)reader["agenteLimpeza"]),
+                        aplicacaoFerida = ((reader["aplicacaoFerida"] == DBNull.Value) ? "" : (string)reader["aplicacaoFerida"]),
+                        aplicacaoAreaCircundante = ((reader["aplicacaoAreaCircundante"] == DBNull.Value) ? "" : (string)reader["aplicacaoAreaCircundante"]),
+                        aplicacaoPenso = ((reader["aplicacaoPenso"] == DBNull.Value) ? "" : (string)reader["aplicacaoPenso"]),
+                        aplicacaoTamanho = ((reader["aplicacaoTamanho"] == DBNull.Value) ? null : (int?)reader["aplicacaoTamanho"]),
+                        aplicacaoSuportePenso = ((reader["aplicacaoSuportePenso"] == DBNull.Value) ? "" : (string)reader["aplicacaoSuportePenso"]),
+                        Observacoes = ((reader["Observacoes"] == DBNull.Value) ? "" : (string)reader["Observacoes"]),
+                        ProximoTratamento = (reader["ProximoTratamento"].ToString() == "" ? "" : DateTime.ParseExact(reader["ProximoTratamento"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy")),
+                        EscalaDor = ((reader["EscalaDor"] == DBNull.Value) ? "" : (string)reader["EscalaDor"]),
+                        tipoQueimadura = ((reader["tipoQueimadura"] == DBNull.Value) ? "" : (string)reader["tipoQueimadura"]),
+                        IPTB = ((reader["IPTB"] == DBNull.Value) ? "" : (string)reader["IPTB"]),
+                        tipoUlcera = ((reader["tipoUlcera"] == DBNull.Value) ? "" : (string)reader["tipoUlcera"]),
+
+                    };
+                    listaTratamentosAnteriores.Add(tratamentos);
+                }
+                conn.Close();
+                UpdateDataGridView();
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaTratamentosAnteriores };
+                dataGridViewTratamentos.DataSource = bindingSource1;
             }
-            conn.Close();
-            UpdateDataGridView();
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaTratamentosAnteriores };
-            dataGridViewTratamentos.DataSource = bindingSource1;
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void verExcisoes()

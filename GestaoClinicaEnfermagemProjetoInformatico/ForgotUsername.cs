@@ -22,6 +22,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             InitializeComponent();
             enfermeiro = enf;
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
         }
 
         private void btnAlterarPassword_Click(object sender, EventArgs e)
@@ -45,10 +47,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (Exception)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível alterar o Username!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
-
             }
         }
 

@@ -15,13 +15,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         AdicionarVisualizarCirurgiaPaciente adicionar = null;
         private ErrorProvider errorProvider = new ErrorProvider();
-
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
         public Cirurgias(AdicionarVisualizarCirurgiaPaciente adicionarVisualizarCirurgiaPaciente)
         {
             InitializeComponent();
             adicionar = adicionarVisualizarCirurgiaPaciente;
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         }
 
@@ -82,6 +84,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar a cirurgia", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

@@ -15,11 +15,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public partial class FormAlterarPalavraPasse : Form
     {
         private Enfermeiro enfermeiro = new Enfermeiro();
-
+        readonly SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
         public FormAlterarPalavraPasse(Enfermeiro enf)
         {
             InitializeComponent();
             enfermeiro = enf;
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         }
 
@@ -41,10 +43,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Palavra passe alterada com sucesso!");
                     this.Close();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
 
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                    MessageBox.Show("Por erro interno é impossível alterar a palavra passe!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 

@@ -111,31 +111,42 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            listaTratamentos.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select tratamento, observacoes from TratamentoMaosPes ORDER BY tratamento asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                TratamentoMaosPes trat = new TratamentoMaosPes
+                listaTratamentos.Clear();
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select tratamento, observacoes from TratamentoMaosPes ORDER BY tratamento asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    nomeTratamento = (string)reader["tratamento"],
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    TratamentoMaosPes trat = new TratamentoMaosPes
+                    {
+                        nomeTratamento = (string)reader["tratamento"],
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
 
-                };
-                listaTratamentos.Add(trat);
+                    };
+                    listaTratamentos.Add(trat);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaTratamentos };
+                dataGridViewTratamentos.DataSource = bindingSource1;
+                dataGridViewTratamentos.Columns[0].HeaderText = "Nome do Tratamento";
+                dataGridViewTratamentos.Columns[1].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewTratamentos.Update();
+                dataGridViewTratamentos.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaTratamentos };
-            dataGridViewTratamentos.DataSource = bindingSource1;
-            dataGridViewTratamentos.Columns[0].HeaderText = "Nome do Tratamento";
-            dataGridViewTratamentos.Columns[1].HeaderText = "Observações";
-
-            conn.Close();
-            dataGridViewTratamentos.Update();
-            dataGridViewTratamentos.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os tratamentos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -171,6 +182,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar o tratamento", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

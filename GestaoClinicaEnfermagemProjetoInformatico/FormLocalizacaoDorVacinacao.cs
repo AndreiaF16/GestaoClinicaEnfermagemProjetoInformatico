@@ -15,7 +15,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         Paciente paciente = null;
         private ErrorProvider errorProvider = new ErrorProvider();
-        Point point;
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         public FormLocalizacaoDorVacinacao(Paciente ut)
@@ -105,9 +104,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", excep.Message);
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                    MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

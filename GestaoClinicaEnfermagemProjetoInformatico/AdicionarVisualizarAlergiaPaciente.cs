@@ -121,34 +121,47 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
         private void UpdateDataGridView()
         {
-            alergiasPacientes.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select alergia.Nome, alergiaP.data, alergiaP.observacoes from AlergiaPaciente alergiaP JOIN Alergia alergia ON alergia.IdAlergia = AlergiaP.IdAlergia WHERE IdPaciente = @IdPaciente ORDER BY alergiaP.data, alergia.Nome", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-            
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                alergiasPacientes.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select alergia.Nome, alergiaP.data, alergiaP.observacoes from AlergiaPaciente alergiaP JOIN Alergia alergia ON alergia.IdAlergia = AlergiaP.IdAlergia WHERE IdPaciente = @IdPaciente ORDER BY alergiaP.data, alergia.Nome", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                DoencaPaciente doencaPaciente = new DoencaPaciente
+                while (reader.Read())
                 {
-                    nome = (string)reader["Nome"],
-                    data = data,
-                    observacoes = (string)reader["observacoes"],
-                };
-                alergiasPacientes.Add(doencaPaciente);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = alergiasPacientes };
-            dataGridViewAlergias.DataSource = bindingSource1;
-            dataGridViewAlergias.Columns[0].HeaderText = "Alergia";
-            dataGridViewAlergias.Columns[1].HeaderText = "Data de Diagnóstico";
-            dataGridViewAlergias.Columns[2].HeaderText = "Observações";
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-            conn.Close();
-            dataGridViewAlergias.Update();
-            dataGridViewAlergias.Refresh();
+                    DoencaPaciente doencaPaciente = new DoencaPaciente
+                    {
+                        nome = (string)reader["Nome"],
+                        data = data,
+                        observacoes = (string)reader["observacoes"],
+                    };
+                    alergiasPacientes.Add(doencaPaciente);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = alergiasPacientes };
+                dataGridViewAlergias.DataSource = bindingSource1;
+                dataGridViewAlergias.Columns[0].HeaderText = "Alergia";
+                dataGridViewAlergias.Columns[1].HeaderText = "Data de Diagnóstico";
+                dataGridViewAlergias.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewAlergias.Update();
+                dataGridViewAlergias.Refresh();
+
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as alergias do paciente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -160,23 +173,34 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void reiniciar()
         {
-            alergias.Clear();
-            comboBoxDoenca.Items.Clear();
-            auxiliar.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Alergia order by Nome asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader["Nome"];
-                item.Value = (int)reader["IdAlergia"];
-                comboBoxDoenca.Items.Add(item);
-                alergias.Add(item);
-            }
+                alergias.Clear();
+                comboBoxDoenca.Items.Clear();
+                auxiliar.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Alergia order by Nome asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = (string)reader["Nome"];
+                    item.Value = (int)reader["IdAlergia"];
+                    comboBoxDoenca.Items.Add(item);
+                    alergias.Add(item);
+                }
 
-            conn.Close();
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as alergias!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtProcurar_KeyDown(object sender, KeyEventArgs e)
@@ -241,26 +265,36 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 return false;
             }
-     
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from AlergiaPaciente WHERE IdPaciente = @IdPaciente order by data", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                int alergia = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
-                if (dataDiagnostico.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && alergia == (int)reader["IdAlergia"])
-                {
-                    MessageBox.Show("Não é possível registar essa alergia, porque já esta registada na data que selecionou. Escolha outra data ou outra alergia!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    conn.Close();
-                    return false;
-                }
+                conn.Open();
+                com.Connection = conn;
 
+                SqlCommand cmd = new SqlCommand("select * from AlergiaPaciente WHERE IdPaciente = @IdPaciente order by data", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                    int alergia = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
+                    if (dataDiagnostico.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && alergia == (int)reader["IdAlergia"])
+                    {
+                        MessageBox.Show("Não é possível registar essa alergia, porque já esta registada na data que selecionou. Escolha outra data ou outra alergia!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return false;
+                    }
+
+                }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as alergias do paciente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return true;
         }
 

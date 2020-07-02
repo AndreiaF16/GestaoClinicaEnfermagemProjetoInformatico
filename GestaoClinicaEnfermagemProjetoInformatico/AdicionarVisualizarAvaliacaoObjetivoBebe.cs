@@ -35,40 +35,63 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void reiniciar()
         {
-            aleitamento.Clear();
-            parto.Clear();
-            cbAleitamento.Items.Clear();
-            cbTipoParto.Items.Clear();
-            auxiliar.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Aleitamento order by tipoAleitamento asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader["tipoAleitamento"];
-                item.Value = (int)reader["IdAleitamento"];
-                cbAleitamento.Items.Add(item);
-                aleitamento.Add(item);
+
+                aleitamento.Clear();
+                parto.Clear();
+                cbAleitamento.Items.Clear();
+                cbTipoParto.Items.Clear();
+                auxiliar.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Aleitamento order by tipoAleitamento asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = (string)reader["tipoAleitamento"];
+                    item.Value = (int)reader["IdAleitamento"];
+                    cbAleitamento.Items.Add(item);
+                    aleitamento.Add(item);
+                }
+
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os tipos de aleitamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);           
             }
 
-            conn.Close();
-
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd1 = new SqlCommand("select * from Parto order by tipoParto asc", conn);
-            SqlDataReader reader1 = cmd1.ExecuteReader();
-            while (reader1.Read())
+            try
             {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader1["tipoParto"];
-                item.Value = (int)reader1["IdParto"];
-                cbTipoParto.Items.Add(item);
-                parto.Add(item);
-            }
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd1 = new SqlCommand("select * from Parto order by tipoParto asc", conn);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = (string)reader1["tipoParto"];
+                    item.Value = (int)reader1["IdParto"];
+                    cbTipoParto.Items.Add(item);
+                    parto.Add(item);
+                }
 
-            conn.Close();
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os tipos de parto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void cbAleitamento_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -100,20 +123,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 radioButtonForceps.Visible = false;
                 radioButtonVentosa.Visible = false;
             }
-
-         /*  if (cbTipoParto.SelectedItem.ToString() == "Eutócico")
-            {
-                groupBoxPartoDistocico.Visible = false;
-                radioButtonForceps.Visible = false;
-                radioButtonVentosa.Visible = false;
-            }
-
-            if (cbTipoParto.SelectedItem.ToString() == "Cesariana")
-            {
-                groupBoxPartoDistocico.Visible = false;
-                radioButtonForceps.Visible = false;
-                radioButtonVentosa.Visible = false;
-            }*/
         }
 
         private void fechar_Click(object sender, EventArgs e)
@@ -266,11 +275,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.Parameters.AddWithValue("@pressaoArterial", UpDownPressaoArterial.Text);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                    
-                   // sqlCommand.Parameters.AddWithValue("@frequenciaCardiaca", UpDownFC.Text);
-                    //sqlCommand.Parameters.AddWithValue("@temperatura", UpDownTemperatura.Value);
-                   // sqlCommand.Parameters.AddWithValue("@saturacaoOxigenio", UpDownSPO2.Text);
-                    //sqlCommand.Parameters.AddWithValue("@INR", upDownINR.Value);
-                  //  sqlCommand.Parameters.AddWithValue("@Perimetro", UpDownPerimetro.Text);
                     sqlCommand.Parameters.AddWithValue("@nomeLeiteArtificial", txtAleitamento.Text);
 
 
@@ -400,6 +404,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar a avaliação objetivo", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

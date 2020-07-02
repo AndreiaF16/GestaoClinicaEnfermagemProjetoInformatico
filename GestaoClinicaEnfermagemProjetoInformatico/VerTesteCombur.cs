@@ -66,60 +66,71 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            testeComburPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, densidadeV1, densidadeV2, densidadeV3, densidadeV4, densidadeV5, densidadeV6, densidadeV7, ph, leucocitos, nitritos, proteinas, glucose, cocetonicos, sangeHemoglobina, observacoes from TesteCombur ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                testeComburPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                TesteComburPaciente testeCombur = new TesteComburPaciente
+                SqlCommand cmd = new SqlCommand("select data, densidadeV1, densidadeV2, densidadeV3, densidadeV4, densidadeV5, densidadeV6, densidadeV7, ph, leucocitos, nitritos, proteinas, glucose, cocetonicos, sangeHemoglobina, observacoes from TesteCombur ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    densidadeV1 = ((reader["densidadeV1"] == DBNull.Value) ? null : (int?)reader["densidadeV1"]),
-                    densidadeV2 = ((reader["densidadeV2"] == DBNull.Value) ? null : (int?)reader["densidadeV2"]),
-                    densidadeV3 = ((reader["densidadeV3"] == DBNull.Value) ? null : (int?)reader["densidadeV3"]),
-                    densidadeV4 = ((reader["densidadeV4"] == DBNull.Value) ? null : (int?)reader["densidadeV4"]),
-                    densidadeV5 = ((reader["densidadeV5"] == DBNull.Value) ? null : (int?)reader["densidadeV5"]),
-                    densidadeV6 = ((reader["densidadeV6"] == DBNull.Value) ? null : (int?)reader["densidadeV6"]),
-                    densidadeV7 = ((reader["densidadeV7"] == DBNull.Value) ? null : (int?)reader["densidadeV7"]),
-                    ph = ((reader["ph"] == DBNull.Value) ? null : (int?)reader["ph"]),
-                    leucocitos = ((reader["leucocitos"] == DBNull.Value) ? "" : (string)reader["leucocitos"]),
-                    nitritos = ((reader["nitritos"] == DBNull.Value) ? "" : (string)reader["nitritos"]),
-                    proteinas = ((reader["proteinas"] == DBNull.Value) ? "" : (string)reader["proteinas"]),
-                    glucose = ((reader["glucose"] == DBNull.Value) ? "" : (string)reader["glucose"]),
-                    cocetonicos = ((reader["cocetonicos"] == DBNull.Value) ? "" : (string)reader["cocetonicos"]),
-                    sangeHemoglobina = ((reader["sangeHemoglobina"] == DBNull.Value) ? "" : (string)reader["sangeHemoglobina"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                testeComburPaciente.Add(testeCombur);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = testeComburPaciente };
-            dataGridViewTesteCombur.DataSource = bindingSource1;
-            dataGridViewTesteCombur.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewTesteCombur.Columns[1].HeaderText = "Densidade 1000";
-            dataGridViewTesteCombur.Columns[2].HeaderText = "Densidade 1005";
-            dataGridViewTesteCombur.Columns[3].HeaderText = "Densidade 1010";
-            dataGridViewTesteCombur.Columns[4].HeaderText = "Densidade 1015";
-            dataGridViewTesteCombur.Columns[5].HeaderText = "Densidade 1020";
-            dataGridViewTesteCombur.Columns[6].HeaderText = "Densidade 1025";
-            dataGridViewTesteCombur.Columns[7].HeaderText = "Densidade 1030";
-            dataGridViewTesteCombur.Columns[8].HeaderText = "PH";
-            dataGridViewTesteCombur.Columns[9].HeaderText = "Leucócitos ";
-            dataGridViewTesteCombur.Columns[10].HeaderText = "Nitritos";
-            dataGridViewTesteCombur.Columns[11].HeaderText = "Proteínas";
-            dataGridViewTesteCombur.Columns[12].HeaderText = "Glucose";
-            dataGridViewTesteCombur.Columns[13].HeaderText = "Cocetonicos";
-            dataGridViewTesteCombur.Columns[14].HeaderText = "Sange Hemoglobina";
-            dataGridViewTesteCombur.Columns[15].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewTesteCombur.Update();
-            dataGridViewTesteCombur.Refresh();
+                    TesteComburPaciente testeCombur = new TesteComburPaciente
+                    {
+                        data = data,
+                        densidadeV1 = ((reader["densidadeV1"] == DBNull.Value) ? null : (int?)reader["densidadeV1"]),
+                        densidadeV2 = ((reader["densidadeV2"] == DBNull.Value) ? null : (int?)reader["densidadeV2"]),
+                        densidadeV3 = ((reader["densidadeV3"] == DBNull.Value) ? null : (int?)reader["densidadeV3"]),
+                        densidadeV4 = ((reader["densidadeV4"] == DBNull.Value) ? null : (int?)reader["densidadeV4"]),
+                        densidadeV5 = ((reader["densidadeV5"] == DBNull.Value) ? null : (int?)reader["densidadeV5"]),
+                        densidadeV6 = ((reader["densidadeV6"] == DBNull.Value) ? null : (int?)reader["densidadeV6"]),
+                        densidadeV7 = ((reader["densidadeV7"] == DBNull.Value) ? null : (int?)reader["densidadeV7"]),
+                        ph = ((reader["ph"] == DBNull.Value) ? null : (int?)reader["ph"]),
+                        leucocitos = ((reader["leucocitos"] == DBNull.Value) ? "" : (string)reader["leucocitos"]),
+                        nitritos = ((reader["nitritos"] == DBNull.Value) ? "" : (string)reader["nitritos"]),
+                        proteinas = ((reader["proteinas"] == DBNull.Value) ? "" : (string)reader["proteinas"]),
+                        glucose = ((reader["glucose"] == DBNull.Value) ? "" : (string)reader["glucose"]),
+                        cocetonicos = ((reader["cocetonicos"] == DBNull.Value) ? "" : (string)reader["cocetonicos"]),
+                        sangeHemoglobina = ((reader["sangeHemoglobina"] == DBNull.Value) ? "" : (string)reader["sangeHemoglobina"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    testeComburPaciente.Add(testeCombur);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = testeComburPaciente };
+                dataGridViewTesteCombur.DataSource = bindingSource1;
+                dataGridViewTesteCombur.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewTesteCombur.Columns[1].HeaderText = "Densidade 1000";
+                dataGridViewTesteCombur.Columns[2].HeaderText = "Densidade 1005";
+                dataGridViewTesteCombur.Columns[3].HeaderText = "Densidade 1010";
+                dataGridViewTesteCombur.Columns[4].HeaderText = "Densidade 1015";
+                dataGridViewTesteCombur.Columns[5].HeaderText = "Densidade 1020";
+                dataGridViewTesteCombur.Columns[6].HeaderText = "Densidade 1025";
+                dataGridViewTesteCombur.Columns[7].HeaderText = "Densidade 1030";
+                dataGridViewTesteCombur.Columns[8].HeaderText = "PH";
+                dataGridViewTesteCombur.Columns[9].HeaderText = "Leucócitos ";
+                dataGridViewTesteCombur.Columns[10].HeaderText = "Nitritos";
+                dataGridViewTesteCombur.Columns[11].HeaderText = "Proteínas";
+                dataGridViewTesteCombur.Columns[12].HeaderText = "Glucose";
+                dataGridViewTesteCombur.Columns[13].HeaderText = "Cocetonicos";
+                dataGridViewTesteCombur.Columns[14].HeaderText = "Sange Hemoglobina";
+                dataGridViewTesteCombur.Columns[15].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewTesteCombur.Update();
+                dataGridViewTesteCombur.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

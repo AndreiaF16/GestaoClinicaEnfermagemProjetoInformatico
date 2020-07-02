@@ -69,41 +69,54 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            algariacaoPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, silastic, folley, tresVias, dataProximaRealgariacao, observacoes from Algariacao ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                string dataPAlgariacao = ((reader["dataProximaRealgariacao"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dataProximaRealgariacao"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-                AlgariacaoPaciente aP = new AlgariacaoPaciente
+
+                algariacaoPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select data, silastic, folley, tresVias, dataProximaRealgariacao, observacoes from Algariacao ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    silastic = ((reader["silastic"] == DBNull.Value) ? null : (int?)reader["silastic"]),
-                    folley = ((reader["folley"] == DBNull.Value) ? "" : (string)reader["folley"]),
-                    tresVias = ((reader["tresVias"] == DBNull.Value) ? "" : (string)reader["tresVias"]),
-                    dataProximaRealgariacao = dataPAlgariacao,
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                algariacaoPaciente.Add(aP);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = algariacaoPaciente };
-            dataGridViewAlgPaciente.DataSource = bindingSource1;
-            dataGridViewAlgPaciente.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewAlgPaciente.Columns[1].HeaderText = "Silastic";
-            dataGridViewAlgPaciente.Columns[2].HeaderText = "Folley";
-            dataGridViewAlgPaciente.Columns[3].HeaderText = "Três Vias";
-            dataGridViewAlgPaciente.Columns[4].HeaderText = "Data da Próxima Realgariação";
-            dataGridViewAlgPaciente.Columns[5].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    string dataPAlgariacao = ((reader["dataProximaRealgariacao"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dataProximaRealgariacao"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewAlgPaciente.Update();
-            dataGridViewAlgPaciente.Refresh();
+                    AlgariacaoPaciente aP = new AlgariacaoPaciente
+                    {
+                        data = data,
+                        silastic = ((reader["silastic"] == DBNull.Value) ? null : (int?)reader["silastic"]),
+                        folley = ((reader["folley"] == DBNull.Value) ? "" : (string)reader["folley"]),
+                        tresVias = ((reader["tresVias"] == DBNull.Value) ? "" : (string)reader["tresVias"]),
+                        dataProximaRealgariacao = dataPAlgariacao,
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    algariacaoPaciente.Add(aP);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = algariacaoPaciente };
+                dataGridViewAlgPaciente.DataSource = bindingSource1;
+                dataGridViewAlgPaciente.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewAlgPaciente.Columns[1].HeaderText = "Silastic";
+                dataGridViewAlgPaciente.Columns[2].HeaderText = "Folley";
+                dataGridViewAlgPaciente.Columns[3].HeaderText = "Três Vias";
+                dataGridViewAlgPaciente.Columns[4].HeaderText = "Data da Próxima Realgariação";
+                dataGridViewAlgPaciente.Columns[5].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewAlgPaciente.Update();
+                dataGridViewAlgPaciente.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

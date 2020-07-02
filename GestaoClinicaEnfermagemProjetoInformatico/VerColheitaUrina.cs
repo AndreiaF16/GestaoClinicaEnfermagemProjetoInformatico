@@ -67,38 +67,49 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            colheitaUrina.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, exameSumario, urocultura, vinteQuantroHoras, observacoes from ColheitaUrina ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                ColheitaUrina colherUrina = new ColheitaUrina
+                colheitaUrina.Clear();
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select data, exameSumario, urocultura, vinteQuantroHoras, observacoes from ColheitaUrina ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    exameSumario = ((reader["exameSumario"] == DBNull.Value) ? "" : (string)reader["exameSumario"]),
-                    urocultura = ((reader["urocultura"] == DBNull.Value) ? "" : (string)reader["urocultura"]),
-                    vinteQuantroHoras = ((reader["vinteQuantroHoras"] == DBNull.Value) ? "" : (string)reader["vinteQuantroHoras"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    ColheitaUrina colherUrina = new ColheitaUrina
+                    {
+                        data = data,
+                        exameSumario = ((reader["exameSumario"] == DBNull.Value) ? "" : (string)reader["exameSumario"]),
+                        urocultura = ((reader["urocultura"] == DBNull.Value) ? "" : (string)reader["urocultura"]),
+                        vinteQuantroHoras = ((reader["vinteQuantroHoras"] == DBNull.Value) ? "" : (string)reader["vinteQuantroHoras"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
 
-                };
-                colheitaUrina.Add(colherUrina);
+                    };
+                    colheitaUrina.Add(colherUrina);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = colheitaUrina };
+                dataGridViewColheitaUrina.DataSource = bindingSource1;
+                dataGridViewColheitaUrina.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewColheitaUrina.Columns[1].HeaderText = "Exame Sumário";
+                dataGridViewColheitaUrina.Columns[2].HeaderText = "Urocultura";
+                dataGridViewColheitaUrina.Columns[3].HeaderText = "24 Horas";
+                dataGridViewColheitaUrina.Columns[4].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewColheitaUrina.Update();
+                dataGridViewColheitaUrina.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = colheitaUrina };
-            dataGridViewColheitaUrina.DataSource = bindingSource1;
-            dataGridViewColheitaUrina.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewColheitaUrina.Columns[1].HeaderText = "Exame Sumário";
-            dataGridViewColheitaUrina.Columns[2].HeaderText = "Urocultura";
-            dataGridViewColheitaUrina.Columns[3].HeaderText = "24 Horas";
-            dataGridViewColheitaUrina.Columns[4].HeaderText = "Observações";
-
-            conn.Close();
-            dataGridViewColheitaUrina.Update();
-            dataGridViewColheitaUrina.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

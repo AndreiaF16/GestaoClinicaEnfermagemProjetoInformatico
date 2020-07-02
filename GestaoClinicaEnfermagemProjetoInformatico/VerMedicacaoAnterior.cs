@@ -74,69 +74,80 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            listaMedicacao.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Medicacao ORDER BY data asc, medicamentos asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string dataMed = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                listaMedicacao.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                Medicacao medicacao = new Medicacao
+                SqlCommand cmd = new SqlCommand("select * from Medicacao ORDER BY data asc, medicamentos asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = dataMed,
+                    string dataMed = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-                    medicamentos = ((reader["medicamentos"] == DBNull.Value) ? "" : (string)reader["medicamentos"]),
-                    jejum = ((reader["jejum"] == DBNull.Value) ? "" : (string)reader["jejum"]),
-                    quantJejum = ((reader["quantidadeJejum"] == DBNull.Value) ? "" : (string)reader["quantidadeJejum"]),
-                    peqAlmoco = ((reader["pequenoAlmoco"] == DBNull.Value) ? "" : (string)reader["pequenoAlmoco"]),
-                    quantPeqAlmoco = ((reader["quantidadePequenoAlmoco"] == DBNull.Value) ? "" : (string)reader["quantidadePequenoAlmoco"]),
-                    almoco = ((reader["almoco"] == DBNull.Value) ? "" : (string)reader["almoco"]),
-                    quantAlmoco = ((reader["quantidadeAlmoco"] == DBNull.Value) ? "" : (string)reader["quantidadeAlmoco"]),
-                    lanche = ((reader["lanche"] == DBNull.Value) ? "" : (string)reader["lanche"]),
-                    quantLanche = ((reader["quantidadeLanche"] == DBNull.Value) ? "" : (string)reader["quantidadeLanche"]),
-                    jantar = ((reader["jantar"] == DBNull.Value) ? "" : (string)reader["jantar"]),
-                    quantJantar = ((reader["quantidadeJantar"] == DBNull.Value) ? "" : (string)reader["quantidadeJantar"]),
-                    deitar = ((reader["deitar"] == DBNull.Value) ? "" : (string)reader["deitar"]),
-                    quantDeitar = ((reader["quantidadeDeitar"] == DBNull.Value) ? "" : (string)reader["quantidadeDeitar"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    Medicacao medicacao = new Medicacao
+                    {
+                        data = dataMed,
+
+                        medicamentos = ((reader["medicamentos"] == DBNull.Value) ? "" : (string)reader["medicamentos"]),
+                        jejum = ((reader["jejum"] == DBNull.Value) ? "" : (string)reader["jejum"]),
+                        quantJejum = ((reader["quantidadeJejum"] == DBNull.Value) ? "" : (string)reader["quantidadeJejum"]),
+                        peqAlmoco = ((reader["pequenoAlmoco"] == DBNull.Value) ? "" : (string)reader["pequenoAlmoco"]),
+                        quantPeqAlmoco = ((reader["quantidadePequenoAlmoco"] == DBNull.Value) ? "" : (string)reader["quantidadePequenoAlmoco"]),
+                        almoco = ((reader["almoco"] == DBNull.Value) ? "" : (string)reader["almoco"]),
+                        quantAlmoco = ((reader["quantidadeAlmoco"] == DBNull.Value) ? "" : (string)reader["quantidadeAlmoco"]),
+                        lanche = ((reader["lanche"] == DBNull.Value) ? "" : (string)reader["lanche"]),
+                        quantLanche = ((reader["quantidadeLanche"] == DBNull.Value) ? "" : (string)reader["quantidadeLanche"]),
+                        jantar = ((reader["jantar"] == DBNull.Value) ? "" : (string)reader["jantar"]),
+                        quantJantar = ((reader["quantidadeJantar"] == DBNull.Value) ? "" : (string)reader["quantidadeJantar"]),
+                        deitar = ((reader["deitar"] == DBNull.Value) ? "" : (string)reader["deitar"]),
+                        quantDeitar = ((reader["quantidadeDeitar"] == DBNull.Value) ? "" : (string)reader["quantidadeDeitar"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
 
 
-                };
-                listaMedicacao.Add(medicacao);
+                    };
+                    listaMedicacao.Add(medicacao);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaMedicacao };
+                dataGridViewMedicacao.DataSource = bindingSource1;
+                dataGridViewMedicacao.Columns[0].HeaderText = "Data Prescrição";
+                dataGridViewMedicacao.Columns[1].HeaderText = "Medicação";
+                dataGridViewMedicacao.Columns[2].HeaderText = "Jejum";
+                dataGridViewMedicacao.Columns[3].HeaderText = "Quant. Jejum";
+                dataGridViewMedicacao.Columns[4].HeaderText = "Pequeno Almoço";
+                dataGridViewMedicacao.Columns[5].HeaderText = "Quant. Pequeno Almoço";
+                dataGridViewMedicacao.Columns[6].HeaderText = "Almoço";
+                dataGridViewMedicacao.Columns[7].HeaderText = "Quant. Almoço";
+                dataGridViewMedicacao.Columns[8].HeaderText = "Lanche";
+                dataGridViewMedicacao.Columns[9].HeaderText = "Quant. Lanche";
+                dataGridViewMedicacao.Columns[10].HeaderText = "Jantar";
+                dataGridViewMedicacao.Columns[11].HeaderText = "Quant. Jantar";
+                dataGridViewMedicacao.Columns[12].HeaderText = "Deitar";
+                dataGridViewMedicacao.Columns[13].HeaderText = "Quant. Deitar";
+                dataGridViewMedicacao.Columns[14].HeaderText = "Outras Indicações";
+
+                dataGridViewMedicacao.Columns[3].Width = dataGridViewMedicacao.Columns[3].Width + 80;
+                dataGridViewMedicacao.Columns[5].Width = dataGridViewMedicacao.Columns[5].Width + 80;
+                dataGridViewMedicacao.Columns[7].Width = dataGridViewMedicacao.Columns[7].Width + 80;
+                dataGridViewMedicacao.Columns[9].Width = dataGridViewMedicacao.Columns[9].Width + 80;
+                dataGridViewMedicacao.Columns[11].Width = dataGridViewMedicacao.Columns[11].Width + 80;
+                dataGridViewMedicacao.Columns[13].Width = dataGridViewMedicacao.Columns[13].Width + 80;
+                dataGridViewMedicacao.Columns[14].Width = dataGridViewMedicacao.Columns[13].Width + 150;
+
+                conn.Close();
+                dataGridViewMedicacao.Update();
+                dataGridViewMedicacao.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaMedicacao };
-            dataGridViewMedicacao.DataSource = bindingSource1;
-            dataGridViewMedicacao.Columns[0].HeaderText = "Data Prescrição";
-            dataGridViewMedicacao.Columns[1].HeaderText = "Medicação";
-            dataGridViewMedicacao.Columns[2].HeaderText = "Jejum";
-            dataGridViewMedicacao.Columns[3].HeaderText = "Quant. Jejum";
-            dataGridViewMedicacao.Columns[4].HeaderText = "Pequeno Almoço";
-            dataGridViewMedicacao.Columns[5].HeaderText = "Quant. Pequeno Almoço";
-            dataGridViewMedicacao.Columns[6].HeaderText = "Almoço";
-            dataGridViewMedicacao.Columns[7].HeaderText = "Quant. Almoço";
-            dataGridViewMedicacao.Columns[8].HeaderText = "Lanche";
-            dataGridViewMedicacao.Columns[9].HeaderText = "Quant. Lanche";
-            dataGridViewMedicacao.Columns[10].HeaderText = "Jantar";
-            dataGridViewMedicacao.Columns[11].HeaderText = "Quant. Jantar";
-            dataGridViewMedicacao.Columns[12].HeaderText = "Deitar";
-            dataGridViewMedicacao.Columns[13].HeaderText = "Quant. Deitar";
-            dataGridViewMedicacao.Columns[14].HeaderText = "Outras Indicações";
-
-            dataGridViewMedicacao.Columns[3].Width = dataGridViewMedicacao.Columns[3].Width + 80;
-            dataGridViewMedicacao.Columns[5].Width = dataGridViewMedicacao.Columns[5].Width + 80;
-            dataGridViewMedicacao.Columns[7].Width = dataGridViewMedicacao.Columns[7].Width + 80;
-            dataGridViewMedicacao.Columns[9].Width = dataGridViewMedicacao.Columns[9].Width + 80;
-            dataGridViewMedicacao.Columns[11].Width = dataGridViewMedicacao.Columns[11].Width + 80;
-            dataGridViewMedicacao.Columns[13].Width = dataGridViewMedicacao.Columns[13].Width + 80;
-            dataGridViewMedicacao.Columns[14].Width = dataGridViewMedicacao.Columns[13].Width + 150;
-
-            conn.Close();
-            dataGridViewMedicacao.Update();
-            dataGridViewMedicacao.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dataMedicacao_ValueChanged(object sender, EventArgs e)

@@ -161,9 +161,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
-                   MessageBox.Show("Por erro interno é impossível registar o fornecedor!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                    MessageBox.Show("Por erro interno é impossível registar o fornecedor!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
         }
 
@@ -282,7 +285,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 return false;
             }
-            conn.Open();
+            try
+            {
+                conn.Open();
                 com.Connection = conn;
 
                 SqlCommand cmd = new SqlCommand("select * from Fornecedor", conn);
@@ -309,8 +314,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
                 }
                 conn.Close();
-
-               
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar se o email e o NIF já se encontram registados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             Regex regexEmail = new Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
             if (!regexEmail.IsMatch(txtEmail.Text))
@@ -402,52 +414,63 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void UpdateDataGridView()
         {
-            fornecedor.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Fornecedor ORDER BY nome", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
+                fornecedor.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Fornecedor ORDER BY nome", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                ClassFornecedor forn = new ClassFornecedor
+                while (reader.Read())
                 {
-                    nome = (string)reader["nome"],
-                    nif = ((reader["nif"] == DBNull.Value) ? null : (int?)reader["nif"]),
-                    contacto = ((reader["contacto"] == DBNull.Value) ? null : (int?)reader["contacto"]),
 
-                    email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),                   
-                    rua = (string)reader["rua"],
-                    numeroMorada = ((reader["numeroMorada"] == DBNull.Value) ? null : (int?)reader["numeroMorada"]),
-                    andarPiso = ((reader["andarPiso"] == DBNull.Value) ? "" : (string)reader["andarPiso"]),
-                    localidade = (string)reader["localidade"],
-                    bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
-                    codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
-                    designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
+                    ClassFornecedor forn = new ClassFornecedor
+                    {
+                        nome = (string)reader["nome"],
+                        nif = ((reader["nif"] == DBNull.Value) ? null : (int?)reader["nif"]),
+                        contacto = ((reader["contacto"] == DBNull.Value) ? null : (int?)reader["contacto"]),
 
-                fornecedor.Add(forn);
+                        email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
+                        rua = (string)reader["rua"],
+                        numeroMorada = ((reader["numeroMorada"] == DBNull.Value) ? null : (int?)reader["numeroMorada"]),
+                        andarPiso = ((reader["andarPiso"] == DBNull.Value) ? "" : (string)reader["andarPiso"]),
+                        localidade = (string)reader["localidade"],
+                        bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
+                        codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
+                        designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+
+                    fornecedor.Add(forn);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = fornecedor };
+                dataGridViewFornecedores.DataSource = bindingSource1;
+                dataGridViewFornecedores.Columns[0].HeaderText = "Nome Fornecedor";
+                dataGridViewFornecedores.Columns[1].HeaderText = "Nif";
+                dataGridViewFornecedores.Columns[2].HeaderText = "Contacto";
+                dataGridViewFornecedores.Columns[3].HeaderText = "Email";
+                dataGridViewFornecedores.Columns[4].HeaderText = "Morada";
+                dataGridViewFornecedores.Columns[5].HeaderText = "Número";
+                dataGridViewFornecedores.Columns[6].HeaderText = "Andar/Piso";
+                dataGridViewFornecedores.Columns[7].HeaderText = "Localidade";
+                dataGridViewFornecedores.Columns[8].HeaderText = "Bairro/Local";
+                dataGridViewFornecedores.Columns[9].HeaderText = "Codigo Postal";
+                dataGridViewFornecedores.Columns[10].HeaderText = "Designação";
+                dataGridViewFornecedores.Columns[11].HeaderText = "Observações";
+                dataGridViewFornecedores.Columns[12].Visible = false;
+                conn.Close();
+                dataGridViewFornecedores.Update();
+                dataGridViewFornecedores.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = fornecedor };
-            dataGridViewFornecedores.DataSource = bindingSource1;
-            dataGridViewFornecedores.Columns[0].HeaderText = "Nome Fornecedor";
-            dataGridViewFornecedores.Columns[1].HeaderText = "Nif";
-            dataGridViewFornecedores.Columns[2].HeaderText = "Contacto";
-            dataGridViewFornecedores.Columns[3].HeaderText = "Email";
-            dataGridViewFornecedores.Columns[4].HeaderText = "Morada"; 
-            dataGridViewFornecedores.Columns[5].HeaderText = "Número"; 
-            dataGridViewFornecedores.Columns[6].HeaderText = "Andar/Piso";
-            dataGridViewFornecedores.Columns[7].HeaderText = "Localidade";
-            dataGridViewFornecedores.Columns[8].HeaderText = "Bairro/Local";
-            dataGridViewFornecedores.Columns[9].HeaderText = "Codigo Postal";
-            dataGridViewFornecedores.Columns[10].HeaderText = "Designação";
-            dataGridViewFornecedores.Columns[11].HeaderText = "Observações";         
-            dataGridViewFornecedores.Columns[12].Visible = false;
-            conn.Close();
-            dataGridViewFornecedores.Update();
-            dataGridViewFornecedores.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtNumeroCasa_KeyPress(object sender, KeyPressEventArgs e)

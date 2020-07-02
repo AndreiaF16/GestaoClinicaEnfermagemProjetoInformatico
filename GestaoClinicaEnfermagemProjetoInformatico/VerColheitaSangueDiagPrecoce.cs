@@ -67,34 +67,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            colheitaSanguePrecoces.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, idadeDias, observacoes from ColheitadeSanguePrecoce ORDER BY data asc, idadeDias asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                colheitaSanguePrecoces.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                ColheitaSanguePrecoce colheitaSangue = new ColheitaSanguePrecoce
+                SqlCommand cmd = new SqlCommand("select data, idadeDias, observacoes from ColheitadeSanguePrecoce ORDER BY data asc, idadeDias asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    idadeDias = (int)reader["idadeDias"],
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                colheitaSanguePrecoces.Add(colheitaSangue);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = colheitaSanguePrecoces };
-            dataGridViewDiagPrecose.DataSource = bindingSource1;
-            dataGridViewDiagPrecose.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewDiagPrecose.Columns[1].HeaderText = "Idade (em dias)";
-            dataGridViewDiagPrecose.Columns[2].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewDiagPrecose.Update();
-            dataGridViewDiagPrecose.Refresh();
+                    ColheitaSanguePrecoce colheitaSangue = new ColheitaSanguePrecoce
+                    {
+                        data = data,
+                        idadeDias = (int)reader["idadeDias"],
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    colheitaSanguePrecoces.Add(colheitaSangue);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = colheitaSanguePrecoces };
+                dataGridViewDiagPrecose.DataSource = bindingSource1;
+                dataGridViewDiagPrecose.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewDiagPrecose.Columns[1].HeaderText = "Idade (em dias)";
+                dataGridViewDiagPrecose.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewDiagPrecose.Update();
+                dataGridViewDiagPrecose.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

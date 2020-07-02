@@ -87,6 +87,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar o tipo de úlcera", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -134,88 +138,39 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            tipoUlcera.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select tipoUlcera from tipoUlcera ORDER BY tipoUlcera asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                Ulcera ulc = new Ulcera
+                tipoUlcera.Clear();
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select tipoUlcera from tipoUlcera ORDER BY tipoUlcera asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    tipoUlcera = (string)reader["tipoUlcera"]
-                };
-                tipoUlcera.Add(ulc);
+                    Ulcera ulc = new Ulcera
+                    {
+                        tipoUlcera = (string)reader["tipoUlcera"]
+                    };
+                    tipoUlcera.Add(ulc);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = tipoUlcera };
+                dataGridViewUlceras.DataSource = bindingSource1;
+                dataGridViewUlceras.Columns[0].HeaderText = "Tipo de Úlcera";
+
+                conn.Close();
+                dataGridViewUlceras.Update();
+                dataGridViewUlceras.Refresh();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = tipoUlcera };
-            dataGridViewUlceras.DataSource = bindingSource1;
-            dataGridViewUlceras.Columns[0].HeaderText = "Tipo de Úlcera";
-
-            conn.Close();
-            dataGridViewUlceras.Update();
-            dataGridViewUlceras.Refresh();
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void painelPrincipal_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dataGridViewUlceras_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblHistoriaAtual_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNome_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelTitulo_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblDia_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblHora_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnFechar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTitulo_Click(object sender, EventArgs e)
-        {
-
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os tipos de úlceras!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

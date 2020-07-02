@@ -68,34 +68,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            monitorizacaoECGPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, monitorizacaoECG, observacoes from MonitorizacaoECG ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                monitorizacaoECGPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                MonitorizacaoECGPaciente monitorizacaoECG = new MonitorizacaoECGPaciente
+                SqlCommand cmd = new SqlCommand("select data, monitorizacaoECG, observacoes from MonitorizacaoECG ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    monitorizacaoECG = ((reader["monitorizacaoECG"] == DBNull.Value) ? "" : (string)reader["monitorizacaoECG"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                monitorizacaoECGPaciente.Add(monitorizacaoECG);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = monitorizacaoECGPaciente };
-            dataGridViewMonitorizacaoECG.DataSource = bindingSource1;
-            dataGridViewMonitorizacaoECG.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewMonitorizacaoECG.Columns[1].HeaderText = "Monitorizacao ECG";
-            dataGridViewMonitorizacaoECG.Columns[2].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewMonitorizacaoECG.Update();
-            dataGridViewMonitorizacaoECG.Refresh();
+                    MonitorizacaoECGPaciente monitorizacaoECG = new MonitorizacaoECGPaciente
+                    {
+                        data = data,
+                        monitorizacaoECG = ((reader["monitorizacaoECG"] == DBNull.Value) ? "" : (string)reader["monitorizacaoECG"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    monitorizacaoECGPaciente.Add(monitorizacaoECG);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = monitorizacaoECGPaciente };
+                dataGridViewMonitorizacaoECG.DataSource = bindingSource1;
+                dataGridViewMonitorizacaoECG.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewMonitorizacaoECG.Columns[1].HeaderText = "Monitorizacao ECG";
+                dataGridViewMonitorizacaoECG.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewMonitorizacaoECG.Update();
+                dataGridViewMonitorizacaoECG.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

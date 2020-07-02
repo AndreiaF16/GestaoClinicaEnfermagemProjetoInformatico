@@ -32,32 +32,33 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnEnviarEmail_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Enfermeiro where username = @username", conn);
-            cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-
-            SqlDataReader reader = cmd.ExecuteReader(); Random random = new Random();
-            randomCode = (random.Next(999999)).ToString();
-
-
-            if (reader.Read())
+            try
             {
-                enfermeiro = new Enfermeiro
-                {
-                    IdEnfermeiro = (int)reader["IdEnfermeiro"],
-                    nome = (string)reader["nome"],
-                    funcao = (string)reader["funcao"],
-                    username = (string)reader["username"],
-                    contacto = Convert.ToDouble(reader["contacto"]),
-                    email = (string)reader["email"],
-                    permissao = (int)reader["permissao"]
-                };
+                conn.Open();
+                com.Connection = conn;
 
-               
-                try
+                SqlCommand cmd = new SqlCommand("select * from Enfermeiro where username = @username", conn);
+                cmd.Parameters.AddWithValue("@username", txtUsername.Text);
+
+                SqlDataReader reader = cmd.ExecuteReader(); Random random = new Random();
+                randomCode = (random.Next(999999)).ToString();
+
+
+                if (reader.Read())
                 {
+                    enfermeiro = new Enfermeiro
+                    {
+                        IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                        nome = (string)reader["nome"],
+                        funcao = (string)reader["funcao"],
+                        username = (string)reader["username"],
+                        contacto = Convert.ToDouble(reader["contacto"]),
+                        email = (string)reader["email"],
+                        permissao = (int)reader["permissao"]
+                    };
+
+
+
                     MailMessage mail = new MailMessage();
 
                     SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
@@ -88,16 +89,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     MessageBox.Show("Código enviado com sucesso!");
 
-
-
                 }
-                catch (Exception)
-                {
 
-                    MessageBox.Show("Por erro interno é impossível enviar o email!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
-
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível enviar o email!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }         
         }
 
         private void buttonbtnVerificarCode_Click(object sender, EventArgs e)

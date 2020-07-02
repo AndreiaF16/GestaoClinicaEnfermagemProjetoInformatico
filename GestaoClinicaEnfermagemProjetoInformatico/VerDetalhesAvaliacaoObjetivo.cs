@@ -73,48 +73,59 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void verAvaliacaoObjetivo()
         {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select avaliacao.data, avaliacao.peso, avaliacao.altura, avaliacao.pressaoArterial, avaliacao.frequenciaCardiaca, avaliacao.temperatura, avaliacao.saturacaoOxigenio, avaliacao.dataUltimaMestruacao, avaliacao.menopausa, metodo.nomeMetodoContracetivo, avaliacao.DIU, avaliacao.concentracaoGlicoseSangue, avaliacao.AC, avaliacao.AP, avaliacao.INR, avaliacao.Menarca, avaliacao.gravidez, avaliacao.filhosVivos, avaliacao.abortos, avaliacao.observacoes from AvaliacaoObjetivo avaliacao JOIN MetodoContracetivo metodo ON avaliacao.IdMetodoContracetivo = metodo.IdMetodoContracetivo WHERE IdPaciente = @IdPaciente ORDER BY avaliacao.data, metodo.nomeMetodoContracetivo", conn);
-
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select avaliacao.data, avaliacao.peso, avaliacao.altura, avaliacao.pressaoArterial, avaliacao.frequenciaCardiaca, avaliacao.temperatura, avaliacao.saturacaoOxigenio, avaliacao.dataUltimaMestruacao, avaliacao.menopausa, metodo.nomeMetodoContracetivo, avaliacao.DIU, avaliacao.concentracaoGlicoseSangue, avaliacao.AC, avaliacao.AP, avaliacao.INR, avaliacao.Menarca, avaliacao.gravidez, avaliacao.filhosVivos, avaliacao.abortos, avaliacao.observacoes from AvaliacaoObjetivo avaliacao JOIN MetodoContracetivo metodo ON avaliacao.IdMetodoContracetivo = metodo.IdMetodoContracetivo WHERE IdPaciente = @IdPaciente ORDER BY avaliacao.data, metodo.nomeMetodoContracetivo", conn);
 
-                AvaliacaoObjetivo avaliacao = new AvaliacaoObjetivo
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    data = data,
-                    peso = Convert.ToDecimal(reader["peso"]),
-                    altura = (int)reader["altura"],
-                    pressaoArterial = (int)reader["pressaoArterial"],
-                    frequenciaCardiaca = ((reader["frequenciaCardiaca"] == DBNull.Value) ? null : (int?)reader["frequenciaCardiaca"]),
-                    temperatura = ((reader["temperatura"] == DBNull.Value) ? null : (decimal?)reader["temperatura"]),
-                    saturacaoOxigenio = ((reader["saturacaoOxigenio"] == DBNull.Value) ? null : (int?)reader["saturacaoOxigenio"]),
-                    //dataUltimaMestruacao = dataMestruacao,                
-                    dataUltimaMestruacao = (reader["dataUltimaMestruacao"].ToString() == "" ? "" : DateTime.ParseExact(reader["dataUltimaMestruacao"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy")),
-                    menopausa = ((reader["menopausa"] == DBNull.Value) ? null : (int?)reader["menopausa"]),
-                    nomeMetodo = ((reader["nomeMetodoContracetivo"] == DBNull.Value) ? "" : (string)reader["nomeMetodoContracetivo"]),
-                    DIU = ((reader["DIU"] == DBNull.Value) ? "" : (string)reader["DIU"]),
-                    concentracaoGlicoseSangue = ((reader["concentracaoGlicoseSangue"] == DBNull.Value) ? null : (int?)reader["concentracaoGlicoseSangue"]),
-                    AC = ((reader["AC"] == DBNull.Value) ? null : (int?)reader["AC"]),
-                    AP = ((reader["AP"] == DBNull.Value) ? null : (int?)reader["AP"]),
-                    INR = ((reader["INR"] == DBNull.Value) ? null : (int?)reader["INR"]),
-                    Menarca = ((reader["Menarca"] == DBNull.Value) ? null : (int?)reader["Menarca"]),
-                    gravidez = ((reader["gravidez"] == DBNull.Value) ? null : (int?)reader["gravidez"]),
-                    filhosVivos = ((reader["filhosVivos"] == DBNull.Value) ? null : (int?)reader["filhosVivos"]),
-                    abortos = ((reader["abortos"] == DBNull.Value) ? null : (int?)reader["abortos"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                avaliacao.IMC = Math.Round(avaliacao.peso / (Convert.ToDecimal(avaliacao.altura * avaliacao.altura) / 10000), 2);
-                listaAvaliacaoObjetivo.Add(avaliacao);
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+
+                    AvaliacaoObjetivo avaliacao = new AvaliacaoObjetivo
+                    {
+                        data = data,
+                        peso = Convert.ToDecimal(reader["peso"]),
+                        altura = (int)reader["altura"],
+                        pressaoArterial = (int)reader["pressaoArterial"],
+                        frequenciaCardiaca = ((reader["frequenciaCardiaca"] == DBNull.Value) ? null : (int?)reader["frequenciaCardiaca"]),
+                        temperatura = ((reader["temperatura"] == DBNull.Value) ? null : (decimal?)reader["temperatura"]),
+                        saturacaoOxigenio = ((reader["saturacaoOxigenio"] == DBNull.Value) ? null : (int?)reader["saturacaoOxigenio"]),
+                        //dataUltimaMestruacao = dataMestruacao,                
+                        dataUltimaMestruacao = (reader["dataUltimaMestruacao"].ToString() == "" ? "" : DateTime.ParseExact(reader["dataUltimaMestruacao"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy")),
+                        menopausa = ((reader["menopausa"] == DBNull.Value) ? null : (int?)reader["menopausa"]),
+                        nomeMetodo = ((reader["nomeMetodoContracetivo"] == DBNull.Value) ? "" : (string)reader["nomeMetodoContracetivo"]),
+                        DIU = ((reader["DIU"] == DBNull.Value) ? "" : (string)reader["DIU"]),
+                        concentracaoGlicoseSangue = ((reader["concentracaoGlicoseSangue"] == DBNull.Value) ? null : (int?)reader["concentracaoGlicoseSangue"]),
+                        AC = ((reader["AC"] == DBNull.Value) ? null : (int?)reader["AC"]),
+                        AP = ((reader["AP"] == DBNull.Value) ? null : (int?)reader["AP"]),
+                        INR = ((reader["INR"] == DBNull.Value) ? null : (int?)reader["INR"]),
+                        Menarca = ((reader["Menarca"] == DBNull.Value) ? null : (int?)reader["Menarca"]),
+                        gravidez = ((reader["gravidez"] == DBNull.Value) ? null : (int?)reader["gravidez"]),
+                        filhosVivos = ((reader["filhosVivos"] == DBNull.Value) ? null : (int?)reader["filhosVivos"]),
+                        abortos = ((reader["abortos"] == DBNull.Value) ? null : (int?)reader["abortos"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    avaliacao.IMC = Math.Round(avaliacao.peso / (Convert.ToDecimal(avaliacao.altura * avaliacao.altura) / 10000), 2);
+                    listaAvaliacaoObjetivo.Add(avaliacao);
+                }
+                UpdateDataGridViewAvaliacao();
+                dataGridViewAvaliacaoObjetivo.Columns[10].Width = dataGridViewAvaliacaoObjetivo.Columns[10].Width + 100;
+                dataGridViewAvaliacaoObjetivo.Columns[20].Width = dataGridViewAvaliacaoObjetivo.Columns[20].Width + 200;
+                conn.Close();
+                UpdateDataGridViewAvaliacao();
             }
-            UpdateDataGridViewAvaliacao();
-            dataGridViewAvaliacaoObjetivo.Columns[10].Width = dataGridViewAvaliacaoObjetivo.Columns[10].Width + 100;
-            dataGridViewAvaliacaoObjetivo.Columns[20].Width = dataGridViewAvaliacaoObjetivo.Columns[20].Width + 200;
-            conn.Close();
-            UpdateDataGridViewAvaliacao();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public void UpdateDataGridViewAvaliacao()
         {

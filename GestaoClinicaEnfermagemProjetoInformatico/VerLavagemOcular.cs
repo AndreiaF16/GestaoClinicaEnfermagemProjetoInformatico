@@ -66,38 +66,49 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            lavagemOcularPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, olhoDireito, olhoEsquerdo, ambos, observacoes from LavagemOcular ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                lavagemOcularPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                LavagemOcularPaciente lavagemOcular = new LavagemOcularPaciente
+                SqlCommand cmd = new SqlCommand("select data, olhoDireito, olhoEsquerdo, ambos, observacoes from LavagemOcular ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    olhoDireito = ((reader["olhoDireito"] == DBNull.Value) ? "" : (string)reader["olhoDireito"]),
-                    olhoEsquerdo = ((reader["olhoEsquerdo"] == DBNull.Value) ? "" : (string)reader["olhoEsquerdo"]),
-                    ambos = ((reader["ambos"] == DBNull.Value) ? "" : (string)reader["ambos"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                lavagemOcularPaciente.Add(lavagemOcular);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = lavagemOcularPaciente };
-            dataGridViewAlgPaciente.DataSource = bindingSource1;
-            dataGridViewAlgPaciente.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewAlgPaciente.Columns[1].HeaderText = "Olho Direito";
-            dataGridViewAlgPaciente.Columns[2].HeaderText = "Olho Esquerdo";
-            dataGridViewAlgPaciente.Columns[3].HeaderText = "Ambos";
-            dataGridViewAlgPaciente.Columns[4].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewAlgPaciente.Update();
-            dataGridViewAlgPaciente.Refresh();
+                    LavagemOcularPaciente lavagemOcular = new LavagemOcularPaciente
+                    {
+                        data = data,
+                        olhoDireito = ((reader["olhoDireito"] == DBNull.Value) ? "" : (string)reader["olhoDireito"]),
+                        olhoEsquerdo = ((reader["olhoEsquerdo"] == DBNull.Value) ? "" : (string)reader["olhoEsquerdo"]),
+                        ambos = ((reader["ambos"] == DBNull.Value) ? "" : (string)reader["ambos"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    lavagemOcularPaciente.Add(lavagemOcular);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = lavagemOcularPaciente };
+                dataGridViewAlgPaciente.DataSource = bindingSource1;
+                dataGridViewAlgPaciente.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewAlgPaciente.Columns[1].HeaderText = "Olho Direito";
+                dataGridViewAlgPaciente.Columns[2].HeaderText = "Olho Esquerdo";
+                dataGridViewAlgPaciente.Columns[3].HeaderText = "Ambos";
+                dataGridViewAlgPaciente.Columns[4].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewAlgPaciente.Update();
+                dataGridViewAlgPaciente.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

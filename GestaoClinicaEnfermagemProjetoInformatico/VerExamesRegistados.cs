@@ -124,26 +124,36 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private List<Exame> getExame()
         {
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from tipoExame order by nome", conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                exame = new Exame
-                {
-                    nome = (string)reader["nome"],
-                    categoria = (string)reader["categoria"],
-                    designacao = (string)reader["designacao"],
-                    IdTipoExame = (int)reader["IdTipoExame"],
-                };
-                listaExames.Add(exame);
-            }
-            conn.Close();
+                conn.Open();
+                com.Connection = conn;
 
+                SqlCommand cmd = new SqlCommand("select * from tipoExame order by nome", conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    exame = new Exame
+                    {
+                        nome = (string)reader["nome"],
+                        categoria = (string)reader["categoria"],
+                        designacao = (string)reader["designacao"],
+                        IdTipoExame = (int)reader["IdTipoExame"],
+                    };
+                    listaExames.Add(exame);
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return listaExames;
         }
 
@@ -154,11 +164,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string categoria = txtCategoria.Text;
             string designacao = txtDesignacao.Text;
 
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
+            if (VerificarDadosInseridos())
             {
                 try
                 {
@@ -185,11 +191,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Erro interno, não foi possível alterar o exame!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível alterar o exame!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
         }
 

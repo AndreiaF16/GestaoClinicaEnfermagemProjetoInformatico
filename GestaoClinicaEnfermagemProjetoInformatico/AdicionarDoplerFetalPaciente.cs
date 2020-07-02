@@ -156,7 +156,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
-
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar o Dopler Fetal!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 

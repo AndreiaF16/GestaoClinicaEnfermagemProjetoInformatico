@@ -26,6 +26,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private int idDoenca = -1;
         private int idCirurgia = -1;
         private int idExames = -1;
+        private int idAnalisesLaboratoriais = -1;
+        private int idAvObj = -1;
+        private int idAvBebeAleitamento = -1;
+        private int idAvObjTipoParto = -1;
 
         public IniciarConsultaSemMarcacao(Enfermeiro enf, Paciente pac)
         {
@@ -210,15 +214,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     this.Close();
                     connection.Close();
                     connection.Open();
-                    /*
-                    string queryUpdateData = "UPDATE AgendamentoConsulta SET ConsultaRealizada = 1 WHERE IdPaciente = '" + paciente.IdPaciente + "' AND dataProximaConsulta = '" + DateTime.ParseExact(agendamentoConsulta.dataProximaConsulta, "dd/MM/yyyy", null).ToString("MM/dd/yyyy") + "' AND horaProximaConsulta = '" + agendamentoConsulta.horaProximaConsulta + "'; ";
-                    SqlCommand sqlCommand1 = new SqlCommand(queryUpdateData, connection);
-                    sqlCommand1.ExecuteNonQuery();
-                    connection.Close();*/
                 }
                 catch (SqlException)
                 {
-
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar a consulta", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
@@ -405,20 +407,95 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             var meses = Math.Round(DateTime.Today.Subtract(data).Days / (365.25 / 12));
             if (meses > 36)
             {
-                AdicionarVisualizarAvaliacaoObjetivoPaciente adicionarVisualizarAvaliacaoObjetivoPaciente = new AdicionarVisualizarAvaliacaoObjetivoPaciente(paciente);
-                adicionarVisualizarAvaliacaoObjetivoPaciente.Show();
+                idVarios();
+                if (idAvObj == -1)
+                {
+                    var resposta = MessageBox.Show("Tipo de metodos contracetivos não encontrados! Deseja inserir um tipo na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resposta == DialogResult.Yes)
+                    {
+                        AdicionarMetodosContracetivos metodoContracetivo = new AdicionarMetodosContracetivos(null);
+                        metodoContracetivo.Show();
+                    }
+                    if (resposta == DialogResult.No)
+                    {
+                        MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                    }
+                }
+                idVarios();
+                if (idAvObj != -1)
+                {
+                    AdicionarVisualizarAvaliacaoObjetivoPaciente adicionarVisualizarAvaliacaoObjetivoPaciente = new AdicionarVisualizarAvaliacaoObjetivoPaciente(paciente);
+                    adicionarVisualizarAvaliacaoObjetivoPaciente.Show();
+                }
             }
             else
             {
-                AdicionarVisualizarAvaliacaoObjetivoBebe adicionarVisualizarAvaliacaoObjetivoBebe = new AdicionarVisualizarAvaliacaoObjetivoBebe(paciente/*, this, null*/);
-                adicionarVisualizarAvaliacaoObjetivoBebe.Show();
+                idVarios();
+                if (idAvBebeAleitamento == -1)
+                {
+                    var resposta = MessageBox.Show("Tipo de aleitamento não encontrados! Deseja inserir um tipo na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resposta == DialogResult.Yes)
+                    {
+                        AdicionarTipoAleitamento aleitamento = new AdicionarTipoAleitamento(null);
+                        aleitamento.Show();
+                    }
+                    if (resposta == DialogResult.No)
+                    {
+                        MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                    }
+                }
+                idVarios();
+                if (idAvBebeAleitamento != -1)
+                {
+                    AdicionarVisualizarAvaliacaoObjetivoBebe adicionarVisualizarAvaliacaoObjetivoBebe = new AdicionarVisualizarAvaliacaoObjetivoBebe(paciente/*, this, null*/);
+                    adicionarVisualizarAvaliacaoObjetivoBebe.Show();
+                }
+                idVarios();
+                if (idAvObjTipoParto == -1)
+                {
+                    var resposta = MessageBox.Show("Tipo de partos não encontrados! Deseja inserir um tipo na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resposta == DialogResult.Yes)
+                    {
+                        AdicionarTipoParto adicionarTipoParto = new AdicionarTipoParto(null);
+                        adicionarTipoParto.Show();
+                    }
+                    if (resposta == DialogResult.No)
+                    {
+                        MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                    }
+                }
+                idVarios();
+                if (idAvObjTipoParto != -1)
+                {
+                    AdicionarVisualizarAvaliacaoObjetivoBebe adicionarVisualizarAvaliacaoObjetivoBebe = new AdicionarVisualizarAvaliacaoObjetivoBebe(paciente/*, this, null*/);
+                    adicionarVisualizarAvaliacaoObjetivoBebe.Show();
+                }
             }
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            AdicionarVisualizarAnaliseLaboratorialPaciente adicionar = new AdicionarVisualizarAnaliseLaboratorialPaciente(paciente);
-            adicionar.Show();
+            idVarios();
+            if (idAnalisesLaboratoriais == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de Análises Laboratoriais não encontradas! Deseja inserir uma análise laboratorial na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    AnalisesLaboratoriais analisesLaboratoriais = new AnalisesLaboratoriais(null);
+                    analisesLaboratoriais.Show();
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+
+            if (idAnalisesLaboratoriais != -1)
+            {
+                AdicionarVisualizarAnaliseLaboratorialPaciente adicionar = new AdicionarVisualizarAnaliseLaboratorialPaciente(paciente);
+                adicionar.Show();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -447,46 +524,175 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void idVarios()
         {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Alergia", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                id = (int)reader["IdAlergia"];
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Alergia", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = (int)reader["IdAlergia"];
+                }
+                conn.Close();
             }
-            conn.Close();
-
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd1 = new SqlCommand("select * from Doenca", conn);
-            SqlDataReader reader1 = cmd1.ExecuteReader();
-            while (reader1.Read())
+            catch (Exception)
             {
-                idDoenca = (int)reader1["IdDoenca"];
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as alergias!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            conn.Close();
 
-
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd2 = new SqlCommand("select * from Cirurgia", conn);
-            SqlDataReader reader2 = cmd2.ExecuteReader();
-            while (reader2.Read())
+            try
             {
-                idCirurgia = (int)reader2["IdCirurgia"];
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd1 = new SqlCommand("select * from Doenca", conn);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    idDoenca = (int)reader1["IdDoenca"];
+                }
+                conn.Close();
             }
-            conn.Close();
-
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd3 = new SqlCommand("select * from Exame", conn);
-            SqlDataReader reader3 = cmd3.ExecuteReader();
-            while (reader3.Read())
+            catch (Exception)
             {
-                idExames = (int)reader3["idTipoExame"];
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as doenças!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            conn.Close();
+
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd2 = new SqlCommand("select * from Cirurgia", conn);
+                SqlDataReader reader2 = cmd2.ExecuteReader();
+                while (reader2.Read())
+                {
+                    idCirurgia = (int)reader2["IdCirurgia"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as cirurgias!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd3 = new SqlCommand("select * from Exame", conn);
+                SqlDataReader reader3 = cmd3.ExecuteReader();
+                while (reader3.Read())
+                {
+                    idExames = (int)reader3["idTipoExame"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os exames!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd4 = new SqlCommand("select * from analisesLaboratoriais", conn);
+                SqlDataReader reader4 = cmd4.ExecuteReader();
+                while (reader4.Read())
+                {
+                    idAnalisesLaboratoriais = (int)reader4["IdAnalisesLaboratoriais"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as análises laboratoriais!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd5 = new SqlCommand("select * from Aleitamento", conn);
+                SqlDataReader reader5 = cmd5.ExecuteReader();
+                while (reader5.Read())
+                {
+                    idAvBebeAleitamento = (int)reader5["IdAleitamento"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar o tipo de aleitamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd6 = new SqlCommand("select * from Parto", conn);
+                SqlDataReader reader6 = cmd6.ExecuteReader();
+                while (reader6.Read())
+                {
+                    idAvObjTipoParto = (int)reader6["IdParto"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar o tipo de parto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd7 = new SqlCommand("select * from MetodoContracetivo", conn);
+                SqlDataReader reader7 = cmd7.ExecuteReader();
+                while (reader7.Read())
+                {
+                    idAvObj = (int)reader7["IdMetodoContracetivo"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar o método contracetivo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     } 

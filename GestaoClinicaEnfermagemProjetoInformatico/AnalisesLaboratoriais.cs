@@ -16,10 +16,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         AdicionarVisualizarAnaliseLaboratorialPaciente adicionar = null;
         private ErrorProvider errorProvider = new ErrorProvider();
 
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
         public AnalisesLaboratoriais(AdicionarVisualizarAnaliseLaboratorialPaciente adicionarVisualizarAnalisesLaboratoriais)
         {
             InitializeComponent();
             adicionar = adicionarVisualizarAnalisesLaboratoriais;
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -100,6 +104,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar o nome da análise laboratorial!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

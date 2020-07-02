@@ -15,6 +15,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         AdicionarVisualizarAlergiaPaciente adicionar = null;
         private ErrorProvider errorProvider = new ErrorProvider();
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
 
         public Alergias(AdicionarVisualizarAlergiaPaciente adicionarVisualizarAlergiaPaciente)
         {
@@ -22,6 +24,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             adicionar = adicionarVisualizarAlergiaPaciente;
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
         }
 
         private void Alergias_Load(object sender, EventArgs e)
@@ -51,6 +55,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar a alergia", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

@@ -65,12 +65,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            string tipo = txtTipo.Text;
-            string obs = txtObs.Text;
-
+        {           
             if (VerificarDadosInseridos())
             {
+                string tipo = txtTipo.Text;
+                string obs = txtObs.Text;
+
                 try
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
@@ -94,11 +94,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Erro interno, não foi possível alterar o tipo de aleitamento!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível alterar o tipo de aleitamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
         }
 
@@ -129,25 +128,35 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private List<Aleitamento> getTipoAleitamento()
         {
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Aleitamento order by tipoAleitamento", conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                aleitamento = new Aleitamento
-                {
-                    tipoAleitamento = (string)reader["tipoAleitamento"],
-                    Observacoes = (string)reader["Observacoes"],
-                    IdAleitamento = (int)reader["IdAleitamento"],
-                };
-                listaAleitamento.Add(aleitamento);
-            }
-            conn.Close();
+                conn.Open();
+                com.Connection = conn;
 
+                SqlCommand cmd = new SqlCommand("select * from Aleitamento order by tipoAleitamento", conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    aleitamento = new Aleitamento
+                    {
+                        tipoAleitamento = (string)reader["tipoAleitamento"],
+                        Observacoes = (string)reader["Observacoes"],
+                        IdAleitamento = (int)reader["IdAleitamento"],
+                    };
+                    listaAleitamento.Add(aleitamento);
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return listaAleitamento;
         }
 
@@ -233,6 +242,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             txtObs.Text = "";
             txtTipo.Text = "";
+            errorProvider.Clear();
         }
     }
 }

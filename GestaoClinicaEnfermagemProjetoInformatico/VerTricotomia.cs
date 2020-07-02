@@ -67,34 +67,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            tricotomiaPaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, tricotomia, observacoes from Tricotomia ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                tricotomiaPaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                TricotomiaPaciente tricotomia = new TricotomiaPaciente
+                SqlCommand cmd = new SqlCommand("select data, tricotomia, observacoes from Tricotomia ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    tricotomia = ((reader["tricotomia"] == DBNull.Value) ? "" : (string)reader["tricotomia"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                tricotomiaPaciente.Add(tricotomia);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = tricotomiaPaciente };
-            dataGridViewTricotomia.DataSource = bindingSource1;
-            dataGridViewTricotomia.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewTricotomia.Columns[1].HeaderText = "Tricotomia";
-            dataGridViewTricotomia.Columns[2].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewTricotomia.Update();
-            dataGridViewTricotomia.Refresh();
+                    TricotomiaPaciente tricotomia = new TricotomiaPaciente
+                    {
+                        data = data,
+                        tricotomia = ((reader["tricotomia"] == DBNull.Value) ? "" : (string)reader["tricotomia"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    tricotomiaPaciente.Add(tricotomia);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = tricotomiaPaciente };
+                dataGridViewTricotomia.DataSource = bindingSource1;
+                dataGridViewTricotomia.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewTricotomia.Columns[1].HeaderText = "Tricotomia";
+                dataGridViewTricotomia.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewTricotomia.Update();
+                dataGridViewTricotomia.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

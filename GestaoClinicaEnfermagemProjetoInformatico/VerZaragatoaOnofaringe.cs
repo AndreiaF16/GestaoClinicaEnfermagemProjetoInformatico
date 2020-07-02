@@ -67,34 +67,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            zaragatoaOnofaringePaciente.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, zaragatoaOnofaringe, observacoes from ZaragatoaOnofaringe ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                zaragatoaOnofaringePaciente.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-                ZaragatoaOnofaringePaciente zaragatoa = new ZaragatoaOnofaringePaciente
+                SqlCommand cmd = new SqlCommand("select data, zaragatoaOnofaringe, observacoes from ZaragatoaOnofaringe ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    zaragatoaOnofaringe = ((reader["zaragatoaOnofaringe"] == DBNull.Value) ? "" : (string)reader["zaragatoaOnofaringe"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                zaragatoaOnofaringePaciente.Add(zaragatoa);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = zaragatoaOnofaringePaciente };
-            dataGridViewZaragatoa.DataSource = bindingSource1;
-            dataGridViewZaragatoa.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewZaragatoa.Columns[1].HeaderText = "Zaragatoa Onofaringe ";
-            dataGridViewZaragatoa.Columns[2].HeaderText = "Observações";
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-            conn.Close();
-            dataGridViewZaragatoa.Update();
-            dataGridViewZaragatoa.Refresh();
+                    ZaragatoaOnofaringePaciente zaragatoa = new ZaragatoaOnofaringePaciente
+                    {
+                        data = data,
+                        zaragatoaOnofaringe = ((reader["zaragatoaOnofaringe"] == DBNull.Value) ? "" : (string)reader["zaragatoaOnofaringe"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    zaragatoaOnofaringePaciente.Add(zaragatoa);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = zaragatoaOnofaringePaciente };
+                dataGridViewZaragatoa.DataSource = bindingSource1;
+                dataGridViewZaragatoa.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewZaragatoa.Columns[1].HeaderText = "Zaragatoa Onofaringe ";
+                dataGridViewZaragatoa.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewZaragatoa.Update();
+                dataGridViewZaragatoa.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -82,67 +82,77 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         DataTable dataTable = new DataTable("Paciente");
         private void FormVerUtentesRegistados_Load_1(object sender, EventArgs e)
         {
-            
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE IdEnfermeiro =  @IdEnfermeiro", conn);
-            cmd.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-
-            while (reader.Read())
+            try
             {
+                conn.Open();
+                com.Connection = conn;
 
-                UtenteGridView utente = new UtenteGridView
+                SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE IdEnfermeiro =  @IdEnfermeiro", conn);
+                cmd.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+
+                while (reader.Read())
                 {
-                    Nome = (string)reader["nome"],
-                    DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                   // Email = (string)reader["email"],
-                    Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
 
-                    Contacto = Convert.ToDouble(reader["contacto"]),
-                    Nif = Convert.ToInt32(reader["nif"]),
-                    Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
+                    UtenteGridView utente = new UtenteGridView
+                    {
+                        Nome = (string)reader["nome"],
+                        DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                        // Email = (string)reader["email"],
+                        Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
 
-                    Rua = (string)reader["Rua"],
-                    NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
-                    Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
+                        Contacto = Convert.ToDouble(reader["contacto"]),
+                        Nif = Convert.ToInt32(reader["nif"]),
+                        Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
 
-                    codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
-                    bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
-                    designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
-                    localidade = (string)reader["localidade"],
-                    Acordo = (string)reader["Acordo"],
+                        Rua = (string)reader["Rua"],
+                        NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
+                        Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
 
-                    NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
-                    //NomeSeguradora = (string)reader["NomeSeguradora"] |,
+                        codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
+                        bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
+                        designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
+                        localidade = (string)reader["localidade"],
+                        Acordo = (string)reader["Acordo"],
 
-                    NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? null : (int?)reader["NumeroApoliceSeguradora"]),
-                    // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
+                        NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
+                        //NomeSeguradora = (string)reader["NomeSeguradora"] |,
 
-                    NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
-                    // NomeSubsistema = (string)reader["NomeSubsistema"],
+                        NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? null : (int?)reader["NumeroApoliceSeguradora"]),
+                        // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
 
-                    NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? null : (int?)reader["NumeroSubsistema"]),
-                   // NumeroSubsistema = (int)reader["NumeroSubsistema"],
+                        NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
+                        // NomeSubsistema = (string)reader["NomeSubsistema"],
 
-                    NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? null : (int?)reader["NumeroSNS"]),
-                    //NumeroSNS = (int)reader["NumeroSNS"],
+                        NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? null : (int?)reader["NumeroSubsistema"]),
+                        // NumeroSubsistema = (int)reader["NumeroSubsistema"],
 
-                    Sexo = (string)reader["Sexo"],
-                    PlanoVacinacao = (string)reader["PlanoVacinacao"],
-                    IdPaciente = (int)reader["IdPaciente"]
-                };
-                utentes.Add(utente);
+                        NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? null : (int?)reader["NumeroSNS"]),
+                        //NumeroSNS = (int)reader["NumeroSNS"],
+
+                        Sexo = (string)reader["Sexo"],
+                        PlanoVacinacao = (string)reader["PlanoVacinacao"],
+                        IdPaciente = (int)reader["IdPaciente"]
+                    };
+                    utentes.Add(utente);
+                }
+                string nome = txtNome.Text;
+                UpdateDataGridView();
+                auxiliar = utentes;
+                dataGridViewUtentes.Columns[0].Width = dataGridViewUtentes.Columns[0].Width + 200;
+                dataGridViewUtentes.Columns[2].Width = dataGridViewUtentes.Columns[2].Width + 80;
+                dataGridViewUtentes.Columns[6].Width = dataGridViewUtentes.Columns[6].Width + 150;
+                conn.Close();
             }
-            string nome = txtNome.Text;
-            UpdateDataGridView();
-            auxiliar = utentes;
-            dataGridViewUtentes.Columns[0].Width = dataGridViewUtentes.Columns[0].Width + 200;
-            dataGridViewUtentes.Columns[2].Width = dataGridViewUtentes.Columns[2].Width + 80;
-            dataGridViewUtentes.Columns[6].Width = dataGridViewUtentes.Columns[6].Width + 150;
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void hora_Tick(object sender, EventArgs e)
@@ -260,157 +270,181 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dataGridViewUtentes.Rows.Count >= 1)
+            try
             {
-                int i = dataGridViewUtentes.CurrentCell.RowIndex;
-                UtenteGridView utente = null; ;
-
-
-                //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
-                foreach (var ut in auxiliar)
+                if (dataGridViewUtentes.Rows.Count >= 1)
                 {
-                    if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                    int i = dataGridViewUtentes.CurrentCell.RowIndex;
+                    UtenteGridView utente = null; ;
+
+
+                    //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
+                    foreach (var ut in auxiliar)
                     {
-                        utente = ut;
+                        if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                        {
+                            utente = ut;
+                        }
+
+                    }
+                    conn.Open();
+                    com.Connection = conn;
+
+                    SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif = @NifPaciente", conn);
+                    cmd.Parameters.AddWithValue("@NifPaciente", utente.Nif);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    Paciente paciente = null;
+
+                    if (reader.Read())
+                    {
+                        paciente = new Paciente
+                        {
+                            IdPaciente = (int)reader["IdPaciente"],
+                            Nome = (string)reader["nome"],
+                            DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                            Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
+                            Contacto = Convert.ToDouble(reader["contacto"]),
+                            Nif = Convert.ToInt32(reader["nif"]),
+                            Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
+                            Rua = (string)reader["Rua"],
+                            NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
+                            Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
+                            codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
+                            bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
+                            designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
+                            localidade = (string)reader["localidade"],
+                            IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                            Acordo = (string)reader["Acordo"],
+
+                            NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
+                            //NomeSeguradora = (string)reader["NomeSeguradora"] |,
+
+                            NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? null : (int?)reader["NumeroApoliceSeguradora"]),
+                            // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
+
+                            NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
+                            // NomeSubsistema = (string)reader["NomeSubsistema"],
+
+                            NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? null : (int?)reader["NumeroSubsistema"]),
+                            // NumeroSubsistema = (int)reader["NumeroSubsistema"],
+
+                            NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? null : (int?)reader["NumeroSNS"]),
+                            //NumeroSNS = (int)reader["NumeroSNS"],
+
+                            Sexo = (string)reader["Sexo"],
+                            PlanoVacinacao = (string)reader["PlanoVacinacao"],
+
+
+                        };
                     }
 
+                    conn.Close();
+                    IniciarConsultaSemMarcacao iniciarConsulta = new IniciarConsultaSemMarcacao(enfermeiro, paciente);
+                    iniciarConsulta.Show();
+
                 }
-                conn.Open();
-                com.Connection = conn;
-
-                SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif = @NifPaciente", conn);
-                cmd.Parameters.AddWithValue("@NifPaciente", utente.Nif);
-                SqlDataReader reader = cmd.ExecuteReader();
-                Paciente paciente = null;
-
-                if (reader.Read())
+                else
                 {
-                    paciente = new Paciente
-                    {
-                        IdPaciente = (int)reader["IdPaciente"],
-                        Nome = (string)reader["nome"],
-                        DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                        Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
-                        Contacto = Convert.ToDouble(reader["contacto"]),
-                        Nif = Convert.ToInt32(reader["nif"]),
-                        Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
-                        Rua = (string)reader["Rua"],
-                        NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
-                        Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
-                        codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
-                        bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
-                        designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
-                        localidade = (string)reader["localidade"],
-                        IdEnfermeiro = (int)reader["IdEnfermeiro"],
-                        Acordo = (string)reader["Acordo"],
-
-                        NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
-                        //NomeSeguradora = (string)reader["NomeSeguradora"] |,
-
-                        NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? null : (int?)reader["NumeroApoliceSeguradora"]),
-                        // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
-
-                        NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
-                        // NomeSubsistema = (string)reader["NomeSubsistema"],
-
-                        NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? null : (int?)reader["NumeroSubsistema"]),
-                        // NumeroSubsistema = (int)reader["NumeroSubsistema"],
-
-                        NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? null : (int?)reader["NumeroSNS"]),
-                        //NumeroSNS = (int)reader["NumeroSNS"],
-
-                        Sexo = (string)reader["Sexo"],
-                        PlanoVacinacao = (string)reader["PlanoVacinacao"],
-
-
-                    };
+                    MessageBox.Show("Não é possivel iniciar uma consulta, pois não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
-                conn.Close();
-                IniciarConsultaSemMarcacao iniciarConsulta = new IniciarConsultaSemMarcacao(enfermeiro, paciente);
-                iniciarConsulta.Show();
 
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Não é possivel iniciar uma consulta, pois não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível iniciar uma consulta!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
             private void button2_Click(object sender, EventArgs e)
         {
-            if (dataGridViewUtentes.Rows.Count >= 1 )
+            try
             {
-                int i = dataGridViewUtentes.CurrentCell.RowIndex;
-                UtenteGridView utente = null; ;
-
-
-                //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
-                foreach (var ut in auxiliar)
+                if (dataGridViewUtentes.Rows.Count >= 1)
                 {
-                    if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                    int i = dataGridViewUtentes.CurrentCell.RowIndex;
+                    UtenteGridView utente = null; ;
+
+
+                    //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
+                    foreach (var ut in auxiliar)
                     {
-                        utente = ut;
+                        if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                        {
+                            utente = ut;
+                        }
                     }
-                }
-                conn.Open();
-                com.Connection = conn;
+                    conn.Open();
+                    com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif =  @NifPaciente", conn);
-                cmd.Parameters.AddWithValue("@NifPaciente", utente.Nif);
-                SqlDataReader reader = cmd.ExecuteReader();
-                Paciente paciente = null;
+                    SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif =  @NifPaciente", conn);
+                    cmd.Parameters.AddWithValue("@NifPaciente", utente.Nif);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    Paciente paciente = null;
 
-                if (reader.Read())
-                {
-                    paciente = new Paciente
+                    if (reader.Read())
                     {
-                        IdPaciente = (int)reader["IdPaciente"],
-                        Nome = (string)reader["nome"],
-                        DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                        Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
-                        Contacto = Convert.ToDouble(reader["contacto"]),
-                        Nif = Convert.ToInt32(reader["nif"]),
-                        Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
-                        Rua = (string)reader["Rua"],
-                        NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
-                        Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
-                        codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
-                        bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
-                        designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
-                        localidade = (string)reader["localidade"],
-                        IdEnfermeiro = (int)reader["IdEnfermeiro"],
-                        Acordo = (string)reader["Acordo"],
+                        paciente = new Paciente
+                        {
+                            IdPaciente = (int)reader["IdPaciente"],
+                            Nome = (string)reader["nome"],
+                            DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                            Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
+                            Contacto = Convert.ToDouble(reader["contacto"]),
+                            Nif = Convert.ToInt32(reader["nif"]),
+                            Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
+                            Rua = (string)reader["Rua"],
+                            NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
+                            Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
+                            codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
+                            bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
+                            designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
+                            localidade = (string)reader["localidade"],
+                            IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                            Acordo = (string)reader["Acordo"],
 
-                        NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
-                        //NomeSeguradora = (string)reader["NomeSeguradora"] |,
+                            NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
+                            //NomeSeguradora = (string)reader["NomeSeguradora"] |,
 
-                        NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? null : (int?)reader["NumeroApoliceSeguradora"]),
-                        // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
+                            NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? null : (int?)reader["NumeroApoliceSeguradora"]),
+                            // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
 
-                        NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
-                        // NomeSubsistema = (string)reader["NomeSubsistema"],
+                            NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
+                            // NomeSubsistema = (string)reader["NomeSubsistema"],
 
-                        NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? null : (int?)reader["NumeroSubsistema"]),
-                        // NumeroSubsistema = (int)reader["NumeroSubsistema"],
+                            NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? null : (int?)reader["NumeroSubsistema"]),
+                            // NumeroSubsistema = (int)reader["NumeroSubsistema"],
 
-                        NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? null : (int?)reader["NumeroSNS"]),
-                        //NumeroSNS = (int)reader["NumeroSNS"],
+                            NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? null : (int?)reader["NumeroSNS"]),
+                            //NumeroSNS = (int)reader["NumeroSNS"],
 
-                        Sexo = (string)reader["Sexo"],
-                        PlanoVacinacao = (string)reader["PlanoVacinacao"],
+                            Sexo = (string)reader["Sexo"],
+                            PlanoVacinacao = (string)reader["PlanoVacinacao"],
 
-                    };
+                        };
+                    }
+
+                    conn.Close();
+
+                    RegistarConsulta registarConsulta = new RegistarConsulta(enfermeiro, paciente, this);
+                    registarConsulta.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Não é possivel registar uma consulta, pois não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
-                conn.Close();
-
-                RegistarConsulta registarConsulta = new RegistarConsulta(enfermeiro, paciente, this);
-                registarConsulta.Show();
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Não é possivel registar uma consulta, pois não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -421,35 +455,113 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (dataGridViewUtentes.Rows.Count >= 1)
+            try
             {
-                int i = dataGridViewUtentes.CurrentCell.RowIndex;
-                UtenteGridView utente = null; ;
-
-
-                //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
-                foreach (var ut in auxiliar)
+                if (dataGridViewUtentes.Rows.Count >= 1)
                 {
-                    if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                    int i = dataGridViewUtentes.CurrentCell.RowIndex;
+                    UtenteGridView utente = null; ;
+
+
+                    //    int id = int.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString());
+                    foreach (var ut in auxiliar)
                     {
-                        utente = ut;
+                        if (ut.Nif == Double.Parse(dataGridViewUtentes.Rows[i].Cells[4].Value.ToString()))
+                        {
+                            utente = ut;
+                        }
                     }
+                    conn.Open();
+                    com.Connection = conn;
+
+                    SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif =  @NifPaciente", conn);
+                    cmd.Parameters.AddWithValue("@NifPaciente", utente.Nif);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    Paciente paciente = null;
+
+                    if (reader.Read())
+                    {
+                        paciente = new Paciente
+                        {
+                            IdPaciente = (int)reader["IdPaciente"],
+                            Nome = (string)reader["nome"],
+                            DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                            Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
+                            Contacto = Convert.ToDouble(reader["contacto"]),
+                            Nif = Convert.ToInt32(reader["nif"]),
+                            Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
+                            Rua = (string)reader["Rua"],
+                            NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
+                            Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
+
+                            codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
+                            bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
+                            designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
+                            localidade = (string)reader["localidade"],
+                            IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                            Acordo = (string)reader["Acordo"],
+
+                            NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
+                            //NomeSeguradora = (string)reader["NomeSeguradora"] |,
+
+                            NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? null : (int?)reader["NumeroApoliceSeguradora"]),
+                            // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
+
+                            NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
+                            // NomeSubsistema = (string)reader["NomeSubsistema"],
+
+                            NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? null : (int?)reader["NumeroSubsistema"]),
+                            // NumeroSubsistema = (int)reader["NumeroSubsistema"],
+
+                            NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? null : (int?)reader["NumeroSNS"]),
+                            //NumeroSNS = (int)reader["NumeroSNS"],
+
+                            Sexo = (string)reader["Sexo"],
+                            PlanoVacinacao = (string)reader["PlanoVacinacao"],
+
+                        };
+                    }
+
+                    conn.Close();
+
+                    EditUtente editar = new EditUtente(enfermeiro, paciente, this);
+                    editar.Show();
                 }
+                else
+                {
+                    MessageBox.Show("Não é possível editar um utente, pois não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void UpdateUtentes() 
+        {
+            try
+            {
                 conn.Open();
                 com.Connection = conn;
-
-                SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE Nif =  @NifPaciente", conn);
-                cmd.Parameters.AddWithValue("@NifPaciente", utente.Nif);
+                utentes = new List<UtenteGridView>();
+                SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE IdEnfermeiro =  @IdEnfermeiro", conn);
+                cmd.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
                 SqlDataReader reader = cmd.ExecuteReader();
-                Paciente paciente = null;
 
-                if (reader.Read())
+                while (reader.Read())
                 {
-                    paciente = new Paciente
+
+                    UtenteGridView utente = new UtenteGridView
                     {
-                        IdPaciente = (int)reader["IdPaciente"],
                         Nome = (string)reader["nome"],
                         DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
+                        // Email = (string)reader["email"],
                         Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
                         Contacto = Convert.ToDouble(reader["contacto"]),
                         Nif = Convert.ToInt32(reader["nif"]),
@@ -462,7 +574,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
                         designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
                         localidade = (string)reader["localidade"],
-                        IdEnfermeiro = (int)reader["IdEnfermeiro"],
                         Acordo = (string)reader["Acordo"],
 
                         NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
@@ -482,83 +593,28 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                         Sexo = (string)reader["Sexo"],
                         PlanoVacinacao = (string)reader["PlanoVacinacao"],
+                        IdPaciente = (int)reader["IdPaciente"]
 
                     };
+                    utentes.Add(utente);
+
+
                 }
+                string nome = txtNome.Text;
+                UpdateDataGridView();
+                auxiliar = utentes;
 
                 conn.Close();
-
-                EditUtente editar = new EditUtente(enfermeiro, paciente, this);
-                editar.Show();
+                formMenu.UpdateGridViewConsultas();
             }
-            else 
+            catch (Exception)
             {
-                MessageBox.Show("Não é possível editar um utente, pois não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        public void UpdateUtentes() 
-        {
-            conn.Open();
-            com.Connection = conn;
-            utentes = new List<UtenteGridView>();
-            SqlCommand cmd = new SqlCommand("select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE IdEnfermeiro =  @IdEnfermeiro", conn);
-            cmd.Parameters.AddWithValue("@IdEnfermeiro", enfermeiro.IdEnfermeiro);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-
-                UtenteGridView utente = new UtenteGridView
+                if (conn.State == ConnectionState.Open)
                 {
-                    Nome = (string)reader["nome"],
-                    DataNascimento = Convert.ToDateTime(reader["dataNascimento"]),
-                   // Email = (string)reader["email"],
-                    Email = ((reader["email"] == DBNull.Value) ? "" : (string)reader["email"]),
-                    Contacto = Convert.ToDouble(reader["contacto"]),
-                    Nif = Convert.ToInt32(reader["nif"]),
-                    Profissao = ((reader["nomeProfissao"] == DBNull.Value) ? "" : (string)reader["nomeProfissao"]),
-                    Rua = (string)reader["Rua"],
-                    NumeroCasa = ((reader["NumeroCasa"] == DBNull.Value) ? null : (int?)reader["NumeroCasa"]),
-                    Andar = ((reader["Andar"] == DBNull.Value) ? "" : (string)reader["Andar"]),
-
-                    codigoPostal = (reader["codPostalPrefixo"]) + "-" + (reader["codPostalSufixo"]),
-                    bairroLocal = ((reader["bairroLocal"] == DBNull.Value) ? "" : (string)reader["bairroLocal"]),
-                    designacao = ((reader["designacao"] == DBNull.Value) ? "" : (string)reader["designacao"]),
-                    localidade = (string)reader["localidade"],
-                    Acordo = (string)reader["Acordo"],
-
-                    NomeSeguradora = ((reader["NomeSeguradora"] == DBNull.Value) ? "" : (string)reader["NomeSeguradora"]),
-                    //NomeSeguradora = (string)reader["NomeSeguradora"] |,
-
-                    NumeroApoliceSeguradora = ((reader["NumeroApoliceSeguradora"] == DBNull.Value) ? null : (int?)reader["NumeroApoliceSeguradora"]),
-                    // NumeroApoliceSeguradora = (int)reader["NumeroApoliceSeguradora"],
-
-                    NomeSubsistema = ((reader["NomeSubsistema"] == DBNull.Value) ? "" : (string)reader["NomeSubsistema"]),
-                    // NomeSubsistema = (string)reader["NomeSubsistema"],
-
-                    NumeroSubsistema = ((reader["NumeroSubsistema"] == DBNull.Value) ? null : (int?)reader["NumeroSubsistema"]),
-                    // NumeroSubsistema = (int)reader["NumeroSubsistema"],
-
-                    NumeroSNS = ((reader["NumeroSNS"] == DBNull.Value) ? null : (int?)reader["NumeroSNS"]),
-                    //NumeroSNS = (int)reader["NumeroSNS"],
-
-                    Sexo = (string)reader["Sexo"],
-                    PlanoVacinacao = (string)reader["PlanoVacinacao"],
-                    IdPaciente = (int)reader["IdPaciente"]
-
-                };
-                utentes.Add(utente);
-
-
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            string nome = txtNome.Text;
-            UpdateDataGridView();
-            auxiliar = utentes;
-
-            conn.Close();
-            formMenu.UpdateGridViewConsultas();
-
         }
 
         private void button4_Click(object sender, EventArgs e)

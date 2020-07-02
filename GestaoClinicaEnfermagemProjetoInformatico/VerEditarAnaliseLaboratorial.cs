@@ -92,6 +92,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private List<AnaliseLaboratorial> getMetodosContracetivos()
         {
+            try
+            {
+
             conn.Open();
             com.Connection = conn;
 
@@ -110,7 +113,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 listaAnalisesLaboratorial.Add(analise);
             }
             conn.Close();
-
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return listaAnalisesLaboratorial;
         }
 
@@ -145,9 +156,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Erro interno, não foi possível alterar o método contracetivo!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível alterar o método contracetivo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

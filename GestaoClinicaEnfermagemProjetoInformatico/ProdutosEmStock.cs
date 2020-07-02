@@ -114,6 +114,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível os produtos usados na consulta!!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

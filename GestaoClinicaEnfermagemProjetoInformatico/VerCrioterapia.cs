@@ -27,31 +27,42 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void VerCrioterapia_Load(object sender, EventArgs e)
         {
-            LocalizacaoDorPaciente localizacaoDorPaciente = new LocalizacaoDorPaciente();
-
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Crioterapia WHERE IdPaciente = @IdPaciente", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                localizacaoDorPaciente = new LocalizacaoDorPaciente
+                LocalizacaoDorPaciente localizacaoDorPaciente = new LocalizacaoDorPaciente();
+
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from Crioterapia WHERE IdPaciente = @IdPaciente", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = Convert.ToDateTime(reader["data"]),
-                    localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    localizacaoDorPaciente = new LocalizacaoDorPaciente
+                    {
+                        data = Convert.ToDateTime(reader["data"]),
+                        localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
 
-                };
-                localizacaoDorPacientes.Add(localizacaoDorPaciente);
+                    };
+                    localizacaoDorPacientes.Add(localizacaoDorPaciente);
 
+                }
+                conn.Close();
+                UpdateDataGridView();
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = localizacaoDorPacientes };
+                dataGridViewLocalizacaoDor.DataSource = bindingSource1;
             }
-            conn.Close();
-            UpdateDataGridView();
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = localizacaoDorPacientes };
-            dataGridViewLocalizacaoDor.DataSource = bindingSource1;
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void UpdateDataGridView()

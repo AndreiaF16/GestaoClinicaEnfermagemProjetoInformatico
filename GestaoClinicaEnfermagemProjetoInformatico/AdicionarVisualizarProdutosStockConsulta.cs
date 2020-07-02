@@ -27,7 +27,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<VerProdutosConsulta> listaProdutos = new List<VerProdutosConsulta>();
         private List<VerProdutosConsulta> listaProdutosConsulta = new List<VerProdutosConsulta>();
         private List<AtualizarQuantidade> listaAtualizarQuantidades = new List<AtualizarQuantidade>();
-        private Encomendas encomendas = null;
 
           private List<ListarProdutos> listarQuantidades = new List<ListarProdutos>();
 
@@ -280,14 +279,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         conn.Close();
                         UpdateGridViewConsultas();
                         selectProdutos();
-                        /* if (registarEncomendas != null)
-                         {
-                             registarEncomendas.UpdateDataGridView();
-                         } */
                     }
-                    catch (SqlException excep)
+                    catch (SqlException)
                     {
-                        MessageBox.Show("Por erro interno é impossível registar", excep.Message);
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível regista os produtos usados na consulta!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -301,23 +300,34 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void reiniciar()
         {
-            fornecedores.Clear();
-            comboBoxFornecedor.Items.Clear();
-            auxiliar.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Fornecedor ", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader["nome"];
-                item.Value = (int)reader["IdFornecedor"];
-                comboBoxFornecedor.Items.Add(item);
-                fornecedores.Add(item);
-            }
+                fornecedores.Clear();
+                comboBoxFornecedor.Items.Clear();
+                auxiliar.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Fornecedor ", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = (string)reader["nome"];
+                    item.Value = (int)reader["IdFornecedor"];
+                    comboBoxFornecedor.Items.Add(item);
+                    fornecedores.Add(item);
+                }
 
-            conn.Close();
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os fornecedores!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void comboBoxFornecedor_SelectedIndexChanged(object sender, EventArgs e)
@@ -338,55 +348,77 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     
         public void UpdateGridViewConsultas()
         {
-
-            listaProdutos.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd1 = new SqlCommand("select produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, produtoStock.IdProdutoStock from Fornecedor fornecedor JOIN ProdutoStock produtoStock ON fornecedor.IdFornecedor = produtoStock.IdFornecedor WHERE fornecedor.IdFornecedor = @IdFornecedor Order by fornecedor.nome, produtoStock.NomeProduto", conn);
-            cmd1.Parameters.AddWithValue("@IdFornecedor", fornecedor.IdFornecedor);
-            SqlDataReader reader1 = cmd1.ExecuteReader();
-
-            while (reader1.Read())
+            try
             {
-                VerProdutosConsulta prods = new VerProdutosConsulta
+                listaProdutos.Clear();
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd1 = new SqlCommand("select produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, produtoStock.IdProdutoStock from Fornecedor fornecedor JOIN ProdutoStock produtoStock ON fornecedor.IdFornecedor = produtoStock.IdFornecedor WHERE fornecedor.IdFornecedor = @IdFornecedor Order by fornecedor.nome, produtoStock.NomeProduto", conn);
+                cmd1.Parameters.AddWithValue("@IdFornecedor", fornecedor.IdFornecedor);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+
+                while (reader1.Read())
                 {
-                    nomeProduto = (string)reader1["NomeProduto"], 
-                    quantidade = (int)reader1["quantidadeArmazenada"],
-                    id = (int)reader1["IdProdutoStock"]
-                };
-                listaProdutos.Add(prods);
+                    VerProdutosConsulta prods = new VerProdutosConsulta
+                    {
+                        nomeProduto = (string)reader1["NomeProduto"],
+                        quantidade = (int)reader1["quantidadeArmazenada"],
+                        id = (int)reader1["IdProdutoStock"]
+                    };
+                    listaProdutos.Add(prods);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaProdutos };
+                dataGridViewListaProdutos.DataSource = bindingSource1;
+
+                conn.Close();
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaProdutos };
-            dataGridViewListaProdutos.DataSource = bindingSource1;
-            
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os produtos de cada fornecedor!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void selectProdutos() 
         {
-          //  listarQuantidades.Clear();
-
-            conn.Open();
-            //select produtoStock.IdProdutoStock, produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, linha.quantidade from ProdutoStock produtoStock JOIN LinhaEncomenda linha ON produtoStock.IdProdutoStock = linha.idProdutoStock WHERE linha.idEncomenda = 3009;
-            string CMDselect = "select produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, produtoStock.IdProdutoStock from Fornecedor fornecedor JOIN ProdutoStock produtoStock ON fornecedor.IdFornecedor = produtoStock.IdFornecedor Order by fornecedor.nome, produtoStock.NomeProduto;";
-
-
-            SqlCommand cmd = new SqlCommand(CMDselect, conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                ListarProdutos quantidade = new ListarProdutos
-                {
-                    id = (int)reader["IdProdutoStock"],
-                    quant = (int)reader["quantidadeArmazenada"],
+                //  listarQuantidades.Clear();
 
-                };
-                listarQuantidades.Add(quantidade);
+                conn.Open();
+                //select produtoStock.IdProdutoStock, produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, linha.quantidade from ProdutoStock produtoStock JOIN LinhaEncomenda linha ON produtoStock.IdProdutoStock = linha.idProdutoStock WHERE linha.idEncomenda = 3009;
+                string CMDselect = "select produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, produtoStock.IdProdutoStock from Fornecedor fornecedor JOIN ProdutoStock produtoStock ON fornecedor.IdFornecedor = produtoStock.IdFornecedor Order by fornecedor.nome, produtoStock.NomeProduto;";
+
+
+                SqlCommand cmd = new SqlCommand(CMDselect, conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ListarProdutos quantidade = new ListarProdutos
+                    {
+                        id = (int)reader["IdProdutoStock"],
+                        quant = (int)reader["quantidadeArmazenada"],
+
+                    };
+                    listarQuantidades.Add(quantidade);
+                }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os produtos de cada fornecedor!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

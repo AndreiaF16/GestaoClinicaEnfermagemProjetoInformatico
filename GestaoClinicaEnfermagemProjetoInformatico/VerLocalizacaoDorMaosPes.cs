@@ -71,32 +71,43 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void loadGridView() {
-            LocalizacaoDorMaosPes localizacao = new LocalizacaoDorMaosPes();
-
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select tratamentoMaosPes.tratamento, localizacao.data, localizacao.localizacao, localizacao.observacoes from TratamentoMaosPes tratamentoMaosPes LEFT JOIN LocalizacaoDor localizacao ON tratamentoMaosPes.IdTratamentoMaosPes = localizacao.IdTratamentoMaosPes WHERE IdPaciente = @IdPaciente ORDER BY localizacao.data asc, tratamentoMaosPes.tratamento asc", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                localizacao = new LocalizacaoDorMaosPes
+                LocalizacaoDorMaosPes localizacao = new LocalizacaoDorMaosPes();
+
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select tratamentoMaosPes.tratamento, localizacao.data, localizacao.localizacao, localizacao.observacoes from TratamentoMaosPes tratamentoMaosPes LEFT JOIN LocalizacaoDor localizacao ON tratamentoMaosPes.IdTratamentoMaosPes = localizacao.IdTratamentoMaosPes WHERE IdPaciente = @IdPaciente ORDER BY localizacao.data asc, tratamentoMaosPes.tratamento asc", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = Convert.ToDateTime(reader["data"]),
-                    tratamento = ((reader["tratamento"] == DBNull.Value) ? "" : (string)reader["tratamento"]),
-                    localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    localizacao = new LocalizacaoDorMaosPes
+                    {
+                        data = Convert.ToDateTime(reader["data"]),
+                        tratamento = ((reader["tratamento"] == DBNull.Value) ? "" : (string)reader["tratamento"]),
+                        localizacao = ((reader["localizacao"] == DBNull.Value) ? "" : (string)reader["localizacao"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
 
-                };
-                localizacaoDorMaosPes.Add(localizacao);
+                    };
+                    localizacaoDorMaosPes.Add(localizacao);
 
+                }
+                conn.Close();
+                UpdateDataGridView();
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = localizacaoDorMaosPes };
+                dataGridViewLocalizacaoDor.DataSource = bindingSource1;
             }
-            conn.Close();
-            UpdateDataGridView();
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = localizacaoDorMaosPes };
-            dataGridViewLocalizacaoDor.DataSource = bindingSource1;
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void UpdateDataGridView()

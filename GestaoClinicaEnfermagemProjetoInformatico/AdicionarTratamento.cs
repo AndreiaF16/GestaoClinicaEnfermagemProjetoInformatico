@@ -100,6 +100,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar o tratamento", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -138,28 +142,41 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
         public void UpdateDataGridView()
         {
-            listaTratamentos.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select nomeTratamento from Tratamento ORDER BY nomeTratamento asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                Tratamento encomendas = new Tratamento
-                {
-                    nomeTratamento = (string)reader["nomeTratamento"]
-                };
-                listaTratamentos.Add(encomendas);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaTratamentos };
-            dataGridViewTratamentos.DataSource = bindingSource1;
-            dataGridViewTratamentos.Columns[0].HeaderText = "Nome do Tratamento";
+                listaTratamentos.Clear();
+                conn.Open();
+                com.Connection = conn;
 
-            conn.Close();
-            dataGridViewTratamentos.Update();
-            dataGridViewTratamentos.Refresh();
+                SqlCommand cmd = new SqlCommand("select nomeTratamento from Tratamento ORDER BY nomeTratamento asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Tratamento encomendas = new Tratamento
+                    {
+                        nomeTratamento = (string)reader["nomeTratamento"]
+                    };
+                    listaTratamentos.Add(encomendas);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaTratamentos };
+                dataGridViewTratamentos.DataSource = bindingSource1;
+                dataGridViewTratamentos.Columns[0].HeaderText = "Nome do Tratamento";
+
+                conn.Close();
+                dataGridViewTratamentos.Update();
+                dataGridViewTratamentos.Refresh();
+
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os tratamentos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
     }
 }

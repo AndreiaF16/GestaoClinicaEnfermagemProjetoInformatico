@@ -84,39 +84,50 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void UpdateDataGridView()
         {
-            listaDespesas.Clear();
-            conn.Open();
-            com.Connection = conn;
-            // select despesa.data, despesa.valor, tDespesa.designacao, encomenda.Nfatura, despesa.observacoes from Despesa despesa JOIN tipoDespesa tDespesa ON despesa.idTipoDespesa = tDespesa.IdTipoDespesa JOIN Encomenda encomenda ON despesa.idEncomenda = encomenda.IdEncomenda;
-            SqlCommand cmd = new SqlCommand("select despesa.data, despesa.valor, tDespesa.designacao, encomenda.Nfatura, despesa.observacoes from Despesa despesa JOIN tipoDespesa tDespesa ON despesa.idTipoDespesa = tDespesa.IdTipoDespesa LEFT JOIN Encomenda encomenda ON despesa.idEncomenda = encomenda.IdEncomenda ORDER BY despesa.data", conn);
-            // cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                listaDespesas.Clear();
+                conn.Open();
+                com.Connection = conn;
+                // select despesa.data, despesa.valor, tDespesa.designacao, encomenda.Nfatura, despesa.observacoes from Despesa despesa JOIN tipoDespesa tDespesa ON despesa.idTipoDespesa = tDespesa.IdTipoDespesa JOIN Encomenda encomenda ON despesa.idEncomenda = encomenda.IdEncomenda;
+                SqlCommand cmd = new SqlCommand("select despesa.data, despesa.valor, tDespesa.designacao, encomenda.Nfatura, despesa.observacoes from Despesa despesa JOIN tipoDespesa tDespesa ON despesa.idTipoDespesa = tDespesa.IdTipoDespesa LEFT JOIN Encomenda encomenda ON despesa.idEncomenda = encomenda.IdEncomenda ORDER BY despesa.data", conn);
+                // cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                Despesa desp = new Despesa
+                while (reader.Read())
                 {
-                    dataRegisto = data,
-                    tipoDespesa = (string)reader["designacao"],
-                    encomenda = ((reader["Nfatura"] == DBNull.Value) ? "" : (string)reader["Nfatura"]),
-                    valorDespesa = (decimal)reader["valor"],
-                    obs = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-                };
-                listaDespesas.Add(desp);
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaDespesas };
-            dataGridViewDespesas.DataSource = bindingSource1;
-            dataGridViewDespesas.Columns[0].HeaderText = "Data da Despesa";
-            dataGridViewDespesas.Columns[1].HeaderText = "Tipo de Despesa";
-            dataGridViewDespesas.Columns[2].HeaderText = "Nr da Encomenda";
-            dataGridViewDespesas.Columns[3].HeaderText = "Valor da Despesa";
-            dataGridViewDespesas.Columns[4].HeaderText = "Observações";
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-            conn.Close();
-            dataGridViewDespesas.Update();
-            dataGridViewDespesas.Refresh();
+                    Despesa desp = new Despesa
+                    {
+                        dataRegisto = data,
+                        tipoDespesa = (string)reader["designacao"],
+                        encomenda = ((reader["Nfatura"] == DBNull.Value) ? "" : (string)reader["Nfatura"]),
+                        valorDespesa = (decimal)reader["valor"],
+                        obs = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    };
+                    listaDespesas.Add(desp);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaDespesas };
+                dataGridViewDespesas.DataSource = bindingSource1;
+                dataGridViewDespesas.Columns[0].HeaderText = "Data da Despesa";
+                dataGridViewDespesas.Columns[1].HeaderText = "Tipo de Despesa";
+                dataGridViewDespesas.Columns[2].HeaderText = "Nr da Encomenda";
+                dataGridViewDespesas.Columns[3].HeaderText = "Valor da Despesa";
+                dataGridViewDespesas.Columns[4].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewDespesas.Update();
+                dataGridViewDespesas.Refresh();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)

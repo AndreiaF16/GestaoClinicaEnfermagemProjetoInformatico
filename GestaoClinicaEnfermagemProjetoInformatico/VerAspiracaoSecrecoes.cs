@@ -67,34 +67,46 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateDataGridView()
         {
-            aspiracaoSecrecoes.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select data, aspiracao, observacoes from AspiracaoSecrecao ORDER BY data asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                AspiracaoSecrecoes aspiracaoSec = new AspiracaoSecrecoes
+                aspiracaoSecrecoes.Clear();
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select data, aspiracao, observacoes from AspiracaoSecrecao ORDER BY data asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    data = data,
-                    aspiracao = ((reader["aspiracao"] == DBNull.Value) ? "" : (string)reader["aspiracao"]),
-                    observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+                    string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    AspiracaoSecrecoes aspiracaoSec = new AspiracaoSecrecoes
+                    {
+                        data = data,
+                        aspiracao = ((reader["aspiracao"] == DBNull.Value) ? "" : (string)reader["aspiracao"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
 
-                };
-                aspiracaoSecrecoes.Add(aspiracaoSec);
+                    };
+                    aspiracaoSecrecoes.Add(aspiracaoSec);
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = aspiracaoSecrecoes };
+                dataGridViewSecrecoes.DataSource = bindingSource1;
+                dataGridViewSecrecoes.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewSecrecoes.Columns[1].HeaderText = "Aspiração Secreções";
+                dataGridViewSecrecoes.Columns[2].HeaderText = "Observações";
+
+                conn.Close();
+                dataGridViewSecrecoes.Update();
+                dataGridViewSecrecoes.Refresh();
+
             }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = aspiracaoSecrecoes };
-            dataGridViewSecrecoes.DataSource = bindingSource1;
-            dataGridViewSecrecoes.Columns[0].HeaderText = "Data de Registo";
-            dataGridViewSecrecoes.Columns[1].HeaderText = "Aspiração Secreções";
-            dataGridViewSecrecoes.Columns[2].HeaderText = "Observações";
-
-            conn.Close();
-            dataGridViewSecrecoes.Update();
-            dataGridViewSecrecoes.Refresh();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

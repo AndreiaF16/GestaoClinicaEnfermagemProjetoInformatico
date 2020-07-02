@@ -50,9 +50,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         connection.Close();
                     }
-                    catch (SqlException excep)
+                    catch (SqlException)
                     {
-                        MessageBox.Show("Por erro interno é impossível registar a atitude terapêutica!", excep.Message);
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 if (resposta == DialogResult.No)
@@ -67,16 +71,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void idAtitude()
         {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Algariação'", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                id = (int)reader["IdAtitude"];
-            }
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Algariação'", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = (int)reader["IdAtitude"];
+                }
 
-            conn.Close();
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -207,6 +222,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 catch (SqlException)
                 {
 
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível registar a algariação!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

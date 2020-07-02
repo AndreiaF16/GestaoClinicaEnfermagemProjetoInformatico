@@ -185,7 +185,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 catch (SqlException)
                 {
-
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Por erro interno é impossível alterar os seus dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -262,37 +265,48 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 MessageBox.Show("O telemóvel tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Enfermeiro", conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                if (!(reader["Email"] == DBNull.Value) && emailIgual == false)
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from Enfermeiro", conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    if (txtEmail.Text.Equals((string)reader["Email"]) && emailIgual == false)
+                    if (!(reader["Email"] == DBNull.Value) && emailIgual == false)
                     {
-                        MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        conn.Close();
-                        return false;
+                        if (txtEmail.Text.Equals((string)reader["Email"]) && emailIgual == false)
+                        {
+                            MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            conn.Close();
+                            return false;
+                        }
+
                     }
 
-                }
-
-                if (!(reader["username"] == DBNull.Value) && usernameIgual == false)
-                {
-
-                    if (txtUsername.Text.Equals((string)reader["username"]) && usernameIgual == false)
+                    if (!(reader["username"] == DBNull.Value) && usernameIgual == false)
                     {
-                        MessageBox.Show("O username que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        conn.Close();
-                        return false;
+
+                        if (txtUsername.Text.Equals((string)reader["username"]) && usernameIgual == false)
+                        {
+                            MessageBox.Show("O username que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            conn.Close();
+                            return false;
+                        }
                     }
                 }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível verificar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return true;
         }
             private void btnCancelar_Click(object sender, EventArgs e)

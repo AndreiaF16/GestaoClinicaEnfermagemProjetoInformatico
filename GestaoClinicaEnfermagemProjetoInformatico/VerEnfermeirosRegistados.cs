@@ -34,53 +34,60 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void VerEnfermeirosRegistos_Load(object sender, EventArgs e)
         {
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Enfermeiro", conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                string admin = "Utilizador Normal";
-                if ((int)reader["permissao"] == 0)
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from Enfermeiro", conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    admin = "Administrador"; 
+                    string admin = "Utilizador Normal";
+                    if ((int)reader["permissao"] == 0)
+                    {
+                        admin = "Administrador";
+                    }
+
+                    EnfermeiroGridView enfermeiro = new EnfermeiroGridView
+                    {
+                        //  IdEnfermeiro = (int)reader["IdEnfermeiro"],
+                        nome = (string)reader["nome"],
+                        funcao = (string)reader["funcao"],
+                        username = (string)reader["username"],
+                        email = (string)reader["email"],
+                        permissao = admin,
+                        contacto = Convert.ToDouble(reader["contacto"]),
+                        dataNascimento = Convert.ToDateTime(reader["dataNascimento"])
+
+                    };
+                    enfermeiros.Add(enfermeiro);
+
                 }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = enfermeiros };
+                dataGridViewEnfermeiros.DataSource = bindingSource1;
 
-                EnfermeiroGridView enfermeiro = new EnfermeiroGridView
-                {
-                  //  IdEnfermeiro = (int)reader["IdEnfermeiro"],
-                    nome = (string)reader["nome"],
-                    funcao = (string)reader["funcao"],
-                    username = (string)reader["username"],
-                    email = (string)reader["email"],         
-                    permissao = admin,
-                    contacto = Convert.ToDouble(reader["contacto"]),
-                    dataNascimento =Convert.ToDateTime(reader["dataNascimento"])
-                    
-                };
-                enfermeiros.Add(enfermeiro);
-         
+                // dataGridViewEnfermeiros.DataSource = enfermeiros;
+                dataGridViewEnfermeiros.Columns[0].HeaderText = "Nome";
+                dataGridViewEnfermeiros.Columns[1].HeaderText = "Nome Utilizador";
+                dataGridViewEnfermeiros.Columns[2].HeaderText = "Função Desempenhada";
+                dataGridViewEnfermeiros.Columns[3].HeaderText = "Email";
+                dataGridViewEnfermeiros.Columns[4].HeaderText = "Telemóvel";
+                dataGridViewEnfermeiros.Columns[5].HeaderText = "Data Nascimento";
+                dataGridViewEnfermeiros.Columns[6].HeaderText = "Permissões de Utilização";
+
+                conn.Close();
             }
-
-
-
-
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = enfermeiros };
-            dataGridViewEnfermeiros.DataSource = bindingSource1;
-
-           // dataGridViewEnfermeiros.DataSource = enfermeiros;
-            dataGridViewEnfermeiros.Columns[0].HeaderText = "Nome";
-            dataGridViewEnfermeiros.Columns[1].HeaderText = "Nome Utilizador";
-            dataGridViewEnfermeiros.Columns[2].HeaderText = "Função Desempenhada";
-            dataGridViewEnfermeiros.Columns[3].HeaderText = "Email";
-            dataGridViewEnfermeiros.Columns[4].HeaderText = "Telemóvel";
-            dataGridViewEnfermeiros.Columns[5].HeaderText = "Data Nascimento";
-            dataGridViewEnfermeiros.Columns[6].HeaderText = "Permissões de Utilização";
-
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnFechar_Click(object sender, EventArgs e)

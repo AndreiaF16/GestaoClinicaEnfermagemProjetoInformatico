@@ -65,9 +65,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 UpdateDataGridView();
               
             }
-            catch (SqlException excep)
+            catch (SqlException )
             {
-                MessageBox.Show(/*"Por erro interno é impossível eliminar a encomenda",*/ excep.Message);
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível eliminar a encomenda", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -15,12 +15,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     {
         AdicionarVisualizarDoencaPaciente adicionar = null;
         private ErrorProvider errorProvider = new ErrorProvider();
+        SqlConnection conn = new SqlConnection();
+        SqlCommand com = new SqlCommand();
         public Doencas(AdicionarVisualizarDoencaPaciente adicionarVisualizarDoencaPaciente)
         {
             InitializeComponent();
             adicionar = adicionarVisualizarDoencaPaciente;
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         }
 
@@ -82,7 +85,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {             
                 string nome = txtNome.Text;
                 string sintomas = txtSintomas.Text;
-                string sintomas = txtSintomas.Text;
                 try
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
@@ -100,6 +102,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 catch (SqlException)
                 {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                     MessageBox.Show("Erro interno, não foi possível registar a doença!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

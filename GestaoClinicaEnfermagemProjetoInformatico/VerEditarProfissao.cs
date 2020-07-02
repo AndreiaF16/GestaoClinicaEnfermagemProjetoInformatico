@@ -99,24 +99,34 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private List<ProfissaoPaciente> getProfissao()
         {
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Profissao order by nomeProfissao", conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                profissao = new ProfissaoPaciente
-                {
-                    nome = (string)reader["nomeProfissao"],
-                    IdProfissao = (int)reader["IdProfissao"],
-                };
-                listaProfissoes.Add(profissao);
-            }
-            conn.Close();
+                conn.Open();
+                com.Connection = conn;
 
+                SqlCommand cmd = new SqlCommand("select * from Profissao order by nomeProfissao", conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    profissao = new ProfissaoPaciente
+                    {
+                        nome = (string)reader["nomeProfissao"],
+                        IdProfissao = (int)reader["IdProfissao"],
+                    };
+                    listaProfissoes.Add(profissao);
+                }
+               conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return listaProfissoes;
         }
 
@@ -150,9 +160,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Erro interno, não foi possível alterar a profissão!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível alterar a profissão!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
