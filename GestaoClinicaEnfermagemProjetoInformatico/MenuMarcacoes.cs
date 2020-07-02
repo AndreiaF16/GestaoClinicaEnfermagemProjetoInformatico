@@ -221,25 +221,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.Close();
         }
 
-        private void btnMinimizar_Click(object sender, EventArgs e)
-        {
 
-            this.WindowState = FormWindowState.Minimized;
-
-        }
-
-        private void btnMaximizar_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-
-        }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {

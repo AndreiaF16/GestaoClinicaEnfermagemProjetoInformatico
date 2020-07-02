@@ -51,23 +51,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void btnMaximizar_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-        }
-
-        private void btnMinimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
         private void hora_Tick(object sender, EventArgs e)
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
@@ -118,7 +101,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         conn.Close();
                     }
-                    MessageBox.Show("Por erro interno é impossível os produtos usados na consulta!!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Por erro interno é impossível visualizar os produtos usados na consulta!!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -271,6 +254,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void reiniciar()
         {
+            try
+            {
+
             produtos.Clear();
             comboBoxFornecedor.Items.Clear();
             auxiliar.Clear();
@@ -288,6 +274,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
             conn.Close();
+
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os fornecedores!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private void txtProcurar_KeyDown(object sender, KeyEventArgs e)

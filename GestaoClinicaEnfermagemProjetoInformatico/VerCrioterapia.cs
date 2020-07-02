@@ -87,23 +87,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-        }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();

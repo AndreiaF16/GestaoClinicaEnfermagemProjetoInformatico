@@ -31,11 +31,9 @@
             System.Windows.Forms.Button btnVoltar;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdicionarFlebografiaPaciente));
             this.btnFechar = new System.Windows.Forms.PictureBox();
-            this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnLimparCampos = new System.Windows.Forms.Button();
             this.panelTitulo = new System.Windows.Forms.Panel();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataRegistoMed = new System.Windows.Forms.DateTimePicker();
@@ -49,9 +47,7 @@
             this.button1 = new System.Windows.Forms.Button();
             btnVoltar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             this.panelTitulo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,21 +84,6 @@
             this.btnFechar.TabIndex = 10;
             this.btnFechar.TabStop = false;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(805, 11);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMaximizar.TabIndex = 9;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Visible = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
             // 
             // btnGuardar
             // 
@@ -150,28 +131,12 @@
             // 
             this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
             this.panelTitulo.Controls.Add(this.btnFechar);
-            this.panelTitulo.Controls.Add(this.btnMaximizar);
-            this.panelTitulo.Controls.Add(this.btnMinimizar);
             this.panelTitulo.Controls.Add(this.label4);
             this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitulo.Location = new System.Drawing.Point(0, 0);
             this.panelTitulo.Name = "panelTitulo";
             this.panelTitulo.Size = new System.Drawing.Size(851, 40);
             this.panelTitulo.TabIndex = 80;
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(789, 11);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimizar.TabIndex = 8;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
             // label4
             // 
@@ -312,10 +277,8 @@
             this.Text = "AdicionarFlebografiaPaciente";
             this.Load += new System.EventHandler(this.AdicionarFlebografiaPaciente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -326,11 +289,9 @@
         #endregion
 
         private System.Windows.Forms.PictureBox btnFechar;
-        private System.Windows.Forms.PictureBox btnMaximizar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnLimparCampos;
         private System.Windows.Forms.Panel panelTitulo;
-        private System.Windows.Forms.PictureBox btnMinimizar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dataRegistoMed;

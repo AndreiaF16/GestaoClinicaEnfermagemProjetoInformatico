@@ -34,36 +34,32 @@
             this.lblHora = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelTitulo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnFechar = new System.Windows.Forms.PictureBox();
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBoxCorpo = new System.Windows.Forms.PictureBox();
             this.txtObservacoes = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dataRegisto = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.hora = new System.Windows.Forms.Timer(this.components);
-            this.pictureBoxCorpo = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnMaximizar = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnFechar = new System.Windows.Forms.PictureBox();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelTitulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDia
@@ -82,7 +78,7 @@
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHora.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblHora.Location = new System.Drawing.Point(713, 11);
+            this.lblHora.Location = new System.Drawing.Point(922, 11);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(57, 20);
             this.lblHora.TabIndex = 11;
@@ -114,114 +110,6 @@
             this.panelMenu.Size = new System.Drawing.Size(232, 721);
             this.panelMenu.TabIndex = 1;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(12, 228);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(175, 174);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Visible = false;
-            // 
-            // panelTitulo
-            // 
-            this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
-            this.panelTitulo.Controls.Add(this.lblDia);
-            this.panelTitulo.Controls.Add(this.lblHora);
-            this.panelTitulo.Controls.Add(this.btnMaximizar);
-            this.panelTitulo.Controls.Add(this.pictureBox1);
-            this.panelTitulo.Controls.Add(this.btnFechar);
-            this.panelTitulo.Controls.Add(this.lblTitulo);
-            this.panelTitulo.Controls.Add(this.btnMinimizar);
-            this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitulo.Location = new System.Drawing.Point(0, 0);
-            this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new System.Drawing.Size(1270, 40);
-            this.panelTitulo.TabIndex = 0;
-            // 
-            // painelPrincipal
-            // 
-            this.painelPrincipal.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.painelPrincipal.Controls.Add(this.panelFormulario);
-            this.painelPrincipal.Controls.Add(this.panelMenu);
-            this.painelPrincipal.Controls.Add(this.panelTitulo);
-            this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.painelPrincipal.Name = "painelPrincipal";
-            this.painelPrincipal.Size = new System.Drawing.Size(1270, 761);
-            this.painelPrincipal.TabIndex = 7;
-            // 
-            // panelFormulario
-            // 
-            this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
-            this.panelFormulario.Controls.Add(this.label2);
-            this.panelFormulario.Controls.Add(this.pictureBoxCorpo);
-            this.panelFormulario.Controls.Add(this.txtObservacoes);
-            this.panelFormulario.Controls.Add(this.label3);
-            this.panelFormulario.Controls.Add(this.dataRegisto);
-            this.panelFormulario.Controls.Add(this.label1);
-            this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFormulario.Location = new System.Drawing.Point(232, 40);
-            this.panelFormulario.Name = "panelFormulario";
-            this.panelFormulario.Size = new System.Drawing.Size(1038, 721);
-            this.panelFormulario.TabIndex = 2;
-            this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
-            // 
-            // txtObservacoes
-            // 
-            this.txtObservacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObservacoes.Location = new System.Drawing.Point(20, 263);
-            this.txtObservacoes.Multiline = true;
-            this.txtObservacoes.Name = "txtObservacoes";
-            this.txtObservacoes.Size = new System.Drawing.Size(201, 348);
-            this.txtObservacoes.TabIndex = 85;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(16, 240);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 20);
-            this.label3.TabIndex = 84;
-            this.label3.Text = "Observações:";
-            // 
-            // dataRegisto
-            // 
-            this.dataRegisto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataRegisto.Location = new System.Drawing.Point(16, 187);
-            this.dataRegisto.Name = "dataRegisto";
-            this.dataRegisto.Size = new System.Drawing.Size(205, 26);
-            this.dataRegisto.TabIndex = 81;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label1.Location = new System.Drawing.Point(57, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Utente: ";
-            // 
-            // hora
-            // 
-            this.hora.Enabled = true;
-            this.hora.Tick += new System.EventHandler(this.hora_Tick);
-            // 
-            // pictureBoxCorpo
-            // 
-            this.pictureBoxCorpo.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoCorpo;
-            this.pictureBoxCorpo.Location = new System.Drawing.Point(249, 71);
-            this.pictureBoxCorpo.Name = "pictureBoxCorpo";
-            this.pictureBoxCorpo.Size = new System.Drawing.Size(750, 623);
-            this.pictureBoxCorpo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCorpo.TabIndex = 86;
-            this.pictureBoxCorpo.TabStop = false;
-            this.pictureBoxCorpo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBoxCorpo_MouseClick_1);
-            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -242,6 +130,15 @@
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 228);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(175, 174);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.Visible = false;
             // 
             // button2
             // 
@@ -316,20 +213,19 @@
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
-            // btnMaximizar
+            // panelTitulo
             // 
-            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(1215, 11);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMaximizar.TabIndex = 7;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Visible = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
+            this.panelTitulo.Controls.Add(this.lblDia);
+            this.panelTitulo.Controls.Add(this.lblHora);
+            this.panelTitulo.Controls.Add(this.pictureBox1);
+            this.panelTitulo.Controls.Add(this.btnFechar);
+            this.panelTitulo.Controls.Add(this.lblTitulo);
+            this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitulo.Location = new System.Drawing.Point(0, 0);
+            this.panelTitulo.Name = "panelTitulo";
+            this.panelTitulo.Size = new System.Drawing.Size(1270, 40);
+            this.panelTitulo.TabIndex = 0;
             // 
             // pictureBox1
             // 
@@ -358,19 +254,33 @@
             this.btnFechar.TabIndex = 7;
             this.btnFechar.TabStop = false;
             // 
-            // btnMinimizar
+            // painelPrincipal
             // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(1199, 11);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimizar.TabIndex = 3;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            this.painelPrincipal.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.painelPrincipal.Controls.Add(this.panelFormulario);
+            this.painelPrincipal.Controls.Add(this.panelMenu);
+            this.painelPrincipal.Controls.Add(this.panelTitulo);
+            this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.painelPrincipal.Name = "painelPrincipal";
+            this.painelPrincipal.Size = new System.Drawing.Size(1270, 761);
+            this.painelPrincipal.TabIndex = 7;
+            // 
+            // panelFormulario
+            // 
+            this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
+            this.panelFormulario.Controls.Add(this.label2);
+            this.panelFormulario.Controls.Add(this.pictureBoxCorpo);
+            this.panelFormulario.Controls.Add(this.txtObservacoes);
+            this.panelFormulario.Controls.Add(this.label3);
+            this.panelFormulario.Controls.Add(this.dataRegisto);
+            this.panelFormulario.Controls.Add(this.label1);
+            this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFormulario.Location = new System.Drawing.Point(232, 40);
+            this.panelFormulario.Name = "panelFormulario";
+            this.panelFormulario.Size = new System.Drawing.Size(1038, 721);
+            this.panelFormulario.TabIndex = 2;
+            this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
             // 
             // label2
             // 
@@ -382,6 +292,61 @@
             this.label2.Size = new System.Drawing.Size(188, 39);
             this.label2.TabIndex = 87;
             this.label2.Text = "Vacinação";
+            // 
+            // pictureBoxCorpo
+            // 
+            this.pictureBoxCorpo.Image = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoCorpo;
+            this.pictureBoxCorpo.Location = new System.Drawing.Point(249, 71);
+            this.pictureBoxCorpo.Name = "pictureBoxCorpo";
+            this.pictureBoxCorpo.Size = new System.Drawing.Size(750, 623);
+            this.pictureBoxCorpo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCorpo.TabIndex = 86;
+            this.pictureBoxCorpo.TabStop = false;
+            this.pictureBoxCorpo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBoxCorpo_MouseClick_1);
+            // 
+            // txtObservacoes
+            // 
+            this.txtObservacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtObservacoes.Location = new System.Drawing.Point(20, 263);
+            this.txtObservacoes.Multiline = true;
+            this.txtObservacoes.Name = "txtObservacoes";
+            this.txtObservacoes.Size = new System.Drawing.Size(201, 348);
+            this.txtObservacoes.TabIndex = 85;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(16, 240);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(106, 20);
+            this.label3.TabIndex = 84;
+            this.label3.Text = "Observações:";
+            // 
+            // dataRegisto
+            // 
+            this.dataRegisto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataRegisto.Location = new System.Drawing.Point(16, 187);
+            this.dataRegisto.Name = "dataRegisto";
+            this.dataRegisto.Size = new System.Drawing.Size(205, 26);
+            this.dataRegisto.TabIndex = 81;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.label1.Location = new System.Drawing.Point(57, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Utente: ";
+            // 
+            // hora
+            // 
+            this.hora.Enabled = true;
+            this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
             // FormLocalizacaoDorVacinacao
             // 
@@ -396,17 +361,15 @@
             this.Load += new System.EventHandler(this.FormLocalizacaoDorVacinacao_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             this.painelPrincipal.ResumeLayout(false);
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -422,10 +385,8 @@
         private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panelTitulo;
-        private System.Windows.Forms.PictureBox btnMaximizar;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox btnFechar;
-        private System.Windows.Forms.PictureBox btnMinimizar;
         private System.Windows.Forms.Panel painelPrincipal;
         private System.Windows.Forms.Panel panelFormulario;
         private System.Windows.Forms.TextBox textBox1;

@@ -36,7 +36,6 @@
             this.panelTitulo = new System.Windows.Forms.Panel();
             this.lblDia = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
-            this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
@@ -56,7 +55,6 @@
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelTitulo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             this.panelFormulario.SuspendLayout();
@@ -105,7 +103,6 @@
             this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
             this.panelTitulo.Controls.Add(this.lblDia);
             this.panelTitulo.Controls.Add(this.lblHora);
-            this.panelTitulo.Controls.Add(this.btnMaximizar);
             this.panelTitulo.Controls.Add(this.label2);
             this.panelTitulo.Controls.Add(this.btnFechar);
             this.panelTitulo.Controls.Add(this.btnMinimizar);
@@ -135,20 +132,6 @@
             this.lblHora.Size = new System.Drawing.Size(57, 20);
             this.lblHora.TabIndex = 11;
             this.lblHora.Text = "label1";
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(1321, 11);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.btnMaximizar.TabIndex = 8;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
             // 
             // label2
             // 
@@ -386,7 +369,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             this.panelFormulario.ResumeLayout(false);
@@ -418,7 +400,6 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PictureBox btnMaximizar;
         private System.Windows.Forms.Label lblDia;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer hora;

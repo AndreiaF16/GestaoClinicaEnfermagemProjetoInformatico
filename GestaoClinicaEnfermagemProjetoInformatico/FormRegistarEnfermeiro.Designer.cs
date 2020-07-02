@@ -57,8 +57,6 @@
             this.lblDia = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.PictureBox();
-            this.btnMaximizar = new System.Windows.Forms.PictureBox();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.hora = new System.Windows.Forms.Timer(this.components);
             this.panelPrincipal.SuspendLayout();
@@ -70,8 +68,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             this.SuspendLayout();
             // 
             // panelPrincipal
@@ -110,7 +106,6 @@
             this.panelFormulario.Name = "panelFormulario";
             this.panelFormulario.Size = new System.Drawing.Size(1154, 748);
             this.panelFormulario.TabIndex = 2;
-            this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
             // 
             // button3
             // 
@@ -162,7 +157,6 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(574, 26);
             this.txtEmail.TabIndex = 17;
-            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // txtNome
@@ -367,8 +361,6 @@
             this.panelTitulo.Controls.Add(this.lblDia);
             this.panelTitulo.Controls.Add(this.lblHora);
             this.panelTitulo.Controls.Add(this.btnFechar);
-            this.panelTitulo.Controls.Add(this.btnMaximizar);
-            this.panelTitulo.Controls.Add(this.btnMinimizar);
             this.panelTitulo.Controls.Add(this.label1);
             this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitulo.Location = new System.Drawing.Point(0, 0);
@@ -381,24 +373,22 @@
             this.lblDia.AutoSize = true;
             this.lblDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblDia.Location = new System.Drawing.Point(417, 9);
+            this.lblDia.Location = new System.Drawing.Point(415, 17);
             this.lblDia.Name = "lblDia";
             this.lblDia.Size = new System.Drawing.Size(57, 20);
             this.lblDia.TabIndex = 12;
             this.lblDia.Text = "label1";
-            this.lblDia.Click += new System.EventHandler(this.lblDia_Click);
             // 
             // lblHora
             // 
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHora.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblHora.Location = new System.Drawing.Point(941, 9);
+            this.lblHora.Location = new System.Drawing.Point(952, 17);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(57, 20);
             this.lblHora.TabIndex = 11;
             this.lblHora.Text = "label1";
-            this.lblHora.Click += new System.EventHandler(this.lblHora_Click);
             // 
             // btnFechar
             // 
@@ -413,35 +403,6 @@
             this.btnFechar.TabIndex = 10;
             this.btnFechar.TabStop = false;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click_1);
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(1340, 11);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMaximizar.TabIndex = 9;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Visible = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(1324, 11);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimizar.TabIndex = 8;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click_1);
             // 
             // label1
             // 
@@ -484,8 +445,6 @@
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -516,8 +475,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox btnFechar;
-        private System.Windows.Forms.PictureBox btnMaximizar;
-        private System.Windows.Forms.PictureBox btnMinimizar;
         private System.Windows.Forms.Label lblDia;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer hora;

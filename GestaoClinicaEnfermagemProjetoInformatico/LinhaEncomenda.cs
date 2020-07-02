@@ -151,34 +151,46 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         public void UpdateListBox()
         {
-            listaProdutos.Clear();
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select IdProdutoStock, NomeProduto, precoUnitario, taxaIVA, quantidadeArmazenada from ProdutoStock WHERE IdFornecedor = " + fornecedor.IdFornecedor + " ORDER BY NomeProduto ", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                ListarProdutos produto = new ListarProdutos
-                {
-                    id = (int)reader["IdProdutoStock"],
-                    nome = (string)reader["NomeProduto"],
-                    preco = (decimal)reader["precoUnitario"],
-                    iva = (int)reader["taxaIVA"],
-                    quant = (int)reader["quantidadeArmazenada"] 
-                };
-               // produto.quant = 0;
-                listaProdutos.Add(produto);
-               
-            }
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaProdutos };
-            dataGridViewListaProdutos.DataSource = bindingSource1;
 
-            conn.Close();
-            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = listaEncomenda };
-            dataGridViewEncomenda.DataSource = bindingSource2;
-          
+                listaProdutos.Clear();
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select IdProdutoStock, NomeProduto, precoUnitario, taxaIVA, quantidadeArmazenada from ProdutoStock WHERE IdFornecedor = " + fornecedor.IdFornecedor + " ORDER BY NomeProduto ", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ListarProdutos produto = new ListarProdutos
+                    {
+                        id = (int)reader["IdProdutoStock"],
+                        nome = (string)reader["NomeProduto"],
+                        preco = (decimal)reader["precoUnitario"],
+                        iva = (int)reader["taxaIVA"],
+                        quant = (int)reader["quantidadeArmazenada"]
+                    };
+                    // produto.quant = 0;
+                    listaProdutos.Add(produto);
+
+                }
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaProdutos };
+                dataGridViewListaProdutos.DataSource = bindingSource1;
+
+                conn.Close();
+                var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = listaEncomenda };
+                dataGridViewEncomenda.DataSource = bindingSource2;
+
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível visualizar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             /*listaProdutos.Clear();
             conn.Open();
             com.Connection = conn;
@@ -300,25 +312,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
-        }
-
-        private void btnMaximizar_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-        }
-
-        private void btnMinimizar_Click(object sender, EventArgs e)
-        {
-
-            this.WindowState = FormWindowState.Minimized;
-
-        }
+        }   
     }
 }

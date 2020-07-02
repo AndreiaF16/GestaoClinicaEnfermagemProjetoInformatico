@@ -48,9 +48,7 @@
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.dataGridViewLocalizacaoDor = new System.Windows.Forms.DataGridView();
             this.panelTitulo = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             this.panelMenu.SuspendLayout();
@@ -58,9 +56,7 @@
             this.panelFormulario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLocalizacaoDor)).BeginInit();
             this.panelTitulo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDia
@@ -68,7 +64,7 @@
             this.lblDia.AutoSize = true;
             this.lblDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblDia.Location = new System.Drawing.Point(464, 11);
+            this.lblDia.Location = new System.Drawing.Point(421, 9);
             this.lblDia.Name = "lblDia";
             this.lblDia.Size = new System.Drawing.Size(57, 20);
             this.lblDia.TabIndex = 10;
@@ -79,7 +75,7 @@
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHora.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblHora.Location = new System.Drawing.Point(902, 11);
+            this.lblHora.Location = new System.Drawing.Point(967, 11);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(57, 20);
             this.lblHora.TabIndex = 9;
@@ -253,10 +249,8 @@
             // panelTitulo
             // 
             this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
-            this.panelTitulo.Controls.Add(this.pictureBox3);
             this.panelTitulo.Controls.Add(this.pictureBox4);
             this.panelTitulo.Controls.Add(this.lblDia);
-            this.panelTitulo.Controls.Add(this.pictureBox5);
             this.panelTitulo.Controls.Add(this.lblHora);
             this.panelTitulo.Controls.Add(this.btnFechar);
             this.panelTitulo.Controls.Add(this.lblTitulo);
@@ -265,21 +259,6 @@
             this.panelTitulo.Name = "panelTitulo";
             this.panelTitulo.Size = new System.Drawing.Size(1386, 40);
             this.panelTitulo.TabIndex = 0;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(1332, 11);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 54;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Visible = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBox4
             // 
@@ -294,20 +273,6 @@
             this.pictureBox4.TabIndex = 55;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(1316, 11);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 53;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // VerLocalizacaoDorConsulta
             // 
@@ -329,9 +294,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLocalizacaoDor)).EndInit();
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -351,8 +314,6 @@
         private System.Windows.Forms.Panel panelFormulario;
         private System.Windows.Forms.Panel panelTitulo;
         private System.Windows.Forms.DataGridView dataGridViewLocalizacaoDor;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }

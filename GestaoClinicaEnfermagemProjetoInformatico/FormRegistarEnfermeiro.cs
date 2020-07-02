@@ -31,20 +31,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
 
-        private void btnMinimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void panelFormulario_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
 
         private void txtContacto_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -54,10 +40,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void txtNome_Validating(object sender, CancelEventArgs e)
-        {
-            
-        }
+
 
         private void FormRegistarEnfermeiro_Load(object sender, EventArgs e)
         {
@@ -67,10 +50,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         }
 
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void txtEmail_Validating(object sender, CancelEventArgs e)
         {
@@ -297,25 +276,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 Application.Exit();
             }
         }
-
-        private void btnMaximizar_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else /*(this.WindowState == FormWindowState.Maximized)*/
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-        }
-
-        private void btnMinimizar_Click_1(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-
-        }
-
+  
         private void hora_Tick(object sender, EventArgs e)
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
@@ -340,15 +301,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void lblHora_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDia_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {

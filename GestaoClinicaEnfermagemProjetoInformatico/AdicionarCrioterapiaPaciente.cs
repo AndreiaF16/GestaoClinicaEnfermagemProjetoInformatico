@@ -91,32 +91,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resposta == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
-
-        private void btnMaximizar_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-        }
-
-        private void btnMinimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
         private void pictureBoxCorpo_MouseClick(object sender, MouseEventArgs e)
         {
 
@@ -317,6 +291,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             VerCrioterapia verCrioterapia = new VerCrioterapia(paciente);
             verCrioterapia.Show();
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+
         }
     }
 }
