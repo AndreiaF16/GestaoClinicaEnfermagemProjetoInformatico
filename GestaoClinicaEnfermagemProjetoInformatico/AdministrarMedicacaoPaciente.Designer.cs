@@ -196,7 +196,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(39, 23);
+            this.label7.Location = new System.Drawing.Point(10, 25);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 20);
             this.label7.TabIndex = 12;
@@ -413,7 +413,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdministrarMedicacaoPaciente";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdministrarMedicacaoPaciente";
             this.Load += new System.EventHandler(this.AdministrarMedicacaoPaciente_Load);

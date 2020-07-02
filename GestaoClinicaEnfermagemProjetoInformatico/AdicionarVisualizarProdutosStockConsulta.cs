@@ -17,7 +17,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private AtualizarQuantidade produtos = new AtualizarQuantidade();
-      //  private List<ListarProdutos> listaProdutosConsulta = new List<ListarProdutos>();
         private ErrorProvider errorProvider = new ErrorProvider();
         private Paciente paciente = new Paciente();
         private Consulta consulta = new Consulta();
@@ -29,6 +28,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<VerProdutosConsulta> listaProdutosConsulta = new List<VerProdutosConsulta>();
         private List<AtualizarQuantidade> listaAtualizarQuantidades = new List<AtualizarQuantidade>();
         private Encomendas encomendas = null;
+
+          private List<ListarProdutos> listarQuantidades = new List<ListarProdutos>();
 
         // private List<ListarProdutos> listaProdutosConsulta = new List<ListarProdutos>();
 
@@ -46,7 +47,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void AdicionarVOsualizarProdutosStockConsulta_Load(object sender, EventArgs e)
         {
             UpdateGridViewConsultas();
-
+            selectProdutos();
             dataGridViewListaProdutos.Columns[2].Visible = false;
             
             dataGridViewListaProdutos.Columns[0].HeaderText = "Produto";
@@ -185,10 +186,28 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
                     return false;
                 }
+
+                //quantidade da consulta sup à quantidade armazenada
+                
+                foreach (var produtoQuant in listarQuantidades)
+                {
+                    if (item.id == produtoQuant.id )
+                    {
+                        if (produtoQuant.quant < item.quantidade)
+                        {
+                            MessageBox.Show("A quantidade usada em consulta não pode ser superior à quantidade armazenada!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            errorProvider.SetError(dataGridViewProdutosConsulta, "A quantidade não pode ser superior à quantidade armazenada!");
+
+                        }
+                    }
+                }
             }
+
+
             return true;
         }
 
+      
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (VerificarDadosInseridos())
@@ -220,43 +239,51 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                         MessageBox.Show("Registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         conn.Close();
-
-                        listaAtualizarQuantidades.Clear();
+                        /*
+                        listarQuantidades.Clear();
                         conn.Open();
                         //select produtoStock.IdProdutoStock, produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, linha.quantidade from ProdutoStock produtoStock JOIN LinhaEncomenda linha ON produtoStock.IdProdutoStock = linha.idProdutoStock WHERE linha.idEncomenda = 3009;
+                        string CMDselect = "select produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, produtoStock.IdProdutoStock from Fornecedor fornecedor JOIN ProdutoStock produtoStock ON fornecedor.IdFornecedor = produtoStock.IdFornecedor Order by fornecedor.nome, produtoStock.NomeProduto;";
 
-                        SqlCommand cmd = new SqlCommand(" select produtoStock.IdProdutoStock, produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, linha.quantidadeUsada from ProdutoStock produtoStock JOIN ConsultaProdutoStock linha ON produtoStock.IdProdutoStock = linha.idProdutoStock WHERE linha.IdProdutoStock = @IdProduto", conn);
-                        cmd.Parameters.AddWithValue("@IdProduto", produtos.IdProdutoStock);
+                      
+                        SqlCommand cmd = new SqlCommand(CMDselect, conn);
+
                         SqlDataReader reader = cmd.ExecuteReader();
 
                         while (reader.Read())
                         {
-                            AtualizarQuantidade quantidade = new AtualizarQuantidade
+                            ListarProdutos quantidade = new ListarProdutos
                             {
-                                IdProdutoStock = (int)reader["IdProdutoStock"],
-                                NomeProduto = (string)reader["NomeProduto"],
-                                quantidadeArmazenada = (int)reader["quantidadeArmazenada"],
-                                quantidade = (int)reader["quantidade"],
+                                id = (int)reader["IdProdutoStock"],
+                                quant = (int)reader["quantidadeArmazenada"],
 
                             };
-                            listaAtualizarQuantidades.Add(quantidade);
+                            listarQuantidades.Add(quantidade);
                         }
-                        conn.Close();
+                        conn.Close();*/
 
                         conn.Open();
-                        foreach (var item in listaAtualizarQuantidades)
+                        foreach (var item in listarQuantidades)
                         {
-                            string queryUpdateData2 = "UPDATE ProdutoStock SET quantidadeArmazenada = @quantidadeArmazenada WHERE IdProdutoStock = " + item.IdProdutoStock;
-                            SqlCommand sqlCommand2 = new SqlCommand(queryUpdateData2, conn);
-                            sqlCommand2.Parameters.AddWithValue("@quantidadeArmazenada", item.quantidadeArmazenada - item.quantidade);
-                            sqlCommand2.ExecuteNonQuery();
+                            foreach (var prods in listaProdutosConsulta)
+                            {
+                                if (item.id == prods.id)
+                                {
+                                    string queryUpdateData2 = "UPDATE ProdutoStock SET quantidadeArmazenada = @quantidadeArmazenada WHERE IdProdutoStock = " + item.id;
+                                    SqlCommand sqlCommand2 = new SqlCommand(queryUpdateData2, conn);
+                                    sqlCommand2.Parameters.AddWithValue("@quantidadeArmazenada", item.quant - prods.quantidade);
+                                    sqlCommand2.ExecuteNonQuery();
+                                }
+                            }
+                            
                         }
                         conn.Close();
-
-                       /* if (registarEncomendas != null)
-                        {
-                            registarEncomendas.UpdateDataGridView();
-                        } */                
+                        UpdateGridViewConsultas();
+                        selectProdutos();
+                        /* if (registarEncomendas != null)
+                         {
+                             registarEncomendas.UpdateDataGridView();
+                         } */
                     }
                     catch (SqlException excep)
                     {
@@ -336,5 +363,30 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Close();
         }
 
+        private void selectProdutos() 
+        {
+          //  listarQuantidades.Clear();
+
+            conn.Open();
+            //select produtoStock.IdProdutoStock, produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, linha.quantidade from ProdutoStock produtoStock JOIN LinhaEncomenda linha ON produtoStock.IdProdutoStock = linha.idProdutoStock WHERE linha.idEncomenda = 3009;
+            string CMDselect = "select produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, produtoStock.IdProdutoStock from Fornecedor fornecedor JOIN ProdutoStock produtoStock ON fornecedor.IdFornecedor = produtoStock.IdFornecedor Order by fornecedor.nome, produtoStock.NomeProduto;";
+
+
+            SqlCommand cmd = new SqlCommand(CMDselect, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                ListarProdutos quantidade = new ListarProdutos
+                {
+                    id = (int)reader["IdProdutoStock"],
+                    quant = (int)reader["quantidadeArmazenada"],
+
+                };
+                listarQuantidades.Add(quantidade);
+            }
+            conn.Close();
+        }
     }
 }

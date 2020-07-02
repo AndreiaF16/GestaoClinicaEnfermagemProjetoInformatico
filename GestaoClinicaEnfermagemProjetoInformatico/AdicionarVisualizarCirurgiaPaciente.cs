@@ -101,9 +101,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar a cirurgia", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a cirurgia", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -211,7 +211,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (nome == string.Empty)
             {
-                MessageBox.Show("Campos Obrigatórios, por favor selecione a cirurgia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campo Obrigatório, por favor selecione a cirurgia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (comboBoxDoenca.Text == string.Empty)
                 {
                     errorProvider.SetError(this.comboBoxDoenca, "A cirurgia é obrigatório!");
@@ -225,7 +225,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
-                MessageBox.Show("A data da cirurgia tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data da cirurgia tem de ser inferior ou igual à data de hoje!  \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -241,7 +241,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 int cirurgia = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
                 if (dataDiagnostico.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && cirurgia == (int)reader["IdCirurgia"])
                 {
-                    MessageBox.Show("Não é possível registar essa cirurgia, porque já esta registada na data que selecionou. Escolha outra data ou outra cirurgia!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Não é possível registar a cirurgia, porque já está um registo na data que selecionou.\nEscolha outra data ou outra cirurgia!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     conn.Close();
                     return false;
                 }
@@ -258,6 +258,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void limparCampos() 
         {
+            errorProvider.Clear();
             txtProcurar.Text = "";
             txtObservacoes.Text = "";
             dataDiagnostico.Value = DateTime.Today;

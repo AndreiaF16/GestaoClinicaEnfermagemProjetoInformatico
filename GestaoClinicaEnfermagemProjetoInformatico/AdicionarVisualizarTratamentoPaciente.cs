@@ -379,9 +379,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         limparCampos();
                     }
                 }
-                catch (SqlException excep)
+                catch (SqlException )
                 {
-                    MessageBox.Show("Por erro interno é impossível registar o tratamento", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o tratamento", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -408,17 +408,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
-                MessageBox.Show("A data do tratamento inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data de registo tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataTratamento, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
             if ((dataPTratamento - DateTime.Today).TotalDays < 0)
             {
-                MessageBox.Show("A proxima data de tratamento tem de ser superior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A próxima data de tratamento tem de ser superior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataProximoTratamento, "A data tem de ser superior ou igual à data de hoje!");
                 return false;
-            }       
+            }
 
-             if (Convert.ToInt32(nrTratamento) < 0 || Convert.ToInt32(quantidade) < 0 || Convert.ToInt32(tamanhoPenso) < 0)
+            if ((dataPTratamento - DateTime.Today).TotalDays == (data - DateTime.Today).TotalDays)
+            {
+                MessageBox.Show("A próxima data de tratamento tem de ser diferente da data de registo! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataProximoTratamento, "A data tem de ser diferente da data de registo!");
+                return false;
+            }
+
+            if (Convert.ToInt32(nrTratamento) < 0 || Convert.ToInt32(quantidade) < 0 || Convert.ToInt32(tamanhoPenso) < 0)
              {
                  if (Convert.ToInt32(UpDownNumeroTratamento.Text) < 0)
                  {
@@ -553,6 +562,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void limparCampos()
         {
+            errorProvider.Clear();
             UpDownNumeroTratamento.Value = 0;
             txtGrauUlceraPressao.Text = "";
             txtIPTB.Text = "";

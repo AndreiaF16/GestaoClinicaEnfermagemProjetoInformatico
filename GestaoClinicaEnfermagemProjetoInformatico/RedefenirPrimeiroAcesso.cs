@@ -26,31 +26,30 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             if (txtNovaPassoword.Text == txtConfirmarNovaPassword.Text)
             {
-                try
+                if (VerificarDadosInseridos())
                 {
-                    SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                    SqlCommand cmd = new SqlCommand("UPDATE [dbo].[Enfermeiro] SET [password] = '" + Validacoes.CalculaHash(txtConfirmarNovaPassword.Text) + "', [username] = '" + txtUsername.Text + "', [passwordDefault] = 0 WHERE [IdEnfermeiro] = '" + enfermeiro.IdEnfermeiro + "' ", conn);
 
-                    conn.Open();
+                    try
+                    {
+                        SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        SqlCommand cmd = new SqlCommand("UPDATE [dbo].[Enfermeiro] SET [password] = '" + Validacoes.CalculaHash(txtConfirmarNovaPassword.Text) + "', [username] = '" + txtUsername.Text + "', [passwordDefault] = 0 WHERE [IdEnfermeiro] = '" + enfermeiro.IdEnfermeiro + "' ", conn);
 
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
+                        conn.Open();
 
-                    MessageBox.Show("Passe mudada com sucesso!");
-                    this.Close();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+
+                        MessageBox.Show("Passe mudada com sucesso!");
+                        this.Close();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Por erro interno é impossível alterar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-
-                }
-
-
             }
-            else
-            {
-                MessageBox.Show("As palavras passes não correspodem, volte a intesir");
-            }
+ 
         }
 
         
@@ -66,7 +65,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (txtNovaPassoword.Text != txtConfirmarNovaPassword.Text)
             {
-                MessageBox.Show("As passwors não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("As passwords não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

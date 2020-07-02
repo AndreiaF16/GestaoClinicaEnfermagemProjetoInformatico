@@ -98,9 +98,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     txtAnalise.Text = "";
                     txtObs.Text = "";
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar o nome da análise laboratorial!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o nome da análise laboratorial!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

@@ -112,14 +112,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DateTime dataR = dataRegistoMed.Value;
-            string obs = txtObservacoes.Text;
-            string O2 = txtO2.Text;
-            string inaladores = txtInaladores.Text;
-            string aerossol = txtAerossol.Text;
+           
 
             if (VerificarDadosInseridos())
             {
+                DateTime dataR = dataRegistoMed.Value;
+                string obs = txtObservacoes.Text;
+                string O2 = txtO2.Text;
+                string inaladores = txtInaladores.Text;
+                string aerossol = txtAerossol.Text;
                 try
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
@@ -177,12 +178,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-
-                    MessageBox.Show("Por erro interno é impossível registar as inalações!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar as inalações!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
         }
 
@@ -208,8 +207,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (var > 0)
             {
-                MessageBox.Show("A data de registo das inalações tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataRegistoMed, "A data tem de ser inferior à data de hoje!");
+                MessageBox.Show("A data de registo das inalações tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRegistoMed, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 

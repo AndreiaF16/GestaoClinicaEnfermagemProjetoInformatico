@@ -592,9 +592,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.label1.Location = new System.Drawing.Point(24, 398);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(348, 25);
+            this.label1.Size = new System.Drawing.Size(305, 25);
             this.label1.TabIndex = 61;
-            this.label1.Text = "Ver Despesas do Mês Corrente:";
+            this.label1.Text = "Despesas do Mês Corrente:";
             // 
             // label2
             // 
@@ -628,7 +628,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Despesas";
-            this.ShowInTaskbar = false;
             this.Text = "Despesas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Despesas_Load);

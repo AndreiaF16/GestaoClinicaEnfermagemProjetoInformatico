@@ -283,10 +283,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
 
-                    MessageBox.Show("Por erro interno é impossível registar a Colpocitologia!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a Colpocitologia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -425,51 +425,51 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             int var7 = (int)((dataP - DateTime.Today).TotalDays);
 
             if (var > 0)
-            {
-                MessageBox.Show("A data de registto da colcitologia tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataRegistoMed, "A data tem de ser inferior à data de hoje!");
+            { 
+                MessageBox.Show("A data de registo tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRegistoMed, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
             if (var2 > 0)
             {
-                MessageBox.Show("A data de colocação do DIU tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataDIU, "A data de colocação do DIU tem de ser inferior à data de hoje!");
+                MessageBox.Show("A data de colocação do DIU tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataDIU, "A data de colocação do DIU tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
             if (var3 > 0)
             {
-                MessageBox.Show("A data do implante tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataImplante, "A data do implante tem de ser inferior à data de hoje!");
+                MessageBox.Show("A data do implante tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataImplante, "A data do implante tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
             if (var4 > 0)
             {
-                MessageBox.Show("A data de colocação do anel vaginal tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataAnelVaginal, "A data de colocação do anel vaginal tem de ser inferior à data de hoje!");
+                MessageBox.Show("A data de colocação do anel vaginal tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataAnelVaginal, "A data de colocação do anel vaginal tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
             if (var5 > 0)
             {
-                MessageBox.Show("A data intramuscular tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data intramuscular tem de ser inferior à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(dataIntramuscular, "A data intramuscular tem de ser inferior à data de hoje!");
                 return false;
             }
 
             if (var6 > 0)
             {
-                MessageBox.Show("A data da laqueação das trompas tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataLaqTrompas, "A data da laqueação das trompas tem de ser inferior à data de hoje!");
+                MessageBox.Show("A data da laqueação das trompas tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataLaqTrompas, "A data da laqueação das trompas tem de ser inferior ou igual  à data de hoje!");
                 return false;
             }
 
             if (var7 > 0)
             {
-                MessageBox.Show("A data do pessário tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataPessario, "A data do pessário tem de ser inferior à data de hoje!");
+                MessageBox.Show("A data do pessário tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataPessario, "A data do pessário tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
@@ -487,7 +487,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
                 if (dataRegistoMed.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && id == (int)reader["IdAtitude"])
                 {
-                    MessageBox.Show("Não é possível registar, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Não é possível registar a Colpocitologia, porque já está um resgisto na data que selecionou! \n Selecione outra data!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     conn.Close();
                     return false;
                 }

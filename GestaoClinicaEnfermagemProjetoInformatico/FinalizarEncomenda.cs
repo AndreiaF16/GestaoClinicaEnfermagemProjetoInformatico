@@ -144,31 +144,31 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (encomendas != null)
             {
                 if (VerificarDadosInseridos())
-                   
-                        try
+
+                    try
+                    {
+                        DateTime dataEntregaReal = dataVEntregaReal.Value;
+
+                        conn.Open();
+
+                        string queryUpdateData = "UPDATE Encomenda SET dataEntregaReal = @dataEntregaReal WHERE IdEncomenda = " + encomendas.IdEncomenda;
+                        SqlCommand sqlCommand = new SqlCommand(queryUpdateData, conn);
+                        sqlCommand.Parameters.AddWithValue("@dataEntregaReal", dataEntregaReal);
+                        sqlCommand.ExecuteNonQuery();
+                        foreach (var encomenda in listaEncomendas)
                         {
-                            DateTime dataEntregaReal = dataVEntregaReal.Value;
-
-                            conn.Open();
-
-                            string queryUpdateData = "UPDATE Encomenda SET dataEntregaReal = @dataEntregaReal WHERE IdEncomenda = " + encomendas.IdEncomenda;
-                            SqlCommand sqlCommand = new SqlCommand(queryUpdateData, conn);
-                            sqlCommand.Parameters.AddWithValue("@dataEntregaReal", dataEntregaReal);
-                            sqlCommand.ExecuteNonQuery();
-                            foreach (var encomenda in listaEncomendas)
-                            {
-                                encomenda.dataEntregaReal = Convert.ToString(dataVEntregaReal.Value);
-                            }
-                            MessageBox.Show("Encomenda alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            conn.Close();
+                            encomenda.dataEntregaReal = Convert.ToString(dataVEntregaReal.Value);
+                        }
+                        MessageBox.Show("Encomenda alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        conn.Close();
                         listaAtualizarQuantidades.Clear();
-                            conn.Open();
+                        conn.Open();
                         //select produtoStock.IdProdutoStock, produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, linha.quantidade from ProdutoStock produtoStock JOIN LinhaEncomenda linha ON produtoStock.IdProdutoStock = linha.idProdutoStock WHERE linha.idEncomenda = 3009;
 
                         SqlCommand cmd = new SqlCommand("select produtoStock.IdProdutoStock, produtoStock.NomeProduto, produtoStock.quantidadeArmazenada, linha.quantidade from ProdutoStock produtoStock JOIN LinhaEncomenda linha ON produtoStock.IdProdutoStock = linha.idProdutoStock WHERE linha.idEncomenda = @IdEncomenda", conn);
                         cmd.Parameters.AddWithValue("@IdEncomenda", encomendas.IdEncomenda);
                         SqlDataReader reader = cmd.ExecuteReader();
-                        
+
                         while (reader.Read())
                         {
                             AtualizarQuantidade quantidade = new AtualizarQuantidade
@@ -194,16 +194,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         conn.Close();
 
                         UpdateDataGridView();
-                            if (registarEncomendas != null)
-                            {
-                                registarEncomendas.UpdateDataGridView();
-                            }
-                        }
-                        catch (SqlException excep)
+                        if (registarEncomendas != null)
                         {
-                            MessageBox.Show("Erro interno, não foi possível alterar a encomenda!", excep.Message);
+                            registarEncomendas.UpdateDataGridView();
                         }
                     }
+                    catch (SqlException)
+                    {
+                        MessageBox.Show("Erro interno, não foi possível alterar a encomenda!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+            }
             
         }
 
@@ -214,7 +214,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (var < 0)
             {
-                MessageBox.Show("A data de entrega não pode ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data de entrega não pode ser inferior à data de hoje! Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

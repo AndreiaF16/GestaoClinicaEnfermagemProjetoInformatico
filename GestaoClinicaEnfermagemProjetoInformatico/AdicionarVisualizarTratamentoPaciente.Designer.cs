@@ -59,6 +59,8 @@
             this.lblGrauUlceraPressao = new System.Windows.Forms.Label();
             this.txtGrauUlceraPressao = new System.Windows.Forms.TextBox();
             this.comboBoxTipoUlcera = new System.Windows.Forms.ComboBox();
+            this.lblDataTratamento = new System.Windows.Forms.Label();
+            this.dataTratamento = new System.Windows.Forms.DateTimePicker();
             this.lblTipoUlcera = new System.Windows.Forms.Label();
             this.comboBoxTipoQueimadura = new System.Windows.Forms.ComboBox();
             this.txtDermica = new System.Windows.Forms.TextBox();
@@ -118,8 +120,6 @@
             this.lblDimensoes = new System.Windows.Forms.Label();
             this.UpDownNumeroTratamento = new System.Windows.Forms.NumericUpDown();
             this.lblNrTratamento = new System.Windows.Forms.Label();
-            this.lblDataTratamento = new System.Windows.Forms.Label();
-            this.dataTratamento = new System.Windows.Forms.DateTimePicker();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -248,7 +248,7 @@
             this.comboBoxTratamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTratamento.FormattingEnabled = true;
-            this.comboBoxTratamento.Location = new System.Drawing.Point(262, 25);
+            this.comboBoxTratamento.Location = new System.Drawing.Point(264, 61);
             this.comboBoxTratamento.Name = "comboBoxTratamento";
             this.comboBoxTratamento.Size = new System.Drawing.Size(245, 28);
             this.comboBoxTratamento.TabIndex = 74;
@@ -259,7 +259,7 @@
             this.lblMetodoContracetivo.AutoSize = true;
             this.lblMetodoContracetivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMetodoContracetivo.ForeColor = System.Drawing.Color.Black;
-            this.lblMetodoContracetivo.Location = new System.Drawing.Point(38, 33);
+            this.lblMetodoContracetivo.Location = new System.Drawing.Point(40, 69);
             this.lblMetodoContracetivo.Name = "lblMetodoContracetivo";
             this.lblMetodoContracetivo.Size = new System.Drawing.Size(95, 20);
             this.lblMetodoContracetivo.TabIndex = 73;
@@ -270,7 +270,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label1.Location = new System.Drawing.Point(476, 10);
+            this.label1.Location = new System.Drawing.Point(329, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 25);
             this.label1.TabIndex = 51;
@@ -485,6 +485,8 @@
             this.groupBox1.Controls.Add(this.lblGrauUlceraPressao);
             this.groupBox1.Controls.Add(this.txtGrauUlceraPressao);
             this.groupBox1.Controls.Add(this.comboBoxTipoUlcera);
+            this.groupBox1.Controls.Add(this.lblDataTratamento);
+            this.groupBox1.Controls.Add(this.dataTratamento);
             this.groupBox1.Controls.Add(this.lblTipoUlcera);
             this.groupBox1.Controls.Add(this.comboBoxTipoQueimadura);
             this.groupBox1.Controls.Add(this.txtDermica);
@@ -517,8 +519,6 @@
             this.groupBox1.Controls.Add(this.lblDimensoes);
             this.groupBox1.Controls.Add(this.UpDownNumeroTratamento);
             this.groupBox1.Controls.Add(this.lblNrTratamento);
-            this.groupBox1.Controls.Add(this.lblDataTratamento);
-            this.groupBox1.Controls.Add(this.dataTratamento);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
             this.groupBox1.Location = new System.Drawing.Point(10, 45);
@@ -533,7 +533,7 @@
             this.lblGrauUlceraPressao.AutoSize = true;
             this.lblGrauUlceraPressao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGrauUlceraPressao.ForeColor = System.Drawing.Color.Black;
-            this.lblGrauUlceraPressao.Location = new System.Drawing.Point(44, 164);
+            this.lblGrauUlceraPressao.Location = new System.Drawing.Point(46, 200);
             this.lblGrauUlceraPressao.Name = "lblGrauUlceraPressao";
             this.lblGrauUlceraPressao.Size = new System.Drawing.Size(49, 20);
             this.lblGrauUlceraPressao.TabIndex = 172;
@@ -543,7 +543,7 @@
             // txtGrauUlceraPressao
             // 
             this.txtGrauUlceraPressao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGrauUlceraPressao.Location = new System.Drawing.Point(262, 158);
+            this.txtGrauUlceraPressao.Location = new System.Drawing.Point(264, 194);
             this.txtGrauUlceraPressao.Name = "txtGrauUlceraPressao";
             this.txtGrauUlceraPressao.Size = new System.Drawing.Size(245, 26);
             this.txtGrauUlceraPressao.TabIndex = 170;
@@ -554,19 +554,39 @@
             this.comboBoxTipoUlcera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTipoUlcera.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTipoUlcera.FormattingEnabled = true;
-            this.comboBoxTipoUlcera.Location = new System.Drawing.Point(262, 93);
+            this.comboBoxTipoUlcera.Location = new System.Drawing.Point(264, 129);
             this.comboBoxTipoUlcera.Name = "comboBoxTipoUlcera";
             this.comboBoxTipoUlcera.Size = new System.Drawing.Size(245, 28);
             this.comboBoxTipoUlcera.TabIndex = 169;
             this.comboBoxTipoUlcera.Visible = false;
             this.comboBoxTipoUlcera.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoUlcera_SelectedIndexChanged);
             // 
+            // lblDataTratamento
+            // 
+            this.lblDataTratamento.AutoSize = true;
+            this.lblDataTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataTratamento.ForeColor = System.Drawing.Color.Black;
+            this.lblDataTratamento.Location = new System.Drawing.Point(45, 31);
+            this.lblDataTratamento.Name = "lblDataTratamento";
+            this.lblDataTratamento.Size = new System.Drawing.Size(129, 20);
+            this.lblDataTratamento.TabIndex = 14;
+            this.lblDataTratamento.Text = "Data de Registo:";
+            // 
+            // dataTratamento
+            // 
+            this.dataTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTratamento.Location = new System.Drawing.Point(263, 22);
+            this.dataTratamento.Name = "dataTratamento";
+            this.dataTratamento.Size = new System.Drawing.Size(245, 26);
+            this.dataTratamento.TabIndex = 15;
+            this.dataTratamento.Value = new System.DateTime(2020, 5, 15, 0, 0, 0, 0);
+            // 
             // lblTipoUlcera
             // 
             this.lblTipoUlcera.AutoSize = true;
             this.lblTipoUlcera.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipoUlcera.ForeColor = System.Drawing.Color.Black;
-            this.lblTipoUlcera.Location = new System.Drawing.Point(38, 105);
+            this.lblTipoUlcera.Location = new System.Drawing.Point(40, 141);
             this.lblTipoUlcera.Name = "lblTipoUlcera";
             this.lblTipoUlcera.Size = new System.Drawing.Size(89, 20);
             this.lblTipoUlcera.TabIndex = 168;
@@ -578,7 +598,7 @@
             this.comboBoxTipoQueimadura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTipoQueimadura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTipoQueimadura.FormattingEnabled = true;
-            this.comboBoxTipoQueimadura.Location = new System.Drawing.Point(262, 59);
+            this.comboBoxTipoQueimadura.Location = new System.Drawing.Point(264, 95);
             this.comboBoxTipoQueimadura.Name = "comboBoxTipoQueimadura";
             this.comboBoxTipoQueimadura.Size = new System.Drawing.Size(245, 28);
             this.comboBoxTipoQueimadura.TabIndex = 167;
@@ -588,7 +608,7 @@
             // txtDermica
             // 
             this.txtDermica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDermica.Location = new System.Drawing.Point(262, 255);
+            this.txtDermica.Location = new System.Drawing.Point(264, 291);
             this.txtDermica.Name = "txtDermica";
             this.txtDermica.Size = new System.Drawing.Size(245, 26);
             this.txtDermica.TabIndex = 166;
@@ -599,7 +619,7 @@
             this.lblDermica.AutoSize = true;
             this.lblDermica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDermica.ForeColor = System.Drawing.Color.Black;
-            this.lblDermica.Location = new System.Drawing.Point(35, 261);
+            this.lblDermica.Location = new System.Drawing.Point(37, 297);
             this.lblDermica.Name = "lblDermica";
             this.lblDermica.Size = new System.Drawing.Size(68, 20);
             this.lblDermica.TabIndex = 165;
@@ -609,7 +629,7 @@
             // txtCorpoEstranho
             // 
             this.txtCorpoEstranho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCorpoEstranho.Location = new System.Drawing.Point(262, 223);
+            this.txtCorpoEstranho.Location = new System.Drawing.Point(264, 259);
             this.txtCorpoEstranho.Name = "txtCorpoEstranho";
             this.txtCorpoEstranho.Size = new System.Drawing.Size(245, 26);
             this.txtCorpoEstranho.TabIndex = 164;
@@ -618,7 +638,7 @@
             // txtIPTB
             // 
             this.txtIPTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIPTB.Location = new System.Drawing.Point(262, 190);
+            this.txtIPTB.Location = new System.Drawing.Point(264, 226);
             this.txtIPTB.Name = "txtIPTB";
             this.txtIPTB.Size = new System.Drawing.Size(245, 26);
             this.txtIPTB.TabIndex = 163;
@@ -629,7 +649,7 @@
             this.lblCorpoEstranho.AutoSize = true;
             this.lblCorpoEstranho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCorpoEstranho.ForeColor = System.Drawing.Color.Black;
-            this.lblCorpoEstranho.Location = new System.Drawing.Point(35, 233);
+            this.lblCorpoEstranho.Location = new System.Drawing.Point(37, 269);
             this.lblCorpoEstranho.Name = "lblCorpoEstranho";
             this.lblCorpoEstranho.Size = new System.Drawing.Size(121, 20);
             this.lblCorpoEstranho.TabIndex = 162;
@@ -641,7 +661,7 @@
             this.lblIPTB.AutoSize = true;
             this.lblIPTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIPTB.ForeColor = System.Drawing.Color.Black;
-            this.lblIPTB.Location = new System.Drawing.Point(38, 196);
+            this.lblIPTB.Location = new System.Drawing.Point(40, 232);
             this.lblIPTB.Name = "lblIPTB";
             this.lblIPTB.Size = new System.Drawing.Size(44, 20);
             this.lblIPTB.TabIndex = 161;
@@ -653,7 +673,7 @@
             this.lblTipoQueimadura.AutoSize = true;
             this.lblTipoQueimadura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipoQueimadura.ForeColor = System.Drawing.Color.Black;
-            this.lblTipoQueimadura.Location = new System.Drawing.Point(38, 68);
+            this.lblTipoQueimadura.Location = new System.Drawing.Point(40, 104);
             this.lblTipoQueimadura.Name = "lblTipoQueimadura";
             this.lblTipoQueimadura.Size = new System.Drawing.Size(130, 20);
             this.lblTipoQueimadura.TabIndex = 160;
@@ -1188,7 +1208,7 @@
             // txtUlcera
             // 
             this.txtUlcera.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUlcera.Location = new System.Drawing.Point(262, 327);
+            this.txtUlcera.Location = new System.Drawing.Point(818, 25);
             this.txtUlcera.Name = "txtUlcera";
             this.txtUlcera.Size = new System.Drawing.Size(245, 26);
             this.txtUlcera.TabIndex = 140;
@@ -1197,7 +1217,7 @@
             // txtDimensoes
             // 
             this.txtDimensoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDimensoes.Location = new System.Drawing.Point(262, 291);
+            this.txtDimensoes.Location = new System.Drawing.Point(264, 327);
             this.txtDimensoes.Name = "txtDimensoes";
             this.txtDimensoes.Size = new System.Drawing.Size(245, 26);
             this.txtDimensoes.TabIndex = 139;
@@ -1209,7 +1229,7 @@
             this.lblUlceraPressao.AutoSize = true;
             this.lblUlceraPressao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUlceraPressao.ForeColor = System.Drawing.Color.Black;
-            this.lblUlceraPressao.Location = new System.Drawing.Point(29, 330);
+            this.lblUlceraPressao.Location = new System.Drawing.Point(585, 28);
             this.lblUlceraPressao.Name = "lblUlceraPressao";
             this.lblUlceraPressao.Size = new System.Drawing.Size(143, 20);
             this.lblUlceraPressao.TabIndex = 64;
@@ -1221,7 +1241,7 @@
             this.lblDimensoes.AutoSize = true;
             this.lblDimensoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDimensoes.ForeColor = System.Drawing.Color.Black;
-            this.lblDimensoes.Location = new System.Drawing.Point(35, 299);
+            this.lblDimensoes.Location = new System.Drawing.Point(37, 335);
             this.lblDimensoes.Name = "lblDimensoes";
             this.lblDimensoes.Size = new System.Drawing.Size(89, 20);
             this.lblDimensoes.TabIndex = 55;
@@ -1231,7 +1251,7 @@
             // UpDownNumeroTratamento
             // 
             this.UpDownNumeroTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpDownNumeroTratamento.Location = new System.Drawing.Point(262, 128);
+            this.UpDownNumeroTratamento.Location = new System.Drawing.Point(264, 164);
             this.UpDownNumeroTratamento.Maximum = new decimal(new int[] {
             999,
             0,
@@ -1247,34 +1267,12 @@
             this.lblNrTratamento.AutoSize = true;
             this.lblNrTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNrTratamento.ForeColor = System.Drawing.Color.Black;
-            this.lblNrTratamento.Location = new System.Drawing.Point(38, 137);
+            this.lblNrTratamento.Location = new System.Drawing.Point(40, 173);
             this.lblNrTratamento.Name = "lblNrTratamento";
             this.lblNrTratamento.Size = new System.Drawing.Size(151, 20);
             this.lblNrTratamento.TabIndex = 49;
             this.lblNrTratamento.Text = "Número Tratamento";
             this.lblNrTratamento.Visible = false;
-            // 
-            // lblDataTratamento
-            // 
-            this.lblDataTratamento.AutoSize = true;
-            this.lblDataTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataTratamento.ForeColor = System.Drawing.Color.Black;
-            this.lblDataTratamento.Location = new System.Drawing.Point(593, 29);
-            this.lblDataTratamento.Name = "lblDataTratamento";
-            this.lblDataTratamento.Size = new System.Drawing.Size(48, 20);
-            this.lblDataTratamento.TabIndex = 14;
-            this.lblDataTratamento.Text = "Data:";
-            this.lblDataTratamento.Visible = false;
-            // 
-            // dataTratamento
-            // 
-            this.dataTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataTratamento.Location = new System.Drawing.Point(817, 23);
-            this.dataTratamento.Name = "dataTratamento";
-            this.dataTratamento.Size = new System.Drawing.Size(245, 26);
-            this.dataTratamento.TabIndex = 15;
-            this.dataTratamento.Value = new System.DateTime(2020, 5, 15, 0, 0, 0, 0);
-            this.dataTratamento.Visible = false;
             // 
             // AdicionarVisualizarTratamentoPaciente
             // 
@@ -1285,7 +1283,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarVisualizarTratamentoPaciente";
-            this.ShowInTaskbar = false;
             this.Text = "TratamentoPaciente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.TratamentoPaciente_Load);

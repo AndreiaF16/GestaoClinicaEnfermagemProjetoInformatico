@@ -182,7 +182,7 @@
             // 
             // dataRegistoMed
             // 
-            this.dataRegistoMed.Location = new System.Drawing.Point(362, 25);
+            this.dataRegistoMed.Location = new System.Drawing.Point(422, 25);
             this.dataRegistoMed.Name = "dataRegistoMed";
             this.dataRegistoMed.Size = new System.Drawing.Size(200, 26);
             this.dataRegistoMed.TabIndex = 13;
@@ -190,11 +190,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(205, 33);
+            this.label7.Location = new System.Drawing.Point(117, 31);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(131, 20);
+            this.label7.Size = new System.Drawing.Size(299, 20);
             this.label7.TabIndex = 12;
-            this.label7.Text = "Data Realização:";
+            this.label7.Text = "Data de Realização da Lavagem Vesical:";
             // 
             // label1
             // 
@@ -308,7 +308,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarLavagemVesicalPaciente";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdicionarLavagemVesicalPaciente";
             this.Load += new System.EventHandler(this.AdicionarLavagemVesicalPaciente_Load);

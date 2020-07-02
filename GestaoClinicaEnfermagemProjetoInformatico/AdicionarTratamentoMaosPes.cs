@@ -169,9 +169,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar o tratamento", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o tratamento", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

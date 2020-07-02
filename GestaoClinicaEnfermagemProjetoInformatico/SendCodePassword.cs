@@ -91,10 +91,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Por erro interno é impossível enviar o email!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -111,7 +111,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             else
             {
-                MessageBox.Show("Código errado");
+                MessageBox.Show("Código errado", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 

@@ -18,8 +18,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Paciente paciente = new Paciente();
         private ErrorProvider errorProvider = new ErrorProvider();
         private List<Vacinacao> vacinacao = new List<Vacinacao>();
-        private Enfermeiro enfermeiro = null;
-
 
         public AdicionarTratamentoVacinacao(Paciente pac)
         {
@@ -175,9 +173,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar a vacinação!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a vacinação!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -238,8 +236,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (var > 0)
             {
-                MessageBox.Show("A data tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataVacinacao, "A data tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data da vacinação tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataVacinacao, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
         

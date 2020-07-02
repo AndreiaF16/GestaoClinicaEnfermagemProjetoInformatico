@@ -43,27 +43,21 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Username mudado com sucesso!");
                     this.Close();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Por erro interno é impossível alterar o Username!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
 
-
-            }
-            else
-            {
-                MessageBox.Show("As usernames não correspodem, volte a insesir");
             }
         }
 
         public Boolean VerificarDadosInseridos()
         {
-            //validacao de letra maiscula inciar, falta
          
             if (txtUsername.Text != txtConfirmarNovoUsername.Text)
             {
-                MessageBox.Show("Os usernames não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Os usernames não coincidem! Volte a tentar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

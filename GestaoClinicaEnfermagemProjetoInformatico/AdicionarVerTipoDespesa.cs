@@ -91,18 +91,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("O tipo de despesa foi registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
-                    txtNome.Text = "";
-                    txtObservacoes.Text = "";
+                    errorProvider.Clear();
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
                     if (conn.State == ConnectionState.Open)
                     {
                         conn.Close();
                     }
-                    MessageBox.Show("Por erro interno é impossível registar o tipo de despesa", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o tipo de despesa", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -159,8 +158,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
             txtNome.Text = "";
             txtObservacoes.Text = "";
+            errorProvider.Clear();
         }
     }
 }

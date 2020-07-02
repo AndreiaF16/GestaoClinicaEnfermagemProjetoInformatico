@@ -227,7 +227,7 @@
             // 
             // dataRegistoMed
             // 
-            this.dataRegistoMed.Location = new System.Drawing.Point(387, 39);
+            this.dataRegistoMed.Location = new System.Drawing.Point(413, 39);
             this.dataRegistoMed.Name = "dataRegistoMed";
             this.dataRegistoMed.Size = new System.Drawing.Size(200, 26);
             this.dataRegistoMed.TabIndex = 13;
@@ -235,11 +235,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(231, 45);
+            this.label7.Location = new System.Drawing.Point(117, 45);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(131, 20);
+            this.label7.Size = new System.Drawing.Size(294, 20);
             this.label7.TabIndex = 12;
-            this.label7.Text = "Data Realização:";
+            this.label7.Text = "Data de Realização da Lavagem Ocular:";
             // 
             // txtObservacoes
             // 
@@ -326,7 +326,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarLavagemOcular";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdicionarLavagemOcular";
             this.Load += new System.EventHandler(this.AdicionarLavagemOcular_Load);

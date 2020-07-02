@@ -412,7 +412,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(680, 500);
             this.Name = "FormAdmin";
-            this.ShowInTaskbar = false;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormAdmin_Load);
             this.painelPrincipal.ResumeLayout(false);

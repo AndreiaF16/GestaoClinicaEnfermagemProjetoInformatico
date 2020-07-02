@@ -136,11 +136,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     formVerUtentesRegistados.formMenu.UpdateGridViewConsultas();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    // MessageBox.Show(excep.Message);
 
-                      MessageBox.Show("Por erro interno é impossível registar a consulta", excep.Message);
+                      MessageBox.Show("Por erro interno é impossível registar a consulta", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

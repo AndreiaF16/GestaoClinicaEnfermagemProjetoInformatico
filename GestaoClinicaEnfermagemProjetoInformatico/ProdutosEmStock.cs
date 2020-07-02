@@ -21,6 +21,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
         private ClassFornecedor fornecedor = new ClassFornecedor();
         private ErrorProvider errorProvider = new ErrorProvider();
+        private List<ComboBoxItem> fornecedores = new List<ComboBoxItem>();
         public ProdutosEmStock(LinhaEncomenda encomenda)
         {
             InitializeComponent();
@@ -111,10 +112,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show(/*"Por erro interno é impossível registar o produto",*/ excep.Message);
-
+                    MessageBox.Show("Por erro interno é impossível os produtos usados na consulta!!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -124,7 +124,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             produtosStocks.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select produto.NomeProduto, fornecedor.nome,produto.precoUnitario, produto.taxaIVA, produto.quantidadeArmazenada, produto.Observacoes from ProdutoStock produto JOIN Fornecedor fornecedor ON produto.IdFornecedor = fornecedor.IdFornecedor ORDER BY produto.NomeProduto, fornecedor.nome", conn);
+            SqlCommand cmd = new SqlCommand("select produto.NomeProduto, fornecedor.nome,produto.precoUnitario, produto.taxaIVA, produto.quantidadeArmazenada, produto.Observacoes from ProdutoStock produto JOIN Fornecedor fornecedor ON produto.IdFornecedor = fornecedor.IdFornecedor WHERE fornecedor.IdFornecedor = @IdFornecedor ORDER BY produto.NomeProduto, fornecedor.nome", conn);
+            cmd.Parameters.AddWithValue("@IdFornecedor", fornecedor.IdFornecedor);
+
+
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -144,20 +147,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 produtosStocks.Add(produtos);
             }
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = produtosStocks };
-            dataGridViewDoencas.DataSource = bindingSource1;
-            dataGridViewDoencas.Columns[0].HeaderText = "Produto";
-            dataGridViewDoencas.Columns[1].HeaderText = "Fornecedor";
+            dataGridViewProdutos.DataSource = bindingSource1;
+            dataGridViewProdutos.Columns[0].HeaderText = "Produto";
+            dataGridViewProdutos.Columns[1].HeaderText = "Fornecedor";
 
-            dataGridViewDoencas.Columns[2].HeaderText = "Preço Unitário (€)";
-            dataGridViewDoencas.Columns[3].HeaderText = "Taxa de IVA (%)";
-            dataGridViewDoencas.Columns[4].HeaderText = "Quantidade";
-            dataGridViewDoencas.Columns[5].HeaderText = "Observações";
-            dataGridViewDoencas.Columns[6].HeaderText = "Preço Total (€)";
+            dataGridViewProdutos.Columns[2].HeaderText = "Preço Unitário (€)";
+            dataGridViewProdutos.Columns[3].HeaderText = "Taxa de IVA (%)";
+            dataGridViewProdutos.Columns[4].HeaderText = "Quantidade";
+            dataGridViewProdutos.Columns[5].HeaderText = "Observações";
+            dataGridViewProdutos.Columns[6].HeaderText = "Preço Total (€)";
 
 
             conn.Close();
-            dataGridViewDoencas.Update();
-            dataGridViewDoencas.Refresh();
+            dataGridViewProdutos.Update();
+            dataGridViewProdutos.Refresh();
         }
 
 
@@ -246,11 +249,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             return true;
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("FALTA IMPLEMENTAR!");
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             limparCampos();
@@ -258,6 +256,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void limparCampos()
         {
+            errorProvider.Clear();
             txtNome.Text = "";
             txtObservacoes.Text = "";
             UpDownQuantidade.Value = 0;
@@ -273,7 +272,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             auxiliar.Clear();
             conn.Open();
             com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Fornecedor ", conn);
+            SqlCommand cmd = new SqlCommand("select * from Fornecedor", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -320,6 +319,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             auxiliar = produtos;
             return auxiliar;
+        }
+
+        private void comboBoxFornecedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int var = (comboBoxFornecedor.SelectedItem as ComboBoxItem).Value;
+            foreach (var item in produtos)
+            {
+                if (item.Value == var)
+                {
+                    fornecedor = new ClassFornecedor
+                    {
+                        nome = item.Text,
+                        IdFornecedor = item.Value,
+                    };
+                }
+            }
+            UpdateDataGridView();
         }
     }
 }

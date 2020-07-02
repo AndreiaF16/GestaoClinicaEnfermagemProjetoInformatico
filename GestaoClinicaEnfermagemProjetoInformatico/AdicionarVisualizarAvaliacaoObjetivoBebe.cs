@@ -398,9 +398,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     limparCampos();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar a avaliação objetivo", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a avaliação objetivo", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -419,7 +419,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
-                MessageBox.Show("A data da avaliação objetivo tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data da avaliação objetivo tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -462,7 +462,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 if (Convert.ToInt32(altura) <= 0)
                 {
-                    errorProvider.SetError(UpDownAltura, "A altura não pode ser inferior  ou igual a 0!");
+                    errorProvider.SetError(UpDownAltura, "A altura não pode ser inferior ou igual a 0!");
                 }
                 else
                 {
@@ -538,7 +538,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 if (nomeLeiteArtificial == string.Empty)
                 {
-                    MessageBox.Show("Campo Obrigatório porque selecionou como tipo de aleitamento 'Artificial' ou 'Misto', por favor preencha o nome do leite artificial!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Campo Obrigatório, porque selecionou como tipo de aleitamento 'Artificial' ou 'Misto', por favor preencha o nome do leite artificial!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     errorProvider.SetError(txtAleitamento, "Nome do aleitamento é obrigatório!");
                     return false;
 
@@ -555,7 +555,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 if (radioButtonForceps.Checked == false && radioButtonVentosa.Checked == false)
                 {
-                    MessageBox.Show("Campo Obrigatório porque selecionou como tipo de parto 'Distócico', por favor selecione qual parto Distócico foi realizado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Campo Obrigatório, porque selecionou como tipo de parto 'Distócico', por favor selecione qual tipo de parto Distócico foi realizado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     errorProvider.SetError(cbAleitamento, "O tipo de parto distócico é obrigatório, porque selecionou como parto 'Distócico'!");
                     return false;
                 }
@@ -600,6 +600,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void limparCampos()
         {
+            errorProvider.Clear();
             dataAvaliacaoObjetivo.Value = DateTime.Today;
             UpDownPeso.Value = 0;
             UpDownAltura.Value = 0;

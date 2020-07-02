@@ -38,7 +38,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     cmd.ExecuteNonQuery();
                     conn.Close();
 
-                    MessageBox.Show("Passe mudada com sucesso!");
+                    MessageBox.Show("Palavra passe alterada com sucesso!");
                     this.Close();
                 }
                 catch (Exception ex)
@@ -46,13 +46,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show(ex.ToString());
 
                 }
-
-
             }
-            else
-            {
-                MessageBox.Show("As palavras passes não correspodem, volte a insesir");
-            }
+
         }
 
 
@@ -68,7 +63,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
             if (txtNovaPassword.Text != txtConfirmarNovaPassword.Text)
             {
-                MessageBox.Show("As passwors não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("As palavras passes não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

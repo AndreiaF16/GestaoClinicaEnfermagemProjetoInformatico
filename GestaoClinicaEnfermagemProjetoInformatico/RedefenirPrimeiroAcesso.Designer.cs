@@ -117,7 +117,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PrimeiroAcesso";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RedefinirPrimeiroAcesso";
             this.Load += new System.EventHandler(this.PrimeiroAcesso_Load);

@@ -142,9 +142,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(205, 33);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(131, 20);
+            this.label7.Size = new System.Drawing.Size(153, 20);
             this.label7.TabIndex = 12;
-            this.label7.Text = "Data Realização:";
+            this.label7.Text = "Data de Realização:";
             // 
             // txtObservacoes
             // 
@@ -308,7 +308,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarTricotomiaPaciente";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdicionarTricotomiaPaciente";
             this.Load += new System.EventHandler(this.AdicionarTricotomiaPaciente_Load);

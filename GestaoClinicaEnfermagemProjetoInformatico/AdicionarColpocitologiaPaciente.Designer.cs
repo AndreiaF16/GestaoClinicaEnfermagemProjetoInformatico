@@ -116,7 +116,7 @@
             // 
             // dataRegistoMed
             // 
-            this.dataRegistoMed.Location = new System.Drawing.Point(150, 25);
+            this.dataRegistoMed.Location = new System.Drawing.Point(518, 25);
             this.dataRegistoMed.Name = "dataRegistoMed";
             this.dataRegistoMed.Size = new System.Drawing.Size(200, 26);
             this.dataRegistoMed.TabIndex = 13;
@@ -124,11 +124,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 30);
+            this.label7.Location = new System.Drawing.Point(381, 30);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(131, 20);
+            this.label7.Size = new System.Drawing.Size(129, 20);
             this.label7.TabIndex = 12;
-            this.label7.Text = "Data Realização:";
+            this.label7.Text = "Data de Registo:";
             // 
             // txtObservacoes
             // 
@@ -697,7 +697,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarColpocitologiaPaciente";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdicionarColpocitologiaPaciente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

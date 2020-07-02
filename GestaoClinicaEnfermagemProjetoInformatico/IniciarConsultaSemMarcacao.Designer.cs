@@ -44,6 +44,7 @@
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.UpDownPrecoConsulta = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.lblCustoConsulta = new System.Windows.Forms.Label();
@@ -58,6 +59,7 @@
             this.lblSinais = new System.Windows.Forms.Label();
             this.txtSinais = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblEscala = new System.Windows.Forms.Label();
             this.btnSemDor = new System.Windows.Forms.Button();
             this.lblSemDor = new System.Windows.Forms.Label();
             this.btnDorLigeira = new System.Windows.Forms.Button();
@@ -73,7 +75,6 @@
             this.lblDorMaxima = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.lblEscala = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
             this.labelData = new System.Windows.Forms.Label();
             this.labelHora = new System.Windows.Forms.Label();
@@ -88,11 +89,11 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.hora = new System.Windows.Forms.Timer(this.components);
-            this.UpDownPrecoConsulta = new System.Windows.Forms.NumericUpDown();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownPrecoConsulta)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -102,7 +103,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDownPrecoConsulta)).BeginInit();
             this.SuspendLayout();
             // 
             // painelPrincipal
@@ -377,6 +377,20 @@
             this.groupBox4.TabIndex = 36;
             this.groupBox4.TabStop = false;
             // 
+            // UpDownPrecoConsulta
+            // 
+            this.UpDownPrecoConsulta.DecimalPlaces = 2;
+            this.UpDownPrecoConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpDownPrecoConsulta.Location = new System.Drawing.Point(160, 33);
+            this.UpDownPrecoConsulta.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            131072});
+            this.UpDownPrecoConsulta.Name = "UpDownPrecoConsulta";
+            this.UpDownPrecoConsulta.Size = new System.Drawing.Size(114, 26);
+            this.UpDownPrecoConsulta.TabIndex = 53;
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -564,6 +578,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Escala da Dor:";
             // 
+            // lblEscala
+            // 
+            this.lblEscala.AutoSize = true;
+            this.lblEscala.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEscala.ForeColor = System.Drawing.Color.White;
+            this.lblEscala.Location = new System.Drawing.Point(65, 141);
+            this.lblEscala.Name = "lblEscala";
+            this.lblEscala.Size = new System.Drawing.Size(0, 20);
+            this.lblEscala.TabIndex = 36;
+            this.lblEscala.Visible = false;
+            // 
             // btnSemDor
             // 
             this.btnSemDor.BackColor = System.Drawing.Color.Lime;
@@ -737,17 +762,6 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(232, 748);
             this.panelMenu.TabIndex = 1;
-            // 
-            // lblEscala
-            // 
-            this.lblEscala.AutoSize = true;
-            this.lblEscala.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEscala.ForeColor = System.Drawing.Color.White;
-            this.lblEscala.Location = new System.Drawing.Point(65, 141);
-            this.lblEscala.Name = "lblEscala";
-            this.lblEscala.Size = new System.Drawing.Size(0, 20);
-            this.lblEscala.TabIndex = 36;
-            this.lblEscala.Visible = false;
             // 
             // button10
             // 
@@ -932,20 +946,6 @@
             this.hora.Enabled = true;
             this.hora.Tick += new System.EventHandler(this.hora_Tick);
             // 
-            // UpDownPrecoConsulta
-            // 
-            this.UpDownPrecoConsulta.DecimalPlaces = 2;
-            this.UpDownPrecoConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpDownPrecoConsulta.Location = new System.Drawing.Point(160, 33);
-            this.UpDownPrecoConsulta.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            131072});
-            this.UpDownPrecoConsulta.Name = "UpDownPrecoConsulta";
-            this.UpDownPrecoConsulta.Size = new System.Drawing.Size(114, 26);
-            this.UpDownPrecoConsulta.TabIndex = 53;
-            // 
             // IniciarConsultaSemMarcacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -955,7 +955,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "IniciarConsultaSemMarcacao";
-            this.ShowInTaskbar = false;
             this.Text = "IniciarConsulta";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.IniciarConsulta_Load);
@@ -965,6 +964,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownPrecoConsulta)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -978,7 +978,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDownPrecoConsulta)).EndInit();
             this.ResumeLayout(false);
 
         }

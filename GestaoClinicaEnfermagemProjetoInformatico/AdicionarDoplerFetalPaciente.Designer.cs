@@ -790,7 +790,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarDoplerFetalPaciente";
-            this.ShowInTaskbar = false;
             this.Text = "AdicionarDoplerFetalPaciente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdicionarDoplerFetalPaciente_Load);

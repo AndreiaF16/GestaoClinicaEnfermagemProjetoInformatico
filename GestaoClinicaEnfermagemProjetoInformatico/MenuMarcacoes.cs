@@ -120,9 +120,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     formMenu.UpdateGridViewConsultas();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException )
                 {
-                    MessageBox.Show("Não foi possível adiar a consulta devido a erro interno" , excep.Message);
+                    MessageBox.Show("Não foi possível adiar a consulta devido a erro interno" , "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

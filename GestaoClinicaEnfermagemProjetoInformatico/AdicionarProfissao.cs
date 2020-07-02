@@ -79,6 +79,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             txtNome.Text = "";
+            errorProvider.Clear();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -101,9 +102,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     txtNome.Text = "";
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Erro interno, não foi possível registar a profissão!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível registar a profissão!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
             }
         }
@@ -126,12 +128,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     errorProvider.SetError(txtNome, String.Empty);
                 }
-
                 return false;
-
-
             }
-
             return true;
         }
 

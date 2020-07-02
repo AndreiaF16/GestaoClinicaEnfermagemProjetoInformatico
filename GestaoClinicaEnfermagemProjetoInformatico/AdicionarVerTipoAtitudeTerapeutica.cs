@@ -83,26 +83,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
                     if (conn.State == ConnectionState.Open)
                     {
                         conn.Close();
                     }
-                    MessageBox.Show("Por erro interno é impossível registar o tipo de atitude terapêutica!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o tipo de atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            limparCampos();
         }
 
         private void limparCampos() 
         {
             txtAtitude.Text = "";
             txtObservacoes.Text = "";
+            errorProvider.Clear();
         }
 
         private void hora_Tick(object sender, EventArgs e)

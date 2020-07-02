@@ -432,7 +432,7 @@
             // 
             // dataVacinacao
             // 
-            this.dataVacinacao.Location = new System.Drawing.Point(162, 16);
+            this.dataVacinacao.Location = new System.Drawing.Point(371, 14);
             this.dataVacinacao.Name = "dataVacinacao";
             this.dataVacinacao.Size = new System.Drawing.Size(249, 26);
             this.dataVacinacao.TabIndex = 45;
@@ -440,11 +440,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 22);
+            this.label8.Location = new System.Drawing.Point(218, 20);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 20);
+            this.label8.Size = new System.Drawing.Size(129, 20);
             this.label8.TabIndex = 44;
-            this.label8.Text = "Data:";
+            this.label8.Text = "Data de Registo:";
             // 
             // label4
             // 
@@ -763,7 +763,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarEspirometriaPaciente";
-            this.ShowInTaskbar = false;
             this.Text = "AdicionarEspirometriaPaciente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdicionarEspirometriaPaciente_Load);

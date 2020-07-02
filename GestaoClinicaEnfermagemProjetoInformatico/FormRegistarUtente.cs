@@ -246,8 +246,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
-                MessageBox.Show("A data de nascimento tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataNascimento, "A data de nascimento tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data de nascimento tem de ser inferior ou igual à data de hoje!\nSelecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataNascimento, "A data de nascimento tem de ser inferior ou igual à data de hoje!");
 
                 return false;
             }
@@ -539,11 +539,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     conn.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
 
-                    //   MessageBox.Show("Por erro interno é impossível registar o utente!", excep.Message);
-                       MessageBox.Show(excep.Message);
+                   MessageBox.Show("Por erro interno é impossível registar o utente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
             }
@@ -707,7 +706,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
+            openFileDialog1.InitialDirectory = "C:\\Users\\Asus\\Desktop\\Escola\\1_2019-2020\\0_ProjetoInformatico\\";
+            openFileDialog1.Filter = "PDF files (*.pdf)|*.pdf";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                System.Diagnostics.Process.Start(openFileDialog1.FileName);
+            }
         }
 
         private void txtSNS_KeyPress(object sender, KeyPressEventArgs e)

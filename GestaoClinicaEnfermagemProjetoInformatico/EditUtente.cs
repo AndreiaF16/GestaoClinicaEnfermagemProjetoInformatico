@@ -292,8 +292,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
-                MessageBox.Show("A data de nascimento tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataNascimento, "A data de nascimento tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data de nascimento tem de ser inferior ou igual à data de hoje!\n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataNascimento, "A data de nascimento tem de ser inferior ou igual à data de hoje!");
 
                 return false;
             }
@@ -405,9 +405,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-
-
             if (VerificarDadosInseridos())
             {
 
@@ -611,8 +608,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.Parameters.AddWithValue("@sexo", sexo);
                     sqlCommand.Parameters.AddWithValue("@planoVacinacao", planoVacinacao);
 
-
-
                     sqlCommand.ExecuteNonQuery();
                     foreach (var utente in utentes)
                     {
@@ -637,11 +632,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     this.Close();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-
-                    MessageBox.Show("Por erro interno é impossível alterar os dados do utente!", excep.Message);
-
+                    MessageBox.Show("Por erro interno é impossível alterar os dados do utente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

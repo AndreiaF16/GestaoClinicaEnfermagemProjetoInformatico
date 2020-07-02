@@ -183,10 +183,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     this.Close();
                 }
 
-                catch (SqlException excep)
+                catch (SqlException)
                 {
 
-                    MessageBox.Show("Por erro interno é impossível alterar os seus dados!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível alterar os seus dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -203,6 +203,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome.Equals(enfermeiro.nome) && funcao.Equals(enfermeiro.funcao) && email.Equals(enfermeiro.email) && username.Equals(enfermeiro.username) && telemovel.Equals(enfermeiro.contacto))
             {
                 MessageBox.Show("Dados não alterados!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            DateTime data = dataNascimento.Value;
+
+            if ((data - DateTime.Today).TotalDays > 0)
+            {
+                MessageBox.Show("A data de nascimento tem de ser inferior ou igual à data de hoje!\n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataNascimento, "A data de nascimento tem de ser inferior ou igual à data de hoje!");
+
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(dataNascimento, String.Empty);
             }
 
             if (nome == string.Empty || username == string.Empty || email == string.Empty)

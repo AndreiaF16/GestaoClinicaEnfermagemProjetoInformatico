@@ -153,7 +153,7 @@
             // 
             // dataRegistoMed
             // 
-            this.dataRegistoMed.Location = new System.Drawing.Point(150, 29);
+            this.dataRegistoMed.Location = new System.Drawing.Point(377, 25);
             this.dataRegistoMed.Name = "dataRegistoMed";
             this.dataRegistoMed.Size = new System.Drawing.Size(200, 26);
             this.dataRegistoMed.TabIndex = 13;
@@ -161,7 +161,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 34);
+            this.label7.Location = new System.Drawing.Point(240, 30);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(129, 20);
             this.label7.TabIndex = 12;

@@ -382,7 +382,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarOutrosTratamentosPaciente";
-            this.ShowInTaskbar = false;
             this.Text = "AdicionarOutrosTratamentosPaciente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdicionarOutrosTratamentosPaciente_Load);

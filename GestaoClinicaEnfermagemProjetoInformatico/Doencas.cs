@@ -82,6 +82,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {             
                 string nome = txtNome.Text;
                 string sintomas = txtSintomas.Text;
+                string sintomas = txtSintomas.Text;
                 try
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
@@ -89,17 +90,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     string queryInsertData = "INSERT INTO Doenca(Nome,Sintomas) VALUES(@Nome, @Sintomas);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.Parameters.AddWithValue("@Nome", txtNome.Text);
-                    sqlCommand.Parameters.AddWithValue("@Sintomas", txtSintomas.Text);
+                    sqlCommand.Parameters.AddWithValue("@Nome",nome);
+                    sqlCommand.Parameters.AddWithValue("@Sintomas", sintomas);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Doença registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //    AdicionarVisualizarDoencaPaciente.reiniciar();
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Erro interno, não foi possível registar a doença!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível registar a doença!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -114,8 +115,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Boolean VerificarDadosInseridos()
         {
             string nome = txtNome.Text;
-
-
 
             if (nome == string.Empty)
             {
@@ -144,6 +143,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             txtNome.Text = "";
             txtSintomas.Text = "";
+            errorProvider.Clear();
         }
     }
 }

@@ -73,16 +73,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     string queryInsertData = "INSERT INTO Cirurgia(Nome,Caracterizacao) VALUES(@Nome, @Caracterizacao);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.Parameters.AddWithValue("@Nome", txtNome.Text);
-                    sqlCommand.Parameters.AddWithValue("@Caracterizacao", txtSintomas.Text);
+                    sqlCommand.Parameters.AddWithValue("@Nome", nome);
+                    sqlCommand.Parameters.AddWithValue("@Caracterizacao", caracterizacao);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Cirurgia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar a cirurgia", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a cirurgia", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
     }
@@ -138,6 +138,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             txtNome.Text = "";
             txtSintomas.Text = "";
+            errorProvider.Clear();
         }
     }
 }

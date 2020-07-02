@@ -46,12 +46,12 @@
             this.cbDataProximaAlgariacao = new System.Windows.Forms.CheckBox();
             this.txtSilastic = new System.Windows.Forms.TextBox();
             this.panelTitulo = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnLimparCampos = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnLimparCampos = new System.Windows.Forms.Button();
             btnVoltar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -60,6 +60,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnVoltar
+            // 
+            btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
+            btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
+            btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnVoltar.ForeColor = System.Drawing.Color.Black;
+            btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            btnVoltar.Location = new System.Drawing.Point(10, 450);
+            btnVoltar.Margin = new System.Windows.Forms.Padding(2);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            btnVoltar.Size = new System.Drawing.Size(72, 66);
+            btnVoltar.TabIndex = 61;
+            btnVoltar.Text = "     Voltar";
+            btnVoltar.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            btnVoltar.UseVisualStyleBackColor = false;
+            btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // label2
             // 
@@ -225,6 +245,49 @@
             this.panelTitulo.Size = new System.Drawing.Size(847, 40);
             this.panelTitulo.TabIndex = 59;
             // 
+            // btnFechar
+            // 
+            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
+            this.btnFechar.Location = new System.Drawing.Point(817, 11);
+            this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(16, 16);
+            this.btnFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnFechar.TabIndex = 10;
+            this.btnFechar.TabStop = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            // 
+            // btnMaximizar
+            // 
+            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
+            this.btnMaximizar.Location = new System.Drawing.Point(801, 11);
+            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
+            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMaximizar.TabIndex = 9;
+            this.btnMaximizar.TabStop = false;
+            this.btnMaximizar.Visible = false;
+            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
+            this.btnMinimizar.Location = new System.Drawing.Point(785, 11);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizar.TabIndex = 8;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -286,69 +349,6 @@
             this.btnLimparCampos.UseVisualStyleBackColor = false;
             this.btnLimparCampos.Click += new System.EventHandler(this.btnLimparCampos_Click);
             // 
-            // btnVoltar
-            // 
-            btnVoltar.BackColor = System.Drawing.Color.LightSteelBlue;
-            btnVoltar.BackgroundImage = global::GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources._90174228_203432224262112_273993770746249216_n;
-            btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnVoltar.ForeColor = System.Drawing.Color.Black;
-            btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnVoltar.Location = new System.Drawing.Point(10, 450);
-            btnVoltar.Margin = new System.Windows.Forms.Padding(2);
-            btnVoltar.Name = "btnVoltar";
-            btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            btnVoltar.Size = new System.Drawing.Size(72, 66);
-            btnVoltar.TabIndex = 61;
-            btnVoltar.Text = "     Voltar";
-            btnVoltar.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            btnVoltar.UseVisualStyleBackColor = false;
-            btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
-            // 
-            // btnFechar
-            // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
-            this.btnFechar.Location = new System.Drawing.Point(817, 11);
-            this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(16, 16);
-            this.btnFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnFechar.TabIndex = 10;
-            this.btnFechar.TabStop = false;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(801, 11);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMaximizar.TabIndex = 9;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Visible = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(785, 11);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(16, 16);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimizar.TabIndex = 8;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            // 
             // AdicionarAlgariacaoPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,7 +366,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarAlgariacaoPaciente";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdicionarAlgariacaoPaciente";
             this.Load += new System.EventHandler(this.AdicionarAlgariacaoPaciente_Load);

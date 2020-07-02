@@ -97,7 +97,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.painelPrincipal = new System.Windows.Forms.Panel();
-            this.enfermeiroBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -112,7 +111,6 @@
             this.groupBoxSexo.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.painelPrincipal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.enfermeiroBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDia
@@ -927,10 +925,6 @@
             this.painelPrincipal.Size = new System.Drawing.Size(1350, 750);
             this.painelPrincipal.TabIndex = 3;
             // 
-            // enfermeiroBindingSource
-            // 
-            this.enfermeiroBindingSource.DataSource = typeof(GestaoClinicaEnfermagemProjetoInformatico.Enfermeiro);
-            // 
             // EditUtente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -940,7 +934,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditUtente";
-            this.ShowInTaskbar = false;
             this.Text = "EditUtente";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.EditUtente_Load);
@@ -964,14 +957,11 @@
             this.groupBoxSexo.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.painelPrincipal.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.enfermeiroBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.BindingSource enfermeiroBindingSource;
         private System.Windows.Forms.Label lblDia;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.PictureBox btnMaximizar;

@@ -42,16 +42,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     string queryInsertData = "INSERT INTO Alergia(Nome,Sintomas) VALUES(@Nome, @Sintomas);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.Parameters.AddWithValue("@Nome", txtNome.Text);
-                    sqlCommand.Parameters.AddWithValue("@Sintomas", txtSintomas.Text);
+                    sqlCommand.Parameters.AddWithValue("@Nome", nome);
+                    sqlCommand.Parameters.AddWithValue("@Sintomas", sintomas);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Alergia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar a alergia", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a alergia", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -137,6 +137,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             txtNome.Text = "";
             txtSintomas.Text = "";
+            errorProvider.Clear();
         }
 
         private void panelFormulario_Paint(object sender, PaintEventArgs e)

@@ -232,9 +232,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar a Espirometria!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a Espirometria!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -282,8 +282,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (var > 0)
             {
-                MessageBox.Show("A data tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataVacinacao, "A data tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data de registo tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataVacinacao, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
@@ -308,6 +308,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             cbMista.Checked = false;
             txtObservacoes.Text = "";
             lblEscala.Text = "";
+            errorProvider.Clear();
         }
         private void btnLocalizacaoDor_Click(object sender, EventArgs e)
         {

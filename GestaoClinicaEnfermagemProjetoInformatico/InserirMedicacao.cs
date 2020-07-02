@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DGVPrinterHelper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using iText.IO.Image;
+using iText.Kernel.Geom;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
@@ -266,9 +274,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar a medicação", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a medicação", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -295,6 +303,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 return false;
             }
+
+           
             return true;
         }
 
@@ -317,8 +327,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from Medicacao WHERE data = '" + DateTime.Now.ToString("MM/dd/yyyy") + "' ORDER BY data asc, medicamentos asc", conn);
-
+            SqlCommand cmd = new SqlCommand("select * from Medicacao WHERE IdPaciente = @IdPaciente AND data = '" + DateTime.Now.ToString("MM/dd/yyyy") + "' ORDER BY data asc, medicamentos asc", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -387,35 +397,323 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         Bitmap bitmap;
         private void button3_Click(object sender, EventArgs e)
         {
-            printPreviewDialog1.Document = this.printDocument1;
-            this.printDocument1.DefaultPageSettings.Landscape = true;
-            printDocument1.OriginAtMargins = false;
-            printDialog1.Document = this.printDocument1;
+            if (dataGridViewMedicacao.RowCount <= 0)
+            {
+                MessageBox.Show("Tem de ter medicamentos registados para poder imprimir a prescrição!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            printPreviewDialog1.ShowDialog();
-
-            /* this.printDocument1.DefaultPageSettings.Landscape = true;
-
-             printPreviewDialog1.Document = printDocument1;
-             printPreviewDialog1.ShowDialog();*/
-            /* this.WindowState = FormWindowState.Maximized;
-             printPreviewDialog1.Document = this.printDocument1;
-             this.printDocument1.DefaultPageSettings.Landscape = true;
-             printDocument1.OriginAtMargins = false;
-             printDialog1.Document = this.printDocument1;
-
-             printPreviewDialog1.ShowDialog();
-
-             if (printDialog1.ShowDialog() == DialogResult.OK)
-             {
-                 this.printDocument1.Print();
-             }*/
+            }
+            if (dataGridViewMedicacao.RowCount > 0)
+            {
+                try
+                {
 
 
+                // Must have write permissions to the path folder
+                //prevenir excepcao
+                PdfWriter writer = new PdfWriter("C:\\Users\\Asus\\Desktop\\Escola\\1_2019-2020\\0_ProjetoInformatico\\" + paciente.Nome +".pdf");
+                PdfDocument pdf = new PdfDocument(writer);
+                Document document = new Document(pdf);
+                //  PageOrientationsEventHandler eventHandler = new PageOrientationsEventHandler();
+                //  pdfDoc.addEventHandler(PdfDocumentEvent.START_PAGE, eventHandler);
+                this.printDocument1.DefaultPageSettings.Landscape = true;
+
+
+                Paragraph header = new Paragraph("SILTES SAÚDE - Clinica de Enfermagem").SetTextAlignment(TextAlignment.CENTER).SetFontSize(20);
+                iText.Layout.Element.Image img = new iText.Layout.Element.Image(ImageDataFactory.Create(@"C:\Users\Asus\Desktop\Escola\1_2019-2020\0_ProjetoInformatico\logo.jpg")).SetTextAlignment(TextAlignment.CENTER);
+                Paragraph text = new Paragraph("Paciente:" + paciente.Nome).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
+                Paragraph text1 = new Paragraph("NIF:" + paciente.Nif).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
+                Paragraph text2 = new Paragraph("Email:" + paciente.Email).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
+                Paragraph text3 = new Paragraph("Contacto:" + paciente.Contacto).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
+                    Paragraph text4 = new Paragraph("\n").SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                    Paragraph text5 = new Paragraph("\n").SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                    Paragraph text6 = new Paragraph("Medicação Prescrita:").SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+
+                    document.Add(img);
+                    document.Add(header);
+                    document.Add(text);
+                    document.Add(text1);
+                    document.Add(text2);
+                    document.Add(text3);
+                    document.Add(text4);
+                    document.Add(text5);
+                    document.Add(text6);
+
+
+                    //Table table = new Table(14, true);
+
+                    /* Cell cellHeader1 = new Cell(1, 1).Add(new Paragraph("Medicação")).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8); 
+                     Cell cellHeader2 = new Cell(1, 1).Add(new Paragraph("Jejum")).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8); 
+                     Cell cellHeader3 = new Cell(1, 1).Add(new Paragraph("Quant. Jejum")).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                     Cell cellHeader4 = new Cell(1, 1).Add(new Paragraph("Pequeno Almoço")).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                     Cell cellHeader5 = new Cell(1, 1).Add(new Paragraph("Quant. Pequeno Almoço")).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                     Cell cellHeader6 = new Cell(1, 1).Add(new Paragraph("Almoço")).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                     Cell cellHeader7 = new Cell(1, 1).Add(new Paragraph("Quant. Almoço")).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                     Cell cellHeader8 = new Cell(1, 1).Add(new Paragraph("Lanche")).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                     Cell cellHeader9 = new Cell(1, 1).Add(new Paragraph("Quant. Lanche")).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                     Cell cellHeader10 = new Cell(1, 1).Add(new Paragraph("Jantar")).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                     Cell cellHeader11 = new Cell(1, 1).Add(new Paragraph("Quant. Jantar")).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                     Cell cellHeader12 = new Cell(1, 1).Add(new Paragraph("Deitar")).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                     Cell cellHeader13 = new Cell(1, 1).Add(new Paragraph("Quant. Deitar")).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                     Cell cellHeader14 = new Cell(1, 1).Add(new Paragraph("Outras Indicações")).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);*/
+
+
+                    /*  table.AddCell(cellHeader1);
+                  table.AddCell(cellHeader2);
+                  table.AddCell(cellHeader3);
+                  table.AddCell(cellHeader4);
+                  table.AddCell(cellHeader5);
+                  table.AddCell(cellHeader6);
+                  table.AddCell(cellHeader7);
+                  table.AddCell(cellHeader8);
+                  table.AddCell(cellHeader9);
+                  table.AddCell(cellHeader10);
+                  table.AddCell(cellHeader11);
+                  table.AddCell(cellHeader12);
+                  table.AddCell(cellHeader13);
+                  table.AddCell(cellHeader14);*/
+
+                    foreach (var item in listaMedicacao)
+                {
+                        Paragraph header1;
+                        Paragraph header2;
+                        Paragraph header3;
+                        Paragraph header4;
+                        Paragraph header5;
+                        Paragraph header6;
+                        Paragraph header7;
+                        Paragraph header8;
+                        Paragraph header9;
+                        Paragraph header10;
+                        Paragraph header11;
+                        Paragraph header12;
+                        Paragraph header13;
+                        Paragraph header14;
+                        Paragraph header15;
+
+                        header15 = new Paragraph("--------------------------------------------------------------------------------------------").SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+
+                        header1 = new Paragraph("Medicação: " + item.medicamentos).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                        
+
+                        if (item.jejum.Equals(String.Empty))
+                        {
+                            header2 = new Paragraph("");
+                        }
+                        else
+                        {
+                            header2 = new Paragraph("Jejum: " + item.jejum).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+
+                        }
+
+                        if (item.quantJejum.Equals(String.Empty))
+                        {
+                            header3 = new Paragraph("");
+                        }
+                        else
+                        {
+                            header3 = new Paragraph("Quant.Jejum: " + item.quantJejum).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                        }
+                        
+                      
+                        if (item.peqAlmoco.Equals(String.Empty))
+                        {
+                            header4 = new Paragraph("");
+                        }
+                        else
+                        {
+                            header4 = new Paragraph("Pequeno Almoço:" + item.peqAlmoco).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                        }
+
+                        if (item.quantPeqAlmoco.Equals(String.Empty))
+                        {
+                            header5 = new Paragraph("");
+                        }
+                        else
+                        {
+                            header5 = new Paragraph("Quant. Pequeno Almoço: " + item.quantPeqAlmoco).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                        }
+                        if (item.almoco.Equals(String.Empty))
+                        {
+                            header6 = new Paragraph("");
+                        }
+                        else
+                        {
+                            header6 = new Paragraph("Almoço: " + item.almoco).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                        }
+
+                        if (item.quantAlmoco.Equals(String.Empty))
+                        {
+                            header7 = new Paragraph("");
+                        }
+                        else
+                        {
+                            header7 = new Paragraph("Quant. Almoço: " + item.quantAlmoco).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                        }
+
+                        if (item.lanche.Equals(String.Empty))
+                        {
+                            header8 = new Paragraph("");
+                        }
+                        else
+                        {
+                            header8 = new Paragraph("Lanche: " + item.lanche).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                        }
+
+                        if (item.quantLanche.Equals(String.Empty))
+                        {
+                            header9 = new Paragraph("");
+                        }
+                        else
+                        {
+                            header9 = new Paragraph("Quant. Lanche" + item.quantLanche).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                        }
+
+                        if (item.jantar.Equals(String.Empty))
+                        {
+                            header10 = new Paragraph("");
+                        }
+                        else
+                        {
+                            header10 = new Paragraph("Jantar" + item.jantar).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                        }
+
+                        if (item.quantJantar.Equals(String.Empty))
+                        {
+                            header11 = new Paragraph("");
+                        }
+                        else
+                        {
+                            header11 = new Paragraph("Quant. Jantar" + item.quantJantar).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                        }
+
+                        if (item.deitar.Equals(String.Empty))
+                        {
+                            header12 = new Paragraph("");
+                        }
+                        else
+                        {
+                            header12 = new Paragraph("Deitar" + item.deitar).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                        }
+
+
+                        if (item.quantDeitar.Equals(String.Empty))
+                        {
+                            header13 = new Paragraph("");
+                        }
+                        else
+                        {
+                            header13 = new Paragraph("Quant. Deitar" + item.quantDeitar).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10); ;
+                        }
+
+                        if (item.observacoes.Equals(String.Empty))
+                        {
+                            header14 = new Paragraph("");
+                        }
+                        else
+                        {
+                            header14 = new Paragraph("Outras Indicações:" + item.observacoes).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                        }
+
+                        /*  if (item.)
+                          {
+
+                          }*/
+                        // Cell cell1 = new Cell(1, 1).Add(new Paragraph(item.data));
+                        // Cell cell2 = new Cell(1, 1).Add(new Paragraph(item.medicamentos)).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                        /*   Cell cell3 = new Cell(1, 1).Add(new Paragraph(item.jejum)).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                       Cell cell4 = new Cell(1, 1).Add(new Paragraph(item.quantJejum)).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                       Cell cell5 = new Cell(1, 1).Add(new Paragraph(item.peqAlmoco)).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                       Cell cell6 = new Cell(1, 1).Add(new Paragraph(item.quantPeqAlmoco)).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                       Cell cell7 = new Cell(1, 1).Add(new Paragraph(item.almoco)).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                       Cell cell8 = new Cell(1, 1).Add(new Paragraph(item.quantAlmoco)).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                       Cell cell9 = new Cell(1, 1).Add(new Paragraph(item.lanche)).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                       Cell cell10 = new Cell(1, 1).Add(new Paragraph(item.quantLanche)).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                       Cell cell11 = new Cell(1, 1).Add(new Paragraph(item.jantar)).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                       Cell cell12 = new Cell(1, 1).Add(new Paragraph(item.quantJantar)).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                       Cell cell13 = new Cell(1, 1).Add(new Paragraph(item.deitar)).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                       Cell cell14 = new Cell(1, 1).Add(new Paragraph(item.quantDeitar)).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
+                       Cell cell15 = new Cell(1, 1).Add(new Paragraph(item.observacoes)).SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);*/
+
+                        //  table.AddCell(cell1);
+
+                        /*  table.AddCell(cell2);
+                          table.AddCell(cell3);
+                          table.AddCell(cell4);
+                          table.AddCell(cell5);
+                          table.AddCell(cell6);
+                          table.AddCell(cell7);
+                          table.AddCell(cell8);
+                          table.AddCell(cell9);
+                          table.AddCell(cell10);
+                          table.AddCell(cell11);
+                          table.AddCell(cell12);
+                          table.AddCell(cell13);
+                          table.AddCell(cell14);
+                          table.AddCell(cell15);*/
+                        document.Add(header15);
+                        document.Add(header1);
+                        document.Add(header2);
+                        document.Add(header3);
+                        document.Add(header4);
+                        document.Add(header5);
+                        document.Add(header6);
+                        document.Add(header7);
+                        document.Add(header8);
+                        document.Add(header9);
+                        document.Add(header10);
+                        document.Add(header11);
+                        document.Add(header12);
+                        document.Add(header13);
+                        document.Add(header14);
+
+                    }
+
+                    // Page numbers
+                    int n = pdf.GetNumberOfPages();
+                for (int i = 1; i <= n; i++)
+                {
+                    document.ShowTextAligned(new Paragraph(String.Format("página" + i + " de " + n)), 559, 806, i, TextAlignment.RIGHT, VerticalAlignment.TOP, 0);
+                }
+
+              
+               // document.Add(table);
+
+                document.Close();
+
+
+                MessageBox.Show("Documento com a prescrição criado com Sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+                openFileDialog1.InitialDirectory = "C:\\Users\\Asus\\Desktop\\Escola\\1_2019-2020\\0_ProjetoInformatico\\";
+                openFileDialog1.Filter = "PDF files (*.pdf)|*.pdf";
+
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    System.Diagnostics.Process.Start(openFileDialog1.FileName);
+                }
+
+
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Por erro interno foi impossível criar o documento com a prescrição médica! \nVerifique se não tem nenhum documento com o nome do Paciente aberto, se estiver feche o documento e volte a tentar!","Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = "C:\\Users\\Asus\\Desktop\\Escola\\1_2019-2020\\0_ProjetoInformatico\\";
+            openFileDialog1.Filter = "PDF files (*.pdf)|*.pdf";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                System.Diagnostics.Process.Start(openFileDialog1.FileName);
+            }
+
             // e.Graphics.DrawImage(bitmap, 0, 0);
             /* int width = 1100;
              int height = 768;
@@ -428,15 +726,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                  e.Graphics.DrawImage(objetoBMP, 0, 0);
              e.Graphics.DrawString(label2.Text, new Font("Verdana", 18, FontStyle.Regular), Brushes.Black, new Point(700, 768));
              */
+            //DGVPrinter dGVPrinter = new DGVPrinter();
 
-            int height = dataGridViewMedicacao.Height;
-            dataGridViewMedicacao.Height = dataGridViewMedicacao.RowCount * dataGridViewMedicacao.RowTemplate.Height * 2;
-            bitmap = new Bitmap(dataGridViewMedicacao.Width, dataGridViewMedicacao.Height);
-            dataGridViewMedicacao.DrawToBitmap(bitmap, new Rectangle(0, 0, dataGridViewMedicacao.Width, dataGridViewMedicacao.Height));
-             //printPreviewDialog1.PrintPreviewControl.Zoom = 1;
-            // printPreviewDialog1.ShowDialog();
-            dataGridViewMedicacao.Height = height;
-            e.Graphics.DrawImage(bitmap, 10, 10);
+            /*  int height = dataGridViewMedicacao.Height;
+              dataGridViewMedicacao.Height = dataGridViewMedicacao.RowCount * dataGridViewMedicacao.RowTemplate.Height * 2;
+              bitmap = new Bitmap(dataGridViewMedicacao.Width, dataGridViewMedicacao.Height);
+              dataGridViewMedicacao.DrawToBitmap(bitmap, new Rectangle(0, 0, dataGridViewMedicacao.Width, dataGridViewMedicacao.Height));
+               //printPreviewDialog1.PrintPreviewControl.Zoom = 1;
+              // printPreviewDialog1.ShowDialog();
+              dataGridViewMedicacao.Height = height;
+              e.Graphics.DrawImage(bitmap, 10, 10);*/
 
 
         }
@@ -522,5 +821,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 txtQuantidadeDeitar.Enabled = false;
             }
         }
+
+       
     }
 }

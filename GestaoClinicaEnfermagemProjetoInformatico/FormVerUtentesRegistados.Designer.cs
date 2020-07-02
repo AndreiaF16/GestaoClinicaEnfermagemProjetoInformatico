@@ -479,7 +479,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormVerUtentesRegistados";
-            this.ShowInTaskbar = false;
             this.Text = "FormVerUtentesRegistados";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormVerUtentesRegistados_Load_1);

@@ -13,7 +13,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class AdicionarCrioterapiaPaciente : Form
     {
-        Point point;
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
@@ -229,9 +228,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar os dados da crioterapia", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar os dados da crioterapia", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -246,11 +245,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (local == string.Empty)
             {
-                MessageBox.Show("Campos Obrigatórios, por favor preencha-os!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campo Obrigatório, por favor preencha a localização!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (textBox1.Text == string.Empty)
                 {
-                    MessageBox.Show("Localização é obrigatória. \n Se por ventura inseriu, selecione o texto das caixas (uma de cada vez), carregue ENTER e volte a tentar guardar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("A localização é obrigatória. \n Se por ventura inseriu, selecione o texto das caixas (uma de cada vez), carregue ENTER e volte a tentar guardar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     errorProvider.SetError(textBox1, "A localização é obrigatória!");
                 }
                 return false;
@@ -258,8 +257,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (var > 0)
             {
-                MessageBox.Show("A data tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataRegisto, "A data tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data de registo tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRegisto, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
@@ -275,7 +274,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 DateTime dataR = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
                 if (dataRegisto.Value.ToShortDateString().Equals(dataR.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"])
                 {
-                    MessageBox.Show("Não é possível registar, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Não é possível registar, porque já está registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     conn.Close();
                     return false;
                 }

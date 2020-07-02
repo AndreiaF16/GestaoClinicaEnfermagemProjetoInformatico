@@ -99,9 +99,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     txtTipoParto.Text = "";
                     txtObservações.Text = "";
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Erro interno, não foi possível registar o tipo de parto!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível registar o tipo de parto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -112,7 +112,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (tipoParto == string.Empty)
             {
-                MessageBox.Show("Campo Obrigatório, por favor preencha o campo tipo de parto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campo Obrigatório, por favor preencha o tipo de parto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (txtTipoParto.Text == string.Empty)
                 {
@@ -133,6 +133,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             txtTipoParto.Text = "";
             txtObservações.Text = "";
+            errorProvider.Clear();
         }
     }
 }

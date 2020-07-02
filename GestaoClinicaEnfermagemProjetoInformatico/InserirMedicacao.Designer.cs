@@ -327,7 +327,6 @@
             this.rbSimDeitar.TabStop = true;
             this.rbSimDeitar.Text = "Sim";
             this.rbSimDeitar.UseVisualStyleBackColor = true;
-            this.rbSimDeitar.CheckedChanged += new System.EventHandler(this.rbSimDeitar_CheckedChanged);
             // 
             // groupBox6
             // 
@@ -368,7 +367,6 @@
             this.rbSimJantar.TabStop = true;
             this.rbSimJantar.Text = "Sim";
             this.rbSimJantar.UseVisualStyleBackColor = true;
-            this.rbSimJantar.CheckedChanged += new System.EventHandler(this.rbSimJantar_CheckedChanged);
             // 
             // groupBox4
             // 
@@ -409,7 +407,6 @@
             this.rbSimLanche.TabStop = true;
             this.rbSimLanche.Text = "Sim";
             this.rbSimLanche.UseVisualStyleBackColor = true;
-            this.rbSimLanche.CheckedChanged += new System.EventHandler(this.rbSimLanche_CheckedChanged);
             // 
             // groupBox5
             // 

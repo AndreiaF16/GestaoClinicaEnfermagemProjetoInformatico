@@ -136,6 +136,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void limparCampos()
         {
+            errorProvider.Clear();
             dataRegisto.Value = DateTime.Today;
             var bmp = new Bitmap(GestaoClinicaEnfermagemProjetoInformatico.Properties.Resources.identificacaoAnatomica1_jpg);
             pictureBoxCorpo.Image = bmp;
@@ -184,9 +185,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -212,8 +213,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (var > 0)
             {
-                MessageBox.Show("A data tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataRegisto, "A data tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data tem de ser inferior ou igual à data de hoje!\nSelecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRegisto, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
@@ -231,7 +232,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 DateTime dataR = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
                 if (dataRegisto.Value.ToShortDateString().Equals(dataR.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"])
                 {
-                    MessageBox.Show("Não é possível registar, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Não é possível registar, porque já esta registado na data que selecionou!\n Selecione outra data!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     conn.Close();
                     return false;
                 }

@@ -308,7 +308,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarZaragatoaOnofaringePaciente";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdicionarZaragatoaOnofaringePaciente";
             this.Load += new System.EventHandler(this.AdicionarZaragatoaOnofaringePaciente_Load);

@@ -98,9 +98,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Erro interno, impossível inserir o exame", excep.Message);
+                    MessageBox.Show("Erro interno, impossível inserir o exame", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -209,7 +209,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
-                MessageBox.Show("A data do exame tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data do exame tem de ser inferior ou igual à data de hoje!  \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -239,7 +239,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 int exame = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
                 if (dataDiagnostico.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && exame == (int)reader["idTipoExame"])
                 {
-                    MessageBox.Show("Não é possível registar esse exame, porque já esta registada na data que selecionou. Escolha outra data ou outro exame!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Não é possível registar esse exame, porque já esta registado na data que selecionou.\nEscolha outra data ou outro exame!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     conn.Close();
                     return false;
                 }
@@ -262,6 +262,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void limparCampos()
         {
+            errorProvider.Clear();
             txtProcurar.Text = "";
             txtObservacoes.Text = "";
             dataDiagnostico.Value = DateTime.Today;

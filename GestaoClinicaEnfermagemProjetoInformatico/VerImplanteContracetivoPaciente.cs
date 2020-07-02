@@ -69,7 +69,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.Open();
             com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select data, dataColocacao, dataRetirada, observacoes from ImplanteContracetivo ORDER BY data asc", conn);
+            SqlCommand cmd = new SqlCommand("select data, dataColocacao, dataRetirada, observacoes from ImplanteContracetivo WHERE IdPaciente = @IdPaciente ORDER BY data asc, dataColocacao asc,dataRetirada asc ", conn);
+            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())

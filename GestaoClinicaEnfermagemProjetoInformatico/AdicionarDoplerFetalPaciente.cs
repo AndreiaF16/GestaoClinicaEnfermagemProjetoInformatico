@@ -154,10 +154,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
 
-                    MessageBox.Show("Por erro interno é impossível registar o Dopler Fetal!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o Dopler Fetal!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -176,22 +176,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (var > 0)
             {
-                MessageBox.Show("A data de registo da colcitologia tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataDPP, "A data tem de ser inferior à data de hoje!");
+                MessageBox.Show("A data de registo da colcitologia tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataDPP, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
             if (var2 > 0)
             {
-                MessageBox.Show("A data do DPPC do DIU tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataDPPC, "A data do DPPC tem de ser inferior à data de hoje!");
+                MessageBox.Show("A data do DPPC do DIU tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataDPPC, "A data do DPPC tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
             if (var3 > 0)
             {
-                MessageBox.Show("A data da ecografia tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataEcografia, "A data da ecografia tem de ser inferior à data de hoje!");
+                MessageBox.Show("A data da ecografia tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataEcografia, "A data da ecografia tem de ser inferior ou igual à data de hoje!");
                 return false;
             }          
             return true;

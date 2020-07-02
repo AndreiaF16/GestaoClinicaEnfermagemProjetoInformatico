@@ -618,10 +618,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     }
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
 
-                    MessageBox.Show("Por erro interno é impossível registar a(s) atitude(s) Terapêutica(s)!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a(s) atitude(s) Terapêutica(s)!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -780,7 +780,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
                     if (dataRegistoHoje.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && id == (int)reader["IdAtitude"])
                     {
-                        MessageBox.Show("Não é possível registar a Colheita Expectoração, porque já esta registado na data de hoje!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Não é possível registar a Colheita Expectoração, porque já esta registado na data de hoje!\n Seleciona outra data!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         conn.Close();
                         return false;
                     }

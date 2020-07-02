@@ -161,15 +161,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     linha.Show();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
 
                     if (conn.State == ConnectionState.Open)
                     {
                         conn.Close();
                     }
-                    MessageBox.Show("Por erro interno é impossível registar a encomenda", excep.Message);
-
+                    MessageBox.Show("Por erro interno é impossível registar a encomenda!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -337,7 +336,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (var < 0)
             {
-                MessageBox.Show("A data de entrega prevista não pode ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data de entrega prevista não pode ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -385,6 +384,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void limparCampos()
         {
             txtNumeroEncomenda.Text = "";
+            
             dataEntregaPrevista.Value = DateTime.Today;
             reiniciar();
         }

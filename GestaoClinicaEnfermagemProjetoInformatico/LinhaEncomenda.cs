@@ -93,9 +93,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         conn.Close();
                         this.Close();
                     }
-                    catch (SqlException excep)
+                    catch (SqlException)
                     {
-                        MessageBox.Show("Por erro interno é impossível registar a encomenda", excep.Message);
+                        MessageBox.Show("Por erro interno é impossível registar a encomenda", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else

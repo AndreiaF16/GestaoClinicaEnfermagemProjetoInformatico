@@ -343,9 +343,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     conn.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar a avaliação objetivo", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a avaliação objetivo", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -405,7 +405,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
-                MessageBox.Show("A data da avaliação objetivo tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data da avaliação objetivo tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -613,11 +613,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             metodoContracetivo.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Ainda NÃO IMPLEMENTADO");
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             limparCampos();
@@ -625,6 +620,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void limparCampos()
         {
+            errorProvider.Clear();
             dataAvaliacaoObjetivo.Value = DateTime.Today;
             dataUltimaMenstruacao.Value = DateTime.Today;
             UpDownPeso.Value = 0;

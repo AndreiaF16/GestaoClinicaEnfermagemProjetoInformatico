@@ -189,10 +189,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@silastic", DBNull.Value);
                     }
 
-
-
-                    
-
                     if (obs != string.Empty)
                     {
                         sqlCommand.Parameters.AddWithValue("@obs", Convert.ToString(obs));
@@ -208,10 +204,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
 
-                    MessageBox.Show("Por erro interno é impossível registar a algariação!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a algariação!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -242,15 +238,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (var > 0)
             {
-                MessageBox.Show("A data tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataRegistoMed, "A data tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data de registo tem de ser inferior à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRegistoMed, "A data tem de ser inferior à data de hoje!");
                 return false;
             }
 
             if (var2 < 0)
             {
-                MessageBox.Show("A data tem de ser superior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataRegistoMed, "A data tem de ser superior a data de hoje!");
+                MessageBox.Show("A data da próxima realgariação tem de ser superior à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRegistoMed, "A data tem de ser superior à data de hoje!");
                 return false;
             }
 
@@ -268,14 +264,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
                 if (dataRegistoMed.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && id == (int)reader["IdAtitude"])
                 {
-                    MessageBox.Show("Não é possível registar, porque já esta registado na data que selecionou!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Não é possível registar a algariação, porque já está um registo na data que selecionou! \n Selecione outra data!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     conn.Close();
                     return false;
                 }
-
             }
             conn.Close();
-
             return true;
         }
 
@@ -290,6 +284,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //this.Hide();
             VerAlgariacaoPaciente verAlgariacaoPaciente = new VerAlgariacaoPaciente(paciente);
             verAlgariacaoPaciente.Show();
         }

@@ -142,13 +142,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
                     if (conn.State == ConnectionState.Open)
                     {
                         conn.Close();
                     }
-                    MessageBox.Show("Por erro interno é impossível registar a alergia", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a alergia", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -310,8 +310,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
-                MessageBox.Show("A data da despesa tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(this.dataDespesa, "A data da despesa tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data da despesa tem de ser inferior ou igual à data de hoje!\n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(this.dataDespesa, "A data da despesa tem de ser inferior ou igual à data de hoje!");
                 
                 
                 return false;

@@ -90,9 +90,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     txtNomeMetodo.Text = "";
                     txtObservacoes.Text = "";
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar o método contracetivo!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o método contracetivo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -134,6 +134,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             txtNomeMetodo.Text = "";
             txtObservacoes.Text = "";
+            errorProvider.Clear();
         }
     }
 }

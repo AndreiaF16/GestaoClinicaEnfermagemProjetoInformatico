@@ -103,9 +103,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -131,8 +131,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (var > 0)
             {
-                MessageBox.Show("A data de registo tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataRegisto, "A data tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data de registo tem de ser inferior ou igual à data de hoje!\n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRegisto, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
@@ -146,6 +146,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void limparCampos()
         {
+            errorProvider.Clear();
             dataRegisto.Value = DateTime.Today;
             txtObservacoes.Text = "";
             errorProvider.Clear();

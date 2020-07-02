@@ -246,6 +246,7 @@
             this.Controls.Add(this.panelTitulo);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Audiograma";
             this.Text = "Audiograma";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

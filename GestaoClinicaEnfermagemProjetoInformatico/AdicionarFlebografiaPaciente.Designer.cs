@@ -197,7 +197,7 @@
             // 
             // dataRegistoMed
             // 
-            this.dataRegistoMed.Location = new System.Drawing.Point(150, 25);
+            this.dataRegistoMed.Location = new System.Drawing.Point(320, 25);
             this.dataRegistoMed.Name = "dataRegistoMed";
             this.dataRegistoMed.Size = new System.Drawing.Size(200, 26);
             this.dataRegistoMed.TabIndex = 13;
@@ -205,11 +205,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 30);
+            this.label7.Location = new System.Drawing.Point(183, 30);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(131, 20);
+            this.label7.Size = new System.Drawing.Size(129, 20);
             this.label7.TabIndex = 12;
-            this.label7.Text = "Data Realização:";
+            this.label7.Text = "Data de Registo:";
             // 
             // txtObservacoes
             // 
@@ -308,7 +308,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionarFlebografiaPaciente";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdicionarFlebografiaPaciente";
             this.Load += new System.EventHandler(this.AdicionarFlebografiaPaciente_Load);

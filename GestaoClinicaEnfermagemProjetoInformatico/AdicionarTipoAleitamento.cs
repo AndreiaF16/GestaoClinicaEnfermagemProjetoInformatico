@@ -90,9 +90,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     txtTipo.Text = "";
                     txtObs.Text = "";
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar o tipo de aleitamento!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o tipo de aleitamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

@@ -157,7 +157,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             Regex regexEmail = new Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
             if (!regexEmail.IsMatch(email))
             {
-                MessageBox.Show("Por favor, introduza um email válido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, introduza um email válido!\n Tem de conter '@'", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(txtEmail, "Por favor, introduza um email válido!");
                 return false;
             }
@@ -181,8 +181,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
-                MessageBox.Show("A data de nascimento tem de ser inferior à data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataNascimento, "A data de nascimento tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data de nascimento tem de ser inferior ou igual à data de hoje!\n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataNascimento, "A data de nascimento tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
             else
@@ -256,10 +256,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         this.Close();
                     conn.Close();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
 
-                    MessageBox.Show("Por erro interno é impossível registar a o enfermeiro", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a o enfermeiro", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                
                 }
@@ -358,7 +358,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataNascimento.Value = DateTime.Today;
             txtEmail.Text = "";
             txtUsername.Text = "";
-
+            errorProvider.Clear();
 
         }
     }

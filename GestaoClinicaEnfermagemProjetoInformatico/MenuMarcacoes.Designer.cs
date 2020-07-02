@@ -521,7 +521,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MenuMarcacoes";
-            this.ShowInTaskbar = false;
             this.Text = "Marcacoes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MenuMarcacoes_Load);

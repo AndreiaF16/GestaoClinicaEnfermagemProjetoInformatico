@@ -91,9 +91,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException )
                 {
-                    MessageBox.Show("Erro interno, não foi possível registar o exame!", excep.Message);
+                    MessageBox.Show("Erro interno, não foi possível registar o exame!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

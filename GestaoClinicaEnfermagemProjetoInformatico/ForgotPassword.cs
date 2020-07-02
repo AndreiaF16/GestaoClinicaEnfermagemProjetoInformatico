@@ -39,12 +39,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     cmd.ExecuteNonQuery();
                     conn.Close();
 
-                    MessageBox.Show("Passe mudada com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Palavra passe mudada com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show("Por erro interno é impossível alterar a palavra passe", ex.ToString());
+                    MessageBox.Show("Por erro interno é impossível alterar a palavra passe", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
             }
@@ -61,12 +61,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string confirmaPassword = txtConfirmarNovaPassword.Text;
             if (!ValidarForcaSenha() && (password == confirmaPassword))
             {
-                MessageBox.Show("A password tem que conter no minimo 6 caracteres, dos quais devem ser numeros, letras maiusculas e minusculas", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("A palavra passe tem que conter no minimo 6 caracteres, dos quais devem ser: \nNúmeros, letras maiúsculas e minusculas", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (txtNovaPassword.Text != txtConfirmarNovaPassword.Text)
             {
-                MessageBox.Show("As passwors não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("As palavras passes não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

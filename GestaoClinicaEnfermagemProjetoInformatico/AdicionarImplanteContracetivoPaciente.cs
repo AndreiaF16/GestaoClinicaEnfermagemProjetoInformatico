@@ -117,10 +117,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
 
-                    MessageBox.Show("Por erro interno é impossível registar o Implante Contracetivo SubDérmico!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar o Implante Contracetivo SubDérmico!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -151,32 +151,47 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (var > 0)
             {
-                MessageBox.Show("A data tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataRegistoMed, "A data tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data de registo tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRegistoMed, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
             if (var2 > 0)
             {
-                MessageBox.Show("A data de colocacao tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataColocacao, "A data tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data de colocação tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataColocacao, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
             if (var3 < 0)
             {
-                MessageBox.Show("A data de retirada tem de ser superior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataRetirada, "A data tem de ser superior a data de hoje!");
+                MessageBox.Show("A data de retirada do DIU tem de ser superior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRetirada, "A data tem de ser superior òu igual à data de hoje!");
                 return false;
             }
 
-            if (var2 > var3)
+            if (var3 == var2)
             {
-                MessageBox.Show("A data de retirada tem de ser superior a data de colocação!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataColocacao, "A data tem de ser inferior a data de hoje!");
+                MessageBox.Show("A data de retirada do DIU e de colocação do mesmo não podem ser iguais! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRetirada, "As datas não podem ser iguais!");
+                errorProvider.SetError(dataColocacao, "As datas não podem ser iguais!");
+
                 return false;
             }
 
+            /* if (var2 > var3)
+             {
+                 MessageBox.Show("A data de retirada do DIU tem de ser superior à data de colocação do mesmo! \n Corrija as datas!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 errorProvider.SetError(dataColocacao, "A data tem de ser superior à data de retirada!");
+                 return false;
+             }*/
+
+            if (var3 < var2)
+            {
+                MessageBox.Show("A data de colocação do DIU tem de ser inferior à data de retirada do mesmo! \n Corrija as datas!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataRetirada, "A data tem de ser inferior à data de colocação!");
+                return false;
+            }
 
             conn.Open();
             com.Connection = conn;

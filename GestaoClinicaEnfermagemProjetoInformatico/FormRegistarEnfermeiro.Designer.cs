@@ -469,7 +469,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(680, 500);
             this.Name = "FormRegistarEnfermeiro";
-            this.ShowInTaskbar = false;
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormRegistarEnfermeiro_Load);

@@ -52,6 +52,8 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblDataNascimento = new System.Windows.Forms.Label();
+            this.dataNascimento = new System.Windows.Forms.DateTimePicker();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.lblNome = new System.Windows.Forms.Label();
             this.painelPrincipal = new System.Windows.Forms.Panel();
@@ -59,8 +61,6 @@
             this.btnVoltar = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelPrincipal = new System.Windows.Forms.Panel();
-            this.lblDataNascimento = new System.Windows.Forms.Label();
-            this.dataNascimento = new System.Windows.Forms.DateTimePicker();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
@@ -331,6 +331,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados:";
             // 
+            // lblDataNascimento
+            // 
+            this.lblDataNascimento.AutoSize = true;
+            this.lblDataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataNascimento.ForeColor = System.Drawing.Color.Black;
+            this.lblDataNascimento.Location = new System.Drawing.Point(36, 125);
+            this.lblDataNascimento.Name = "lblDataNascimento";
+            this.lblDataNascimento.Size = new System.Drawing.Size(136, 20);
+            this.lblDataNascimento.TabIndex = 18;
+            this.lblDataNascimento.Text = "Data Nascimento:";
+            // 
+            // dataNascimento
+            // 
+            this.dataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataNascimento.Location = new System.Drawing.Point(192, 119);
+            this.dataNascimento.Name = "dataNascimento";
+            this.dataNascimento.Size = new System.Drawing.Size(513, 26);
+            this.dataNascimento.TabIndex = 19;
+            this.dataNascimento.Value = new System.DateTime(2020, 5, 17, 0, 0, 0, 0);
+            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -426,26 +446,6 @@
             this.panelPrincipal.Size = new System.Drawing.Size(1385, 782);
             this.panelPrincipal.TabIndex = 2;
             // 
-            // lblDataNascimento
-            // 
-            this.lblDataNascimento.AutoSize = true;
-            this.lblDataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataNascimento.ForeColor = System.Drawing.Color.Black;
-            this.lblDataNascimento.Location = new System.Drawing.Point(36, 125);
-            this.lblDataNascimento.Name = "lblDataNascimento";
-            this.lblDataNascimento.Size = new System.Drawing.Size(136, 20);
-            this.lblDataNascimento.TabIndex = 18;
-            this.lblDataNascimento.Text = "Data Nascimento:";
-            // 
-            // dataNascimento
-            // 
-            this.dataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataNascimento.Location = new System.Drawing.Point(192, 119);
-            this.dataNascimento.Name = "dataNascimento";
-            this.dataNascimento.Size = new System.Drawing.Size(513, 26);
-            this.dataNascimento.TabIndex = 19;
-            this.dataNascimento.Value = new System.DateTime(2020, 5, 17, 0, 0, 0, 0);
-            // 
             // EnfermeiroPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -457,7 +457,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EnfermeiroPerfil";
-            this.ShowInTaskbar = false;
             this.Text = "EnfermeiroPerfil";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.EnfermeiroPerfil_Load);

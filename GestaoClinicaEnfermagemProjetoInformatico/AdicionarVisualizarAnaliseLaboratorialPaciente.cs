@@ -125,9 +125,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                    MessageBox.Show("Por erro interno é impossível registar a análise laboratorial!", excep.Message);
+                    MessageBox.Show("Por erro interno é impossível registar a análise laboratorial!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
             }
@@ -232,7 +232,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
-                MessageBox.Show("A data da analise tem de ser inferior a data de hoje!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data da análise laboratorial tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataDiagnostico, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
@@ -241,7 +242,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 MessageBox.Show("Campos Obrigatórios, por favor preencha a doença!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (comboBoxAnalise.Text == string.Empty)
                 {
-                    errorProvider.SetError(comboBoxAnalise, "A doença é obrigatório!");
+                    errorProvider.SetError(comboBoxAnalise, "A análise laboratorial é obrigatória!");
                 }
                 else
                 {

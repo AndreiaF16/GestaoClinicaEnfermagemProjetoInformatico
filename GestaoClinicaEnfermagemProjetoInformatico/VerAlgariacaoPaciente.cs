@@ -63,6 +63,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
+            //AdicionarAlgariacaoPaciente adicionarAlgariacaoPaciente = new AdicionarAlgariacaoPaciente(paciente);
+           // adicionarAlgariacaoPaciente.Show();
         }
 
         public void UpdateDataGridView()

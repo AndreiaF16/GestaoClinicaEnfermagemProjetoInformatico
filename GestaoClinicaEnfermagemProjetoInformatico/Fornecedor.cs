@@ -159,9 +159,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     limparCampos();
                     UpdateDataGridView();
                 }
-                catch (SqlException excep)
+                catch (SqlException)
                 {
-                   MessageBox.Show("Por erro interno é impossível registar o fornecedor!", excep.Message);
+                   MessageBox.Show("Por erro interno é impossível registar o fornecedor!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
