@@ -35,6 +35,43 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void AdicionarImplanteContracetivoPaciente_Load(object sender, EventArgs e)
         {
+            idAtitude();
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Atitude não encontrada! Deseja inserir a atitude na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Atitude(nomeAtitude) VALUES('Implante Contracetivo SubDermico');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                if (resposta == DialogResult.No)
+                {
+                    this.Close();
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idAtitude();
+        }
+
+        private void idAtitude()
+        {
             try
             {
                 conn.Open();
@@ -45,7 +82,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     id = (int)reader["IdAtitude"];
                 }
-
                 conn.Close();
             }
             catch (Exception)
@@ -55,8 +91,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     conn.Close();
                 }
                 MessageBox.Show("Por erro interno é impossível selecionar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
             }
         }
 
@@ -113,13 +147,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException)
+                catch (SqlException ex)
                 {
                     if (conn.State == ConnectionState.Open)
                     {
                         conn.Close();
                     }
-                    MessageBox.Show("Por erro interno é impossível registar o Implante Contracetivo SubDérmico!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message);/*"Por erro interno é impossível registar o Implante Contracetivo SubDérmico!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
                 }
             }
         }

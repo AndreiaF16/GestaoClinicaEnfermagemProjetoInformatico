@@ -572,11 +572,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 conn.Open();
                 com.Connection = conn;
-                SqlCommand cmd3 = new SqlCommand("select * from Exame", conn);
+                SqlCommand cmd3 = new SqlCommand("select * from TipoExame", conn);
                 SqlDataReader reader3 = cmd3.ExecuteReader();
                 while (reader3.Read())
                 {
-                    idExames = (int)reader3["idTipoExame"];
+                    idExames = (int)reader3["IdTipoExame"];
                 }
                 conn.Close();
             }

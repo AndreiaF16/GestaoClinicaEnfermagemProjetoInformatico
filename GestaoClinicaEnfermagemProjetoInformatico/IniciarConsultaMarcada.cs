@@ -404,11 +404,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 conn.Open();
                 com.Connection = conn;
-                SqlCommand cmd3 = new SqlCommand("select * from Exame", conn);
+                SqlCommand cmd3 = new SqlCommand("select * from TipoExame", conn);
                 SqlDataReader reader3 = cmd3.ExecuteReader();
                 while (reader3.Read())
                 {
-                    idExames = (int)reader3["idTipoExame"];
+                    idExames = (int)reader3["IdTipoExame"];
                 }
                 conn.Close();
             }
@@ -538,7 +538,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             idVarios();
             if (idExames == -1)
             {
-                var resposta = MessageBox.Show("Tipo de Exames não encontradas! Deseja inserir um exame na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var resposta = MessageBox.Show("Tipo de Exames não encontrados! Deseja inserir um exame na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (resposta == DialogResult.Yes)
                 {
                     RegistarExames registarExames = new RegistarExames(null);
