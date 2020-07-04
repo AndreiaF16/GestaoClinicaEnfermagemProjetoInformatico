@@ -64,7 +64,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 conn.Open();
                 com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select ig, dppData, dppcData, primeiraEcografia, escalaDor, observacoes from DopletFetal ORDER BY IdDoplerFetal asc", conn);
+                SqlCommand cmd = new SqlCommand("select ig, dppData, dppcData, primeiraEcografia, escalaDor, observacoes from DopplerFetal ORDER BY IdDoplerFetal asc", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())

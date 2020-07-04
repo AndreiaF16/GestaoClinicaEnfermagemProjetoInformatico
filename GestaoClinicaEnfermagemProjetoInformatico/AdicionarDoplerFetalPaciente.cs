@@ -58,7 +58,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO DopletFetal(IdPaciente,ig,dppData,dppcData,primeiraEcografia,escalaDor,observacoes) VALUES(@IdPaciente,@ig,@vdataDPP,@vdataDPPC,@dataPEcografia,@escalaDor,@obs);";
+                    string queryInsertData = "INSERT INTO DopplerFetal(IdPaciente,ig,dppData,dppcData,primeiraEcografia,escalaDor,observacoes) VALUES(@IdPaciente,@ig,@vdataDPP,@vdataDPPC,@dataPEcografia,@escalaDor,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     //ig
