@@ -408,16 +408,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 // Must have write permissions to the path folder
                 //prevenir excepcao
-                PdfWriter writer = new PdfWriter("C:\\Users\\Asus\\Desktop\\Escola\\1_2019-2020\\0_ProjetoInformatico\\" + paciente.Nome +".pdf");
+                PdfWriter writer = new PdfWriter("C:\\Users\\Beatriz\\Desktop\\Medicacao\\" + paciente.Nome +".pdf");
                 PdfDocument pdf = new PdfDocument(writer);
                 Document document = new Document(pdf);
                 //  PageOrientationsEventHandler eventHandler = new PageOrientationsEventHandler();
                 //  pdfDoc.addEventHandler(PdfDocumentEvent.START_PAGE, eventHandler);
                 this.printDocument1.DefaultPageSettings.Landscape = true;
+                    
 
 
                 Paragraph header = new Paragraph("SILTES SAÚDE - Clinica de Enfermagem").SetTextAlignment(TextAlignment.CENTER).SetFontSize(20);
-                iText.Layout.Element.Image img = new iText.Layout.Element.Image(ImageDataFactory.Create(@"C:\Users\Asus\Desktop\Escola\1_2019-2020\0_ProjetoInformatico\logo.jpg")).SetTextAlignment(TextAlignment.CENTER);
+                iText.Layout.Element.Image img = new iText.Layout.Element.Image(ImageDataFactory.Create(@"C:\Users\Beatriz\Documents\Projeto Informático\GestaoClinicaEnfermagemProjetoInformatico\logo.jpg")).SetTextAlignment(TextAlignment.CENTER);
                 Paragraph text = new Paragraph("Paciente:" + paciente.Nome).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
                 Paragraph text1 = new Paragraph("NIF:" + paciente.Nif).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
                 Paragraph text2 = new Paragraph("Email:" + paciente.Email).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
@@ -682,7 +683,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 MessageBox.Show("Documento com a prescrição criado com Sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-                openFileDialog1.InitialDirectory = "C:\\Users\\Asus\\Desktop\\Escola\\1_2019-2020\\0_ProjetoInformatico\\";
+                openFileDialog1.InitialDirectory = "C:\\Users\\Beatriz\\Desktop\\Medicacao\\";
                 openFileDialog1.Filter = "PDF files (*.pdf)|*.pdf";
 
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -692,10 +693,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    MessageBox.Show(ex.Message);
 
-                    MessageBox.Show("Por erro interno foi impossível criar o documento com a prescrição médica! \nVerifique se não tem nenhum documento com o nome do Paciente aberto, se estiver feche o documento e volte a tentar!","Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show("Por erro interno foi impossível criar o documento com a prescrição médica! \nVerifique se não tem nenhum documento com o nome do Paciente aberto, se estiver feche o documento e volte a tentar!","Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

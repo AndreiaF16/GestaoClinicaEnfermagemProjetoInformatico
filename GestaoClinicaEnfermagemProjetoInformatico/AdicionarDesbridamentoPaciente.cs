@@ -46,14 +46,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DateTime dataR = dataRegistoMed.Value;
-            string obs = txtObservacoes.Text;
-            string anatolico = txtAnatolico.Text;
-            string cirurgico = txtCirurgico.Text;
-            string enzimatico = txtEnzimatico.Text;
+           
 
             if (VerificarDadosInseridos())
-            {
+            {//se calhar no meu nao atualizou no pull
+                DateTime dataR = dataRegistoMed.Value;
+                string obs = txtObservacoes.Text;
+                string anatolico = txtAnatolico.Text;
+                string cirurgico = txtCirurgico.Text;
+                string enzimatico = txtEnzimatico.Text;
+
                 try
                 {
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
@@ -76,7 +78,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
 
                     //cirurgico
-                    if (obs != string.Empty)
+                    if (cirurgico != string.Empty)
                     {
                         sqlCommand.Parameters.AddWithValue("@cirurgico", Convert.ToString(cirurgico));
                     }
@@ -86,7 +88,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
 
                     //enzimatico
-                    if (obs != string.Empty)
+                    if (enzimatico != string.Empty)
                     {
                         sqlCommand.Parameters.AddWithValue("@enzimatico", Convert.ToString(enzimatico));
                     }
@@ -232,7 +234,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
                     if (dataRegistoMed.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && id == (int)reader["IdAtitude"])
                     {
-                        MessageBox.Show("Não é possível registar o Desbridamento, porque já está im registo na data que selecionou! \n Selecione outra data!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Não é possível registar o Desbridamento, porque já está um registo na data que selecionou! \n Selecione outra data!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         conn.Close();
                         return false;
                     }
