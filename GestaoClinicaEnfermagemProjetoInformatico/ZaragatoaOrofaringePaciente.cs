@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public class DesbridamentoPaciente
+    public class ZaragatoaOrofaringePaciente
     {
         public string data { get; set; }
-        public string autolico { get; set; }
-        public string enzimatico { get; set; }
-        public string cirurgico { get; set; }
+        public string zaragatoaOnofaringe { get; set; }
         public string observacoes { get; set; }
-
     }
 }

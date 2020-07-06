@@ -13,12 +13,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class AdicionarTipoAleitamento : Form
     {
-        AdicionarVisualizarAvaliacaoObjetivoBebe adicionar = null;
+        AdicionarVisualizarAvaliacaoObjetivaBebe adicionar = null;
         private ErrorProvider errorProvider = new ErrorProvider();
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
 
-        public AdicionarTipoAleitamento(AdicionarVisualizarAvaliacaoObjetivoBebe avaliacaoBebe)
+        public AdicionarTipoAleitamento(AdicionarVisualizarAvaliacaoObjetivaBebe avaliacaoBebe)
         {
             InitializeComponent();
             adicionar = avaliacaoBebe;

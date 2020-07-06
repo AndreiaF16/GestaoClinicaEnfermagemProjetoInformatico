@@ -258,7 +258,7 @@
             this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button3.Size = new System.Drawing.Size(185, 74);
             this.button3.TabIndex = 78;
-            this.button3.Text = "Espirometria";
+            this.button3.Text = "Episiotomia";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);

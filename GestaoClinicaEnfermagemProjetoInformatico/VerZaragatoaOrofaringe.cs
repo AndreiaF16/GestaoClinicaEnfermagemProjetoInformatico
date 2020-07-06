@@ -11,20 +11,27 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class VerDesbridamento : Form
+    public partial class VerZaragatoaOrofaringe : Form
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
-        private List<DesbridamentoPaciente> desbridamentoPaciente = new List<DesbridamentoPaciente>();
+        private List<ZaragatoaOrofaringePaciente> zaragatoaOnofaringePaciente = new List<ZaragatoaOrofaringePaciente>();
 
-        public VerDesbridamento(Paciente pac)
+        public VerZaragatoaOrofaringe(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+        }
+
+        private void VerZaragatoaOnofaringe_Load(object sender, EventArgs e)
+        {
+            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = zaragatoaOnofaringePaciente };
+            dataGridViewZaragatoa.DataSource = bindingSource2;
+            UpdateDataGridView();
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -41,49 +48,38 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             this.Close();
         }
 
-        private void VerDesbridamento_Load(object sender, EventArgs e)
-        {
-            var bindingSource2 = new System.Windows.Forms.BindingSource { DataSource = desbridamentoPaciente };
-            dataGridViewDesbridamento.DataSource = bindingSource2;
-            UpdateDataGridView();
-        }
-
         public void UpdateDataGridView()
         {
             try
             {
-                desbridamentoPaciente.Clear();
+                zaragatoaOnofaringePaciente.Clear();
                 conn.Open();
                 com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select data, autolico, enzimatico, cirurgico, observacoes from Desbridamento ORDER BY data asc", conn);
+                SqlCommand cmd = new SqlCommand("select data, zaragatoaOrofaringe, observacoes from ZaragatoaOrofaringe ORDER BY data asc", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
                     string data = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
-                    DesbridamentoPaciente md = new DesbridamentoPaciente
+
+                    ZaragatoaOrofaringePaciente zaragatoa = new ZaragatoaOrofaringePaciente
                     {
                         data = data,
-                        autolico = ((reader["autolico"] == DBNull.Value) ? "" : (string)reader["autolico"]),
-                        enzimatico = ((reader["enzimatico"] == DBNull.Value) ? "" : (string)reader["enzimatico"]),
-                        cirurgico = ((reader["cirurgico"] == DBNull.Value) ? "" : (string)reader["cirurgico"]),
+                        zaragatoaOnofaringe = ((reader["zaragatoaOrofaringe"] == DBNull.Value) ? "" : (string)reader["zaragatoaOrofaringe"]),
                         observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
-
                     };
-                    desbridamentoPaciente.Add(md);
+                    zaragatoaOnofaringePaciente.Add(zaragatoa);
                 }
-                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = desbridamentoPaciente };
-                dataGridViewDesbridamento.DataSource = bindingSource1;
-                dataGridViewDesbridamento.Columns[0].HeaderText = "Data de Registo";
-                dataGridViewDesbridamento.Columns[1].HeaderText = "Autolico";
-                dataGridViewDesbridamento.Columns[2].HeaderText = "Enzimático";
-                dataGridViewDesbridamento.Columns[3].HeaderText = "Cirúrgico";
-                dataGridViewDesbridamento.Columns[4].HeaderText = "Observações";
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = zaragatoaOnofaringePaciente };
+                dataGridViewZaragatoa.DataSource = bindingSource1;
+                dataGridViewZaragatoa.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewZaragatoa.Columns[1].HeaderText = "Zaragatoa Orofaringe ";
+                dataGridViewZaragatoa.Columns[2].HeaderText = "Observações";
 
                 conn.Close();
-                dataGridViewDesbridamento.Update();
-                dataGridViewDesbridamento.Refresh();
+                dataGridViewZaragatoa.Update();
+                dataGridViewZaragatoa.Refresh();
             }
             catch (Exception)
             {

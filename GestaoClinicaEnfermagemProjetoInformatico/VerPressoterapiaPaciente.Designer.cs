@@ -122,7 +122,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(314, 31);
             this.label2.TabIndex = 94;
-            this.label2.Text = "Algariação do Paciente";
+            this.label2.Text = "Algaliação do Paciente";
             // 
             // label1
             // 

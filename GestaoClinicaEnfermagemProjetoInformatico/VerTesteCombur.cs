@@ -99,7 +99,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 dataGridViewTesteCombur.Columns[11].HeaderText = "Proteínas";
                 dataGridViewTesteCombur.Columns[12].HeaderText = "Glucose";
                 dataGridViewTesteCombur.Columns[13].HeaderText = "Cocetonicos";
-                dataGridViewTesteCombur.Columns[14].HeaderText = "Sange Hemoglobina";
+                dataGridViewTesteCombur.Columns[14].HeaderText = "Sangue Hemoglobina";
                 dataGridViewTesteCombur.Columns[15].HeaderText = "Observações";
 
                 conn.Close();

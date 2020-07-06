@@ -56,7 +56,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 conn.Open();
                 com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select data, dvm, metodoContracetivoOral, metodoContracetivoDIUData, metodoContracetivoImplante, metodoContracetivoImplanteData, metodoContracetivoAnelVaginalData, metodoContracetivoPreservativos, metodoContracetivoIntramuscular, metodoContracetivoInstramuscularData, metodoContracetivoLaqTrompasData, metodoCOntracetivoPessarioData, observacoes from Colpocitologia ORDER BY data asc", conn);
+                SqlCommand cmd = new SqlCommand("select data, dum, metodoContracetivoOral, metodoContracetivoDIUData, metodoContracetivoImplante, metodoContracetivoImplanteData, metodoContracetivoAnelVaginalData, metodoContracetivoPreservativos, metodoContracetivoIntramuscular, metodoContracetivoInstramuscularData, metodoContracetivoLaqTrompasData, metodoCOntracetivoPessarioData, observacoes from Colpocitologia ORDER BY data asc", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -68,11 +68,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     string dataIntramuscular = ((reader["metodoContracetivoInstramuscularData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoContracetivoInstramuscularData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
                     string dataLaqTrompas = ((reader["metodoContracetivoLaqTrompasData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoContracetivoLaqTrompasData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
                     string dataPessario = ((reader["metodoCOntracetivoPessarioData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["metodoCOntracetivoPessarioData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+                    string dumData = ((reader["dum"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dum"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
                     ColpocitologiaPaciente colpocitologia = new ColpocitologiaPaciente
                     {
                         data = data,
-                        dvm = ((reader["dvm"] == DBNull.Value) ? "" : (string)reader["dvm"]),
+                        dum = dumData,
                         metodoContracetivoOral = ((reader["metodoContracetivoOral"] == DBNull.Value) ? "" : (string)reader["metodoContracetivoOral"]),
                         metodoContracetivoDIUData = dataDIU,
                         metodoContracetivoImplante = ((reader["metodoContracetivoImplante"] == DBNull.Value) ? "" : (string)reader["metodoContracetivoImplante"]),
@@ -90,7 +91,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = colpocitologiaPaciente };
                 dataGridViewColpocitologia.DataSource = bindingSource1;
                 dataGridViewColpocitologia.Columns[0].HeaderText = "Data de Registo";
-                dataGridViewColpocitologia.Columns[1].HeaderText = "DVM";
+                dataGridViewColpocitologia.Columns[1].HeaderText = "DUM";
                 dataGridViewColpocitologia.Columns[2].HeaderText = "Método Contracetivo Oral";
                 dataGridViewColpocitologia.Columns[3].HeaderText = "Método Contracetivo DIU - Data";
                 dataGridViewColpocitologia.Columns[4].HeaderText = "Implante";

@@ -405,7 +405,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 idVarios();
                 if (idAvObj != -1)
                 {
-                    AdicionarVisualizarAvaliacaoObjetivoPaciente adicionarVisualizarAvaliacaoObjetivoPaciente = new AdicionarVisualizarAvaliacaoObjetivoPaciente(paciente);
+                    AdicionarVisualizarAvaliacaoObjetivaPaciente adicionarVisualizarAvaliacaoObjetivoPaciente = new AdicionarVisualizarAvaliacaoObjetivaPaciente(paciente);
                     adicionarVisualizarAvaliacaoObjetivoPaciente.Show();
                 }
             }
@@ -428,8 +428,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 idVarios();
                 if (idAvBebeAleitamento != -1)
                 {
-                    AdicionarVisualizarAvaliacaoObjetivoBebe adicionarVisualizarAvaliacaoObjetivoBebe = new AdicionarVisualizarAvaliacaoObjetivoBebe(paciente/*, this, null*/);
-                    adicionarVisualizarAvaliacaoObjetivoBebe.Show();
+                    AdicionarVisualizarAvaliacaoObjetivaBebe adicionarVisualizarAvaliacaoObjetivaBebe = new AdicionarVisualizarAvaliacaoObjetivaBebe(paciente/*, this, null*/);
+                    adicionarVisualizarAvaliacaoObjetivaBebe.Show();
                 }
                 idVarios();
                 if (idAvObjTipoParto == -1)
@@ -448,8 +448,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 idVarios();
                 if (idAvObjTipoParto != -1)
                 {
-                    AdicionarVisualizarAvaliacaoObjetivoBebe adicionarVisualizarAvaliacaoObjetivoBebe = new AdicionarVisualizarAvaliacaoObjetivoBebe(paciente/*, this, null*/);
-                    adicionarVisualizarAvaliacaoObjetivoBebe.Show();
+                    AdicionarVisualizarAvaliacaoObjetivaBebe adicionarVisualizarAvaliacaoObjetivaBebe = new AdicionarVisualizarAvaliacaoObjetivaBebe(paciente/*, this, null*/);
+                    adicionarVisualizarAvaliacaoObjetivaBebe.Show();
                 }
             }
         }

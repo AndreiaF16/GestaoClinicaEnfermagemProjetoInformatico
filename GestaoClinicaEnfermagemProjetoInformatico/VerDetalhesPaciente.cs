@@ -132,7 +132,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            VerDetalhesAvaliacaoObjetivo ver = new VerDetalhesAvaliacaoObjetivo(paciente);
+            VerDetalhesAvaliacaoObjetiva ver = new VerDetalhesAvaliacaoObjetiva(paciente);
             ver.Show();
         }
 

@@ -236,7 +236,7 @@
             this.groupBox9.Size = new System.Drawing.Size(204, 148);
             this.groupBox9.TabIndex = 20;
             this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Sangue/Homoglobina";
+            this.groupBox9.Text = "Sangue/Hemoglobina";
             // 
             // tbSH4
             // 

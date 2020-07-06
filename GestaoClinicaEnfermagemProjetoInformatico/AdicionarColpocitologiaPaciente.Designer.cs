@@ -35,11 +35,9 @@
             this.txtObservacoes = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cbPreservativo = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.panelTitulo = new System.Windows.Forms.Panel();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtDVM = new System.Windows.Forms.TextBox();
             this.dataDIU = new System.Windows.Forms.DateTimePicker();
             this.lblDiu = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -77,6 +75,10 @@
             this.btnLimparCampos = new System.Windows.Forms.Button();
             this.btnRegistar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.cbDUM = new System.Windows.Forms.CheckBox();
+            this.dataDUM = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             btnVoltar = new System.Windows.Forms.Button();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
@@ -88,6 +90,7 @@
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnVoltar
@@ -153,15 +156,6 @@
             this.cbPreservativo.Text = "Preservativos";
             this.cbPreservativo.UseVisualStyleBackColor = true;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 71);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 20);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "DVM";
-            // 
             // panelTitulo
             // 
             this.panelTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
@@ -197,14 +191,6 @@
             this.label4.Size = new System.Drawing.Size(312, 20);
             this.label4.TabIndex = 7;
             this.label4.Text = "Siltes Saúde - Clinica de Enfermagem";
-            // 
-            // txtDVM
-            // 
-            this.txtDVM.Location = new System.Drawing.Point(89, 71);
-            this.txtDVM.Multiline = true;
-            this.txtDVM.Name = "txtDVM";
-            this.txtDVM.Size = new System.Drawing.Size(1198, 78);
-            this.txtDVM.TabIndex = 17;
             // 
             // dataDIU
             // 
@@ -251,13 +237,12 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.groupBox9);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.txtDVM);
             this.groupBox1.Controls.Add(this.dataRegistoMed);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtObservacoes);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(20, 95);
             this.groupBox1.Name = "groupBox1";
@@ -645,6 +630,50 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.cbDUM);
+            this.groupBox9.Controls.Add(this.dataDUM);
+            this.groupBox9.Controls.Add(this.label3);
+            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox9.Location = new System.Drawing.Point(102, 84);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(448, 56);
+            this.groupBox9.TabIndex = 22;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "DUM";
+            // 
+            // cbDUM
+            // 
+            this.cbDUM.AutoSize = true;
+            this.cbDUM.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDUM.Location = new System.Drawing.Point(46, 25);
+            this.cbDUM.Name = "cbDUM";
+            this.cbDUM.Size = new System.Drawing.Size(15, 14);
+            this.cbDUM.TabIndex = 28;
+            this.cbDUM.UseVisualStyleBackColor = true;
+            this.cbDUM.CheckedChanged += new System.EventHandler(this.cbDUM_CheckedChanged);
+            // 
+            // dataDUM
+            // 
+            this.dataDUM.Enabled = false;
+            this.dataDUM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataDUM.Location = new System.Drawing.Point(216, 19);
+            this.dataDUM.Name = "dataDUM";
+            this.dataDUM.Size = new System.Drawing.Size(200, 26);
+            this.dataDUM.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Enabled = false;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(162, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 20);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Data:";
+            // 
             // AdicionarColpocitologiaPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -685,6 +714,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -699,10 +730,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox cbPreservativo;
         private System.Windows.Forms.PictureBox btnFechar;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panelTitulo;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtDVM;
         private System.Windows.Forms.DateTimePicker dataDIU;
         private System.Windows.Forms.Label lblDiu;
         private System.Windows.Forms.Button btnRegistar;
@@ -739,5 +768,9 @@
         private System.Windows.Forms.CheckBox cbImplante;
         private System.Windows.Forms.CheckBox cbDIU;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.CheckBox cbDUM;
+        private System.Windows.Forms.DateTimePicker dataDUM;
+        private System.Windows.Forms.Label label3;
     }
 }

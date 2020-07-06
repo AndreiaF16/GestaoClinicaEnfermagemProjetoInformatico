@@ -105,7 +105,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AdicionarAlgariacaoPaciente adicionarAlgariacaoPaciente = new AdicionarAlgariacaoPaciente(paciente);
+            AdicionarAlgaliacaoPaciente adicionarAlgariacaoPaciente = new AdicionarAlgaliacaoPaciente(paciente);
             adicionarAlgariacaoPaciente.Show();
         }
 
@@ -766,7 +766,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button30_Click(object sender, EventArgs e)
         {
-            AdicionarZaragatoaOnofaringePaciente adicionarZaragatoaOnofaringePaciente = new AdicionarZaragatoaOnofaringePaciente(paciente);
+            AdicionarZaragatoaOrofaringePaciente adicionarZaragatoaOnofaringePaciente = new AdicionarZaragatoaOrofaringePaciente(paciente);
             adicionarZaragatoaOnofaringePaciente.Show();
         }
 

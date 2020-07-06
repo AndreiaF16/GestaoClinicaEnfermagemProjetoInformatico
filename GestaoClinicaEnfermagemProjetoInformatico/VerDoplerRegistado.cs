@@ -17,7 +17,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
         private ErrorProvider errorProvider = new ErrorProvider();
-        private List<DoplerFetal> doplerFetal = new List<DoplerFetal>();
+        private List<DopplerFetal> doplerFetal = new List<DopplerFetal>();
         public VerDoplerRegistado(Paciente pac)
         {
             InitializeComponent();
@@ -64,18 +64,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 conn.Open();
                 com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select ig, dppData, dppcData, primeiraEcografia, escalaDor, observacoes from DopplerFetal ORDER BY IdDoplerFetal asc", conn);
+                SqlCommand cmd = new SqlCommand("select dataRegisto, ig, dppData, dppcData, primeiraEcografia, escalaDor, observacoes from DopplerFetal ORDER BY dataRegisto asc, ig asc, dppData asc, dppcData asc", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
+                    string dataR = ((reader["dataRegisto"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dataRegisto"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
                     string datadpp = ((reader["dppData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dppData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
                     string datadppc = ((reader["dppcData"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dppcData"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
                     string dataEcografia = ((reader["primeiraEcografia"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["primeiraEcografia"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
-                    DoplerFetal dp = new DoplerFetal
+                    DopplerFetal dp = new DopplerFetal
                     {
-
+                        dataRegisto = dataR,
                         ig = ((reader["ig"] == DBNull.Value) ? null : (int?)reader["ig"]),
                         ddp = datadpp,
                         dppc = datadppc,
@@ -88,12 +89,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = doplerFetal };
                 dataGridViewDopler.DataSource = bindingSource1;
-                dataGridViewDopler.Columns[0].HeaderText = "IG";
-                dataGridViewDopler.Columns[1].HeaderText = "Data DPP";
-                dataGridViewDopler.Columns[2].HeaderText = "Data DPPC";
-                dataGridViewDopler.Columns[3].HeaderText = "Data 1ª Ecografia";
-                dataGridViewDopler.Columns[4].HeaderText = "Dor";
-                dataGridViewDopler.Columns[5].HeaderText = "Observações";
+                dataGridViewDopler.Columns[0].HeaderText = "Data de Registo";
+                dataGridViewDopler.Columns[1].HeaderText = "IG";
+                dataGridViewDopler.Columns[2].HeaderText = "Data DPP";
+                dataGridViewDopler.Columns[3].HeaderText = "Data DPPC";
+                dataGridViewDopler.Columns[4].HeaderText = "Data 1ª Ecografia";
+                dataGridViewDopler.Columns[5].HeaderText = "Dor";
+                dataGridViewDopler.Columns[6].HeaderText = "Observações";
 
                 conn.Close();
                 dataGridViewDopler.Update();

@@ -9,7 +9,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
     public class ColpocitologiaPaciente
     {
         public string data { get; set; }
-        public string dvm { get; set; }
+        public string dum { get; set; }
         public string metodoContracetivoOral { get; set; }
         public string metodoContracetivoDIUData { get; set; }
         public string metodoContracetivoImplante { get; set; }

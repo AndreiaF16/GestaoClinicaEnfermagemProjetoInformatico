@@ -85,11 +85,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcuidadeVisualPaciente.cs" />
-    <Compile Include="AdicionarAlgariacaoPaciente.cs">
+    <Compile Include="AdicionarAlgaliacaoPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdicionarAlgariacaoPaciente.Designer.cs">
-      <DependentUpon>AdicionarAlgariacaoPaciente.cs</DependentUpon>
+    <Compile Include="AdicionarAlgaliacaoPaciente.Designer.cs">
+      <DependentUpon>AdicionarAlgaliacaoPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="AdicionarAspiracaoSecrecaoPaciente.cs">
       <SubType>Form</SubType>
@@ -145,11 +145,11 @@
     <Compile Include="AdicionarDesbridamentoPaciente.Designer.cs">
       <DependentUpon>AdicionarDesbridamentoPaciente.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdicionarDoplerFetalPaciente.cs">
+    <Compile Include="AdicionarDopplerFetalPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdicionarDoplerFetalPaciente.Designer.cs">
-      <DependentUpon>AdicionarDoplerFetalPaciente.cs</DependentUpon>
+    <Compile Include="AdicionarDopplerFetalPaciente.Designer.cs">
+      <DependentUpon>AdicionarDopplerFetalPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="AdicionarDrenagemLocasPaciente.cs">
       <SubType>Form</SubType>
@@ -163,11 +163,11 @@
     <Compile Include="AdicionarENGPaciente.Designer.cs">
       <DependentUpon>AdicionarENGPaciente.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdicionarEspirometriaPaciente.cs">
+    <Compile Include="AdicionarEpisiotomiaPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdicionarEspirometriaPaciente.Designer.cs">
-      <DependentUpon>AdicionarEspirometriaPaciente.cs</DependentUpon>
+    <Compile Include="AdicionarEpisiotomiaPaciente.Designer.cs">
+      <DependentUpon>AdicionarEpisiotomiaPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="AdicionarFlebografiaPaciente.cs">
       <SubType>Form</SubType>
@@ -233,11 +233,11 @@
     <Compile Include="FormLocalizacaoDorDopplerFetal.Designer.cs">
       <DependentUpon>FormLocalizacaoDorDopplerFetal.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLocalizacaoDorEspirometria.cs">
+    <Compile Include="FormLocalizacaoDorEpisiotomia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLocalizacaoDorEspirometria.Designer.cs">
-      <DependentUpon>FormLocalizacaoDorEspirometria.cs</DependentUpon>
+    <Compile Include="FormLocalizacaoDorEpisiotomia.Designer.cs">
+      <DependentUpon>FormLocalizacaoDorEpisiotomia.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLocalizacaoDorVacinacao.cs">
       <SubType>Form</SubType>
@@ -323,11 +323,11 @@
     <Compile Include="VerLocalizacaoDorDopplerFetal.Designer.cs">
       <DependentUpon>VerLocalizacaoDorDopplerFetal.cs</DependentUpon>
     </Compile>
-    <Compile Include="VerLocalizacaoDorEspirometria.cs">
+    <Compile Include="VerLocalizacaoDorEpisiotomia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerLocalizacaoDorEspirometria.Designer.cs">
-      <DependentUpon>VerLocalizacaoDorEspirometria.cs</DependentUpon>
+    <Compile Include="VerLocalizacaoDorEpisiotomia.Designer.cs">
+      <DependentUpon>VerLocalizacaoDorEpisiotomia.cs</DependentUpon>
     </Compile>
     <Compile Include="VerLocalizacaoDorMaosPes.cs">
       <SubType>Form</SubType>
@@ -463,17 +463,17 @@
     <Compile Include="AdicionarVisualizarAnaliseLaboratorialPaciente.Designer.cs">
       <DependentUpon>AdicionarVisualizarAnaliseLaboratorialPaciente.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdicionarVisualizarAvaliacaoObjetivoBebe.cs">
+    <Compile Include="AdicionarVisualizarAvaliacaoObjetivaBebe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdicionarVisualizarAvaliacaoObjetivoBebe.Designer.cs">
-      <DependentUpon>AdicionarVisualizarAvaliacaoObjetivoBebe.cs</DependentUpon>
+    <Compile Include="AdicionarVisualizarAvaliacaoObjetivaBebe.Designer.cs">
+      <DependentUpon>AdicionarVisualizarAvaliacaoObjetivaBebe.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdicionarVisualizarAvaliacaoObjetivoPaciente.cs">
+    <Compile Include="AdicionarVisualizarAvaliacaoObjetivaPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdicionarVisualizarAvaliacaoObjetivoPaciente.Designer.cs">
-      <DependentUpon>AdicionarVisualizarAvaliacaoObjetivoPaciente.cs</DependentUpon>
+    <Compile Include="AdicionarVisualizarAvaliacaoObjetivaPaciente.Designer.cs">
+      <DependentUpon>AdicionarVisualizarAvaliacaoObjetivaPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="AdicionarVisualizarCirurgiaPaciente.cs">
       <SubType>Form</SubType>
@@ -499,11 +499,11 @@
     <Compile Include="AdicionarVisualizarProdutosStockConsulta.Designer.cs">
       <DependentUpon>AdicionarVisualizarProdutosStockConsulta.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdicionarZaragatoaOnofaringePaciente.cs">
+    <Compile Include="AdicionarZaragatoaOrofaringePaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdicionarZaragatoaOnofaringePaciente.Designer.cs">
-      <DependentUpon>AdicionarZaragatoaOnofaringePaciente.cs</DependentUpon>
+    <Compile Include="AdicionarZaragatoaOrofaringePaciente.Designer.cs">
+      <DependentUpon>AdicionarZaragatoaOrofaringePaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="AdministrarMedicacaoPaciente.cs">
       <SubType>Form</SubType>
@@ -519,7 +519,7 @@
     <Compile Include="Alergias.Designer.cs">
       <DependentUpon>Alergias.cs</DependentUpon>
     </Compile>
-    <Compile Include="AlgariacaoPaciente.cs" />
+    <Compile Include="AlgaliacaoPaciente.cs" />
     <Compile Include="AnaliseLaboratorial.cs" />
     <Compile Include="AnaliseLaboratorialPaciente.cs" />
     <Compile Include="AnalisesLaboratoriais.cs">
@@ -536,8 +536,8 @@
       <DependentUpon>AtitudesTerapeuticasPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="AtualizarQuantidade.cs" />
-    <Compile Include="AvaliacaoObjetivo.cs" />
-    <Compile Include="AvaliacaoObjetivoBebe.cs" />
+    <Compile Include="AvaliacaoObjetiva.cs" />
+    <Compile Include="AvaliacaoObjetivaBebe.cs" />
     <Compile Include="CateterismoPaciente.cs" />
     <Compile Include="Cirurgia.cs" />
     <Compile Include="CirurgiaPaciente.cs" />
@@ -568,10 +568,10 @@
     <Compile Include="Doencas.Designer.cs">
       <DependentUpon>Doencas.cs</DependentUpon>
     </Compile>
-    <Compile Include="DoplerFetal.cs" />
+    <Compile Include="DopplerFetal.cs" />
     <Compile Include="DrenagemLocas.cs" />
     <Compile Include="ENGPaciente.cs" />
-    <Compile Include="Espirometria.cs" />
+    <Compile Include="Episiotomia.cs" />
     <Compile Include="FlebografiaPaciente.cs" />
     <Compile Include="InalacoesPaciente.cs" />
     <Compile Include="InserirMedicacao.cs">
@@ -603,11 +603,11 @@
     <Compile Include="Ulcera.cs" />
     <Compile Include="Vacinacao.cs" />
     <Compile Include="VariasAtitudes.cs" />
-    <Compile Include="VerAlgariacaoPaciente.cs">
+    <Compile Include="VerAlgaliacaoPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerAlgariacaoPaciente.Designer.cs">
-      <DependentUpon>VerAlgariacaoPaciente.cs</DependentUpon>
+    <Compile Include="VerAlgaliacaoPaciente.Designer.cs">
+      <DependentUpon>VerAlgaliacaoPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="VerAspiracaoSecrecoes.cs">
       <SubType>Form</SubType>
@@ -724,17 +724,17 @@
     <Compile Include="VerAlergiasRegistadas.Designer.cs">
       <DependentUpon>VerAlergiasRegistadas.cs</DependentUpon>
     </Compile>
-    <Compile Include="VerAvaliacaoObjetivo.cs">
+    <Compile Include="VerAvaliacaoObjetiva.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerAvaliacaoObjetivo.Designer.cs">
-      <DependentUpon>VerAvaliacaoObjetivo.cs</DependentUpon>
+    <Compile Include="VerAvaliacaoObjetiva.Designer.cs">
+      <DependentUpon>VerAvaliacaoObjetiva.cs</DependentUpon>
     </Compile>
-    <Compile Include="VerAvaliacaoObjetivoBebe.cs">
+    <Compile Include="VerAvaliacaoObjetivaBebe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerAvaliacaoObjetivoBebe.Designer.cs">
-      <DependentUpon>VerAvaliacaoObjetivoBebe.cs</DependentUpon>
+    <Compile Include="VerAvaliacaoObjetivaBebe.Designer.cs">
+      <DependentUpon>VerAvaliacaoObjetivaBebe.cs</DependentUpon>
     </Compile>
     <Compile Include="VerEditarCirurgiasRegistadas.cs">
       <SubType>Form</SubType>
@@ -908,11 +908,11 @@
     <Compile Include="Validacoes.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="VerDetalhesAvaliacaoObjetivo.cs">
+    <Compile Include="VerDetalhesAvaliacaoObjetiva.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerDetalhesAvaliacaoObjetivo.Designer.cs">
-      <DependentUpon>VerDetalhesAvaliacaoObjetivo.cs</DependentUpon>
+    <Compile Include="VerDetalhesAvaliacaoObjetiva.Designer.cs">
+      <DependentUpon>VerDetalhesAvaliacaoObjetiva.cs</DependentUpon>
     </Compile>
     <Compile Include="VerDetalhesPaciente.cs">
       <SubType>Form</SubType>
@@ -958,11 +958,11 @@
     <Compile Include="VerENG.Designer.cs">
       <DependentUpon>VerENG.cs</DependentUpon>
     </Compile>
-    <Compile Include="VerEspirometriaRegistada.cs">
+    <Compile Include="VerEpisiotomiaRegistada.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerEspirometriaRegistada.Designer.cs">
-      <DependentUpon>VerEspirometriaRegistada.cs</DependentUpon>
+    <Compile Include="VerEpisiotomiaRegistada.Designer.cs">
+      <DependentUpon>VerEpisiotomiaRegistada.cs</DependentUpon>
     </Compile>
     <Compile Include="VerExamesRegistados.cs">
       <SubType>Form</SubType>
@@ -1062,17 +1062,17 @@
     <Compile Include="VerVariasAtitudes.Designer.cs">
       <DependentUpon>VerVariasAtitudes.cs</DependentUpon>
     </Compile>
-    <Compile Include="VerZaragatoaOnofaringe.cs">
+    <Compile Include="VerZaragatoaOrofaringe.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="VerZaragatoaOnofaringe.Designer.cs">
-      <DependentUpon>VerZaragatoaOnofaringe.cs</DependentUpon>
+    <Compile Include="VerZaragatoaOrofaringe.Designer.cs">
+      <DependentUpon>VerZaragatoaOrofaringe.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="ZaragatoaOnofaringePaciente.cs" />
-    <EmbeddedResource Include="AdicionarAlgariacaoPaciente.resx">
-      <DependentUpon>AdicionarAlgariacaoPaciente.cs</DependentUpon>
+    <Compile Include="ZaragatoaOrofaringePaciente.cs" />
+    <EmbeddedResource Include="AdicionarAlgaliacaoPaciente.resx">
+      <DependentUpon>AdicionarAlgaliacaoPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarAspiracaoSecrecaoPaciente.resx">
       <DependentUpon>AdicionarAspiracaoSecrecaoPaciente.cs</DependentUpon>
@@ -1101,8 +1101,8 @@
     <EmbeddedResource Include="AdicionarDesbridamentoPaciente.resx">
       <DependentUpon>AdicionarDesbridamentoPaciente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdicionarDoplerFetalPaciente.resx">
-      <DependentUpon>AdicionarDoplerFetalPaciente.cs</DependentUpon>
+    <EmbeddedResource Include="AdicionarDopplerFetalPaciente.resx">
+      <DependentUpon>AdicionarDopplerFetalPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarDrenagemLocasPaciente.resx">
       <DependentUpon>AdicionarDrenagemLocasPaciente.cs</DependentUpon>
@@ -1110,8 +1110,8 @@
     <EmbeddedResource Include="AdicionarENGPaciente.resx">
       <DependentUpon>AdicionarENGPaciente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdicionarEspirometriaPaciente.resx">
-      <DependentUpon>AdicionarEspirometriaPaciente.cs</DependentUpon>
+    <EmbeddedResource Include="AdicionarEpisiotomiaPaciente.resx">
+      <DependentUpon>AdicionarEpisiotomiaPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarFlebografiaPaciente.resx">
       <DependentUpon>AdicionarFlebografiaPaciente.cs</DependentUpon>
@@ -1183,11 +1183,11 @@
     <EmbeddedResource Include="AdicionarVisualizarAnaliseLaboratorialPaciente.resx">
       <DependentUpon>AdicionarVisualizarAnaliseLaboratorialPaciente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdicionarVisualizarAvaliacaoObjetivoBebe.resx">
-      <DependentUpon>AdicionarVisualizarAvaliacaoObjetivoBebe.cs</DependentUpon>
+    <EmbeddedResource Include="AdicionarVisualizarAvaliacaoObjetivaBebe.resx">
+      <DependentUpon>AdicionarVisualizarAvaliacaoObjetivaBebe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdicionarVisualizarAvaliacaoObjetivoPaciente.resx">
-      <DependentUpon>AdicionarVisualizarAvaliacaoObjetivoPaciente.cs</DependentUpon>
+    <EmbeddedResource Include="AdicionarVisualizarAvaliacaoObjetivaPaciente.resx">
+      <DependentUpon>AdicionarVisualizarAvaliacaoObjetivaPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarVisualizarCirurgiaPaciente.resx">
       <DependentUpon>AdicionarVisualizarCirurgiaPaciente.cs</DependentUpon>
@@ -1201,8 +1201,8 @@
     <EmbeddedResource Include="AdicionarVisualizarProdutosStockConsulta.resx">
       <DependentUpon>AdicionarVisualizarProdutosStockConsulta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdicionarZaragatoaOnofaringePaciente.resx">
-      <DependentUpon>AdicionarZaragatoaOnofaringePaciente.cs</DependentUpon>
+    <EmbeddedResource Include="AdicionarZaragatoaOrofaringePaciente.resx">
+      <DependentUpon>AdicionarZaragatoaOrofaringePaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdministrarMedicacaoPaciente.resx">
       <DependentUpon>AdministrarMedicacaoPaciente.cs</DependentUpon>
@@ -1240,8 +1240,8 @@
     <EmbeddedResource Include="FormLocalizacaoDorDopplerFetal.resx">
       <DependentUpon>FormLocalizacaoDorDopplerFetal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLocalizacaoDorEspirometria.resx">
-      <DependentUpon>FormLocalizacaoDorEspirometria.cs</DependentUpon>
+    <EmbeddedResource Include="FormLocalizacaoDorEpisiotomia.resx">
+      <DependentUpon>FormLocalizacaoDorEpisiotomia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLocalizacaoDorVacinacao.resx">
       <DependentUpon>FormLocalizacaoDorVacinacao.cs</DependentUpon>
@@ -1282,17 +1282,17 @@
     <EmbeddedResource Include="VerAlergiasRegistadas.resx">
       <DependentUpon>VerAlergiasRegistadas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerAlgariacaoPaciente.resx">
-      <DependentUpon>VerAlgariacaoPaciente.cs</DependentUpon>
+    <EmbeddedResource Include="VerAlgaliacaoPaciente.resx">
+      <DependentUpon>VerAlgaliacaoPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerAspiracaoSecrecoes.resx">
       <DependentUpon>VerAspiracaoSecrecoes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerAvaliacaoObjetivo.resx">
-      <DependentUpon>VerAvaliacaoObjetivo.cs</DependentUpon>
+    <EmbeddedResource Include="VerAvaliacaoObjetiva.resx">
+      <DependentUpon>VerAvaliacaoObjetiva.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerAvaliacaoObjetivoBebe.resx">
-      <DependentUpon>VerAvaliacaoObjetivoBebe.cs</DependentUpon>
+    <EmbeddedResource Include="VerAvaliacaoObjetivaBebe.resx">
+      <DependentUpon>VerAvaliacaoObjetivaBebe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerCateterismo.resx">
       <DependentUpon>VerCateterismo.cs</DependentUpon>
@@ -1401,8 +1401,8 @@
     <EmbeddedResource Include="VerDespesasTodas.resx">
       <DependentUpon>VerDespesasTodas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerDetalhesAvaliacaoObjetivo.resx">
-      <DependentUpon>VerDetalhesAvaliacaoObjetivo.cs</DependentUpon>
+    <EmbeddedResource Include="VerDetalhesAvaliacaoObjetiva.resx">
+      <DependentUpon>VerDetalhesAvaliacaoObjetiva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerDetalhesPaciente.resx">
       <DependentUpon>VerDetalhesPaciente.cs</DependentUpon>
@@ -1441,8 +1441,8 @@
     <EmbeddedResource Include="VerENG.resx">
       <DependentUpon>VerENG.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerEspirometriaRegistada.resx">
-      <DependentUpon>VerEspirometriaRegistada.cs</DependentUpon>
+    <EmbeddedResource Include="VerEpisiotomiaRegistada.resx">
+      <DependentUpon>VerEpisiotomiaRegistada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerExamesRegistados.resx">
       <DependentUpon>VerExamesRegistados.cs</DependentUpon>
@@ -1477,8 +1477,8 @@
     <EmbeddedResource Include="VerLocalizacaoDorDopplerFetal.resx">
       <DependentUpon>VerLocalizacaoDorDopplerFetal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerLocalizacaoDorEspirometria.resx">
-      <DependentUpon>VerLocalizacaoDorEspirometria.cs</DependentUpon>
+    <EmbeddedResource Include="VerLocalizacaoDorEpisiotomia.resx">
+      <DependentUpon>VerLocalizacaoDorEpisiotomia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerLocalizacaoDorMaosPes.resx">
       <DependentUpon>VerLocalizacaoDorMaosPes.cs</DependentUpon>
@@ -1519,8 +1519,8 @@
     <EmbeddedResource Include="VerVariasAtitudes.resx">
       <DependentUpon>VerVariasAtitudes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerZaragatoaOnofaringe.resx">
-      <DependentUpon>VerZaragatoaOnofaringe.cs</DependentUpon>
+    <EmbeddedResource Include="VerZaragatoaOrofaringe.resx">
+      <DependentUpon>VerZaragatoaOrofaringe.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />

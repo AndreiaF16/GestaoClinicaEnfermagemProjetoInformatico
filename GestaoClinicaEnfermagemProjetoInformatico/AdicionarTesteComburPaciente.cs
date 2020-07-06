@@ -316,31 +316,31 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 cocetonicos = "3 +";
             }
 
-            //Sangue/Homoglobina negativo           
+            //Sangue/Hemoglobina negativo           
             if (tbSHNeg.Checked == true)
             {
                 sangue = "Neg";
             }
 
-            //Sangue/Homoglobina 1 +           
+            //Sangue/Hemoglobina 1 +           
             if (tbSH1.Checked == true)
             {
                 sangue = "1 +";
             }
 
-            //Sangue/Homoglobina 2 +           
+            //Sangue/Hemoglobina 2 +           
             if (tbSH2.Checked == true)
             {
                 sangue = "2 +";
             }
 
-            //Sangue/Homoglobina 3 +           
+            //Sangue/Hemoglobina 3 +           
             if (tbSH3.Checked == true)
             {
                 sangue = "3 +";
             }
 
-            //Sangue/Homoglobina 4 +           
+            //Sangue/Hemoglobina 4 +           
             if (tbSH4.Checked == true)
             {
                 sangue = "4 +";

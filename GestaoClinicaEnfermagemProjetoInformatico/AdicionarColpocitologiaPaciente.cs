@@ -32,6 +32,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataIntramuscular.Value = DateTime.Today;
             dataLaqTrompas.Value = DateTime.Today;
             dataPessario.Value = DateTime.Today;
+            dataDUM.Value = DateTime.Today;
 
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
@@ -122,7 +123,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             DateTime dataIntra = dataIntramuscular.Value;
             DateTime dataLT = dataLaqTrompas.Value;
             DateTime dataP = dataPessario.Value;
-            string dvm = txtDVM.Text;
+            DateTime dumData = dataDUM.Value;
             string oral = txtOral.Text;
             string implante = txtImplante.Text;
             string intramuscular = txtIntramuscular.Text;
@@ -146,22 +147,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Colpocitologia(IdAtitude,IdPaciente,data,dvm,metodoContracetivoOral,metodoContracetivoDIUData,metodoContracetivoImplante,metodoContracetivoImplanteData,metodoContracetivoAnelVaginalData,metodoContracetivoPreservativos,metodoContracetivoIntramuscular,metodoContracetivoInstramuscularData,metodoContracetivoLaqTrompasData,metodoCOntracetivoPessarioData,observacoes) VALUES(@id,@IdPaciente,@dataR,@dvm,@oral,@dataD,@implante,@dataI,@dataAV,@preservativos,@intramuscular,@dataIntra,@dataLT,@dataP,@obs);";
+                    string queryInsertData = "INSERT INTO Colpocitologia(IdAtitude,IdPaciente,data,dum,metodoContracetivoOral,metodoContracetivoDIUData,metodoContracetivoImplante,metodoContracetivoImplanteData,metodoContracetivoAnelVaginalData,metodoContracetivoPreservativos,metodoContracetivoIntramuscular,metodoContracetivoInstramuscularData,metodoContracetivoLaqTrompasData,metodoCOntracetivoPessarioData,observacoes) VALUES(@id,@IdPaciente,@dataR,@dum,@oral,@dataD,@implante,@dataI,@dataAV,@preservativos,@intramuscular,@dataIntra,@dataLT,@dataP,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@dataR", dataR.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@id", id);
 
-                    //dvm
-                    if (dvm != string.Empty)
+                    //dum
+                    if (cbDUM.Checked == true)
                     {
-                        sqlCommand.Parameters.AddWithValue("@dvm", Convert.ToString(dvm));
+                        sqlCommand.Parameters.AddWithValue("@dum", dumData.ToString("MM/dd/yyyy"));
                     }
                     else
                     {
-                        sqlCommand.Parameters.AddWithValue("@dvm", DBNull.Value);
+                        sqlCommand.Parameters.AddWithValue("@dum", DBNull.Value);
                     }
-
+           
                     //oral
                     if (oral != string.Empty)
                     {
@@ -305,7 +306,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataIntramuscular.Value = DateTime.Today;
             dataLaqTrompas.Value = DateTime.Today;
             dataPessario.Value = DateTime.Today;
-            txtDVM.Text = "";
+            dataDUM.Value = DateTime.Today;
             txtOral.Text = "";
             txtImplante.Text = "";
             txtIntramuscular.Text = "";
@@ -414,6 +415,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             DateTime dataIntra = dataIntramuscular.Value;
             DateTime dataLT = dataLaqTrompas.Value;
             DateTime dataP = dataPessario.Value;
+            DateTime dumData = dataDUM.Value;
 
             int var = (int)((dataR - DateTime.Today).TotalDays);
             int var2 = (int)((dataD - DateTime.Today).TotalDays);
@@ -422,11 +424,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             int var5 = (int)((dataIntra - DateTime.Today).TotalDays);
             int var6 = (int)((dataLT - DateTime.Today).TotalDays);
             int var7 = (int)((dataP - DateTime.Today).TotalDays);
+            int var8 = (int)((dumData - DateTime.Today).TotalDays);
 
             if (var > 0)
             { 
                 MessageBox.Show("A data de registo tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(dataRegistoMed, "A data tem de ser inferior ou igual à data de hoje!");
+                return false;
+            }
+
+
+            if (var8 > 0)
+            {
+                MessageBox.Show("A data de registo da última mestruação tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataDUM, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
@@ -512,6 +523,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             VerColpocitologia verColpocitologia = new VerColpocitologia(paciente);
             verColpocitologia.Show();
+        }
+
+        private void cbDUM_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbDUM.Checked == true)
+            {
+                dataDUM.Enabled = true;
+            }
+            else
+            {
+                dataDUM.Enabled = false;
+            }
         }
     }
 }

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public class DesbridamentoPaciente
+    public class AlgaliacaoPaciente
     {
         public string data { get; set; }
-        public string autolico { get; set; }
-        public string enzimatico { get; set; }
-        public string cirurgico { get; set; }
+        public int? silastic { get; set; }
+        public string folley { get; set; }
+        public string tresVias { get; set; }
+        public string dataProximaRealgaliacao { get; set; }
         public string observacoes { get; set; }
-
     }
 }

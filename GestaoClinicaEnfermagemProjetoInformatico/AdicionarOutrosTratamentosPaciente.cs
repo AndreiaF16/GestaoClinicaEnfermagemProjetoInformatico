@@ -55,13 +55,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button3_Click(object sender, EventArgs e)
         {
-            AdicionarEspirometriaPaciente adicionarEspirometriaPaciente = new AdicionarEspirometriaPaciente(paciente);
-            adicionarEspirometriaPaciente.Show();
+            AdicionarEpisiotomiaPaciente adicionarEpisiotomiaPaciente = new AdicionarEpisiotomiaPaciente(paciente);
+            adicionarEpisiotomiaPaciente.Show();
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            AdicionarDoplerFetalPaciente adicionarDoplerFetalPaciente = new AdicionarDoplerFetalPaciente(paciente);
+            AdicionarDopplerFetalPaciente adicionarDoplerFetalPaciente = new AdicionarDopplerFetalPaciente(paciente);
             adicionarDoplerFetalPaciente.Show();
         }
 

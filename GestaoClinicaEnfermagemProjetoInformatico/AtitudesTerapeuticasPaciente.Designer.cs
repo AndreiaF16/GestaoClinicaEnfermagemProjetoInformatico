@@ -813,7 +813,7 @@
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button1.Size = new System.Drawing.Size(300, 32);
             this.button1.TabIndex = 40;
-            this.button1.Text = "Algariação";
+            this.button1.Text = "Algaliação";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);

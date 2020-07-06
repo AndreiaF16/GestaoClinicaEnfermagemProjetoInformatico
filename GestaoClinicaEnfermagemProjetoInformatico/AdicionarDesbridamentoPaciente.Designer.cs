@@ -40,7 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtAnatolico = new System.Windows.Forms.TextBox();
+            this.txtAutolico = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtEnzimatico = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -161,7 +161,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.txtAnatolico);
+            this.groupBox1.Controls.Add(this.txtAutolico);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtEnzimatico);
             this.groupBox1.Controls.Add(this.label8);
@@ -178,22 +178,22 @@
             this.groupBox1.TabIndex = 90;
             this.groupBox1.TabStop = false;
             // 
-            // txtAnatolico
+            // txtAutolico
             // 
-            this.txtAnatolico.Location = new System.Drawing.Point(17, 96);
-            this.txtAnatolico.Multiline = true;
-            this.txtAnatolico.Name = "txtAnatolico";
-            this.txtAnatolico.Size = new System.Drawing.Size(490, 102);
-            this.txtAnatolico.TabIndex = 19;
+            this.txtAutolico.Location = new System.Drawing.Point(17, 96);
+            this.txtAutolico.Multiline = true;
+            this.txtAutolico.Name = "txtAutolico";
+            this.txtAutolico.Size = new System.Drawing.Size(490, 102);
+            this.txtAutolico.TabIndex = 19;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(13, 73);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 20);
+            this.label5.Size = new System.Drawing.Size(70, 20);
             this.label5.TabIndex = 18;
-            this.label5.Text = "Anatolico:";
+            this.label5.Text = "Autolico:";
             // 
             // txtEnzimatico
             // 
@@ -344,7 +344,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Panel panelTitulo;
-        private System.Windows.Forms.TextBox txtAnatolico;
+        private System.Windows.Forms.TextBox txtAutolico;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtEnzimatico;
         private System.Windows.Forms.Label label8;

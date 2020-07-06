@@ -13,11 +13,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 {
     public partial class AdicionarMetodosContracetivos : Form
     {
-        AdicionarVisualizarAvaliacaoObjetivoPaciente adicionar = null;
+        AdicionarVisualizarAvaliacaoObjetivaPaciente adicionar = null;
         private ErrorProvider errorProvider = new ErrorProvider();
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
-        public AdicionarMetodosContracetivos(AdicionarVisualizarAvaliacaoObjetivoPaciente avaliacaoPaciente)
+        public AdicionarMetodosContracetivos(AdicionarVisualizarAvaliacaoObjetivaPaciente avaliacaoPaciente)
         {
             InitializeComponent();
             adicionar = avaliacaoPaciente;

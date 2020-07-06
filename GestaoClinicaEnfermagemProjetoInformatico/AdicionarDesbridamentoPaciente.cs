@@ -52,7 +52,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {//se calhar no meu nao atualizou no pull
                 DateTime dataR = dataRegistoMed.Value;
                 string obs = txtObservacoes.Text;
-                string anatolico = txtAnatolico.Text;
+                string autolico = txtAutolico.Text;
                 string cirurgico = txtCirurgico.Text;
                 string enzimatico = txtEnzimatico.Text;
 
@@ -61,20 +61,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO Desbridamento(IdAtitude,IdPaciente,data,antolitico,enzimatico,cirurgico,observacoes) VALUES(@id,@IdPaciente,@dataR,@anatolico,@enzimatico,@cirurgico,@obs);";
+                    string queryInsertData = "INSERT INTO Desbridamento(IdAtitude,IdPaciente,data,autolico,enzimatico,cirurgico,observacoes) VALUES(@id,@IdPaciente,@dataR,@autolico,@enzimatico,@cirurgico,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                     sqlCommand.Parameters.AddWithValue("@dataR", dataR.ToString("MM/dd/yyyy"));
                     sqlCommand.Parameters.AddWithValue("@id", id);
 
-                    //anatolico
-                    if (anatolico != string.Empty)
+                    //autolico
+                    if (autolico != string.Empty)
                     {
-                        sqlCommand.Parameters.AddWithValue("@anatolico", Convert.ToString(anatolico));
+                        sqlCommand.Parameters.AddWithValue("@autolico", Convert.ToString(autolico));
                     }
                     else
                     {
-                        sqlCommand.Parameters.AddWithValue("@anatolico", DBNull.Value);
+                        sqlCommand.Parameters.AddWithValue("@autolico", DBNull.Value);
                     }
 
                     //cirurgico
@@ -133,7 +133,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void limparCampos()
         {
             dataRegistoMed.Value = DateTime.Today;
-            txtAnatolico.Text = "";
+            txtAutolico.Text = "";
             txtCirurgico.Text = "";
             txtEnzimatico.Text = "";
             txtObservacoes.Text = "";
