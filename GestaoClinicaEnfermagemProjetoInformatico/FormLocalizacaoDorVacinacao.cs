@@ -68,18 +68,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
             {
-                string localizacaoDor = textBox1.Text;
-
-                //remove o ultimo caracter
-                localizacaoDor = localizacaoDor.Remove(localizacaoDor.Length - 1);
-                localizacaoDor = localizacaoDor.Remove(localizacaoDor.Length - 1);
-                DateTime dataReg = dataRegisto.Value;
-                string obs = txtObservacoes.Text;
-
-                try
+                if (VerificarDadosInseridos())
                 {
+                    string localizacaoDor = textBox1.Text;
+
+                    //remove o ultimo caracter
+                    localizacaoDor = localizacaoDor.Remove(localizacaoDor.Length - 1);
+                    localizacaoDor = localizacaoDor.Remove(localizacaoDor.Length - 1);
+                    DateTime dataReg = dataRegisto.Value;
+                    string obs = txtObservacoes.Text;
+
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -104,14 +105,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -49,26 +49,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string nome = txtNome.Text;
-            string observacoes = txtObservacoes.Text;
-            string email = txtEmail.Text;
-            string telemovel = txtContacto.Text;
-            string nif = txtNif.Text;
-            string rua = txtRua.Text;
-            string nrMorada = txtNumeroCasa.Text;
-            string andarPiso = txtAndarPiso.Text;
-            string localidade = txtLocalidade.Text;
-            string bairroLocal = txtBairroLocal.Text;
-            string codPrefixo = txtCodPostalPre.Text;
-            string codSufixo = txtCodPostalSuf.Text;
-            string designacao = txtDesignacao.Text;
 
 
-            if (VerificarDadosInseridos())
+            try
             {
-                
-                try
+                if (VerificarDadosInseridos())
                 {
+                    string nome = txtNome.Text;
+                    string observacoes = txtObservacoes.Text;
+                    string email = txtEmail.Text;
+                    string telemovel = txtContacto.Text;
+                    string nif = txtNif.Text;
+                    string rua = txtRua.Text;
+                    string nrMorada = txtNumeroCasa.Text;
+                    string andarPiso = txtAndarPiso.Text;
+                    string localidade = txtLocalidade.Text;
+                    string bairroLocal = txtBairroLocal.Text;
+                    string codPrefixo = txtCodPostalPre.Text;
+                    string codSufixo = txtCodPostalSuf.Text;
+                    string designacao = txtDesignacao.Text;
+
+
                     conn.Open();
 
                     string queryInsertData = "INSERT INTO Fornecedor(nif,nome,contacto,email,observacoes,rua,numeroMorada,andarPiso,localidade,bairroLocal,codPostalPrefixo,codPostalSufixo,designacao) VALUES(@Nif,@Nome,@Contacto,@email,@Observacoes,@rua,@numeroMorada,@andarPiso,@localidade,@bairroLocal,@codPrefixo,@codSufixo,@designacao)";
@@ -80,7 +81,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.Parameters.AddWithValue("@localidade", localidade);
                     sqlCommand.Parameters.AddWithValue("@codPrefixo", codPrefixo);
                     sqlCommand.Parameters.AddWithValue("@codSufixo", codSufixo);
-          
+
                     if (nrMorada != string.Empty)
                     {
                         sqlCommand.Parameters.AddWithValue("@numeroMorada", Convert.ToInt32(nrMorada));
@@ -97,7 +98,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     else
                     {
                         sqlCommand.Parameters.AddWithValue("@andarPiso", DBNull.Value);
-                    }                
+                    }
 
                     if (bairroLocal != string.Empty)
                     {
@@ -142,14 +143,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     limparCampos();
                     UpdateDataGridView();
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar o fornecedor!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar o fornecedor!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

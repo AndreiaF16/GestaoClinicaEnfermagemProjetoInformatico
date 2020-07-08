@@ -78,15 +78,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
             {
-               
-                int doenca = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
-                DateTime data = dataDiagnostico.Value;
-                string observacoes = txtObservacoes.Text;
-
-                try
+                if (VerificarDadosInseridos())
                 {
+
+                    int doenca = (comboBoxDoenca.SelectedItem as ComboBoxItem).Value;
+                    DateTime data = dataDiagnostico.Value;
+                    string observacoes = txtObservacoes.Text;
+
+
                     conn.Open();
 
                     string queryInsertData = "INSERT INTO DoencaPaciente(IdDoenca,IdPaciente,data,observacoes) VALUES(@IdDoenca, @IdPaciente, @data, @observacoes);";
@@ -103,14 +104,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a doença", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar a doença", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

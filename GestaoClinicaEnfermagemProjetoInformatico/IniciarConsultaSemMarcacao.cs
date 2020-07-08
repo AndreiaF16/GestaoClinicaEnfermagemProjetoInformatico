@@ -117,22 +117,22 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
         private void button1_Click_1(object sender, EventArgs e)
-        {          
-                
-
-            if (VerificarDadosInseridos())
+        {
+            try
             {
-                string historiaAtual = txtHistoriaAtual.Text;
-                string sintomatologia = txtSintomatologia.Text;
-                string sinais = txtSinais.Text;
-                //string tensaoArterial = txtTensaoArterial.Text;
-                string escalaDor = lblEscala.Text;
-                decimal preco = Convert.ToDecimal(UpDownPrecoConsulta.Text);
-                string diag = txtDiagnostico.Text;
-                DateTime horaFim = DateTime.Now;
 
-                try
+                if (VerificarDadosInseridos())
                 {
+                    string historiaAtual = txtHistoriaAtual.Text;
+                    string sintomatologia = txtSintomatologia.Text;
+                    string sinais = txtSinais.Text;
+                    //string tensaoArterial = txtTensaoArterial.Text;
+                    string escalaDor = lblEscala.Text;
+                    decimal preco = Convert.ToDecimal(UpDownPrecoConsulta.Text);
+                    string diag = txtDiagnostico.Text;
+                    DateTime horaFim = DateTime.Now;
+
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -196,17 +196,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     connection.Open();
                 }
-                catch (SqlException)
-                {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a consulta", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
             }
-            
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível registar a consulta", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnLocalizacaoDor_Click_1(object sender, EventArgs e)

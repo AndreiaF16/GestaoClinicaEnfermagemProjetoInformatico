@@ -129,81 +129,83 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DateTime dataRegisto = dataRegistoMed.Value;
-            string po = "";
-            string retal = "";
-            string intradermica = "";
-            string subcutanea = "";
-            string viaCutanea = "";
-            string efeitoLocal = "";
-            string intramuscular = txtIntramuscular.Text;
-            string endovenosa = txtEndovenosa.Text;
-            string obs = txtObservacoes.Text;
+            try
+            {          
 
-            //po
-            if (cbPO.Checked == true)
-            {
-                po = "Sim";
-            }
-            if (cbPO.Checked == false)
-            {
-                po = "";
-            }
-
-            //retal
-            if (cbRetal.Checked == true)
-            {
-                retal = "Sim";
-            }
-            if (cbRetal.Checked == false)
-            {
-                retal = "";
-            }
-
-            //intradermica
-            if (cbIntradermica.Checked == true)
-            {
-                intradermica = "Sim";
-            }
-            if (cbIntradermica.Checked == false)
-            {
-                intradermica = "";
-            }
-
-            //subcutanea
-            if (cbSubcutanea.Checked == true)
-            {
-                subcutanea = "Sim";
-            }
-            if (cbSubcutanea.Checked == false)
-            {
-                subcutanea = "";
-            }
-
-            //viaCutanea
-            if (cbViaCutanea.Checked == true)
-            {
-                viaCutanea = "Sim";
-            }
-            if (cbViaCutanea.Checked == false)
-            {
-                viaCutanea = "";
-            }
-
-            //efeitoLocal
-            if (cbEfeitoLocal.Checked == true)
-            {
-                efeitoLocal = "Sim";
-            }
-            if (cbEfeitoLocal.Checked == false)
-            {
-                efeitoLocal = "";
-            }
-
-            if (VerificarDadosInseridos())
-            {
-                try
+                if (VerificarDadosInseridos())
                 {
+                    DateTime dataRegisto = dataRegistoMed.Value;
+                    string po = "";
+                    string retal = "";
+                    string intradermica = "";
+                    string subcutanea = "";
+                    string viaCutanea = "";
+                    string efeitoLocal = "";
+                    string intramuscular = txtIntramuscular.Text;
+                    string endovenosa = txtEndovenosa.Text;
+                    string obs = txtObservacoes.Text;
+
+                    //po
+                    if (cbPO.Checked == true)
+                    {
+                        po = "Sim";
+                    }
+                    if (cbPO.Checked == false)
+                    {
+                        po = "";
+                    }
+
+                    //retal
+                    if (cbRetal.Checked == true)
+                    {
+                        retal = "Sim";
+                    }
+                    if (cbRetal.Checked == false)
+                    {
+                        retal = "";
+                    }
+
+                    //intradermica
+                    if (cbIntradermica.Checked == true)
+                    {
+                        intradermica = "Sim";
+                    }
+                    if (cbIntradermica.Checked == false)
+                    {
+                        intradermica = "";
+                    }
+
+                    //subcutanea
+                    if (cbSubcutanea.Checked == true)
+                    {
+                        subcutanea = "Sim";
+                    }
+                    if (cbSubcutanea.Checked == false)
+                    {
+                        subcutanea = "";
+                    }
+
+                    //viaCutanea
+                    if (cbViaCutanea.Checked == true)
+                    {
+                        viaCutanea = "Sim";
+                    }
+                    if (cbViaCutanea.Checked == false)
+                    {
+                        viaCutanea = "";
+                    }
+
+                    //efeitoLocal
+                    if (cbEfeitoLocal.Checked == true)
+                    {
+                        efeitoLocal = "Sim";
+                    }
+                    if (cbEfeitoLocal.Checked == false)
+                    {
+                        efeitoLocal = "";
+                    }
+
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -297,20 +299,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Administração da Medicação efetuada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    connection.Close();                  
+                    connection.Close();
                     limparCampos();
 
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-
-                    MessageBox.Show("Por erro interno é impossível registar a Administração da Medicação!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
 
+                MessageBox.Show("Por erro interno é impossível registar a Administração da Medicação!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

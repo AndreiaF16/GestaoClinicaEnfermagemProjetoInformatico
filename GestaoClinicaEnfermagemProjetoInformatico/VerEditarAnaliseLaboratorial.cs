@@ -79,24 +79,24 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             try
             {
 
-            conn.Open();
-            com.Connection = conn;
+                conn.Open();
+                com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select * from analisesLaboratoriais order by NomeAnalise", conn);
+                SqlCommand cmd = new SqlCommand("select * from analisesLaboratoriais order by NomeAnalise", conn);
 
-            SqlDataReader reader = cmd.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read())
-            {
-                analise = new AnaliseLaboratorial
+                while (reader.Read())
                 {
-                    nomeAnalise = (string)reader["NomeAnalise"],
-                    observacao = ((reader["Observacoes"] == DBNull.Value) ? "" : (string)reader["Observacoes"]),
-                    IdAnaliseLaboratorial = (int)reader["IdAnalisesLaboratoriais"],
-                };
-                listaAnalisesLaboratorial.Add(analise);
-            }
-            conn.Close();
+                    analise = new AnaliseLaboratorial
+                    {
+                        nomeAnalise = (string)reader["NomeAnalise"],
+                        observacao = ((reader["Observacoes"] == DBNull.Value) ? "" : (string)reader["Observacoes"]),
+                        IdAnaliseLaboratorial = (int)reader["IdAnalisesLaboratoriais"],
+                    };
+                    listaAnalisesLaboratorial.Add(analise);
+                }
+                conn.Close();
             }
             catch (Exception)
             {
@@ -111,7 +111,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (VerificarDadosInseridos())

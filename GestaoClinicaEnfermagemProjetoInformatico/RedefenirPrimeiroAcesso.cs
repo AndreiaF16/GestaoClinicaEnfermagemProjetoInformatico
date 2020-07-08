@@ -31,13 +31,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtNovaPassoword.Text == txtConfirmarNovaPassword.Text)
+            try
             {
-                if (VerificarDadosInseridos())
+                if (txtNovaPassoword.Text == txtConfirmarNovaPassword.Text)
                 {
-
-                    try
+                    if (VerificarDadosInseridos())
                     {
+
+
                         SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                         SqlCommand cmd = new SqlCommand("UPDATE [dbo].[Enfermeiro] SET [password] = '" + Validacoes.CalculaHash(txtConfirmarNovaPassword.Text) + "', [username] = '" + txtUsername.Text + "', [passwordDefault] = 0 WHERE [IdEnfermeiro] = '" + enfermeiro.IdEnfermeiro + "' ", conn);
 
@@ -49,20 +50,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         MessageBox.Show("Passe mudada com sucesso!");
                         this.Close();
                     }
-                    catch (Exception ex)
-                    {
-                        if (conn.State == ConnectionState.Open)
-                        {
-                            conn.Close();
-                        }
-                          MessageBox.Show("Por erro interno é impossível alterar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                         // MessageBox.Show(ex.Message);
-
-                    }
-
                 }
             }
- 
+            catch (Exception ex)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível alterar os dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // MessageBox.Show(ex.Message);
+            }
         }
 
         

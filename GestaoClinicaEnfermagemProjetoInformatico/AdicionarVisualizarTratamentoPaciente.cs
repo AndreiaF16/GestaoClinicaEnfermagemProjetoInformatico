@@ -85,44 +85,44 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             try
             {
                 if (VerificarDadosInseridos())
-            {
-                DateTime data = dataTratamento.Value;
-                DateTime dataPTratamento = dataProximoTratamento.Value;
-                // string tratamento = comboBoxTratamento.Text;
-                //int tratamento = -1;
-                int nrTratamento = Convert.ToInt32(UpDownNumeroTratamento.Text); //Convert.ToSingle(UpDownNumeroTratamento.Text);
-                string dimensoes = txtDimensoes.Text;
-                string ulcera = txtGrauUlceraPressao.Text;
-                string tipoExsudado = txtExsudadoTipo.Text;
-                int quantidade = Convert.ToInt32(numericUpDownExcudado.Text);
-                string cheiro = txtExsudadoCheiro.Text;
-                string tecidoPredominante = txtTecidoPredominante.Text;
-                string areaCircundante = txtAreaCircundante.Text;
-                string agenteLimpeza = txtAgenteLimpeza.Text;
-                string ferida = txtFerida.Text;
-                string areaAplicaao = txtAreaCircundanteAplicacao.Text;
-                string tipoPenso = txtTipoPenso.Text;
-                string tamanhoPenso = numericUpDownTamanhoPenso.Text;
-                string suportePenso = txtSuportePenso.Text;
-                string observacoes = txtObservacoes.Text;
-                string escalaDor = lblEscala.Text;
-                string IPTB = txtIPTB.Text;
-                string corpoEstranho = txtCorpoEstranho.Text;
-                string dermica = txtDermica.Text;
-                int tipoQueimadura = -1;
-                int tipoUlcera = -1;
-                // int tipoQueimadura = (comboBoxTipoQueimadura.SelectedItem as ComboBoxItem).Value;
-                int tratamento = (comboBoxTratamento.SelectedItem as ComboBoxItem).Value; 
+                {
+                    DateTime data = dataTratamento.Value;
+                    DateTime dataPTratamento = dataProximoTratamento.Value;
+                    // string tratamento = comboBoxTratamento.Text;
+                    //int tratamento = -1;
+                    int nrTratamento = Convert.ToInt32(UpDownNumeroTratamento.Text); //Convert.ToSingle(UpDownNumeroTratamento.Text);
+                    string dimensoes = txtDimensoes.Text;
+                    string ulcera = txtGrauUlceraPressao.Text;
+                    string tipoExsudado = txtExsudadoTipo.Text;
+                    int quantidade = Convert.ToInt32(numericUpDownExcudado.Text);
+                    string cheiro = txtExsudadoCheiro.Text;
+                    string tecidoPredominante = txtTecidoPredominante.Text;
+                    string areaCircundante = txtAreaCircundante.Text;
+                    string agenteLimpeza = txtAgenteLimpeza.Text;
+                    string ferida = txtFerida.Text;
+                    string areaAplicaao = txtAreaCircundanteAplicacao.Text;
+                    string tipoPenso = txtTipoPenso.Text;
+                    string tamanhoPenso = numericUpDownTamanhoPenso.Text;
+                    string suportePenso = txtSuportePenso.Text;
+                    string observacoes = txtObservacoes.Text;
+                    string escalaDor = lblEscala.Text;
+                    string IPTB = txtIPTB.Text;
+                    string corpoEstranho = txtCorpoEstranho.Text;
+                    string dermica = txtDermica.Text;
+                    int tipoQueimadura = -1;
+                    int tipoUlcera = -1;
+                    // int tipoQueimadura = (comboBoxTipoQueimadura.SelectedItem as ComboBoxItem).Value;
+                    int tratamento = (comboBoxTratamento.SelectedItem as ComboBoxItem).Value;
 
-                if (comboBoxTipoQueimadura.SelectedItem != null)
-                {
-                    tipoQueimadura = (comboBoxTipoQueimadura.SelectedItem as ComboBoxItem).Value;
-                }
-                if (comboBoxTipoUlcera.SelectedItem != null)
-                {
-                    tipoUlcera = (comboBoxTipoUlcera.SelectedItem as ComboBoxItem).Value;
-                }
-               
+                    if (comboBoxTipoQueimadura.SelectedItem != null)
+                    {
+                        tipoQueimadura = (comboBoxTipoQueimadura.SelectedItem as ComboBoxItem).Value;
+                    }
+                    if (comboBoxTipoUlcera.SelectedItem != null)
+                    {
+                        tipoUlcera = (comboBoxTipoUlcera.SelectedItem as ComboBoxItem).Value;
+                    }
+
                     if (comboBoxTratamento.SelectedItem.ToString() == "Excisões")
                     {
                         conn.Open();
@@ -140,7 +140,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         {
                             sqlCommand1.Parameters.AddWithValue("@numeroTratamento", DBNull.Value);
                         }
-       
+
                         if (cbProximoTratamento.Checked == true)
                         {
                             sqlCommand1.Parameters.AddWithValue("@dataProximoTratamento", dataPTratamento.ToString("MM/dd/yyyy"));
@@ -383,7 +383,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         limparCampos();
                     }
                 }
-
             }
             catch (SqlException)
             {

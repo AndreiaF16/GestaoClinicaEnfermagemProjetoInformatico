@@ -153,11 +153,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (encomendas != null)
+            try
             {
-                if (VerificarDadosInseridos())
-
-                    try
+                if (encomendas != null)
+                {
+                    if (VerificarDadosInseridos())
                     {
                         DateTime dataEntregaReal = dataVEntregaReal.Value;
 
@@ -211,16 +211,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                             registarEncomendas.UpdateDataGridView();
                         }
                     }
-                    catch (SqlException)
-                    {
-                        if (conn.State == ConnectionState.Open)
-                        {
-                            conn.Close();
-                        }
-                        MessageBox.Show("Erro interno, não foi possível alterar a encomenda!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                }
             }
-            
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Erro interno, não foi possível alterar a encomenda!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private Boolean VerificarDadosInseridos()

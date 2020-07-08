@@ -92,16 +92,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
             {
-                
-                int fornecedor = (comboBoxFornecedor.SelectedItem as ComboBoxItem).Value;
-                DateTime data = dataEntregaPrevista.Value;
-                // string observacoes = txtObservacoes.Text;
-                string encomenda = txtNumeroEncomenda.Text;
-
-                try
+                if (VerificarDadosInseridos())
                 {
+
+                    int fornecedor = (comboBoxFornecedor.SelectedItem as ComboBoxItem).Value;
+                    DateTime data = dataEntregaPrevista.Value;
+                    // string observacoes = txtObservacoes.Text;
+                    string encomenda = txtNumeroEncomenda.Text;
+
+
                     conn.Open();
 
                     string queryInsertData = "INSERT INTO Encomenda(Nfatura,idFornecedor,dataRegistoEncomenda,dataEntregaPrevista) VALUES(@Nfatura,@IdFornecedor,@DataRegistoEncomenda,@DataEntregaPrevista);";
@@ -131,32 +132,31 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     while (reader.Read())
                     {
 
-                            enc = new Encomendas
-                            {
-                                IdEncomenda = (int)reader["IdEncomenda"],
-                                NFatura = (string)reader["Nfatura"],
+                        enc = new Encomendas
+                        {
+                            IdEncomenda = (int)reader["IdEncomenda"],
+                            NFatura = (string)reader["Nfatura"],
 
-                            };
-                        
+                        };
+
 
                     }
 
                     conn.Close();
 
-                  
-                   LinhaEncomenda linha = new LinhaEncomenda(getFornecedor(fornecedor), enc, this);
+                    LinhaEncomenda linha = new LinhaEncomenda(getFornecedor(fornecedor), enc, this);
                     linha.Show();
 
                 }
-                catch (SqlException)
-                {
+            }
+            catch (SqlException)
+            {
 
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a encomenda!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar a encomenda!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

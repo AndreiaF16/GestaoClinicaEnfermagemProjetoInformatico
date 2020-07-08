@@ -59,19 +59,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
             {
-                string observacoes = txtObservacoes.Text;
-                string nome = txtNome.Text;
-                int quantidade = Convert.ToInt16(UpDownQuantidade.Text);
-                int taxaIva = Convert.ToInt16(UpDownIVA.Text);
-                decimal preco = Convert.ToDecimal(UpDownPreco.Text);
-                float ba = Convert.ToSingle(UpDownPreco.Text);
-                int fornecedor = (comboBoxFornecedor.SelectedItem as ComboBoxItem).Value;
-
-
-                try
+                if (VerificarDadosInseridos())
                 {
+                    string observacoes = txtObservacoes.Text;
+                    string nome = txtNome.Text;
+                    int quantidade = Convert.ToInt16(UpDownQuantidade.Text);
+                    int taxaIva = Convert.ToInt16(UpDownIVA.Text);
+                    decimal preco = Convert.ToDecimal(UpDownPreco.Text);
+                    float ba = Convert.ToSingle(UpDownPreco.Text);
+                    int fornecedor = (comboBoxFornecedor.SelectedItem as ComboBoxItem).Value;
+
+
+
                     conn.Open();
 
                     string queryInsertData = "INSERT INTO ProdutoStock(NomeProduto,quantidadeArmazenada,taxaIVA,precoUnitario,Observacoes,IdFornecedor) VALUES(@Nome,@Quantidade,@Taxa,@Preco,@Observacoes,@IdFornecedor);";
@@ -95,14 +96,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
 
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível visualizar os produtos usados na consulta!!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível visualizar os produtos usados na consulta!!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -265,24 +266,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             try
             {
 
-            produtos.Clear();
-            comboBoxFornecedor.Items.Clear();
-            auxiliar.Clear();
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Fornecedor", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader["nome"];
-                item.Value = (int)reader["IdFornecedor"];
-                comboBoxFornecedor.Items.Add(item);
-                produtos.Add(item);
-            }
+                produtos.Clear();
+                comboBoxFornecedor.Items.Clear();
+                auxiliar.Clear();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Fornecedor", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = (string)reader["nome"];
+                    item.Value = (int)reader["IdFornecedor"];
+                    comboBoxFornecedor.Items.Add(item);
+                    produtos.Add(item);
+                }
 
-            conn.Close();
-
+                conn.Close();
             }
             catch (Exception)
             {

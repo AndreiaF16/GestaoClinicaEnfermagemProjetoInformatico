@@ -84,26 +84,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            int encomenda = -1;
-            if (VerificarDadosInseridos())
+            try
             {
-
-                int despesa = (comboBoxDespesa.SelectedItem as ComboBoxItem).Value;
-                if (comboBoxEncomenda.Text != "")
+                int encomenda = -1;
+                if (VerificarDadosInseridos())
                 {
-                    encomenda = (comboBoxEncomenda.SelectedItem as ComboBoxItem).Value;
-                }
-                //int valorDespesa = Convert.ToInt32(UpDownPreco.Text);
-                DateTime data = dataDespesa.Value;
-                string observacoes = txtObservacoes.Text;
 
-                try
-                {
+                    int despesa = (comboBoxDespesa.SelectedItem as ComboBoxItem).Value;
+                    if (comboBoxEncomenda.Text != "")
+                    {
+                        encomenda = (comboBoxEncomenda.SelectedItem as ComboBoxItem).Value;
+                    }
+                    //int valorDespesa = Convert.ToInt32(UpDownPreco.Text);
+                    DateTime data = dataDespesa.Value;
+                    string observacoes = txtObservacoes.Text;
+
+
                     conn.Open();
 
                     string queryInsertData = "INSERT INTO Despesa(data,valor,observacoes,idTipoDespesa,idEncomenda) VALUES(@dataRegisto, @valorDespesa, @observacoes, @tipoDespesa,@encomenda);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
-                 //   sqlCommand.Parameters.AddWithValue("@tipoDespesa",despesa);
+                    //   sqlCommand.Parameters.AddWithValue("@tipoDespesa",despesa);
                     sqlCommand.Parameters.AddWithValue("@tipoDespesa", despesa);
                     sqlCommand.Parameters.AddWithValue("@dataRegisto", data.ToString("MM/dd/yyyy"));
 
@@ -142,14 +143,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a alergia", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar a alergia", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

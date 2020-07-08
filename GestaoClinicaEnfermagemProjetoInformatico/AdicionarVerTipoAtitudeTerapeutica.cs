@@ -63,13 +63,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
             {
-                string tipoAtitude = txtAtitude.Text;
-                string observacoes = txtObservacoes.Text;
-
-                try
+                if (VerificarDadosInseridos())
                 {
+                    string tipoAtitude = txtAtitude.Text;
+                    string observacoes = txtObservacoes.Text;
+
+
                     conn.Open();
 
                     string queryInsertData = "INSERT INTO Atitude(nomeAtitude,observacoes) VALUES(@tipoAtitude, @Observacoes);";
@@ -83,14 +84,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar o tipo de atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar o tipo de atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

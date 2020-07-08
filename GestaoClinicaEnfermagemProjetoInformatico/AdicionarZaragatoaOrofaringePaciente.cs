@@ -127,14 +127,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DateTime dataRegisto = dataRegistoMed.Value;
-            string zaragatoaOrofaringe = txtZaragatoaOrofaringe.Text;
-            string obs = txtObservacoes.Text;
-
-            if (VerificarDadosInseridos())
+            try
             {
-                try
+                if (VerificarDadosInseridos())
                 {
+                    DateTime dataRegisto = dataRegistoMed.Value;
+                    string zaragatoaOrofaringe = txtZaragatoaOrofaringe.Text;
+                    string obs = txtObservacoes.Text;
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -170,14 +170,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a  Zaragatoa Orofaringe!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar a  Zaragatoa Orofaringe!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

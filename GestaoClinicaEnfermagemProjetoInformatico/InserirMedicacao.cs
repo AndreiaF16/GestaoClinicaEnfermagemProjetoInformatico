@@ -66,64 +66,65 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
             {
-                DateTime data = dataMedicacao.Value;
-
-                string jejum = "";
-                string peqAlm = "";
-                string almoco = "";
-                string lanche = "";
-                string jantar = "";
-                string deitar = "";
-
-                string quantidadeJejum = txtQuantidadeJejum.Text;
-                string quantidadePeqAlmoco= txtQuantidadePeqAlmoco.Text;
-                string quantidadeAlmoco = txtQuantidadeAlmoco.Text;
-                string quantidadeLanche = txtQuantidadeLanche.Text;
-                string quantidadeJantar = txtQuantidadeJantar.Text;
-                string quantidadeDeitar = txtQuantidadeDeitar.Text;
-                string obs = txtObs.Text;
-
-                //Jejum
-                if (rbSimJejum.Checked == true)
+                if (VerificarDadosInseridos())
                 {
-                    jejum = "Sim";
-                }
+                    DateTime data = dataMedicacao.Value;
 
-                //Pequeno Almoço
-                if (rbSimPeqAlm.Checked == true)
-                {
-                    peqAlm = "Sim";
-                }
+                    string jejum = "";
+                    string peqAlm = "";
+                    string almoco = "";
+                    string lanche = "";
+                    string jantar = "";
+                    string deitar = "";
+
+                    string quantidadeJejum = txtQuantidadeJejum.Text;
+                    string quantidadePeqAlmoco = txtQuantidadePeqAlmoco.Text;
+                    string quantidadeAlmoco = txtQuantidadeAlmoco.Text;
+                    string quantidadeLanche = txtQuantidadeLanche.Text;
+                    string quantidadeJantar = txtQuantidadeJantar.Text;
+                    string quantidadeDeitar = txtQuantidadeDeitar.Text;
+                    string obs = txtObs.Text;
+
+                    //Jejum
+                    if (rbSimJejum.Checked == true)
+                    {
+                        jejum = "Sim";
+                    }
+
+                    //Pequeno Almoço
+                    if (rbSimPeqAlm.Checked == true)
+                    {
+                        peqAlm = "Sim";
+                    }
 
 
-                //Almoço
-                if (rbSimAlm.Checked == true)
-                {
-                    almoco = "Sim";
-                }
+                    //Almoço
+                    if (rbSimAlm.Checked == true)
+                    {
+                        almoco = "Sim";
+                    }
 
-                //Lanche
-                if (rbSimLanche.Checked == true)
-                {
-                    lanche = "Sim";
-                }
+                    //Lanche
+                    if (rbSimLanche.Checked == true)
+                    {
+                        lanche = "Sim";
+                    }
 
-                //Jantar
-                if (rbSimJantar.Checked == true)
-                {
-                    jantar = "Sim";
-                }        
+                    //Jantar
+                    if (rbSimJantar.Checked == true)
+                    {
+                        jantar = "Sim";
+                    }
 
-                //Deitar
-                if (rbSimDeitar.Checked == true)
-                {
-                    deitar = "Sim";
-                }
-             
-                try
-                {
+                    //Deitar
+                    if (rbSimDeitar.Checked == true)
+                    {
+                        deitar = "Sim";
+                    }
+
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -258,14 +259,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
                     limparCampos();
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a medicação", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar a medicação", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

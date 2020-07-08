@@ -151,29 +151,29 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-           
-                
 
-            if (VerificarDadosInseridos())
+
+            try
             {
-                string historiaAtual = txtHistoriaAtual.Text;
-                string sintomatologia = txtSintomatologia.Text;
-                string sinais = txtSinais.Text;
-                //string tensaoArterial = txtTensaoArterial.Text;
-                string escalaDor = lblEscala.Text;
-
-                //  int preco = Convert.ToInt32(UpDownPrecoConsulta.Text);
-                // string preco = UpDownPrecoConsulta.Text;
-                decimal preco = Convert.ToDecimal(UpDownPrecoConsulta.Text);
-
-                //double preco = Convert.ToDouble(UpDownPrecoConsulta.Text);
-
-                // double valor = Convert.ToDouble(txtValorConsulta.Text);
-                string diag = txtDiagnostico.Text;
-                DateTime horaFim = DateTime.Now;
-
-                try
+                if (VerificarDadosInseridos())
                 {
+                    string historiaAtual = txtHistoriaAtual.Text;
+                    string sintomatologia = txtSintomatologia.Text;
+                    string sinais = txtSinais.Text;
+                    //string tensaoArterial = txtTensaoArterial.Text;
+                    string escalaDor = lblEscala.Text;
+
+                    //  int preco = Convert.ToInt32(UpDownPrecoConsulta.Text);
+                    // string preco = UpDownPrecoConsulta.Text;
+                    decimal preco = Convert.ToDecimal(UpDownPrecoConsulta.Text);
+
+                    //double preco = Convert.ToDouble(UpDownPrecoConsulta.Text);
+
+                    // double valor = Convert.ToDouble(txtValorConsulta.Text);
+                    string diag = txtDiagnostico.Text;
+                    DateTime horaFim = DateTime.Now;
+
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -249,15 +249,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     formMenu.UpdateGridViewConsultas();
 
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a consulta", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
-            }         
+                MessageBox.Show("Por erro interno é impossível registar a consulta", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtValorConsulta_KeyPress(object sender, KeyPressEventArgs e)
@@ -339,15 +339,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             try
             {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from Alergia", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                id = (int)reader["IdAlergia"];
-            }
-            conn.Close();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Alergia", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = (int)reader["IdAlergia"];
+                }
+                conn.Close();
             }
             catch (Exception)
             {

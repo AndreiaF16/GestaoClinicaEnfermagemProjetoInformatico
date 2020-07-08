@@ -34,9 +34,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         public void reiniciar()
-        {
-           
-
+        {        
             try
             {
                 aleitamento.Clear();
@@ -150,103 +148,103 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
-            {                        
-                DateTime data = dataAvaliacaoObjetiva.Value;
+            try
+            {
+                if (VerificarDadosInseridos())
+                {
+                    DateTime data = dataAvaliacaoObjetiva.Value;
 
-                int altura = Convert.ToInt32(UpDownAltura.Text);
-                decimal peso = Convert.ToDecimal(UpDownPeso.Text);
-                float ba = Convert.ToSingle(UpDownPeso.Text);
-                int frequenciaCardiaca = Convert.ToInt32(UpDownFC.Text);
-                decimal temperatura = Convert.ToDecimal(UpDownTemperatura.Text);
-                int saturacaoOxigenio = Convert.ToInt32(UpDownSPO2.Text);
-                int INR = Convert.ToInt32(upDownINR.Text);
-                int Perimetro = Convert.ToInt32(UpDownPerimetro.Text);
-               // int nomeLeiteArtificial = Convert.ToInt32(txtAleitamento.Text);
+                    int altura = Convert.ToInt32(UpDownAltura.Text);
+                    decimal peso = Convert.ToDecimal(UpDownPeso.Text);
+                    float ba = Convert.ToSingle(UpDownPeso.Text);
+                    int frequenciaCardiaca = Convert.ToInt32(UpDownFC.Text);
+                    decimal temperatura = Convert.ToDecimal(UpDownTemperatura.Text);
+                    int saturacaoOxigenio = Convert.ToInt32(UpDownSPO2.Text);
+                    int INR = Convert.ToInt32(upDownINR.Text);
+                    int Perimetro = Convert.ToInt32(UpDownPerimetro.Text);
+                    // int nomeLeiteArtificial = Convert.ToInt32(txtAleitamento.Text);
 
-                int tipoAleitamento = -1;
-                int tipoParto = -1;
-                string partoDistocico = "";
-                string epidural = "";
-                string episiotomia = "";
-                string reanimacaoFetal = "";
-                string indiceAPGAR = "";
-                string fototerapia = "";
+                    int tipoAleitamento = -1;
+                    int tipoParto = -1;
+                    string partoDistocico = "";
+                    string epidural = "";
+                    string episiotomia = "";
+                    string reanimacaoFetal = "";
+                    string indiceAPGAR = "";
+                    string fototerapia = "";
 
-                if (cbAleitamento.SelectedItem != null)
-                {
-                    tipoAleitamento = (cbAleitamento.SelectedItem as ComboBoxItem).Value;
-                }
-                if (cbTipoParto.SelectedItem != null)
-                {
-                    tipoParto = (cbTipoParto.SelectedItem as ComboBoxItem).Value;
-                }
-                //partoDistocico
-                if (radioButtonForceps.Checked == true)
-                {
-                    partoDistocico = "Fórceps";
-                }
-                if (radioButtonVentosa.Checked == true)
-                {
-                    partoDistocico = "Ventosa";
-                }
+                    if (cbAleitamento.SelectedItem != null)
+                    {
+                        tipoAleitamento = (cbAleitamento.SelectedItem as ComboBoxItem).Value;
+                    }
+                    if (cbTipoParto.SelectedItem != null)
+                    {
+                        tipoParto = (cbTipoParto.SelectedItem as ComboBoxItem).Value;
+                    }
+                    //partoDistocico
+                    if (radioButtonForceps.Checked == true)
+                    {
+                        partoDistocico = "Fórceps";
+                    }
+                    if (radioButtonVentosa.Checked == true)
+                    {
+                        partoDistocico = "Ventosa";
+                    }
 
-                //epidural
-                if (radioButtonSimEpidural.Checked == true)
-                {
-                    epidural = "Sim";
-                }
-                if (radioButtonNaoEpidural.Checked == true)
-                {
-                    epidural = "Não";
-                }
+                    //epidural
+                    if (radioButtonSimEpidural.Checked == true)
+                    {
+                        epidural = "Sim";
+                    }
+                    if (radioButtonNaoEpidural.Checked == true)
+                    {
+                        epidural = "Não";
+                    }
 
-                //episiotomia
-                if (radioButtonSimEp.Checked == true)
-                {
-                    episiotomia = "Sim";
-                }
-                if (radioButtonNaoEp.Checked == true)
-                {
-                    episiotomia = "Não";
-                }
+                    //episiotomia
+                    if (radioButtonSimEp.Checked == true)
+                    {
+                        episiotomia = "Sim";
+                    }
+                    if (radioButtonNaoEp.Checked == true)
+                    {
+                        episiotomia = "Não";
+                    }
 
-                //reanimacaoFetal
-                if (radioButtonReanSim.Checked == true)
-                {
-                    reanimacaoFetal = "Sim";
-                }
-                if (radioButtonReanNao.Checked == true)
-                {
-                    reanimacaoFetal = "Não";
-                }
+                    //reanimacaoFetal
+                    if (radioButtonReanSim.Checked == true)
+                    {
+                        reanimacaoFetal = "Sim";
+                    }
+                    if (radioButtonReanNao.Checked == true)
+                    {
+                        reanimacaoFetal = "Não";
+                    }
 
-                //indiceAPGAR
-                if (radioButton1M.Checked == true)
-                {
-                    indiceAPGAR = "1º Minuto";
-                }
-                if (radioButton5M.Checked == true)
-                {
-                    indiceAPGAR = "5º Minuto";
-                }
-                if (radioButton10M.Checked == true)
-                {
-                    indiceAPGAR = "10º Minuto";
-                }
+                    //indiceAPGAR
+                    if (radioButton1M.Checked == true)
+                    {
+                        indiceAPGAR = "1º Minuto";
+                    }
+                    if (radioButton5M.Checked == true)
+                    {
+                        indiceAPGAR = "5º Minuto";
+                    }
+                    if (radioButton10M.Checked == true)
+                    {
+                        indiceAPGAR = "10º Minuto";
+                    }
 
-                //fototerapia
-                if (radioButtonFotoSim.Checked == true)
-                {
-                    fototerapia = "Sim";
-                }
-                if (radioButtonFotoNao.Checked == true)
-                {
-                    fototerapia = "Não";
-                }
+                    //fototerapia
+                    if (radioButtonFotoSim.Checked == true)
+                    {
+                        fototerapia = "Sim";
+                    }
+                    if (radioButtonFotoNao.Checked == true)
+                    {
+                        fototerapia = "Não";
+                    }
 
-                try
-                {
                     conn.Open();
                     string queryInsertData = "INSERT INTO AvaliacaoObjetivaBebe(dataRegisto,Peso,Altura,pressaoArterial,frequenciaCardiaca,temperatura,saturacaoOxigenio,INR,Perimetro,IdTipoAleitamento,nomeLeiteArtificial,IdTipoParto,partoDistocico,epidural,episiotomia,reanimacaoFetal,indiceAPGAR,Fototerapia,observacoes,IdPaciente) VALUES(@dataRegisto, @Peso, @Altura, @pressaoArterial,@frequenciaCardiaca, @temperatura, @saturacaoOxigenio, @INR, @Perimetro, @tipoAleitamento, @nomeLeiteArtificial, @tipoParto, @partoDistocico, @epidural, @episiotomia, @reanimacaoFetal, @indiceAPGAR, @fototerapia, @observacoes, @IdPaciente); ";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
@@ -255,7 +253,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.Parameters.AddWithValue("@Altura", UpDownAltura.Value);
                     sqlCommand.Parameters.AddWithValue("@pressaoArterial", UpDownPressaoArterial.Text);
                     sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-                   
+
                     sqlCommand.Parameters.AddWithValue("@nomeLeiteArtificial", txtAleitamento.Text);
 
 
@@ -304,7 +302,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@Perimetro", DBNull.Value);
                     }
 
-                
+
 
                     if (tipoAleitamento > 0)
                     {
@@ -322,7 +320,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         sqlCommand.Parameters.AddWithValue("@tipoParto", DBNull.Value);
                     }
-                   
+
                     if (partoDistocico != String.Empty)
                     {
                         sqlCommand.Parameters.AddWithValue("@partoDistocico", Convert.ToString(partoDistocico));
@@ -331,7 +329,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         sqlCommand.Parameters.AddWithValue("@partoDistocico", DBNull.Value);
                     }
-                    
+
                     if (epidural != String.Empty)
                     {
                         sqlCommand.Parameters.AddWithValue("@epidural", Convert.ToString(epidural));
@@ -383,14 +381,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     limparCampos();
 
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a avaliação objetivo", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar a avaliação objetivo", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

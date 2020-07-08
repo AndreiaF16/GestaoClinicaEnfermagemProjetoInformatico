@@ -201,18 +201,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string nome = txtNome.Text;
-            string funcao = txtFuncao.Text;
-            string telemovel = txtContacto.Text;
-            var dtNascimento = dataNascimento.Value;
-            string email = txtEmail.Text;
-            string username = txtUsername.Text;
-            string passCript = CalculaHash("User1234*");
-
-            if (VerificarDadosInseridos())
+            try
             {
-                try
+
+
+                if (VerificarDadosInseridos())
                 {
+                    string nome = txtNome.Text;
+                    string funcao = txtFuncao.Text;
+                    string telemovel = txtContacto.Text;
+                    var dtNascimento = dataNascimento.Value;
+                    string email = txtEmail.Text;
+                    string username = txtUsername.Text;
+                    string passCript = CalculaHash("User1234*");
+
                     conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     conn.Open(); ;
 
@@ -232,15 +234,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     this.Close();
                     conn.Close();
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a o enfermeiro", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
-
+                MessageBox.Show("Por erro interno é impossível registar a o enfermeiro", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         

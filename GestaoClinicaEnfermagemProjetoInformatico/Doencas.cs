@@ -82,18 +82,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
-            {             
-                string nome = txtNome.Text;
-                string sintomas = txtSintomas.Text;
-                try
+            try
+            {
+                if (VerificarDadosInseridos())
                 {
+                    string nome = txtNome.Text;
+                    string sintomas = txtSintomas.Text;
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
                     string queryInsertData = "INSERT INTO Doenca(Nome,Sintomas) VALUES(@Nome, @Sintomas);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.Parameters.AddWithValue("@Nome",nome);
+                    sqlCommand.Parameters.AddWithValue("@Nome", nome);
                     sqlCommand.Parameters.AddWithValue("@Sintomas", sintomas);
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Doença registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -101,14 +102,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Erro interno, não foi possível registar a doença!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Erro interno, não foi possível registar a doença!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

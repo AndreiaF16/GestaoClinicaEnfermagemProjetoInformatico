@@ -72,12 +72,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
             {
-                if (listaEncomenda.Count > 0)
+                if (VerificarDadosInseridos())
                 {
-                    try
+                    if (listaEncomenda.Count > 0)
                     {
+
                         conn.Open();
                         foreach (var item in listaEncomenda)
                         {
@@ -93,10 +94,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         conn.Close();
                         this.Close();
                     }
-                    catch (SqlException)
-                    {
-                        MessageBox.Show("Por erro interno é impossível registar a encomenda", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                 }
                 else
                 {
@@ -106,6 +103,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
                     MessageBox.Show("A lista de encomenda não contem items. Para poder registar a encomenda, tem de ter pelo menos um item", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Por erro interno é impossível registar a encomenda", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

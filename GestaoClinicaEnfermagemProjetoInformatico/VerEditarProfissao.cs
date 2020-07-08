@@ -117,7 +117,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             try
             {
-
                 if (VerificarDadosInseridos())
                 {
                     string nomeProfissao = txtNome.Text;

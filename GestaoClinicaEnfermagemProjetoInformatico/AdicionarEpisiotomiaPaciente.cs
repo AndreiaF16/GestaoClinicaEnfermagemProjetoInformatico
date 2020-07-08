@@ -57,48 +57,49 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
             {
-                string fev = txtFEV.Text;
-                string fvc = txtFVC.Text;
-                string nrfr = txtFR.Text;
-                string superficial = "";
-                string profunda = "";
-                string abdominal = "";
-                string toracia = "";
-                string mista = "";
-                string obs = txtObservacoes.Text;
-                DateTime dataRegisto = dataEpisiotomia.Value;
-                string escalaDor = lblEscala.Text;
-
-
-                if (cbSuperficial.Checked == true)
+                if (VerificarDadosInseridos())
                 {
-                    superficial = "Superficial";
-                }
+                    string fev = txtFEV.Text;
+                    string fvc = txtFVC.Text;
+                    string nrfr = txtFR.Text;
+                    string superficial = "";
+                    string profunda = "";
+                    string abdominal = "";
+                    string toracia = "";
+                    string mista = "";
+                    string obs = txtObservacoes.Text;
+                    DateTime dataRegisto = dataEpisiotomia.Value;
+                    string escalaDor = lblEscala.Text;
 
-                if (cbProfunda.Checked == true)
-                {
-                    profunda = "Profunda";
-                }
 
-                if (cbAbdominal.Checked == true)
-                {
-                    abdominal = "Abdominal";
-                }
+                    if (cbSuperficial.Checked == true)
+                    {
+                        superficial = "Superficial";
+                    }
 
-                if (cbToracica.Checked == true)
-                {
-                    toracia = "Torácica";
-                }
+                    if (cbProfunda.Checked == true)
+                    {
+                        profunda = "Profunda";
+                    }
 
-                if (cbMista.Checked == true)
-                {
-                    mista = "Mista";
-                }
+                    if (cbAbdominal.Checked == true)
+                    {
+                        abdominal = "Abdominal";
+                    }
 
-                try
-                {
+                    if (cbToracica.Checked == true)
+                    {
+                        toracia = "Torácica";
+                    }
+
+                    if (cbMista.Checked == true)
+                    {
+                        mista = "Mista";
+                    }
+
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -187,7 +188,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     else
                     {
                         sqlCommand.Parameters.AddWithValue("@mista", DBNull.Value);
-                    }                 
+                    }
 
                     //escala dor
                     if (escalaDor != string.Empty)
@@ -215,14 +216,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
                     limparCampos();
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a Episiotomia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar a Episiotomia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

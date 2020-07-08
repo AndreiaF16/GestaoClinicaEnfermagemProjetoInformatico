@@ -54,8 +54,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             try
             {
-
-
                 algariacaoPaciente.Clear();
                 conn.Open();
                 com.Connection = conn;

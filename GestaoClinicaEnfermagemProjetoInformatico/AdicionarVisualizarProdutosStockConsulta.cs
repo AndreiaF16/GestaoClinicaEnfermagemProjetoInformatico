@@ -209,14 +209,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
       
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
             {
-                if (listaProdutosConsulta.Count > 0)
+                if (VerificarDadosInseridos())
                 {
-                    string observacoes = txtObservacoes.Text;
-
-                    try
+                    if (listaProdutosConsulta.Count > 0)
                     {
+                        string observacoes = txtObservacoes.Text;
+
+
                         conn.Open();
                         foreach (var item in listaProdutosConsulta)
                         {
@@ -274,28 +275,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                                     sqlCommand2.ExecuteNonQuery();
                                 }
                             }
-                            
+
                         }
                         conn.Close();
                         UpdateGridViewConsultas();
                         selectProdutos();
                     }
-                    catch (SqlException)
-                    {
-                        if (conn.State == ConnectionState.Open)
-                        {
-                            conn.Close();
-                        }
-                        MessageBox.Show("Por erro interno é impossível regista os produtos usados na consulta!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+
                 }
                 else
                 {
                     MessageBox.Show("A lista de produtos usados na consulta não contem produtos. Para poder registar, tem de ter pelo menos um!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-
-
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível regista os produtos usados na consulta!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void reiniciar()

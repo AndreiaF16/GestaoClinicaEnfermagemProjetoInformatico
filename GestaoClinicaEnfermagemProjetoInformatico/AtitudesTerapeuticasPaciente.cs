@@ -663,13 +663,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             try
             {
                 confirmar();
-            DateTime dataRegisto = DateTime.Today;
+                DateTime dataRegisto = DateTime.Today;
 
-            bool msg = false;       
+                bool msg = false;
 
-            if (VerificarDadosInseridos())
-            {
-                
+                if (VerificarDadosInseridos())
+                {
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     if (cbColheitaExpetoracao.Checked == true)
                     {
@@ -681,7 +681,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                         sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
                         sqlCommand.Parameters.AddWithValue("@id", id);
-                    
+
                         sqlCommand.ExecuteNonQuery();
                         connection.Close();
                     }
@@ -696,7 +696,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
                         sqlCommand.Parameters.AddWithValue("@dataR", dataRegisto.ToString("MM/dd/yyyy"));
                         sqlCommand.Parameters.AddWithValue("@idZaragatoa", idZaragatoa);
-                      
+
                         sqlCommand.ExecuteNonQuery();
                         connection.Close();
                     }
@@ -776,7 +776,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         connection.Close();
                     }
 
-                    if (msg== true)
+                    if (msg == true)
                     {
                         MessageBox.Show("Atitude(s) Terapêutica(s) registada(s) com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

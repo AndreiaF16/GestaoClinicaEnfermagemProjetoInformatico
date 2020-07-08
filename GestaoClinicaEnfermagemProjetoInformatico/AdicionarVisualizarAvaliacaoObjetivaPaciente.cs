@@ -127,51 +127,50 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
             {
-                DateTime data = dataAvaliacaoObjetivo.Value;
-                DateTime dataUltimaMestruacao = dataUltimaMenstruacao.Value;
-
-                float ba = Convert.ToSingle(UpDownPeso.Text);
-                int pressaoArterial = Convert.ToInt32(UpDownPressaoArterial.Text);
-                int frequenciaCardiaca = Convert.ToInt32(UpDownFC.Text);
-                decimal temperatura = Convert.ToDecimal(UpDownTemperatura.Text);
-                int saturacaoOxigenio = Convert.ToInt32(UpDownSPO2.Text);
-                int menopausa = Convert.ToInt32(UpDownIdadeMenopausa.Text);
-                int BTM = Convert.ToInt32(UpDownBTM.Text); //glicose no sangue
-                int AC = Convert.ToInt32(UpDownAC.Text);
-                int AP = Convert.ToInt32(UpDownAP.Text);
-                int INR = Convert.ToInt32(upDownINR.Text);
-                int menarca = Convert.ToInt32(upDownMenarca.Text);
-                int gravidezes = Convert.ToInt32(upDownGravidezes.Text);
-                int filhosVivos = Convert.ToInt32(upDownFilhosVivos.Text);
-                int abortos = Convert.ToInt32(upDownAbortos.Text);
-
-                int metodoContracetivo = -1;
-                string DIU = "";
-
-                if (paciente.Sexo == "Feminino")
+                if (VerificarDadosInseridos())
                 {
-                    if (!comboBoxMetodoContracetivo.Text.Equals(String.Empty))
-                    {
-                        metodoContracetivo = (comboBoxMetodoContracetivo.SelectedItem as ComboBoxItem).Value;
+                    DateTime data = dataAvaliacaoObjetivo.Value;
+                    DateTime dataUltimaMestruacao = dataUltimaMenstruacao.Value;
 
+                    float ba = Convert.ToSingle(UpDownPeso.Text);
+                    int pressaoArterial = Convert.ToInt32(UpDownPressaoArterial.Text);
+                    int frequenciaCardiaca = Convert.ToInt32(UpDownFC.Text);
+                    decimal temperatura = Convert.ToDecimal(UpDownTemperatura.Text);
+                    int saturacaoOxigenio = Convert.ToInt32(UpDownSPO2.Text);
+                    int menopausa = Convert.ToInt32(UpDownIdadeMenopausa.Text);
+                    int BTM = Convert.ToInt32(UpDownBTM.Text); //glicose no sangue
+                    int AC = Convert.ToInt32(UpDownAC.Text);
+                    int AP = Convert.ToInt32(UpDownAP.Text);
+                    int INR = Convert.ToInt32(upDownINR.Text);
+                    int menarca = Convert.ToInt32(upDownMenarca.Text);
+                    int gravidezes = Convert.ToInt32(upDownGravidezes.Text);
+                    int filhosVivos = Convert.ToInt32(upDownFilhosVivos.Text);
+                    int abortos = Convert.ToInt32(upDownAbortos.Text);
+
+                    int metodoContracetivo = -1;
+                    string DIU = "";
+
+                    if (paciente.Sexo == "Feminino")
+                    {
+                        if (!comboBoxMetodoContracetivo.Text.Equals(String.Empty))
+                        {
+                            metodoContracetivo = (comboBoxMetodoContracetivo.SelectedItem as ComboBoxItem).Value;
+
+
+                        }
+                        if (radioButtonSim.Checked == true)
+                        {
+                            DIU = "Sim";
+                        }
+                        if (radioButtonNao.Checked == true)
+                        {
+                            DIU = "Não";
+                        }
 
                     }
-                    if (radioButtonSim.Checked == true)
-                    {
-                        DIU = "Sim";
-                    }
-                    if (radioButtonNao.Checked == true)
-                    {
-                        DIU = "Não";
-                    }
 
-                }
-
-
-                try
-                {
                     conn.Open();
                     string queryInsertData = "INSERT INTO AvaliacaoObjetiva(data,peso,altura,IdPaciente,pressaoArterial,frequenciaCardiaca,temperatura,saturacaoOxigenio,dataUltimaMestruacao,menopausa,IdMetodoContracetivo,DIU,concentracaoGlicoseSangue,AC,AP,INR,Menarca,gravidez,filhosVivos,abortos,observacoes) VALUES(@data, @peso, @altura, @IdPaciente, @pressaoArterial, @frequenciaCardiaca, @temperatura, @saturacaoOxigenio, @dataUltimaMestruacao, @menopausa, @IdMetodoContracetivo, @DIU, @concentracaoGlicoseSangue, @AC, @AP, @INR, @Menarca, @gravidez, @filhosVivos, @abortos, @observacoes); ";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, conn);
@@ -337,14 +336,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     conn.Close();
                     limparCampos();
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a avaliação objetivo", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar a avaliação objetivo", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

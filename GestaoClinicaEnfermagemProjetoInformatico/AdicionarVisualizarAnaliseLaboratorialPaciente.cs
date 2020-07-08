@@ -85,15 +85,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
             {
-
-                int analise = (comboBoxAnalise.SelectedItem as ComboBoxItem).Value;
-                DateTime data = dataDiagnostico.Value;
-                string observacoes = txtObservacoes.Text;
-                string resultados = txtResultados.Text;
-                try
+                if (VerificarDadosInseridos())
                 {
+
+                    int analise = (comboBoxAnalise.SelectedItem as ComboBoxItem).Value;
+                    DateTime data = dataDiagnostico.Value;
+                    string observacoes = txtObservacoes.Text;
+                    string resultados = txtResultados.Text;
+
                     conn.Open();
 
                     string queryInsertData = "INSERT INTO analisesLaboratoriaisPaciente(IdAnalisesLaboratoriais,IdPaciente,data,resultados,observacoes) VALUES(@IdAnalisesLaboratoriais,@IdPaciente,@data,@resultados,@Observacoes);";
@@ -125,15 +126,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a análise laboratorial!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar a análise laboratorial!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

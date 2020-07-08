@@ -27,10 +27,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnAlterarPassword_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
             {
-                try
+                if (VerificarDadosInseridos())
                 {
+
                     SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     SqlCommand cmd = new SqlCommand("UPDATE Enfermeiro SET password = @Password, passwordDefault = 0 WHERE IdEnfermeiro = @IdEnfermeiro ", conn);
                     cmd.Parameters.AddWithValue("@Password", Validacoes.CalculaHash(txtConfirmarNovaPassword.Text));
@@ -43,17 +44,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Palavra passe alterada com sucesso!");
                     this.Close();
                 }
-                catch (Exception)
-                {
-
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível alterar a palavra passe!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
-
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível alterar a palavra passe!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

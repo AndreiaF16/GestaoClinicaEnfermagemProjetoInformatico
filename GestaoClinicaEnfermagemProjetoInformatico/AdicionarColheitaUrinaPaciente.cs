@@ -109,46 +109,47 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DateTime dataRegisto = dataRegistoMed.Value;
-            string exameSumario = "";
-            string urocultura = "";
-            string vinteQuatroHoras = "";
-            string obs = txtObservacoes.Text;
-
-            //exameSumario
-            if (cbExameSumario.Checked == true)
-            {
-                exameSumario = "Sim";
-            }
-            if (cbExameSumario.Checked == false)
-            {
-                exameSumario = "";
-            }
-
-            //urocultura
-            if (cbUrocultura.Checked == true)
-            {
-                urocultura = "Sim";
-            }
-            if (cbUrocultura.Checked == false)
-            {
-                urocultura = "";
-            }
-
-            //vinteQuatroHoras
-            if (cbVintaQuatroHoras.Checked == true)
-            {
-                vinteQuatroHoras = "Sim";
-            }
-            if (cbVintaQuatroHoras.Checked == false)
-            {
-                vinteQuatroHoras = "";
-            }
-
-            if (VerificarDadosInseridos())
-            {
-                try
+            try
+            {          
+                if (VerificarDadosInseridos())
                 {
+                    DateTime dataRegisto = dataRegistoMed.Value;
+                    string exameSumario = "";
+                    string urocultura = "";
+                    string vinteQuatroHoras = "";
+                    string obs = txtObservacoes.Text;
+
+                    //exameSumario
+                    if (cbExameSumario.Checked == true)
+                    {
+                        exameSumario = "Sim";
+                    }
+                    if (cbExameSumario.Checked == false)
+                    {
+                        exameSumario = "";
+                    }
+
+                    //urocultura
+                    if (cbUrocultura.Checked == true)
+                    {
+                        urocultura = "Sim";
+                    }
+                    if (cbUrocultura.Checked == false)
+                    {
+                        urocultura = "";
+                    }
+
+                    //vinteQuatroHoras
+                    if (cbVintaQuatroHoras.Checked == true)
+                    {
+                        vinteQuatroHoras = "Sim";
+                    }
+                    if (cbVintaQuatroHoras.Checked == false)
+                    {
+                        vinteQuatroHoras = "";
+                    }
+
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -201,15 +202,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     //limparCampos();
 
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a colheita de urina!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
-
+                MessageBox.Show("Por erro interno é impossível registar a colheita de urina!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

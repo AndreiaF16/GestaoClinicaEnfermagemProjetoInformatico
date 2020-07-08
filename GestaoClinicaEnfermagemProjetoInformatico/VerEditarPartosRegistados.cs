@@ -115,11 +115,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-           try {
-               
-
-            if (VerificarDadosInseridos())
+            try
             {
+                if (VerificarDadosInseridos())
+                {
                     // int id = Convert.ToInt32(txtId.Text);
                     string nomeParto = txtNome.Text;
                     string observacao = txtObservacoes.Text;
@@ -143,15 +142,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                     UpdateDataGridView();
-
                 }
-               
             }
-             catch (SqlException)
+            catch (SqlException)
             {
                 MessageBox.Show("Erro interno, não foi possível alterar o tipo de parto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private Boolean VerificarDadosInseridos()

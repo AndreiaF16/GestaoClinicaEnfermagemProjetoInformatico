@@ -111,245 +111,245 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DateTime dataRegisto = dataRegistoMed.Value;
-            int densidade1 = -1;
-            int densidade2 = -1;
-            int densidade3 = -1;
-            int densidade4 = -1;
-            int densidade5 = -1;
-            int densidade6 = -1;
-            int densidade7 = -1;
-            int ph = -1;
-            string leucocitos = "";
-            string nitritos = "";
-            string proteinas = "";
-            string glucose = "";
-            string cocetonicos = "";
-            string sangue = "";
-            string obs = txtObservacoes.Text;
-
-            //densidade 1000
-            if (cbD1.Checked == true)
+            try
             {
-                densidade1 = 1000;
-            }
-
-            //densidade 1005
-            if (cbD2.Checked == true)
-            {
-                densidade2 = 1005;
-            }
-
-            //densidade 1010
-            if (cbD3.Checked == true)
-            {
-                densidade3 = 1010;
-            }
-
-            //densidade 1015
-            if (cbD4.Checked == true)
-            {
-                densidade4 = 1015;
-            }
-
-            //densidade 1020
-            if (cbD5.Checked == true)
-            {
-                densidade5 = 1020;
-            }
-
-            //densidade 1025
-            if (cbD6.Checked == true)
-            {
-                densidade6 = 1025;
-            }
-
-            //densidade 1030
-            if (cbD7.Checked == true)
-            {
-                densidade7 = 1030;
-            }
-
-            //ph 5
-            if (rbPH1.Checked == true)
-            {
-                ph = 5;
-            }
-
-            //ph 6 
-            if (rbPH2.Checked == true)
-            {
-                ph = 6;
-            }
-
-            //ph 7
-            if (rbPH3.Checked == true)
-            {
-                ph = 7;
-            }
-
-            //ph 8
-            if (rbPH4.Checked == true)
-            {
-                ph = 8;
-            }
-
-            //ph 9
-            if (rbPH5.Checked == true)
-            {
-                ph = 9;
-            }
-
-            //leucocitos negativo
-            if (rbLNeg.Checked == true)
-            {
-                leucocitos = "Neg";
-            }
-
-            //leucocitos 1 +
-            if (rbL1.Checked == true)
-            {
-                leucocitos = "1 +";
-            }
-            
-            //leucocitos 2 +
-            if (rbL2.Checked == true)
-            {
-                leucocitos = "2 +";
-            }          
-
-            //leucocitos 3 +
-            if (rbL3.Checked == true)
-            {
-                leucocitos = "3 +";
-            }        
-
-            //nitritos negativo
-            if (rbLNeg.Checked == true)
-            {
-                nitritos = "Neg";
-            }
-
-
-            //nitritos positivo
-            if (rbNPos.Checked == true)
-            {
-                nitritos = "Pos";
-            }
-
-
-            //proteinas negativa        
-            if (rbPNeg.Checked == true)
-            {
-                proteinas = "Neg";
-            }
-
-            //proteinas 1 +        
-            if (rbP1.Checked == true)
-            {
-                proteinas = "1 +";
-            }
-
-            //proteinas 2 +        
-            if (rbP2.Checked == true)
-            {
-                proteinas = "2 +";
-            }
-
-            //proteinas 1 +        
-            if (rbP3.Checked == true)
-            {
-                proteinas = "3 +";
-            }
-
-            //glucose negativo           
-            if (rbGNeg.Checked == true)
-            {
-                glucose = "Neg";
-            }
-
-            //glucose 1 +           
-            if (rbG1.Checked == true)
-            {
-                glucose = "1 +";
-            }
-
-            //glucose 2 +           
-            if (rbG2.Checked == true)
-            {
-                glucose = "2 +";
-            }
-
-            //glucose 3 +           
-            if (rbG3.Checked == true)
-            {
-                glucose = "3 +";
-            }
-
-            //glucose 4 +           
-            if (rbG4.Checked == true)
-            {
-                glucose = "4 +";
-            }
-
-            //Cocetónicos negativo           
-            if (rbCNeg.Checked == true)
-            {
-                cocetonicos = "Neg";
-            }
-
-            //Cocetónicos 1 +           
-            if (rbC1.Checked == true)
-            {
-                cocetonicos = "1 +";
-            }
-
-            //Cocetónicos 2 +           
-            if (rbC2.Checked == true)
-            {
-                cocetonicos = "2 +";
-            }
-
-            //Cocetónicos 3 +           
-            if (rbC3.Checked == true)
-            {
-                cocetonicos = "3 +";
-            }
-
-            //Sangue/Hemoglobina negativo           
-            if (tbSHNeg.Checked == true)
-            {
-                sangue = "Neg";
-            }
-
-            //Sangue/Hemoglobina 1 +           
-            if (tbSH1.Checked == true)
-            {
-                sangue = "1 +";
-            }
-
-            //Sangue/Hemoglobina 2 +           
-            if (tbSH2.Checked == true)
-            {
-                sangue = "2 +";
-            }
-
-            //Sangue/Hemoglobina 3 +           
-            if (tbSH3.Checked == true)
-            {
-                sangue = "3 +";
-            }
-
-            //Sangue/Hemoglobina 4 +           
-            if (tbSH4.Checked == true)
-            {
-                sangue = "4 +";
-            }
-
-            if (VerificarDadosInseridos())
-            {
-                try
+                if (VerificarDadosInseridos())
                 {
+                    DateTime dataRegisto = dataRegistoMed.Value;
+                    int densidade1 = -1;
+                    int densidade2 = -1;
+                    int densidade3 = -1;
+                    int densidade4 = -1;
+                    int densidade5 = -1;
+                    int densidade6 = -1;
+                    int densidade7 = -1;
+                    int ph = -1;
+                    string leucocitos = "";
+                    string nitritos = "";
+                    string proteinas = "";
+                    string glucose = "";
+                    string cocetonicos = "";
+                    string sangue = "";
+                    string obs = txtObservacoes.Text;
+
+                    //densidade 1000
+                    if (cbD1.Checked == true)
+                    {
+                        densidade1 = 1000;
+                    }
+
+                    //densidade 1005
+                    if (cbD2.Checked == true)
+                    {
+                        densidade2 = 1005;
+                    }
+
+                    //densidade 1010
+                    if (cbD3.Checked == true)
+                    {
+                        densidade3 = 1010;
+                    }
+
+                    //densidade 1015
+                    if (cbD4.Checked == true)
+                    {
+                        densidade4 = 1015;
+                    }
+
+                    //densidade 1020
+                    if (cbD5.Checked == true)
+                    {
+                        densidade5 = 1020;
+                    }
+
+                    //densidade 1025
+                    if (cbD6.Checked == true)
+                    {
+                        densidade6 = 1025;
+                    }
+
+                    //densidade 1030
+                    if (cbD7.Checked == true)
+                    {
+                        densidade7 = 1030;
+                    }
+
+                    //ph 5
+                    if (rbPH1.Checked == true)
+                    {
+                        ph = 5;
+                    }
+
+                    //ph 6 
+                    if (rbPH2.Checked == true)
+                    {
+                        ph = 6;
+                    }
+
+                    //ph 7
+                    if (rbPH3.Checked == true)
+                    {
+                        ph = 7;
+                    }
+
+                    //ph 8
+                    if (rbPH4.Checked == true)
+                    {
+                        ph = 8;
+                    }
+
+                    //ph 9
+                    if (rbPH5.Checked == true)
+                    {
+                        ph = 9;
+                    }
+
+                    //leucocitos negativo
+                    if (rbLNeg.Checked == true)
+                    {
+                        leucocitos = "Neg";
+                    }
+
+                    //leucocitos 1 +
+                    if (rbL1.Checked == true)
+                    {
+                        leucocitos = "1 +";
+                    }
+
+                    //leucocitos 2 +
+                    if (rbL2.Checked == true)
+                    {
+                        leucocitos = "2 +";
+                    }
+
+                    //leucocitos 3 +
+                    if (rbL3.Checked == true)
+                    {
+                        leucocitos = "3 +";
+                    }
+
+                    //nitritos negativo
+                    if (rbLNeg.Checked == true)
+                    {
+                        nitritos = "Neg";
+                    }
+
+
+                    //nitritos positivo
+                    if (rbNPos.Checked == true)
+                    {
+                        nitritos = "Pos";
+                    }
+
+
+                    //proteinas negativa        
+                    if (rbPNeg.Checked == true)
+                    {
+                        proteinas = "Neg";
+                    }
+
+                    //proteinas 1 +        
+                    if (rbP1.Checked == true)
+                    {
+                        proteinas = "1 +";
+                    }
+
+                    //proteinas 2 +        
+                    if (rbP2.Checked == true)
+                    {
+                        proteinas = "2 +";
+                    }
+
+                    //proteinas 1 +        
+                    if (rbP3.Checked == true)
+                    {
+                        proteinas = "3 +";
+                    }
+
+                    //glucose negativo           
+                    if (rbGNeg.Checked == true)
+                    {
+                        glucose = "Neg";
+                    }
+
+                    //glucose 1 +           
+                    if (rbG1.Checked == true)
+                    {
+                        glucose = "1 +";
+                    }
+
+                    //glucose 2 +           
+                    if (rbG2.Checked == true)
+                    {
+                        glucose = "2 +";
+                    }
+
+                    //glucose 3 +           
+                    if (rbG3.Checked == true)
+                    {
+                        glucose = "3 +";
+                    }
+
+                    //glucose 4 +           
+                    if (rbG4.Checked == true)
+                    {
+                        glucose = "4 +";
+                    }
+
+                    //Cocetónicos negativo           
+                    if (rbCNeg.Checked == true)
+                    {
+                        cocetonicos = "Neg";
+                    }
+
+                    //Cocetónicos 1 +           
+                    if (rbC1.Checked == true)
+                    {
+                        cocetonicos = "1 +";
+                    }
+
+                    //Cocetónicos 2 +           
+                    if (rbC2.Checked == true)
+                    {
+                        cocetonicos = "2 +";
+                    }
+
+                    //Cocetónicos 3 +           
+                    if (rbC3.Checked == true)
+                    {
+                        cocetonicos = "3 +";
+                    }
+
+                    //Sangue/Hemoglobina negativo           
+                    if (tbSHNeg.Checked == true)
+                    {
+                        sangue = "Neg";
+                    }
+
+                    //Sangue/Hemoglobina 1 +           
+                    if (tbSH1.Checked == true)
+                    {
+                        sangue = "1 +";
+                    }
+
+                    //Sangue/Hemoglobina 2 +           
+                    if (tbSH2.Checked == true)
+                    {
+                        sangue = "2 +";
+                    }
+
+                    //Sangue/Hemoglobina 3 +           
+                    if (tbSH3.Checked == true)
+                    {
+                        sangue = "3 +";
+                    }
+
+                    //Sangue/Hemoglobina 4 +           
+                    if (tbSH4.Checked == true)
+                    {
+                        sangue = "4 +";
+                    }
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -508,15 +508,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar o teste de combur!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
-
+                MessageBox.Show("Por erro interno é impossível registar o teste de combur!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

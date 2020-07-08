@@ -113,35 +113,35 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             try
             {
                 DateTime dataRegisto = dataRegistoMed.Value;
-            DateTime dataProx = dataProximaRealgaliacao.Value;
-            string silastic = txtSilastic.Text;
-            string folley = "";
-            string tresVias = "";
-            string obs = txtObservacoes.Text;
+                DateTime dataProx = dataProximaRealgaliacao.Value;
+                string silastic = txtSilastic.Text;
+                string folley = "";
+                string tresVias = "";
+                string obs = txtObservacoes.Text;
 
-            //folley
-            if (cbFolley.Checked == true)
-            {
-                folley = "Sim";
-            }
-            if (cbFolley.Checked == false)
-            {
-                folley = "";
-            }
+                //folley
+                if (cbFolley.Checked == true)
+                {
+                    folley = "Sim";
+                }
+                if (cbFolley.Checked == false)
+                {
+                    folley = "";
+                }
 
-            //tresVias
-            if (cbTresVias.Checked == true)
-            {
-                tresVias = "Sim";
-            }
-            if (cbTresVias.Checked == false)
-            {
-                tresVias = "";
-            }
+                //tresVias
+                if (cbTresVias.Checked == true)
+                {
+                    tresVias = "Sim";
+                }
+                if (cbTresVias.Checked == false)
+                {
+                    tresVias = "";
+                }
 
-            if (VerificarDadosInseridos())
-            {
-                
+                if (VerificarDadosInseridos())
+                {
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -156,7 +156,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         sqlCommand.Parameters.AddWithValue("@dataP", dataProx.ToString("MM/dd/yyyy"));
                     }
-                    else 
+                    else
                     {
                         sqlCommand.Parameters.AddWithValue("@dataP", DBNull.Value);
                     }
@@ -203,7 +203,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                
+
             }
             catch (SqlException)
             {

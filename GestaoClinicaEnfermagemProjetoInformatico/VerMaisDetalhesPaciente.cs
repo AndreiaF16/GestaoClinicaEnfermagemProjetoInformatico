@@ -92,27 +92,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             try
             {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select cirurgia.Nome, cirurgiaP.data, cirurgiaP.observacoes from CirurgiaPaciente cirurgiaP JOIN Cirurgia cirurgia ON cirurgia.IdCirurgia = cirurgiaP.IdCirurgia WHERE IdPaciente = @IdPaciente", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            SqlDataReader reader = cmd.ExecuteReader();
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select cirurgia.Nome, cirurgiaP.data, cirurgiaP.observacoes from CirurgiaPaciente cirurgiaP JOIN Cirurgia cirurgia ON cirurgia.IdCirurgia = cirurgiaP.IdCirurgia WHERE IdPaciente = @IdPaciente", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read())
-            {
-                string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
-
-                CirurgiaPaciente cirurgiaPaciente = new CirurgiaPaciente
+                while (reader.Read())
                 {
-                    nome = (string)reader["Nome"],
-                    data = data,
-                    observacoes = (string)reader["observacoes"],
-                };
-                listaCirurgiaPacientes.Add(cirurgiaPaciente);
-            }
-            conn.Close();
-            UpdateDataGridViewCirurgias();
+                    string data = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
+                    CirurgiaPaciente cirurgiaPaciente = new CirurgiaPaciente
+                    {
+                        nome = (string)reader["Nome"],
+                        data = data,
+                        observacoes = (string)reader["observacoes"],
+                    };
+                    listaCirurgiaPacientes.Add(cirurgiaPaciente);
+                }
+                conn.Close();
+                UpdateDataGridViewCirurgias();
             }
             catch (Exception)
             {

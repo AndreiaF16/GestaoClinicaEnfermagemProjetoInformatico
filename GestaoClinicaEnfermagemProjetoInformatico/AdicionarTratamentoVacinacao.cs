@@ -74,20 +74,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
             {
-                string nomeVacina = txtNomeVacina.Text;
-                string marcaComercial = txtMarcaComercial.Text;
-                string nrInoculacao = txtNrInoculacao.Text;
-                string lote = txtLote.Text;
-                string local = txtLocal.Text;
-                string obs = txtObservacoes.Text;
-                DateTime dataRegisto = dataVacinacao.Value;
-                string escalaDor = lblEscala.Text;
-
-
-                try
+                if (VerificarDadosInseridos())
                 {
+                    string nomeVacina = txtNomeVacina.Text;
+                    string marcaComercial = txtMarcaComercial.Text;
+                    string nrInoculacao = txtNrInoculacao.Text;
+                    string lote = txtLote.Text;
+                    string local = txtLocal.Text;
+                    string obs = txtObservacoes.Text;
+                    DateTime dataRegisto = dataVacinacao.Value;
+                    string escalaDor = lblEscala.Text;
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -173,14 +172,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
                     limparCampos();
                 }
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a vacinação!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar a vacinação!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -110,16 +110,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DateTime dataRegisto = dataRegistoMed.Value;
-            DateTime dataR = dataRetirada.Value;
-            DateTime dataC = dataColocacao.Value;
 
-            string obs = txtObservacoes.Text;
-
-            if (VerificarDadosInseridos())
+            try
             {
-                try
+                if (VerificarDadosInseridos())
                 {
+                    DateTime dataRegisto = dataRegistoMed.Value;
+                    DateTime dataR = dataRetirada.Value;
+                    DateTime dataC = dataColocacao.Value;
+
+                    string obs = txtObservacoes.Text;
+
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -147,14 +149,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException ex)
+            }
+            catch (SqlException ex)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show(ex.Message);/*"Por erro interno é impossível registar o Implante Contracetivo SubDérmico!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
+                    conn.Close();
                 }
+                MessageBox.Show(ex.Message);/*"Por erro interno é impossível registar o Implante Contracetivo SubDérmico!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
             }
         }
 

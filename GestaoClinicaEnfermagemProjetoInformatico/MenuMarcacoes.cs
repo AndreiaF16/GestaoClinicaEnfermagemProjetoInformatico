@@ -279,47 +279,47 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             try
             {
-            agendamentos.Clear();
-         
-            conn.Open();
-            com.Connection = conn;
+                agendamentos.Clear();
 
-          //   string date = DateTime.ParseExact(DateTime.Now.ToString("MM/dd/yyyy"), "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
-           // DateTime date = DateTime.Now;
-            string mm = DateTime.Now.ToString("MM/dd/yyyy");
-          //  string aa = DateTime.Now.ToString("dd/MM/yyyy");
+                conn.Open();
+                com.Connection = conn;
 
-            SqlCommand cmd = new SqlCommand("select agendamento.dataProximaConsulta,  agendamento.horaProximaConsulta, p.Nome, p.Nif from AgendamentoConsulta agendamento INNER JOIN Paciente p ON agendamento.IdPaciente = p.IdPaciente WHERE agendamento.IdEnfermeiro =  " + enfermeiro.IdEnfermeiro + " AND ConsultaRealizada= 0 AND agendamento.dataProximaConsulta >= @data ORDER BY agendamento.horaProximaConsulta", conn);
-            cmd.Parameters.AddWithValue("@data", mm);
+                //   string date = DateTime.ParseExact(DateTime.Now.ToString("MM/dd/yyyy"), "dd/MM/yyyy", null).ToString("MM/dd/yyyy");
+                // DateTime date = DateTime.Now;
+                string mm = DateTime.Now.ToString("MM/dd/yyyy");
+                //  string aa = DateTime.Now.ToString("dd/MM/yyyy");
 
-            SqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand("select agendamento.dataProximaConsulta,  agendamento.horaProximaConsulta, p.Nome, p.Nif from AgendamentoConsulta agendamento INNER JOIN Paciente p ON agendamento.IdPaciente = p.IdPaciente WHERE agendamento.IdEnfermeiro =  " + enfermeiro.IdEnfermeiro + " AND ConsultaRealizada= 0 AND agendamento.dataProximaConsulta >= @data ORDER BY agendamento.horaProximaConsulta", conn);
+                cmd.Parameters.AddWithValue("@data", mm);
 
-            while (reader.Read())
-            {
-                string dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                AgendamentoConsultaGridView agendamento = new AgendamentoConsultaGridView
+                while (reader.Read())
                 {
-                    dataProximaConsulta = dataConsulta,
-                    horaProximaConsulta = (string)reader["horaProximaConsulta"],
-                    NomePaciente = (string)reader["Nome"],
-                    NifPaciente = Convert.ToInt32(reader["Nif"]),
-                };
-                agendamentos.Add(agendamento);
-            }
-            auxiliar = agendamentos;
-            
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = auxiliar };
-            dataGridViewMarcacoes.DataSource = bindingSource1;
+                    string dataConsulta = DateTime.ParseExact(reader["dataProximaConsulta"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy");
 
-            dataGridViewMarcacoes.Columns[0].HeaderText = "Hora Consulta";
-            dataGridViewMarcacoes.Columns[1].HeaderText = "Data Consulta";
-            dataGridViewMarcacoes.Columns[2].HeaderText = "Nome Utente";
-            dataGridViewMarcacoes.Columns[3].HeaderText = "Nif Paciente";
-            conn.Close();
-            CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dataGridViewMarcacoes.DataSource];
+                    AgendamentoConsultaGridView agendamento = new AgendamentoConsultaGridView
+                    {
+                        dataProximaConsulta = dataConsulta,
+                        horaProximaConsulta = (string)reader["horaProximaConsulta"],
+                        NomePaciente = (string)reader["Nome"],
+                        NifPaciente = Convert.ToInt32(reader["Nif"]),
+                    };
+                    agendamentos.Add(agendamento);
+                }
+                auxiliar = agendamentos;
 
-            currencyManager1.SuspendBinding();
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = auxiliar };
+                dataGridViewMarcacoes.DataSource = bindingSource1;
+
+                dataGridViewMarcacoes.Columns[0].HeaderText = "Hora Consulta";
+                dataGridViewMarcacoes.Columns[1].HeaderText = "Data Consulta";
+                dataGridViewMarcacoes.Columns[2].HeaderText = "Nome Utente";
+                dataGridViewMarcacoes.Columns[3].HeaderText = "Nif Paciente";
+                conn.Close();
+                CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dataGridViewMarcacoes.DataSource];
+
+                currencyManager1.SuspendBinding();
                 //   dataGridViewMarcacoes.CurrentCell = null;
                 //   dataGridViewMarcacoes.Rows[dataGridViewMarcacoes.Rows.Count -1].Disable = false;
 

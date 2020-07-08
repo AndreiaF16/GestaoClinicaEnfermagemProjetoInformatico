@@ -55,9 +55,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             try
             {
                 if (VerificarDadosInseridos())
-            {
-                string nome = txtNome.Text;
-               
+                {
+                    string nome = txtNome.Text;
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -70,7 +70,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
                     limparCampos();
                 }
-
             }
             catch (SqlException)
             {

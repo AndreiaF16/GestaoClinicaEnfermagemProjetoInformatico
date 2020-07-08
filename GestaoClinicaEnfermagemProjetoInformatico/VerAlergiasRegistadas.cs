@@ -57,8 +57,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             try
             {
-
-
                 if (VerificarDadosInseridos())
                 {
                     int id = Convert.ToInt32(txtId.Text);
