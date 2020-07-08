@@ -88,13 +88,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Código enviado com sucesso!");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 if (conn.State == ConnectionState.Open)
                 {
                     conn.Close();
                 }
-                MessageBox.Show(ex.Message/*"Por erro interno é impossível enviar o email!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error*/);
+                MessageBox.Show("Por erro interno é impossível enviar o email!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         
         }
