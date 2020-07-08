@@ -213,9 +213,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(42, 201);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(184, 24);
+            this.label3.Size = new System.Drawing.Size(199, 24);
             this.label3.TabIndex = 17;
-            this.label3.Text = "Esquecer Username";
+            this.label3.Text = "Esqueceu Username?";
             this.label3.Click += new System.EventHandler(this.label3_Click_1);
             // 
             // label4
@@ -226,9 +226,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(326, 201);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(179, 24);
+            this.label4.Size = new System.Drawing.Size(194, 24);
             this.label4.TabIndex = 16;
-            this.label4.Text = "Esquecer Password";
+            this.label4.Text = "Esqueceu Password?";
             this.label4.Click += new System.EventHandler(this.label4_Click_1);
             // 
             // lblUsername

@@ -110,7 +110,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DateTime dataRegisto = dataRegistoMed.Value;
+            try
+            {
+                DateTime dataRegisto = dataRegistoMed.Value;
             DateTime dataProx = dataProximaRealgaliacao.Value;
             string silastic = txtSilastic.Text;
             string folley = "";
@@ -139,8 +141,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (VerificarDadosInseridos())
             {
-                try
-                {
+                
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -202,15 +203,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                 }
-                catch (SqlException)
-                {
+                
+            }
+            catch (SqlException)
+            {
 
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a Algaliação!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar a Algaliação!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
