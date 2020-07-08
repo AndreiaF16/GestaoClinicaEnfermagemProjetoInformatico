@@ -113,22 +113,19 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
-            /* if (enf != null)
-             {
-                 enfermeiro = enf;
-             }*/
-
-            if (VerificarDadosInseridos())
+            try
             {
-                string nome = txtNome.Text;
-                string funcao = txtFuncao.Text;
-                string email = txtEmail.Text;
-                string contacto = txtContacto.Text;
-                string username = txtUsername.Text;
-                DateTime dtNascimento = dataNascimento.Value;
 
-                try
+                if (VerificarDadosInseridos())
                 {
+                    string nome = txtNome.Text;
+                    string funcao = txtFuncao.Text;
+                    string email = txtEmail.Text;
+                    string contacto = txtContacto.Text;
+                    string username = txtUsername.Text;
+                    DateTime dtNascimento = dataNascimento.Value;
+
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     string queryUpdateData = null;
                     connection.Open();
@@ -159,7 +156,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         sqlCommand.Parameters.AddWithValue("@email", email);
                     }
 
-                   if (usernameIgual == false)
+                    if (usernameIgual == false)
                     {
                         sqlCommand.Parameters.AddWithValue("@username", username);
                     }
@@ -182,15 +179,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     parent.updateLogedIn(enfermeiro);
                     this.Close();
                 }
-
-                catch (SqlException)
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível alterar os seus dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível alterar os seus dados!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -202,13 +198,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string telemovel = txtContacto.Text;
             string username = txtUsername.Text;
             string funcao = txtFuncao.Text;
+            DateTime data = dataNascimento.Value;
 
             if (nome.Equals(enfermeiro.nome) && funcao.Equals(enfermeiro.funcao) && email.Equals(enfermeiro.email) && username.Equals(enfermeiro.username) && telemovel.Equals(enfermeiro.contacto))
             {
                 MessageBox.Show("Dados não alterados!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
             }
 
-            DateTime data = dataNascimento.Value;
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
@@ -258,11 +255,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (!regexEmail.IsMatch(email))
             {
                 MessageBox.Show("Por favor, introduza um email válido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtEmail.Text == string.Empty)
+                {
+                    errorProvider.SetError(txtEmail, "O email é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtEmail, String.Empty);
+                }
+                return false;
             }
 
             if (telemovel.Length != 9)
             {
                 MessageBox.Show("O telemóvel tem de ter exatamente 9 algarismos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtContacto, "O telemóvel tem de ter exatamente 9 algarismos!");
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(txtContacto, String.Empty);
             }
 
             try
@@ -280,6 +292,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         if (txtEmail.Text.Equals((string)reader["Email"]) && emailIgual == false)
                         {
                             MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            errorProvider.SetError(txtEmail, "O Email que colocou já se encontra registado!");
+
                             conn.Close();
                             return false;
                         }
@@ -292,6 +306,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         if (txtUsername.Text.Equals((string)reader["username"]) && usernameIgual == false)
                         {
                             MessageBox.Show("O username que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            errorProvider.SetError(txtUsername, "O username que colocou já se encontra registado!");
+
                             conn.Close();
                             return false;
                         }

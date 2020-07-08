@@ -374,9 +374,9 @@
             this.lblHistoriaAtual.ForeColor = System.Drawing.Color.Black;
             this.lblHistoriaAtual.Location = new System.Drawing.Point(28, 50);
             this.lblHistoriaAtual.Name = "lblHistoriaAtual";
-            this.lblHistoriaAtual.Size = new System.Drawing.Size(202, 20);
+            this.lblHistoriaAtual.Size = new System.Drawing.Size(149, 20);
             this.lblHistoriaAtual.TabIndex = 2;
-            this.lblHistoriaAtual.Text = "Nome Método Contracetivo";
+            this.lblHistoriaAtual.Text = "Análise Laboratorial";
             // 
             // btnGuardar
             // 

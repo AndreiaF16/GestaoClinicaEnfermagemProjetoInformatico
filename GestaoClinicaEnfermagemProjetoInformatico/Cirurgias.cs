@@ -17,6 +17,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private ErrorProvider errorProvider = new ErrorProvider();
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
+        private int id = -1;
         public Cirurgias(AdicionarVisualizarCirurgiaPaciente adicionarVisualizarCirurgiaPaciente)
         {
             InitializeComponent();
@@ -109,12 +110,56 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            limparCampos();
-            VerEditarCirurgiasRegistadas verCirurgiasRegistadas = new VerEditarCirurgiasRegistadas();
-            verCirurgiasRegistadas.Show();
+            idVarios();
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de Cirurgias não encontradas! Deseja inserir uma cirurgia na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    this.Show();
+
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+
+            if (id != -1)
+            {
+                limparCampos();
+                VerEditarCirurgiasRegistadas verCirurgiasRegistadas = new VerEditarCirurgiasRegistadas();
+                verCirurgiasRegistadas.Show();
+            }
+            
         }
 
-        private Boolean VerificarDadosInseridos()
+        private void idVarios()
+        {
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd2 = new SqlCommand("select * from Cirurgia", conn);
+                SqlDataReader reader2 = cmd2.ExecuteReader();
+                while (reader2.Read())
+                {
+                    id = (int)reader2["IdCirurgia"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as cirurgias!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+            private Boolean VerificarDadosInseridos()
         {
             string nome = txtNome.Text;
 

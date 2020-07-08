@@ -676,5 +676,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
+        private void UpDownPrecoConsulta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     } 
 }

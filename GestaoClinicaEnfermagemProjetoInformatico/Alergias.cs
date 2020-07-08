@@ -17,6 +17,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private ErrorProvider errorProvider = new ErrorProvider();
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
+        private int idAlergias = -1;
+
 
         public Alergias(AdicionarVisualizarAlergiaPaciente adicionarVisualizarAlergiaPaciente)
         {
@@ -108,13 +110,54 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            limparCampos();
-            VerAlergiasRegistadas verAlergiasRegistadas = new VerAlergiasRegistadas();
-            verAlergiasRegistadas.Show();
 
+            idVarios();
+
+            if (idAlergias == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de Alergias não encontradas! Deseja inserir uma alergia na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    this.Show();
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+
+            if (idAlergias != -1)
+            {
+                limparCampos();
+                VerAlergiasRegistadas verAlergiasRegistadas = new VerAlergiasRegistadas();
+                verAlergiasRegistadas.Show();
+            }
         }
 
-
+        private void idVarios()
+        {
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Alergia", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    idAlergias = (int)reader["IdAlergia"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as alergias!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private Boolean VerificarDadosInseridos()
         {

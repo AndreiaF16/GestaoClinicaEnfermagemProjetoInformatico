@@ -33,6 +33,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             InitializeComponent();
             paciente = pac;
             errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             dataMedicacao.Value = DateTime.Today;
@@ -305,6 +306,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             rbSimLanche.Checked = false;
             rbSimJantar.Checked = false;
             rbSimDeitar.Checked = false;
+            txtQuantidadeJejum.Text = "";
+            txtQuantidadePeqAlmoco.Text = "";
+            txtQuantidadeAlmoco.Text = "";
+            txtQuantidadeDeitar.Text = "";
+            txtQuantidadeJantar.Text = "";
+            txtQuantidadeLanche.Text = "";
             errorProvider.Clear();
         }
 
@@ -395,34 +402,35 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         Bitmap bitmap;
         private void button3_Click(object sender, EventArgs e)
         {
-            if (dataGridViewMedicacao.RowCount <= 0)
+            try
             {
-                MessageBox.Show("Tem de ter medicamentos registados para poder imprimir a prescrição!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (dataGridViewMedicacao.RowCount <= 0)
+                {
+                    MessageBox.Show("Tem de ter medicamentos registados para poder imprimir a prescrição!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }
-            if (dataGridViewMedicacao.RowCount > 0)
-            {
-                try
+                }
+                if (dataGridViewMedicacao.RowCount > 0)
                 {
 
 
-                // Must have write permissions to the path folder
-                //prevenir excepcao
-                PdfWriter writer = new PdfWriter("C:\\Users\\Beatriz\\Desktop\\Medicacao\\" + paciente.Nome +".pdf");
-                PdfDocument pdf = new PdfDocument(writer);
-                Document document = new Document(pdf);
-                //  PageOrientationsEventHandler eventHandler = new PageOrientationsEventHandler();
-                //  pdfDoc.addEventHandler(PdfDocumentEvent.START_PAGE, eventHandler);
-                this.printDocument1.DefaultPageSettings.Landscape = true;
-                    
+
+                    // Must have write permissions to the path folder
+                    //prevenir excepcao
+                    PdfWriter writer = new PdfWriter("C:\\Users\\Asus\\Desktop\\Escola\\1_2019-2020\\0_ProjetoInformatico\\" + paciente.Nome + ".pdf");
+                    PdfDocument pdf = new PdfDocument(writer);
+                    Document document = new Document(pdf);
+                    //  PageOrientationsEventHandler eventHandler = new PageOrientationsEventHandler();
+                    //  pdfDoc.addEventHandler(PdfDocumentEvent.START_PAGE, eventHandler);
+                    this.printDocument1.DefaultPageSettings.Landscape = true;
 
 
-                Paragraph header = new Paragraph("SILTES SAÚDE - Clinica de Enfermagem").SetTextAlignment(TextAlignment.CENTER).SetFontSize(20);
-                iText.Layout.Element.Image img = new iText.Layout.Element.Image(ImageDataFactory.Create(@"C:\Users\Beatriz\Documents\Projeto Informático\GestaoClinicaEnfermagemProjetoInformatico\logo.jpg")).SetTextAlignment(TextAlignment.CENTER);
-                Paragraph text = new Paragraph("Paciente:" + paciente.Nome).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
-                Paragraph text1 = new Paragraph("NIF:" + paciente.Nif).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
-                Paragraph text2 = new Paragraph("Email:" + paciente.Email).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
-                Paragraph text3 = new Paragraph("Contacto:" + paciente.Contacto).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
+
+                    Paragraph header = new Paragraph("SILTES SAÚDE - Clinica de Enfermagem").SetTextAlignment(TextAlignment.CENTER).SetFontSize(20);
+                    iText.Layout.Element.Image img = new iText.Layout.Element.Image(ImageDataFactory.Create(@"C:\Users\Asus\Desktop\Escola\1_2019-2020\0_ProjetoInformatico\logo.jpg")).SetTextAlignment(TextAlignment.CENTER);
+                    Paragraph text = new Paragraph("Paciente:" + paciente.Nome).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
+                    Paragraph text1 = new Paragraph("NIF:" + paciente.Nif).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
+                    Paragraph text2 = new Paragraph("Email:" + paciente.Email).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
+                    Paragraph text3 = new Paragraph("Contacto:" + paciente.Contacto).SetTextAlignment(TextAlignment.LEFT).SetFontSize(12);
                     Paragraph text4 = new Paragraph("\n").SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
                     Paragraph text5 = new Paragraph("\n").SetTextAlignment(TextAlignment.LEFT).SetFontSize(8);
                     Paragraph text6 = new Paragraph("Medicação Prescrita:").SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
@@ -472,7 +480,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                   table.AddCell(cellHeader14);*/
 
                     foreach (var item in listaMedicacao)
-                {
+                    {
                         Paragraph header1;
                         Paragraph header2;
                         Paragraph header3;
@@ -492,7 +500,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         header15 = new Paragraph("--------------------------------------------------------------------------------------------").SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
 
                         header1 = new Paragraph("Medicação: " + item.medicamentos).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
-                        
+
 
                         if (item.jejum.Equals(String.Empty))
                         {
@@ -512,8 +520,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         {
                             header3 = new Paragraph("Quant.Jejum: " + item.quantJejum).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
                         }
-                        
-                      
+
+
                         if (item.peqAlmoco.Equals(String.Empty))
                         {
                             header4 = new Paragraph("");
@@ -669,36 +677,37 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     // Page numbers
                     int n = pdf.GetNumberOfPages();
-                for (int i = 1; i <= n; i++)
-                {
-                    document.ShowTextAligned(new Paragraph(String.Format("página" + i + " de " + n)), 559, 806, i, TextAlignment.RIGHT, VerticalAlignment.TOP, 0);
+                    for (int i = 1; i <= n; i++)
+                    {
+                        document.ShowTextAligned(new Paragraph(String.Format("página" + i + " de " + n)), 559, 806, i, TextAlignment.RIGHT, VerticalAlignment.TOP, 0);
+                    }
+
+
+                    // document.Add(table);
+
+                    document.Close();
+
+
+                    MessageBox.Show("Documento com a prescrição criado com Sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+                    openFileDialog1.InitialDirectory = "C:\\Users\\Asus\\Desktop\\Escola\\1_2019-2020\\0_ProjetoInformatico\\";
+                    openFileDialog1.Filter = "PDF files (*.pdf)|*.pdf";
+
+                    if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        System.Diagnostics.Process.Start(openFileDialog1.FileName);
+                    }
+
+
                 }
 
-              
-               // document.Add(table);
+            }
+            catch (Exception)
+            {
+                // MessageBox.Show(ex.Message);
 
-                document.Close();
-
-
-                MessageBox.Show("Documento com a prescrição criado com Sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-                openFileDialog1.InitialDirectory = "C:\\Users\\Beatriz\\Desktop\\Medicacao\\";
-                openFileDialog1.Filter = "PDF files (*.pdf)|*.pdf";
-
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    System.Diagnostics.Process.Start(openFileDialog1.FileName);
-                }
-
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-
-                    //MessageBox.Show("Por erro interno foi impossível criar o documento com a prescrição médica! \nVerifique se não tem nenhum documento com o nome do Paciente aberto, se estiver feche o documento e volte a tentar!","Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Por erro interno foi impossível criar o documento com a prescrição médica! \nVerifique se não tem nenhum documento com o nome do Paciente aberto, se estiver feche o documento e volte a tentar!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -786,8 +795,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void rbSimLanche_CheckedChanged(object sender, EventArgs e)
+        private void rbSimLanche_CheckedChanged_1(object sender, EventArgs e)
         {
+
             if (rbSimLanche.Checked == true)
             {
                 txtQuantidadeLanche.Enabled = true;
@@ -821,7 +831,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 txtQuantidadeDeitar.Enabled = false;
             }
         }
-
-       
+    
     }
 }

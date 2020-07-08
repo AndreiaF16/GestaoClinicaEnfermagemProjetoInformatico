@@ -252,26 +252,38 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
-
-            conn.Open();
-            com.Connection = conn;
-
-            SqlCommand cmd = new SqlCommand("select * from Algaliacao WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
-            cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
-            cmd.Parameters.AddWithValue("@id", id);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
-                if (dataRegistoMed.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && id == (int)reader["IdAtitude"])
+
+
+                conn.Open();
+                com.Connection = conn;
+
+                SqlCommand cmd = new SqlCommand("select * from Algaliacao WHERE IdPaciente = @IdPaciente AND IdAtitude = @id", conn);
+                cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    MessageBox.Show("Não é possível registar a Algaliacao, porque já está um registo na data que selecionou! \n Selecione outra data!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    conn.Close();
-                    return false;
+                    DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
+                    if (dataRegistoMed.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && id == (int)reader["IdAtitude"])
+                    {
+                        MessageBox.Show("Não é possível registar a Algaliacao, porque já está um registo na data que selecionou! \n Selecione outra data!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return false;
+                    }
                 }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as atitudes terapêuticas do paciente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return true;
         }
 

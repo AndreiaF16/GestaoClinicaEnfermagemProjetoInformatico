@@ -16,6 +16,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private ErrorProvider errorProvider = new ErrorProvider();
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
+        private int id = -1;
         public RegistarExames(AdicionarVisualizarExamePaciente adicionarVisualizarExamePaciente)
         {
             InitializeComponent();
@@ -52,8 +53,55 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            VerExamesRegistados verExamesRegistados = new VerExamesRegistados();
-            verExamesRegistados.Show();
+
+            idVarios();
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de Exames não encontrados! Deseja inserir um exame na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    this.Show();
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+
+            if (id != -1)
+            {
+                limparCampos();
+                VerExamesRegistados verExamesRegistados = new VerExamesRegistados();
+                verExamesRegistados.Show();
+            }
+
+            
+        }
+
+        private void idVarios()
+        {
+
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd3 = new SqlCommand("select * from TipoExame", conn);
+                SqlDataReader reader3 = cmd3.ExecuteReader();
+                while (reader3.Read())
+                {
+                    id = (int)reader3["IdTipoExame"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar os exames!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

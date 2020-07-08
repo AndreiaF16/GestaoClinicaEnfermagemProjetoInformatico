@@ -655,5 +655,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 MessageBox.Show("Não é possível ver os detalhes do utente, pois não tem utentes associados!!!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void txtNIF_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

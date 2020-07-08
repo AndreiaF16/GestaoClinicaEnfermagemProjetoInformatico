@@ -17,6 +17,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private ErrorProvider errorProvider = new ErrorProvider();
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
+        private int id = -1;
         public AdicionarMetodosContracetivos(AdicionarVisualizarAvaliacaoObjetivaPaciente avaliacaoPaciente)
         {
             InitializeComponent();
@@ -112,13 +113,54 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            txtNomeMetodo.Text = "";
-            txtObservacoes.Text = "";
-            VerEditarMetodosContracetivos verEditarMetodosContracetivos = new VerEditarMetodosContracetivos();
-            verEditarMetodosContracetivos.Show();
+            idVarios();
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de métodos contracetivos não encontrados! Deseja inserir um tipo na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    this.Show();
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+            if (id != -1)
+            {
+                limparCampos();
+                VerEditarMetodosContracetivos verEditarMetodosContracetivos = new VerEditarMetodosContracetivos();
+                verEditarMetodosContracetivos.Show();
+            }
+
+            
            
         }
 
+        private void idVarios()
+        {
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd7 = new SqlCommand("select * from MetodoContracetivo", conn);
+                SqlDataReader reader7 = cmd7.ExecuteReader();
+                while (reader7.Read())
+                {
+                    id = (int)reader7["IdMetodoContracetivo"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar o método contracetivo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             limparCampos();

@@ -231,6 +231,7 @@
             this.upDownINR.Name = "upDownINR";
             this.upDownINR.Size = new System.Drawing.Size(216, 26);
             this.upDownINR.TabIndex = 87;
+            this.upDownINR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.upDownINR_KeyPress);
             // 
             // lblINR
             // 
@@ -531,6 +532,7 @@
             this.UpDownSPO2.Name = "UpDownSPO2";
             this.UpDownSPO2.Size = new System.Drawing.Size(216, 26);
             this.UpDownSPO2.TabIndex = 134;
+            this.UpDownSPO2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownSPO2_KeyPress);
             // 
             // UpDownPerimetro
             // 
@@ -544,6 +546,7 @@
             this.UpDownPerimetro.Name = "UpDownPerimetro";
             this.UpDownPerimetro.Size = new System.Drawing.Size(216, 26);
             this.UpDownPerimetro.TabIndex = 133;
+            this.UpDownPerimetro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownPerimetro_KeyPress);
             // 
             // UpDownFC
             // 
@@ -557,6 +560,7 @@
             this.UpDownFC.Name = "UpDownFC";
             this.UpDownFC.Size = new System.Drawing.Size(216, 26);
             this.UpDownFC.TabIndex = 131;
+            this.UpDownFC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownFC_KeyPress);
             // 
             // UpDownPressaoArterial
             // 
@@ -570,6 +574,7 @@
             this.UpDownPressaoArterial.Name = "UpDownPressaoArterial";
             this.UpDownPressaoArterial.Size = new System.Drawing.Size(216, 26);
             this.UpDownPressaoArterial.TabIndex = 130;
+            this.UpDownPressaoArterial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownPressaoArterial_KeyPress);
             // 
             // UpDownTemperatura
             // 
@@ -584,6 +589,7 @@
             this.UpDownTemperatura.Name = "UpDownTemperatura";
             this.UpDownTemperatura.Size = new System.Drawing.Size(216, 26);
             this.UpDownTemperatura.TabIndex = 129;
+            this.UpDownTemperatura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownTemperatura_KeyPress);
             // 
             // groupBox9
             // 
@@ -996,6 +1002,7 @@
             this.UpDownAltura.Name = "UpDownAltura";
             this.UpDownAltura.Size = new System.Drawing.Size(216, 26);
             this.UpDownAltura.TabIndex = 53;
+            this.UpDownAltura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownAltura_KeyPress);
             // 
             // lblCM
             // 
@@ -1021,6 +1028,7 @@
             this.UpDownPeso.Name = "UpDownPeso";
             this.UpDownPeso.Size = new System.Drawing.Size(216, 26);
             this.UpDownPeso.TabIndex = 51;
+            this.UpDownPeso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownPeso_KeyPress);
             // 
             // lblAltura
             // 

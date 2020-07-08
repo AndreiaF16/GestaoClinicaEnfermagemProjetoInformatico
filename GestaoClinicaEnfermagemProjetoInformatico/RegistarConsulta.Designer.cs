@@ -134,6 +134,7 @@
             this.horaConsulta.Name = "horaConsulta";
             this.horaConsulta.Size = new System.Drawing.Size(200, 26);
             this.horaConsulta.TabIndex = 9;
+            this.horaConsulta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.horaConsulta_KeyPress);
             // 
             // dataConsulta
             // 

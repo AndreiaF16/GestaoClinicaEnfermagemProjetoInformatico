@@ -111,15 +111,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-           // int id = Convert.ToInt32(txtId.Text);
-            string nome = txtNome.Text;
-            string observacao = txtObs.Text;
-
-            if (VerificarDadosInseridos())
-            {
-                try
+            try
+            {            
+                if (VerificarDadosInseridos())
                 {
+                    // int id = Convert.ToInt32(txtId.Text);
+                    string nome = txtNome.Text;
+                    string observacao = txtObs.Text;
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
                     connection.Open();
@@ -141,11 +140,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException)
-                {
-                    MessageBox.Show("Erro interno, não foi possível alterar o método contracetivo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Erro interno, não foi possível alterar o método contracetivo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

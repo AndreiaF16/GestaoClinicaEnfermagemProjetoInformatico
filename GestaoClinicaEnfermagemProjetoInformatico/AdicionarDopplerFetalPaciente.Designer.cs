@@ -34,7 +34,6 @@
             this.lblSemDor = new System.Windows.Forms.Label();
             this.lblDorLigeira = new System.Windows.Forms.Label();
             this.lblDorModerada = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -57,6 +56,8 @@
             this.btnDorMaxima = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataRegisto = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbEcografia = new System.Windows.Forms.CheckBox();
             this.dataEcografia = new System.Windows.Forms.DateTimePicker();
@@ -81,8 +82,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.dataRegisto = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelFormulario.SuspendLayout();
@@ -140,25 +139,6 @@
             this.lblDorModerada.Size = new System.Drawing.Size(108, 16);
             this.lblDorModerada.TabIndex = 13;
             this.lblDorModerada.Text = "Dor Moderada";
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(749, 17);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(176, 54);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "Ver Boneco Corpo Humano";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panelMenu
             // 
@@ -451,7 +431,6 @@
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.groupBox7);
-            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtObservacoes);
             this.groupBox2.Controls.Add(this.label3);
@@ -462,6 +441,26 @@
             this.groupBox2.Size = new System.Drawing.Size(944, 441);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
+            // 
+            // dataRegisto
+            // 
+            this.dataRegisto.Enabled = false;
+            this.dataRegisto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataRegisto.Location = new System.Drawing.Point(392, 29);
+            this.dataRegisto.Name = "dataRegisto";
+            this.dataRegisto.Size = new System.Drawing.Size(200, 26);
+            this.dataRegisto.TabIndex = 54;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Enabled = false;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(234, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(129, 20);
+            this.label5.TabIndex = 53;
+            this.label5.Text = "Data de Registo:";
             // 
             // groupBox4
             // 
@@ -749,26 +748,6 @@
             this.lblTitulo.TabIndex = 6;
             this.lblTitulo.Text = "Siltes Saúde - Clinica de Enfermagem";
             // 
-            // dataRegisto
-            // 
-            this.dataRegisto.Enabled = false;
-            this.dataRegisto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataRegisto.Location = new System.Drawing.Point(392, 29);
-            this.dataRegisto.Name = "dataRegisto";
-            this.dataRegisto.Size = new System.Drawing.Size(200, 26);
-            this.dataRegisto.TabIndex = 54;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Enabled = false;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(234, 34);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(129, 20);
-            this.label5.TabIndex = 53;
-            this.label5.Text = "Data de Registo:";
-            // 
             // AdicionarDopplerFetalPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -816,7 +795,6 @@
         private System.Windows.Forms.Button btnDorMuitoForte;
         private System.Windows.Forms.Button btnDorForte;
         private System.Windows.Forms.Button btnLocalizacaoDor;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panelMenu;

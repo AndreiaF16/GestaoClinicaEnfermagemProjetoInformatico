@@ -253,6 +253,7 @@
             this.UpDownPreco.Name = "UpDownPreco";
             this.UpDownPreco.Size = new System.Drawing.Size(259, 26);
             this.UpDownPreco.TabIndex = 70;
+            this.UpDownPreco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownPreco_KeyPress);
             // 
             // label5
             // 

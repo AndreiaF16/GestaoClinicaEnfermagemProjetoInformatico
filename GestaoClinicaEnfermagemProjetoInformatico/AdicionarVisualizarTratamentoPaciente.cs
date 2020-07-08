@@ -82,7 +82,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
+            {
+                if (VerificarDadosInseridos())
             {
                 DateTime data = dataTratamento.Value;
                 DateTime dataPTratamento = dataProximoTratamento.Value;
@@ -120,8 +122,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     tipoUlcera = (comboBoxTipoUlcera.SelectedItem as ComboBoxItem).Value;
                 }
-                try
-                {
+               
                     if (comboBoxTratamento.SelectedItem.ToString() == "Excisões")
                     {
                         conn.Open();
@@ -139,15 +140,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         {
                             sqlCommand1.Parameters.AddWithValue("@numeroTratamento", DBNull.Value);
                         }
-
-                        if (dataPTratamento.ToShortDateString().Equals(DateTime.Today.ToShortDateString()))
-                        {
-                            sqlCommand1.Parameters.AddWithValue("@dataProximoTratamento", DBNull.Value);
-                        }
-                        else
+       
+                        if (cbProximoTratamento.Checked == true)
                         {
                             sqlCommand1.Parameters.AddWithValue("@dataProximoTratamento", dataPTratamento.ToString("MM/dd/yyyy"));
                         }
+                        else
+                        {
+                            sqlCommand1.Parameters.AddWithValue("@dataProximoTratamento", DBNull.Value);
+                        }
+
+
+
 
                         if (dermica != String.Empty)
                         {
@@ -379,14 +383,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         limparCampos();
                     }
                 }
-                catch (SqlException )
+
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar o tratamento", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Por erro interno é impossível registar o tratamento", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -424,7 +429,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
-            if ((dataPTratamento - DateTime.Today).TotalDays == (data - DateTime.Today).TotalDays)
+            if (((dataPTratamento - DateTime.Today).TotalDays == (data - DateTime.Today).TotalDays) && cbProximoTratamento.Checked == true)
             {
                 MessageBox.Show("A próxima data de tratamento tem de ser diferente da data de registo! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(dataProximoTratamento, "A data tem de ser diferente da data de registo!");
@@ -617,6 +622,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             txtDimensoes.Text = "";
             txtUlcera.Text = "";
             txtExsudadoTipo.Text = "";
+            cbProximoTratamento.Checked = false;
+
             numericUpDownExcudado.Value = 0;
             txtExsudadoCheiro.Text = "";
             dataTratamento.Value = DateTime.Today;
@@ -727,6 +734,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 txtSuportePenso.Visible = true;
                 lblProximoTratamento.Visible = true;
                 dataProximoTratamento.Visible = true;
+                cbProximoTratamento.Visible = true;
                 lblObservacoes.Visible = true;
                 txtObservacoes.Visible = true;
                 groupBoxEscalaDor.Visible = true;
@@ -795,6 +803,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 txtSuportePenso.Visible = false;
                 lblProximoTratamento.Visible = true;
                 dataProximoTratamento.Visible = true;
+                cbProximoTratamento.Visible = true;
                 lblObservacoes.Visible = true;
                 txtObservacoes.Visible = true;
                 groupBoxEscalaDor.Visible = false;
@@ -865,6 +874,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 txtSuportePenso.Visible = true;
                 lblProximoTratamento.Visible = true;
                 dataProximoTratamento.Visible = true;
+                cbProximoTratamento.Visible = true;
                 lblObservacoes.Visible = true;
                 txtObservacoes.Visible = true;
                 groupBoxEscalaDor.Visible = true;
@@ -934,6 +944,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 txtSuportePenso.Visible = true;
                 lblProximoTratamento.Visible = true;
                 dataProximoTratamento.Visible = true;
+                cbProximoTratamento.Visible = true;
                 lblObservacoes.Visible = true;
                 txtObservacoes.Visible = true;
                 groupBoxEscalaDor.Visible = true;
@@ -1019,6 +1030,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 txtSuportePenso.Visible = true;
                 lblProximoTratamento.Visible = true;
                 dataProximoTratamento.Visible = true;
+                cbProximoTratamento.Visible = true;
                 lblObservacoes.Visible = true;
                 txtObservacoes.Visible = true;
                 groupBoxEscalaDor.Visible = true;
@@ -1087,6 +1099,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 txtSuportePenso.Visible = true;
                 lblProximoTratamento.Visible = true;
                 dataProximoTratamento.Visible = true;
+                cbProximoTratamento.Visible = true;
                 lblObservacoes.Visible = true;
                 txtObservacoes.Visible = true;
                 groupBoxEscalaDor.Visible = true;
@@ -1158,6 +1171,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 txtSuportePenso.Visible = true;
                 lblProximoTratamento.Visible = true;
                 dataProximoTratamento.Visible = true;
+                cbProximoTratamento.Visible = true;
                 lblObservacoes.Visible = true;
                 txtObservacoes.Visible = true;
                 groupBoxEscalaDor.Visible = true;
@@ -1196,6 +1210,45 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             VerImagem verImagem = new VerImagem();
             verImagem.Show();
+        }
+
+        private void cbProximoTratamento_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbProximoTratamento.Checked == true)
+            {
+                dataProximoTratamento.Enabled = true;
+            }
+            else
+            {
+                dataProximoTratamento.Enabled = false;
+            }
+        }
+
+        private void UpDownNumeroTratamento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void numericUpDownExcudado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void numericUpDownTamanhoPenso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

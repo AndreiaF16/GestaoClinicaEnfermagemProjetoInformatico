@@ -122,5 +122,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             VerEnfermeirosRegistados verEnfermeirosRegistos = new VerEnfermeirosRegistados(enfermeiro);
             verEnfermeirosRegistos.Show();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 }

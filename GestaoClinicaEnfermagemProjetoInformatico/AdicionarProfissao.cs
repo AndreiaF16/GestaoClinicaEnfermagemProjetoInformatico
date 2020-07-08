@@ -18,6 +18,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private ErrorProvider errorProvider = new ErrorProvider();
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
+        private int id = -1;
         public AdicionarProfissao(FormRegistarUtente adicionarUtente, EditUtente editUtente)
         {
             InitializeComponent();
@@ -65,6 +66,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
             txtNome.Text = "";
             errorProvider.Clear();
         }
@@ -86,8 +92,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     MessageBox.Show("Profissão registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //    AdicionarVisualizarDoencaPaciente.reiniciar();
                     connection.Close();
-                    txtNome.Text = "";
-
+                    limparCampos();
                 }
                 catch (SqlException)
                 {
@@ -126,9 +131,53 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            txtNome.Text = "";
-            VerEditarProfissao verEditarProfissao = new VerEditarProfissao();
-            verEditarProfissao.Show();
+            idVarios();
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Profissões não encontradas! Deseja inserir uma profissão na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    this.Show();
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+
+            if (id != -1)
+            {
+                limparCampos();
+                VerEditarProfissao verEditarProfissao = new VerEditarProfissao();
+                verEditarProfissao.Show();
+            }
+
+           
+        }
+
+        private void idVarios()
+        {
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Profissao", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = (int)reader["IdProfissao"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as profissões!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

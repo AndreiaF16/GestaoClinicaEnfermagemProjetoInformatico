@@ -152,6 +152,8 @@
             this.horaConsultaAdiar.Name = "horaConsultaAdiar";
             this.horaConsultaAdiar.Size = new System.Drawing.Size(230, 26);
             this.horaConsultaAdiar.TabIndex = 72;
+            this.horaConsultaAdiar.ValueChanged += new System.EventHandler(this.horaConsultaAdiar_ValueChanged);
+            this.horaConsultaAdiar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.horaConsultaAdiar_KeyPress);
             // 
             // button1
             // 
@@ -167,7 +169,7 @@
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button1.Size = new System.Drawing.Size(256, 65);
             this.button1.TabIndex = 8;
-            this.button1.Text = "Alterar Consulta";
+            this.button1.Text = "Adiar Consulta";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);

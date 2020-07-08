@@ -137,10 +137,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewProdutos.DataSource = bindingSource1;
             dataGridViewProdutos.Columns[0].HeaderText = "Produto";
             dataGridViewProdutos.Columns[1].HeaderText = "Fornecedor";
-
-            dataGridViewProdutos.Columns[2].HeaderText = "Preço Unitário (€)";
+            dataGridViewProdutos.Columns[2].HeaderText = "Quantidade Armazenada";
             dataGridViewProdutos.Columns[3].HeaderText = "Taxa de IVA (%)";
-            dataGridViewProdutos.Columns[4].HeaderText = "Quantidade";
+            dataGridViewProdutos.Columns[4].HeaderText = "Preço Unitário (€)";
             dataGridViewProdutos.Columns[5].HeaderText = "Observações";
             dataGridViewProdutos.Columns[6].HeaderText = "Preço Total (€)";
 
@@ -224,11 +223,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                 if (Convert.ToInt16(taxaIva) <= 0)
                 {
-                    errorProvider.SetError(UpDownPreco, "A txa de IVA não pode ser inferior ou igual a 0!");
+                    errorProvider.SetError(UpDownIVA, "A taxa de IVA não pode ser inferior ou igual a 0!");
                 }
                 else
                 {
-                    errorProvider.SetError(UpDownPreco, String.Empty);
+                    errorProvider.SetError(UpDownIVA, String.Empty);
+                }
+
+                if (Convert.ToInt16(quantidade) <= 0)
+                {
+                    errorProvider.SetError(UpDownQuantidade, "A quantidade não pode ser inferior ou igual a 0!");
+                }
+                else
+                {
+                    errorProvider.SetError(UpDownQuantidade, String.Empty);
                 }
 
                 return false;
@@ -337,6 +345,33 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
             }
             UpdateDataGridView();
+        }
+
+        private void UpDownQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void UpDownIVA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void UpDownPreco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

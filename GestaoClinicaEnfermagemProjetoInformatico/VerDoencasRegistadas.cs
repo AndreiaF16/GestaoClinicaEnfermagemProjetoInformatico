@@ -110,14 +110,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(txtId.Text);
-            string nome = txtNome.Text;
-            string sintomas = txtSintomas.Text;
-
-            if (!VerificarDadosInseridos())
+            try
             {
-                try
+
+                if (VerificarDadosInseridos())
                 {
+                    int id = Convert.ToInt32(txtId.Text);
+                    string nome = txtNome.Text;
+                    string sintomas = txtSintomas.Text;
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
                     connection.Open();
@@ -139,11 +140,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException)
-                {
-                    MessageBox.Show("Erro interno, não foi possível alterar a doença!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Erro interno, não foi possível alterar a doença!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -230,6 +230,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             txtSintomas.Text = "";
             errorProvider.Clear();
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

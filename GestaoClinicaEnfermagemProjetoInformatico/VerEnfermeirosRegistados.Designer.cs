@@ -37,7 +37,7 @@
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.dataGridViewEnfermeiros = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelTitulo = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnVoltar = new System.Windows.Forms.Button();
@@ -48,6 +48,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.painelPrincipal.SuspendLayout();
             this.panelFormulario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEnfermeiros)).BeginInit();
@@ -66,17 +67,19 @@
             this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
             this.painelPrincipal.Name = "painelPrincipal";
-            this.painelPrincipal.Size = new System.Drawing.Size(1350, 680);
+            this.painelPrincipal.Size = new System.Drawing.Size(1350, 788);
             this.painelPrincipal.TabIndex = 1;
             // 
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
-            this.panelFormulario.Controls.Add(this.dataGridViewEnfermeiros);
             this.panelFormulario.Controls.Add(this.label1);
-            this.panelFormulario.Location = new System.Drawing.Point(232, 40);
+            this.panelFormulario.Controls.Add(this.dataGridViewEnfermeiros);
+            this.panelFormulario.Controls.Add(this.labelTitulo);
+            this.panelFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFormulario.Location = new System.Drawing.Point(232, 0);
             this.panelFormulario.Name = "panelFormulario";
-            this.panelFormulario.Size = new System.Drawing.Size(1118, 640);
+            this.panelFormulario.Size = new System.Drawing.Size(1118, 788);
             this.panelFormulario.TabIndex = 2;
             // 
             // dataGridViewEnfermeiros
@@ -106,7 +109,7 @@
             this.dataGridViewEnfermeiros.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewEnfermeiros.EnableHeadersVisualStyles = false;
             this.dataGridViewEnfermeiros.GridColor = System.Drawing.Color.SteelBlue;
-            this.dataGridViewEnfermeiros.Location = new System.Drawing.Point(10, 147);
+            this.dataGridViewEnfermeiros.Location = new System.Drawing.Point(10, 157);
             this.dataGridViewEnfermeiros.MultiSelect = false;
             this.dataGridViewEnfermeiros.Name = "dataGridViewEnfermeiros";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -123,19 +126,19 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridViewEnfermeiros.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewEnfermeiros.Size = new System.Drawing.Size(1047, 302);
+            this.dataGridViewEnfermeiros.Size = new System.Drawing.Size(1047, 481);
             this.dataGridViewEnfermeiros.TabIndex = 51;
             // 
-            // label1
+            // labelTitulo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label1.Location = new System.Drawing.Point(3, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(573, 39);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Visualizar Dados dos Enfermeiros";
+            this.labelTitulo.AutoSize = true;
+            this.labelTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.labelTitulo.Location = new System.Drawing.Point(3, 43);
+            this.labelTitulo.Name = "labelTitulo";
+            this.labelTitulo.Size = new System.Drawing.Size(573, 39);
+            this.labelTitulo.TabIndex = 1;
+            this.labelTitulo.Text = "Visualizar Dados dos Enfermeiros";
             // 
             // panelMenu
             // 
@@ -145,7 +148,7 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(232, 680);
+            this.panelMenu.Size = new System.Drawing.Size(232, 788);
             this.panelMenu.TabIndex = 1;
             // 
             // pictureBox2
@@ -166,7 +169,7 @@
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.ForeColor = System.Drawing.Color.Black;
             this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnVoltar.Location = new System.Drawing.Point(0, 564);
+            this.btnVoltar.Location = new System.Drawing.Point(0, 688);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(2);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -213,7 +216,7 @@
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHora.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblHora.Location = new System.Drawing.Point(933, 11);
+            this.lblHora.Location = new System.Drawing.Point(693, 11);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(57, 20);
             this.lblHora.TabIndex = 11;
@@ -231,6 +234,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnFechar
             // 
@@ -256,11 +260,22 @@
             this.lblTitulo.TabIndex = 6;
             this.lblTitulo.Text = "Siltes Saúde - Clinica de Enfermagem";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.label1.Location = new System.Drawing.Point(305, 112);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(280, 20);
+            this.label1.TabIndex = 52;
+            this.label1.Text = "Visualizar Dados dos Enfermeiros";
+            // 
             // VerEnfermeirosRegistados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 680);
+            this.ClientSize = new System.Drawing.Size(1350, 788);
             this.Controls.Add(this.panelTitulo);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -288,7 +303,7 @@
         private System.Windows.Forms.Panel panelFormulario;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button btnVoltar;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelTitulo;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Timer hora;
         private System.Windows.Forms.DataGridView dataGridViewEnfermeiros;
@@ -298,5 +313,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox btnFechar;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label label1;
     }
 }

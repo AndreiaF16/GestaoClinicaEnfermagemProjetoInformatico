@@ -54,6 +54,7 @@
             this.painelPrincipal = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbProximoTratamento = new System.Windows.Forms.CheckBox();
             this.lblGrauUlceraPressao = new System.Windows.Forms.Label();
             this.txtGrauUlceraPressao = new System.Windows.Forms.TextBox();
             this.comboBoxTipoUlcera = new System.Windows.Forms.ComboBox();
@@ -448,6 +449,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.cbProximoTratamento);
             this.groupBox1.Controls.Add(this.lblGrauUlceraPressao);
             this.groupBox1.Controls.Add(this.txtGrauUlceraPressao);
             this.groupBox1.Controls.Add(this.comboBoxTipoUlcera);
@@ -493,6 +495,18 @@
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registar Tratamento";
+            // 
+            // cbProximoTratamento
+            // 
+            this.cbProximoTratamento.AutoSize = true;
+            this.cbProximoTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbProximoTratamento.Location = new System.Drawing.Point(767, 413);
+            this.cbProximoTratamento.Name = "cbProximoTratamento";
+            this.cbProximoTratamento.Size = new System.Drawing.Size(15, 14);
+            this.cbProximoTratamento.TabIndex = 173;
+            this.cbProximoTratamento.UseVisualStyleBackColor = true;
+            this.cbProximoTratamento.Visible = false;
+            this.cbProximoTratamento.CheckedChanged += new System.EventHandler(this.cbProximoTratamento_CheckedChanged);
             // 
             // lblGrauUlceraPressao
             // 
@@ -648,6 +662,7 @@
             // 
             // dataProximoTratamento
             // 
+            this.dataProximoTratamento.Enabled = false;
             this.dataProximoTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataProximoTratamento.Location = new System.Drawing.Point(826, 410);
             this.dataProximoTratamento.Name = "dataProximoTratamento";
@@ -870,7 +885,7 @@
             this.lblProximoTratamento.AutoSize = true;
             this.lblProximoTratamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProximoTratamento.ForeColor = System.Drawing.Color.Black;
-            this.lblProximoTratamento.Location = new System.Drawing.Point(591, 416);
+            this.lblProximoTratamento.Location = new System.Drawing.Point(579, 416);
             this.lblProximoTratamento.Name = "lblProximoTratamento";
             this.lblProximoTratamento.Size = new System.Drawing.Size(155, 20);
             this.lblProximoTratamento.TabIndex = 152;
@@ -920,6 +935,7 @@
             this.numericUpDownTamanhoPenso.Name = "numericUpDownTamanhoPenso";
             this.numericUpDownTamanhoPenso.Size = new System.Drawing.Size(245, 26);
             this.numericUpDownTamanhoPenso.TabIndex = 142;
+            this.numericUpDownTamanhoPenso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numericUpDownTamanhoPenso_KeyPress);
             // 
             // txtTipoPenso
             // 
@@ -1139,6 +1155,7 @@
             this.numericUpDownExcudado.Size = new System.Drawing.Size(245, 26);
             this.numericUpDownExcudado.TabIndex = 142;
             this.numericUpDownExcudado.Visible = false;
+            this.numericUpDownExcudado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numericUpDownExcudado_KeyPress);
             // 
             // lblQntExsudado
             // 
@@ -1227,6 +1244,7 @@
             this.UpDownNumeroTratamento.Size = new System.Drawing.Size(245, 26);
             this.UpDownNumeroTratamento.TabIndex = 53;
             this.UpDownNumeroTratamento.Visible = false;
+            this.UpDownNumeroTratamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownNumeroTratamento_KeyPress);
             // 
             // lblNrTratamento
             // 
@@ -1368,5 +1386,6 @@
         private System.Windows.Forms.TextBox txtGrauUlceraPressao;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.CheckBox cbProximoTratamento;
     }
 }

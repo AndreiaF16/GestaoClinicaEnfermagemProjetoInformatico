@@ -115,16 +115,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string nomeProfissao = txtNome.Text;
+            try
+            {
 
-            if (!VerificarDadosInseridos())
-            {
-                MessageBox.Show("Dados incorretos!");
-            }
-            else
-            {
-                try
+                if (VerificarDadosInseridos())
                 {
+                    string nomeProfissao = txtNome.Text;
+
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
                     connection.Open();
@@ -143,11 +141,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException)
-                {
-                    MessageBox.Show("Erro interno, não foi possível alterar a profissão!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Erro interno, não foi possível alterar a profissão!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

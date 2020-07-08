@@ -162,20 +162,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             auxiliar.Clear();
             try
             {
-            conn.Open();
-            com.Connection = conn;
-            SqlCommand cmd = new SqlCommand("select * from tipoDespesa order by designacao asc", conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Text = (string)reader["designacao"];
-                item.Value = (int)reader["IdTipoDespesa"];
-                comboBoxDespesa.Items.Add(item);
-                despesa.Add(item);
-            }
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from tipoDespesa order by designacao asc", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Text = (string)reader["designacao"];
+                    item.Value = (int)reader["IdTipoDespesa"];
+                    comboBoxDespesa.Items.Add(item);
+                    despesa.Add(item);
+                }
 
-            conn.Close();
+                conn.Close();
             }
             catch (Exception)
             {
@@ -434,6 +434,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 groupBox3.Enabled = false;
                 txtProcurarEncomenda.Enabled = false;
+            }
+        }
+
+        private void UpDownPreco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

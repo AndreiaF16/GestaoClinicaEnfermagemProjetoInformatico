@@ -19,6 +19,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
+        private int id = -1;
         public AdicionarTipoParto(AdicionarVisualizarAvaliacaoObjetivaBebe avaliacaoBebe)
         {
             InitializeComponent();
@@ -59,20 +60,62 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            txtTipoParto.Text = "";
-            txtObservações.Text = "";
-            VerEditarPartosRegistados verEditarPartosRegistados = new VerEditarPartosRegistados();
-            verEditarPartosRegistados.Show();
+            idVarios();
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de partos não encontrados! Deseja inserir um tipo na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    AdicionarTipoParto adicionarTipoParto = new AdicionarTipoParto(null);
+                    adicionarTipoParto.Show();
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+            if (id != -1)
+            {
+                limparCampos();
+                VerEditarPartosRegistados verEditarPartosRegistados = new VerEditarPartosRegistados();
+                verEditarPartosRegistados.Show();
+            }     
+        }
+
+        private void idVarios()
+        {
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd6 = new SqlCommand("select * from Parto", conn);
+                SqlDataReader reader6 = cmd6.ExecuteReader();
+                while (reader6.Read())
+                {
+                    id = (int)reader6["IdParto"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar o tipo de parto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
-            {              
-                string tipoParto = txtTipoParto.Text;
-                string observacao = txtObservações.Text;
-                try
+            try
+            {
+
+                if (VerificarDadosInseridos())
                 {
+                    string tipoParto = txtTipoParto.Text;
+                    string observacao = txtObservações.Text;
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
@@ -83,17 +126,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Tipo de Parto registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
-                    txtTipoParto.Text = "";
-                    txtObservações.Text = "";
+                    limparCampos();
                 }
-                catch (SqlException)
+
+            }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Erro interno, não foi possível registar o tipo de parto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Erro interno, não foi possível registar o tipo de parto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -121,6 +164,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
         {
             txtTipoParto.Text = "";
             txtObservações.Text = "";

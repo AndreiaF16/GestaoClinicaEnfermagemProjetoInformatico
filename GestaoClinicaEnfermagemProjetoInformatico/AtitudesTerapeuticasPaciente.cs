@@ -28,6 +28,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private int idColheitaSangue = -1;
         private int idEnemaLimpeza = -1;
         private int idLavagemGastrica = -1;
+        private int idColpocitologia = -1;
 
         public AtitudesTerapeuticasPaciente(Paciente pac)
         {
@@ -129,8 +130,73 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnColpocitologia_Click(object sender, EventArgs e)
         {
-            AdicionarColpocitologiaPaciente adicionarColpocitologiaPaciente = new AdicionarColpocitologiaPaciente(paciente);
-            adicionarColpocitologiaPaciente.Show();
+            idAtitudeColpocitologia();
+            if (idColpocitologia == -1)
+            {
+                var resposta = MessageBox.Show("Atitude não encontrada! Deseja inserir a atitude na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Atitude(nomeAtitude) VALUES('Colpocitologia');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                if (resposta == DialogResult.No)
+                {
+                    this.Close();
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idAtitudeColpocitologia();
+
+            if (idColpocitologia != -1)
+            {
+                AdicionarColpocitologiaPaciente adicionarColpocitologiaPaciente = new AdicionarColpocitologiaPaciente(paciente);
+                adicionarColpocitologiaPaciente.Show();
+            }
+
+            idAtitudeColpocitologia();
+           
+        }
+        private void idAtitudeColpocitologia()
+        {
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colpocitologia'", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    idColpocitologia = (int)reader["IdAtitude"];
+                }
+
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private void btnDIU_Click(object sender, EventArgs e)
@@ -594,15 +660,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button19_Click(object sender, EventArgs e)
         {
-            confirmar();
+            try
+            {
+                confirmar();
             DateTime dataRegisto = DateTime.Today;
 
             bool msg = false;       
 
             if (VerificarDadosInseridos())
             {
-                try
-                {
+                
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     if (cbColheitaExpetoracao.Checked == true)
                     {
@@ -715,17 +782,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     }
                 }
-                catch (SqlException)
-                {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível registar a(s) atitude(s) Terapêutica(s)!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
             }
-
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível registar a(s) atitude(s) Terapêutica(s)!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button25_Click(object sender, EventArgs e)
@@ -936,6 +1001,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private Boolean VerificarDadosInseridos()
         {
+            if (cbColheitaExpetoracao.Checked == false && cbZaragatoa.Checked == false && cbFezesParasitologico.Checked == false && cbFezesSangueOculto.Checked == false && cbColheitaSangue.Checked == false && cbEnemaLimpeza.Checked == false && cbLavagemGastrica.Checked == false)
+            {
+                MessageBox.Show("Nenhuma atitude terapêutica foi selecionada!\n Seleciona uma!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             try
             {
                 if (cbColheitaExpetoracao.Checked == true)

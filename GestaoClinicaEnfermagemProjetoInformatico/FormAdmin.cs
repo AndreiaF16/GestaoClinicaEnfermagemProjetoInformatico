@@ -17,9 +17,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         
         private Enfermeiro enfermeiro = new Enfermeiro();
         private int id = -1;
+        private int idEncomenda = -1;
+
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
-
         public FormAdmin(Enfermeiro enf)
         {
             InitializeComponent();
@@ -177,16 +178,82 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Despesas despesas = new Despesas();
-            despesas.Show();
+            idTipoEncomenda();
+
+            if (idEncomenda == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de despesa 'Encomendas' não encontrada, não é possível registar encomendas! Deseja inserir um 'Encomenda' na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO tipoDespesa(designacao) VALUES('Encomendas');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Despesa do tipo 'Ecomenda'  registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar o tipo de despesa!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idTipoEncomenda();
+
+            if (idEncomenda != -1)
+            {
+                Despesas despesas = new Despesas();
+                despesas.Show();
+            }
+
+            
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            RegistarEncomendas registarEncomendas = new RegistarEncomendas();
-            registarEncomendas.Show();
+                 
+                RegistarEncomendas registarEncomendas = new RegistarEncomendas();
+                registarEncomendas.Show();
+                  
         }
 
+        private void idTipoEncomenda()
+        {
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from tipoDespesa WHERE designacao = 'Encomendas'", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    idEncomenda = (int)reader["IdTipoDespesa"];
+                }
+
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as despesas!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void FormAdmin_Load(object sender, EventArgs e)
         {
             

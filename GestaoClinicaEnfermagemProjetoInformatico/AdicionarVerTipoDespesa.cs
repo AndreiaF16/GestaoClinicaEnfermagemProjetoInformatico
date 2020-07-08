@@ -91,7 +91,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("O tipo de despesa foi registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
-                    errorProvider.Clear();
+                    limparCampos();
+
                     UpdateDataGridView();
 
                 }

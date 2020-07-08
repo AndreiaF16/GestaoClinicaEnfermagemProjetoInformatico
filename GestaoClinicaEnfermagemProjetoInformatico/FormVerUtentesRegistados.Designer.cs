@@ -196,6 +196,7 @@
             this.txtNIF.Size = new System.Drawing.Size(228, 26);
             this.txtNIF.TabIndex = 6;
             this.txtNIF.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNIF_KeyDown);
+            this.txtNIF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNIF_KeyPress);
             // 
             // label3
             // 

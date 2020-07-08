@@ -76,7 +76,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Colpocitologia registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Colocação do DIU registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                     limparCampos();
                 }
@@ -86,7 +86,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         conn.Close();
                     }
-                    MessageBox.Show("Por erro interno é impossível registar a Colpocitologia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                    MessageBox.Show("Por erro interno é impossível registar a colocação do DIU!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 }
             }
         }

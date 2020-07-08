@@ -112,14 +112,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(txtId.Text);
-            string nome = txtNome.Text;
-            string caracterizacao = txtSintomas.Text;
-
-            if (VerificarDadosInseridos())
+            try
             {
-                try
+                if (VerificarDadosInseridos())
                 {
+                    int id = Convert.ToInt32(txtId.Text);
+                    string nome = txtNome.Text;
+                    string caracterizacao = txtSintomas.Text;
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
                     connection.Open();
@@ -139,21 +139,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     connection.Close();
                     limparCampos();
                     UpdateDataGridView();
-
-                }
-                catch (SqlException)
-                {
-                    MessageBox.Show("Erro interno, não foi possível alterar a cirurgia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
-                }
-
+                }       
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Erro interno, não foi possível alterar a cirurgia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
             }
         }
         private Boolean VerificarDadosInseridos()
         {
             string nome = txtNome.Text;
-            string caracterizacao = txtSintomas.Text;
 
-            if (nome == string.Empty || caracterizacao == string.Empty)
+            if (nome == string.Empty )
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o nome da cirurgia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (txtNome.Text == string.Empty)

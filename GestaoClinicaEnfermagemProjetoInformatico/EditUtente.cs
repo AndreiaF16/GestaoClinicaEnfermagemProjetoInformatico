@@ -44,8 +44,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void EditUtente_Load(object sender, EventArgs e)
         {
+            reiniciar(); 
             preencherDados();
-            reiniciar();
             auxiliar = utentes;
             conn.Close();
         }
@@ -376,6 +376,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         if (txtEmail.Text.Equals((string)reader["Email"]))
                         {
                             MessageBox.Show("O Email que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            errorProvider.SetError(txtEmail, "O Email que colocou já se encontra registado!");
+
                             conn.Close();
                             return false;
                         }
@@ -385,6 +387,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     if (Convert.ToInt32(txtNif.Text) == Convert.ToInt32(reader["Nif"]) && nifIgual == false)
                     {
                         MessageBox.Show("O NIF que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        errorProvider.SetError(txtNif, "O NIF que colocou já se encontra registado!");
                         conn.Close();
                         return false;
                     }
@@ -395,6 +398,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         if (Convert.ToInt32(txtSNS.Text) == Convert.ToInt32(reader["NumeroSNS"]) && SNSIgual == false)
                         {
                             MessageBox.Show("O número do SNS que colocou já se encontra registado, coloque outro.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            errorProvider.SetError(txtSNS, "O número do SNS que colocou já se encontra registado!");
                             conn.Close();
                             return false;
                         }
@@ -416,78 +420,79 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (VerificarDadosInseridos())
+            try
             {
+                if (VerificarDadosInseridos())
+                {
 
-                string nome = txtNome.Text;
-                var dtNascimento = dataNascimento.Value;
-                string rua = txtRua.Text;
-                string nrMorada = txtNumeroCasa.Text;
-                string andarPiso = txtAndarPiso.Text;
-                string codPrefixo = txtCodPostalPre.Text;
-                string codSufixo = txtCodPostalSuf.Text;
-                string localidade = txtLocalidade.Text;
-                string email = txtEmail.Text;
-                string telemovel = txtContacto.Text;
-                string nif = txtNif.Text;
-                int nomeProfissao = -1;
-                //string profissao = (String)cbProfissoes.SelectedItem;
-                string acordo = (String)cbAcordos.SelectedItem;
-                string nomeSeguradora = txtNomeSeguradora.Text;
-                string numeroApolice = txtNApolice.Text;
-                string nomeSubsistema = txtNomeSubsistema.Text;
-                string numeroSubsistema = txtNSubsistema.Text;
-                string numeroSNS = txtSNS.Text;
-                string bairroLocal = txtBairroLocal.Text;
-                string designacao = txtDesignacao.Text;
-                string sexo = "";
+                    string nome = txtNome.Text;
+                    var dtNascimento = dataNascimento.Value;
+                    string rua = txtRua.Text;
+                    string nrMorada = txtNumeroCasa.Text;
+                    string andarPiso = txtAndarPiso.Text;
+                    string codPrefixo = txtCodPostalPre.Text;
+                    string codSufixo = txtCodPostalSuf.Text;
+                    string localidade = txtLocalidade.Text;
+                    string email = txtEmail.Text;
+                    string telemovel = txtContacto.Text;
+                    string nif = txtNif.Text;
+                    int nomeProfissao = -1;
+                    //string profissao = (String)cbProfissoes.SelectedItem;
+                    string acordo = (String)cbAcordos.SelectedItem;
+                    string nomeSeguradora = txtNomeSeguradora.Text;
+                    string numeroApolice = txtNApolice.Text;
+                    string nomeSubsistema = txtNomeSubsistema.Text;
+                    string numeroSubsistema = txtNSubsistema.Text;
+                    string numeroSNS = txtSNS.Text;
+                    string bairroLocal = txtBairroLocal.Text;
+                    string designacao = txtDesignacao.Text;
+                    string sexo = "";
 
 
-                if (cbProfissoes.SelectedItem != null)
-                {
-                    nomeProfissao = (cbProfissoes.SelectedItem as ComboBoxItem).Value;
-                }
-                if (radioButtonMasculino.Checked == true)
-                {
-                    sexo = "Masculino";
-                }
-                if (radioButtonFeminino.Checked == true)
-                {
-                    sexo = "Feminino";
-                }
-                if (radioButtonIndefinido.Checked == true)
-                {
-                    sexo = "Indefinido";
-                }
+                    if (cbProfissoes.SelectedItem != null)
+                    {
+                        nomeProfissao = (cbProfissoes.SelectedItem as ComboBoxItem).Value;
+                    }
+                    if (radioButtonMasculino.Checked == true)
+                    {
+                        sexo = "Masculino";
+                    }
+                    if (radioButtonFeminino.Checked == true)
+                    {
+                        sexo = "Feminino";
+                    }
+                    if (radioButtonIndefinido.Checked == true)
+                    {
+                        sexo = "Indefinido";
+                    }
 
-                string planoVacinacao = "";
-                if (radioButtonAtualizado.Checked == true)
-                {
-                    planoVacinacao = "Atualizado";
-                }
-                if (radioButtonNaoAtualizado.Checked == true)
-                {
-                    planoVacinacao = "Não Atualizado";
-                }
+                    string planoVacinacao = "";
+                    if (radioButtonAtualizado.Checked == true)
+                    {
+                        planoVacinacao = "Atualizado";
+                    }
+                    if (radioButtonNaoAtualizado.Checked == true)
+                    {
+                        planoVacinacao = "Não Atualizado";
+                    }
 
-                try
-                {
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     string queryUpdateData = null;
                     connection.Open();
                     if (nifIgual == true && emailIgual == true && SNSIgual == true)
                     {
-                         queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Contacto = @contacto,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
+                        queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Contacto = @contacto,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
 
                     }
-                    else if(nifIgual == true && emailIgual == false && SNSIgual == false)
+                    else if (nifIgual == true && emailIgual == false && SNSIgual == false)
                     {
-                         queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Email = @email, Contacto = @contacto,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
+                        queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Email = @email, Contacto = @contacto,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
 
                     }
                     else if (nifIgual == false && emailIgual == true && SNSIgual == false)
                     {
-                         queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Contacto = @contacto,Nif = @nif,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
+                        queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Contacto = @contacto,Nif = @nif,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
 
                     }
                     else if (nifIgual == false && emailIgual == false && SNSIgual == true)
@@ -512,7 +517,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
                     else
                     {
-                         queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Email = @email, Contacto = @contacto,Nif = @nif,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
+                        queryUpdateData = "UPDATE Paciente SET Nome = @nome, DataNascimento = @dataNascimento, Email = @email, Contacto = @contacto,Nif = @nif,Rua = @rua,NumeroCasa = @numeroCasa,Andar = @andar,localidade = @localidade,bairroLocal = @bairroLocal,codPostalPrefixo = @codPostalPrefixo,codPostalSufixo = @codPostalSufixo,designacao=@designacao,Acordo = @acordo,NomeSeguradora=@nomeSeguradora,NumeroApoliceSeguradora = @numeroApoliceSeguradora,NomeSubsistema = @nomeSubsistema,NumeroSubsistema = @numeroSubsistema,NumeroSNS = @numeroSNS,Sexo = @sexo,PlanoVacinacao = @planoVacinacao, IdProfissao = @nomeProfissao WHERE IdPaciente = @IdPaciente";
                     }
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
                     sqlCommand.Parameters.AddWithValue("@nome", nome);
@@ -572,7 +577,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         sqlCommand.Parameters.AddWithValue("@email", Convert.ToString(email));
                     }
-                    else if(emailIgual == false)
+                    else if (emailIgual == false)
                     {
                         sqlCommand.Parameters.AddWithValue("@email", DBNull.Value);
                     }
@@ -624,13 +629,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         if (Convert.ToString(utente.Nif).Equals(txtNif.Text))
                         {
-                            utente.Nome=  txtNome.Text ;
-                            utente.Rua = txtRua.Text ;
+                            utente.Nome = txtNome.Text;
+                            utente.Rua = txtRua.Text;
                             utente.NumeroCasa = Convert.ToInt16(txtNumeroCasa.Text);
                             utente.Andar = txtAndarPiso.Text;
                             utente.codigoPostal = txtCodPostalPre.Text + "-" + txtCodPostalSuf.Text;
-                          //  utente.codPostalPrefixo = Convert.ToDouble(txtCodPostalPre.Text);
-                           // utente.codPostalSufixo = Convert.ToDouble(txtCodPostalSuf.Text);
+                            //  utente.codPostalPrefixo = Convert.ToDouble(txtCodPostalPre.Text);
+                            // utente.codPostalSufixo = Convert.ToDouble(txtCodPostalSuf.Text);
                             utente.localidade = txtLocalidade.Text;
                             utente.Email = txtEmail.Text;
                             utente.Contacto = Convert.ToDouble(txtContacto.Text);
@@ -638,49 +643,50 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         }
                     }
                     MessageBox.Show("Paciente alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                 //   UpdateDataGridView();
+                    //   UpdateDataGridView();
                     formulario.UpdateUtentes();
                     connection.Close();
                     this.Close();
                 }
-                catch (SqlException)
-                {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Por erro interno é impossível alterar os dados do utente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
 
             }
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível alterar os dados do utente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
-       
 
-       /* private void UpdateDataGridView()
-        {
-            dataGridViewUtentes.DataSource = new List<UtenteGridView>();
-            var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = utentes };
-            dataGridViewUtentes.DataSource = bindingSource1;
-         //   dataGridViewUtentes.DataSource = utentes;
-            dataGridViewUtentes.Columns[0].HeaderText = "Nome";
-            dataGridViewUtentes.Columns[1].HeaderText = "Data de Nascimento";
-            dataGridViewUtentes.Columns[2].HeaderText = "Email";
-            dataGridViewUtentes.Columns[3].HeaderText = "Contacto";
-            dataGridViewUtentes.Columns[4].HeaderText = "NIF";
-            dataGridViewUtentes.Columns[5].HeaderText = "Profissão";
-            dataGridViewUtentes.Columns[6].HeaderText = "Morada";
-            dataGridViewUtentes.Columns[7].HeaderText = "Nr";
-            dataGridViewUtentes.Columns[8].HeaderText = "Andar";
-            dataGridViewUtentes.Columns[9].HeaderText = "Código Postal";
-           // dataGridViewUtentes.Columns[10].HeaderText = "Postal";
-            dataGridViewUtentes.Columns[10].HeaderText = "Localidade";
-       
-            auxiliar = utentes;
-        
-            dataGridViewUtentes.Update();
-            dataGridViewUtentes.Refresh();
-        }*/
+
+        /* private void UpdateDataGridView()
+         {
+             dataGridViewUtentes.DataSource = new List<UtenteGridView>();
+             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = utentes };
+             dataGridViewUtentes.DataSource = bindingSource1;
+          //   dataGridViewUtentes.DataSource = utentes;
+             dataGridViewUtentes.Columns[0].HeaderText = "Nome";
+             dataGridViewUtentes.Columns[1].HeaderText = "Data de Nascimento";
+             dataGridViewUtentes.Columns[2].HeaderText = "Email";
+             dataGridViewUtentes.Columns[3].HeaderText = "Contacto";
+             dataGridViewUtentes.Columns[4].HeaderText = "NIF";
+             dataGridViewUtentes.Columns[5].HeaderText = "Profissão";
+             dataGridViewUtentes.Columns[6].HeaderText = "Morada";
+             dataGridViewUtentes.Columns[7].HeaderText = "Nr";
+             dataGridViewUtentes.Columns[8].HeaderText = "Andar";
+             dataGridViewUtentes.Columns[9].HeaderText = "Código Postal";
+            // dataGridViewUtentes.Columns[10].HeaderText = "Postal";
+             dataGridViewUtentes.Columns[10].HeaderText = "Localidade";
+
+             auxiliar = utentes;
+
+             dataGridViewUtentes.Update();
+             dataGridViewUtentes.Refresh();
+         }*/
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1015,6 +1021,33 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private void panelFormulario_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void txtSNS_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNSubsistema_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNApolice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

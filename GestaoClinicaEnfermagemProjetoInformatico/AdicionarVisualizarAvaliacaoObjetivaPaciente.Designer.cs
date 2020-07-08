@@ -246,6 +246,7 @@
             this.UpDownBTM.Size = new System.Drawing.Size(226, 26);
             this.UpDownBTM.TabIndex = 138;
             this.UpDownBTM.Visible = false;
+            this.UpDownBTM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownBTM_KeyPress);
             // 
             // UpDownAP
             // 
@@ -260,6 +261,7 @@
             this.UpDownAP.Size = new System.Drawing.Size(226, 26);
             this.UpDownAP.TabIndex = 137;
             this.UpDownAP.Visible = false;
+            this.UpDownAP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownAP_KeyPress);
             // 
             // UpDownAC
             // 
@@ -274,6 +276,7 @@
             this.UpDownAC.Size = new System.Drawing.Size(226, 26);
             this.UpDownAC.TabIndex = 136;
             this.UpDownAC.Visible = false;
+            this.UpDownAC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownAC_KeyPress);
             // 
             // UpDownSPO2
             // 
@@ -287,6 +290,7 @@
             this.UpDownSPO2.Name = "UpDownSPO2";
             this.UpDownSPO2.Size = new System.Drawing.Size(245, 26);
             this.UpDownSPO2.TabIndex = 135;
+            this.UpDownSPO2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownSPO2_KeyPress);
             // 
             // UpDownFC
             // 
@@ -300,6 +304,7 @@
             this.UpDownFC.Name = "UpDownFC";
             this.UpDownFC.Size = new System.Drawing.Size(245, 26);
             this.UpDownFC.TabIndex = 132;
+            this.UpDownFC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownFC_KeyPress);
             // 
             // comboBoxMetodoContracetivo
             // 
@@ -323,6 +328,7 @@
             this.UpDownPressaoArterial.Name = "UpDownPressaoArterial";
             this.UpDownPressaoArterial.Size = new System.Drawing.Size(245, 26);
             this.UpDownPressaoArterial.TabIndex = 131;
+            this.UpDownPressaoArterial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownPressaoArterial_KeyPress);
             // 
             // lblMetodoContracetivo
             // 
@@ -349,6 +355,7 @@
             this.UpDownTemperatura.Name = "UpDownTemperatura";
             this.UpDownTemperatura.Size = new System.Drawing.Size(245, 26);
             this.UpDownTemperatura.TabIndex = 107;
+            this.UpDownTemperatura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownTemperatura_KeyPress);
             // 
             // radioButtonNao
             // 
@@ -391,6 +398,7 @@
             this.upDownAbortos.Size = new System.Drawing.Size(227, 26);
             this.upDownAbortos.TabIndex = 101;
             this.upDownAbortos.Visible = false;
+            this.upDownAbortos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.upDownAbortos_KeyPress);
             // 
             // lblAbortos
             // 
@@ -417,6 +425,7 @@
             this.upDownFilhosVivos.Size = new System.Drawing.Size(227, 26);
             this.upDownFilhosVivos.TabIndex = 99;
             this.upDownFilhosVivos.Visible = false;
+            this.upDownFilhosVivos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.upDownFilhosVivos_KeyPress);
             // 
             // lblFilhosVivos
             // 
@@ -443,6 +452,7 @@
             this.upDownGravidezes.Size = new System.Drawing.Size(227, 26);
             this.upDownGravidezes.TabIndex = 97;
             this.upDownGravidezes.Visible = false;
+            this.upDownGravidezes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.upDownGravidezes_KeyPress);
             // 
             // lblGravidezes
             // 
@@ -481,6 +491,7 @@
             this.upDownMenarca.Size = new System.Drawing.Size(227, 26);
             this.upDownMenarca.TabIndex = 93;
             this.upDownMenarca.Visible = false;
+            this.upDownMenarca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.upDownMenarca_KeyPress);
             // 
             // lblMenarca
             // 
@@ -527,6 +538,7 @@
             this.upDownINR.Size = new System.Drawing.Size(226, 26);
             this.upDownINR.TabIndex = 87;
             this.upDownINR.Visible = false;
+            this.upDownINR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.upDownINR_KeyPress);
             // 
             // lblINR
             // 
@@ -625,6 +637,7 @@
             this.UpDownIdadeMenopausa.Size = new System.Drawing.Size(227, 26);
             this.UpDownIdadeMenopausa.TabIndex = 71;
             this.UpDownIdadeMenopausa.Visible = false;
+            this.UpDownIdadeMenopausa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownIdadeMenopausa_KeyPress);
             // 
             // lblMenopausa
             // 
@@ -771,6 +784,7 @@
             this.UpDownAltura.Name = "UpDownAltura";
             this.UpDownAltura.Size = new System.Drawing.Size(245, 26);
             this.UpDownAltura.TabIndex = 53;
+            this.UpDownAltura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownAltura_KeyPress);
             // 
             // lblCM
             // 
@@ -796,6 +810,7 @@
             this.UpDownPeso.Name = "UpDownPeso";
             this.UpDownPeso.Size = new System.Drawing.Size(245, 26);
             this.UpDownPeso.TabIndex = 51;
+            this.UpDownPeso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownPeso_KeyPress);
             // 
             // lblAltura
             // 

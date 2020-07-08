@@ -60,7 +60,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 conn.Open();
                 com.Connection = conn;
-                SqlCommand cmd = new SqlCommand("select avaliacao.data, avaliacao.peso, avaliacao.altura, avaliacao.pressaoArterial, avaliacao.frequenciaCardiaca, avaliacao.temperatura, avaliacao.saturacaoOxigenio, avaliacao.dataUltimaMestruacao, avaliacao.menopausa, metodo.nomeMetodoContracetivo, avaliacao.DIU, avaliacao.concentracaoGlicoseSangue, avaliacao.AC, avaliacao.AP, avaliacao.INR, avaliacao.Menarca, avaliacao.gravidez, avaliacao.filhosVivos, avaliacao.abortos, avaliacao.observacoes from AvaliacaoObjetiva avaliacao JOIN MetodoContracetivo metodo ON avaliacao.IdMetodoContracetivo = metodo.IdMetodoContracetivo WHERE IdPaciente = @IdPaciente ORDER BY avaliacao.data, metodo.nomeMetodoContracetivo", conn);
+                SqlCommand cmd = new SqlCommand("select avaliacao.data, avaliacao.peso, avaliacao.altura, avaliacao.pressaoArterial, avaliacao.frequenciaCardiaca, avaliacao.temperatura, avaliacao.saturacaoOxigenio, avaliacao.dataUltimaMestruacao, avaliacao.menopausa, metodo.nomeMetodoContracetivo, avaliacao.DIU, avaliacao.concentracaoGlicoseSangue, avaliacao.AC, avaliacao.AP, avaliacao.INR, avaliacao.Menarca, avaliacao.gravidez, avaliacao.filhosVivos, avaliacao.abortos, avaliacao.observacoes from AvaliacaoObjetiva avaliacao LEFT JOIN MetodoContracetivo metodo ON avaliacao.IdMetodoContracetivo = metodo.IdMetodoContracetivo WHERE IdPaciente = @IdPaciente ORDER BY avaliacao.data, metodo.nomeMetodoContracetivo", conn);
 
                 cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
 
@@ -100,7 +100,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
          
                 UpdateDataGridViewAvaliacao();
                 dataGridViewAvaliacaoObjetiva.Columns[10].Width = dataGridViewAvaliacaoObjetiva.Columns[10].Width + 100;
-                dataGridViewAvaliacaoObjetiva.Columns[20].Width = dataGridViewAvaliacaoObjetiva.Columns[20].Width + 200;
+                dataGridViewAvaliacaoObjetiva.Columns[19].Width = dataGridViewAvaliacaoObjetiva.Columns[20].Width + 200;
+                dataGridViewAvaliacaoObjetiva.Columns[9].Width = dataGridViewAvaliacaoObjetiva.Columns[20].Width + 200;
+
                 conn.Close();
                 UpdateDataGridViewAvaliacao();
             }
@@ -120,24 +122,25 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataGridViewAvaliacaoObjetiva.Columns[0].HeaderText = "Data da Avaliação Objetivo";
             dataGridViewAvaliacaoObjetiva.Columns[1].HeaderText = "Peso (KG)";
             dataGridViewAvaliacaoObjetiva.Columns[2].HeaderText = "Altura (cm)";
-            dataGridViewAvaliacaoObjetiva.Columns[3].HeaderText = "IMC";
-            dataGridViewAvaliacaoObjetiva.Columns[4].HeaderText = "Pressão Arterial";
-            dataGridViewAvaliacaoObjetiva.Columns[5].HeaderText = "Frequência Cardiaca";
-            dataGridViewAvaliacaoObjetiva.Columns[6].HeaderText = "Temperatura";
-            dataGridViewAvaliacaoObjetiva.Columns[7].HeaderText = "Saturação Oxigénio";
-            dataGridViewAvaliacaoObjetiva.Columns[8].HeaderText = "Data Última Mestruação";
-            dataGridViewAvaliacaoObjetiva.Columns[9].HeaderText = "Menopausa (idade)";
-            dataGridViewAvaliacaoObjetiva.Columns[10].HeaderText = "Método Contracetivo";
-            dataGridViewAvaliacaoObjetiva.Columns[11].HeaderText = "DIU";
-            dataGridViewAvaliacaoObjetiva.Columns[12].HeaderText = "BMT";
-            dataGridViewAvaliacaoObjetiva.Columns[13].HeaderText = "AC";
-            dataGridViewAvaliacaoObjetiva.Columns[14].HeaderText = "AP";
-            dataGridViewAvaliacaoObjetiva.Columns[15].HeaderText = "INR";
-            dataGridViewAvaliacaoObjetiva.Columns[16].HeaderText = "Menarca (idade)";
-            dataGridViewAvaliacaoObjetiva.Columns[17].HeaderText = "Gravidezes";
+            dataGridViewAvaliacaoObjetiva.Columns[3].HeaderText = "Pressão Arterial";
+            dataGridViewAvaliacaoObjetiva.Columns[4].HeaderText = "Frequência Cardiaca";
+            dataGridViewAvaliacaoObjetiva.Columns[5].HeaderText = "Temperatura";
+            dataGridViewAvaliacaoObjetiva.Columns[6].HeaderText = "Saturação Oxigénio";
+            dataGridViewAvaliacaoObjetiva.Columns[7].HeaderText = "Data Última Mestruação";
+            dataGridViewAvaliacaoObjetiva.Columns[8].HeaderText = "Menopausa (idade)";
+            dataGridViewAvaliacaoObjetiva.Columns[9].HeaderText = "Método Contracetivo";
+            dataGridViewAvaliacaoObjetiva.Columns[10].HeaderText = "DIU";
+            dataGridViewAvaliacaoObjetiva.Columns[11].HeaderText = "BMT";
+            dataGridViewAvaliacaoObjetiva.Columns[12].HeaderText = "AC";
+            dataGridViewAvaliacaoObjetiva.Columns[13].HeaderText = "AP";
+            dataGridViewAvaliacaoObjetiva.Columns[14].HeaderText = "INR";
+            dataGridViewAvaliacaoObjetiva.Columns[15].HeaderText = "Menarca (idade)";
+            dataGridViewAvaliacaoObjetiva.Columns[16].HeaderText = "Gravidezes";
             dataGridViewAvaliacaoObjetiva.Columns[18].HeaderText = "Filhos Vivos";
-            dataGridViewAvaliacaoObjetiva.Columns[19].HeaderText = "Abortos";
-            dataGridViewAvaliacaoObjetiva.Columns[20].HeaderText = "Observações";
+            dataGridViewAvaliacaoObjetiva.Columns[18].HeaderText = "Abortos";
+            dataGridViewAvaliacaoObjetiva.Columns[19].HeaderText = "Observações";
+            dataGridViewAvaliacaoObjetiva.Columns[20].HeaderText = "IMC";
+
             if (!paciente.Sexo.Equals("Feminino"))
             {
                 dataGridViewAvaliacaoObjetiva.Columns[8].Visible = false;

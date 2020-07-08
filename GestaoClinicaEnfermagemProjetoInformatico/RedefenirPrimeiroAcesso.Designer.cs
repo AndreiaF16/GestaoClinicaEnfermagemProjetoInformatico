@@ -42,7 +42,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(88, 154);
+            this.label2.Location = new System.Drawing.Point(94, 159);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(206, 21);
             this.label2.TabIndex = 9;
@@ -52,7 +52,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(88, 93);
+            this.label1.Location = new System.Drawing.Point(94, 98);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(127, 21);
             this.label1.TabIndex = 8;
@@ -71,25 +71,27 @@
             // 
             // txtConfirmarNovaPassword
             // 
+            this.txtConfirmarNovaPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfirmarNovaPassword.Location = new System.Drawing.Point(326, 154);
             this.txtConfirmarNovaPassword.Name = "txtConfirmarNovaPassword";
             this.txtConfirmarNovaPassword.PasswordChar = '*';
-            this.txtConfirmarNovaPassword.Size = new System.Drawing.Size(258, 20);
+            this.txtConfirmarNovaPassword.Size = new System.Drawing.Size(258, 26);
             this.txtConfirmarNovaPassword.TabIndex = 6;
             // 
             // txtNovaPassoword
             // 
+            this.txtNovaPassoword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNovaPassoword.Location = new System.Drawing.Point(326, 93);
             this.txtNovaPassoword.Name = "txtNovaPassoword";
             this.txtNovaPassoword.PasswordChar = '*';
-            this.txtNovaPassoword.Size = new System.Drawing.Size(256, 20);
+            this.txtNovaPassoword.Size = new System.Drawing.Size(256, 26);
             this.txtNovaPassoword.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(88, 32);
+            this.label3.Location = new System.Drawing.Point(94, 40);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(133, 21);
             this.label3.TabIndex = 10;
@@ -97,9 +99,10 @@
             // 
             // txtUsername
             // 
+            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.Location = new System.Drawing.Point(326, 35);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(258, 20);
+            this.txtUsername.Size = new System.Drawing.Size(258, 26);
             this.txtUsername.TabIndex = 11;
             // 
             // PrimeiroAcesso
@@ -118,7 +121,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PrimeiroAcesso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RedefinirPrimeiroAcesso";
+            this.Text = "Redefinir Primeiro Acesso";
             this.Load += new System.EventHandler(this.PrimeiroAcesso_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

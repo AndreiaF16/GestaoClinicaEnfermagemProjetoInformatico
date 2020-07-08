@@ -17,6 +17,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private ErrorProvider errorProvider = new ErrorProvider();
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
+        private int id = -1;
         public Doencas(AdicionarVisualizarDoencaPaciente adicionarVisualizarDoencaPaciente)
         {
             InitializeComponent();
@@ -113,9 +114,54 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            limparCampos();
-            VerDoencasRegistadas verDoencasRegistadas = new VerDoencasRegistadas();
-            verDoencasRegistadas.Show();
+            idVarios();
+
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de Doenças não encontradas! Deseja inserir uma doença na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    this.Show();
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+
+            if (id != -1)
+            {
+                limparCampos();
+                VerDoencasRegistadas verDoencasRegistadas = new VerDoencasRegistadas();
+                verDoencasRegistadas.Show();
+            }
+
+          
+        }
+
+        private void idVarios()
+        {
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd1 = new SqlCommand("select * from Doenca", conn);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    id = (int)reader1["IdDoenca"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as doenças!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private Boolean VerificarDadosInseridos()

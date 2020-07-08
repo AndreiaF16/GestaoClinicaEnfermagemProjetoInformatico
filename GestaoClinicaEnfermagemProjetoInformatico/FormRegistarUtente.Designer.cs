@@ -509,6 +509,7 @@
             this.txtCodPostalPre.Name = "txtCodPostalPre";
             this.txtCodPostalPre.Size = new System.Drawing.Size(99, 26);
             this.txtCodPostalPre.TabIndex = 64;
+            this.txtCodPostalPre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodPostalPre_KeyPress);
             // 
             // txtCodPostalSuf
             // 
@@ -518,6 +519,7 @@
             this.txtCodPostalSuf.Name = "txtCodPostalSuf";
             this.txtCodPostalSuf.Size = new System.Drawing.Size(99, 26);
             this.txtCodPostalSuf.TabIndex = 62;
+            this.txtCodPostalSuf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodPostalSuf_KeyPress);
             // 
             // label6
             // 
@@ -605,6 +607,7 @@
             this.txtNumeroCasa.Name = "txtNumeroCasa";
             this.txtNumeroCasa.Size = new System.Drawing.Size(127, 26);
             this.txtNumeroCasa.TabIndex = 56;
+            this.txtNumeroCasa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroCasa_KeyPress_1);
             // 
             // label9
             // 

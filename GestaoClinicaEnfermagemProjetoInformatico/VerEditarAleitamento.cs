@@ -48,14 +48,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
-        {           
-            if (VerificarDadosInseridos())
+        {
+            try
             {
-                string tipo = txtTipo.Text;
-                string obs = txtObs.Text;
-
-                try
+                if (VerificarDadosInseridos())
                 {
+                    string tipo = txtTipo.Text;
+                    string obs = txtObs.Text;
+
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
                     connection.Open();
@@ -77,10 +78,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException)
-                {
-                    MessageBox.Show("Erro interno, não foi possível alterar o tipo de aleitamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Erro interno, não foi possível alterar o tipo de aleitamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -17,6 +17,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private ErrorProvider errorProvider = new ErrorProvider();
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
+        private int id = -1;
 
         public AdicionarTipoAleitamento(AdicionarVisualizarAvaliacaoObjetivaBebe avaliacaoBebe)
         {
@@ -75,8 +76,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Tipo de Aleitamento registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
-                    txtTipo.Text = "";
-                    txtObs.Text = "";
+                    limparCampos();
                 }
                 catch (SqlException)
                 {
@@ -114,14 +114,61 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            txtTipo.Text = "";
-            txtObs.Text = "";
-            VerEditarAleitamento verEditarAleitamento = new VerEditarAleitamento();
-            verEditarAleitamento.Show();
+
+            idVarios();
+
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de Aleitamento não encontrados! Deseja inserir um aleitamento na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    this.Show();
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+
+            if (id != -1)
+            {
+                limparCampos();
+                VerEditarAleitamento verEditarAleitamento = new VerEditarAleitamento();
+                verEditarAleitamento.Show();
+            }
+        }
+
+        private void idVarios()
+        {
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd5 = new SqlCommand("select * from Aleitamento", conn);
+                SqlDataReader reader5 = cmd5.ExecuteReader();
+                while (reader5.Read())
+                {
+                    id = (int)reader5["IdAleitamento"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar o tipo de aleitamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            limparCampos();
+        }
+
+        private void limparCampos() {
             txtTipo.Text = "";
             txtObs.Text = "";
             errorProvider.Clear();

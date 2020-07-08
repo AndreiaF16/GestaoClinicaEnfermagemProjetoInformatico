@@ -18,6 +18,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
+        private int id = -1;
         public AnalisesLaboratoriais(AdicionarVisualizarAnaliseLaboratorialPaciente adicionarVisualizarAnalisesLaboratoriais)
         {
             InitializeComponent();
@@ -145,11 +146,56 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            txtAnalise.Text = "";
-            txtObs.Text = "";
-            VerEditarAnaliseLaboratorial verEditarAnaliseLaboratorial = new VerEditarAnaliseLaboratorial();
-            verEditarAnaliseLaboratorial.Show();
 
+            idVarios();
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de Análises Laboratoriais não encontradas! Deseja inserir uma análise laboratorial na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    this.Show();
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+
+            if (id != -1)
+            {
+                txtAnalise.Text = "";
+                txtObs.Text = "";
+                VerEditarAnaliseLaboratorial verEditarAnaliseLaboratorial = new VerEditarAnaliseLaboratorial();
+                verEditarAnaliseLaboratorial.Show();
+            }
+
+           
+
+        }
+
+        private void idVarios()
+        {
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd4 = new SqlCommand("select * from analisesLaboratoriais", conn);
+                SqlDataReader reader4 = cmd4.ExecuteReader();
+                while (reader4.Read())
+                {
+                    id = (int)reader4["IdAnalisesLaboratoriais"];
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar as análises laboratoriais!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

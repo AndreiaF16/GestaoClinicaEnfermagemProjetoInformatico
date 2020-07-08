@@ -224,7 +224,7 @@
             this.btnRetirarProdutoLista.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnRetirarProdutoLista.Size = new System.Drawing.Size(166, 58);
             this.btnRetirarProdutoLista.TabIndex = 76;
-            this.btnRetirarProdutoLista.Text = "Retirar Produto da Encomenda";
+            this.btnRetirarProdutoLista.Text = "Retirar Produto da Consulta";
             this.btnRetirarProdutoLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRetirarProdutoLista.UseVisualStyleBackColor = false;
             this.btnRetirarProdutoLista.Click += new System.EventHandler(this.btnRetirarProdutoLista_Click);
@@ -242,7 +242,7 @@
             this.btnAdicionarProdutoLista.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnAdicionarProdutoLista.Size = new System.Drawing.Size(166, 58);
             this.btnAdicionarProdutoLista.TabIndex = 75;
-            this.btnAdicionarProdutoLista.Text = "Adicionar Produto à Encomenda";
+            this.btnAdicionarProdutoLista.Text = "Adicionar Produto à Consulta";
             this.btnAdicionarProdutoLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdicionarProdutoLista.UseVisualStyleBackColor = false;
             this.btnAdicionarProdutoLista.Click += new System.EventHandler(this.btnAdicionarProdutoLista_Click);

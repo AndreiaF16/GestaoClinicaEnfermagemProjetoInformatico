@@ -270,7 +270,7 @@
             this.button6.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button6.Size = new System.Drawing.Size(238, 39);
             this.button6.TabIndex = 34;
-            this.button6.Text = "Avaliação Objetivo";
+            this.button6.Text = "Avaliação Objetiva";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button6.UseVisualStyleBackColor = false;
@@ -386,6 +386,7 @@
             this.UpDownPrecoConsulta.Name = "UpDownPrecoConsulta";
             this.UpDownPrecoConsulta.Size = new System.Drawing.Size(114, 26);
             this.UpDownPrecoConsulta.TabIndex = 53;
+            this.UpDownPrecoConsulta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UpDownPrecoConsulta_KeyPress);
             // 
             // button1
             // 

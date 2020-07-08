@@ -641,6 +641,7 @@
             this.txtSNS.TabIndex = 62;
             this.txtSNS.Visible = false;
             this.txtSNS.TextChanged += new System.EventHandler(this.txtSNS_TextChanged);
+            this.txtSNS.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSNS_KeyPress);
             // 
             // lblSNS
             // 
@@ -663,6 +664,7 @@
             this.txtNSubsistema.Size = new System.Drawing.Size(280, 26);
             this.txtNSubsistema.TabIndex = 60;
             this.txtNSubsistema.Visible = false;
+            this.txtNSubsistema.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNSubsistema_KeyPress);
             // 
             // lblNSubsistema
             // 
@@ -706,6 +708,7 @@
             this.txtNApolice.Size = new System.Drawing.Size(280, 26);
             this.txtNApolice.TabIndex = 56;
             this.txtNApolice.Visible = false;
+            this.txtNApolice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNApolice_KeyPress);
             // 
             // lblNApolice
             // 

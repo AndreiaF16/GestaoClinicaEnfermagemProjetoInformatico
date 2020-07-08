@@ -55,14 +55,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(txtId.Text);
-            string nome = txtNome.Text;
-            string sintomas = txtSintomas.Text;
-
-            if (VerificarDadosInseridos())
+            try
             {
-                try
+
+
+                if (VerificarDadosInseridos())
                 {
+                    int id = Convert.ToInt32(txtId.Text);
+                    string nome = txtNome.Text;
+                    string sintomas = txtSintomas.Text;
+
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
                     connection.Open();
@@ -70,7 +72,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     string queryUpdateData = "UPDATE Alergia SET nome = @nome, sintomas = @sintomas WHERE IdAlergia = @IdAlergia";
                     SqlCommand sqlCommand = new SqlCommand(queryUpdateData, connection);
                     sqlCommand.Parameters.AddWithValue("@nome", nome);
-                    sqlCommand.Parameters.AddWithValue("@sintomas", sintomas);
+                    if (sintomas != string.Empty)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@sintomas", Convert.ToString(sintomas));
+                    }
+                    else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@sintomas", DBNull.Value);
+                    }
+
                     sqlCommand.Parameters.AddWithValue("@IdAlergia", alergia.IdAlergia);
 
                     sqlCommand.ExecuteNonQuery();
@@ -85,14 +95,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     UpdateDataGridView();
 
                 }
-                catch (SqlException)
+
+            }
+
+            catch (SqlException)
+            {
+                if (conn.State == ConnectionState.Open)
                 {
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        conn.Close();
-                    }
-                    MessageBox.Show("Erro interno, não foi possível alterar a alergia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
+                MessageBox.Show("Erro interno, não foi possível alterar a alergia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

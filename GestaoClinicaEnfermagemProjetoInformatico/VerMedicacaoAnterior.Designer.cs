@@ -124,7 +124,7 @@
             // 
             this.cbMedicamento.AutoSize = true;
             this.cbMedicamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMedicamento.Location = new System.Drawing.Point(546, 51);
+            this.cbMedicamento.Location = new System.Drawing.Point(604, 51);
             this.cbMedicamento.Margin = new System.Windows.Forms.Padding(5);
             this.cbMedicamento.Name = "cbMedicamento";
             this.cbMedicamento.Size = new System.Drawing.Size(15, 14);
