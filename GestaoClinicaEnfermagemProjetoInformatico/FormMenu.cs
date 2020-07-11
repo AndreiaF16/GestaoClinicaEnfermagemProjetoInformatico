@@ -121,6 +121,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
+            //UpdateGridViewConsultas();
         }
 
         private void lblDia_Click(object sender, EventArgs e)

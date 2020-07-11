@@ -30,6 +30,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             dataDiagnostico.MaxDate = DateTime.Today;
+            dataDiagnostico.Value = DateTime.Today;
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
 
@@ -265,7 +266,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (nome == string.Empty)
             {
-                MessageBox.Show("Campos Obrigatórios, por favor preencha a doença!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campo Obrigatório, por favor preencha a análise laboratorial!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (comboBoxAnalise.Text == string.Empty)
                 {
                     errorProvider.SetError(comboBoxAnalise, "A análise laboratorial é obrigatória!");

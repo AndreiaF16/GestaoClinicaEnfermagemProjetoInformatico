@@ -349,7 +349,7 @@
             // txtDesignacao
             // 
             this.txtDesignacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesignacao.Location = new System.Drawing.Point(228, 275);
+            this.txtDesignacao.Location = new System.Drawing.Point(205, 275);
             this.txtDesignacao.Name = "txtDesignacao";
             this.txtDesignacao.Size = new System.Drawing.Size(426, 26);
             this.txtDesignacao.TabIndex = 68;
@@ -359,7 +359,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(76, 284);
+            this.label11.Location = new System.Drawing.Point(53, 284);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(98, 20);
             this.label11.TabIndex = 67;
@@ -368,7 +368,7 @@
             // txtBairroLocal
             // 
             this.txtBairroLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBairroLocal.Location = new System.Drawing.Point(228, 179);
+            this.txtBairroLocal.Location = new System.Drawing.Point(205, 179);
             this.txtBairroLocal.Name = "txtBairroLocal";
             this.txtBairroLocal.Size = new System.Drawing.Size(426, 26);
             this.txtBairroLocal.TabIndex = 66;
@@ -378,7 +378,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(76, 185);
+            this.label10.Location = new System.Drawing.Point(53, 185);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(119, 20);
             this.label10.TabIndex = 65;
@@ -387,7 +387,7 @@
             // txtCodPostalPre
             // 
             this.txtCodPostalPre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodPostalPre.Location = new System.Drawing.Point(228, 222);
+            this.txtCodPostalPre.Location = new System.Drawing.Point(205, 222);
             this.txtCodPostalPre.MaxLength = 4;
             this.txtCodPostalPre.Name = "txtCodPostalPre";
             this.txtCodPostalPre.Size = new System.Drawing.Size(99, 26);
@@ -397,7 +397,7 @@
             // txtCodPostalSuf
             // 
             this.txtCodPostalSuf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodPostalSuf.Location = new System.Drawing.Point(375, 222);
+            this.txtCodPostalSuf.Location = new System.Drawing.Point(352, 222);
             this.txtCodPostalSuf.MaxLength = 3;
             this.txtCodPostalSuf.Name = "txtCodPostalSuf";
             this.txtCodPostalSuf.Size = new System.Drawing.Size(99, 26);
@@ -409,7 +409,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.label3.Location = new System.Drawing.Point(347, 225);
+            this.label3.Location = new System.Drawing.Point(324, 225);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(22, 20);
             this.label3.TabIndex = 63;
@@ -428,7 +428,7 @@
             // 
             // txtLocalidade
             // 
-            this.txtLocalidade.Location = new System.Drawing.Point(517, 90);
+            this.txtLocalidade.Location = new System.Drawing.Point(494, 90);
             this.txtLocalidade.Name = "txtLocalidade";
             this.txtLocalidade.Size = new System.Drawing.Size(137, 26);
             this.txtLocalidade.TabIndex = 61;
@@ -440,7 +440,7 @@
             this.txtRua.Location = new System.Drawing.Point(228, 22);
             this.txtRua.Multiline = true;
             this.txtRua.Name = "txtRua";
-            this.txtRua.Size = new System.Drawing.Size(426, 56);
+            this.txtRua.Size = new System.Drawing.Size(403, 56);
             this.txtRua.TabIndex = 54;
             this.txtRua.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRua_KeyPress);
             // 
@@ -449,7 +449,7 @@
             this.lblLocalidade.AutoSize = true;
             this.lblLocalidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLocalidade.ForeColor = System.Drawing.Color.Black;
-            this.lblLocalidade.Location = new System.Drawing.Point(412, 96);
+            this.lblLocalidade.Location = new System.Drawing.Point(389, 96);
             this.lblLocalidade.Name = "lblLocalidade";
             this.lblLocalidade.Size = new System.Drawing.Size(90, 20);
             this.lblLocalidade.TabIndex = 60;
@@ -460,7 +460,7 @@
             this.lbCodPostalP.AutoSize = true;
             this.lbCodPostalP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCodPostalP.ForeColor = System.Drawing.Color.Black;
-            this.lbCodPostalP.Location = new System.Drawing.Point(76, 228);
+            this.lbCodPostalP.Location = new System.Drawing.Point(53, 228);
             this.lbCodPostalP.Name = "lbCodPostalP";
             this.lbCodPostalP.Size = new System.Drawing.Size(111, 20);
             this.lbCodPostalP.TabIndex = 59;
@@ -471,7 +471,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(76, 137);
+            this.label8.Location = new System.Drawing.Point(53, 137);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(90, 20);
             this.label8.TabIndex = 58;
@@ -480,14 +480,14 @@
             // txtAndarPiso
             // 
             this.txtAndarPiso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAndarPiso.Location = new System.Drawing.Point(228, 131);
+            this.txtAndarPiso.Location = new System.Drawing.Point(205, 131);
             this.txtAndarPiso.Name = "txtAndarPiso";
             this.txtAndarPiso.Size = new System.Drawing.Size(426, 26);
             this.txtAndarPiso.TabIndex = 57;
             // 
             // txtNumeroCasa
             // 
-            this.txtNumeroCasa.Location = new System.Drawing.Point(228, 87);
+            this.txtNumeroCasa.Location = new System.Drawing.Point(205, 87);
             this.txtNumeroCasa.MaxLength = 9;
             this.txtNumeroCasa.Name = "txtNumeroCasa";
             this.txtNumeroCasa.Size = new System.Drawing.Size(127, 26);
@@ -499,7 +499,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(162, 93);
+            this.label9.Location = new System.Drawing.Point(139, 93);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(34, 20);
             this.label9.TabIndex = 55;
@@ -856,9 +856,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.label2.Location = new System.Drawing.Point(3, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(251, 39);
+            this.label2.Size = new System.Drawing.Size(232, 39);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Editar Utentes";
+            this.label2.Text = "Editar Utente";
             // 
             // btnGuardar
             // 

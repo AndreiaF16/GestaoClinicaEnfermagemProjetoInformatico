@@ -215,7 +215,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button3_Click(object sender, EventArgs e)
         {
-            VerDoplerRegistado verDoplerRegistado = new VerDoplerRegistado(paciente);
+            VerDopplerRegistado verDoplerRegistado = new VerDopplerRegistado(paciente);
             verDoplerRegistado.Show();
         }
 

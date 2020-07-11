@@ -100,9 +100,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Análise laboratorial registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
-                    // adicionar.UpdateDataGridView();
-                    txtAnalise.Text = "";
-                    txtObs.Text = "";
+                    limparCampos();
                 }
             }
             catch (SqlException)
@@ -139,6 +137,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
         {
             txtAnalise.Text = "";
             txtObs.Text = "";

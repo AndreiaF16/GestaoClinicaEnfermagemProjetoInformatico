@@ -94,15 +94,16 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         conn.Close();
                         this.Close();
                     }
-                }
-                else
-                {
-                    if (conn.State == ConnectionState.Open)
+                    else
                     {
-                        conn.Close();
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("A lista de encomenda não contem items. Para poder registar a encomenda, tem de ter pelo menos um produto na 'Encomenda'!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    MessageBox.Show("A lista de encomenda não contem items. Para poder registar a encomenda, tem de ter pelo menos um item", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+               
             }
             catch (SqlException)
             {
@@ -313,6 +314,35 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
             lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
-        }   
+        }
+
+        private void dataGridViewEncomenda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void dataGridViewEncomenda_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (e.Control is DataGridViewTextBoxEditingControl)
+
+            {
+
+                e.Control.KeyPress += new KeyPressEventHandler(dataGridViewEncomenda_KeyPress);
+
+            }
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 }

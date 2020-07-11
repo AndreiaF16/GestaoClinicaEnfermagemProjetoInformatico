@@ -171,7 +171,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         {
                             encomenda.dataEntregaReal = Convert.ToString(dataVEntregaReal.Value);
                         }
-                        MessageBox.Show("Encomenda alterado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Encomenda finalizada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         conn.Close();
                         listaAtualizarQuantidades.Clear();
                         conn.Open();

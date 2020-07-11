@@ -982,14 +982,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void txtNif_TextChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(txtNif.Text) == pacientee.Nif)
+            if (!txtNif.Text.Equals(String.Empty))
             {
-                nifIgual = true;
+                if (Convert.ToInt32(txtNif.Text) == pacientee.Nif)
+                {
+                    nifIgual = true;
+                }
+                else
+                {
+                    nifIgual = false;
+                }
             }
-            else
-            {
-                nifIgual = false;
-            }
+           
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)

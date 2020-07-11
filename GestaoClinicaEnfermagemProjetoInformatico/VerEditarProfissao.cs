@@ -18,10 +18,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private ProfissaoPaciente profissao = null;
         private List<ProfissaoPaciente> listaProfissoes= new List<ProfissaoPaciente>();
         private List<ProfissaoPaciente> auxiliar = new List<ProfissaoPaciente>();
+        private ErrorProvider errorProvider = new ErrorProvider();
+
         public VerEditarProfissao()
         {
             InitializeComponent();
             conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -155,6 +160,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório, por favor preencha o nome da profissão!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtNome, "A data tem de ser superior òu igual à data de hoje!");
+
                 return false;
             }
             return true;

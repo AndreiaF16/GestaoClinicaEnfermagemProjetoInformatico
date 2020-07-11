@@ -153,10 +153,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (nome == string.Empty)
             {
-                MessageBox.Show("Campo Obrigatório, por favor preencha o nome da cirurgia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campo Obrigatório, por favor preencha o nome da doença!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (txtNome.Text == string.Empty)
                 {
-                    errorProvider.SetError(txtNome, "O nome do método contracetivo é obrigatório!");
+                    errorProvider.SetError(txtNome, "O nome da doença é obrigatório!");
                 }
                 else
                 {

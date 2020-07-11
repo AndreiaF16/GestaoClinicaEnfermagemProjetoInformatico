@@ -323,7 +323,7 @@
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button1.Size = new System.Drawing.Size(216, 56);
             this.button1.TabIndex = 60;
-            this.button1.Text = "Ver Avaliação Objetivo";
+            this.button1.Text = "Ver Avaliação Objetiva";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button1.UseVisualStyleBackColor = false;

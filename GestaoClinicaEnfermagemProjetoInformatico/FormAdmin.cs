@@ -182,7 +182,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
             if (idEncomenda == -1)
             {
-                var resposta = MessageBox.Show("Tipo de despesa 'Encomendas' não encontrada, não é possível registar encomendas! Deseja inserir um 'Encomenda' na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var resposta = MessageBox.Show("Tipo de despesa 'Encomendas' não encontrada, não é possível registar encomendas! Deseja inserir o tipo 'Encomenda' na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (resposta == DialogResult.Yes)
                 {
                     try

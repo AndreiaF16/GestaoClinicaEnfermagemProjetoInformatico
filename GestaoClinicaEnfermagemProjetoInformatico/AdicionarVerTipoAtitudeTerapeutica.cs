@@ -128,8 +128,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     TipoDespesa despesa = new TipoDespesa
                     {
-                        nome = (string)reader["nomeAtitude"],
-                        observacoes = (string)reader["observacoes"],
+                        nome = ((reader["nomeAtitude"] == DBNull.Value) ? "" : (string)reader["nomeAtitude"]),
+                        observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
+
                     };
                     tipoDespesas.Add(despesa);
                 }

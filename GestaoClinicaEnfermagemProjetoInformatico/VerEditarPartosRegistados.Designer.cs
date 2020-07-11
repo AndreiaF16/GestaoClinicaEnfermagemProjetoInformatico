@@ -172,7 +172,6 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(494, 32);
             this.txtNome.TabIndex = 11;
-            this.txtNome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown);
             // 
             // lblFuncao
             // 
@@ -314,6 +313,7 @@
             this.txt1.Name = "txt1";
             this.txt1.Size = new System.Drawing.Size(228, 26);
             this.txt1.TabIndex = 4;
+            this.txt1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt1_KeyDown);
             // 
             // txtId
             // 

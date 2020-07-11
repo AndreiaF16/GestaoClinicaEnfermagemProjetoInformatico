@@ -184,7 +184,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
 
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Dados Localização dor registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Dados da Localização do Doppler Arterial/Venoso registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                     limparCampos();
                 }
@@ -195,7 +195,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Close();
                 }
-                MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por erro interno é impossível registar os dados da localizacao do doppler", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

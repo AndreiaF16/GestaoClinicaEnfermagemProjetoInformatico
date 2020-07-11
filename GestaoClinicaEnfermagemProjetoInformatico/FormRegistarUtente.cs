@@ -832,5 +832,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 e.Handled = true;
             }
         }
+
+        private void txtDesignacao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }

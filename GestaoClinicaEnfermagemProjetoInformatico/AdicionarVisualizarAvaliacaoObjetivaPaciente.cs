@@ -102,6 +102,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 upDownFilhosVivos.Visible = true;
                 lblAbortos.Visible = true;
                 upDownAbortos.Visible = true;
+                button4.Visible = true;
             }
         }
 
@@ -332,7 +333,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     sqlCommand.Parameters.AddWithValue("@observacoes", txtObservacoes.Text);
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Avaliação Objetivo registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Avaliação Objetiva registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
                     limparCampos();
                 }
@@ -343,7 +344,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Close();
                 }
-                MessageBox.Show("Por erro interno é impossível registar a avaliação objetivo", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por erro interno é impossível registar a avaliação objetiva", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -399,13 +400,24 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string filhosVivos = upDownFilhosVivos.Text;
             string abortos = upDownAbortos.Text;
             DateTime data = dataAvaliacaoObjetivo.Value;
+            DateTime dataM = dataUltimaMenstruacao.Value;
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
-                MessageBox.Show("A data da avaliação objetivo tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data da avaliação objetiva tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if ((dataM - DateTime.Today).TotalDays > 0)
+            {
+                MessageBox.Show("A data da última mestruação tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
+            if (((dataM - DateTime.Today).TotalDays) > ((data - DateTime.Today).TotalDays))
+            {
+                MessageBox.Show("A data da última mestruação tem de ser inferior ou igual à data da avaliação objetiva! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
             if (peso == string.Empty || altura == string.Empty || pressaArterial == string.Empty)
             {

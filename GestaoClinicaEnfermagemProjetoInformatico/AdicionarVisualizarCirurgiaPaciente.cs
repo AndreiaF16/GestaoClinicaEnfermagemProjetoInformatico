@@ -30,6 +30,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            dataDiagnostico.MaxDate = DateTime.Today;
+            dataDiagnostico.Value = DateTime.Today;
         }
 
         private void AdicionarVisualizarCirurgiaPaciente_Load(object sender, EventArgs e)

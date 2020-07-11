@@ -126,8 +126,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     aleitamento = new Aleitamento
                     {
-                        tipoAleitamento = (string)reader["tipoAleitamento"],
-                        Observacoes = (string)reader["Observacoes"],
+                        tipoAleitamento = ((reader["tipoAleitamento"] == DBNull.Value) ? "" : (string)reader["tipoAleitamento"]),
+                        Observacoes = ((reader["Observacoes"] == DBNull.Value) ? "" : (string)reader["Observacoes"]),
                         IdAleitamento = (int)reader["IdAleitamento"],
                     };
                     listaAleitamento.Add(aleitamento);
@@ -228,6 +228,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             txtObs.Text = "";
             txtTipo.Text = "";
             errorProvider.Clear();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            var resposta = MessageBox.Show("Tem a certeza que deseja sair da aplicação?", "Fechar Aplicação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

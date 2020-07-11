@@ -639,11 +639,11 @@
     <Compile Include="VerDespesasTodas.Designer.cs">
       <DependentUpon>VerDespesasTodas.cs</DependentUpon>
     </Compile>
-    <Compile Include="VerDoplerRegistado.cs">
+    <Compile Include="VerDopplerRegistado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerDoplerRegistado.Designer.cs">
-      <DependentUpon>VerDoplerRegistado.cs</DependentUpon>
+    <Compile Include="VerDopplerRegistado.Designer.cs">
+      <DependentUpon>VerDopplerRegistado.cs</DependentUpon>
     </Compile>
     <Compile Include="VerDrenagemLocas.cs">
       <SubType>Form</SubType>
@@ -1410,8 +1410,8 @@
     <EmbeddedResource Include="VerDoencasRegistadas.resx">
       <DependentUpon>VerDoencasRegistadas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerDoplerRegistado.resx">
-      <DependentUpon>VerDoplerRegistado.cs</DependentUpon>
+    <EmbeddedResource Include="VerDopplerRegistado.resx">
+      <DependentUpon>VerDopplerRegistado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerDrenagemLocas.resx">
       <DependentUpon>VerDrenagemLocas.cs</DependentUpon>

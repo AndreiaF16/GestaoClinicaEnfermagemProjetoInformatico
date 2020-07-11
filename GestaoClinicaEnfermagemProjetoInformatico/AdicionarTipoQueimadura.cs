@@ -100,7 +100,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string nomeTratamento = txtNome.Text;
             if (nomeTratamento == string.Empty)
             {
-                MessageBox.Show("Campo Obrigatório, por favor preencha o nome do tratamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campo Obrigatório, por favor preencha o tipo de queimadura!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (txtNome.Text == string.Empty)
                 {

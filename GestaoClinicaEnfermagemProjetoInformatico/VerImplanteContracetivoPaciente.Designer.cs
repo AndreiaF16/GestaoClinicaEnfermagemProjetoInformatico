@@ -120,9 +120,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.label2.Location = new System.Drawing.Point(6, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(416, 31);
+            this.label2.Size = new System.Drawing.Size(467, 31);
             this.label2.TabIndex = 94;
-            this.label2.Text = "Implante Contracetivo Dérmico";
+            this.label2.Text = "Implante Contracetivo SubDérmico";
             // 
             // label1
             // 

@@ -434,7 +434,7 @@
             this.button30.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button30.Size = new System.Drawing.Size(300, 32);
             this.button30.TabIndex = 64;
-            this.button30.Text = "Zaragatoa Onofaringe";
+            this.button30.Text = "Zaragatoa Orofaringe";
             this.button30.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button30.UseVisualStyleBackColor = false;
             this.button30.Click += new System.EventHandler(this.button30_Click);

@@ -465,11 +465,13 @@
             // 
             // txtDesignacao
             // 
+            this.txtDesignacao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDesignacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDesignacao.Location = new System.Drawing.Point(131, 275);
             this.txtDesignacao.Name = "txtDesignacao";
             this.txtDesignacao.Size = new System.Drawing.Size(305, 26);
             this.txtDesignacao.TabIndex = 68;
+            this.txtDesignacao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesignacao_KeyPress);
             // 
             // label11
             // 

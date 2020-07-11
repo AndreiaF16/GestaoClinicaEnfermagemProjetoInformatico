@@ -21,6 +21,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private List<ComboBoxItem> auxiliar = new List<ComboBoxItem>();
         private List<Encomendas> listaEncomendas = new List<Encomendas>();
         private List<Encomendas> todasEncomendas = new List<Encomendas>();
+        private ErrorProvider errorProvider = new ErrorProvider();
 
 
         public RegistarEncomendas()
@@ -32,7 +33,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             labelData.ForeColor = Color.Black;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             dataEntregaPrevista.MinDate = DateTime.Today;
-
+            errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
         }
 
         private void RegistarEncomendas_Load(object sender, EventArgs e)
@@ -115,7 +117,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Encomenda registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
-
                     UpdateDataGridView();
 
                     conn.Open();
@@ -146,6 +147,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
                     LinhaEncomenda linha = new LinhaEncomenda(getFornecedor(fornecedor), enc, this);
                     linha.Show();
+                    limparCampos();
 
                 }
             }
@@ -309,6 +311,24 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (nome <0 || id == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatório, por favor preencha o campo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (comboBoxFornecedor.Text == String.Empty)
+                {
+                    errorProvider.SetError(comboBoxFornecedor, "O fornecedor é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(comboBoxFornecedor, String.Empty);
+                }
+
+                if (txtNumeroEncomenda.Text == String.Empty)
+                {
+                    errorProvider.SetError(txtNumeroEncomenda, "O número da encomenda é obrigatório!");
+                }
+                else
+                {
+                    errorProvider.SetError(txtNumeroEncomenda, String.Empty);
+                }
                 return false;
             }
 

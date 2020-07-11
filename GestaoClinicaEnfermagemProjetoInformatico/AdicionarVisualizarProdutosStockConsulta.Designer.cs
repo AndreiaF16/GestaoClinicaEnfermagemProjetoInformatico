@@ -170,6 +170,8 @@
             this.dataGridViewProdutosConsulta.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewProdutosConsulta.Size = new System.Drawing.Size(784, 265);
             this.dataGridViewProdutosConsulta.TabIndex = 81;
+            this.dataGridViewProdutosConsulta.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridViewProdutosConsulta_EditingControlShowing);
+            this.dataGridViewProdutosConsulta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridViewProdutosConsulta_KeyPress);
             // 
             // label6
             // 

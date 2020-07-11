@@ -30,6 +30,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             dataDespesa.Value = DateTime.Today;
             errorProvider.ContainerControl = this;
+            errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
 
         }
 
@@ -90,7 +91,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 if (VerificarDadosInseridos())
                 {
 
-                    int despesa = (comboBoxDespesa.SelectedItem as ComboBoxItem).Value;
+                    int despesa = (cbDespesa.SelectedItem as ComboBoxItem).Value;
                     if (comboBoxEncomenda.Text != "")
                     {
                         encomenda = (comboBoxEncomenda.SelectedItem as ComboBoxItem).Value;
@@ -158,7 +159,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             despesa.Clear();
             encomenda.Clear();
-            comboBoxDespesa.Items.Clear();
+            cbDespesa.Items.Clear();
             comboBoxEncomenda.Items.Clear();
             auxiliar.Clear();
             try
@@ -172,7 +173,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     ComboBoxItem item = new ComboBoxItem();
                     item.Text = (string)reader["designacao"];
                     item.Value = (int)reader["IdTipoDespesa"];
-                    comboBoxDespesa.Items.Add(item);
+                    cbDespesa.Items.Add(item);
                     despesa.Add(item);
                 }
 
@@ -217,7 +218,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void comboBoxDespesa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxDespesa.SelectedItem.ToString() == "Encomendas")
+            if (cbDespesa.SelectedItem.ToString() == "Encomendas")
             {
                 comboBoxEncomenda.Visible = true;
                 lblEncomenda.Visible = true;
@@ -234,13 +235,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (e.KeyCode == Keys.Enter)
             {
 
-                comboBoxDespesa.Items.Clear();
+                cbDespesa.Items.Clear();
                 foreach (var pesquisa in filtrosDePesquisaDespesa())
                 {
                     ComboBoxItem item = new ComboBoxItem();
                     item.Text = pesquisa.Text;
                     item.Value = pesquisa.Value;
-                    comboBoxDespesa.Items.Add(item);
+                    cbDespesa.Items.Add(item);
                 }
 
             }
@@ -303,22 +304,23 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private Boolean VerificarDadosInseridos()
         {
-            string despesa = comboBoxDespesa.Text;
+            string despesa = cbDespesa.Text;
             string preco = UpDownPreco.Text;
             DateTime data = dataDespesa.Value;
+            string encomenda = comboBoxEncomenda.Text;
 
 
             if (despesa == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                if (comboBoxDespesa.Text == string.Empty)
+                if (cbDespesa.Text == string.Empty)
                 {
-                    errorProvider.SetError(this.comboBoxDespesa, "O tipo de despesa é obrigatório!");
+                    errorProvider.SetError(this.cbDespesa, "O tipo de despesa é obrigatório!");
                 }
                 else
                 {
-                    errorProvider.SetError(comboBoxDespesa, String.Empty);
+                    errorProvider.SetError(cbDespesa, String.Empty);
                 }
 
                 if (UpDownPreco.Text == string.Empty)
@@ -331,6 +333,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 return false;
             }
+
+            if ((encomenda.Equals(string.Empty)) && cbDespesa.SelectedItem.ToString().Equals("Encomendas"))
+            {
+             
+                MessageBox.Show("Tem de selecionar uma encomenda!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if ((encomenda.Equals(string.Empty)) && cbDespesa.SelectedItem.ToString().Equals("Encomendas"))
+                {
+                    errorProvider.SetError(comboBoxEncomenda, "Tem de selecionar uma encomenda!");
+
+                }
+                else
+                {
+                    errorProvider.SetError(comboBoxEncomenda, String.Empty);
+                }
+                return false;
+            }
+           
+
+
 
             if ((data - DateTime.Today).TotalDays > 0)
             {
@@ -369,6 +391,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             txtObservacoes.Text = "";
             dataDespesa.Value = DateTime.Today;          
             UpDownPreco.Value = 0;
+            comboBoxEncomenda.Visible = false;
+            lblEncomenda.Visible = false;
             errorProvider.Clear();
             reiniciar();            
         }
@@ -444,6 +468,20 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void cbDespesa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbDespesa.SelectedItem.ToString() == "Encomendas")
+            {
+                comboBoxEncomenda.Visible = true;
+                lblEncomenda.Visible = true;
+            }
+            else
+            {
+                comboBoxEncomenda.Visible = false;
+                lblEncomenda.Visible = false;
             }
         }
     }

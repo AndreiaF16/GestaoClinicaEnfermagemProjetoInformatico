@@ -158,7 +158,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 if (resposta == DialogResult.No)
                 {
-                    this.Close();
                     MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
                 }
             }
@@ -271,6 +270,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (id == -1)
             {
                 var resposta = MessageBox.Show("Atitude 'Colheita expectoração' não encontrada! Deseja inserir a atitude na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+               
                 if (resposta == DialogResult.Yes)
                 {
                     try
@@ -295,7 +295,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 if (resposta == DialogResult.No)
                 {
-                    this.Close();
                     MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
                 }
             }
@@ -328,7 +327,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 if (resposta == DialogResult.No)
                 {
-                    this.Close();
                     MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
                 }
             }
@@ -361,7 +359,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 if (resposta == DialogResult.No)
                 {
-                    this.Close();
                     MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
                 }
             }
@@ -394,7 +391,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 if (resposta == DialogResult.No)
                 {
-                    this.Close();
                     MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
                 }
             }
@@ -427,7 +423,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 if (resposta == DialogResult.No)
                 {
-                    this.Close();
                     MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
                 }
             }
@@ -460,7 +455,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 if (resposta == DialogResult.No)
                 {
-                    this.Close();
                     MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
                 }
             }
@@ -489,7 +483,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 if (resposta == DialogResult.No)
                 {
-                    this.Close();
                     MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
                 }
             }

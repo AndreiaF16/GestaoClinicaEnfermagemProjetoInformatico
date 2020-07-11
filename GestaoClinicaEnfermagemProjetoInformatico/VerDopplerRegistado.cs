@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class VerDoplerRegistado : Form
+    public partial class VerDopplerRegistado : Form
     {
         SqlConnection conn = new SqlConnection();
         SqlCommand com = new SqlCommand();
         private Paciente paciente = new Paciente();
         private ErrorProvider errorProvider = new ErrorProvider();
         private List<DopplerFetal> doplerFetal = new List<DopplerFetal>();
-        public VerDoplerRegistado(Paciente pac)
+        public VerDopplerRegistado(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;

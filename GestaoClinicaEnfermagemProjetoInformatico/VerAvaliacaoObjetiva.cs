@@ -113,7 +113,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = listaAvaliacaoObjetivo };
             dataGridViewAvaliacaoObjetivo.DataSource = bindingSource1;
-            dataGridViewAvaliacaoObjetivo.Columns[0].HeaderText = "Data da Avaliação Objetivo";
+            dataGridViewAvaliacaoObjetivo.Columns[0].HeaderText = "Data da Avaliação Objetiva";
             dataGridViewAvaliacaoObjetivo.Columns[1].HeaderText = "Peso (KG)";
             dataGridViewAvaliacaoObjetivo.Columns[2].HeaderText = "Altura (cm)";
             dataGridViewAvaliacaoObjetivo.Columns[3].HeaderText = "IMC";

@@ -150,7 +150,7 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(1227, 785);
+            this.panelMenu.Size = new System.Drawing.Size(1401, 785);
             this.panelMenu.TabIndex = 1;
             // 
             // button4
@@ -168,7 +168,7 @@
             this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button4.Size = new System.Drawing.Size(176, 54);
             this.button4.TabIndex = 34;
-            this.button4.Text = "           Ver Avaliação Objetivo";
+            this.button4.Text = "           Ver Avaliação Objetiva";
             this.button4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button4.UseVisualStyleBackColor = false;
@@ -300,7 +300,7 @@
             this.panelFormulario.Controls.Add(this.button1);
             this.panelFormulario.Location = new System.Drawing.Point(232, 40);
             this.panelFormulario.Name = "panelFormulario";
-            this.panelFormulario.Size = new System.Drawing.Size(995, 745);
+            this.panelFormulario.Size = new System.Drawing.Size(1169, 745);
             this.panelFormulario.TabIndex = 2;
             // 
             // groupBox1
@@ -671,7 +671,7 @@
             this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.painelPrincipal.Location = new System.Drawing.Point(0, 0);
             this.painelPrincipal.Name = "painelPrincipal";
-            this.painelPrincipal.Size = new System.Drawing.Size(1227, 785);
+            this.painelPrincipal.Size = new System.Drawing.Size(1401, 785);
             this.painelPrincipal.TabIndex = 11;
             // 
             // panelTitulo
@@ -685,7 +685,7 @@
             this.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitulo.Location = new System.Drawing.Point(0, 0);
             this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new System.Drawing.Size(1227, 40);
+            this.panelTitulo.Size = new System.Drawing.Size(1401, 40);
             this.panelTitulo.TabIndex = 12;
             // 
             // lblDia
@@ -715,7 +715,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1192, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(1366, 11);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(16, 16);
@@ -729,7 +729,7 @@
             this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
-            this.btnFechar.Location = new System.Drawing.Point(1468, 11);
+            this.btnFechar.Location = new System.Drawing.Point(1642, 11);
             this.btnFechar.Margin = new System.Windows.Forms.Padding(2);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(16, 16);
@@ -752,7 +752,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1227, 785);
+            this.ClientSize = new System.Drawing.Size(1401, 785);
             this.Controls.Add(this.panelTitulo);
             this.Controls.Add(this.painelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

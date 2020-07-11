@@ -217,7 +217,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("select * from AgendamentoConsulta WHERE IdEnfermeiro =  " + enfermeiro.IdEnfermeiro, conn);
+                    SqlCommand cmd = new SqlCommand("select * from AgendamentoConsulta WHERE IdEnfermeiro =  " + enfermeiro.IdEnfermeiro + "ORDER BY horaProximaConsulta asc, dataProximaConsulta asc", conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())

@@ -51,15 +51,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-        private void txtNome_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
-                dataGridViewParto.DataSource = bindingSource1;
-            }
-        }
-
         private void UpdateDataGridView()
         {
             listaPartos.Clear();
@@ -94,8 +85,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     parto = new Parto
                     {
-                        nomeParto = (string)reader["tipoParto"],
-                        observacao = (string)reader["Observacoes"],
+                        nomeParto = ((reader["tipoParto"] == DBNull.Value) ? "" : (string)reader["tipoParto"]),
+                        observacao = ((reader["Observacoes"] == DBNull.Value) ? "" : (string)reader["Observacoes"]),
                         IdTipoParto = (int)reader["IdParto"],
                     };
                     listaPartos.Add(parto);
@@ -224,6 +215,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             txtNome.Text = "";
             txtObservacoes.Text = "";
             errorProvider.Clear();
+        }
+
+        private void txt1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = filtrosDePesquisa() };
+                dataGridViewParto.DataSource = bindingSource1;
+            }
         }
     }
 }

@@ -26,9 +26,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             paciente = pac;
             label1.Text = "Nome do Utente: " + paciente.Nome;
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            dataDiagnostico.MaxDate = DateTime.Now;
+            dataDiagnostico.MaxDate = DateTime.Today;
+            dataDiagnostico.Value = DateTime.Today;
 
-    }
+        }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {

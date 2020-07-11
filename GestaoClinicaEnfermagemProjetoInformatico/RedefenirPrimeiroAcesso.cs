@@ -33,10 +33,11 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         {
             try
             {
-                if (txtNovaPassoword.Text == txtConfirmarNovaPassword.Text)
+                if (VerificarDadosInseridos())
                 {
-                    if (VerificarDadosInseridos())
+                    if (txtNovaPassoword.Text == txtConfirmarNovaPassword.Text)
                     {
+
 
 
                         SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
@@ -47,12 +48,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         cmd.ExecuteNonQuery();
                         conn.Close();
 
-                        MessageBox.Show("Passe mudada com sucesso!");
+                        MessageBox.Show("Dados alterados com sucesso!\n Inicie sessão!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 if (conn.State == ConnectionState.Open)
                 {
@@ -69,6 +70,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string username = txtUsername.Text;
             string password = txtNovaPassoword.Text;
             string confirmaPassword = txtConfirmarNovaPassword.Text;
+           
             if (!ValidarForcaSenha() && (password == confirmaPassword))
             {
                 MessageBox.Show("A password tem que conter no minimo 6 caracteres, dos quais devem ser números, letras maiusculas e minusculas", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -83,6 +85,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 errorProvider.SetError(txtConfirmarNovaPassword, String.Empty);
 
             }
+          
             if (txtNovaPassoword.Text != txtConfirmarNovaPassword.Text)
             {
                 MessageBox.Show("As passwords não coincidem.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);

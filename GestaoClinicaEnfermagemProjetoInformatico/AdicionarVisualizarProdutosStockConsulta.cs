@@ -281,12 +281,12 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         UpdateGridViewConsultas();
                         selectProdutos();
                     }
-
+                    else
+                    {
+                        MessageBox.Show("A lista de produtos usados na consulta não contem produtos. Para poder registar, tem de ter pelo menos um!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("A lista de produtos usados na consulta não contem produtos. Para poder registar, tem de ter pelo menos um!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                
             }
             catch (SqlException)
             {
@@ -418,6 +418,26 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     conn.Close();
                 }
                 MessageBox.Show("Por erro interno é impossível selecionar os produtos de cada fornecedor!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridViewProdutosConsulta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //garantir que são inseridos apenas numeros
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void dataGridViewProdutosConsulta_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (e.Control is DataGridViewTextBoxEditingControl)
+
+            {
+
+                e.Control.KeyPress += new KeyPressEventHandler(dataGridViewProdutosConsulta_KeyPress);
+
             }
         }
     }

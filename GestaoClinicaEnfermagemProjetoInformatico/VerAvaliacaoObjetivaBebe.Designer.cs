@@ -137,7 +137,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(399, 33);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Avaliação Objetivo do Bebé";
+            this.label2.Text = "Avaliação Objetiva do Bebé";
             // 
             // btnVoltar
             // 
