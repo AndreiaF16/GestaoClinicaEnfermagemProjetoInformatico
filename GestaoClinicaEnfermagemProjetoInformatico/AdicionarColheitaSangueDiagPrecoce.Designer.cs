@@ -100,7 +100,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(546, 31);
             this.label2.TabIndex = 71;
-            this.label2.Text = "Colheita de Sangue Diagnóstico Precose";
+            this.label2.Text = "Colheita de Sangue Diagnóstico Precoce";
             // 
             // txtIdadeDias
             // 

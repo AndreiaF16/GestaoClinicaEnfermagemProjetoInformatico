@@ -145,7 +145,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         ambos = "Sim";
                     }
-                    if (rbOE.Checked == false)
+                    if (rbAmbos.Checked == false)
                     {
                         ambos = "";
                     }

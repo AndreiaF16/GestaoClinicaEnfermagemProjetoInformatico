@@ -310,7 +310,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             string encomenda = comboBoxEncomenda.Text;
 
 
-            if (despesa == string.Empty)
+            if (despesa == string.Empty || preco == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

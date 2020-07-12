@@ -160,97 +160,98 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             {
                 if (VerificarDadosInseridos())
                 {
-                    string historiaAtual = txtHistoriaAtual.Text;
-                    string sintomatologia = txtSintomatologia.Text;
-                    string sinais = txtSinais.Text;
-                    //string tensaoArterial = txtTensaoArterial.Text;
-                    string escalaDor = lblEscala.Text;
+                                   
+                        string historiaAtual = txtHistoriaAtual.Text;
+                        string sintomatologia = txtSintomatologia.Text;
+                        string sinais = txtSinais.Text;
+                        //string tensaoArterial = txtTensaoArterial.Text;
+                        string escalaDor = lblEscala.Text;
 
-                    //  int preco = Convert.ToInt32(UpDownPrecoConsulta.Text);
-                    // string preco = UpDownPrecoConsulta.Text;
-                    decimal preco = Convert.ToDecimal(UpDownPrecoConsulta.Text);
+                        //  int preco = Convert.ToInt32(UpDownPrecoConsulta.Text);
+                        // string preco = UpDownPrecoConsulta.Text;
+                        decimal preco = Convert.ToDecimal(UpDownPrecoConsulta.Text);
 
-                    //double preco = Convert.ToDouble(UpDownPrecoConsulta.Text);
+                        //double preco = Convert.ToDouble(UpDownPrecoConsulta.Text);
 
-                    // double valor = Convert.ToDouble(txtValorConsulta.Text);
-                    string diag = txtDiagnostico.Text;
-                    DateTime horaFim = DateTime.Now;
-
-
-                    SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                    connection.Open();
-
-                    string queryInsertData = "INSERT INTO Consulta(dataConsulta,horaInicioConsulta,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro,valorConsulta,horaFimConsulta,diagnostico) VALUES(@dataConsulta,@horaInicioConsulta,@historiaAtual,@sintomatologia,@sinais,@escalaDor,@idPaciente,@idEnfermeiro,@valorConsulta,@horaFimConsulta,@diagnostico);";
-                    SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
-                    sqlCommand.Parameters.AddWithValue("@dataConsulta", inicio);
-                    sqlCommand.Parameters.AddWithValue("@horaInicioConsulta", string.Format("{0:00}", inicio.Hour) + ":" + string.Format("{0:00}", inicio.Minute));
-                    // sqlCommand.Parameters.AddWithValue("@tensaoArterial", tensaoArterial);
-                    sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
-                    sqlCommand.Parameters.AddWithValue("@idEnfermeiro", enfermeiro.IdEnfermeiro);
-                    sqlCommand.Parameters.AddWithValue("@valorConsulta", preco);
+                        // double valor = Convert.ToDouble(txtValorConsulta.Text);
+                        string diag = txtDiagnostico.Text;
+                        DateTime horaFim = DateTime.Now;
 
 
-                    sqlCommand.Parameters.AddWithValue("@horaFimConsulta", string.Format("{0:00}", horaFim.Hour) + ":" + string.Format("{0:00}", horaFim.Minute));
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
 
-                    if (historiaAtual != string.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@historiaAtual", Convert.ToString(historiaAtual));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@historiaAtual", DBNull.Value);
-                    }
-
-                    if (sintomatologia != string.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@sintomatologia", Convert.ToString(sintomatologia));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@sintomatologia", DBNull.Value);
-                    }
-
-                    if (sinais != string.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@sinais", Convert.ToString(sinais));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@sinais", DBNull.Value);
-                    }
-
-                    if (escalaDor != string.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@escalaDor", Convert.ToString(escalaDor));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@escalaDor", DBNull.Value);
-                    }
-
-                    if (diag != string.Empty)
-                    {
-                        sqlCommand.Parameters.AddWithValue("@diagnostico", Convert.ToString(diag));
-                    }
-                    else
-                    {
-                        sqlCommand.Parameters.AddWithValue("@diagnostico", DBNull.Value);
-                    }
+                        string queryInsertData = "INSERT INTO Consulta(dataConsulta,horaInicioConsulta,historiaAtual,sintomatologia,sinais,escalaDor,idPaciente,idEnfermeiro,valorConsulta,horaFimConsulta,diagnostico) VALUES(@dataConsulta,@horaInicioConsulta,@historiaAtual,@sintomatologia,@sinais,@escalaDor,@idPaciente,@idEnfermeiro,@valorConsulta,@horaFimConsulta,@diagnostico);";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.Parameters.AddWithValue("@dataConsulta", inicio);
+                        sqlCommand.Parameters.AddWithValue("@horaInicioConsulta", string.Format("{0:00}", inicio.Hour) + ":" + string.Format("{0:00}", inicio.Minute));
+                        // sqlCommand.Parameters.AddWithValue("@tensaoArterial", tensaoArterial);
+                        sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
+                        sqlCommand.Parameters.AddWithValue("@idEnfermeiro", enfermeiro.IdEnfermeiro);
+                        sqlCommand.Parameters.AddWithValue("@valorConsulta", preco);
 
 
-                    sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Consulta efetuada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                    connection.Close();
-                    connection.Open();
+                        sqlCommand.Parameters.AddWithValue("@horaFimConsulta", string.Format("{0:00}", horaFim.Hour) + ":" + string.Format("{0:00}", horaFim.Minute));
 
-                    string queryUpdateData = "UPDATE AgendamentoConsulta SET ConsultaRealizada = 1 WHERE IdPaciente = '" + paciente.IdPaciente + "' AND dataProximaConsulta = '" + DateTime.ParseExact(agendamentoConsulta.dataProximaConsulta, "dd/MM/yyyy", null).ToString("MM/dd/yyyy") + "' AND horaProximaConsulta = '" + agendamentoConsulta.horaProximaConsulta + "'; ";
-                    SqlCommand sqlCommand1 = new SqlCommand(queryUpdateData, connection);
-                    sqlCommand1.ExecuteNonQuery();
-                    connection.Close();
-                    limparCampos();
-                    formMenu.UpdateGridViewConsultas();
+                        if (historiaAtual != string.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@historiaAtual", Convert.ToString(historiaAtual));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@historiaAtual", DBNull.Value);
+                        }
 
+                        if (sintomatologia != string.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@sintomatologia", Convert.ToString(sintomatologia));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@sintomatologia", DBNull.Value);
+                        }
+
+                        if (sinais != string.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@sinais", Convert.ToString(sinais));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@sinais", DBNull.Value);
+                        }
+
+                        if (escalaDor != string.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@escalaDor", Convert.ToString(escalaDor));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@escalaDor", DBNull.Value);
+                        }
+
+                        if (diag != string.Empty)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@diagnostico", Convert.ToString(diag));
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@diagnostico", DBNull.Value);
+                        }
+
+                        
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Consulta efetuada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                        connection.Close();
+                        connection.Open();
+
+                        string queryUpdateData = "UPDATE AgendamentoConsulta SET ConsultaRealizada = 1 WHERE IdPaciente = '" + paciente.IdPaciente + "' AND dataProximaConsulta = '" + DateTime.ParseExact(agendamentoConsulta.dataProximaConsulta, "dd/MM/yyyy", null).ToString("MM/dd/yyyy") + "' AND horaProximaConsulta = '" + agendamentoConsulta.horaProximaConsulta + "'; ";
+                        SqlCommand sqlCommand1 = new SqlCommand(queryUpdateData, connection);
+                        sqlCommand1.ExecuteNonQuery();
+                        connection.Close();
+                        limparCampos();
+                        formMenu.UpdateGridViewConsultas();
+                    
                 }
             }
             catch (SqlException)
@@ -838,7 +839,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                         {
                             conn.Close();
                         }
-                        MessageBox.Show("Por erro interno é impossível registar o tipo de aleitamento 'Ferida Cirúrgica'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Por erro interno é impossível registar o tipo de tratamento 'Ferida Cirúrgica'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     try

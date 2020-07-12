@@ -41,7 +41,66 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void AdicionarColpocitologiaPaciente_Load(object sender, EventArgs e)
         {
-            
+            idAtitude();
+
+            if (id == -1)
+            {
+                var resposta = MessageBox.Show("Atitude não encontrada! Deseja inserir a atitude na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Atitude(nomeAtitude) VALUES('Colpocitologia');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Atitude Terapêutica registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                if (resposta == DialogResult.No)
+                {
+                    this.Close();
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas com esta atitude!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+
+            idAtitude();
+        }
+
+        private void idAtitude()
+        {
+            try
+            {
+                conn.Open();
+                com.Connection = conn;
+                SqlCommand cmd = new SqlCommand("select * from Atitude WHERE nomeAtitude = 'Colpocitologia'", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = (int)reader["IdAtitude"];
+                }
+
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                MessageBox.Show("Por erro interno é impossível selecionar a atitude terapêutica!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -224,14 +283,14 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     limparCampos();
                 }
             }
-            catch (SqlException)
+            catch (SqlException exc)
             {
                 if (conn.State == ConnectionState.Open)
                 {
                     conn.Close();
                 }
 
-                MessageBox.Show("Por erro interno é impossível registar a Colpocitologia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(exc.Message/*"Por erro interno é impossível registar a Colpocitologia!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error*/);
             }
         }
 
@@ -261,6 +320,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             cbIntramuscular.Checked = false;
             cbLQ.Checked = false;
             cbPessario.Checked = false;
+            cbDUM.Checked = false;
             errorProvider.Clear();
         }
 
@@ -377,49 +437,49 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
 
 
-            if (var8 > 0)
+            if (var8 > 0 && cbDUM.Checked == true)
             {
                 MessageBox.Show("A data de registo da última mestruação tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(dataDUM, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
-            if (var2 > 0)
+            if (var2 > 0 && cbDIU.Checked == true)
             {
                 MessageBox.Show("A data de colocação do DIU tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(dataDIU, "A data de colocação do DIU tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
-            if (var3 > 0)
+            if (var3 > 0 && cbImplante.Checked == true)
             {
                 MessageBox.Show("A data do implante tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(dataImplante, "A data do implante tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
-            if (var4 > 0)
+            if (var4 > 0 && cbAnelVaginal.Checked == true)
             {
                 MessageBox.Show("A data de colocação do anel vaginal tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(dataAnelVaginal, "A data de colocação do anel vaginal tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
-            if (var5 > 0)
+            if (var5 > 0 && cbIntramuscular.Checked == true)
             {
                 MessageBox.Show("A data intramuscular tem de ser inferior à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(dataIntramuscular, "A data intramuscular tem de ser inferior à data de hoje!");
                 return false;
             }
 
-            if (var6 > 0)
+            if (var6 > 0 && cbLQ.Checked == true)
             {
                 MessageBox.Show("A data da laqueação das trompas tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(dataLaqTrompas, "A data da laqueação das trompas tem de ser inferior ou igual  à data de hoje!");
                 return false;
             }
 
-            if (var7 > 0)
+            if (var7 > 0 && cbPessario.Checked == true)
             {
                 MessageBox.Show("A data do pessário tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(dataPessario, "A data do pessário tem de ser inferior ou igual à data de hoje!");

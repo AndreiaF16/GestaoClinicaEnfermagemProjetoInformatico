@@ -198,6 +198,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             txtInaladores.Text = "";
             txtO2.Text = "";
             txtObservacoes.Text = "";
+            errorProvider.Clear();
         }
 
         private Boolean VerificarDadosInseridos()

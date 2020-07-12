@@ -45,7 +45,6 @@
             this.btnDorMaxima = new System.Windows.Forms.Button();
             this.lblDorMuitoForte = new System.Windows.Forms.Label();
             this.lblDorMaxima = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -278,25 +277,6 @@
             this.lblDorMaxima.TabIndex = 18;
             this.lblDorMaxima.Text = "Dor Máxima";
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(841, 24);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(176, 54);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "Ver Boneco Corpo Humano";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
@@ -330,7 +310,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.label2.Location = new System.Drawing.Point(6, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(226, 39);
+            this.label2.Size = new System.Drawing.Size(209, 39);
             this.label2.TabIndex = 29;
             this.label2.Text = "Episiotomia";
             // 
@@ -338,7 +318,6 @@
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Window;
             this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.dataEpisiotomia);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label4);
@@ -772,7 +751,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panelFormulario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

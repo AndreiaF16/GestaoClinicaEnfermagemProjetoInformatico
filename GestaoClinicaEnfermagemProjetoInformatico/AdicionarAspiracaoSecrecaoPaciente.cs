@@ -148,7 +148,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
 
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Administração da Medicação efetuada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Aspiração de Secreções registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                     limparCampos();
 
@@ -160,7 +160,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Close();
                 }
-                MessageBox.Show("Por erro interno é impossível registar a Administração da Medicação!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por erro interno é impossível registar a Aspiração de Secreções!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -41,7 +41,6 @@
             this.txtNomeVacina = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.dataVacinacao = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -185,7 +184,7 @@
             this.txtNomeVacina.Location = new System.Drawing.Point(162, 60);
             this.txtNomeVacina.Multiline = true;
             this.txtNomeVacina.Name = "txtNomeVacina";
-            this.txtNomeVacina.Size = new System.Drawing.Size(544, 53);
+            this.txtNomeVacina.Size = new System.Drawing.Size(763, 53);
             this.txtNomeVacina.TabIndex = 1;
             // 
             // label2
@@ -202,7 +201,6 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.dataVacinacao);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label6);
@@ -223,25 +221,6 @@
             this.groupBox2.Size = new System.Drawing.Size(944, 441);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(749, 17);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(176, 54);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "Ver Boneco Corpo Humano";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dataVacinacao
             // 
@@ -276,7 +255,7 @@
             this.txtLocal.Location = new System.Drawing.Point(162, 303);
             this.txtLocal.Multiline = true;
             this.txtLocal.Name = "txtLocal";
-            this.txtLocal.Size = new System.Drawing.Size(544, 29);
+            this.txtLocal.Size = new System.Drawing.Size(763, 29);
             this.txtLocal.TabIndex = 42;
             // 
             // label5
@@ -296,7 +275,7 @@
             this.txtLote.Location = new System.Drawing.Point(162, 252);
             this.txtLote.Multiline = true;
             this.txtLote.Name = "txtLote";
-            this.txtLote.Size = new System.Drawing.Size(544, 29);
+            this.txtLote.Size = new System.Drawing.Size(763, 29);
             this.txtLote.TabIndex = 40;
             // 
             // label4
@@ -336,7 +315,7 @@
             this.txtNrInoculacao.Location = new System.Drawing.Point(162, 206);
             this.txtNrInoculacao.Multiline = true;
             this.txtNrInoculacao.Name = "txtNrInoculacao";
-            this.txtNrInoculacao.Size = new System.Drawing.Size(544, 29);
+            this.txtNrInoculacao.Size = new System.Drawing.Size(763, 29);
             this.txtNrInoculacao.TabIndex = 36;
             this.txtNrInoculacao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNrInoculacao_KeyPress);
             // 
@@ -357,7 +336,7 @@
             this.txtMarcaComercial.Location = new System.Drawing.Point(162, 134);
             this.txtMarcaComercial.Multiline = true;
             this.txtMarcaComercial.Name = "txtMarcaComercial";
-            this.txtMarcaComercial.Size = new System.Drawing.Size(544, 53);
+            this.txtMarcaComercial.Size = new System.Drawing.Size(763, 53);
             this.txtMarcaComercial.TabIndex = 34;
             // 
             // painelPrincipal
@@ -767,6 +746,5 @@
         private System.Windows.Forms.Button btnDorMaxima;
         private System.Windows.Forms.Label lblDorMuitoForte;
         private System.Windows.Forms.Label lblDorMaxima;
-        private System.Windows.Forms.Button button2;
     }
 }

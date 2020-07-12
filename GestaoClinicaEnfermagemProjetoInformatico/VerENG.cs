@@ -56,15 +56,18 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 conn.Open();
                 com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select numeroENG, dataENG, observacoes from ENG ORDER BY data asc, dataENG asc", conn);
+                SqlCommand cmd = new SqlCommand("select data, numeroENG, dataENG, observacoes from ENG ORDER BY data asc, dataENG asc", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
+                    string dataR = ((reader["data"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
+
                     string dataeng = ((reader["dataENG"] == DBNull.Value) ? "" : DateTime.ParseExact(reader["dataENG"].ToString(), "dd/MM/yyyy HH:mm:ss", null).ToString("dd/MM/yyyy"));
 
                     ENGPaciente eng = new ENGPaciente
                     {
+                        data = dataR,
                         numeroENG = ((reader["numeroENG"] == DBNull.Value) ? null : (int?)reader["numeroENG"]),
                         dataENG = dataeng,
                         observacoes = ((reader["observacoes"] == DBNull.Value) ? "" : (string)reader["observacoes"]),
@@ -74,9 +77,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 }
                 var bindingSource1 = new System.Windows.Forms.BindingSource { DataSource = engPaciente };
                 dataGridViewENG.DataSource = bindingSource1;
-                dataGridViewENG.Columns[0].HeaderText = "Número ENG";
-                dataGridViewENG.Columns[1].HeaderText = "Data de Realização do ENG";
-                dataGridViewENG.Columns[2].HeaderText = "Observações";
+                dataGridViewENG.Columns[0].HeaderText = "Data de Registo do ENG";
+                dataGridViewENG.Columns[1].HeaderText = "Número ENG";
+                dataGridViewENG.Columns[2].HeaderText = "Data de Realização do ENG";
+                dataGridViewENG.Columns[3].HeaderText = "Observações";
 
                 conn.Close();
                 dataGridViewENG.Update();

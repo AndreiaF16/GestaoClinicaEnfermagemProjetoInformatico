@@ -144,7 +144,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     {
                         ambos = "Sim";
                     }
-                    if (rbOE.Checked == false)
+                    if (rbAmbos.Checked == false)
                     {
                         ambos = "";
                     }
@@ -222,8 +222,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void limparCampos()
         {
-            rbAmbos.Checked = false;
-            rbAmbos.Checked = false;
+            rbOD.Checked = false;
+            rbOE.Checked = false;
             rbAmbos.Checked = false;
             txtObservacoes.Text = "";
             dataRegistoMed.Value = DateTime.Today;

@@ -166,24 +166,24 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 return false;
             }
 
-            if (var < 0)
+            if ((var < 0) && (cbDPP.Checked == true))
             {
                 MessageBox.Show("A data de DPP tem de ser superior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(dataDPP, "A data tem de ser superior ou igual à data de hoje!");
                 return false;
             }
 
-            if (var2 < 0)
+            if ((var2 < 0) && (cbDPPC.Checked == true))
             {
-                MessageBox.Show("A data do DPPC do DIU tem de ser superior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data do DPPC tem de ser superior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorProvider.SetError(dataDPPC, "A data do DPPC tem de ser superior ou igual à data de hoje!");
                 return false;
             }
 
-            if (var3 > 0)
+            if ((var3 > 0) && (cbEcografia.Checked == true))
             {
-                MessageBox.Show("A data da ecografia tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataEcografia, "A data da ecografia tem de ser inferior ou igual à data de hoje!");
+                MessageBox.Show("A data da 1ª ecografia tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(dataEcografia, "A data da 1ª ecografia tem de ser inferior ou igual à data de hoje!");
                 return false;
             }          
             return true;
@@ -205,6 +205,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataRegisto.Value = DateTime.Today;
             txtObservacoes.Text = "";
             lblEscala.Text = "";
+            errorProvider.Clear();
             dataDPPC.Value = DateTime.Today;
         }
         private void btnLocalizacaoDor_Click(object sender, EventArgs e)

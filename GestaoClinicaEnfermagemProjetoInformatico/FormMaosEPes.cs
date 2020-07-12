@@ -159,7 +159,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
 
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Dados Localização da dor registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Dados da Localização do  tratamento registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                     limparCampos();
                 }

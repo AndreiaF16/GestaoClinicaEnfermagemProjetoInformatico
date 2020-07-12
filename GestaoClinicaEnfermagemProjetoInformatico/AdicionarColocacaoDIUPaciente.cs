@@ -205,7 +205,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     DateTime dataRegisto = DateTime.ParseExact(reader["data"].ToString(), "dd/MM/yyyy HH:mm:ss", null);
                     if (dataRegistoMed.Value.ToShortDateString().Equals(dataRegisto.ToShortDateString()) && paciente.IdPaciente == (int)reader["IdPaciente"] && id == (int)reader["IdAtitude"])
                     {
-                        MessageBox.Show("Não é possível registar a Colocação do DIU, porque já está um registo na data que selecionou! \n Selecione outra data!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Não é possível registar a Colocação do DIU, porque já está um registo na data de hoje!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         conn.Close();
                         return false;
                     }

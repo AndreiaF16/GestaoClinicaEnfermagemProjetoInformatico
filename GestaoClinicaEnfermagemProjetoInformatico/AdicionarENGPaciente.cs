@@ -210,7 +210,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             if (var2 > 0)
             {
                 MessageBox.Show("A data do ENG tem de ser inferior ou igual à data de hoje! \n Selecione outra data!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                errorProvider.SetError(dataRegistoMed, "A data tem de ser inferior ou igual à data de hoje!");
+                errorProvider.SetError(dataENG, "A data tem de ser inferior ou igual à data de hoje!");
                 return false;
             }
 
