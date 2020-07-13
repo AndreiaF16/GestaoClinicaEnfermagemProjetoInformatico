@@ -239,6 +239,12 @@
     <Compile Include="FormLocalizacaoDorEpisiotomia.Designer.cs">
       <DependentUpon>FormLocalizacaoDorEpisiotomia.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLocalizacaoDorTratamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLocalizacaoDorTratamentos.Designer.cs">
+      <DependentUpon>FormLocalizacaoDorTratamentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLocalizacaoDorVacinacao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,6 +340,12 @@
     </Compile>
     <Compile Include="VerLocalizacaoDorMaosPes.Designer.cs">
       <DependentUpon>VerLocalizacaoDorMaosPes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerLocalizacaoDorTratamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerLocalizacaoDorTratamentos.Designer.cs">
+      <DependentUpon>VerLocalizacaoDorTratamentos.cs</DependentUpon>
     </Compile>
     <Compile Include="VerLocalizacaoDorVacinacao.cs">
       <SubType>Form</SubType>
@@ -1243,6 +1255,9 @@
     <EmbeddedResource Include="FormLocalizacaoDorEpisiotomia.resx">
       <DependentUpon>FormLocalizacaoDorEpisiotomia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLocalizacaoDorTratamentos.resx">
+      <DependentUpon>FormLocalizacaoDorTratamentos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLocalizacaoDorVacinacao.resx">
       <DependentUpon>FormLocalizacaoDorVacinacao.cs</DependentUpon>
     </EmbeddedResource>
@@ -1482,6 +1497,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerLocalizacaoDorMaosPes.resx">
       <DependentUpon>VerLocalizacaoDorMaosPes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerLocalizacaoDorTratamentos.resx">
+      <DependentUpon>VerLocalizacaoDorTratamentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerLocalizacaoDorVacinacao.resx">
       <DependentUpon>VerLocalizacaoDorVacinacao.cs</DependentUpon>

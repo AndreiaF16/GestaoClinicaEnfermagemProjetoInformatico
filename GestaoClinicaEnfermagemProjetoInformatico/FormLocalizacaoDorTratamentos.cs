@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace GestaoClinicaEnfermagemProjetoInformatico
 {
-    public partial class FormLocalizacaoDorCorpoConsulta : Form
+    public partial class FormLocalizacaoDorTratamentos : Form
     {
         Point point;
         SqlConnection conn = new SqlConnection();
@@ -19,7 +19,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private Paciente paciente = new Paciente();
         private ErrorProvider errorProvider = new ErrorProvider();
 
-        public FormLocalizacaoDorCorpoConsulta(Paciente pac)
+
+        public FormLocalizacaoDorTratamentos(Paciente pac)
         {
             InitializeComponent();
             paciente = pac;
@@ -28,6 +29,10 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             dataRegisto.Value = DateTime.Today;
             errorProvider.ContainerControl = this;
             errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+        }
+
+        private void FormLocalizacaoDorTratamentos_Load(object sender, EventArgs e)
+        {
 
         }
 
@@ -40,78 +45,15 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             }
         }
 
-      
-
-        private void pictureBoxCorpo_MouseClick(object sender, MouseEventArgs e)
+        private void hora_Tick(object sender, EventArgs e)
         {
-            TextBox textBox = new TextBox();
-
-            textBox.Location = PointToScreen(e.Location);
-
-            pictureBoxCorpo.Controls.Add(textBox);
-            textBox1.Clear();
-
-            //  TextBox tb = new TextBox();
-            textBox.KeyDown += new KeyEventHandler(tb_KeyDown);
-
-            //textBox1.Text = tb;
-
-            string dor = textBox.Text;
-            for (int i = 0; i < this.pictureBoxCorpo.Controls.Count; i++)
-            {
-                if (this.pictureBoxCorpo.Controls[i] is TextBox)
-                {
-                    TextBox txtserial = (TextBox)this.pictureBoxCorpo.Controls[i];
-                    string value = txtserial.Text;
-                    if (value != string.Empty)
-                    {
-                        textBox1.Text += value.ToString();
-                        textBox1.AppendText(", ");
-                    }
-                }
-            }
-        }
-
-        private void tb_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                textBox1.Clear();
-
-                //enter key is down
-                for (int i = 0; i < pictureBoxCorpo.Controls.Count; i++)
-                {
-
-                    if (pictureBoxCorpo.Controls[i] is TextBox)
-                    {
-                        TextBox txtserial = (TextBox)pictureBoxCorpo.Controls[i];
-                        string value = txtserial.Text;
-                        if (value != string.Empty)
-                        {
-                            textBox1.Text += value.ToString();
-                            textBox1.AppendText(", ");
-                        }
-                    }
-                }
-            }
+            lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
+            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            VerLocalizacaoDorConsulta verLocalizacaoDorConsulta = new VerLocalizacaoDorConsulta(paciente);
-            verLocalizacaoDorConsulta.Show();
-        }
-
-        private void hora_Tick(object sender, EventArgs e)
-        {
-            lblHora.Text = "Hora " + DateTime.Now.ToLongTimeString();
-            lblDia.Text = DateTime.Now.ToString("dddd, dd " + "'de '" + "MMMM" + "' de '" + "yyyy");
         }
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
@@ -151,7 +93,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                     connection.Open();
 
-                    string queryInsertData = "INSERT INTO LocalizacaoDorConsulta(IdPaciente,data,localizacao,observacoes) VALUES(@idPaciente,@dataR,@localizacao,@obs);";
+                    string queryInsertData = "INSERT INTO LocalizacaoDorTratamento(IdPaciente,data,localizacao,observacoes) VALUES(@idPaciente,@dataR,@localizacao,@obs);";
                     SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
 
                     sqlCommand.Parameters.AddWithValue("@idPaciente", paciente.IdPaciente);
@@ -167,7 +109,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
 
                     sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Dados Localizacao dor na consulta registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Dados Localização da dor nos tratamentos registados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     connection.Close();
                     limparCampos();
                 }
@@ -178,7 +120,37 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     conn.Close();
                 }
-                MessageBox.Show("Por erro interno é impossível registar os dados da localizacao da dor", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por erro interno é impossível registar os dados da localização da dor", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void pictureBoxCorpo_MouseClick(object sender, MouseEventArgs e)
+        {
+            TextBox textBox = new TextBox();
+
+            textBox.Location = PointToScreen(e.Location);
+
+            pictureBoxCorpo.Controls.Add(textBox);
+            textBox1.Clear();
+
+            //  TextBox tb = new TextBox();
+            textBox.KeyDown += new KeyEventHandler(tb_KeyDown);
+
+            //textBox1.Text = tb;
+
+            string dor = textBox.Text;
+            for (int i = 0; i < this.pictureBoxCorpo.Controls.Count; i++)
+            {
+                if (this.pictureBoxCorpo.Controls[i] is TextBox)
+                {
+                    TextBox txtserial = (TextBox)this.pictureBoxCorpo.Controls[i];
+                    string value = txtserial.Text;
+                    if (value != string.Empty)
+                    {
+                        textBox1.Text += value.ToString();
+                        textBox1.AppendText(", ");
+                    }
+                }
             }
         }
 
@@ -214,7 +186,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 conn.Open();
                 com.Connection = conn;
 
-                SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorConsulta WHERE IdPaciente = @IdPaciente", conn);
+                SqlCommand cmd = new SqlCommand("select * from LocalizacaoDorTratamento WHERE IdPaciente = @IdPaciente", conn);
                 cmd.Parameters.AddWithValue("@IdPaciente", paciente.IdPaciente);
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -241,11 +213,35 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             return true;
         }
 
-        private void FormLocalizacaoDorCorpoConsulta_Load(object sender, EventArgs e)
+        private void tb_KeyDown(object sender, KeyEventArgs e)
         {
 
+            if (e.KeyCode == Keys.Enter)
+            {
+                textBox1.Clear();
+
+                //enter key is down
+                for (int i = 0; i < pictureBoxCorpo.Controls.Count; i++)
+                {
+
+                    if (pictureBoxCorpo.Controls[i] is TextBox)
+                    {
+                        TextBox txtserial = (TextBox)pictureBoxCorpo.Controls[i];
+                        string value = txtserial.Text;
+                        if (value != string.Empty)
+                        {
+                            textBox1.Text += value.ToString();
+                            textBox1.AppendText(", ");
+                        }
+                    }
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            VerLocalizacaoDorTratamentos verLocalizacaoDorTratamentos = new VerLocalizacaoDorTratamentos(paciente);
+            verLocalizacaoDorTratamentos.Show();
         }
     }
-
 }
-

@@ -643,8 +643,8 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void btnLocalizacaoDor_Click(object sender, EventArgs e)
         {
-            FormLocalizacaoDorCorpoConsulta formLocalizacaoDorCorpo = new FormLocalizacaoDorCorpoConsulta( paciente);
-            formLocalizacaoDorCorpo.Show();
+            FormLocalizacaoDorTratamentos formLocalizacaoDorTratamentos = new FormLocalizacaoDorTratamentos( paciente);
+            formLocalizacaoDorTratamentos.Show();
         }
 
         private void btnSemDor_MouseClick(object sender, MouseEventArgs e)

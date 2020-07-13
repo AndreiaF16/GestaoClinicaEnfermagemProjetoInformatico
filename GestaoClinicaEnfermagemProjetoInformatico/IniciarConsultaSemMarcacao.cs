@@ -30,6 +30,9 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
         private int idAvObj = -1;
         private int idAvBebeAleitamento = -1;
         private int idAvObjTipoParto = -1;
+        private int idTratamentos = -1;
+        private int idQueimaduras = -1;
+        private int idUlceras = -1;
 
         public IniciarConsultaSemMarcacao(Enfermeiro enf, Paciente pac)
         {
@@ -384,14 +387,17 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             DateTime data = paciente.DataNascimento;
             var calculoDatas = DateTime.Today - data;
             var meses = Math.Round(DateTime.Today.Subtract(data).Days / (365.25 / 12));
+
             if (meses > 36)
             {
                 idVarios();
                 if (idAvObj == -1)
                 {
-                    var resposta = MessageBox.Show("Tipo de metodos contracetivos não encontrados! Deseja inserir um tipo na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    var resposta = MessageBox.Show("Tipo de métodos contracetivos não encontrados! Deseja inserir um tipo na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (resposta == DialogResult.Yes)
                     {
+
+
                         AdicionarMetodosContracetivos metodoContracetivo = new AdicionarMetodosContracetivos(null);
                         metodoContracetivo.Show();
                     }
@@ -415,8 +421,48 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     var resposta = MessageBox.Show("Tipo de aleitamento não encontrados! Deseja inserir um tipo na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (resposta == DialogResult.Yes)
                     {
-                        AdicionarTipoAleitamento aleitamento = new AdicionarTipoAleitamento(null);
-                        aleitamento.Show();
+                        try
+                        {
+                            SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                            connection.Open();
+
+                            string queryInsertData = "INSERT INTO Aleitamento(tipoAleitamento) VALUES('Misto');";
+                            SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                            sqlCommand.ExecuteNonQuery();
+                            MessageBox.Show("Tipo de Leite 'Misto' registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            connection.Close();
+                        }
+                        catch (SqlException)
+                        {
+                            if (conn.State == ConnectionState.Open)
+                            {
+                                conn.Close();
+                            }
+                            MessageBox.Show("Por erro interno é impossível registar o tipo de aleitamento 'Misto'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
+                            SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                            connection.Open();
+
+                            string queryInsertData = "INSERT INTO Aleitamento(tipoAleitamento) VALUES('Artificial');";
+                            SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                            sqlCommand.ExecuteNonQuery();
+                            MessageBox.Show("Tipo de Leite 'Artificial' registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            connection.Close();
+                        }
+                        catch (SqlException)
+                        {
+                            if (conn.State == ConnectionState.Open)
+                            {
+                                conn.Close();
+                            }
+                            MessageBox.Show("Por erro interno é impossível registar o tipo de aleitamento 'Artificial'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        //AdicionarTipoAleitamento aleitamento = new AdicionarTipoAleitamento(null);
+                        // aleitamento.Show();
                     }
                     if (resposta == DialogResult.No)
                     {
@@ -424,7 +470,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
                 }
                 idVarios();
-                if (idAvBebeAleitamento != -1)
+                if (idAvBebeAleitamento != -1 && idAvObjTipoParto != -1)
                 {
                     AdicionarVisualizarAvaliacaoObjetivaBebe adicionarVisualizarAvaliacaoObjetivaBebe = new AdicionarVisualizarAvaliacaoObjetivaBebe(paciente/*, this, null*/);
                     adicionarVisualizarAvaliacaoObjetivaBebe.Show();
@@ -435,8 +481,27 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     var resposta = MessageBox.Show("Tipo de partos não encontrados! Deseja inserir um tipo na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (resposta == DialogResult.Yes)
                     {
-                        AdicionarTipoParto adicionarTipoParto = new AdicionarTipoParto(null);
-                        adicionarTipoParto.Show();
+                        try
+                        {
+                            SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                            connection.Open();
+
+                            string queryInsertData = "INSERT INTO Parto(tipoParto) VALUES('Distócico');";
+                            SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                            sqlCommand.ExecuteNonQuery();
+                            MessageBox.Show("Tipo de Parto 'Distócico' registado com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            connection.Close();
+                        }
+                        catch (SqlException)
+                        {
+                            if (conn.State == ConnectionState.Open)
+                            {
+                                conn.Close();
+                            }
+                            MessageBox.Show("Por erro interno é impossível registar o tipo de parto 'Distócico'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        // AdicionarTipoParto adicionarTipoParto = new AdicionarTipoParto(null);
+                        // adicionarTipoParto.Show();
                     }
                     if (resposta == DialogResult.No)
                     {
@@ -444,12 +509,13 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                     }
                 }
                 idVarios();
-                if (idAvObjTipoParto != -1)
+                if (idAvObjTipoParto != -1 && idAvBebeAleitamento != -1)
                 {
                     AdicionarVisualizarAvaliacaoObjetivaBebe adicionarVisualizarAvaliacaoObjetivaBebe = new AdicionarVisualizarAvaliacaoObjetivaBebe(paciente/*, this, null*/);
                     adicionarVisualizarAvaliacaoObjetivaBebe.Show();
                 }
             }
+
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -479,8 +545,315 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button3_Click(object sender, EventArgs e)
         {
-            AdicionarVisualizarTratamentoPaciente adicionarVisualizarTratamentoPaciente = new AdicionarVisualizarTratamentoPaciente(paciente);
-            adicionarVisualizarTratamentoPaciente.Show();
+            idVarios();
+            if (idTratamentos == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de tratamentos não encontrados! Deseja inserir os tipos na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Tratamento(nomeTratamento) VALUES('Ferida Cirúrgica');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Tipo de Tratamento 'Ferida Cirúrgica' registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar o tipo de tratamento 'Ferida Cirúrgica'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Tratamento(nomeTratamento) VALUES('Ferida Traumática');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Tipo de Tratamento 'Ferida Traumática' registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar o tipo de tratamento 'Ferida Traumática'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Tratamento(nomeTratamento) VALUES('Excisões');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Tipo de Tratamento 'Excisões' registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar o tipo de tratamento 'Excisões'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Tratamento(nomeTratamento) VALUES('Úlceras');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Tipo de Tratamento 'Úlceras' registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar o tipo de tratamento 'Úlceras'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO Tratamento(nomeTratamento) VALUES('Queimaduras');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Tipo de Tratamento 'Queimaduras' registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar o tipo de tratamento 'Queimaduras'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+
+
+            idVarios();
+            if (idQueimaduras == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de queimaduras não encontradas! Deseja inserir na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO tipoQueimadura(tipoQueimadura) VALUES('Térmica');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Queimaduras do tipo 'Térmica' registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a queimadura do tipo 'Térmica'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO tipoQueimadura(tipoQueimadura) VALUES('Química');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Queimaduras do tipo 'Química' registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a queimadura do tipo 'Química'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO tipoQueimadura(tipoQueimadura) VALUES('Iónica');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Queimaduras do tipo 'Iónica' registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a queimadura do tipo 'Iónica'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO tipoQueimadura(tipoQueimadura) VALUES('Solares');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Queimaduras do tipo 'Solares' registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a queimadura do tipo 'Solares'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+
+
+            idVarios();
+            if (idUlceras == -1)
+            {
+                var resposta = MessageBox.Show("Tipo de úlceras não encontradas! Deseja inserir na base de dados?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resposta == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO tipoUlcera(tipoUlcera) VALUES('Pressão');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Úlcera do tipo 'Pressão' registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a úlcera do tipo 'Pressão'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO tipoUlcera(tipoUlcera) VALUES('Arteriais');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Úlcera do tipo 'Arteriais' registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a úlcera do tipo 'Arteriais'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO tipoUlcera(tipoUlcera) VALUES('Venosas');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Úlcera do tipo 'Venosas' registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a úlcera do tipo 'Venosas'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SiltesSaude;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                        connection.Open();
+
+                        string queryInsertData = "INSERT INTO tipoUlcera(tipoUlcera) VALUES('Mistas');";
+                        SqlCommand sqlCommand = new SqlCommand(queryInsertData, connection);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Úlcera do tipo 'Mistas' registada com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        connection.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        MessageBox.Show("Por erro interno é impossível registar a úlcera do tipo 'Mistas'!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                if (resposta == DialogResult.No)
+                {
+                    MessageBox.Show("Você escolheu 'Não', por isso não é possível realizar tarefas!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                }
+            }
+            idVarios();
+            if (idTratamentos != -1 && idQueimaduras != -1 && idUlceras != -1)
+            {
+                AdicionarVisualizarTratamentoPaciente adicionarVisualizarTratamentoPaciente = new AdicionarVisualizarTratamentoPaciente(paciente);
+                adicionarVisualizarTratamentoPaciente.Show();
+            }
+
         }
 
         private void button4_Click(object sender, EventArgs e)

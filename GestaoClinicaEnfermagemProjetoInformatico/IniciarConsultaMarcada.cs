@@ -814,8 +814,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
 
         private void button10_Click(object sender, EventArgs e)
         {
-            //private int idTratamentos = -1;
-            //  private int idExcisoes = -1;
             idVarios();
             if (idTratamentos == -1)
             {
