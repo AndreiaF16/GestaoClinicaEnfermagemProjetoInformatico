@@ -188,7 +188,7 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
                 {
                     if (analiseL.nomeAnalise.ToLower().Contains(textBox1.Text.ToLower()))
                     {
-                        auxiliar.Add(analise);
+                        auxiliar.Add(analiseL);
                     }
                 }
                 return auxiliar;
@@ -201,10 +201,6 @@ namespace GestaoClinicaEnfermagemProjetoInformatico
             return auxiliar;
         }   
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            limparCampos();
-        }
 
         private void limparCampos()
         {
