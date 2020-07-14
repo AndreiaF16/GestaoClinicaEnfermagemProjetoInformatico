@@ -1,1 +1,0 @@
-﻿select * from Paciente p LEFT JOIN Profissao prof ON p.IdProfissao = prof.IdProfissao WHERE IdEnfermeiro =  3002;
