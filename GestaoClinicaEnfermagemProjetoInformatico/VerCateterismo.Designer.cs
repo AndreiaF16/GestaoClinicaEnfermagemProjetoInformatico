@@ -73,9 +73,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
             this.label2.Location = new System.Drawing.Point(4, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(332, 31);
+            this.label2.Size = new System.Drawing.Size(172, 31);
             this.label2.TabIndex = 89;
-            this.label2.Text = "Medicação Administrada";
+            this.label2.Text = "Cateterismo";
             // 
             // label1
             // 
